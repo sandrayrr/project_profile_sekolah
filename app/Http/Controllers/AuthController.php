@@ -37,22 +37,23 @@ return view('auth.register');
 }
 
 
-public function register(Request $request){
-$request->validate([
-'name' => 'required',
-'email' => 'required|email|unique:users',
-'password' => 'required|min:6'
-]);
+public function register(Request $request)
+{
+    $request->validate([
+        'name' => 'required',
+        'email' => 'required|email|unique:users',
+        'password' => 'required|min:6',
+        'role' => 'required|in:admin,user',
+    ]);
 
+    User::create([
+        'name' => $request->name,
+        'email' => $request->email,
+        'password' => Hash::make($request->password),
+        'role' => $request->role, // ✅ INI KUNCINYA
+    ]);
 
-User::create([
-'name' => $request->name,
-'email' => $request->email,
-'password' => Hash::make($request->password)
-]);
-
-
-return redirect('/login');
+    return redirect('/login');
 }
 
 
