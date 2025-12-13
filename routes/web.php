@@ -2,8 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\BerandaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,19 +31,25 @@ Route::view('/agenda', 'pages.agenda')->name('agenda');
 Route::get('/login', [AuthController::class, 'loginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
 Route::get('/register', [AuthController::class, 'registerForm'])->name('register');
 Route::post('/register', [AuthController::class, 'register']);
 
 /*
 |--------------------------------------------------------------------------
-| Admin Area (Protected)
+| Admin Area (AUTH)
 |--------------------------------------------------------------------------
 */
-Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
+Route::middleware('auth')
+    ->prefix('admin')
+    ->name('admin.')
+    ->group(function () {
 
-    Route::get('/dashboard', [AdminController::class, 'dashboard'])
-        ->name('dashboard');
+        // Dashboard
+        Route::get('/dashboard', [AdminController::class, 'dashboard'])
+            ->name('dashboard');
 
-    Route::resource('users', UserController::class);
-
+        // CRUD
+        Route::resource('beranda', BerandaController::class);
+        Route::resource('users', UserController::class);
 });
