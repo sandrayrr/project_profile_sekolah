@@ -22,6 +22,8 @@ Route::view('/fasilitas', 'pages.fasilitas')->name('fasilitas');
 Route::view('/akreditasi', 'pages.akreditasi')->name('akreditasi');
 Route::view('/ekstrakurikuler', 'pages.ekstrakurikuler')->name('ekstrakurikuler');
 Route::view('/agenda', 'pages.agenda')->name('agenda');
+Route::view('/staffpengajar', 'pages.staffpengajar')->name('staffpengajar');
+
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +32,8 @@ Route::view('/agenda', 'pages.agenda')->name('agenda');
 */
 Route::get('/login', [AuthController::class, 'loginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
+Route::get('/register', [AuthController::class, 'registerForm'])->name('register');
+Route::post('/register', [AuthController::class, 'register']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/register', [AuthController::class, 'registerForm'])->name('register');

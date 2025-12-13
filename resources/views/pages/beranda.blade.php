@@ -2,7 +2,11 @@
 <html lang="id">
 
 <head>
-    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>SMK Negeri 1 Kawali - Homepage</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
         rel="stylesheet" />
@@ -18,28 +22,15 @@
             theme: {
                 extend: {
                     colors: {
-                        // Mengubah primary ke biru agar terlihat di latar putih
-                        primary: "#3B82F6",
-                        
-                        // Semua background dibuat putih
-                        "background-light": "#FFFFFF",
-                        "background-dark": "#FFFFFF",
-                        
-                        // Semua card jadi putih
-                        "card-light": "#FFFFFF",
-                        "card-dark": "#FFFFFF",
-                        
-                        // Warna teks gelap dibuat abu tua supaya tidak hitam
-                        "text-light": "#1F2937",
-                        "text-dark": "#1F2937",
-                        
-                        // Warna muted (abu) – tetap abu, bukan hitam
-                        "muted-light": "#6B7280",
-                        "muted-dark": "#6B7280",
+                        primary: "#1e40af", // deep blue
+                        "background-light": "#f3f4f6", // gray-100
+                        "background-dark": "#111827", // gray-900
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1f2937", // gray-800
                     },
                     fontFamily: {
-                        sans: ["Inter", "sans-serif"],
-                        display: ["Playfair Display", "serif"],
+                        display: ["Inter", "sans-serif"],
+                        body: ["Inter", "sans-serif"],
                     },
                     borderRadius: {
                         DEFAULT: "0.5rem",
@@ -49,452 +40,407 @@
         };
     </script>
     <style>
-        ::-webkit-scrollbar {
-            width: 8px;
+        body {
+            font-family: 'Inter', sans-serif;
         }
 
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #888;
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555;
-        }
-
-        .dark ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-
-        .dark ::-webkit-scrollbar-thumb {
-            background: #888;
+        .material-icons {
+            font-size: 1.25rem;
+            vertical-align: middle;
         }
     </style>
 </head>
 
 <body
-    class="bg-white dark:bg-background-dark text-text-light dark:text-text-dark font-sans transition-colors duration-300">
+    class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200 transition-colors duration-300">
+   
     @include('layouts.navbar')
-    <section class="relative bg-white h-[500px] flex items-center justify-center overflow-hidden">
-        <div class="absolute inset-0">
-            <img alt="School Building" class="w-full h-full object-cover opacity-40"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKsD0iWHwP7lyuF6dte1SHPLSWg5FrWNESwqS0yqnUMMdRcjA3b6l9F41sDXJiqOPlYyLp9WuP_4G5U1ap17glnLv3uqyo069a9hQrle65MciKSnu9nZ-nd3dMoZOnC2tnGtl9fEmyNVkFLBu74HmIYdRvh-xaREUU3ortPMpTZuGdvRkz52cTYMEdYzCO-YdibDJabDwTedSC1EYMDS5p83V6KcmsdFBceclQR1mBUfmol2tHdamxG93AUv8KJWgLwPghS1Ae1UhA" />
-            <div class="absolute inset-0 bg-gradient-to-t from-white to-transparent">
-            </div>
-        </div>
-        <div class="container mx-auto px-4 relative z-10 text-center">
-            <h1 class="text-4xl md:text-5xl font-display font-bold mb-4">Membangun Generasi Unggul</h1>
-            <p class="text-lg md:text-xl text-muted-light max-w-2xl mx-auto mb-8">Selamat datang di
-                website resmi SMK Negeri 1 Kawali. Pusat keunggulan pendidikan vokasi.</p>
-            <div class="flex justify-center gap-4">
-                <a class="px-6 py-2 rounded-full bg-primary text-white hover:bg-blue-600 transition flex items-center gap-2"
-                    href="#">
+    <section class="relative bg-gray-200 dark:bg-gray-800 h-[500px] flex items-center justify-center overflow-hidden">
+        <img alt="School Atmosphere" class="absolute inset-0 w-full h-full object-cover opacity-30 dark:opacity-20"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqMZggap8sbrsWBeQRfEvM54vjG5NBbXa8RcSD9jOIoxPciY89gu4wfihHnBB7TAbrpaVbjDaEpvaBkajffOrrfSKv2-zUk3r9bAWCFGomQdjs6QibJS1wKdMmZWJTQNwOs_95HsHOPEBQwUbFwL0UmXVbh9yXc-5CVH-lSwPFjtvj6wOkrKBcE6BBhg1Amwh9MvBKptuPaAGr_Awv-OBbN0Jc_-0BNKwXLd4zTZ9npg2oewr7zAyskK1ToubBTF46I7qDnzl4zKOG" />
+        <div class="relative z-10 text-center max-w-3xl px-6">
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">Mewujudkan Generasi Unggul dan
+                Berkarakter</h2>
+            <p class="text-lg text-gray-700 dark:text-gray-300 mb-8">Selamat datang di website resmi SMK Negeri 1
+                Kawali. Pusat informasi dan layanan digital sekolah.</p>
+            <div class="flex justify-center space-x-4">
+                <button
+                    class="bg-white dark:bg-surface-dark hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-800 dark:text-white px-6 py-2 rounded-full shadow-lg transition flex items-center gap-2">
                     Selengkapnya <span class="material-icons text-sm">arrow_forward</span>
-                </a>
+                </button>
             </div>
             <div class="mt-8 flex justify-center gap-4">
                 <button
-                    class="p-2 rounded-full border border-gray-400 hover:bg-gray-100 transition">
-                    <span class="material-icons">arrow_back</span>
+                    class="p-2 bg-white/50 dark:bg-black/50 hover:bg-white dark:hover:bg-black rounded-full transition">
+                    <span class="material-icons">west</span>
                 </button>
                 <button
-                    class="p-2 rounded-full border border-gray-400 hover:bg-gray-100 transition">
-                    <span class="material-icons">arrow_forward</span>
+                    class="p-2 bg-white/50 dark:bg-black/50 hover:bg-white dark:hover:bg-black rounded-full transition">
+                    <span class="material-icons">east</span>
                 </button>
             </div>
         </div>
     </section>
-    <section class="py-12 -mt-24 relative z-20">
-        <div class="container mx-auto px-4">
+    <div class="container mx-auto px-4 -mt-24 relative z-20 mb-20">
+        <div class="bg-white dark:bg-surface-dark rounded-xl shadow-xl p-8 flex flex-col lg:flex-row gap-8 lg:gap-12">
             <div
-                class="bg-white rounded-xl shadow-lg p-8 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-                <div class="md:col-span-3 flex justify-center md:justify-start">
-                    <div
-                        class="w-48 h-48 rounded-full overflow-hidden border-4 border-gray-100 shadow-md">
+                class="lg:w-1/2 flex flex-col sm:flex-row items-center sm:items-start gap-6 border-b lg:border-b-0 lg:border-r border-gray-200 dark:border-gray-700 pb-8 lg:pb-0 lg:pr-8">
+                <div class="shrink-0">
+                    <div class="w-24 h-24 rounded-full bg-gray-300 dark:bg-gray-600 overflow-hidden shadow-inner">
                         <img alt="Kepala Sekolah" class="w-full h-full object-cover"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzO25NEdgIt_C2vZGT31xlhkkocx601JicQnE2JU2hMESC8qTW96POvdPC-rqeWB6oUJq_or-i-a-TdFpuA5v0N1WxmyWhS6M7xGsN-gB1lDRi_JNQuWu8ABFj4iRgCw_RCMsHIZ3E-dQ4_W13huhJK0UfR2iqe4rWqAnBd5yiJzBbw5QJPpKrnQLIo0wzRCxoj5ZRZcG5MvGDEPAF6ORq8KPDzSmntUWKvolwuZ98ZoGVyxhW5QwEjxL3sd3qU_m-rVOAqfBAzOyj" />
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxngcCk9KX7vesppucB0OeSFhT02rOmd--W_H6cZ9c-2P2SIDRPALnS2AKxQI9lGadFvafEuHfWGBPC3FORB6mEF-MMWAfQN6OiT-LgNz-PEb8zgT4EuhQlOWjEWmmfN7ken-w67NmoRe3A3AnOQ-nIYDESWxTL8Hqn98v3cnYtL1istbX3HgZZQ7QZFb0U18hBcDVGobPwot9LSs2Bo1szfgI36cigKJ9Y0Uwg0tKJyc-g35nkVFw_eD1tnYNWy1t9w0B9M7pj5Yu" />
                     </div>
                 </div>
-                <div class="md:col-span-5 text-center md:text-left">
-                    <h2 class="text-2xl font-bold mb-2">Sambutan Kepala Sekolah</h2>
-                    <p class="text-muted-light mb-6">
-                        Assalamu'alaikum Wr. Wb. Selamat datang di website resmi kami. Kami berkomitmen untuk memberikan
-                        pendidikan terbaik bagi putra-putri bangsa.
+                <div class="text-center sm:text-left">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Sambutan Kepala Sekolah</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">
+                        Selamat datang di website resmi kami. Kami berkomitmen untuk memberikan layanan pendidikan
+                        terbaik...
                     </p>
-                    <a class="inline-flex items-center gap-2 text-sm px-5 py-2 rounded-full bg-gray-100 hover:bg-primary hover:text-white transition-colors"
+                    <a class="inline-flex items-center text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary bg-gray-100 dark:bg-gray-700 px-4 py-1.5 rounded-full transition"
                         href="#">
-                        Selengkapnya <span class="material-icons text-sm">arrow_forward</span>
+                        Selengkapnya <span class="material-icons text-xs ml-1">arrow_forward</span>
                     </a>
                 </div>
-                <div class="md:col-span-4 border-l-0 md:border-l border-gray-200 pl-0 md:pl-8">
-                    <h3 class="text-lg font-semibold mb-6 text-center md:text-left">Data Statistik Sekolah</h3>
-                    <div class="flex justify-between text-center">
-                        <div>
-                            <span class="block text-3xl font-bold text-primary">1200</span>
-                            <span class="text-xs text-muted-light uppercase tracking-wider">Siswa</span>
-                        </div>
-                        <div class="w-px bg-gray-200 h-12"></div>
-                        <div>
-                            <span class="block text-3xl font-bold text-primary">85</span>
-                            <span class="text-xs text-muted-light uppercase tracking-wider">Guru</span>
-                        </div>
-                        <div class="w-px bg-gray-200 h-12"></div>
-                        <div>
-                            <span class="block text-3xl font-bold text-primary">6</span>
-                            <span class="text-xs text-muted-light uppercase tracking-wider">Jurusan</span>
-                        </div>
+            </div>
+            <div class="lg:w-1/2 flex flex-col justify-center">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6 text-center lg:text-left">Data Statistik
+                    Sekolah</h3>
+                <div class="grid grid-cols-3 gap-4 text-center divide-x divide-gray-200 dark:divide-gray-700">
+                    <div class="px-2">
+                        <span class="block text-3xl font-bold text-primary">1.2k</span>
+                        <span class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide">Siswa</span>
+                    </div>
+                    <div class="px-2">
+                        <span class="block text-3xl font-bold text-primary">85</span>
+                        <span class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide">Guru</span>
+                    </div>
+                    <div class="px-2">
+                        <span class="block text-3xl font-bold text-primary">12</span>
+                        <span class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide">Jurusan</span>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <section class="py-12 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="flex justify-between items-end mb-8">
-                <div>
-                    <h2 class="text-3xl font-bold mb-2">Agenda</h2>
-                    <p class="text-muted-light">Agenda kegiatan dan Aktivitas sekolah yang akan datang</p>
-                </div>
-                <a class="hidden sm:inline-flex items-center gap-2 text-sm px-4 py-2 rounded-full bg-gray-100 hover:bg-primary hover:text-white transition-colors"
-                    href="#">
-                    Selengkapnya <span class="material-icons text-sm">arrow_forward</span>
-                </a>
+    </div>
+    <section class="container mx-auto px-4 mb-20">
+        <div class="flex justify-between items-end mb-8">
+            <div>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Agenda</h2>
+                <p class="text-gray-600 dark:text-gray-400">Agenda kegiatan dan aktivitas sekolah yang akan datang</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div
-                    class="bg-white rounded-xl shadow-sm overflow-hidden group hover:shadow-md transition-shadow border border-gray-100">
-                    <div class="p-6 h-40 flex items-center justify-center bg-gray-50">
-                        <h3 class="text-xl font-semibold text-center group-hover:text-primary transition-colors">Rapat
-                            Komite Sekolah</h3>
-                    </div>
-                    <div
-                        class="bg-gray-50 px-6 py-3 border-t border-gray-100 flex justify-between items-center text-sm text-muted-light">
-                        <div class="flex items-center gap-2">
-                            <span class="material-icons text-base">event</span>
-                            <span>20 Oktober 2023, 08:00 WIB</span>
-                        </div>
-                    </div>
+            <a class="hidden sm:inline-flex items-center px-4 py-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 rounded-full text-xs font-semibold text-gray-700 dark:text-gray-200 transition"
+                href="#">
+                Selengkapnya <span class="material-icons text-sm ml-1">arrow_forward</span>
+            </a>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6">
+            <div
+                class="bg-white dark:bg-surface-dark rounded-lg shadow-md overflow-hidden border border-gray-100 dark:border-gray-700 hover:shadow-lg transition">
+                <div class="bg-gray-100 dark:bg-gray-800 p-8 flex items-center justify-center">
+                    <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-200 text-center">Rapat Koordinasi Guru
+                    </h4>
                 </div>
                 <div
-                    class="bg-white rounded-xl shadow-sm overflow-hidden group hover:shadow-md transition-shadow border border-gray-100">
-                    <div class="p-6 h-40 flex items-center justify-center bg-gray-50">
-                        <h3 class="text-xl font-semibold text-center group-hover:text-primary transition-colors">Ujian
-                            Tengah Semester Ganjil</h3>
-                    </div>
-                    <div
-                        class="bg-gray-50 px-6 py-3 border-t border-gray-100 flex justify-between items-center text-sm text-muted-light">
-                        <div class="flex items-center gap-2">
-                            <span class="material-icons text-base">event</span>
-                            <span>25 Oktober 2023, 07:00 WIB</span>
-                        </div>
-                    </div>
+                    class="p-4 border-t border-gray-200 dark:border-gray-700 flex items-center text-sm text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-gray-900/50">
+                    <span class="material-icons text-base mr-2 text-primary">event</span>
+                    <span>Senin, 12 Oktober 2023 - 08:00 WIB</span>
                 </div>
             </div>
-            <div class="mt-6 text-center sm:hidden">
-                <a class="inline-flex items-center gap-2 text-sm px-4 py-2 rounded-full bg-gray-100 hover:bg-primary hover:text-white transition-colors"
-                    href="#">
-                    Selengkapnya <span class="material-icons text-sm">arrow_forward</span>
-                </a>
+            <div
+                class="bg-white dark:bg-surface-dark rounded-lg shadow-md overflow-hidden border border-gray-100 dark:border-gray-700 hover:shadow-lg transition">
+                <div class="bg-gray-100 dark:bg-gray-800 p-8 flex items-center justify-center">
+                    <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-200 text-center">Ujian Tengah Semester
+                    </h4>
+                </div>
+                <div
+                    class="p-4 border-t border-gray-200 dark:border-gray-700 flex items-center text-sm text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-gray-900/50">
+                    <span class="material-icons text-base mr-2 text-primary">event</span>
+                    <span>Senin, 19 Oktober 2023 - 07:00 WIB</span>
+                </div>
             </div>
         </div>
     </section>
-    <section class="py-12 bg-white">
+    <section class="bg-white dark:bg-surface-dark py-16 mb-20">
         <div class="container mx-auto px-4">
-            <div class="flex justify-between items-end mb-8">
+            <div class="flex justify-between items-end mb-10">
                 <div>
-                    <h2 class="text-3xl font-bold mb-2">Berita, Artikel &amp; Informasi</h2>
-                    <p class="text-muted-light">Berita, Artikel &amp; Informasi sekolah kami</p>
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Berita, Artikel &amp; Informasi
+                    </h2>
+                    <p class="text-gray-600 dark:text-gray-400">Berita, Artikel &amp; Informasi sekolah kami</p>
                 </div>
-                <a class="hidden sm:inline-flex items-center gap-2 text-sm px-4 py-2 rounded-full bg-gray-100 hover:bg-primary hover:text-white transition-colors"
+                <a class="hidden sm:inline-flex items-center px-4 py-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 rounded-full text-xs font-semibold text-gray-700 dark:text-gray-200 transition"
                     href="#">
-                    Selengkapnya <span class="material-icons text-sm">arrow_forward</span>
+                    Selengkapnya <span class="material-icons text-sm ml-1">arrow_forward</span>
                 </a>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="grid md:grid-cols-2 gap-8">
                 <div class="group cursor-pointer">
-                    <div class="rounded-xl overflow-hidden h-64 bg-gray-100 relative mb-4">
-                        <img alt="News Image"
-                            class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKe2bytjlZZeVN16wNV6gKn3gPSurQWy_tlNPP55OifFnAieizTe2_iQQltsgFVmS2g_xruIZz9hc0oVF8ZOHALiPq1wDNx2s6CqoeftjufhcvkdY5NnZdUe1EpKk3UKo5FXPCT3Zptau7cgpZojI5FH5A04WwLhhF45j1reUlsWwVTM-JxJrfO8pb-0LTrkAkvn6gUfJLTmcD6xQNNiHx-5nljFUMZh_HJO2eVBGaNxPF8QW05oeKIQr8ISd6-D6CScQNykMe-VCS" />
+                    <div class="h-64 bg-gray-300 dark:bg-gray-700 rounded-lg overflow-hidden mb-4 relative">
+                        <img alt="Kegiatan Siswa"
+                            class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDU1EQ3wz8YsV31GyNFWbPlL27NMnjyfoh9ei1_xhToiA6vPoEsQC_Q1VsgQHJHOcKaeczLk8olARwGCGL_UwvZhn_1Cm1CDiOocHEq41VvxGGbqeg_7BCwuz_bTC_tvGps1MR8daO_Qq6rJb14JuAgzctvGi2RKDaAiHybcRVGj6eCBqFJd_3hms8RA05u1Jxh4J70gM1iiIyGQHODfOYlR4CYzF6xUsqBBblfy9J-BDcUD8yoU-przuOzG-CSg7dSSd7JTvy_QnUK" />
                     </div>
-                    <div>
-                        <span class="text-sm text-primary font-medium mb-1 block">15 Oktober 2023</span>
-                        <h3 class="text-xl font-bold group-hover:text-primary transition-colors">Prestasi Siswa SMK
-                            Negeri 1 Kawali di Tingkat Nasional</h3>
-                        <p class="text-muted-light mt-2 line-clamp-2">Siswa-siswi berprestasi
-                            kembali mengharumkan nama sekolah dengan memenangkan lomba kompetensi siswa...</p>
+                    <div class="flex flex-col">
+                        <span class="text-sm text-primary font-semibold mb-1">10 Oktober 2023</span>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-primary transition">
+                            Siswa SMK Negeri 1 Kawali Juara LKS Provinsi</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mt-2 line-clamp-2">Prestasi membanggakan kembali
+                            diraih oleh siswa jurusan TKJ dalam ajang Lomba Kompetensi Siswa...</p>
                     </div>
                 </div>
                 <div class="group cursor-pointer">
-                    <div class="rounded-xl overflow-hidden h-64 bg-gray-100 relative mb-4">
-                        <img alt="News Image"
-                            class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0NmnEmo0afvGaHJLXk21420pbhAvqmbZtUjrVxGJqkq-XwzQLm6dRG9DlWk_EggHFYjptlju-P4Bqk9utAgvF2m6UP1ifDWp3ayXsl6nwfJwC7BwxKLIDQXHGhzkqc-4yPcXL2WRS5PcBc34axvbVnUBi39yiLxWFu65Sxq6RRbI4ye_H0MdPJ2vVWobITrceGD3Ae4Wiz-o-worl0Q_2Ebh4tmur1emZVuO8N7sBPXHwTTRN2LRG_-QZNcRVO8SnsEF4q5GC-1qU" />
+                    <div class="h-64 bg-gray-300 dark:bg-gray-700 rounded-lg overflow-hidden mb-4 relative">
+                        <img alt="Kegiatan Belajar"
+                            class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMu9tAxcl84Y9IGQTRIgxa3Kmg-FeY8dWLb-IEXNf6qeIBBpD4zAWgoVhSn0Jw8Hc8naswWORscExDIi5eehwK0EJ0zkYQ3FngM1dYMbyErChe_WKs0seIsSliNqwxPX7FsVIegFbpsWQsoKnRVEUJL1ZwQI-YlRhgYpT6lxQiZdCG6X1wWbyoy4WGNmh0__zbwae3iejjDTW1YxZmcnPcw_FDWJKzHZcg7JrjwKuZPNNPekCXl4ristHe5LLiV-GI7GaZZebFJTZI" />
                     </div>
-                    <div>
-                        <span class="text-sm text-primary font-medium mb-1 block">12 Oktober 2023</span>
-                        <h3 class="text-xl font-bold group-hover:text-primary transition-colors">Kunjungan Industri ke
-                            Perusahaan Teknologi Terkemuka</h3>
-                        <p class="text-muted-light mt-2 line-clamp-2">Dalam rangka meningkatkan
-                            wawasan siswa, program keahlian TKJ melakukan kunjungan industri...</p>
+                    <div class="flex flex-col">
+                        <span class="text-sm text-primary font-semibold mb-1">08 Oktober 2023</span>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-primary transition">
+                            Kunjungan Industri ke PT Telkom Indonesia</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mt-2 line-clamp-2">Untuk meningkatkan wawasan
+                            industri, siswa kelas XI melakukan kunjungan industri ke kantor pusat...</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <section class="py-12 bg-white">
+    <section class="container mx-auto px-4 mb-20">
+        <div class="flex justify-between items-end mb-8">
+            <div>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Guru</h2>
+                <p class="text-gray-600 dark:text-gray-400">Guru Di SMK Negeri 1 Kawali</p>
+            </div>
+            <a class="hidden sm:inline-flex items-center px-4 py-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 rounded-full text-xs font-semibold text-gray-700 dark:text-gray-200 transition"
+                href="#">
+                Selengkapnya <span class="material-icons text-sm ml-1">arrow_forward</span>
+            </a>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div
+                class="bg-white dark:bg-surface-dark rounded-lg shadow p-4 text-center hover:-translate-y-1 transition duration-300">
+                <div class="w-full aspect-square bg-gray-200 dark:bg-gray-700 rounded-lg mb-4 overflow-hidden">
+                    <img alt="Teacher" class="w-full h-full object-cover"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuARq0UDPZmw7Hkpsb-c3yGXzuA4NFBb7plWBiBHLKSikY15wQuUa0jEXCS30FSwJCx9cLDRr1y0Ocko7P0-tVZUBli5EcmB47HdZzEFM98zYe_7zztp2Q-BS-HMyAjnugQe89p0iuMkhQJpkJ95YIENo6cnDHdAhsQRki99ucrEclw4XVDY5PlnAS5MtyjQ9V1jB05Jn1SIHIglAfixkIV2qOMvSoYAHOUhnQg1ywehzvPwTHPGDcRacWlt-YyrLw0VHV9l3SMiUpyz" />
+                </div>
+                <h4 class="text-lg font-bold text-gray-900 dark:text-white">Dra. Siti Aminah</h4>
+                <p class="text-primary text-sm">Bahasa Indonesia</p>
+            </div>
+            <div
+                class="bg-white dark:bg-surface-dark rounded-lg shadow p-4 text-center hover:-translate-y-1 transition duration-300">
+                <div class="w-full aspect-square bg-gray-200 dark:bg-gray-700 rounded-lg mb-4 overflow-hidden">
+                    <img alt="Teacher" class="w-full h-full object-cover"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZ7GN7MRkzkskSWEdRs-cBMtsqUF9yz_Nv0zOBKnuqCix9vDtzGH97Sp6xzJOc18Xk5Q-61ZZOEzR4pUvtIThfFSSggnmxSU-iazeg07IPLCW0KMBdfBjddXks9YbG0EB9xQZJBUvQ6TWpOW72Hy5dGridIsr0H8cF3NqHFqc30vipTdfZsqPY0g3bAsZu8-f5XiAEfu7179XJkerqHB5HJfzDvdifiJBBpcta2WEpy114-Xqy2-78XcxVWjvG-kUxSeve5k-DFyYZ" />
+                </div>
+                <h4 class="text-lg font-bold text-gray-900 dark:text-white">Budi Santoso, S.Pd</h4>
+                <p class="text-primary text-sm">Matematika</p>
+            </div>
+            <div
+                class="bg-white dark:bg-surface-dark rounded-lg shadow p-4 text-center hover:-translate-y-1 transition duration-300">
+                <div class="w-full aspect-square bg-gray-200 dark:bg-gray-700 rounded-lg mb-4 overflow-hidden">
+                    <img alt="Teacher" class="w-full h-full object-cover"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAK5fQTAKP8PPqeOuKm4RJDBVx83M6O1nOnY8l68WDBjFfFSdZkKwQ1WrnQt0eNcRQmecWL2AHJHl8WF3QALvTpsZySRWC1KdHwO3Iee5IaVX6ipEidz6Kliu3iKor1IfqXIeoHPgbg4qiAuoGY7ZvzeajDlqn4Y2C2AiKP-XZY-osgjh3GUMkAjW6VHyUCAeKkgPFZG2wpZ96oIhur3AyXZ6-vpyvNkIwsqw2d-fu2yDkO2MtU__9ymQIIChIuycle1G4c0xT4jOor" />
+                </div>
+                <h4 class="text-lg font-bold text-gray-900 dark:text-white">Rina Wati, M.Kom</h4>
+                <p class="text-primary text-sm">Teknik Komputer</p>
+            </div>
+        </div>
+    </section>
+    <section class="bg-white dark:bg-surface-dark py-16 mb-20">
         <div class="container mx-auto px-4">
             <div class="flex justify-between items-end mb-8">
                 <div>
-                    <h2 class="text-3xl font-bold mb-2">Guru</h2>
-                    <p class="text-muted-light">Guru Di SMK Negeri 1 Kawali</p>
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Staff Tenaga Kependidikan</h2>
+                    <p class="text-gray-600 dark:text-gray-400">Staff Tenaga Kependidikan Di SMK Negeri 1 Kawali</p>
                 </div>
-                <a class="hidden sm:inline-flex items-center gap-2 text-sm px-4 py-2 rounded-full bg-gray-100 hover:bg-primary hover:text-white transition-colors"
+                <a class="hidden sm:inline-flex items-center px-4 py-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 rounded-full text-xs font-semibold text-gray-700 dark:text-gray-200 transition"
                     href="#">
-                    Selengkapnya <span class="material-icons text-sm">arrow_forward</span>
+                    Selengkapnya <span class="material-icons text-sm ml-1">arrow_forward</span>
                 </a>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div
-                    class="bg-white rounded-xl p-4 shadow-sm hover:shadow-lg transition-all text-center border border-gray-100">
-                    <div class="w-full h-64 bg-gray-100 rounded-lg overflow-hidden mb-4">
-                        <img alt="Guru" class="w-full h-full object-cover"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVJwt0AmhdjOlhjUPmBEWcd8HU9Brsv1aX37sW2mV5g7F6mLaMGUs6nknGY7APx9i9TscA2h4UAq3wo10U5QAh0qdvyVg5W_ZRBZGM_V-Eo3KEqc7G0z_WTaF6QKkR4d6dvLEqfDvIhGdMhgYgbxzabfA1PULTnB7U1rKSI0McT7AsoWoxXvTLkMeHZmFgFQh20lbYpNym-aNGeBLg4fNZS6LNao3pGDQcNpTup-BMly5yDHLMM-wRJM_QUgBDOBqEeuRONZqDCVPz" />
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 text-center">
+                    <div class="w-full aspect-square bg-gray-200 dark:bg-gray-700 rounded-lg mb-4 overflow-hidden">
+                        <img alt="Staff" class="w-full h-full object-cover opacity-90"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCL_bH2iMzrxfDta2DSpZrZaJ6VAKUpblqahE6cZlUM4ocHdLb2wQfiibEwuEhpTC8Tl7PC1_3Sc3qyQFU8mARZhLehESB0u9CC7CxHmGUGW91Dh7A5-6QGATGfdeUsDe0Np6jbTq-9iQvqVFZrTy1gCl5_dP_kEkD-zKzTxKnF6QdMYKMMZRRQhMuplrx4i2mKZjwNlpVUARbSwKzDuvozmuGNwdbkPo4DjLcrQ7plyHmd-f9Ctg26e8Yow5G0Hh1sL66qdZ1yLA-5" />
                     </div>
-                    <h3 class="text-lg font-bold">Dra. Siti Aminah</h3>
-                    <p class="text-primary text-sm">Matematika</p>
+                    <h4 class="text-lg font-bold text-gray-900 dark:text-white">Asep Suherman</h4>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm">Kepala Tata Usaha</p>
                 </div>
-                <div
-                    class="bg-white rounded-xl p-4 shadow-sm hover:shadow-lg transition-all text-center border border-gray-100">
-                    <div class="w-full h-64 bg-gray-100 rounded-lg overflow-hidden mb-4">
-                        <img alt="Guru" class="w-full h-full object-cover"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuArmL8enjex2tncSnWqAR1INd3JWxrGqS3VghPqAQShmbA4DMvVXHwHGd0__NDJlMte2r4wo34tLU3A5OHl50Xpp1y18Cw609MVxeQXXDMeEndapUoroKjbuXQzj08xR3Lw2cf1rSGvMPkgMwNnZRJno-lIsh1iefcPGDSpwrT3d8JQucR-clQFRK69UYgo-7ViBw_oR2Ooa2aZOXbPs1sxdnL8WE3VDa04sDfI3T_-5YlRir6Y-XBBbXV1XpTP8ej0NSmkVubxL49O" />
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 text-center">
+                    <div class="w-full aspect-square bg-gray-200 dark:bg-gray-700 rounded-lg mb-4 overflow-hidden">
+                        <img alt="Staff" class="w-full h-full object-cover opacity-90"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxkuRaKPnLDW6vITtE0XxBrM7XnHngrKhYaRsR6YyNLTXsmKB3dhMg5ICvAYIjNZ_93oLQB8i-xwXD4smEyzRBWSuOVdD00CTuZyPAKG3LdpYZ4P2eEVxT4X4ctUh2RzTlEcV-z67WAZ9GZamw-vhbr7SjIWVkEIN11tfM9Wh_JQ4nAyf9XHyJC_DNaDWzeOHpkm9m2GSIQ3hz_xfhX8cH5ZS4C1dVt4tvgTYj84NFIdj5_apYjbKX4nrHIUnPfLQZjBojUV4y0_US" />
                     </div>
-                    <h3 class="text-lg font-bold">Budi Santoso, S.Pd</h3>
-                    <p class="text-primary text-sm">Bahasa Inggris</p>
+                    <h4 class="text-lg font-bold text-gray-900 dark:text-white">Nurul Hidayah</h4>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm">Staff Administrasi</p>
                 </div>
-                <div
-                    class="bg-white rounded-xl p-4 shadow-sm hover:shadow-lg transition-all text-center border border-gray-100">
-                    <div class="w-full h-64 bg-gray-100 rounded-lg overflow-hidden mb-4">
-                        <img alt="Guru" class="w-full h-full object-cover"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDT9pAuEdrBGrv19honeKPPk32mten4J5JGyD23Fuvj4japcH5ySoEEg_HsgAjI3NP4S52v-jwqfe44VmrsDXfdNzvi2Pu3qk-n-dKH-vL5sQPYYfvenMr1AiSbQY8-ya22bqNDcPBBDAMA-kZu_XozsYoOghRF5E3djbKer85i35V__LQpDtGkrQo_6eTkgYmU27FnwSJLmIW3DXicVkVvFNE05LKDzhg0YalMfWDpi_sxcS2f9m1CKiXBOlwN38k2V6fPlLellnYY" />
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 text-center">
+                    <div class="w-full aspect-square bg-gray-200 dark:bg-gray-700 rounded-lg mb-4 overflow-hidden">
+                        <img alt="Staff" class="w-full h-full object-cover opacity-90"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8FxTITpCWOTaOQBFu19S0wtAOBCLen5OczK5LvlA1y-_avOPkVVe56LHOJQkPGbly4JsQ79ebjrB8afk30bMDSAIv7sDoDDHYJPPr8rZa-m7tYh8Fku6UwORyMHlzI3qPo497xwaGZBim4KhStT7wPrmyMA2ZRbjqTLZxARcEMQ0pqeVkN605F7MEi0z_OA-8gx7Umu8lZkkfR9DkBMRBWfnCqDTKPsFgEaWvpoSnocvifYO20jZXE1UDGRudrRFZTAz80agdpy0m" />
                     </div>
-                    <h3 class="text-lg font-bold">Rina Wati, M.Kom</h3>
-                    <p class="text-primary text-sm">Teknik Komputer</p>
+                    <h4 class="text-lg font-bold text-gray-900 dark:text-white">Bambang Irawan</h4>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm">Staff Keuangan</p>
                 </div>
             </div>
         </div>
     </section>
-    <section class="py-12 bg-white">
+    <section class="container mx-auto px-4 mb-20">
+        <div class="flex justify-between items-end mb-8">
+            <div>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Program Keahlian</h2>
+                <p class="text-gray-600 dark:text-gray-400">Program Keahlian yang terdapat di sekolah kami</p>
+            </div>
+            <a class="hidden sm:inline-flex items-center px-4 py-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 rounded-full text-xs font-semibold text-gray-700 dark:text-gray-200 transition"
+                href="#">
+                Selengkapnya <span class="material-icons text-sm ml-1">arrow_forward</span>
+            </a>
+        </div>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div
+                class="flex bg-white dark:bg-surface-dark rounded-xl overflow-hidden shadow hover:shadow-lg transition h-48">
+                <div class="w-1/2 p-6 flex flex-col justify-center bg-gray-100 dark:bg-gray-800">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white">Teknik Komputer &amp; Jaringan</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">Mempelajari infrastruktur jaringan dan
+                        hardware...</p>
+                </div>
+                <div class="w-1/2 bg-gray-300 dark:bg-gray-700 relative">
+                    <img alt="TKJ" class="absolute inset-0 w-full h-full object-cover"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDn2NcQI-jcH2CH5E5oFHyXOXfs4Fc8FDclMSjDBqy0gMW5GV-0b_Ls-IehJrD21jHM4qcbDIjUAERl7Lr-YMG2qwILybbQ8dUw2jFsZ8Gt-izSH5VMSZBC3rRqxEfRIIT13qs-5R6s-p0TE2T2Cd6q4Jatp73lojdjuwfem868yW-9jddPmyyoOXubwO81YGo0ntPtw84nWuAXv3nqHOZwOszhlaEdlXxxdaGuIIOdDn0TVZNYku6V3ypoDw27b1OTgfV0wWp1f6Sw" />
+                </div>
+            </div>
+            <div
+                class="flex bg-white dark:bg-surface-dark rounded-xl overflow-hidden shadow hover:shadow-lg transition h-48">
+                <div class="w-1/2 p-6 flex flex-col justify-center bg-gray-100 dark:bg-gray-800">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white">Otomatisasi Tata Kelola Perkantoran</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">Keahlian administrasi dan manajemen
+                        perkantoran...</p>
+                </div>
+                <div class="w-1/2 bg-gray-300 dark:bg-gray-700 relative">
+                    <img alt="OTKP" class="absolute inset-0 w-full h-full object-cover"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_jNarI90shseD2uF6hBp6uy496XLeOpRVTtziBi1u1eRXp6cDXbTp8tuq1pQD4zu7Xt6u1lb16OCNpCzdo44PaKw02PFvAeujoDWyDCEYtTMPaJxfosfyUG7niZxLkVGQX-NGlcB5cSA5X_cibtQoOOBklhqQVvUm3pB8nfyDdYptCrdjNrxo3PLoHvt2UwVxBDMeJtY-xeKhyemdklMjp4CoPVCQU68gul20AELOBHcyoo0xM1ycbjZSHhBZ0YDs84TZaAouHsw9" />
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="bg-white dark:bg-surface-dark py-16 mb-20">
         <div class="container mx-auto px-4">
             <div class="flex justify-between items-end mb-8">
                 <div>
-                    <h2 class="text-3xl font-bold mb-2">Staff Tenaga Kependidikan</h2>
-                    <p class="text-muted-light">Staff Tenaga Kependidikan Di SMK Negeri 1 Kawali</p>
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Fasilitas Sekolah</h2>
+                    <p class="text-gray-600 dark:text-gray-400">Fasilitas sekolah yang kami miliki</p>
                 </div>
-                <a class="hidden sm:inline-flex items-center gap-2 text-sm px-4 py-2 rounded-full bg-gray-100 hover:bg-primary hover:text-white transition-colors"
+                <a class="hidden sm:inline-flex items-center px-4 py-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 rounded-full text-xs font-semibold text-gray-700 dark:text-gray-200 transition"
                     href="#">
-                    Selengkapnya <span class="material-icons text-sm">arrow_forward</span>
+                    Selengkapnya <span class="material-icons text-sm ml-1">arrow_forward</span>
                 </a>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div
-                    class="bg-white rounded-xl p-4 shadow-sm hover:shadow-lg transition-all text-center border border-gray-100">
-                    <div class="w-full h-56 bg-gray-100 rounded-lg overflow-hidden mb-4">
-                        <img alt="Staff" class="w-full h-full object-cover"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwdipWhOWEgL_4GnanIEgZjqf4EWIObInhTZ3y3LJKMZ6eMJeBw9mqNZlKhz6nQtcccc8T5lBeCxj2OaD_1wFEPxD0C3IUgziAD8NbsJfwHHTWA0fhP0JZXTyXJ_OD4MiyDIi9nxy1wroIp7tgK_WKwGqTqREVn3p-jPFbG4WAhN3RVUjBvSWEc3tR-ZcyxC-G8knjnzUHtB5EPdZwqVFFpR6Lvc6U6OJxtByzZSBq_AfoemROP1ghzz_Lt8vCy5vshYzZMMYfWsD8" />
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="flex bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden h-48">
+                    <div class="w-1/2 bg-gray-200 dark:bg-gray-700 relative">
+                        <img alt="Lab Komputer" class="absolute inset-0 w-full h-full object-cover"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkOvwsua9flYBC8zG-4gv1RUNazW_zyPR9nTBPk4iWPGuWnnIkdmOFSLKPmsTeuoSqIhd7WXzXZiiWJMTGsCHBHVgVW4wQpYh8zH4zWBvNm7knzduS_aPRULq6ndAVAIZ-NV1zG9CD-7EG4lk6SNuJc350eHCy94tA-NjuxSWc7gN15HxTOamh1_6CXwE4Ke255VvE7_xhbw6jO_UcV8v_eH65JViQjpm1Y6NKoXVUcvvzV-iLY7rmHTPMiTTJzT2hQ7ZL9cmCBFzM" />
                     </div>
-                    <h3 class="text-lg font-bold">Ahmad Fauzi</h3>
-                    <p class="text-muted-light text-sm">Kepala Tata Usaha</p>
-                </div>
-                <div
-                    class="bg-white rounded-xl p-4 shadow-sm hover:shadow-lg transition-all text-center border border-gray-100">
-                    <div class="w-full h-56 bg-gray-100 rounded-lg overflow-hidden mb-4">
-                        <img alt="Staff" class="w-full h-full object-cover"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjjXj-9t8kBd9X6DHluW-NnKePWaShI7ml0hpH0SEU8gS61ugo23w6_wp9IhvBcD-D0a334bjBWV0pD5LNJuQpuWK3B1_PvQ_1hiyXTVSbvH3BR5FvLxysipBdkOLEzmUVAfhjgCzLLc7ugkjjNkGLx43Gu4CAOFTl00s1mLxzkEI8SPNBEzpf3wq-cXyGnfZqbjxBu91gV5-eS79KtOe1cy-GS3uR7F6F41qDokTCfaa4CAFKB1PLwUIGcMmclsoU4RQFbkFMiw7f" />
-                    </div>
-                    <h3 class="text-lg font-bold">Dewi Sartika</h3>
-                    <p class="text-muted-light text-sm">Bendahara</p>
-                </div>
-                <div
-                    class="bg-white rounded-xl p-4 shadow-sm hover:shadow-lg transition-all text-center border border-gray-100">
-                    <div class="w-full h-56 bg-gray-100 rounded-lg overflow-hidden mb-4">
-                        <img alt="Staff" class="w-full h-full object-cover"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWAdNTYcIvo4jKDsB4MUX_AnflT85f5b68q-64Fw0OZHQ2whd7dAhK1m4VB3Nv7LJCPxykvuSpvFb8kWgAuwTgVQKW4qpc-cEYnfTM7tQwDl35Uht8srJZjXMQglmQDrX116iMUKDIzKW_kQ8wJENUJpJMwbVnuttmHkBcdot8NSa2C_67cACifJXdKxeEI38PjQZYanoSNnkqr2lL9JQ136TdtCkw11aCVIdVK2UpkcFXyjGqp-yY52uUYIaNtR_R7jYeKcqTqbGg" />
-                    </div>
-                    <h3 class="text-lg font-bold">Rudi Hartono</h3>
-                    <p class="text-muted-light text-sm">Administrasi</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="py-12 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="flex justify-between items-end mb-8">
-                <div>
-                    <h2 class="text-3xl font-bold mb-2">Program Keahlian</h2>
-                    <p class="text-muted-light">Program Keahlian yang terdapat di sekolah kami</p>
-                </div>
-                <a class="hidden sm:inline-flex items-center gap-2 text-sm px-4 py-2 rounded-full bg-gray-100 hover:bg-primary hover:text-white transition-colors"
-                    href="#">
-                    Selengkapnya <span class="material-icons text-sm">arrow_forward</span>
-                </a>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div
-                    class="flex flex-col md:flex-row bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all border border-gray-100">
-                    <div
-                        class="p-8 flex items-center justify-center md:justify-start md:w-1/2 bg-gray-50">
-                        <h3 class="text-xl font-bold text-center md:text-left">Teknik Komputer &amp; Jaringan</h3>
-                    </div>
-                    <div class="md:w-1/2 h-48 md:h-auto relative">
-                        <img alt="TKJ" class="w-full h-full object-cover"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbhUIC0eKgPWY0GQSscVxrNVUUo0JPmzAe-x_qizM1bSpfr5Cj2r7kU38APUaLsCSrUEJ1bjF460WkzIewk2OoDF78WMl8uRLrIGHVVUxdWFmozJ_QjOVXx1fEGQYNLFJyzwZK8f1x8mm0_RaL92MHAM46fl-UcKI65EKcfearKe3-EEhXIPh-owbwkuuTjE1LAEixjOVHCL1ZUCMnCAO_8E8bo1hC8y3VWjCa8ev4j9JWe_oAdrHKD9YI9whJ25NaSZV3cAfE8X9k" />
+                    <div class="w-1/2 p-6 flex items-center justify-center bg-gray-300 dark:bg-gray-600">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white text-center">Laboratorium Komputer
+                        </h3>
                     </div>
                 </div>
-                <div
-                    class="flex flex-col md:flex-row bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all border border-gray-100">
-                    <div
-                        class="p-8 flex items-center justify-center md:justify-start md:w-1/2 bg-gray-50">
-                        <h3 class="text-xl font-bold text-center md:text-left">Otomatisasi Tata Kelola Perkantoran</h3>
+                <div class="flex bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden h-48">
+                    <div class="w-1/2 bg-gray-200 dark:bg-gray-700 relative">
+                        <img alt="Perpustakaan" class="absolute inset-0 w-full h-full object-cover"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaHr3WrgRzeE1SlsYgH2JOxni8qbWeW9bbmxmhudSBIYK2gqD8FQy67kY3VEGJBXFBE70wmALMqDBiyAbeIyh5vphmsFvgr2WI84ojwJZbqWm8TwudY6NcNvcqwrejI-riNjeoBEHVUdvVEzu7KN4m7vMU8I4nUsk9XLSdrtLHgOco9RvwXzoBnkXiVRU4V3m82NNH18EjiSYkiYM3uqImH_t7JJPFon8UHX-7sm0DYNRxOS_HTDzqm6I6ccJ7xfQXjRCUFjmKRnrF" />
                     </div>
-                    <div class="md:w-1/2 h-48 md:h-auto relative">
-                        <img alt="OTKP" class="w-full h-full object-cover"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsXwglT5DghlGbxzGzJ_zU03nh4LblG7XK-gxBilN_WZbPEuUcIRUqqk1SCSMS03rytfV2hjstrOwdHIl7lQtdTl1TutumU_P2fEmPvpXqENE_6GqNamx4Dlglr4knZ55JXq5mFAH7Wd-QuWeD9o_RQaWry1sXWsOpyziYkUJypgfmwWCCPKJsYVqo8IjkRtCQE2Fp0FpcRILtuZbEuYIGFDiUknFtfvKogwlMfv9t8WILujedu2efloDfr7mHms27dJfK2dIDW-t0" />
+                    <div class="w-1/2 p-6 flex items-center justify-center bg-gray-300 dark:bg-gray-600">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white text-center">Perpustakaan Digital
+                        </h3>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <section class="py-12 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="flex justify-between items-end mb-8">
-                <div>
-                    <h2 class="text-3xl font-bold mb-2">Fasilitas Sekolah</h2>
-                    <p class="text-muted-light">Fasilitas sekolah yang kami miliki</p>
-                </div>
-                <a class="hidden sm:inline-flex items-center gap-2 text-sm px-4 py-2 rounded-full bg-gray-100 hover:bg-primary hover:text-white transition-colors"
-                    href="#">
-                    Selengkapnya <span class="material-icons text-sm">arrow_forward</span>
-                </a>
+    <section class="container mx-auto px-4 mb-20">
+        <div class="flex justify-between items-end mb-8">
+            <div>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Ekstrakulikuler</h2>
+                <p class="text-gray-600 dark:text-gray-400">Ektrakulikuler yang ada di sekolah kami</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="flex flex-col md:flex-row rounded-xl overflow-hidden shadow-sm h-48 border border-gray-100">
-                    <div class="md:w-1/2 bg-white h-full relative">
-                        <img alt="Lab Komputer" class="w-full h-full object-cover"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHbWHZ_qTFw5h7DP9AA_rUdqzUzSGNo3TVezBuH7j2lV_xsgELtLoYKTfskGFNCsI_NIazyHqKqJH9UTOA4g_9icf26qCO8JaQOaCjfVHmEa7AlGaaG36B9NaMNC1E-FRp5MGwCGG5Md6y6c2Nnnkn3BC2Vis6VT2Iw-u5wx4czPBUsjnxW6P4HTyxeJxXx0eSo3GU6Twht-Fa6rnwIrkEUkITZpCgLaVub5Pzho5FMo6Fxf113AXEcL3HZwZnjqRE50QPs5vPhlb-" />
-                    </div>
-                    <div class="md:w-1/2 h-full flex items-center justify-center bg-gray-50">
-                        <h3 class="text-xl font-bold">Laboratorium Komputer</h3>
-                    </div>
+            <a class="hidden sm:inline-flex items-center px-4 py-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 rounded-full text-xs font-semibold text-gray-700 dark:text-gray-200 transition"
+                href="#">
+                Selengkapnya <span class="material-icons text-sm ml-1">arrow_forward</span>
+            </a>
+        </div>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="rounded-xl overflow-hidden shadow">
+                <div class="h-48 bg-gray-100 dark:bg-gray-800 flex items-center justify-center relative">
+                    <img alt="Basket" class="absolute inset-0 w-full h-full object-cover"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkaXxZHFmeQ6TeZu17XUGxLoX9Kwt7VXpjMRgTz-L3rR8N_S2TPzeY-To-Sr7GnkUQs6QuSeZnYj3fqI62SUwL8fF3j73JHeGMD505CQnQFMkuGb9nKsXfZKiinoSyswDl0VN6yU-NqfxdzUO2UUZ63uvNGhhg84a88f9sipOJ6OrPnhOKaX4hVquNtu3F1WpT9Mng5cXPU9iTO0ls1cPeHEndAomkZLvTX2Tl5RcoKRRPID8GDeojU2oxXHxz-d_MhA8X8QMszxFW" />
                 </div>
-                <div class="flex flex-col md:flex-row rounded-xl overflow-hidden shadow-sm h-48 border border-gray-100">
-                    <div class="md:w-1/2 bg-white h-full relative">
-                        <img alt="Perpustakaan" class="w-full h-full object-cover"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMTXhHeh5DWWaRKAwM1_x_-3izQz7nn1Euk4NlB6jBERhhgwxA-PSK_djXlzAQQdQmcMyt1Ntg5m8J1rMxFq3wVd49XZ6jdGsi9Wyll1IMvVQW5jUQkeh1YbNoW3U6vFYyi5BafBnQJ9zRFXRX35-p_vLAlyTk_2-y3OGaBmv2X84pNpcve8UfHRb4pmOSrZ_gYDbnHEiv6z2BgT4WdHK790H_bBG5_gHLa1spjC1a75kTdEgmCjtgvQSxqxnkRwNpJb6xfCAVdFas" />
-                    </div>
-                    <div class="md:w-1/2 h-full flex items-center justify-center bg-gray-50">
-                        <h3 class="text-xl font-bold">Perpustakaan Digital</h3>
-                    </div>
+                <div class="bg-gray-200 dark:bg-gray-700 p-4 text-center">
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white">Basket</h3>
+                </div>
+            </div>
+            <div class="rounded-xl overflow-hidden shadow">
+                <div class="h-48 bg-gray-100 dark:bg-gray-800 flex items-center justify-center relative">
+                    <img alt="Pramuka" class="absolute inset-0 w-full h-full object-cover"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKzPVStPA0vtH1JFMbDbcyunXyaTVdDyhkvgJ7a_cjpD1ajqHOf06wjSGfSgmCWiYRQHNO-ll64DcWnVDeb8JwsHxpOpVqeFG-ihbvb9zXpE_1cyduykl-K1gi1fYaNTV8bkhWbHAjV-i99W2Pjf_lIHaNnPuyVTFkWrp761rkx_6ML4GUWfgaXmZUKJXkqZd3q1jCqhLUg-4N01yuGC2h2EaIjH76vX0XCJZTi5D8QuWDOtlHnmK6VCWvW4I7AOaNnlDEK2MMzUrN" />
+                </div>
+                <div class="bg-gray-200 dark:bg-gray-700 p-4 text-center">
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white">Pramuka</h3>
                 </div>
             </div>
         </div>
     </section>
-    <section class="py-12 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="flex justify-between items-end mb-8">
-                <div>
-                    <h2 class="text-3xl font-bold mb-2">Ekstrakulikuler</h2>
-                    <p class="text-muted-light">Ekstrakulikuler yang ada di sekolah kami</p>
-                </div>
-                <a class="hidden sm:inline-flex items-center gap-2 text-sm px-4 py-2 rounded-full bg-gray-100 hover:bg-primary hover:text-white transition-colors"
-                    href="#">
-                    Selengkapnya <span class="material-icons text-sm">arrow_forward</span>
-                </a>
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                <div class="rounded-xl overflow-hidden shadow-sm group border border-gray-100">
-                    <div class="h-56 bg-gray-100 relative">
-                        <img alt="Pramuka"
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAI6OLBQ5tnDWmp3fT2eZ8G3CQic7acMlrAzUqlyzCmEmzE4l1Ss0K4_SLmP8SswWGMWJ7QZBvof_1R5hvr44xe8oDCmhg1F-NMst2_erVV-I2QI2SU_v_I1YQ-age-04d1W2TfbJBaCpvcDrbNEu_XKpuc2p5Wzchjm-nqQFvUdZex0WGhUqvHvbKTn2spO85WKlmk14e56BXy1h0VRXm_v0qa_Lek-jfgNZ8iZt0hxVJCvX_2QJcaM6DRIPBSBv9dZwuy-Z9fXPdj" />
-                    </div>
-                    <div class="bg-gray-50 p-4 text-center">
-                        <h3 class="text-lg font-bold">Pramuka</h3>
-                    </div>
-                </div>
-                <div class="rounded-xl overflow-hidden shadow-sm group border border-gray-100">
-                    <div class="h-56 bg-gray-100 relative">
-                        <img alt="Futsal"
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAq4WAVNDT8wwdQ8StYY1XOC8vxx8TfTq2hda-IASmMjwcxR4Wr3RUuQkj9j9FfnkY_yhuIi-Wuo99enryuz5PNpZ6XkDoFzNRWqJj1dF9Xjedt86dM8cYBUD3PaidieDCUN1Gt5fyYpgWOfTo8nvXNIA_OkvLMHJPJlajsi6VzCSxCkcZOpxpkL6uuPuLdeIcIa_1Bwcx7pMLEQ5r0WPXFeYWOTUZdmeCm25T5E6LuEnewVs5YXq1772AtMtJ-bSKpRa5wCCUqCWXw" />
-                    </div>
-                    <div class="bg-gray-50 p-4 text-center">
-                        <h3 class="text-lg font-bold">Futsal</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="py-16 bg-white">
+    <section class="bg-white dark:bg-surface-dark py-16 mb-20">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-2">Testimoni</h2>
-                <p class="text-muted-light">Tesimoni Alumni mengenai sekolah kami</p>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Testimoni</h2>
+                <p class="text-gray-600 dark:text-gray-400">Tesimoni Alumni mengenai sekolah kami</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-white p-8 rounded-2xl shadow-sm relative pt-12 border border-gray-100">
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-8 relative">
                     <span
-                        class="absolute top-8 right-8 text-6xl text-gray-200 font-serif leading-none">“</span>
-                    <p class="text-lg italic text-muted-light mb-8 relative z-10">
-                        "Sekolah ini memberikan fondasi yang sangat kuat bagi karir saya. Guru-gurunya sangat kompeten
-                        dan fasilitasnya sangat mendukung pembelajaran praktek."
-                    </p>
-                    <div class="flex items-center gap-4 border-t border-gray-100 pt-6">
-                        <div class="w-14 h-14 bg-gray-100 rounded-full overflow-hidden">
-                            <img alt="Alumni" class="w-full h-full object-cover"
-                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4XvFAI8a1woEKszYZSLi-VZ29rDauLXu6Ht-Fj-TKoFkOCcegKuSNqafn0sWaFuSttgoZ-ztskXSdOEzFKGtTtrcHKB6HfTtstDjPLKCsivzcTPAUlwLh4ovCoybBmChtL-yATyOYDJel59hinamnFVbE2Gs2ymTTyBQyk7zIYHriP4Maf_wJGc0oB-a8Axsx-i6igIonj8yC73qdLrVI7SjFzZO0G1QYKiOTy9pJc3mnVL9WjuXB39ydmoeJqmbuqZ87eYecXGNh" />
-                        </div>
-                        <div>
-                            <h4 class="font-bold">Andi Pratama</h4>
-                            <p class="text-sm text-primary">Angkatan 2018</p>
+                        class="material-icons text-6xl text-gray-200 dark:text-gray-700 absolute top-4 right-4">format_quote</span>
+                    <div class="relative z-10">
+                        <p class="text-gray-700 dark:text-gray-300 italic mb-8 min-h-[80px]">"Sekolah ini memberikan
+                            fondasi yang sangat kuat bagi karir saya di dunia teknologi. Guru-gurunya sangat kompeten
+                            dan fasilitasnya lengkap."</p>
+                        <div class="border-t border-gray-200 dark:border-gray-700 pt-4 flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-gray-300 overflow-hidden">
+                                <img alt="Alumni" class="w-full h-full object-cover"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNXM1vhZWtIJy-oekTaE-Hw3Z8q1YNIVqwingTLJRuyJ_jm8VT2EC9TenGCsNytjZLYvR1nc--EaA0HsbLmauU2-BKPze9rnLIvpBRNiIfla4yyvWhAd9gwGi-uRnXDsigDBsmP8-eGmil3lYAaroGw-bgxMryJJeueQ4EAZKHY8uoT_lJWXDtsswddlQea1R-Lz1QFG_bSRY0V-5wYuJQGD0zExLhsBQfsAPkFaJSWyeRwd1X51l6swaK6ZODgRDtubY9p9Ynt0LG" />
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 dark:text-white">Rizky Ramadhan</h4>
+                                <span class="text-xs text-gray-500 dark:text-gray-400">Angkatan 2020</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="bg-white p-8 rounded-2xl shadow-sm relative pt-12 border border-gray-100">
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-8 relative">
                     <span
-                        class="absolute top-8 right-8 text-6xl text-gray-200 font-serif leading-none">“</span>
-                    <p class="text-lg italic text-muted-light mb-8 relative z-10">
-                        "Saya sangat bangga menjadi alumni SMK Negeri 1 Kawali. Banyak skill yang saya dapatkan disini
-                        yang sangat berguna di dunia kerja saat ini."
-                    </p>
-                    <div class="flex items-center gap-4 border-t border-gray-100 pt-6">
-                        <div class="w-14 h-14 bg-gray-100 rounded-full overflow-hidden">
-                            <img alt="Alumni" class="w-full h-full object-cover"
-                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVPDPwxc4AOtuu9SFgEkuNuErvXLHcjHkFDgohuU1iCZOmRMGD04114XqZjsSljufUYyeUO7XGAHsvlUeQLyThf5IbkfjbfeJARpeYbT1wgu6MccEtPSRqA0tRaRNLR9HkE9YANxQDQwdZNWohrF2atKpoR8-9sddjwEPub_BhkikhfnsKluksAWzsmeXp4qMVAztPyEKsrZHg4WE5p4WJpsAxmaGSbhHxksdewxKbuk8UNk4T8hLlOa-rFcruM0gJt-F1nCrE5L-u" />
-                        </div>
-                        <div>
-                            <h4 class="font-bold">Sari Indah</h4>
-                            <p class="text-sm text-primary">Angkatan 2020</p>
+                        class="material-icons text-6xl text-gray-200 dark:text-gray-700 absolute top-4 right-4">format_quote</span>
+                    <div class="relative z-10">
+                        <p class="text-gray-700 dark:text-gray-300 italic mb-8 min-h-[80px]">"Pengalaman belajar yang
+                            menyenangkan dan disiplin yang diterapkan membentuk karakter saya menjadi lebih baik."</p>
+                        <div class="border-t border-gray-200 dark:border-gray-700 pt-4 flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-gray-300 overflow-hidden">
+                                <img alt="Alumni" class="w-full h-full object-cover"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9yqJplvnPF02a_kibFYRO994h_gv34c0zOuKb1HWwDnqyyDUsWGRUs06plkzHb8S4HlRRFzR_B3AWbvsqgWQuqS3G2zGQf43bmV8_r7nHUqiga6s600L5qAf9kYUUIbj2PR-bQL6jdCffeec8w5i8YwDXrVVf4ZeOuzVpWUSuFjIiynB9QUMOehrED7i0wUhEMCvqM8I3uH4p8F5yaRs4KQxIC0JQcsjUyUJVcvHqsEs-YT4Zy5zQP0ELONy6pNCiAasWNxOhtgIl" />
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 dark:text-white">Siti Nurhaliza</h4>
+                                <span class="text-xs text-gray-500 dark:text-gray-400">Angkatan 2019</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    @include('layouts.footer')
-    <script>
-        // Simple dark mode toggle for demonstration (optional, not requested but good for testing)
-        // Check system preference on load
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            document.documentElement.classList.add('dark');
-        }
-    </script>
-
+   @include('layouts.footer')
 </body>
 
 </html>
