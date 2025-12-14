@@ -24,32 +24,46 @@
         <table class="table table-hover mb-0 align-middle">
             <thead class="table-light">
                 <tr>
-                    <th width="60">No</th>
+                    <th>No</th>
                     <th>Judul</th>
                     <th>Deskripsi</th>
-                    <th width="180">Aksi</th>
+                    <th>Siswa</th>
+                    <th>Guru</th>
+                    <th>Jurusan</th>
+                    <th width="180" class="text-center">Aksi</th>
                 </tr>
             </thead>
+
             <tbody>
                 @forelse($data as $item)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td class="fw-semibold">{{ $item->judul }}</td>
-                    <td class="text-muted">
-                        {{ \Illuminate\Support\Str::limit($item->deskripsi, 80) }}
+
+                    <td class="fw-semibold">
+                        {{ $item->judul }}
                     </td>
-                    <td>
-                        <a href="{{ route('admin.beranda.edit',$item->id) }}"
+
+                    <td class="text-muted">
+                        {{ \Illuminate\Support\Str::limit($item->deskripsi, 60) }}
+                    </td>
+
+                    <td>{{ $item->jumlah_siswa ?? 0 }}</td>
+                    <td>{{ $item->jumlah_guru ?? 0 }}</td>
+                    <td>{{ $item->jumlah_jurusan ?? 0 }}</td>
+
+                    <td class="text-center">
+                        <a href="{{ route('admin.beranda.edit', $item->id) }}"
                            class="btn btn-warning btn-sm">
                             <i class="bi bi-pencil-square"></i>
                         </a>
 
-                        <form action="{{ route('admin.beranda.destroy',$item->id) }}"
-                              method="POST" class="d-inline">
+                        <form action="{{ route('admin.beranda.destroy', $item->id) }}"
+                              method="POST"
+                              class="d-inline"
+                              onsubmit="return confirm('Yakin ingin menghapus data ini?')">
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-danger btn-sm"
-                                    onclick="return confirm('Hapus data ini?')">
+                            <button class="btn btn-danger btn-sm">
                                 <i class="bi bi-trash"></i>
                             </button>
                         </form>
@@ -57,7 +71,7 @@
                 </tr>
                 @empty
                 <tr>
-                    <td colspan="4" class="text-center text-muted py-4">
+                    <td colspan="7" class="text-center text-muted py-4">
                         Data belum tersedia
                     </td>
                 </tr>

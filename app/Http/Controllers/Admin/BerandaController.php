@@ -24,12 +24,21 @@ class BerandaController extends Controller
         $request->validate([
             'judul' => 'required|string|max:255',
             'deskripsi' => 'nullable|string',
+            'jumlah_siswa' => 'required|integer|min:0',
+            'jumlah_guru' => 'required|integer|min:0',
+            'jumlah_jurusan' => 'required|integer|min:0',
         ]);
 
-        Beranda::create($request->only('judul','deskripsi'));
+        Beranda::create([
+            'judul' => $request->judul,
+            'deskripsi' => $request->deskripsi,
+            'jumlah_siswa' => $request->jumlah_siswa,
+            'jumlah_guru' => $request->jumlah_guru,
+            'jumlah_jurusan' => $request->jumlah_jurusan,
+        ]);
 
         return redirect()->route('admin.beranda.index')
-            ->with('success', 'Data berhasil ditambahkan');
+            ->with('success', 'Data beranda berhasil ditambahkan');
     }
 
     public function edit($id)
@@ -43,13 +52,22 @@ class BerandaController extends Controller
         $request->validate([
             'judul' => 'required|string|max:255',
             'deskripsi' => 'nullable|string',
+            'jumlah_siswa' => 'required|integer|min:0',
+            'jumlah_guru' => 'required|integer|min:0',
+            'jumlah_jurusan' => 'required|integer|min:0',
         ]);
 
         $beranda = Beranda::findOrFail($id);
-        $beranda->update($request->only('judul','deskripsi'));
+        $beranda->update([
+            'judul' => $request->judul,
+            'deskripsi' => $request->deskripsi,
+            'jumlah_siswa' => $request->jumlah_siswa,
+            'jumlah_guru' => $request->jumlah_guru,
+            'jumlah_jurusan' => $request->jumlah_jurusan,
+        ]);
 
         return redirect()->route('admin.beranda.index')
-            ->with('success', 'Data berhasil diupdate');
+            ->with('success', 'Data beranda berhasil diupdate');
     }
 
     public function destroy($id)
@@ -57,6 +75,6 @@ class BerandaController extends Controller
         Beranda::findOrFail($id)->delete();
 
         return redirect()->route('admin.beranda.index')
-            ->with('success', 'Data berhasil dihapus');
+            ->with('success', 'Data beranda berhasil dihapus');
     }
 }

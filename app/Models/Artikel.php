@@ -1,19 +1,19 @@
 <?php
 
+// app/Models/Artikel.php
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Beranda extends Model
+class Artikel extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'judul',
+        'tanggal',
         'deskripsi',
-        'jumlah_siswa',
-        'jumlah_guru',
-        'jumlah_jurusan'
+        'foto'
     ];
 }

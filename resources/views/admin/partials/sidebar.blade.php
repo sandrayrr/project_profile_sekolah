@@ -24,9 +24,7 @@
         <i class="bi bi-diagram-3"></i> Jurusan
     </a>
 
-    <a href="{{ route('admin.artikel.index') }}">
-        <i class="bi bi-file-earmark-text"></i> Artikel
-    </a>
+   
 
     <a href="{{ route('admin.galeri.index') }}">
         <i class="bi bi-images"></i> Galeri
@@ -51,6 +49,10 @@
     <a href="{{ route('admin.agenda.index') }}">
         <i class="bi bi-calendar-event"></i> Agenda
     </a> --}}
+
+     <a href="{{ route('admin.artikel.index') }}">
+        <i class="bi bi-file-earmark-text"></i> Artikel
+    </a>
 
     {{-- MANAJEMEN USER --}}
     <div class="menu-title">Manajemen Pengguna</div>

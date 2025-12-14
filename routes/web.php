@@ -5,16 +5,19 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\BerandaController;
+use App\Http\Controllers\Admin\ArtikelController;
+use App\Http\Controllers\BerandaController as ControllersBerandaController;
+use App\Http\Controllers\front\ArtikelController as FrontArtikelController;
 
 /*
 |--------------------------------------------------------------------------
 | Public Pages
 |--------------------------------------------------------------------------
 */
-Route::view('/', 'pages.beranda')->name('beranda');
+Route::get('/', [ControllersBerandaController::class, 'index'])->name('beranda');
 Route::view('/profil', 'pages.profil')->name('profil');
 Route::view('/jurusan', 'pages.jurusan')->name('jurusan');
-Route::view('/artikel', 'pages.artikel')->name('artikel');
+Route::get('/artikel', [FrontArtikelController::class , 'index'])->name('artikel');
 Route::view('/galeri', 'pages.galeri')->name('galeri');
 Route::view('/prestasi', 'pages.prestasi')->name('prestasi');
 Route::view('/link', 'pages.link')->name('link');
@@ -56,4 +59,7 @@ Route::middleware('auth')
         // CRUD
         Route::resource('beranda', BerandaController::class);
         Route::resource('users', UserController::class);
+        Route::resource('artikel', ArtikelController::class);
 });
+
+

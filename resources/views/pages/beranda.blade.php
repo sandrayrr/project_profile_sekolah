@@ -91,36 +91,42 @@
                             src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxngcCk9KX7vesppucB0OeSFhT02rOmd--W_H6cZ9c-2P2SIDRPALnS2AKxQI9lGadFvafEuHfWGBPC3FORB6mEF-MMWAfQN6OiT-LgNz-PEb8zgT4EuhQlOWjEWmmfN7ken-w67NmoRe3A3AnOQ-nIYDESWxTL8Hqn98v3cnYtL1istbX3HgZZQ7QZFb0U18hBcDVGobPwot9LSs2Bo1szfgI36cigKJ9Y0Uwg0tKJyc-g35nkVFw_eD1tnYNWy1t9w0B9M7pj5Yu" />
                     </div>
                 </div>
-                <div class="text-center sm:text-left">
-                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Sambutan Kepala Sekolah</h3>
-                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">
-                        Selamat datang di website resmi kami. Kami berkomitmen untuk memberikan layanan pendidikan
-                        terbaik...
-                    </p>
-                    <a class="inline-flex items-center text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary bg-gray-100 dark:bg-gray-700 px-4 py-1.5 rounded-full transition"
-                        href="#">
-                        Selengkapnya <span class="material-icons text-xs ml-1">arrow_forward</span>
-                    </a>
-                </div>
+<div class="w-full max-w-full">
+    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 break-words">
+        {{ $beranda->judul ?? 'Sambutan Kepala Sekolah' }}
+    </h3>
+
+    <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed break-words whitespace-normal">
+        {{ $beranda->deskripsi ?? 'Belum ada sambutan.' }}
+    </p>
+</div>
+
+
+
             </div>
-            <div class="lg:w-1/2 flex flex-col justify-center">
-                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6 text-center lg:text-left">Data Statistik
-                    Sekolah</h3>
-                <div class="grid grid-cols-3 gap-4 text-center divide-x divide-gray-200 dark:divide-gray-700">
-                    <div class="px-2">
-                        <span class="block text-3xl font-bold text-primary">1.2k</span>
-                        <span class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide">Siswa</span>
-                    </div>
-                    <div class="px-2">
-                        <span class="block text-3xl font-bold text-primary">85</span>
-                        <span class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide">Guru</span>
-                    </div>
-                    <div class="px-2">
-                        <span class="block text-3xl font-bold text-primary">12</span>
-                        <span class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide">Jurusan</span>
-                    </div>
-                </div>
-            </div>
+           <div class="grid grid-cols-3 gap-4 text-center divide-x divide-gray-200 dark:divide-gray-700">
+    <div class="px-2">
+        <span class="block text-3xl font-bold text-primary">
+            {{ $beranda->jumlah_siswa ?? 0 }}
+        </span>
+        <span class="text-xs text-gray-500 uppercase tracking-wide">Siswa</span>
+    </div>
+
+    <div class="px-2">
+        <span class="block text-3xl font-bold text-primary">
+            {{ $beranda->jumlah_guru ?? 0 }}
+        </span>
+        <span class="text-xs text-gray-500 uppercase tracking-wide">Guru</span>
+    </div>
+
+    <div class="px-2">
+        <span class="block text-3xl font-bold text-primary">
+            {{ $beranda->jumlah_jurusan ?? 0 }}
+        </span>
+        <span class="text-xs text-gray-500 uppercase tracking-wide">Jurusan</span>
+    </div>
+</div>
+
         </div>
     </div>
     <section class="container mx-auto px-4 mb-20">

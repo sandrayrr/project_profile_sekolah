@@ -49,113 +49,47 @@
     <main class="container mx-auto px-4 py-8 lg:py-12">
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div class="lg:col-span-2">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div
-                        class="bg-card-light dark:bg-card-dark rounded-xl shadow-sm border border-border-light dark:border-border-dark overflow-hidden hover:shadow-md transition-shadow group">
-                        <div
-                            class="h-48 bg-gray-200 dark:bg-gray-700 flex items-center justify-center relative overflow-hidden">
-                            <span class="text-gray-400 dark:text-gray-500 font-medium z-10">Foto</span>
-                            <img alt="Students studying"
-                                class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKl9rcF127IlEme7JBKxtKYoVIx1II36d9J9O8h4m4-OUfzYDviawCc8ugqPtMrLIfhL0Ze8itDw6TVtZ76W4D0jYUp0XVRFIdp7xsPR2hvyL5458gQEttEieOPksuyD_-lDNfcqE487n0eSOxVEAom8XuzGPli_E5DWcf3vQi8w7jYRQ232Ks5SntyBIWUJ4C4sQn6EWZeOx9JiMSPyR_sUFKzxNY-QkT8B53fDBycqQVGUuX0DWn-gaJ4BoT7_Kvs-d_tRCvFbQm" />
-                            <div
-                                class="absolute inset-0 bg-gray-100 dark:bg-gray-800 opacity-100 group-hover:opacity-0 transition-opacity flex items-center justify-center text-gray-400">
-                                <span class="material-icons text-5xl">image</span>
-                            </div>
-                        </div>
-                        <div class="p-5">
-                            <div class="text-xs font-semibold text-primary mb-2 flex items-center gap-1">
-                                <span class="material-icons text-xs">calendar_today</span> 12 Oktober 2023
-                            </div>
-                            <h3
-                                class="text-lg font-bold text-gray-900 dark:text-white mb-2 leading-snug hover:text-primary transition-colors cursor-pointer">
-                                Kegiatan Pelatihan Guru Produktif TKJ
-                            </h3>
-                            <p class="text-gray-500 dark:text-gray-400 text-sm line-clamp-3">
-                                Guru produktif Teknik Komputer dan Jaringan mengikuti pelatihan peningkatan kompetensi
-                                untuk menghadapi perkembangan teknologi industri 4.0.
-                            </p>
-                        </div>
+<div class="lg:col-span-2">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        @foreach ($artikel as $item)
+        <div
+            class="bg-card-light dark:bg-card-dark rounded-xl shadow-sm border border-border-light dark:border-border-dark overflow-hidden hover:shadow-md transition-shadow">
+
+            <!-- FOTO -->
+            <div class="h-48 bg-gray-200 dark:bg-gray-700 relative overflow-hidden">
+                @if ($item->foto)
+                    <img
+                        src="{{ asset('storage/' . $item->foto) }}"
+                        alt="{{ $item->judul }}"
+                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-300 hover:scale-105">
+                @else
+                    <div class="w-full h-full flex items-center justify-center">
+                        <span class="material-icons text-5xl text-gray-400">image</span>
                     </div>
-                    <div
-                        class="bg-card-light dark:bg-card-dark rounded-xl shadow-sm border border-border-light dark:border-border-dark overflow-hidden hover:shadow-md transition-shadow group">
-                        <div
-                            class="h-48 bg-gray-200 dark:bg-gray-700 flex items-center justify-center relative overflow-hidden">
-                            <img alt="School event"
-                                class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAF-a-CjjqflDi8fgboavfL5sYGhTgsH84Cwl6Nf3m-PPWBF6dZC2Yy9uTGLIgR-YS5gL3MYPnDkG-Gg-0FlvViJqMWjoYvLudc4kr5ANHiYMwHbvsImzb3pf2JZNgAUgSTIMj7mTK_AtUuOoTNCg_5rpZpuWpp7InDxa2gW28MolYyQkb270Dnhi4Sm-KXu8RStsLtSgmMeOpS5UwI3dcSfrBHnxbMX0f2wusgkQc_v6jjO6uuX-AYhJ6Pcf6L5e7VHRmzJzpiBQ3k" />
-                            <div
-                                class="absolute inset-0 bg-gray-100 dark:bg-gray-800 opacity-100 group-hover:opacity-0 transition-opacity flex items-center justify-center text-gray-400">
-                                <span class="material-icons text-5xl">image</span>
-                            </div>
-                        </div>
-                        <div class="p-5">
-                            <div class="text-xs font-semibold text-primary mb-2 flex items-center gap-1">
-                                <span class="material-icons text-xs">calendar_today</span> 10 Oktober 2023
-                            </div>
-                            <h3
-                                class="text-lg font-bold text-gray-900 dark:text-white mb-2 leading-snug hover:text-primary transition-colors cursor-pointer">
-                                Juara 1 Lomba Kompetensi Siswa Tingkat Provinsi
-                            </h3>
-                            <p class="text-gray-500 dark:text-gray-400 text-sm line-clamp-3">
-                                Siswa SMK Negeri 1 Kawali berhasil meraih medali emas dalam ajang LKS tingkat provinsi
-                                Jawa Barat bidang Web Technologies.
-                            </p>
-                        </div>
-                    </div>
-                    <div
-                        class="bg-card-light dark:bg-card-dark rounded-xl shadow-sm border border-border-light dark:border-border-dark overflow-hidden hover:shadow-md transition-shadow group">
-                        <div
-                            class="h-48 bg-gray-200 dark:bg-gray-700 flex items-center justify-center relative overflow-hidden">
-                            <img alt="Library activity"
-                                class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGMiG0nhkOuk9f6ggCBYu7qy4d8YTOydWU4p2OdVWwkbU_xnxLdIwhqXjeOGwb6jWrlJernIa_Y2NZ1thwX4CE2od6WWT-FVZ0F0BAFeBtLOZNSG4rxn1Bx_RkGk74c9qRzYuHrPRwbcbzYiR_qohZjmWnUjqbXPXOkyMd84zeUG_m_4KPTT1HeONUP8LzLmBoeSLPbeqwRQBXPNIAUBiMwIaznNEA7D60_nAIAgA0bq6Xwr-nm8IoscFBe8AadVis2uAli6qaGozp" />
-                            <div
-                                class="absolute inset-0 bg-gray-100 dark:bg-gray-800 opacity-100 group-hover:opacity-0 transition-opacity flex items-center justify-center text-gray-400">
-                                <span class="material-icons text-5xl">image</span>
-                            </div>
-                        </div>
-                        <div class="p-5">
-                            <div class="text-xs font-semibold text-primary mb-2 flex items-center gap-1">
-                                <span class="material-icons text-xs">calendar_today</span> 05 Oktober 2023
-                            </div>
-                            <h3
-                                class="text-lg font-bold text-gray-900 dark:text-white mb-2 leading-snug hover:text-primary transition-colors cursor-pointer">
-                                Peresmian Perpustakaan Digital Sekolah
-                            </h3>
-                            <p class="text-gray-500 dark:text-gray-400 text-sm line-clamp-3">
-                                Kepala sekolah meresmikan penggunaan fasilitas perpustakaan digital baru yang dilengkapi
-                                dengan ribuan e-book untuk menunjang literasi siswa.
-                            </p>
-                        </div>
-                    </div>
-                    <div
-                        class="bg-card-light dark:bg-card-dark rounded-xl shadow-sm border border-border-light dark:border-border-dark overflow-hidden hover:shadow-md transition-shadow group">
-                        <div
-                            class="h-48 bg-gray-200 dark:bg-gray-700 flex items-center justify-center relative overflow-hidden">
-                            <img alt="Scout activity"
-                                class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuC17-D00BqeZ5U5ChP_42FL5feRB0kabHSO5WcRj7G2dB9wLwAZgyrbpHoL-nSQXSbkbQYBbquCN2sgnPsJtUUv1N-lPqjc2odccU-CD6JENWBs-_LBHEknCkBSRSAmnur1RJeB0hx2vCtGuRyLNSz_GClho_SJFBlrXlrgVXF8mf8Ln8Ijffc5rjvdzO4LAZ8srKWr1eHMcIarzuDjK6U_LKaGj3Zr7L-FmT3L_dLJ6Eu7Heib__98kc9Lwpe9_OkqhLYjPKsXN_hb" />
-                            <div
-                                class="absolute inset-0 bg-gray-100 dark:bg-gray-800 opacity-100 group-hover:opacity-0 transition-opacity flex items-center justify-center text-gray-400">
-                                <span class="material-icons text-5xl">image</span>
-                            </div>
-                        </div>
-                        <div class="p-5">
-                            <div class="text-xs font-semibold text-primary mb-2 flex items-center gap-1">
-                                <span class="material-icons text-xs">calendar_today</span> 01 Oktober 2023
-                            </div>
-                            <h3
-                                class="text-lg font-bold text-gray-900 dark:text-white mb-2 leading-snug hover:text-primary transition-colors cursor-pointer">
-                                Kegiatan Perkemahan Sabtu Minggu (Persami)
-                            </h3>
-                            <p class="text-gray-500 dark:text-gray-400 text-sm line-clamp-3">
-                                Ekstrakurikuler Pramuka mengadakan kegiatan Persami untuk menyambut anggota baru dan
-                                melatih kemandirian siswa kelas X.
-                            </p>
-                        </div>
-                    </div>
+                @endif
+            </div>
+
+            <!-- KONTEN -->
+            <div class="p-5">
+                <div class="text-xs font-semibold text-primary mb-2 flex items-center gap-1">
+                    <span class="material-icons text-xs">calendar_today</span>
+                    {{ \Carbon\Carbon::parse($item->tanggal)->translatedFormat('d F Y') }}
                 </div>
+
+                <h3
+                    class="text-lg font-bold text-gray-900 dark:text-white mb-2 leading-snug hover:text-primary transition-colors">
+                    {{ $item->judul }}
+                </h3>
+
+                <p class="text-gray-500 dark:text-gray-400 text-sm line-clamp-3">
+                    {{ $item->deskripsi }}
+                </p>
+            </div>
+        </div>
+        @endforeach
+    </div>
+</div>
+              
                 <div class="mt-8 flex justify-center">
                     <nav aria-label="Pagination" class="isolate inline-flex -space-x-px rounded-md shadow-sm">
                         <a class="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 dark:ring-gray-600 dark:hover:bg-gray-700"
