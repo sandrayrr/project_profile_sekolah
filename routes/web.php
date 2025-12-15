@@ -8,7 +8,7 @@ use App\Http\Controllers\Admin\BerandaController;
 use App\Http\Controllers\Admin\ArtikelController;
 use App\Http\Controllers\BerandaController as ControllersBerandaController;
 use App\Http\Controllers\front\ArtikelController as FrontArtikelController;
-
+use App\Http\Controllers\Admin\GaleriController;
 /*
 |--------------------------------------------------------------------------
 | Public Pages
@@ -60,6 +60,8 @@ Route::middleware('auth')
         Route::resource('beranda', BerandaController::class);
         Route::resource('users', UserController::class);
         Route::resource('artikel', ArtikelController::class);
+        Route::resource('galeri', GaleriController::class);
+
 });
 
 

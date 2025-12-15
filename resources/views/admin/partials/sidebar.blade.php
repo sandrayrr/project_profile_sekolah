@@ -26,10 +26,7 @@
 
    
 
-    <a href="{{ route('admin.galeri.index') }}">
-        <i class="bi bi-images"></i> Galeri
-    </a>
-
+    
     <a href="{{ route('admin.prestasi.index') }}">
         <i class="bi bi-trophy"></i> Prestasi
     </a>
@@ -52,6 +49,10 @@
 
      <a href="{{ route('admin.artikel.index') }}">
         <i class="bi bi-file-earmark-text"></i> Artikel
+    </a>
+    
+    <a href="{{ route('admin.galeri.index') }}">
+        <i class="bi bi-images"></i> Galeri
     </a>
 
     {{-- MANAJEMEN USER --}}
