@@ -7,7 +7,7 @@
     </a>
 
     <div class="row">
-        @foreach($prestasis as $p)
+        @foreach($prestasi as $p)
         <div class="col-md-4 mb-4">
             <div class="card shadow-sm">
                 <img src="{{ asset('storage/'.$p->foto) }}" class="card-img-top" height="200" style="object-fit:cover">

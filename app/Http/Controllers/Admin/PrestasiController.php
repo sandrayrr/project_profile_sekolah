@@ -10,8 +10,8 @@ class PrestasiController extends Controller
 {
     public function index()
     {
-        $prestasis = Prestasi::latest()->get();
-        return view('admin.crud.prestasi.index', compact('prestasis'));
+        $prestasi = Prestasi::latest()->paginate(6); // ✅
+        return view('admin.crud.prestasi.index', compact('prestasi'));
     }
 
     public function create()

@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\BerandaController;
 use App\Http\Controllers\Admin\ArtikelController;
 use App\Http\Controllers\BerandaController as ControllersBerandaController;
 use App\Http\Controllers\front\ArtikelController as FrontArtikelController;
+use App\Http\Controllers\front\PrestasiController as FrontPrestasiController;
 use App\Http\Controllers\Admin\GaleriController;
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +21,7 @@ Route::view('/profil', 'pages.profil')->name('profil');
 Route::view('/jurusan', 'pages.jurusan')->name('jurusan');
 Route::get('/artikel', [FrontArtikelController::class , 'index'])->name('artikel');
 Route::view('/galeri', 'pages.galeri')->name('galeri');
-Route::view('/prestasi', 'pages.prestasi')->name('prestasi');
+Route::get('/prestasi', [FrontPrestasiController::class , 'index'])->name('prestasi');
 Route::view('/link', 'pages.link')->name('link');
 Route::view('/fasilitas', 'pages.fasilitas')->name('fasilitas');
 Route::view('/akreditasi', 'pages.akreditasi')->name('akreditasi');
