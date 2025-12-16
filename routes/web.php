@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Admin\PrestasiController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\BerandaController;
 use App\Http\Controllers\Admin\ArtikelController;
@@ -61,6 +62,7 @@ Route::middleware('auth')
         Route::resource('users', UserController::class);
         Route::resource('artikel', ArtikelController::class);
         Route::resource('galeri', GaleriController::class);
+        Route::resource('prestasi', PrestasiController::class);
 
 });
 

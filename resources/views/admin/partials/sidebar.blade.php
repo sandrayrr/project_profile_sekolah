@@ -27,9 +27,7 @@
    
 
     
-    <a href="{{ route('admin.prestasi.index') }}">
-        <i class="bi bi-trophy"></i> Prestasi
-    </a>
+    
 
     <a href="{{ route('admin.link.index') }}">
         <i class="bi bi-link-45deg"></i> Link Terkait
@@ -53,6 +51,10 @@
     
     <a href="{{ route('admin.galeri.index') }}">
         <i class="bi bi-images"></i> Galeri
+    </a>
+
+    <a href="{{ route('admin.prestasi.index') }}">
+        <i class="bi bi-trophy"></i> Prestasi
     </a>
 
     {{-- MANAJEMEN USER --}}
