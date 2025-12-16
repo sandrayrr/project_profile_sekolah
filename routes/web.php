@@ -7,10 +7,12 @@ use App\Http\Controllers\Admin\PrestasiController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\BerandaController;
 use App\Http\Controllers\Admin\ArtikelController;
+use App\Http\Controllers\Admin\GaleriController;
 use App\Http\Controllers\BerandaController as ControllersBerandaController;
 use App\Http\Controllers\front\ArtikelController as FrontArtikelController;
 use App\Http\Controllers\front\PrestasiController as FrontPrestasiController;
-use App\Http\Controllers\Admin\GaleriController;
+use App\Http\Controllers\front\GaleriController as FrontGaleriController;
+
 /*
 |--------------------------------------------------------------------------
 | Public Pages
@@ -20,7 +22,7 @@ Route::get('/', [ControllersBerandaController::class, 'index'])->name('beranda')
 Route::view('/profil', 'pages.profil')->name('profil');
 Route::view('/jurusan', 'pages.jurusan')->name('jurusan');
 Route::get('/artikel', [FrontArtikelController::class , 'index'])->name('artikel');
-Route::view('/galeri', 'pages.galeri')->name('galeri');
+Route::get('/galeri', [FrontGaleriController::class , 'index'])->name('galeri');
 Route::get('/prestasi', [FrontPrestasiController::class , 'index'])->name('prestasi');
 Route::view('/link', 'pages.link')->name('link');
 Route::view('/fasilitas', 'pages.fasilitas')->name('fasilitas');

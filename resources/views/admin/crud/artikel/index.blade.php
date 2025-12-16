@@ -1,50 +1,106 @@
-{{-- resources/views/admin/artikel/index.blade.php --}}
 @extends('admin.layout')
 
+@section('title','Artikel')
+
 @section('content')
-<div class="container">
-    <a href="{{ route('admin.artikel.create') }}" class="btn btn-primary mb-3">
-        + Tambah Artikel
+
+{{-- HEADER --}}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h4 class="fw-bold mb-0">Manajemen Artikel</h4>
+
+    <a href="{{ route('admin.artikel.create') }}" class="btn btn-primary">
+        <i class="bi bi-plus-circle"></i> Tambah Artikel
     </a>
+</div>
 
-    <div class="row">
-        @foreach($artikels as $item)
-        <div class="col-md-6 mb-4">
-            <div class="card shadow-sm h-100">
+{{-- ALERT --}}
+@if(session('success'))
+<div class="alert alert-success alert-dismissible fade show">
+    {{ session('success') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+</div>
+@endif
 
-                @if($item->foto)
-                <img src="{{ asset('storage/'.$item->foto) }}"
-                     class="card-img-top"
-                     style="height:220px;object-fit:cover;">
-                @endif
+{{-- TABLE --}}
+<div class="card shadow-sm">
+    <div class="card-body p-0">
+        <table class="table table-hover align-middle mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th width="50">No</th>
+                    <th width="140">Foto</th>
+                    <th>Judul</th>
+                    <th width="140">Tanggal</th>
+                    <th>Deskripsi</th>
+                    <th width="160" class="text-center">Aksi</th>
+                </tr>
+            </thead>
 
-                <div class="card-body">
-                    <small class="text-primary">
-                        📅 {{ \Carbon\Carbon::parse($item->tanggal)->translatedFormat('d F Y') }}
-                    </small>
+            <tbody>
+                @forelse($artikels as $item)
+                <tr>
+                    <td>{{ $loop->iteration }}</td>
 
-                    <h5 class="mt-2">{{ $item->judul }}</h5>
-                    <p>{{ Str::limit($item->deskripsi, 120) }}</p>
+                    {{-- FOTO --}}
+                    <td>
+                        @if($item->foto)
+                            <img src="{{ asset('storage/'.$item->foto) }}"
+                                 class="rounded border"
+                                 style="width:120px;height:80px;object-fit:cover;">
+                        @else
+                            <span class="text-muted">Tidak ada</span>
+                        @endif
+                    </td>
 
-                    <a href="{{ route('admin.artikel.edit', $item->id) }}"
-                       class="btn btn-warning btn-sm">Edit</a>
+                    {{-- JUDUL --}}
+                    <td class="fw-semibold">
+                        {{ $item->judul }}
+                    </td>
 
-                    <form action="{{ route('admin.artikel.destroy', $item->id) }}"
-                          method="POST"
-                          class="d-inline">
-                        @csrf
-                        @method('DELETE')
-                        <button class="btn btn-danger btn-sm"
-                                onclick="return confirm('Hapus artikel?')">
-                            Hapus
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-        @endforeach
+                    {{-- TANGGAL --}}
+                    <td>
+                        {{ \Carbon\Carbon::parse($item->tanggal)->translatedFormat('d F Y') }}
+                    </td>
+
+                    {{-- DESKRIPSI --}}
+                    <td class="text-muted">
+                        {{ Str::limit(strip_tags($item->deskripsi), 80) }}
+                    </td>
+
+                    {{-- AKSI --}}
+                    <td class="text-center">
+                        <a href="{{ route('admin.artikel.edit', $item->id) }}"
+                           class="btn btn-warning btn-sm">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+
+                        <form action="{{ route('admin.artikel.destroy', $item->id) }}"
+                              method="POST"
+                              class="d-inline"
+                              onsubmit="return confirm('Yakin ingin menghapus artikel ini?')">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger btn-sm">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                @empty
+                <tr>
+                    <td colspan="6" class="text-center text-muted py-4">
+                        Data artikel belum tersedia
+                    </td>
+                </tr>
+                @endforelse
+            </tbody>
+        </table>
     </div>
+</div>
 
+{{-- PAGINATION --}}
+<div class="mt-3">
     {{ $artikels->links() }}
 </div>
+
 @endsection

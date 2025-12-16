@@ -1,17 +1,19 @@
 @extends('admin.layout')
 
-@section('title','Beranda')
+@section('title','Artikel')
 
 @section('content')
 
+{{-- HEADER --}}
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h4 class="fw-bold mb-0">Manajemen Beranda</h4>
+    <h4 class="fw-bold mb-0">Manajemen Artikel</h4>
 
-    <a href="{{ route('admin.beranda.create') }}" class="btn btn-primary">
-        <i class="bi bi-plus-circle"></i> Tambah Data
+    <a href="{{ route('admin.artikel.create') }}" class="btn btn-primary">
+        <i class="bi bi-plus-circle"></i> Tambah Artikel
     </a>
 </div>
 
+{{-- ALERT --}}
 @if(session('success'))
 <div class="alert alert-success alert-dismissible fade show">
     {{ session('success') }}
@@ -19,48 +21,60 @@
 </div>
 @endif
 
+{{-- TABLE --}}
 <div class="card shadow-sm">
     <div class="card-body p-0">
-        <table class="table table-hover mb-0 align-middle">
+        <table class="table table-hover align-middle mb-0">
             <thead class="table-light">
                 <tr>
-                    <th>No</th>
+                    <th width="50">No</th>
+                    <th width="140">Foto</th>
                     <th>Judul</th>
-                    <th>Deskripsi</th>
-                    <th>Siswa</th>
-                    <th>Guru</th>
-                    <th>Jurusan</th>
-                    <th width="180" class="text-center">Aksi</th>
+                    <th>Tanggal</th>
+                    <th width="160" class="text-center">Aksi</th>
                 </tr>
             </thead>
 
             <tbody>
-                @forelse($data as $item)
+                @forelse($artikels as $item)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
 
-                    <td class="fw-semibold">
-                        {{ $item->judul }}
+                    {{-- FOTO --}}
+                    <td>
+                        @if($item->foto)
+                            <img src="{{ asset('storage/'.$item->foto) }}"
+                                 class="rounded border"
+                                 style="width:120px;height:80px;object-fit:cover;">
+                        @else
+                            <span class="text-muted">-</span>
+                        @endif
                     </td>
 
-                    <td class="text-muted">
-                        {{ \Illuminate\Support\Str::limit($item->deskripsi, 60) }}
+                    {{-- JUDUL --}}
+                    <td>
+                        <div class="fw-semibold">{{ $item->judul }}</div>
+                        <small class="text-muted">
+                            {{ Str::limit($item->deskripsi, 80) }}
+                        </small>
                     </td>
 
-                    <td>{{ $item->jumlah_siswa ?? 0 }}</td>
-                    <td>{{ $item->jumlah_guru ?? 0 }}</td>
-                    <td>{{ $item->jumlah_jurusan ?? 0 }}</td>
+                    {{-- TANGGAL --}}
+                    <td>
+                        {{ \Carbon\Carbon::parse($item->tanggal)->translatedFormat('d F Y') }}
+                    </td>
 
+                    {{-- AKSI --}}
                     <td class="text-center">
-                        <a href="{{ route('admin.beranda.edit', $item->id) }}"
+                        <a href="{{ route('admin.artikel.edit', $item->id) }}"
                            class="btn btn-warning btn-sm">
                             <i class="bi bi-pencil-square"></i>
                         </a>
 
-                        <form action="{{ route('admin.beranda.destroy', $item->id) }}"
+                        <form action="{{ route('admin.artikel.destroy', $item->id) }}"
                               method="POST"
                               class="d-inline"
-                              onsubmit="return confirm('Yakin ingin menghapus data ini?')">
+                              onsubmit="return confirm('Yakin ingin menghapus artikel ini?')">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger btn-sm">
@@ -71,14 +85,19 @@
                 </tr>
                 @empty
                 <tr>
-                    <td colspan="7" class="text-center text-muted py-4">
-                        Data belum tersedia
+                    <td colspan="5" class="text-center text-muted py-4">
+                        Data artikel belum tersedia
                     </td>
                 </tr>
                 @endforelse
             </tbody>
         </table>
     </div>
+</div>
+
+{{-- PAGINATION --}}
+<div class="mt-3">
+    {{ $artikels->links() }}
 </div>
 
 @endsection
