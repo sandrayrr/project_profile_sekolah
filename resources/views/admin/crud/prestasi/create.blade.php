@@ -28,8 +28,12 @@
             <label>Foto</label>
             <input type="file" name="foto" class="form-control">
         </div>
-
+         <div class="d-flex justify-content-between">
+        
         <button class="btn btn-success">Simpan</button>
+         <a href="{{ route('admin.prestasi.index') }}" class="btn btn-secondary">
+                        Kembali
+                    </a>
     </form>
 </div>
 @endsection

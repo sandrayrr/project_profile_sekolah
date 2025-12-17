@@ -15,6 +15,8 @@ class ArtikelController extends Controller
         return view('admin.crud.artikel.index', compact('artikels'));
     }
 
+
+    
     public function create()
     {
         return view('admin.crud.artikel.create');

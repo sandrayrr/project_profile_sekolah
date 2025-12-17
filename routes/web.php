@@ -59,13 +59,14 @@ Route::middleware('auth')
         // Dashboard
         Route::get('/dashboard', [AdminController::class, 'dashboard'])
             ->name('dashboard');
-
+        
         // CRUD
         Route::resource('beranda', BerandaController::class);
         Route::resource('users', UserController::class);
         Route::resource('artikel', ArtikelController::class);
         Route::resource('galeri', GaleriController::class);
         Route::resource('prestasi', PrestasiController::class);
+        
 
 });
 
