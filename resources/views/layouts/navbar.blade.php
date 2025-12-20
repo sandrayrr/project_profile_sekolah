@@ -72,7 +72,7 @@
                     <a class="hover:text-primary transition-colors" href="{{ route('artikel') }}">Artikel</a>
                     <a class="hover:text-primary transition-colors" href="{{ route('galeri') }}">Galeri</a>
                     <a class="hover:text-primary transition-colors" href="{{ route('prestasi') }}">Prestasi</a>
-                    <a class="text-black dark:text-white font-semibold" href="{{ route('link') }}">Link</a>
+                    <a class="hover:text-primary transition-colors" href="{{ route('link') }}">Link</a>
                     <a class="hover:text-primary transition-colors" href="{{ route('fasilitas') }}">Fasilitas</a>
                     <a class="hover:text-primary transition-colors" href="{{ route('akreditasi') }}">Akreditasi</a>
                     <a class="hover:text-primary transition-colors"
