@@ -1,255 +1,178 @@
 {{-- SISIPKAN KODE INI DI DALAM FILE admin.layout.blade.php ANDA --}}
-{{-- Biasanya di dalam tag <body> dan sebagai pengganti sidebar lama Anda --}}
+{{-- Biasanya di dalam tag
+
+<body> dan sebagai pengganti sidebar lama Anda --}}
 
 <style>
-    /* --- Variabel Warna (Bisa disesuaikan) --- */
-    :root {
-        --sidebar-bg: #ffffff; /* Background putih bersih */
-        --sidebar-border: #e9ecef; /* Border abu-abu sangat muda */
-        --sidebar-text: #495057; /* Teks utama abu-abu gelap */
-        --sidebar-text-muted: #6c757d; /* Teks sekunder */
-        --sidebar-hover-bg: #f8f9fa; /* Background saat hover */
-        --sidebar-active-bg: #007bff; /* Warna biru untuk elemen aktif */
-        --sidebar-active-text: #ffffff;
-        --sidebar-shadow: rgba(0, 0, 0, 0.08);
-    }
+:root {
+    --primary: #4f46e5;
+    --primary-soft: #eef2ff;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --bg: #ffffff;
+}
 
-    /* --- Layout Utama Sidebar --- */
-    .sidebar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100vh;
-        width: 260px;
-        background-color: var(--sidebar-bg);
-        color: var(--sidebar-text);
-        display: flex;
-        flex-direction: column;
-        z-index: 1000;
-        transition: all 0.3s ease;
-        box-shadow: 2px 0 15px var(--sidebar-shadow);
-        border-right: 1px solid var(--sidebar-border);
-    }
+/* SIDEBAR */
+.sidebar {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    width: 260px;
+    height: calc(100vh - 32px);
+    background: var(--bg);
+    border-radius: 20px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 20px 40px rgba(0,0,0,.08);
+}
 
-    /* --- Header/Branding Sidebar --- */
-    .sidebar-brand {
-        padding: 20px 15px;
-        text-align: center;
-        border-bottom: 1px solid var(--sidebar-border);
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Biarkan branding tetap menonjol */
-    }
-    
-    .sidebar-brand i {
-        font-size: 2rem;
-        color: #ffffff;
-        margin-right: 10px;
-    }
-    
-    .sidebar-brand span {
-        font-size: 1.2rem;
-        font-weight: 700;
-        vertical-align: middle;
-        color: #ffffff;
-    }
+/* USER */
+.sidebar-user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 14px;
+    background: #f8fafc;
+    margin-bottom: 20px;
+}
 
-    /* --- Profil Pengguna (Bonus) --- */
-    .sidebar-user {
-        padding: 20px 15px;
-        text-align: center;
-        border-bottom: 1px solid var(--sidebar-border);
-    }
-    
-    .sidebar-user .avatar {
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        margin-bottom: 10px;
-        border: 3px solid var(--sidebar-active-bg);
-    }
-    
-    .sidebar-user .user-name {
-        font-weight: 600;
-        font-size: 1rem;
-        color: var(--sidebar-text);
-    }
-    
-    .sidebar-user .user-role {
-        font-size: 0.8rem;
-        color: var(--sidebar-text-muted);
-    }
+.sidebar-user img {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+}
 
-    /* --- Navigasi --- */
-    .sidebar-nav {
-        flex-grow: 1;
-        padding: 20px 0;
-        overflow-y: auto;
-    }
+.user-info {
+    line-height: 1.2;
+}
 
-    .nav-section {
-        margin-bottom: 25px;
-    }
+.user-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
 
-    .nav-title {
-        padding: 0 20px;
-        margin-bottom: 10px;
-        font-size: 0.75rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        color: var(--sidebar-text-muted);
-    }
+.user-role {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
 
-    .nav-link {
-        display: flex;
-        align-items: center;
-        padding: 12px 20px;
-        color: var(--sidebar-text);
-        text-decoration: none;
-        transition: all 0.2s ease-in-out;
-        position: relative;
-        font-size: 0.95rem;
-    }
+/* NAV */
+.sidebar-nav {
+    flex: 1;
+}
 
-    .nav-link i {
-        font-size: 1.1rem;
-        margin-right: 15px;
-        width: 20px;
-        text-align: center;
-        color: var(--sidebar-text-muted); /* Ikon lebih tenang */
-    }
-    
-    /* --- Efek Hover dan Aktif --- */
-    .nav-link:hover {
-        background-color: var(--sidebar-hover-bg);
-        color: var(--sidebar-text);
-        text-decoration: none;
-    }
-    
-    .nav-link:hover i {
-        color: var(--sidebar-active-bg); /* Ikon berwarna saat hover */
-    }
-    
-    .nav-link.active {
-        background-color: var(--sidebar-active-bg);
-        color: var(--sidebar-active-text);
-        font-weight: 600;
-        box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3); /* Tambahkan bayangan untuk menonjol */
-    }
-    
-    .nav-link.active i {
-        color: var(--sidebar-active-text); /* Ikon putih saat aktif */
-    }
-    
-    .nav-link.active::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        width: 5px;
-        background: #ffffff;
-    }
+.nav-title {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin: 18px 8px 6px;
+    text-transform: uppercase;
+}
 
-    /* --- Bagian Bawah (Pengaturan & Logout) --- */
-    .sidebar-bottom {
-        padding: 15px 0;
-        border-top: 1px solid var(--sidebar-border);
-    }
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 14px;
+    margin-bottom: 6px;
+    border-radius: 14px;
+    text-decoration: none;
+    color: var(--text-main);
+    font-weight: 500;
+    transition: .25s;
+}
 
-    .nav-link.logout-btn {
-        color: #dc3545; /* Warna merah untuk logout */
-    }
-    
-    .nav-link.logout-btn i {
-        color: #dc3545;
-    }
-    
-    .nav-link.logout-btn:hover {
-        background-color: #f8d7da;
-        color: #721c24;
-    }
-    
-    /* --- Form Logout (Sembunyikan) --- */
-    #logout-form {
-        display: none;
-    }
+.nav-link i {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+}
 
-    /* --- Agar konten utama tidak tertutup sidebar --- */
-    /* Anda perlu menambahkan padding-left pada wrapper konten utama Anda */
-    /* Contoh: <div class="main-content" style="margin-left: 260px;"> ... </div> */
+/* ACTIVE */
+.nav-link.active {
+    background: var(--primary-soft);
+    color: var(--primary);
+}
+
+.nav-link.active i {
+    color: var(--primary);
+}
+
+.nav-link:hover {
+    background: #f1f5f9;
+}
+
+/* BOTTOM */
+.sidebar-bottom {
+    margin-top: auto;
+}
+
+.logout-btn {
+    color: #dc2626;
+}
 </style>
 
-<div class="sidebar">
-    {{-- Header/Branding --}}
-    <div class="sidebar-brand">
-        <i class="bi bi-mortarboard-fill"></i>
-        <span>School Admin</span>
-    </div>
 
-    {{-- Profil Pengguna (Bonus) --}}
+
+   <div class="sidebar">
+
+    <!-- USER -->
     <div class="sidebar-user">
-        {{-- Anda bisa menggunakan foto user jika ada --}}
-        {{-- <img src="{{ Auth::user()->foto ? asset('storage/'.Auth::user()->foto) : 'https://picsum.photos/seed/user/60/60.jpg' }}" alt="User Avatar" class="avatar"> --}}
-        <img src="https://picsum.photos/seed/admin123/60/60.jpg" alt="User Avatar" class="avatar">
-        <div class="user-name">{{ Auth::user()->name }}</div>
-        <div class="user-role">{{ ucfirst(Auth::user()->role) }}</div>
+        <img src="https://picsum.photos/seed/user/80/80">
+        <div class="user-info">
+            <div class="user-name">{{ Auth::user()->name }}</div>
+            <div class="user-role">{{ ucfirst(Auth::user()->role) }}</div>
+        </div>
     </div>
 
-    {{-- Navigasi Utama --}}
+    <!-- NAV -->
     <nav class="sidebar-nav">
-        {{-- DASHBOARD --}}
-        <div class="nav-section">
-            <div class="nav-title">Dashboard</div>
-            <a href="{{ route('admin.dashboard') }}" class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
-                <i class="bi bi-speedometer2"></i> Dashboard
-            </a>
-        </div>
 
-        {{-- KONTEN WEBSITE --}}
-        <div class="nav-section">
-            <div class="nav-title">Konten Website</div>
-            <a href="{{ route('admin.artikel.index') }}" class="nav-link {{ request()->routeIs('admin.artikel*') ? 'active' : '' }}">
-                <i class="bi bi-file-earmark-text"></i> Artikel
-            </a>
-            <a href="{{ route('admin.galeri.index') }}" class="nav-link {{ request()->routeIs('admin.galeri*') ? 'active' : '' }}">
-                <i class="bi bi-images"></i> Galeri
-            </a>
-            <a href="{{ route('admin.prestasi.index') }}" class="nav-link {{ request()->routeIs('admin.prestasi*') ? 'active' : '' }}">
-                <i class="bi bi-trophy"></i> Prestasi
-            </a>
-            
-            {{-- Tambahkan link lainnya di sini jika diperlukan --}}
-            {{-- <a href="{{ route('admin.beranda.index') }}" class="nav-link {{ request()->routeIs('admin.beranda*') ? 'active' : '' }}">
-                <i class="bi bi-house-door"></i> Beranda
-            </a> --}}
-        </div>
-
-        {{-- MANAJEMEN USER --}}
-        <div class="nav-section">
-            <div class="nav-title">Manajemen Pengguna</div>
-            <a href="{{ route('admin.users.index') }}" class="nav-link {{ request()->routeIs('admin.users*') ? 'active' : '' }}">
-                <i class="bi bi-people"></i> Kelola User
-            </a>
-        </div>
-    </nav>
-
-    {{-- Bagian Bawah --}}
-    <div class="sidebar-bottom">
-        <a href="#" class="nav-link">
-            <i class="bi bi-gear"></i> Pengaturan
+        <div class="nav-title">Main</div>
+        <a href="{{ route('admin.dashboard') }}"
+           class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+            <i class="bi bi-grid"></i> Dashboard
         </a>
 
-        <form id="logout-form" action="{{ route('logout') }}" method="POST">
-            @csrf
-        </form>
+        <div class="nav-title">Content</div>
+        <a href="{{ route('admin.artikel.index') }}"
+           class="nav-link {{ request()->routeIs('admin.artikel*') ? 'active' : '' }}">
+            <i class="bi bi-file-text"></i> Artikel
+        </a>
+
+        <a href="{{ route('admin.galeri.index') }}"
+           class="nav-link {{ request()->routeIs('admin.galeri*') ? 'active' : '' }}">
+            <i class="bi bi-image"></i> Galeri
+        </a>
+
+        <a href="{{ route('admin.prestasi.index') }}"
+           class="nav-link {{ request()->routeIs('admin.prestasi*') ? 'active' : '' }}">
+            <i class="bi bi-award"></i> Prestasi
+        </a>
+
+        <div class="nav-title">User</div>
+        <a href="{{ route('admin.users.index') }}"
+           class="nav-link {{ request()->routeIs('admin.users*') ? 'active' : '' }}">
+            <i class="bi bi-people"></i> Kelola User
+        </a>
+    </nav>
+
+    <!-- LOGOUT -->
+    <div class="sidebar-bottom">
+        <form id="logout-form" action="{{ route('logout') }}" method="POST">@csrf</form>
         <a href="#" class="nav-link logout-btn"
-           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+           onclick="event.preventDefault();document.getElementById('logout-form').submit();">
             <i class="bi bi-box-arrow-right"></i> Logout
         </a>
     </div>
+
 </div>
 
-{{-- --- PENTING --- --}}
-{{-- Pastikan Anda menyesuaikan wrapper konten utama Anda agar tidak tertutup sidebar. --}}
-{{-- Cari elemen utama yang membungkus @yield('content') dan tambahkan style margin-left: 260px; --}}
-{{-- Contoh: <div class="content-wrapper p-4" style="margin-left: 260px;"> @yield('content') </div> --}}
+
+
+    {{-- --- PENTING --- --}}
+    {{-- Pastikan Anda menyesuaikan wrapper konten utama Anda agar tidak tertutup sidebar. --}}
+    {{-- Cari elemen utama yang membungkus @yield('content') dan tambahkan style margin-left: 260px; --}}
+    {{-- Contoh: <div class="content-wrapper p-4" style="margin-left: 260px;"> @yield('content') </div> --}}

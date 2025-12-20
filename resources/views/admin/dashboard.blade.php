@@ -5,20 +5,30 @@
 @section('content')
 <style>
     :root {
-        --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-        --success-gradient: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-        --info-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-        --warning-gradient: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
-        --dark-gradient: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+        /* Warna yang lebih halus dan profesional */
+        --primary-color: #4f46e5;
+        --primary-light: #e0e7ff;
+        --secondary-color: #6366f1;
+        --success-color: #10b981;
+        --success-light: #d1fae5;
+        --info-color: #3b82f6;
+        --info-light: #dbeafe;
+        --warning-color: #f59e0b;
+        --warning-light: #fed7aa;
+        --danger-color: #ef4444;
+        --danger-light: #fee2e2;
+        --dark-color: #1f2937;
+        --light-color: #f9fafb;
+        --text-muted: #6b7280;
+        --border-color: #e5e7eb;
     }
     
     .dashboard-welcome {
-        background: var(--primary-gradient);
+        background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
         color: white;
         padding: 30px;
         border-radius: 18px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         position: relative;
         overflow: hidden;
     }
@@ -49,41 +59,28 @@
         padding: 35px 20px;
         border-radius: 18px;
         background: #fff;
-        border: none;
+        border: 1px solid var(--border-color);
         transition: all 0.3s ease;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
         position: relative;
         overflow: hidden;
     }
     
-    .big-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 5px;
-        background: var(--primary-gradient);
-    }
-    
     .big-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.08);
     }
 
     #current-time {
         font-size: 55px;
         font-weight: 700;
-        background: var(--primary-gradient);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
+        color: var(--primary-color);
     }
 
     #current-date {
         font-size: 22px;
         font-weight: 600;
-        color: #4b5563;
+        color: var(--text-muted);
     }
 
     .card-stat {
@@ -91,36 +88,26 @@
         border-radius: 16px;
         transition: all 0.3s ease;
         background: white;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        border: 1px solid var(--border-color);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
         position: relative;
-        overflow: hidden;
     }
     
+    /* Menghilangkan border warna-warni yang mencolok */
     .card-stat::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 6px;
-        height: 100%;
+        display: none;
     }
-    
-    .card-stat.primary::before { background: var(--primary-gradient); }
-    .card-stat.secondary::before { background: var(--secondary-gradient); }
-    .card-stat.success::before { background: var(--success-gradient); }
-    .card-stat.info::before { background: var(--info-gradient); }
-    .card-stat.warning::before { background: var(--warning-gradient); }
-    .card-stat.dark::before { background: var(--dark-gradient); }
     
     .card-stat:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        border-color: var(--primary-color);
     }
     
     .stat-title {
         font-size: 15px;
         font-weight: 600;
-        color: #6b7280;
+        color: var(--text-muted);
         display: flex;
         align-items: center;
         margin-bottom: 10px;
@@ -137,17 +124,16 @@
         font-size: 20px;
     }
     
-    .stat-icon.primary { background: rgba(102, 126, 234, 0.15); color: #667eea; }
-    .stat-icon.secondary { background: rgba(240, 147, 251, 0.15); color: #f093fb; }
-    .stat-icon.success { background: rgba(67, 233, 123, 0.15); color: #43e97b; }
-    .stat-icon.info { background: rgba(79, 172, 254, 0.15); color: #4facfe; }
-    .stat-icon.warning { background: rgba(250, 112, 154, 0.15); color: #fa709a; }
-    .stat-icon.dark { background: rgba(48, 207, 208, 0.15); color: #30cfd0; }
+    /* Menggunakan warna yang lebih konsisten untuk ikon */
+    .stat-icon { 
+        background: var(--primary-light); 
+        color: var(--primary-color); 
+    }
     
     .stat-value {
         font-size: 32px;
         font-weight: bold;
-        color: #111827;
+        color: #1f2937;
     }
     
     .stat-change {
@@ -157,14 +143,15 @@
         align-items: center;
     }
     
-    .stat-change.positive { color: #10b981; }
-    .stat-change.negative { color: #ef4444; }
+    .stat-change.positive { color: var(--success-color); }
+    .stat-change.negative { color: var(--danger-color); }
     
     .quick-action-card {
         padding: 20px;
         border-radius: 16px;
         background: white;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        border: 1px solid var(--border-color);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
         transition: all 0.3s ease;
         text-align: center;
         height: 100%;
@@ -175,8 +162,9 @@
     }
     
     .quick-action-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        border-color: var(--primary-color);
     }
     
     .quick-action-icon {
@@ -193,7 +181,7 @@
     
     .activity-item {
         padding: 15px;
-        border-left: 3px solid #e5e7eb;
+        border-left: 3px solid var(--border-color);
         margin-left: 10px;
         position: relative;
     }
@@ -207,21 +195,27 @@
         height: 13px;
         border-radius: 50%;
         background: white;
-        border: 3px solid #e5e7eb;
+        border: 3px solid var(--border-color);
     }
     
     .activity-item.new::before {
-        background: #10b981;
-        border-color: #10b981;
+        background: var(--success-color);
+        border-color: var(--success-color);
     }
     
     .activity-item.new {
-        border-left-color: #10b981;
+        border-left-color: var(--success-color);
     }
     
     .chart-container {
         position: relative;
         height: 300px;
+        width: 100%;
+    }
+    
+    .chart-container-small {
+        position: relative;
+        height: 200px;
         width: 100%;
     }
 </style>
@@ -248,14 +242,14 @@
 
 <div class="row g-4 mb-4">
     <div class="col-md-6">
-        <div class="big-card shadow-sm text-center">
+        <div class="big-card text-center">
             <h1 id="current-time">00:00:00</h1>
             <p class="text-muted">Jam Saat Ini</p>
         </div>
     </div>
 
     <div class="col-md-6">
-        <div class="big-card shadow-sm text-center">
+        <div class="big-card text-center">
             <h3 id="current-date"></h3>
             <p class="text-muted">Hari Ini</p>
         </div>
@@ -266,9 +260,9 @@
 
 <div class="row g-4 mb-4">
     <div class="col-md-4">
-        <div class="card-stat shadow-sm primary">
+        <div class="card-stat">
             <div class="stat-title">
-                <div class="stat-icon primary">
+                <div class="stat-icon">
                     <i class="bi bi-journal-text"></i>
                 </div>
                 <div>
@@ -283,9 +277,9 @@
     </div>
 
     <div class="col-md-4">
-        <div class="card-stat shadow-sm secondary">
+        <div class="card-stat">
             <div class="stat-title">
-                <div class="stat-icon secondary">
+                <div class="stat-icon">
                     <i class="bi bi-trophy"></i>
                 </div>
                 <div>
@@ -300,9 +294,9 @@
     </div>
 
     <div class="col-md-4">
-        <div class="card-stat shadow-sm success">
+        <div class="card-stat">
             <div class="stat-title">
-                <div class="stat-icon success">
+                <div class="stat-icon">
                     <i class="bi bi-images"></i>
                 </div>
                 <div>
@@ -317,9 +311,9 @@
     </div>
 
     <div class="col-md-4">
-        <div class="card-stat shadow-sm info">
+        <div class="card-stat">
             <div class="stat-title">
-                <div class="stat-icon info">
+                <div class="stat-icon">
                     <i class="bi bi-cart3"></i>
                 </div>
                 <div>
@@ -334,9 +328,9 @@
     </div>
 
     <div class="col-md-4">
-        <div class="card-stat shadow-sm warning">
+        <div class="card-stat">
             <div class="stat-title">
-                <div class="stat-icon warning">
+                <div class="stat-icon">
                     <i class="bi bi-box"></i>
                 </div>
                 <div>
@@ -351,9 +345,9 @@
     </div>
 
     <div class="col-md-4">
-        <div class="card-stat shadow-sm dark">
+        <div class="card-stat">
             <div class="stat-title">
-                <div class="stat-icon dark">
+                <div class="stat-icon">
                     <i class="bi bi-currency-dollar"></i>
                 </div>
                 <div>
@@ -370,7 +364,7 @@
 
 <div class="row g-4 mb-4">
     <div class="col-md-8">
-        <div class="card shadow-sm border-0">
+        <div class="card border-0">
             <div class="card-body">
                 <h5 class="card-title fw-bold mb-4">Grafik Kunjungan Website</h5>
                 <div class="chart-container">
@@ -381,7 +375,7 @@
     </div>
     
     <div class="col-md-4">
-        <div class="card shadow-sm border-0">
+        <div class="card border-0">
             <div class="card-body">
                 <h5 class="card-title fw-bold mb-4">Aktivitas Terkini</h5>
                 <div class="activity-feed">
@@ -407,13 +401,38 @@
     </div>
 </div>
 
+<!-- Tambahan grafik baru -->
+<div class="row g-4 mb-4">
+    <div class="col-md-6">
+        <div class="card border-0">
+            <div class="card-body">
+                <h5 class="card-title fw-bold mb-4">Distribusi Konten</h5>
+                <div class="chart-container-small">
+                    <canvas id="contentChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6">
+        <div class="card border-0">
+            <div class="card-body">
+                <h5 class="card-title fw-bold mb-4">Statistik Bulanan</h5>
+                <div class="chart-container-small">
+                    <canvas id="monthlyStatsChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <h4 class="mt-5 mb-3 fw-bold">⚡ Aksi Cepat</h4>
 
 <div class="row g-4 mb-4">
     <div class="col-md-3">
         <a href="{{ route('admin.artikel.create') }}" class="text-decoration-none">
             <div class="quick-action-card">
-                <div class="quick-action-icon" style="background: var(--primary-gradient);">
+                <div class="quick-action-icon" style="background: var(--primary-color);">
                     <i class="bi bi-plus-circle"></i>
                 </div>
                 <h6 class="fw-bold">Tambah Artikel</h6>
@@ -424,7 +443,7 @@
     <div class="col-md-3">
         <a href="{{ route('admin.prestasi.create') }}" class="text-decoration-none">
             <div class="quick-action-card">
-                <div class="quick-action-icon" style="background: var(--secondary-gradient);">
+                <div class="quick-action-icon" style="background: var(--primary-color);">
                     <i class="bi bi-trophy-fill"></i>
                 </div>
                 <h6 class="fw-bold">Tambah Prestasi</h6>
@@ -435,7 +454,7 @@
     <div class="col-md-3">
         <a href="{{ route('admin.galeri.create') }}" class="text-decoration-none">
             <div class="quick-action-card">
-                <div class="quick-action-icon" style="background: var(--success-gradient);">
+                <div class="quick-action-icon" style="background: var(--primary-color);">
                     <i class="bi bi-image-fill"></i>
                 </div>
                 <h6 class="fw-bold">Tambah Galeri</h6>
@@ -446,7 +465,7 @@
     <div class="col-md-3">
         <a href="{{ route('admin.users.create') }}" class="text-decoration-none">
             <div class="quick-action-card">
-                <div class="quick-action-icon" style="background: var(--info-gradient);">
+                <div class="quick-action-icon" style="background: var(--primary-color);">
                     <i class="bi bi-person-plus-fill"></i>
                 </div>
                 <h6 class="fw-bold">Tambah User</h6>
@@ -470,7 +489,7 @@
     setInterval(updateTime, 1000);
     updateTime();
     
-    // Chart initialization
+    // Chart initialization for visits
     const ctx = document.getElementById('visitsChart').getContext('2d');
     const visitsChart = new Chart(ctx, {
         type: 'line',
@@ -480,13 +499,13 @@
                 label: 'Kunjungan',
                 data: [65, 78, 90, 81, 96, 105, 120],
                 fill: true,
-                backgroundColor: 'rgba(102, 126, 234, 0.2)',
-                borderColor: 'rgba(102, 126, 234, 1)',
+                backgroundColor: 'rgba(79, 70, 229, 0.1)',
+                borderColor: 'rgba(79, 70, 229, 1)',
                 tension: 0.4,
-                pointBackgroundColor: 'rgba(102, 126, 234, 1)',
+                pointBackgroundColor: 'rgba(79, 70, 229, 1)',
                 pointBorderColor: '#fff',
                 pointHoverBackgroundColor: '#fff',
-                pointHoverBorderColor: 'rgba(102, 126, 234, 1)'
+                pointHoverBorderColor: 'rgba(79, 70, 229, 1)'
             }]
         },
         options: {
@@ -495,6 +514,90 @@
             plugins: {
                 legend: {
                     display: false
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    grid: {
+                        color: 'rgba(0, 0, 0, 0.05)'
+                    }
+                },
+                x: {
+                    grid: {
+                        display: false
+                    }
+                }
+            }
+        }
+    });
+    
+    // New chart for content distribution
+    const contentCtx = document.getElementById('contentChart').getContext('2d');
+    const contentChart = new Chart(contentCtx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Artikel', 'Prestasi', 'Galeri', 'Produk', 'Lainnya'],
+            datasets: [{
+                data: [128, 52, 340, 87, 45],
+                backgroundColor: [
+                    'rgba(79, 70, 229, 0.8)',
+                    'rgba(99, 102, 241, 0.8)',
+                    'rgba(16, 185, 129, 0.8)',
+                    'rgba(245, 158, 11, 0.8)',
+                    'rgba(107, 114, 128, 0.8)'
+                ],
+                borderWidth: 0
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        padding: 15,
+                        font: {
+                            size: 12
+                        }
+                    }
+                }
+            }
+        }
+    });
+    
+    // New chart for monthly statistics
+    const monthlyCtx = document.getElementById('monthlyStatsChart').getContext('2d');
+    const monthlyStatsChart = new Chart(monthlyCtx, {
+        type: 'bar',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+            datasets: [
+                {
+                    label: 'Artikel',
+                    data: [12, 19, 15, 25, 22, 30],
+                    backgroundColor: 'rgba(79, 70, 229, 0.7)'
+                },
+                {
+                    label: 'Prestasi',
+                    data: [7, 11, 5, 8, 12, 9],
+                    backgroundColor: 'rgba(16, 185, 129, 0.7)'
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        padding: 15,
+                        font: {
+                            size: 12
+                        }
+                    }
                 }
             },
             scales: {
