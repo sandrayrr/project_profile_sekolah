@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\BerandaController;
 use App\Http\Controllers\Admin\ArtikelController;
 use App\Http\Controllers\Admin\GaleriController;
+use App\Http\Controllers\Admin\FasilitasController;
 use App\Http\Controllers\BerandaController as ControllersBerandaController;
 use App\Http\Controllers\front\ArtikelController as FrontArtikelController;
 use App\Http\Controllers\front\PrestasiController as FrontPrestasiController;
@@ -27,7 +28,7 @@ Route::get('/prestasi', [FrontPrestasiController::class , 'index'])->name('prest
 Route::view('/link', 'pages.link')->name('link');
 Route::view('/fasilitas', 'pages.fasilitas')->name('fasilitas');
 Route::view('/akreditasi', 'pages.akreditasi')->name('akreditasi');
-Route::view('/ekstrakurikuler', 'pages.ekstrakurikuler')->name('ekstrakurikuler');
+Route::view('/ekstrakulikuler', 'pages.ekstrakulikuler')->name('ekstrakulikuler');
 Route::view('/agenda', 'pages.agenda')->name('agenda');
 Route::view('/staffpengajar', 'pages.staffpengajar')->name('staffpengajar');
 
@@ -66,6 +67,8 @@ Route::middleware('auth')
         Route::resource('artikel', ArtikelController::class);
         Route::resource('galeri', GaleriController::class);
         Route::resource('prestasi', PrestasiController::class);
+        Route::resource('fasilitas', FasilitasController::class)
+        ->parameters(['fasilitas' => 'fasilitas']);
         
 
 });

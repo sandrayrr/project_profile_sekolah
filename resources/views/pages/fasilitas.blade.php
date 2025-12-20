@@ -79,9 +79,8 @@
                         <span class="material-icons text-6xl text-blue-300 dark:text-blue-400">meeting_room</span>
                     </div>
                 </div>
-                <div class="h-40 bg-gray-200 dark:bg-gray-600 p-6 flex flex-col justify-center space-y-3">
-                    <div class="h-4 bg-gray-300 dark:bg-gray-500 rounded w-3/4"></div>
-                    <div class="h-4 bg-gray-300 dark:bg-gray-500 rounded w-1/2"></div>
+                <div class="h-24 bg-gray-200 dark:bg-gray-600 p-6 flex flex-col justify-center">
+                    <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200">Ruang Kelas</h3>
                 </div>
             </div>
             <div class="rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 group">
@@ -90,9 +89,8 @@
                         <span class="material-icons text-6xl text-blue-300 dark:text-blue-400">computer</span>
                     </div>
                 </div>
-                <div class="h-40 bg-gray-200 dark:bg-gray-600 p-6 flex flex-col justify-center space-y-3">
-                    <div class="h-4 bg-gray-300 dark:bg-gray-500 rounded w-3/4"></div>
-                    <div class="h-4 bg-gray-300 dark:bg-gray-500 rounded w-1/2"></div>
+                <div class="h-24 bg-gray-200 dark:bg-gray-600 p-6 flex flex-col justify-center">
+                    <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200">Laboratorium Komputer</h3>
                 </div>
             </div>
             <div class="rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 group">
@@ -101,9 +99,8 @@
                         <span class="material-icons text-6xl text-blue-300 dark:text-blue-400">menu_book</span>
                     </div>
                 </div>
-                <div class="h-40 bg-gray-200 dark:bg-gray-600 p-6 flex flex-col justify-center space-y-3">
-                    <div class="h-4 bg-gray-300 dark:bg-gray-500 rounded w-3/4"></div>
-                    <div class="h-4 bg-gray-300 dark:bg-gray-500 rounded w-1/2"></div>
+                <div class="h-24 bg-gray-200 dark:bg-gray-600 p-6 flex flex-col justify-center">
+                    <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200">Perpustakaan</h3>
                 </div>
             </div>
             <div class="rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 group">
@@ -112,9 +109,8 @@
                         <span class="material-icons text-6xl text-blue-300 dark:text-blue-400">sports_soccer</span>
                     </div>
                 </div>
-                <div class="h-40 bg-gray-200 dark:bg-gray-600 p-6 flex flex-col justify-center space-y-3">
-                    <div class="h-4 bg-gray-300 dark:bg-gray-500 rounded w-3/4"></div>
-                    <div class="h-4 bg-gray-300 dark:bg-gray-500 rounded w-1/2"></div>
+                <div class="h-24 bg-gray-200 dark:bg-gray-600 p-6 flex flex-col justify-center">
+                    <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200">Lapangan Olahraga</h3>
                 </div>
             </div>
             <div class="rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 group">
@@ -123,9 +119,8 @@
                         <span class="material-icons text-6xl text-blue-300 dark:text-blue-400">science</span>
                     </div>
                 </div>
-                <div class="h-40 bg-gray-200 dark:bg-gray-600 p-6 flex flex-col justify-center space-y-3">
-                    <div class="h-4 bg-gray-300 dark:bg-gray-500 rounded w-3/4"></div>
-                    <div class="h-4 bg-gray-300 dark:bg-gray-500 rounded w-1/2"></div>
+                <div class="h-24 bg-gray-200 dark:bg-gray-600 p-6 flex flex-col justify-center">
+                    <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200">Laboratorium IPA</h3>
                 </div>
             </div>
             <div class="rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 group">
@@ -134,9 +129,8 @@
                         <span class="material-icons text-6xl text-blue-300 dark:text-blue-400">mosque</span>
                     </div>
                 </div>
-                <div class="h-40 bg-gray-200 dark:bg-gray-600 p-6 flex flex-col justify-center space-y-3">
-                    <div class="h-4 bg-gray-300 dark:bg-gray-500 rounded w-3/4"></div>
-                    <div class="h-4 bg-gray-300 dark:bg-gray-500 rounded w-1/2"></div>
+                <div class="h-24 bg-gray-200 dark:bg-gray-600 p-6 flex flex-col justify-center">
+                    <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200">Musholla</h3>
                 </div>
             </div>
         </div>

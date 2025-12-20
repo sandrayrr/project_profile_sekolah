@@ -130,10 +130,48 @@
     <!-- NAV -->
     <nav class="sidebar-nav">
 
+<<<<<<< Updated upstream
         <div class="nav-title">Main</div>
         <a href="{{ route('admin.dashboard') }}"
            class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
             <i class="bi bi-grid"></i> Dashboard
+=======
+        {{-- KONTEN WEBSITE --}}
+        <div class="nav-section">
+            <div class="nav-title">Konten Website</div>
+            <a href="{{ route('admin.artikel.index') }}" class="nav-link {{ request()->routeIs('admin.artikel*') ? 'active' : '' }}">
+                <i class="bi bi-file-earmark-text"></i> Artikel
+            </a>
+            <a href="{{ route('admin.galeri.index') }}" class="nav-link {{ request()->routeIs('admin.galeri*') ? 'active' : '' }}">
+                <i class="bi bi-images"></i> Galeri
+            </a>
+            <a href="{{ route('admin.prestasi.index') }}" class="nav-link {{ request()->routeIs('admin.prestasi*') ? 'active' : '' }}">
+                <i class="bi bi-trophy"></i> Prestasi
+            </a>
+            <a href="{{ route('admin.fasilitas.index') }}" class="nav-link {{ request()->routeIs('admin.prestasi*') ? 'active' : '' }}">
+                <i class="bi bi-trophy"></i> Fasilitas
+            </a>
+            
+            {{-- Tambahkan link lainnya di sini jika diperlukan --}}
+            {{-- <a href="{{ route('admin.beranda.index') }}" class="nav-link {{ request()->routeIs('admin.beranda*') ? 'active' : '' }}">
+                <i class="bi bi-house-door"></i> Beranda
+            </a> --}}
+        </div>
+
+        {{-- MANAJEMEN USER --}}
+        <div class="nav-section">
+            <div class="nav-title">Manajemen Pengguna</div>
+            <a href="{{ route('admin.users.index') }}" class="nav-link {{ request()->routeIs('admin.users*') ? 'active' : '' }}">
+                <i class="bi bi-people"></i> Kelola User
+            </a>
+        </div>
+    </nav>
+
+    {{-- Bagian Bawah --}}
+    <div class="sidebar-bottom">
+        <a href="#" class="nav-link">
+            <i class="bi bi-gear"></i> Pengaturan
+>>>>>>> Stashed changes
         </a>
 
         <div class="nav-title">Content</div>

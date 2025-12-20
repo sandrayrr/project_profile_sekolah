@@ -76,7 +76,7 @@
                     <a class="hover:text-primary transition-colors" href="{{ route('fasilitas') }}">Fasilitas</a>
                     <a class="hover:text-primary transition-colors" href="{{ route('akreditasi') }}">Akreditasi</a>
                     <a class="hover:text-primary transition-colors"
-                        href="{{ route('ekstrakurikuler') }}">Ekstrakurikuler</a>
+                        href="{{ route('ekstrakulikuler') }}">Ekstrakurikuler</a>
                     <a class="hover:text-primary transition-colors" href="{{ route('agenda') }}">Agenda</a>
                 </div>
 
