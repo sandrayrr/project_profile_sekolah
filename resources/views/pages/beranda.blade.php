@@ -340,9 +340,11 @@
                     <p class="text-gray-600 dark:text-gray-400">Fasilitas sekolah yang kami miliki</p>
                 </div>
                 <a class="hidden sm:inline-flex items-center px-4 py-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 rounded-full text-xs font-semibold text-gray-700 dark:text-gray-200 transition"
-                    href="#">
-                    Selengkapnya <span class="material-icons text-sm ml-1">arrow_forward</span>
+                    href="{{ route('fasilitas') }}">
+                    Selengkapnya
+                    <span class="material-icons text-sm ml-1">arrow_forward</span>
                 </a>
+
             </div>
             <div class="grid md:grid-cols-2 gap-8">
                 <div class="flex bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden h-48">
@@ -374,10 +376,11 @@
                 <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Ekstrakulikuler</h2>
                 <p class="text-gray-600 dark:text-gray-400">Ektrakulikuler yang ada di sekolah kami</p>
             </div>
-            <a class="hidden sm:inline-flex items-center px-4 py-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 rounded-full text-xs font-semibold text-gray-700 dark:text-gray-200 transition"
-                href="#">
-                Selengkapnya <span class="material-icons text-sm ml-1">arrow_forward</span>
-            </a>
+           <a class="hidden sm:inline-flex items-center px-4 py-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 rounded-full text-xs font-semibold text-gray-700 dark:text-gray-200 transition"
+                    href="{{ route('ekstrakulikuler') }}">
+                    Selengkapnya
+                    <span class="material-icons text-sm ml-1">arrow_forward</span>
+                </a>
         </div>
         <div class="grid md:grid-cols-2 gap-8">
             <div class="rounded-xl overflow-hidden shadow">

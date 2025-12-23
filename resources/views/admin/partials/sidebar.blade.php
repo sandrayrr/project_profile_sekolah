@@ -137,6 +137,12 @@
         </a>
 
         <div class="nav-title">Content</div>
+
+         <a href="{{ route('admin.beranda.index') }}"
+            class="nav-link {{ request()->routeIs('admin.beranda*') ? 'active' : '' }}">
+            <i class="material-icons">summarize</i> Beranda
+        </a>
+
         <a href="{{ route('admin.artikel.index') }}"
             class="nav-link {{ request()->routeIs('admin.artikel*') ? 'active' : '' }}">
             <i class="bi bi-file-text"></i> Artikel
@@ -146,23 +152,21 @@
             class="nav-link {{ request()->routeIs('admin.galeri*') ? 'active' : '' }}">
             <i class="bi bi-image"></i> Galeri
         </a>
-<a href="{{ route('admin.beranda.index') }}"
-   class="nav-link {{ request()->routeIs('admin.beranda*') ? 'active' : '' }}">
-   <i class="material-icons">summarize</i> Beranda
-</a>
 
         <a href="{{ route('admin.prestasi.index') }}"
             class="nav-link {{ request()->routeIs('admin.prestasi*') ? 'active' : '' }}">
             <i class="bi bi-award"></i> Prestasi
         </a>
-<<<<<<< Updated upstream
-=======
 
         <a href="{{ route('admin.fasilitas.index') }}"
             class="nav-link {{ request()->routeIs('admin.fasilitas*') ? 'active' : '' }}">
             <i class="material-icons">business</i> Fasilitas
         </a>
->>>>>>> Stashed changes
+
+        <a href="{{ route('admin.agenda.index') }}"
+            class="nav-link {{ request()->routeIs('admin.agenda*') ? 'active' : '' }}">
+            <i class="material-icons">event</i> Agenda
+        </a>
 
         <div class="nav-title">User</div>
         <a href="{{ route('admin.users.index') }}"

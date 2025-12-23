@@ -20,8 +20,8 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: "#3b82f6",
-                        "background-light": "#f3f4f6",
+                        primary: "#6b7280", // Warna abu-abu sebagai pengganti biru
+                        "background-light": "#f9fafb",
                         "background-dark": "#111827",
                         "card-light": "#ffffff",
                         "card-dark": "#1f2937",
@@ -31,104 +31,252 @@
                     fontFamily: {
                         sans: ["Inter", "sans-serif"],
                     },
+                    animation: {
+                        'fade-in': 'fadeIn 0.6s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
                 },
             },
         };
     </script>
+    <style>
+        /* Custom styles for visual enhancement */
+        .gallery-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .gallery-card:hover {
+            transform: translateY(-8px);
+        }
+        .gallery-image-container .overlay {
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 60%);
+        }
+        .gallery-card:hover .overlay {
+            opacity: 1;
+        }
+        .gallery-card:hover .overlay-text {
+            transform: translateY(0);
+        }
+        .overlay-text {
+            transform: translateY(10px);
+            transition: transform 0.3s ease;
+        }
+
+        /* --- PERBAIKAN PAGINATION --- */
+        /* Menghilangkan margin default dari pagination Laravel */
+        .pagination {
+            @apply flex list-none -space-x-px;
+        }
+
+        /* Style untuk setiap tombol/link pagination */
+        .page-link {
+            @apply relative block py-2 px-3 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white;
+        }
+
+        /* Style untuk tombol aktif (halaman saat ini) */
+        .page-item.active .page-link {
+            @apply z-10 text-primary-600 bg-primary-50 border-primary-500 dark:text-primary-300 dark:bg-primary-900 dark:border-primary-400;
+        }
+
+        /* Style untuk tombol yang dinonaktifkan (Previous/Next di ujung) */
+        .page-item.disabled .page-link {
+            @apply opacity-50 cursor-not-allowed bg-gray-100 dark:bg-gray-800;
+        }
+        
+        /* Membulatkan sudut untuk tombol pertama dan terakhir */
+        .page-item:first-child .page-link {
+            @apply rounded-l-lg;
+        }
+
+        .page-item:last-child .page-link {
+            @apply rounded-r-lg;
+        }
+    </style>
 </head>
 
 <body
     class="bg-background-light dark:bg-background-dark 
            text-gray-800 dark:text-gray-100 
-           font-sans transition-colors duration-200">
+           font-sans transition-colors duration-300">
 
     <!-- NAVBAR -->
-    <header class="bg-card-light dark:bg-card-dark shadow-sm border-b border-border-light dark:border-border-dark">
+    <header class="bg-card-light dark:bg-card-dark shadow-sm border-b border-border-light dark:border-border-dark sticky top-0 z-40">
         @include('layouts.navbar')
     </header>
 
     <!-- HEADER PAGE -->
-    <div class="bg-card-light dark:bg-card-dark py-14 border-b border-border-light dark:border-border-dark">
-        <div class="container mx-auto px-4">
-            <h1 class="text-3xl font-bold text-gray-900 dark:text-white">
+    <div class="relative bg-gradient-to-br from-primary to-gray-600 dark:from-gray-700 dark:to-gray-900 py-20">
+        <!-- Optional: Add a subtle pattern overlay -->
+        <div class="absolute inset-0 bg-black opacity-10"></div>
+        <div class="relative container mx-auto px-4">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-3">
                 Galeri
             </h1>
-            <p class="text-gray-600 dark:text-gray-400 mt-2">
-                Dokumentasi kegiatan SMK Negeri 1 Kawali
+            <p class="text-gray-100 text-lg md:text-xl max-w-2xl">
+                Dokumentasi kegiatan, prestasi, dan momen berharga di SMK Negeri 1 Kawali.
             </p>
         </div>
     </div>
 
-    <!-- CONTENT -->
-    <main class="container mx-auto px-4 py-10 lg:py-14">
+    <!-- SEARCH -->
+    <div class="max-w-4xl mx-auto mt-10 px-4">
+        <form action="#" method="GET"
+            class="flex shadow-md rounded-xl overflow-hidden">
+            <div class="relative flex-grow">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <i class="fa-solid fa-search text-gray-400"></i>
+                </div>
+                <input
+                    name="cari"
+                    value="{{ request('cari') }}"
+                    class="w-full pl-10 pr-3 py-4 bg-slate-50 dark:bg-slate-800 border-none focus:ring-2 focus:ring-primary focus:outline-none"
+                    placeholder="Cari Galeri..."
+                    type="text"
+                    id="searchInput">
+            </div>
+            <button
+                type="submit"
+                class="bg-primary text-white px-8 py-4 font-medium hover:bg-gray-700 transition-colors">
+                Cari
+            </button>
+        </form>
+    </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    <!-- CONTENT -->
+    <main class="container mx-auto px-4 py-12 lg:py-16 min-h-screen">
+
+        <!-- NOTIFIKASI HASIL PENCARIAN -->
+        @if(request('cari'))
+        <div class="mb-6 bg-gray-50 dark:bg-gray-900/20 border-l-4 border-gray-500 p-4 rounded">
+            <p class="text-sm">
+                Menampilkan hasil pencarian untuk: <strong>{{ request('cari') }}</strong>
+            </p>
+        </div>
+        @endif
+
+        <!-- GRID CARD -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-12">
 
             @forelse ($galeri as $item)
             <div
-                class="bg-card-light dark:bg-card-dark 
-                       rounded-xl shadow-sm border border-border-light dark:border-border-dark 
-                       overflow-hidden group hover:shadow-md transition-shadow">
+                class="gallery-card bg-card-light dark:bg-card-dark 
+                       rounded-2xl shadow-lg border border-border-light dark:border-border-dark 
+                       overflow-hidden animate-fade-in group">
 
                 <!-- FOTO -->
-                <div class="aspect-[4/3] bg-gray-200 dark:bg-gray-700 relative overflow-hidden">
+                <div class="gallery-image-container aspect-[4/3] bg-gray-200 dark:bg-gray-700 relative overflow-hidden">
                     @if ($item->foto)
                         <img
                             src="{{ asset('storage/' . $item->foto) }}"
                             alt="{{ $item->judul }}"
-                            class="absolute inset-0 w-full h-full object-cover 
-                                   transition-transform duration-300 group-hover:scale-105">
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                     @else
-                        <div class="w-full h-full flex items-center justify-center">
-                            <span class="material-icons text-5xl text-gray-400 dark:text-gray-500">
-                                image
-                            </span>
+                        <div class="w-full h-full flex items-center justify-center text-gray-400 dark:text-gray-500">
+                            <span class="material-icons text-6xl">image_not_supported</span>
                         </div>
                     @endif
 
                     <!-- OVERLAY -->
                     <div
-                        class="absolute inset-0 bg-black/0 
-                               group-hover:bg-black/20 
-                               transition-colors duration-300 
-                               flex items-center justify-center">
-
-                        <span
-                            class="text-white font-semibold opacity-0 
-                                   group-hover:opacity-100 transition">
-                            Lihat Foto
-                        </span>
+                        class="overlay absolute inset-0 opacity-0 transition-opacity duration-300 flex items-end p-4">
+                        <div class="overlay-text text-white">
+                           
+                            <p class="text-sm opacity-90">{{ \Carbon\Carbon::parse($item->tanggal)->format('d M Y') }}</p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- JUDUL -->
-                <div class="p-4">
-                    <h3
-                        class="text-lg font-semibold 
-                               text-gray-900 dark:text-white 
-                               text-center">
-                        {{ $item->judul }}
-                    </h3>
-                </div>
+                <!-- BODY -->
+                <div class="p-5 flex flex-col flex-grow">
+                    <div class="flex justify-end mb-3">
+                        <span class="text-xs bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary-300 px-3 py-1 rounded-full font-medium">
+                            Dokumentasi
+                        </span>
+                    </div>
 
+                    <div class="border-t pt-4 flex-grow">
+                        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white truncate">
+                            {{ $item->judul }}
+                        </h3>
+                        <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                            <i class="far fa-calendar-alt mr-2"></i>
+                            <span>{{ \Carbon\Carbon::parse($item->tanggal)->translatedFormat('d F Y') }}</span>
+                        </div>
+                    </div>
+
+                    
+                </div>
             </div>
             @empty
-                <div class="col-span-3 text-center text-gray-500 dark:text-gray-400 py-16">
-                    Belum ada data galeri
+                <div class="col-span-full flex flex-col items-center justify-center text-center py-20">
+                    <div class="w-24 h-24 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mb-6">
+                        <i class="material-icons text-5xl text-gray-400">photo_library</i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-700 dark:text-gray-300 mb-2">
+                        Belum Ada Galeri
+                    </h3>
+                    <p class="text-gray-500 dark:text-gray-400 max-w-md">
+                        Sepertinya belum ada foto yang ditambahkan. Kunjungi kembali lain hari untuk melihat dokumentasi terbaru dari kami.
+                    </p>
                 </div>
             @endforelse
 
         </div>
 
-        <!-- PAGINATION -->
-        <div class="mt-12 flex justify-center">
+        <!-- PAGINATION YANG TELAH DIPERBAIKI -->
+        @if($galeri->hasPages())
+        <div class="mt-16 flex justify-center">
+            <!-- Menggunakan default Laravel pagination, styling di-handle oleh CSS -->
             {{ $galeri->links() }}
         </div>
+        @endif
 
     </main>
 
     <!-- FOOTER -->
     @include('layouts.footer')
+
+    <!-- DARK MODE BUTTON -->
+    <button
+        id="darkToggle"
+        class="fixed bottom-6 right-6 bg-primary text-white p-3 rounded-full shadow-lg z-50 hover:bg-gray-600 transition-colors">
+        <i class="fa-solid fa-moon dark:hidden"></i>
+        <i class="fa-solid fa-sun hidden dark:block"></i>
+    </button>
+
+    <script>
+        // Dark mode toggle
+        const toggle = document.getElementById('darkToggle');
+        const html = document.documentElement;
+
+        if (localStorage.getItem('theme') === 'dark') {
+            html.classList.add('dark');
+        }
+
+        toggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            localStorage.setItem('theme',
+                html.classList.contains('dark') ? 'dark' : 'light'
+            );
+        });
+
+        // Search functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            
+            // Auto-submit form on Enter key
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    this.form.submit();
+                }
+            });
+        });
+    </script>
 
 </body>
 
