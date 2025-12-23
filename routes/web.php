@@ -15,6 +15,7 @@ use App\Http\Controllers\front\AgendaController as FrontAgendaController;
 use App\Http\Controllers\front\ArtikelController as FrontArtikelController;
 use App\Http\Controllers\front\PrestasiController as FrontPrestasiController;
 use App\Http\Controllers\front\GaleriController as FrontGaleriController;
+use App\Http\Controllers\front\FasilitasController as FrontFasilitasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +30,7 @@ Route::get('/galeri', [FrontGaleriController::class , 'index'])->name('galeri');
 Route::get('/prestasi', [FrontPrestasiController::class , 'index'])->name('prestasi');
 Route::get('/agenda', [FrontAgendaController::class , 'index'])->name('agenda');
 Route::view('/link', 'pages.link')->name('link');
-Route::view('/fasilitas', 'pages.fasilitas')->name('fasilitas');
+Route::get('/fasilitas', [FrontFasilitasController::class, 'index'])->name('fasilitas');
 Route::view('/akreditasi', 'pages.akreditasi')->name('akreditasi');
 
 Route::view('/ekstrakulikuler', 'pages.ekstrakulikuler')->name('ekstrakulikuler');

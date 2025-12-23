@@ -9,13 +9,7 @@
     <!-- Judul Halaman dan Breadcrumb -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800"><i class="fas fa-newspaper me-2"></i>Tambah Artikel Baru</h1>
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('admin.artikel.index') }}">Artikel</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Tambah</li>
-            </ol>
-        </nav>
+       
     </div>
 
     <!-- Card untuk Form -->

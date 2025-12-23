@@ -6,7 +6,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>SMK Negeri 1 Kawali - Homepage</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
-     <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
         rel="stylesheet" />
@@ -15,7 +15,7 @@
         rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <script>
         tailwind.config = {
             darkMode: "class",
@@ -53,7 +53,7 @@
 
 <body
     class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200 transition-colors duration-300">
-   
+
     @include('layouts.navbar')
     <section class="relative bg-gray-200 dark:bg-gray-800 h-[500px] flex items-center justify-center overflow-hidden">
         <img alt="School Atmosphere" class="absolute inset-0 w-full h-full object-cover opacity-30 dark:opacity-20"
@@ -88,44 +88,44 @@
                 <div class="shrink-0">
                     <div class="w-24 h-24 rounded-full bg-gray-300 dark:bg-gray-600 overflow-hidden shadow-inner">
                         <img alt="Kepala Sekolah" class="w-full h-full object-cover"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxngcCk9KX7vesppucB0OeSFhT02rOmd--W_H6cZ9c-2P2SIDRPALnS2AKxQI9lGadFvafEuHfWGBPC3FORB6mEF-MMWAfQN6OiT-LgNz-PEb8zgT4EuhQlOWjEWmmfN7ken-w67NmoRe3A3AnOQ-nIYDESWxTL8Hqn98v3cnYtL1istbX3HgZZQ7QZFb0U18hBcDVGobPwot9LSs2Bo1szfgI36cigKJ9Y0Uwg0tKJyc-g35nkVFw_eD1tnYNWy1t9w0B9M7pj5Yu" />
+                            src="{{ asset('storage/artikel/dede.jpg') }}">
                     </div>
                 </div>
-<div class="w-full max-w-full">
-    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 break-words">
-        {{ $beranda->judul ?? 'Sambutan Kepala Sekolah' }}
-    </h3>
+                <div class="w-full max-w-full">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 break-words">
+                        {{ $beranda->judul ?? 'Sambutan Kepala Sekolah' }}
+                    </h3>
 
-    <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed break-words whitespace-normal">
-        {{ $beranda->deskripsi ?? 'Belum ada sambutan.' }}
-    </p>
-</div>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed break-words whitespace-normal">
+                        {{ $beranda->deskripsi ?? 'Belum ada sambutan.' }}
+                    </p>
+                </div>
 
 
 
             </div>
-           <div class="grid grid-cols-3 gap-4 text-center divide-x divide-gray-200 dark:divide-gray-700">
-    <div class="px-2">
-        <span class="block text-3xl font-bold text-primary">
-            {{ $beranda->jumlah_siswa ?? 0 }}
-        </span>
-        <span class="text-xs text-gray-500 uppercase tracking-wide">Siswa</span>
-    </div>
+            <div class="grid grid-cols-3 gap-4 text-center divide-x divide-gray-200 dark:divide-gray-700">
+                <div class="px-2">
+                    <span class="block text-3xl font-bold text-primary">
+                        {{ $beranda->jumlah_siswa ?? 0 }}
+                    </span>
+                    <span class="text-xs text-gray-500 uppercase tracking-wide">Siswa</span>
+                </div>
 
-    <div class="px-2">
-        <span class="block text-3xl font-bold text-primary">
-            {{ $beranda->jumlah_guru ?? 0 }}
-        </span>
-        <span class="text-xs text-gray-500 uppercase tracking-wide">Guru</span>
-    </div>
+                <div class="px-2">
+                    <span class="block text-3xl font-bold text-primary">
+                        {{ $beranda->jumlah_guru ?? 0 }}
+                    </span>
+                    <span class="text-xs text-gray-500 uppercase tracking-wide">Guru</span>
+                </div>
 
-    <div class="px-2">
-        <span class="block text-3xl font-bold text-primary">
-            {{ $beranda->jumlah_jurusan ?? 0 }}
-        </span>
-        <span class="text-xs text-gray-500 uppercase tracking-wide">Jurusan</span>
-    </div>
-</div>
+                <div class="px-2">
+                    <span class="block text-3xl font-bold text-primary">
+                        {{ $beranda->jumlah_jurusan ?? 0 }}
+                    </span>
+                    <span class="text-xs text-gray-500 uppercase tracking-wide">Jurusan</span>
+                </div>
+            </div>
 
         </div>
     </div>
@@ -320,7 +320,8 @@
             <div
                 class="flex bg-white dark:bg-surface-dark rounded-xl overflow-hidden shadow hover:shadow-lg transition h-48">
                 <div class="w-1/2 p-6 flex flex-col justify-center bg-gray-100 dark:bg-gray-800">
-                    <h3 class="text-xl font-bold text-gray-900 dark:text-white">Otomatisasi Tata Kelola Perkantoran</h3>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white">Otomatisasi Tata Kelola Perkantoran
+                    </h3>
                     <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">Keahlian administrasi dan manajemen
                         perkantoran...</p>
                 </div>
@@ -446,7 +447,7 @@
             </div>
         </div>
     </section>
-   @include('layouts.footer')
+    @include('layouts.footer')
 </body>
 
 </html>
