@@ -46,14 +46,14 @@ class UserController extends Controller
 
         User::create($data);
 
-        return redirect()->route('admin.crud.users.index')
+        return redirect()->route('admin.users.index')
             ->with('success', 'User berhasil dibuat.');
     }
 
-    public function show(User $user)
-    {
-        return view('admin.crud.users.show', compact('user'));
-    }
+    // public function show(User $user)
+    // {
+    //     return view('admin.crud.users.show', compact('user'));
+    // }
 
     public function edit(User $user)
     {
@@ -77,7 +77,7 @@ class UserController extends Controller
 
         $user->update($data);
 
-        return redirect()->route('admin.crud.users.index')
+        return redirect()->route('admin.users.index')
             ->with('success', 'User berhasil diupdate.');
     }
 
@@ -90,7 +90,7 @@ class UserController extends Controller
 
         $user->delete();
 
-        return redirect()->route('admin.crud.users.index')
+        return redirect()->route('admin.users.index')
             ->with('success', 'User berhasil dihapus.');
     }
 }

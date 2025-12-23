@@ -51,7 +51,7 @@
             <div class="lg:col-span-2">
 <div class="lg:col-span-2">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        @foreach ($artikel as $item)
+        @foreach ($artikels as $item)
         <div
             class="bg-card-light dark:bg-card-dark rounded-xl shadow-sm border border-border-light dark:border-border-dark overflow-hidden hover:shadow-md transition-shadow">
 

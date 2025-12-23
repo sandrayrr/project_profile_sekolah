@@ -151,10 +151,6 @@
            class="nav-link {{ request()->routeIs('admin.prestasi*') ? 'active' : '' }}">
             <i class="bi bi-award"></i> Prestasi
         </a>
-        <a href="{{ route('admin.fasilitas.index') }}"
-           class="nav-link {{ request()->routeIs('admin.fasilitas*') ? 'active' : '' }}">
-            <i class="bi bi-award"></i> Fasilitas
-        </a>
 
         <div class="nav-title">User</div>
         <a href="{{ route('admin.users.index') }}"

@@ -3,52 +3,80 @@
 @section('title','Tambah Galeri')
 
 @section('content')
-<div class="container mt-4">
-    <div class="card shadow-sm">
-        <div class="card-header bg-primary text-white">
-            <h5 class="mb-0">Tambah Galeri</h5>
-        </div>
+<div class="container-fluid">
 
+    {{-- HEADER --}}
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <div>
+            <h1 class="h4 fw-bold mb-1">
+                🖼️ Tambah Galeri
+            </h1>
+            <small class="text-muted">
+                Tambahkan foto kegiatan ke galeri sekolah
+            </small>
+        </div>
+    </div>
+
+    {{-- CARD FORM --}}
+    <div class="card shadow-sm border-0">
         <div class="card-body">
-            <form action="{{ route('admin.galeri.store') }}" method="POST" enctype="multipart/form-data">
+
+            <form action="{{ route('admin.galeri.store') }}"
+                  method="POST"
+                  enctype="multipart/form-data">
                 @csrf
 
+                {{-- JUDUL --}}
                 <div class="mb-3">
-                    <label class="form-label">Judul Galeri</label>
-                    <input 
-                        type="text" 
-                        name="judul" 
-                        class="form-control @error('judul') is-invalid @enderror"
-                        placeholder="Masukkan judul galeri"
-                        value="{{ old('judul') }}"
-                    >
+                    <label class="form-label fw-semibold">
+                        Judul Foto
+                    </label>
+                    <input type="text"
+                           name="judul"
+                           class="form-control @error('judul') is-invalid @enderror"
+                           placeholder="Contoh: Kegiatan Upacara Bendera"
+                           value="{{ old('judul') }}">
+
                     @error('judul')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
 
-                <div class="mb-3">
-                    <label class="form-label">Foto</label>
-                    <input 
-                        type="file" 
-                        name="foto" 
-                        class="form-control @error('foto') is-invalid @enderror"
-                    >
+                {{-- FOTO --}}
+                <div class="mb-4">
+                    <label class="form-label fw-semibold">
+                        Upload Foto
+                    </label>
+                    <input type="file"
+                           name="foto"
+                           class="form-control @error('foto') is-invalid @enderror">
+
+                    <small class="text-muted d-block mt-1">
+                        Format JPG / PNG, maksimal 2MB
+                    </small>
+
                     @error('foto')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
 
-                <div class="d-flex justify-content-between">
-                    <a href="{{ route('admin.galeri.index') }}" class="btn btn-secondary">
-                        Kembali
+                {{-- ACTION --}}
+                <div class="d-flex justify-content-end gap-2">
+                    <a href="{{ route('admin.galeri.index') }}"
+                       class="btn btn-secondary">
+                        <i class="bi bi-arrow-left"></i> Kembali
                     </a>
-                    <button type="submit" class="btn btn-primary">
-                        Simpan
+
+                    <button type="submit"
+                            class="btn btn-primary">
+                        <i class="bi bi-save"></i> Simpan Galeri
                     </button>
                 </div>
+
             </form>
+
         </div>
     </div>
+
 </div>
 @endsection

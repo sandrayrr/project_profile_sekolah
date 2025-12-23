@@ -4,68 +4,91 @@
 
 @section('content')
 
-<div class="card shadow-sm">
+<form action="{{ route('admin.beranda.store') }}" method="POST">
+@csrf
+
+<div class="card shadow-sm border-0">
+
+    {{-- HEADER --}}
     <div class="card-header bg-white fw-bold">
-        Tambah Data Beranda
+        <i class="bi bi-house-door me-1"></i> Tambah Konten Beranda
     </div>
 
     <div class="card-body">
-        <form action="{{ route('admin.beranda.store') }}" method="POST">
-            @csrf
 
-            <div class="mb-3">
-                <label class="form-label fw-semibold">Judul</label>
-                <input type="text" name="judul"
-                       class="form-control @error('judul') is-invalid @enderror"
-                       value="{{ old('judul') }}">
+        {{-- ================= SAMBUTAN ================= --}}
+        <h6 class="fw-bold mb-3 text-primary">
+            <i class="bi bi-megaphone me-1"></i> Sambutan
+        </h6>
 
-                @error('judul')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
+        <div class="mb-3">
+            <label class="form-label fw-semibold">Judul Sambutan</label>
+            <input type="text"
+                   name="judul"
+                   class="form-control @error('judul') is-invalid @enderror"
+                   placeholder="Contoh: Sambutan Kepala Sekolah"
+                   value="{{ old('judul') }}">
+
+            @error('judul')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="mb-4">
+            <label class="form-label fw-semibold">Deskripsi Sambutan</label>
+            <textarea name="deskripsi"
+                      rows="4"
+                      class="form-control"
+                      placeholder="Isi sambutan kepala sekolah...">{{ old('deskripsi') }}</textarea>
+        </div>
+
+        <hr>
+
+        {{-- ================= STATISTIK ================= --}}
+        <h6 class="fw-bold mb-3 text-success">
+            <i class="bi bi-bar-chart-fill me-1"></i> Statistik Sekolah
+        </h6>
+
+        <div class="row g-3 mb-4">
+            <div class="col-md-4">
+                <label class="form-label fw-semibold">Jumlah Siswa</label>
+                <input type="number"
+                       name="jumlah_siswa"
+                       class="form-control"
+                       value="{{ old('jumlah_siswa', 0) }}">
             </div>
 
-            <div class="mb-3">
-                <label class="form-label fw-semibold">Deskripsi</label>
-                <textarea name="deskripsi"
-                          rows="4"
-                          class="form-control">{{ old('deskripsi') }}</textarea>
+            <div class="col-md-4">
+                <label class="form-label fw-semibold">Jumlah Guru</label>
+                <input type="number"
+                       name="jumlah_guru"
+                       class="form-control"
+                       value="{{ old('jumlah_guru', 0) }}">
             </div>
 
-            <div class="d-flex gap-2">
-                <button class="btn btn-success">
-                    <i class="bi bi-save"></i> Simpan
-                </button>
-
-                <a href="{{ route('admin.beranda.index') }}"
-                   class="btn btn-secondary">
-                    Kembali
-                </a>
+            <div class="col-md-4">
+                <label class="form-label fw-semibold">Jumlah Jurusan</label>
+                <input type="number"
+                       name="jumlah_jurusan"
+                       class="form-control"
+                       value="{{ old('jumlah_jurusan', 0) }}">
             </div>
-            <div class="row">
-    <div class="col-md-4">
-        <label class="form-label">Jumlah Siswa</label>
-        <input type="number" name="jumlah_siswa"
-               class="form-control"
-               value="{{ old('jumlah_siswa', $beranda->jumlah_siswa ?? 0) }}">
-    </div>
+        </div>
 
-    <div class="col-md-4">
-        <label class="form-label">Jumlah Guru</label>
-        <input type="number" name="jumlah_guru"
-               class="form-control"
-               value="{{ old('jumlah_guru', $beranda->jumlah_guru ?? 0) }}">
-    </div>
+        {{-- ================= BUTTON ================= --}}
+        <div class="d-flex justify-content-end gap-2">
+            <a href="{{ route('admin.beranda.index') }}"
+               class="btn btn-secondary">
+                <i class="bi bi-arrow-left"></i> Kembali
+            </a>
 
-    <div class="col-md-4">
-        <label class="form-label">Jumlah Jurusan</label>
-        <input type="number" name="jumlah_jurusan"
-               class="form-control"
-               value="{{ old('jumlah_jurusan', $beranda->jumlah_jurusan ?? 0) }}">
+            <button class="btn btn-success">
+                <i class="bi bi-save"></i> Simpan Beranda
+            </button>
+        </div>
+
     </div>
 </div>
- 
-        </form>
-    </div>
-</div>
 
+</form>
 @endsection
