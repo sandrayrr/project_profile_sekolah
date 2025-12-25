@@ -3,24 +3,92 @@
 @section('title','Tambah Galeri')
 
 @section('content')
-<div class="container-fluid">
 
-    {{-- HEADER --}}
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <div>
-            <h1 class="h4 fw-bold mb-1">
+<style>
+/* === OVERLAY === */
+.popup-overlay{
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.35);
+    backdrop-filter: blur(6px);
+    z-index: 999;
+}
+
+/* === CONTAINER === */
+.popup-container{
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+/* === CARD === */
+.popup-card{
+    width: 520px;
+    max-width: 95%;
+    background: #fff;
+    border-radius: 18px;
+    animation: popupScale .25s ease;
+    box-shadow: 0 30px 80px rgba(0,0,0,.25);
+}
+
+/* === HEADER === */
+.popup-header{
+    padding: 18px 22px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.popup-header h5{
+    margin: 0;
+    font-weight: 600;
+}
+
+.popup-close{
+    font-size: 26px;
+    text-decoration: none;
+    color: #666;
+    line-height: 1;
+}
+
+/* === BODY === */
+.popup-body{
+    padding: 22px;
+}
+
+/* === ANIMATION === */
+@keyframes popupScale{
+    from{
+        opacity: 0;
+        transform: scale(.96);
+    }
+    to{
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+</style>
+
+<div class="popup-overlay"></div>
+
+<div class="popup-container">
+    <div class="popup-card">
+
+        {{-- HEADER --}}
+        <div class="popup-header">
+            <h5>
                 🖼️ Tambah Galeri
-            </h1>
-            <small class="text-muted">
-                Tambahkan foto kegiatan ke galeri sekolah
-            </small>
+            </h5>
+            <a href="{{ route('admin.galeri.index') }}"
+               class="popup-close">&times;</a>
         </div>
-    </div>
 
-    {{-- CARD FORM --}}
-    <div class="card shadow-sm border-0">
-        <div class="card-body">
-
+        {{-- BODY --}}
+        <div class="popup-body">
             <form action="{{ route('admin.galeri.store') }}"
                   method="POST"
                   enctype="multipart/form-data">
@@ -52,7 +120,7 @@
                            class="form-control @error('foto') is-invalid @enderror">
 
                     <small class="text-muted d-block mt-1">
-                        Format JPG / PNG, maksimal 2MB
+                        JPG / PNG • Maks 2MB
                     </small>
 
                     @error('foto')
@@ -63,20 +131,19 @@
                 {{-- ACTION --}}
                 <div class="d-flex justify-content-end gap-2">
                     <a href="{{ route('admin.galeri.index') }}"
-                       class="btn btn-secondary">
-                        <i class="bi bi-arrow-left"></i> Kembali
+                       class="btn btn-light">
+                        Batal
                     </a>
 
-                    <button type="submit"
-                            class="btn btn-primary">
-                        <i class="bi bi-save"></i> Simpan Galeri
+                    <button class="btn btn-primary">
+                        <i class="bi bi-save me-1"></i> Simpan
                     </button>
                 </div>
 
             </form>
-
         </div>
-    </div>
 
+    </div>
 </div>
+
 @endsection

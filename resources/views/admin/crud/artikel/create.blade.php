@@ -1,114 +1,182 @@
-{{-- resources/views/admin/artikel/create.blade.php --}}
 @extends('admin.layout')
 
 @section('title', 'Tambah Artikel')
 
 @section('content')
-<div class="container-fluid">
 
-    <!-- Judul Halaman dan Breadcrumb -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800"><i class="fas fa-newspaper me-2"></i>Tambah Artikel Baru</h1>
-       
-    </div>
+<style>
+/* === OVERLAY === */
+.popup-overlay{
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.35);
+    backdrop-filter: blur(6px);
+    z-index: 999;
+}
 
-    <!-- Card untuk Form -->
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Form Artikel</h6>
+/* === CONTAINER === */
+.popup-container{
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+/* === CARD === */
+.popup-card{
+    width: 900px;
+    max-width: 95%;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: #fff;
+    border-radius: 18px;
+    animation: popupScale .25s ease;
+    box-shadow: 0 30px 80px rgba(0,0,0,.25);
+}
+
+/* === HEADER === */
+.popup-header{
+    padding: 18px 24px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.popup-header h5{
+    margin: 0;
+    font-weight: 600;
+}
+
+.popup-close{
+    font-size: 28px;
+    text-decoration: none;
+    color: #666;
+    line-height: 1;
+}
+
+/* === BODY === */
+.popup-body{
+    padding: 24px;
+}
+
+/* === ANIMATION === */
+@keyframes popupScale{
+    from{
+        opacity: 0;
+        transform: scale(.96);
+    }
+    to{
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+</style>
+
+<div class="popup-overlay"></div>
+
+<div class="popup-container">
+    <div class="popup-card">
+
+        {{-- HEADER --}}
+        <div class="popup-header">
+            <h5>
+                <i class="fas fa-newspaper me-2"></i>
+                Tambah Artikel Baru
+            </h5>
+            <a href="{{ route('admin.artikel.index') }}"
+               class="popup-close">&times;</a>
         </div>
-        <div class="card-body">
-            <form action="{{ route('admin.artikel.store') }}" method="POST" enctype="multipart/form-data">
+
+        {{-- BODY --}}
+        <div class="popup-body">
+            <form action="{{ route('admin.artikel.store') }}"
+                  method="POST"
+                  enctype="multipart/form-data">
                 @csrf
 
-                <!-- Field Judul -->
-                <div class="row mb-3">
-                    <label for="judul" class="col-md-2 col-form-label fw-bold">Judul</label>
-                    <div class="col-md-10">
-                        <input type="text" name="judul" id="judul" class="form-control @error('judul') is-invalid @enderror" value="{{ old('judul') }}" placeholder="Masukkan judul artikel" required>
-                        @error('judul')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
+                {{-- JUDUL --}}
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Judul</label>
+                    <input type="text"
+                           name="judul"
+                           class="form-control @error('judul') is-invalid @enderror"
+                           value="{{ old('judul') }}"
+                           placeholder="Masukkan judul artikel"
+                           required>
+                    @error('judul')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
 
-                <!-- Field Tanggal -->
-                <div class="row mb-3">
-                    <label for="tanggal" class="col-md-2 col-form-label fw-bold">Tanggal</label>
-                    <div class="col-md-10">
-                        <input type="date" name="tanggal" id="tanggal" class="form-control @error('tanggal') is-invalid @enderror" value="{{ old('tanggal') ?? date('Y-m-d') }}" required>
-                        @error('tanggal')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
+                {{-- TANGGAL --}}
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Tanggal</label>
+                    <input type="date"
+                           name="tanggal"
+                           class="form-control @error('tanggal') is-invalid @enderror"
+                           value="{{ old('tanggal') ?? date('Y-m-d') }}"
+                           required>
+                    @error('tanggal')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
 
-                <!-- Field Deskripsi (dengan Rich Text Editor) -->
-                <div class="row mb-3">
-                    <label for="deskripsi" class="col-md-2 col-form-label fw-bold">Deskripsi</label>
-                    <div class="col-md-10">
-                        <textarea name="deskripsi" id="deskripsi" class="form-control @error('deskripsi') is-invalid @enderror" rows="10">{{ old('deskripsi') }}</textarea>
-                        @error('deskripsi')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
+                {{-- DESKRIPSI --}}
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Deskripsi</label>
+                    <textarea name="deskripsi"
+                              id="deskripsi"
+                              rows="10"
+                              class="form-control @error('deskripsi') is-invalid @enderror">{{ old('deskripsi') }}</textarea>
+                    @error('deskripsi')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
 
-                <!-- Field Foto -->
-                <div class="row mb-3">
-                    <label for="foto" class="col-md-2 col-form-label fw-bold">Foto</label>
-                    <div class="col-md-10">
-                        <input type="file" name="foto" id="foto" class="form-control @error('foto') is-invalid @enderror" accept="image/*">
-                        <div class="form-text">Pilih foto untuk artikel (Format: JPG, PNG, GIF. Maks: 2MB).</div>
-                        @error('foto')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
+                {{-- FOTO --}}
+                <div class="mb-4">
+                    <label class="form-label fw-bold">Foto</label>
+                    <input type="file"
+                           name="foto"
+                           class="form-control @error('foto') is-invalid @enderror"
+                           accept="image/*">
+                    <small class="text-muted">
+                        JPG, PNG, GIF • Maks 2MB
+                    </small>
+                    @error('foto')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
 
-                <!-- Tombol Aksi -->
-                <div class="row">
-                    <div class="col-md-10 offset-md-2">
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-save me-1"></i> Simpan Artikel
-                        </button>
-                        <a href="{{ route('admin.artikel.index') }}" class="btn btn-secondary">
-                            <i class="fas fa-times-circle me-1"></i> Batal
-                        </a>
-                    </div>
+                {{-- BUTTON --}}
+                <div class="d-flex justify-content-end gap-2">
+                    <a href="{{ route('admin.artikel.index') }}"
+                       class="btn btn-light">
+                        Batal
+                    </a>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-save me-1"></i> Simpan Artikel
+                    </button>
                 </div>
             </form>
         </div>
+
     </div>
 </div>
 
-<!-- Script untuk Rich Text Editor (TinyMCE) -->
+@endsection
+
 @push('scripts')
 <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 <script>
     tinymce.init({
-        selector: 'textarea#deskripsi',
-        height: 400,
-        plugins: [
-            'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
-            'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
-            'insertdatetime', 'media', 'table', 'help', 'wordcount'
-        ],
-        toolbar: 'undo redo | blocks | ' +
-            'bold italic backcolor | alignleft aligncenter ' +
-            'alignright alignjustify | bullist numlist outdent indent | ' +
-            'removeformat | help',
-        content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+        selector: '#deskripsi',
+        height: 350,
+        plugins: 'lists link image preview code fullscreen',
+        toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | bullist numlist | preview code'
     });
 </script>
 @endpush
-
-@endsection

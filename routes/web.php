@@ -16,6 +16,8 @@ use App\Http\Controllers\front\ArtikelController as FrontArtikelController;
 use App\Http\Controllers\front\PrestasiController as FrontPrestasiController;
 use App\Http\Controllers\front\GaleriController as FrontGaleriController;
 use App\Http\Controllers\front\FasilitasController as FrontFasilitasController;
+use App\Http\Controllers\front\StaffPengajarController as FrontStaffPengajarController;
+use App\Http\Controllers\Admin\StaffPengajarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,8 +36,10 @@ Route::get('/fasilitas', [FrontFasilitasController::class, 'index'])->name('fasi
 Route::view('/akreditasi', 'pages.akreditasi')->name('akreditasi');
 
 Route::view('/ekstrakulikuler', 'pages.ekstrakulikuler')->name('ekstrakulikuler');
-Route::view('/ekstrakurikuler', 'pages.ekstrakurikuler')->name('ekstrakurikuler');
-Route::view('/staffpengajar', 'pages.staffpengajar')->name('staffpengajar');
+Route::get('/staffpengajar', [FrontStaffPengajarController::class, 'index'])->name('staff-pengajar');
+Route::view('/tenaga-pengajar', 'pages.tenaga-pengajar')->name('tenaga-pengajar');
+Route::view('/organisasi', 'pages.organisasi')->name('organisasi');
+
 
 
 /*
@@ -66,7 +70,6 @@ Route::middleware('auth')
         // CRUD
         Route::resource('users', UserController::class);
         Route::resource('beranda', BerandaController::class);
-        Route::resource('users', UserController::class);
         Route::resource('artikel', ArtikelController::class);
         Route::resource('galeri', GaleriController::class);
         Route::resource('prestasi', PrestasiController::class);
@@ -74,6 +77,7 @@ Route::middleware('auth')
         Route::resource('fasilitas', FasilitasController::class)
         ->parameters(['fasilitas' => 'fasilitas']);
         Route::resource('agenda', AgendaController::class);
+        Route::resource('staff-pengajar', StaffPengajarController::class);
 
         
 

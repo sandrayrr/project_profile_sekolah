@@ -3,34 +3,95 @@
 @section('title', 'Edit Artikel')
 
 @section('content')
-<div class="container-fluid">
 
-    {{-- HEADER + BREADCRUMB --}}
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">
-            <i class="bi bi-newspaper me-2"></i> Edit Artikel
-        </h1>
+<style>
+/* === OVERLAY === */
+.popup-overlay{
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.35);
+    backdrop-filter: blur(6px);
+    z-index: 999;
+}
 
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                    <a href="{{ route('admin.dashboard') }}">Dashboard</a>
-                </li>
-                <li class="breadcrumb-item">
-                    <a href="{{ route('admin.artikel.index') }}">Artikel</a>
-                </li>
-                <li class="breadcrumb-item active">Edit</li>
-            </ol>
-        </nav>
-    </div>
+/* === CONTAINER === */
+.popup-container{
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
 
-    {{-- CARD FORM --}}
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 fw-bold text-primary">Form Edit Artikel</h6>
+/* === CARD === */
+.popup-card{
+    width: 900px;
+    max-width: 95%;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: #fff;
+    border-radius: 18px;
+    animation: popupScale .25s ease;
+    box-shadow: 0 30px 80px rgba(0,0,0,.25);
+}
+
+/* === HEADER === */
+.popup-header{
+    padding: 18px 24px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.popup-header h5{
+    margin: 0;
+    font-weight: 600;
+}
+
+.popup-close{
+    font-size: 28px;
+    text-decoration: none;
+    color: #666;
+    line-height: 1;
+}
+
+/* === BODY === */
+.popup-body{
+    padding: 24px;
+}
+
+/* === ANIMATION === */
+@keyframes popupScale{
+    from{
+        opacity: 0;
+        transform: scale(.96);
+    }
+    to{
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+</style>
+
+<div class="popup-overlay"></div>
+
+<div class="popup-container">
+    <div class="popup-card">
+
+        {{-- HEADER --}}
+        <div class="popup-header">
+            <h5>
+                <i class="bi bi-newspaper me-2"></i>
+                Edit Artikel
+            </h5>
+            <a href="{{ route('admin.artikel.index') }}"
+               class="popup-close">&times;</a>
         </div>
 
-        <div class="card-body">
+        {{-- BODY --}}
+        <div class="popup-body">
             <form action="{{ route('admin.artikel.update', $artikel->id) }}"
                   method="POST"
                   enctype="multipart/form-data">
@@ -38,117 +99,94 @@
                 @method('PUT')
 
                 {{-- JUDUL --}}
-                <div class="row mb-3">
-                    <label class="col-md-2 col-form-label fw-bold">
-                        Judul
-                    </label>
-                    <div class="col-md-10">
-                        <input type="text"
-                               name="judul"
-                               class="form-control @error('judul') is-invalid @enderror"
-                               value="{{ old('judul', $artikel->judul) }}"
-                               required>
-                        @error('judul')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Judul</label>
+                    <input type="text"
+                           name="judul"
+                           class="form-control @error('judul') is-invalid @enderror"
+                           value="{{ old('judul', $artikel->judul) }}"
+                           required>
+                    @error('judul')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
 
                 {{-- TANGGAL --}}
-                <div class="row mb-3">
-                    <label class="col-md-2 col-form-label fw-bold">
-                        Tanggal
-                    </label>
-                    <div class="col-md-10">
-                        <input type="date"
-                               name="tanggal"
-                               class="form-control @error('tanggal') is-invalid @enderror"
-                               value="{{ old('tanggal', $artikel->tanggal) }}"
-                               required>
-                        @error('tanggal')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Tanggal</label>
+                    <input type="date"
+                           name="tanggal"
+                           class="form-control @error('tanggal') is-invalid @enderror"
+                           value="{{ old('tanggal', $artikel->tanggal) }}"
+                           required>
+                    @error('tanggal')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
 
                 {{-- DESKRIPSI --}}
-                <div class="row mb-3">
-                    <label class="col-md-2 col-form-label fw-bold">
-                        Deskripsi
-                    </label>
-                    <div class="col-md-10">
-                        <textarea name="deskripsi"
-                                  id="deskripsi"
-                                  rows="10"
-                                  class="form-control @error('deskripsi') is-invalid @enderror">{{ old('deskripsi', $artikel->deskripsi) }}</textarea>
-                        @error('deskripsi')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Deskripsi</label>
+                    <textarea name="deskripsi"
+                              id="deskripsi"
+                              rows="10"
+                              class="form-control @error('deskripsi') is-invalid @enderror">{{ old('deskripsi', $artikel->deskripsi) }}</textarea>
+                    @error('deskripsi')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
 
                 {{-- FOTO --}}
-                <div class="row mb-4">
-                    <label class="col-md-2 col-form-label fw-bold">
-                        Foto
-                    </label>
-                    <div class="col-md-10">
+                <div class="mb-4">
+                    <label class="form-label fw-bold">Foto</label>
 
-                        {{-- PREVIEW FOTO LAMA --}}
-                        @if($artikel->foto)
-                            <div class="mb-3">
-                                <p class="mb-1 text-muted">Foto saat ini:</p>
-                                <img src="{{ asset('storage/'.$artikel->foto) }}"
-                                     class="rounded border"
-                                     style="width:220px;height:140px;object-fit:cover;">
-                            </div>
-                        @endif
+                    @if($artikel->foto)
+                        <div class="mb-2">
+                            <img src="{{ asset('storage/'.$artikel->foto) }}"
+                                 class="rounded border"
+                                 style="width:220px;height:140px;object-fit:cover;">
+                        </div>
+                    @endif
 
-                        <input type="file"
-                               name="foto"
-                               class="form-control @error('foto') is-invalid @enderror"
-                               accept="image/*">
+                    <input type="file"
+                           name="foto"
+                           class="form-control @error('foto') is-invalid @enderror"
+                           accept="image/*">
+                    <small class="text-muted">
+                        Kosongkan jika tidak ingin mengganti foto
+                    </small>
 
-                        <small class="text-muted">
-                            Kosongkan jika tidak ingin mengganti foto
-                        </small>
-
-                        @error('foto')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
+                    @error('foto')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
 
                 {{-- BUTTON --}}
-                <div class="row">
-                    <div class="col-md-10 offset-md-2">
-                        <button class="btn btn-primary">
-                            <i class="bi bi-save"></i> Update Artikel
-                        </button>
-
-                        <a href="{{ route('admin.artikel.index') }}"
-                           class="btn btn-secondary">
-                            Kembali
-                        </a>
-                    </div>
+                <div class="d-flex justify-content-end gap-2">
+                    <a href="{{ route('admin.artikel.index') }}"
+                       class="btn btn-light">
+                        Batal
+                    </a>
+                    <button class="btn btn-primary">
+                        <i class="bi bi-save me-1"></i> Update Artikel
+                    </button>
                 </div>
-
             </form>
         </div>
+
     </div>
 </div>
 
-{{-- TINYMCE --}}
+@endsection
+
 @push('scripts')
 <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 <script>
     tinymce.init({
         selector: '#deskripsi',
-        height: 400,
+        height: 350,
         plugins: 'lists link image preview code fullscreen',
         toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | bullist numlist | preview code'
     });
 </script>
 @endpush
-
-@endsection

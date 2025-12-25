@@ -56,27 +56,28 @@
                     class="md:hidden p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800">
                     <i class="fa-solid fa-bars text-xl"></i>
                 </button>
-                <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-700 dark:text-gray-300">
+                <div class="hidden md:flex items-center gap-6 text-sm font-medium">
                     <a class="hover:text-primary transition-colors" href="{{ route('beranda') }}">Beranda</a>
-
-                    <a class="group flex items-center gap-1 hover:text-primary transition-colors"
-                        href="{{ route('profil') }}">
-                        Profil <i class="fa-solid fa-chevron-down text-xs opacity-50"></i>
-                    </a>
-
-                    <a class="group flex items-center gap-1 hover:text-primary transition-colors"
-                        href="{{ route('jurusan') }}">
-                        Jurusan <i class="fa-solid fa-chevron-down text-xs opacity-50"></i>
-                    </a>
-
+                    <div class="relative group">
+                        <a class="flex items-center gap-1 hover:text-primary transition-colors cursor-pointer">
+                            Profil <i class="fa-solid fa-chevron-down text-xs opacity-50"></i>
+                        </a>
+                        <!-- Dropdown -->
+                        <div class="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                            <a href="{{ route('profil') }}" class="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700">Profil Sekolah</a>
+                            <a href="{{ route('staff-pengajar') }}" class="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700">Staff Pengajar</a>
+                            <a href="{{ route('tenaga-pengajar') }}" class="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700">Tenaga Pengajar</a>
+                            <a href="{{ route('organisasi') }}" class="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700">Organisasi</a>
+                        </div>
+                    </div>
+                    <a class="hover:text-primary transition-colors" href="{{ route('jurusan') }}">Jurusan</a>
                     <a class="hover:text-primary transition-colors" href="{{ route('artikel') }}">Artikel</a>
                     <a class="hover:text-primary transition-colors" href="{{ route('galeri') }}">Galeri</a>
                     <a class="hover:text-primary transition-colors" href="{{ route('prestasi') }}">Prestasi</a>
                     <a class="hover:text-primary transition-colors" href="{{ route('link') }}">Link</a>
                     <a class="hover:text-primary transition-colors" href="{{ route('fasilitas') }}">Fasilitas</a>
                     <a class="hover:text-primary transition-colors" href="{{ route('akreditasi') }}">Akreditasi</a>
-                    <a class="hover:text-primary transition-colors"
-                        href="{{ route('ekstrakulikuler') }}">Ekstrakurikuler</a>
+                    <a class="hover:text-primary transition-colors" href="{{ route('ekstrakulikuler') }}">Ekstrakurikuler</a>
                     <a class="hover:text-primary transition-colors" href="{{ route('agenda') }}">Agenda</a>
                 </div>
 

@@ -7,14 +7,16 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>School Extracurricular Page - SMK Negeri 1 Kawali</title>
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com" rel="preconnect" />
+     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
         rel="stylesheet" />
     <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
         rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <!-- Theme Configuration -->
@@ -31,7 +33,12 @@
                     fontFamily: {
                         "display": ["Public Sans", "sans-serif"]
                     },
-                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
                 },
             },
         }
@@ -44,7 +51,8 @@
    @include('layouts.navbar')
     <!-- Main Content -->
     <main class="flex-1 py-10">
-        <div class="mx-auto flex w-full max-w-[960px] flex-col gap-10 px-4 md:px-10">
+        <!-- Mengubah container untuk menggunakan lebih banyak ruang layar -->
+        <div class="w-full px-4 sm:px-6 lg:px-8 xl:px-16 2xl:px-24">
             <!-- Page Title & Intro -->
             <div class="flex flex-col gap-8">
                 <!-- Main Heading -->
@@ -56,7 +64,7 @@
                     <div class="flex min-w-[280px] flex-col gap-2">
                         <h2 class="text-2xl font-bold leading-tight text-[#111318]">Jurusan &amp; Informasi</h2>
                         <p class="text-base font-normal leading-normal text-[#616f89]">Informasi struktur di
-                            jurusan</p>
+                            Jurusan</p>
                     </div>
                     <button
                         class="group flex h-10 cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg bg-[#f0f2f4] px-4 text-sm font-bold leading-normal text-[#111318] transition-colors hover:bg-[#e1e3e5]">
@@ -66,8 +74,8 @@
                     </button>
                 </div>
             </div>
-            <!-- Activity Grid -->
-            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <!-- Activity Grid - Mengubah grid untuk lebih responsif -->
+            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 <!-- Card 1 -->
                 <div
                     class="group flex flex-col gap-4 overflow-hidden rounded-xl bg-white p-4 shadow-[0_2px_8px_rgba(0,0,0,0.04)] transition-all hover:shadow-[0_4px_16px_rgba(0,0,0,0.08)]">
@@ -156,7 +164,7 @@
         </div>
     </main>
     <!-- Footer Section -->
-   @include('layouts.footer')
+      @include('layouts.footer')
 </body>
 
 </html>
