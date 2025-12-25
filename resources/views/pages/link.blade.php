@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<<<<<<< Updated upstream
 <html lang="id">
 
 <head>
@@ -24,6 +23,8 @@
                         "card-dark": "#1f2937",
                         "border-light": "#e5e7eb",
                         "border-dark": "#374151",
+                        "surface-light": "#f3f4f6",
+                        "surface-dark": "#1f2937",
                     },
                     fontFamily: {
                         body: ["Inter", "sans-serif"],
@@ -82,20 +83,25 @@
         </div>
     </div>
 
-    <!-- SEARCH -->
-    
-
     <!-- CONTENT -->
     <main class="container mx-auto px-4 py-12 lg:py-16 min-h-screen">
-
-        <!-- NOTIFIKASI HASIL PENCARIAN (Contoh, bisa dihilangkan jika tidak dinamis) -->
-        @if(request('cari'))
-        <div class="mb-6 bg-gray-50 dark:bg-gray-900/20 border-l-4 border-gray-500 p-4 rounded">
-            <p class="text-sm">
-                Menampilkan hasil pencarian untuk: <strong>{{ request('cari') }}</strong>
-            </p>
+        <!-- TAB NAVIGATION -->
+        <div class="flex justify-center mb-12 border-b border-gray-200 dark:border-gray-700">
+            <div class="flex gap-8">
+                <a class="pb-2 border-b-2 border-primary text-lg font-bold text-gray-900 dark:text-white px-2" href="#">
+                    Produk
+                </a>
+                <a class="pb-2 border-b-2 border-transparent text-lg font-medium text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors px-2" href="#">
+                    Tautan
+                </a>
+            </div>
         </div>
-        @endif
+
+        <div class="mb-8">
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
+                Telusuri SMKN 1 Kawali Lebih Jauh
+            </h2>
+        </div>
 
         <!-- GRID CARD -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-12">
@@ -198,13 +204,105 @@
                 </div>
             </div>
 
-            <!-- Contoh tambahan jika diperlukan -->
-            <!-- <div> ... card lainnya ... </div> -->
+            <!-- CARD 3: PERPUSTAKAAN DIGITAL -->
+            <div
+                class="link-card bg-card-light dark:bg-card-dark 
+                       rounded-2xl shadow-lg border border-border-light dark:border-border-dark 
+                       overflow-hidden animate-fade-in group">
+
+                <!-- FOTO / IKON -->
+                <div class="link-image-container aspect-[4/3] bg-gray-200 dark:bg-gray-700 relative overflow-hidden">
+                    <div class="w-full h-full flex items-center justify-center text-gray-400 dark:text-gray-500">
+                        <i class="fas fa-book text-6xl"></i>
+                    </div>
+
+                    <!-- OVERLAY -->
+                    <div
+                        class="overlay absolute inset-0 opacity-0 transition-opacity duration-300 flex items-end p-4">
+                        <div class="overlay-text text-white">
+                            <p class="font-semibold text-lg">Kunjungi Perpustakaan</p>
+                            <p class="text-sm opacity-90">digilib.smkn1kawali.sch.id</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BODY -->
+                <div class="p-5 flex flex-col flex-grow">
+                    <div class="flex justify-end mb-3">
+                        <span class="text-xs bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary-300 px-3 py-1 rounded-full font-medium">
+                            Akademik
+                        </span>
+                    </div>
+
+                    <div class="border-t pt-4 flex-grow">
+                        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white truncate">
+                            Perpustakaan Digital
+                        </h3>
+                        <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                            <i class="fas fa-link mr-2"></i>
+                            <span>Koleksi Buku Digital</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 flex justify-end">
+                        <a href="https://digilib.smkn1kawali.sch.id" target="_blank"
+                            class="inline-flex items-center gap-2 bg-slate-100 dark:bg-slate-700 hover:bg-primary hover:text-white text-gray-700 dark:text-gray-300 text-sm font-semibold py-2 px-4 rounded-full transition-colors">
+                            Buka <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD 4: PORTAL SISWA -->
+            <div
+                class="link-card bg-card-light dark:bg-card-dark 
+                       rounded-2xl shadow-lg border border-border-light dark:border-border-dark 
+                       overflow-hidden animate-fade-in group">
+
+                <!-- FOTO / IKON -->
+                <div class="link-image-container aspect-[4/3] bg-gray-200 dark:bg-gray-700 relative overflow-hidden">
+                    <div class="w-full h-full flex items-center justify-center text-gray-400 dark:text-gray-500">
+                        <i class="fas fa-user-graduate text-6xl"></i>
+                    </div>
+
+                    <!-- OVERLAY -->
+                    <div
+                        class="overlay absolute inset-0 opacity-0 transition-opacity duration-300 flex items-end p-4">
+                        <div class="overlay-text text-white">
+                            <p class="font-semibold text-lg">Buka Portal Siswa</p>
+                            <p class="text-sm opacity-90">portal.smkn1kawali.sch.id</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BODY -->
+                <div class="p-5 flex flex-col flex-grow">
+                    <div class="flex justify-end mb-3">
+                        <span class="text-xs bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary-300 px-3 py-1 rounded-full font-medium">
+                            Layanan Siswa
+                        </span>
+                    </div>
+
+                    <div class="border-t pt-4 flex-grow">
+                        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white truncate">
+                            Portal Siswa
+                        </h3>
+                        <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                            <i class="fas fa-link mr-2"></i>
+                            <span>Informasi & Layanan Siswa</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 flex justify-end">
+                        <a href="https://portal.smkn1kawali.sch.id" target="_blank"
+                            class="inline-flex items-center gap-2 bg-slate-100 dark:bg-slate-700 hover:bg-primary hover:text-white text-gray-700 dark:text-gray-300 text-sm font-semibold py-2 px-4 rounded-full transition-colors">
+                            Buka <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
 
         </div>
-
-        <!-- Pagination tidak diperlukan untuk link statis -->
-        <!-- <div class="flex justify-center mt-10"> ... </div> -->
 
     </main>
 
@@ -233,101 +331,8 @@
                 html.classList.contains('dark') ? 'dark' : 'light'
             );
         });
-
-        // Search functionality (opsional, jika link-nya dinamis)
-        document.addEventListener('DOMContentLoaded', function() {
-            const searchInput = document.getElementById('searchInput');
-            
-            searchInput.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    e.preventDefault();
-                    // Logika pencarian bisa ditambahkan di sini
-                    console.log('Mencari:', searchInput.value);
-                }
-            });
-        });
     </script>
 
 </body>
 
 </html>
-=======
-<html lang="id"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Link - SMK Negeri 1 Kawali</title>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
-<script>
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            colors: {
-              primary: "#1d4ed8", // Using a trusty blue for primary actions
-              "background-light": "#ffffff",
-              "background-dark": "#111827",
-              "surface-light": "#f3f4f6", // Light gray for sections/cards
-              "surface-dark": "#1f2937",  // Dark gray for sections/cards
-            },
-            fontFamily: {
-              display: ["Inter", "sans-serif"],
-              sans: ["Inter", "sans-serif"],
-            },
-            borderRadius: {
-              DEFAULT: "0.5rem",
-            },
-          },
-        },
-      };
-    </script>
-</head>
-<body class="bg-background-light bg-background-dark text-gray-900 text-gray-100 font-sans antialiased transition-colors duration-200">
-@include('layouts.navbar')
-<section class="bg-surface-light bg-surface-dark py-12 md:py-16">
-<div class="container mx-auto px-4">
-<h1 class="text-3xl md:text-4xl font-bold text-gray-900 text-white">Link</h1>
-</div>
-</section>
-<main class="container mx-auto px-4 py-12 min-h-[600px]">
-<div class="flex justify-center mb-12 border-b border-gray-200 border-gray-700">
-<div class="flex gap-8">
-<a class="pb-2 border-b-2 border-black border-white text-lg font-bold text-gray-900 text-white px-2" href="#">
-                    Produk
-                </a>
-<a class="pb-2 border-b-2 border-transparent text-lg font-medium text-gray-500 text-gray-400 hover:text-gray-800 hover:text-gray-200 transition-colors px-2" href="#">
-                    Tautan
-                </a>
-</div>
-</div>
-<div class="mb-8">
-<h2 class="text-2xl md:text-3xl font-bold text-gray-900 text-white">
-                Telusuri SMKN 1 Kawali <br class="md:hidden"/> Lebih Jauh
-            </h2>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-<a class="group relative block w-full h-64 md:h-72 rounded-xl overflow-hidden bg-surface-light bg-surface-dark shadow-sm hover:shadow-md transition-shadow" href="#">
-<div class="absolute inset-0 bg-gray-200 bg-gray-800 transition-colors group-hover:bg-gray-300 group-hover:bg-gray-700"></div>
-<div class="absolute bottom-0 left-0 p-6 w-full">
-<h3 class="text-xl font-medium text-gray-900 text-white group-hover:text-primary transition-colors">
-                        LMS SMK Negeri 1 Kawali
-                    </h3>
-</div>
-</a>
-<a class="group relative block w-full h-64 md:h-72 rounded-xl overflow-hidden bg-surface-light bg-surface-dark shadow-sm hover:shadow-md transition-shadow" href="#">
-<div class="absolute inset-0 bg-gray-200 bg-gray-800 transition-colors group-hover:bg-gray-300 group-hover:bg-gray-700"></div>
-<div class="absolute bottom-0 left-0 p-6 w-full">
-<h3 class="text-xl font-medium text-gray-900 text-white group-hover:text-primary transition-colors">
-                        E-Rapor SMK Negeri 1 Kawali
-                    </h3>
-</div>
-</a>
-</div>
-</main>
-@include('layouts.footer')
-
-</body></html>
->>>>>>> Stashed changes

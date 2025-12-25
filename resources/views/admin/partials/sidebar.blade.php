@@ -171,6 +171,12 @@
     <i class="material-icons">groups</i> Tenaga Kependidikan
 </a>
 
+       <a href="{{ route('admin.ekstrakulikuler.index') }}"
+            class="nav-link {{ request()->routeIs('admin.ekstrakulikuler*') ? 'active' : '' }}">
+            <i class="material-icons">diversity_3</i> Ekstrakurikuler
+        </a>
+        
+
         <div class="nav-title">User</div>
         <a href="{{ route('admin.users.index') }}"
             class="nav-link {{ request()->routeIs('admin.users*') ? 'active' : '' }}">
@@ -195,9 +201,9 @@
 {{-- --- PENTING --- --}}
 {{-- Pastikan Anda menyesuaikan wrapper konten utama Anda agar tidak tertutup sidebar. --}}
 {{-- Cari elemen utama yang membungkus @yield('content') dan tambahkan style margin-left: 260px; --}}
-<<<<<<< Updated upstream
-{{-- Contoh: <div class="content-wrapper p-4" style="margin-left: 260px;"> @yield('content') </div> --}}
-=======
+
 {{-- Contoh: <div class="content-wrapper p-4" style="margin-left: 260px;"> @yield('content') </div> --}}
 
->>>>>>> Stashed changes
+{{-- Contoh: <div class="content-wrapper p-4" style="margin-left: 260px;"> @yield('content') </div> --}}
+
+
