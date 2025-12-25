@@ -10,7 +10,7 @@ class ArtikelController extends Controller
 {
     public function index() {
 
-        $artikels = Artikel::all();
+        $artikels = Artikel::latest()->paginate(6);
         return view('pages.artikel' , compact('artikels'));
     }
 }

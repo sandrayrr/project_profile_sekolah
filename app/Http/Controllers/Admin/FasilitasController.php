@@ -11,7 +11,7 @@ class FasilitasController extends Controller
 {
     public function index()
     {
-        $fasilitas = Fasilitas::latest()->get();
+        $fasilitas = Fasilitas::latest()->paginate(6);
         return view('admin.crud.fasilitas.index', compact('fasilitas'));
     }
 
