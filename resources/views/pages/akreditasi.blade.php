@@ -339,20 +339,20 @@
 </head>
 
 <body
-    class="bg-background-light dark:bg-background-dark text-gray-900 dark:text-gray-100 font-sans antialiased flex flex-col min-h-screen transition-colors duration-300">
+    class="bg-background-light bg-background-dark text-gray-900 text-gray-100 font-sans antialiased flex flex-col min-h-screen transition-colors duration-300">
    @include('layouts.navbar')
-    <section class="bg-gray-200 dark:bg-gray-800 py-12 md:py-16 transition-colors duration-300">
+    <section class="bg-gray-200 bg-gray-800 py-12 md:py-16 transition-colors duration-300">
         <div class="container mx-auto px-4">
-            <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white pl-4 border-l-4 border-transparent">
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-900 text-white pl-4 border-l-4 border-transparent">
                 Akreditas
             </h1>
         </div>
     </section>
-    <main class="flex-grow bg-background-light dark:bg-background-dark transition-colors duration-300">
+    <main class="flex-grow bg-background-light bg-background-dark transition-colors duration-300">
         <div class="container mx-auto px-4 py-16 max-w-4xl space-y-24">
             <article class="text-center md:text-left">
-                <h2 class="text-2xl font-medium text-gray-900 dark:text-white mb-6">Pengertian Akreditasi</h2>
-                <div class="prose dark:prose-invert max-w-none text-gray-600 dark:text-gray-300">
+                <h2 class="text-2xl font-medium text-gray-900 text-white mb-6">Pengertian Akreditasi</h2>
+                <div class="prose prose-invert max-w-none text-gray-600 text-gray-300">
                     <p>
                         Akreditasi adalah kegiatan penilaian kelayakan program dalam satuan pendidikan berdasarkan
                         kriteria yang telah ditetapkan. Akreditasi sekolah adalah proses penilaian secara komprehensif
@@ -368,8 +368,8 @@
                 </div>
             </article>
             <article class="text-center md:text-left">
-                <h2 class="text-2xl font-medium text-gray-900 dark:text-white mb-6">Tujuan Akreditasi</h2>
-                <div class="prose dark:prose-invert max-w-none text-gray-600 dark:text-gray-300">
+                <h2 class="text-2xl font-medium text-gray-900 text-white mb-6">Tujuan Akreditasi</h2>
+                <div class="prose prose-invert max-w-none text-gray-600 text-gray-300">
                     <p>
                         Tujuan utama akreditasi sekolah adalah untuk memperoleh gambaran kinerja sekolah yang dapat
                         digunakan sebagai alat pembinaan, pengembangan, dan peningkatan mutu; serta menentukan tingkat
@@ -384,8 +384,8 @@
                 </div>
             </article>
             <article class="text-center md:text-left">
-                <h2 class="text-2xl font-medium text-gray-900 dark:text-white mb-6">Manfaat Akreditasi</h2>
-                <div class="prose dark:prose-invert max-w-none text-gray-600 dark:text-gray-300">
+                <h2 class="text-2xl font-medium text-gray-900 text-white mb-6">Manfaat Akreditasi</h2>
+                <div class="prose prose-invert max-w-none text-gray-600 text-gray-300">
                     <p>
                         Hasil akreditasi sekolah bermanfaat sebagai dasar bagi sekolah untuk melakukan peningkatan mutu
                         pendidikan, serta pengembangan rencana anggaran pendapatan dan belanja sekolah. Selain itu,

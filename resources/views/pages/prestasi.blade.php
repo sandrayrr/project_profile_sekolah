@@ -88,6 +88,7 @@
     </style>
 </head>
 
+<<<<<<< Updated upstream
 <body class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-100 font-body transition-colors duration-300">
 
     @include('layouts.navbar')
@@ -98,6 +99,16 @@
         <div class="absolute inset-0 bg-black opacity-10"></div>
         <div class="relative container mx-auto px-4">
             <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-3">
+=======
+<body class="bg-background-light bg-background-dark text-slate-800 text-slate-200 font-body">
+
+    @include('layouts.navbar')
+
+    {{-- HEADER --}}
+    <div class="bg-slate-200 bg-slate-800 py-12 px-6">
+        <div class="max-w-7xl mx-auto">
+            <h1 class="text-3xl md:text-4xl font-bold text-slate-900 text-white">
+>>>>>>> Stashed changes
                 Prestasi
             </h1>
             <p class="text-gray-100 text-lg md:text-xl max-w-2xl">
@@ -109,6 +120,7 @@
     <!-- SEARCH -->
     <div class="max-w-4xl mx-auto mt-10 px-4">
         <form action="{{ route('prestasi') }}" method="GET"
+<<<<<<< Updated upstream
             class="flex shadow-md rounded-xl overflow-hidden">
             <div class="relative flex-grow">
                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -125,6 +137,17 @@
             <button
                 type="submit"
                 class="bg-primary text-white px-8 py-4 font-medium hover:bg-gray-700 transition-colors">
+=======
+            class="flex shadow-md rounded-lg overflow-hidden">
+            <input
+                name="cari"
+                value="{{ request('cari') }}"
+                class="flex-grow px-6 py-4 bg-slate-50 bg-slate-800 border-none focus:ring-2 focus:ring-primary"
+                placeholder="Cari Prestasi..."
+                type="text">
+            <button
+                class="bg-slate-300 bg-slate-700 px-8 py-4 font-medium hover:bg-slate-400 hover:bg-slate-600">
+>>>>>>> Stashed changes
                 Cari
             </button>
         </form>
@@ -156,12 +179,19 @@
 
             @forelse ($prestasi as $item)
                 <div
+<<<<<<< Updated upstream
                     class="prestasi-card bg-card-light dark:bg-card-dark 
                            rounded-2xl shadow-lg border border-border-light dark:border-border-dark 
                            overflow-hidden animate-fade-in group">
 
                     <!-- FOTO -->
                     <div class="prestasi-image-container aspect-[4/3] bg-gray-200 dark:bg-gray-700 relative overflow-hidden">
+=======
+                    class="group bg-surface-light bg-surface-dark rounded-xl shadow-lg border border-border-light border-border-dark overflow-hidden flex flex-col hover:-translate-y-1 transition">
+
+                    {{-- FOTO --}}
+                    <div class="aspect-[4/3] overflow-hidden bg-slate-200 bg-slate-800">
+>>>>>>> Stashed changes
                         @if ($item->foto)
                             <img src="{{ asset('storage/' . $item->foto) }}"
                                 alt="{{ $item->judul }}"
@@ -185,7 +215,11 @@
                     <!-- BODY -->
                     <div class="p-5 flex flex-col flex-grow">
                         <div class="flex justify-end mb-3">
+<<<<<<< Updated upstream
                             <span class="text-xs bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary-300 px-3 py-1 rounded-full font-medium">
+=======
+                            <span class="text-xs bg-slate-100 bg-slate-800 px-3 py-1 rounded-full">
+>>>>>>> Stashed changes
                                 {{ \Carbon\Carbon::parse($item->tanggal)->translatedFormat('d F Y') }}
                             </span>
                         </div>
@@ -200,7 +234,16 @@
                             </div>
                         </div>
 
+<<<<<<< Updated upstream
                        
+=======
+                        <div class="mt-auto flex justify-end">
+                            <a href="#"
+                                class="inline-flex items-center gap-2 bg-slate-200 bg-slate-700 text-xs font-semibold py-2 px-4 rounded-full">
+                                Selengkapnya <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+>>>>>>> Stashed changes
                     </div>
                 </div>
             @empty
@@ -243,9 +286,15 @@
     <!-- DARK MODE BUTTON -->
     <button
         id="darkToggle"
+<<<<<<< Updated upstream
         class="fixed bottom-6 right-6 bg-primary text-white p-3 rounded-full shadow-lg z-50 hover:bg-gray-600 transition-colors">
         <i class="fa-solid fa-moon dark:hidden"></i>
         <i class="fa-solid fa-sun hidden dark:block"></i>
+=======
+        class="fixed bottom-6 right-6 bg-primary text-white p-3 rounded-full shadow-lg z-50">
+        <i class="fa-solid fa-moon hidden"></i>
+        <i class="fa-solid fa-sun hidden block"></i>
+>>>>>>> Stashed changes
     </button>
 
     <script>
@@ -279,4 +328,9 @@
     </script>
 
 </body>
+<<<<<<< Updated upstream
 </html>
+=======
+</html>
+
+>>>>>>> Stashed changes

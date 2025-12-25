@@ -90,6 +90,7 @@
     </style>
 </head>
 
+<<<<<<< Updated upstream
 <body class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-100 font-body transition-colors duration-300">
 
     @include('layouts.navbar')
@@ -120,6 +121,43 @@
             <p class="text-sm">
                 Menampilkan hasil pencarian untuk: <strong>{{ request('cari') }}</strong>
             </p>
+=======
+<body
+    class="bg-background-light bg-background-dark text-gray-800 text-gray-200 font-sans transition-colors duration-300">
+   @include('layouts.navbar')
+    <section class="bg-gray-200 bg-gray-800 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-900 text-white mb-2">Fasilitas</h1>
+            <nav aria-label="Breadcrumb" class="flex text-sm text-gray-600 text-gray-400">
+                <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                   
+                    <li>
+                        <span class="mx-1">/</span>
+                    </li>
+                    <li aria-current="page">
+                        <span class="font-medium text-gray-800 text-gray-200">Fasilitas</span>
+                    </li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+    <main class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12">
+            <div>
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-900 text-white mb-2 relative inline-block">
+                    Fasilitas &amp; Informasi Fasilitas
+                </h2>
+                <p class="text-gray-600 text-gray-400 mt-2 max-w-2xl">
+                    Informasi struktur dan kelengkapan fasilitas di sekolah untuk menunjang kegiatan belajar mengajar.
+                </p>
+            </div>
+            <a class="mt-4 md:mt-0 inline-flex items-center px-6 py-2 bg-gray-200 hover:bg-gray-300 bg-gray-700 hover:bg-gray-600 text-gray-800 text-gray-200 rounded-full text-sm font-medium transition group"
+                href="#">
+                Selengkapnya
+                <span
+                    class="material-icons text-sm ml-2 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+            </a>
+>>>>>>> Stashed changes
         </div>
         @endif
 
@@ -127,6 +165,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-12">
 
             @forelse ($fasilitas as $item)
+<<<<<<< Updated upstream
                 <div
                     class="fasilitas-card bg-card-light dark:bg-card-dark 
                            rounded-2xl shadow-lg border border-border-light dark:border-border-dark 
@@ -158,11 +197,21 @@
                                 <i class="fas fa-building mr-2"></i>
                                 <span>Fasilitas Sekolah</span>
                             </div>
+=======
+            <div class="rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 group">
+                <div class="h-64 bg-surface-light bg-gray-700 flex items-center justify-center relative">
+                    @if($item->foto)
+                        <img src="{{ asset('storage/' . $item->foto) }}" alt="{{ $item->judul }}" class="w-full h-full object-cover">
+                    @else
+                        <div class="bg-blue-50 bg-gray-600 p-6 rounded-full">
+                            <span class="material-icons text-6xl text-blue-300 text-blue-400">meeting_room</span>
+>>>>>>> Stashed changes
                         </div>
 
                         
                     </div>
                 </div>
+<<<<<<< Updated upstream
             @empty
                 <div class="col-span-full flex flex-col items-center justify-center text-center py-20">
                     <div class="w-24 h-24 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mb-6">
@@ -175,6 +224,16 @@
                         Informasi mengenai fasilitas sekolah akan segera tersedia. Kunjungi kembali lain hari untuk informasi terbaru.
                     </p>
                 </div>
+=======
+                <div class="h-24 bg-gray-200 bg-gray-600 p-6 flex flex-col justify-center">
+                    <h3 class="text-xl font-semibold text-gray-800 text-gray-200">{{ $item->judul }}</h3>
+                </div>
+            </div>
+            @empty
+            <div class="col-span-full text-center py-12">
+                <p class="text-gray-500 text-gray-400">Belum ada data fasilitas yang tersedia.</p>
+            </div>
+>>>>>>> Stashed changes
             @endforelse
 
         </div>

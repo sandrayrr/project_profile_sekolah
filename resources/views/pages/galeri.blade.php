@@ -99,16 +99,26 @@
 </head>
 
 <body
+<<<<<<< Updated upstream
     class="bg-background-light dark:bg-background-dark 
            text-gray-800 dark:text-gray-100 
            font-sans transition-colors duration-300">
 
     <!-- NAVBAR -->
     <header class="bg-card-light dark:bg-card-dark shadow-sm border-b border-border-light dark:border-border-dark sticky top-0 z-40">
+=======
+    class="bg-background-light bg-background-dark 
+           text-gray-800 text-gray-100 
+           font-sans transition-colors duration-200">
+
+    <!-- NAVBAR -->
+    <header class="bg-card-light bg-card-dark shadow-sm border-b border-border-light border-border-dark">
+>>>>>>> Stashed changes
         @include('layouts.navbar')
     </header>
 
     <!-- HEADER PAGE -->
+<<<<<<< Updated upstream
     <div class="relative bg-gradient-to-br from-primary to-gray-600 dark:from-gray-700 dark:to-gray-900 py-20">
         <!-- Optional: Add a subtle pattern overlay -->
         <div class="absolute inset-0 bg-black opacity-10"></div>
@@ -118,6 +128,15 @@
             </h1>
             <p class="text-gray-100 text-lg md:text-xl max-w-2xl">
                 Dokumentasi kegiatan, prestasi, dan momen berharga di SMK Negeri 1 Kawali.
+=======
+    <div class="bg-card-light bg-card-dark py-14 border-b border-border-light border-border-dark">
+        <div class="container mx-auto px-4">
+            <h1 class="text-3xl font-bold text-gray-900 text-white">
+                Galeri
+            </h1>
+            <p class="text-gray-600 text-gray-400 mt-2">
+                Dokumentasi kegiatan SMK Negeri 1 Kawali
+>>>>>>> Stashed changes
             </p>
         </div>
     </div>
@@ -163,20 +182,36 @@
 
             @forelse ($galeri as $item)
             <div
+<<<<<<< Updated upstream
                 class="gallery-card bg-card-light dark:bg-card-dark 
                        rounded-2xl shadow-lg border border-border-light dark:border-border-dark 
                        overflow-hidden animate-fade-in group">
 
                 <!-- FOTO -->
                 <div class="gallery-image-container aspect-[4/3] bg-gray-200 dark:bg-gray-700 relative overflow-hidden">
+=======
+                class="bg-card-light bg-card-dark 
+                       rounded-xl shadow-sm border border-border-light border-border-dark 
+                       overflow-hidden group hover:shadow-md transition-shadow">
+
+                <!-- FOTO -->
+                <div class="aspect-[4/3] bg-gray-200 bg-gray-700 relative overflow-hidden">
+>>>>>>> Stashed changes
                     @if ($item->foto)
                         <img
                             src="{{ asset('storage/' . $item->foto) }}"
                             alt="{{ $item->judul }}"
                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                     @else
+<<<<<<< Updated upstream
                         <div class="w-full h-full flex items-center justify-center text-gray-400 dark:text-gray-500">
                             <span class="material-icons text-6xl">image_not_supported</span>
+=======
+                        <div class="w-full h-full flex items-center justify-center">
+                            <span class="material-icons text-5xl text-gray-400 text-gray-500">
+                                image
+                            </span>
+>>>>>>> Stashed changes
                         </div>
                     @endif
 
@@ -190,6 +225,7 @@
                     </div>
                 </div>
 
+<<<<<<< Updated upstream
                 <!-- BODY -->
                 <div class="p-5 flex flex-col flex-grow">
                     <div class="flex justify-end mb-3">
@@ -197,6 +233,17 @@
                             Dokumentasi
                         </span>
                     </div>
+=======
+                <!-- JUDUL -->
+                <div class="p-4">
+                    <h3
+                        class="text-lg font-semibold 
+                               text-gray-900 text-white 
+                               text-center">
+                        {{ $item->judul }}
+                    </h3>
+                </div>
+>>>>>>> Stashed changes
 
                     <div class="border-t pt-4 flex-grow">
                         <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white truncate">
@@ -212,6 +259,7 @@
                 </div>
             </div>
             @empty
+<<<<<<< Updated upstream
                 <div class="col-span-full flex flex-col items-center justify-center text-center py-20">
                     <div class="w-24 h-24 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mb-6">
                         <i class="material-icons text-5xl text-gray-400">photo_library</i>
@@ -222,6 +270,10 @@
                     <p class="text-gray-500 dark:text-gray-400 max-w-md">
                         Sepertinya belum ada foto yang ditambahkan. Kunjungi kembali lain hari untuk melihat dokumentasi terbaru dari kami.
                     </p>
+=======
+                <div class="col-span-3 text-center text-gray-500 text-gray-400 py-16">
+                    Belum ada data galeri
+>>>>>>> Stashed changes
                 </div>
             @endforelse
 
@@ -280,4 +332,9 @@
 
 </body>
 
+<<<<<<< Updated upstream
 </html>
+=======
+</html>
+
+>>>>>>> Stashed changes

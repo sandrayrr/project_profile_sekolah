@@ -37,8 +37,8 @@
 </head>
 
 <body
-    class="bg-background-light dark:bg-background-dark
-           text-gray-800 dark:text-gray-100
+    class="bg-background-light bg-background-dark
+           text-gray-800 text-gray-100
            font-sans transition-colors duration-200 min-h-screen flex flex-col">
 
     {{-- NAVBAR --}}
@@ -46,14 +46,14 @@
 
     {{-- HEADER --}}
     <section
-        class="bg-card-light dark:bg-card-dark
+        class="bg-card-light bg-card-dark
                py-14 border-b
-               border-border-light dark:border-border-dark">
+               border-border-light border-border-dark">
         <div class="max-w-5xl mx-auto px-4 text-center">
-            <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+            <h1 class="text-3xl font-bold text-gray-900 text-white mb-2">
                 Agenda Sekolah
             </h1>
-            <p class="text-gray-600 dark:text-gray-400">
+            <p class="text-gray-600 text-gray-400">
                 Informasi kegiatan dan jadwal penting SMK Negeri 1 Kawali
             </p>
         </div>
@@ -65,9 +65,9 @@
 
             @forelse ($agenda as $item)
                 <div
-                    class="bg-card-light dark:bg-card-dark
+                    class="bg-card-light bg-card-dark
                            rounded-xl shadow-sm
-                           border border-border-light dark:border-border-dark
+                           border border-border-light border-border-dark
                            hover:shadow-md transition p-6">
 
                     {{-- ICON + JUDUL --}}
@@ -76,18 +76,18 @@
                             {{ $item->ikon ?? 'event' }}
                         </span>
 
-                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                        <h3 class="text-lg font-semibold text-gray-900 text-white">
                             {{ $item->judul }}
                         </h3>
                     </div>
 
                     {{-- DESKRIPSI --}}
-                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                    <p class="text-sm text-gray-600 text-gray-400 mb-4">
                         {{ $item->deskripsi }}
                     </p>
 
                     {{-- TANGGAL & WAKTU --}}
-                    <div class="flex justify-between text-sm text-gray-500 dark:text-gray-400">
+                    <div class="flex justify-between text-sm text-gray-500 text-gray-400">
                         <div class="flex items-center gap-2">
                             <i class="fa-regular fa-calendar"></i>
                             {{ \Carbon\Carbon::parse($item->tanggal)->translatedFormat('d F Y') }}
@@ -101,7 +101,7 @@
 
                 </div>
             @empty
-                <div class="col-span-3 text-center text-gray-500 dark:text-gray-400 py-16">
+                <div class="col-span-3 text-center text-gray-500 text-gray-400 py-16">
                     Belum ada agenda sekolah
                 </div>
             @endforelse
@@ -114,3 +114,4 @@
 
 </body>
 </html>
+

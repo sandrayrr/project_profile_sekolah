@@ -195,4 +195,9 @@
 {{-- --- PENTING --- --}}
 {{-- Pastikan Anda menyesuaikan wrapper konten utama Anda agar tidak tertutup sidebar. --}}
 {{-- Cari elemen utama yang membungkus @yield('content') dan tambahkan style margin-left: 260px; --}}
+<<<<<<< Updated upstream
 {{-- Contoh: <div class="content-wrapper p-4" style="margin-left: 260px;"> @yield('content') </div> --}}
+=======
+{{-- Contoh: <div class="content-wrapper p-4" style="margin-left: 260px;"> @yield('content') </div> --}}
+
+>>>>>>> Stashed changes

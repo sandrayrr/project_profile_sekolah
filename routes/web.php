@@ -10,7 +10,9 @@ use App\Http\Controllers\Admin\ArtikelController;
 use App\Http\Controllers\Admin\GaleriController;
 use App\Http\Controllers\Admin\FasilitasController;
 use App\Http\Controllers\Admin\AgendaController;
+use App\Http\Controllers\Admin\TenagaKependidikanController;
 use App\Http\Controllers\BerandaController as ControllersBerandaController;
+use App\Http\Controllers\front\TenagaKependidikanController as FrontTenagaKependidikanController;
 use App\Http\Controllers\front\AgendaController as FrontAgendaController;
 use App\Http\Controllers\front\ArtikelController as FrontArtikelController;
 use App\Http\Controllers\front\PrestasiController as FrontPrestasiController;
@@ -34,7 +36,7 @@ Route::get('/agenda', [FrontAgendaController::class , 'index'])->name('agenda');
 Route::view('/link', 'pages.link')->name('link');
 Route::get('/fasilitas', [FrontFasilitasController::class, 'index'])->name('fasilitas');
 Route::view('/akreditasi', 'pages.akreditasi')->name('akreditasi');
-
+Route::get('/tenagakependidikan', [FrontTenagaKependidikanController::class , 'index'])->name('tenagakependidikan');
 Route::view('/ekstrakulikuler', 'pages.ekstrakulikuler')->name('ekstrakulikuler');
 Route::get('/staffpengajar', [FrontStaffPengajarController::class, 'index'])->name('staff-pengajar');
 Route::view('/tenaga-pengajar', 'pages.tenaga-pengajar')->name('tenaga-pengajar');
@@ -77,7 +79,11 @@ Route::middleware('auth')
         Route::resource('fasilitas', FasilitasController::class)
         ->parameters(['fasilitas' => 'fasilitas']);
         Route::resource('agenda', AgendaController::class);
+<<<<<<< Updated upstream
         Route::resource('staff-pengajar', StaffPengajarController::class);
+=======
+        Route::resource('tenaga', TenagaKependidikanController::class);
+>>>>>>> Stashed changes
 
         
 

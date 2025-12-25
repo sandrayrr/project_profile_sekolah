@@ -166,4 +166,9 @@
       @include('layouts.footer')
 </body>
 
+<<<<<<< Updated upstream
 </html>
+=======
+</html>
+
+>>>>>>> Stashed changes

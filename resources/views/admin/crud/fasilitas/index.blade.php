@@ -33,21 +33,6 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-3 col-sm-6 mb-3">
-            <div class="card border-0 bg-gradient-info text-white shadow-sm">
-                <div class="card-body">
-                    <div class="d-flex align-items-center">
-                        <div class="flex-grow-1">
-                            <h6 class="mb-0 text-white-50">Ditambahkan Bulan Ini</h6>
-                            <h3 class="mb-0 fw-bold">{{ $fasilitas->where('created_at', '>=', now()->startOfMonth())->count() }}</h3>
-                        </div>
-                        <div class="ms-3">
-                            <i class="bi bi-calendar-plus fs-1 opacity-75"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
     {{-- NOTIFIKASI SUKSES --}}
