@@ -39,10 +39,10 @@
                 <div class="hidden md:block h-10 w-px bg-gray-300 dark:bg-gray-600"></div>
                 <div class="flex items-center gap-4 text-xl text-black dark:text-white">
                     <a class="hover:text-primary transition-colors" href="#"><i class="fa-brands fa-whatsapp"></i></a>
-                    <a class="hover:text-primary transition-colors" href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a class="hover:text-primary transition-colors" href="https://www.facebook.com/smkn1kawali?mibextid=rS40aB7S9Ucbxw6v"><i class="fa-brands fa-facebook"></i></a>
                     <a class="hover:text-primary transition-colors" href="#"><i class="fa-brands fa-twitter"></i></a>
-                    <a class="hover:text-primary transition-colors" href="#"><i class="fa-brands fa-instagram"></i></a>
-                    <a class="hover:text-primary transition-colors" href="#"><i class="fa-brands fa-youtube"></i></a>
+                    <a class="hover:text-primary transition-colors" href="https://www.instagram.com/smkn1kawali?igsh=MW1nNHV2YTNrZTQ5NQ=="><i class="fa-brands fa-instagram"></i></a>
+                    <a class="hover:text-primary transition-colors" href="www.youtube.com/@SMKN1KawaliOfficial"><i class="fa-brands fa-youtube"></i></a>
                     <a class="hover:text-primary transition-colors" href="#"><i class="fa-brands fa-tiktok"></i></a>
                 </div>
             </div>

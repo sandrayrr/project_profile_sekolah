@@ -10,10 +10,10 @@ class ArtikelController extends Controller
     public function index()
     {
         // Artikel utama (konten)
-        $artikels = Artikel::latest()->paginate(6);
+        $artikels = Artikel::latest()->paginate(4);
 
         // Sidebar: artikel terbaru
-        $artikelTerbaru = Artikel::latest()->take(5)->get();
+        $artikelTerbaru = Artikel::latest()->take(5 )->get();
 
         // Sidebar: kategori + jumlah
         $kategoriArtikel = Artikel::select('kategori')
