@@ -111,6 +111,26 @@
                     @enderror
                 </div>
 
+                {{-- KATEGORI --}}
+<div class="mb-3">
+    <label class="form-label fw-bold">Kategori</label>
+    <select name="kategori"
+            class="form-control @error('kategori') is-invalid @enderror"
+            required>
+        <option value="">-- Pilih Kategori --</option>
+        <option value="Akademik" {{ old('kategori')=='Akademik'?'selected':'' }}>Akademik</option>
+        <option value="Kesiswaan" {{ old('kategori')=='Kesiswaan'?'selected':'' }}>Kesiswaan</option>
+        <option value="Prestasi" {{ old('kategori')=='Prestasi'?'selected':'' }}>Prestasi</option>
+        <option value="Pengumuman" {{ old('kategori')=='Pengumuman'?'selected':'' }}>Pengumuman</option>
+        <option value="Berita Sekolah" {{ old('kategori')=='Berita Sekolah'?'selected':'' }}>Berita Sekolah</option>
+    </select>
+
+    @error('kategori')
+        <div class="invalid-feedback">{{ $message }}</div>
+    @enderror
+</div>
+
+
                 {{-- TANGGAL --}}
                 <div class="mb-3">
                     <label class="form-label fw-bold">Tanggal</label>

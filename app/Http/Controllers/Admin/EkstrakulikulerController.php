@@ -21,22 +21,28 @@ class EkstrakulikulerController extends Controller
         return view('admin.crud.ekstrakulikuler.create');
     }
 
-    public function store(Request $request)
-    {
-        $request->validate([
-            'judul' => 'required',
-            'foto'  => 'required|image|mimes:jpg,jpeg,png|max:2048',
-        ]);
+   public function store(Request $request)
+{
+    $request->validate([
+        'judul' => 'required',
+        'kategori' => 'required',
+        'foto' => 'required|image|mimes:jpg,jpeg,png|max:2048'
+    ]);
 
-        $foto = $request->file('foto')->store('ekstrakulikuler', 'public');
+    $data = $request->only('judul','kategori');
 
-        Ekstrakulikuler::create([
-            'judul' => $request->judul,
-            'foto'  => $foto,
-        ]);
-
-        return redirect()->route('admin.ekstrakulikuler.index')->with('success','Data berhasil ditambahkan');
+    if ($request->hasFile('foto')) {
+        $data['foto'] = $request->file('foto')
+            ->store('ekstrakulikuler', 'public');
     }
+
+    // Simpan ke database
+    Ekstrakulikuler::create($data);
+
+    return redirect()->route('admin.ekstrakulikuler.index')
+                     ->with('success', 'Ekstrakulikuler berhasil ditambahkan!');
+}
+
 
     public function edit(Ekstrakulikuler $ekstrakulikuler)
     {

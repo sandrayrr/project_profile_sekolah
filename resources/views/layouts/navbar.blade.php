@@ -69,7 +69,7 @@
                         Jurusan <i class="fa-solid fa-chevron-down text-xs opacity-50"></i>
                     </a>
 
-                    <a class="hover:text-primary transition-colors" href="{{ route('artikel') }}">Artikel</a>
+                    <a class="hover:text-primary transition-colors" href="{{ route('artikel.index') }}">Artikel</a>
                     <a class="hover:text-primary transition-colors" href="{{ route('galeri') }}">Galeri</a>
                     <a class="hover:text-primary transition-colors" href="{{ route('prestasi') }}">Prestasi</a>
                     <a class="hover:text-primary transition-colors" href="{{ route('link') }}">Link</a>

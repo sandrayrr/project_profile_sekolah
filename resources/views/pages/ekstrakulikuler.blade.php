@@ -141,67 +141,70 @@
         @endif
 
         <!-- GRID CARD -->
-        @if(isset($ekstrakurikuler) && count($ekstrakurikuler) > 0)
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-12">
-            @foreach($ekstrakurikuler as $item)
-            <div
-                class="ekstrakurikuler-card bg-card-light dark:bg-card-dark 
-                       rounded-2xl shadow-lg border border-border-light dark:border-border-dark 
-                       overflow-hidden animate-fade-in group">
+        @if($ekstrakulikulers->count() > 0)
+     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-12">
 
-                <!-- FOTO -->
-                <div class="ekstrakurikuler-image-container aspect-[4/3] bg-gray-200 dark:bg-gray-700 relative">
-                    <img src="{{ $item->foto ?? 'https://via.placeholder.com/400x300?text=Tidak+Ada+Gambar' }}"
-                        alt="{{ $item->judul }}"
-                        class="w-full h-full object-cover">
+    @forelse ($ekstrakulikulers as $item)
+        <div
+            class="ekstrakurikuler-card bg-card-light dark:bg-card-dark 
+                   rounded-2xl shadow-lg border border-border-light dark:border-border-dark 
+                   overflow-hidden animate-fade-in group">
+
+            <!-- FOTO -->
+            <div class="ekstrakurikuler-image-container aspect-[4/3] bg-gray-200 dark:bg-gray-700 relative">
+                <img
+                    src="{{ $item->foto 
+                        ? asset('storage/' . $item->foto) 
+                        : 'https://via.placeholder.com/400x300?text=Tidak+Ada+Gambar' }}"
+                    alt="{{ $item->judul }}"
+                    class="w-full h-full object-cover">
+            </div>
+
+            <!-- BODY -->
+            <div class="p-5 flex flex-col flex-grow">
+                <div class="flex justify-end mb-3">
+                    <span class="text-xs bg-green-500/10 dark:bg-green-500/20 
+                                 text-green-600 dark:text-green-300 
+                                 px-3 py-1 rounded-full font-medium">
+                        Pilihan
+                    </span>
                 </div>
 
-                <!-- BODY -->
-                <div class="p-5 flex flex-col flex-grow">
-                    <div class="flex justify-end mb-3">
-                        @if(isset($item->jenis) && $item->jenis === 'wajib')
-                        <span class="text-xs bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary-300 px-3 py-1 rounded-full font-medium">
-                            Wajib
-                        </span>
-                        @else
-                        <span class="text-xs bg-green-500/10 dark:bg-green-500/20 text-green-600 dark:text-green-300 px-3 py-1 rounded-full font-medium">
-                            Pilihan
-                        </span>
-                        @endif
-                    </div>
+                <div class="border-t pt-4 flex-grow">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white truncate">
+                        {{ $item->judul }}
+                    </h3>
+                </div>
 
-                    <div class="border-t pt-4 flex-grow">
-                        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white truncate">
-                            {{ $item->judul }}
-                        </h3>
-                        
-                        @if(isset($item->deskripsi))
-                        <p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-3">
-                            {{ Str::limit($item->deskripsi, 100) }}
-                        </p>
-                        @endif
-                    </div>
-                    
-                    @if(isset($item->id))
-                    <div class="mt-4">
-                        <a href="{{ route('ekstrakurikuler.show', $item->id) }}" 
-                           class="text-primary hover:text-gray-700 dark:text-primary-300 dark:hover:text-primary-200 font-medium text-sm flex items-center">
-                            Lihat Detail
-                            <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
-                    </div>
-                    @endif
+                <div class="mt-4">
+                    <a href="#"
+                       class="text-primary hover:text-gray-700 
+                              dark:text-primary-300 dark:hover:text-primary-200 
+                              font-medium text-sm flex items-center">
+                        Lihat Detail
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
                 </div>
             </div>
-            @endforeach
         </div>
+    @empty
+        <div class="col-span-full text-center py-10">
+            <p class="text-gray-500 dark:text-gray-400">
+                Data ekstrakurikuler belum tersedia.
+            </p>
+        </div>
+    @endforelse
+
+</div>
+
         
         <!-- PAGINATION -->
-        @if(isset($ekstrakurikuler) && method_exists($ekstrakurikuler, 'links'))
-        <div class="flex justify-center mt-8">
-            {{ $ekstrakurikuler->links() }}
-        </div>
-        @endif
+      @if($ekstrakulikulers->hasPages())
+<div class="flex justify-center mt-8">
+    {{ $ekstrakulikulers->links() }}
+</div>
+@endif
+
         
         @else
         <!-- EMPTY STATE -->

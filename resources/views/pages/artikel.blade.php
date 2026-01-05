@@ -210,111 +210,78 @@
                 </div>
             </div>
 
-            <!-- SIDEBAR -->
-            <aside class="space-y-8">
-                <div
-                    class="bg-gray-50 dark:bg-card-dark rounded-xl p-6 shadow-sm border border-border-light dark:border-border-dark">
-                    <h3
-                        class="text-lg font-bold text-gray-900 dark:text-white mb-4 pb-2 border-b border-gray-200 dark:border-gray-700">
-                        Kategori Artikel
-                    </h3>
-                    <ul class="space-y-3">
-                        <li>
-                            <a class="flex justify-between items-center text-gray-600 dark:text-gray-300 hover:text-primary transition-colors group"
-                                href="#">
-                                <span>Akademik</span>
-                                <span
-                                    class="bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400 text-xs px-2 py-1 rounded-full group-hover:bg-primary group-hover:text-white transition-colors">12</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="flex justify-between items-center text-gray-600 dark:text-gray-300 hover:text-primary transition-colors group"
-                                href="#">
-                                <span>Kesiswaan</span>
-                                <span
-                                    class="bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400 text-xs px-2 py-1 rounded-full group-hover:bg-primary group-hover:text-white transition-colors">8</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="flex justify-between items-center text-gray-600 dark:text-gray-300 hover:text-primary transition-colors group"
-                                href="#">
-                                <span>Prestasi</span>
-                                <span
-                                    class="bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400 text-xs px-2 py-1 rounded-full group-hover:bg-primary group-hover:text-white transition-colors">5</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="flex justify-between items-center text-gray-600 dark:text-gray-300 hover:text-primary transition-colors group"
-                                href="#">
-                                <span>Pengumuman</span>
-                                <span
-                                    class="bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400 text-xs px-2 py-1 rounded-full group-hover:bg-primary group-hover:text-white transition-colors">10</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="flex justify-between items-center text-gray-600 dark:text-gray-300 hover:text-primary transition-colors group"
-                                href="#">
-                                <span>Berita Sekolah</span>
-                                <span
-                                    class="bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400 text-xs px-2 py-1 rounded-full group-hover:bg-primary group-hover:text-white transition-colors">24</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div
-                    class="bg-gray-50 dark:bg-card-dark rounded-xl p-6 shadow-sm border border-border-light dark:border-border-dark">
-                    <h3
-                        class="text-lg font-bold text-gray-900 dark:text-white mb-4 pb-2 border-b border-gray-200 dark:border-gray-700">
-                        Artikel Terbaru
-                    </h3>
-                    <ul class="space-y-4">
-                        <li class="pb-3 border-b border-gray-200 dark:border-gray-700 last:border-0 last:pb-0">
-                            <a class="group block" href="#">
-                                <h4
-                                    class="text-sm font-semibold text-gray-800 dark:text-gray-200 group-hover:text-primary transition-colors mb-1">
-                                    Penerimaan Peserta Didik Baru (PPDB) Tahun 2024
-                                </h4>
-                                <div class="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1">
-                                    <span class="material-icons text-[10px]">access_time</span> 2 Hari yang lalu
-                                </div>
-                            </a>
-                        </li>
-                        <li class="pb-3 border-b border-gray-200 dark:border-gray-700 last:border-0 last:pb-0">
-                            <a class="group block" href="#">
-                                <h4
-                                    class="text-sm font-semibold text-gray-800 dark:text-gray-200 group-hover:text-primary transition-colors mb-1">
-                                    Kunjungan Industri Jurusan TKR ke PT. Astra Honda Motor
-                                </h4>
-                                <div class="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1">
-                                    <span class="material-icons text-[10px]">access_time</span> 5 Hari yang lalu
-                                </div>
-                            </a>
-                        </li>
-                        <li class="pb-3 border-b border-gray-200 dark:border-gray-700 last:border-0 last:pb-0">
-                            <a class="group block" href="#">
-                                <h4
-                                    class="text-sm font-semibold text-gray-800 dark:text-gray-200 group-hover:text-primary transition-colors mb-1">
-                                    Workshop Kewirausahaan untuk Siswa
-                                </h4>
-                                <div class="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1">
-                                    <span class="material-icons text-[10px]">access_time</span> 1 Minggu yang lalu
-                                </div>
-                            </a>
-                        </li>
-                        <li class="pb-3 border-b border-gray-200 dark:border-gray-700 last:border-0 last:pb-0">
-                            <a class="group block" href="#">
-                                <h4
-                                    class="text-sm font-semibold text-gray-800 dark:text-gray-200 group-hover:text-primary transition-colors mb-1">
-                                    Rapat Komite Sekolah Awal Semester
-                                </h4>
-                                <div class="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1">
-                                    <span class="material-icons text-[10px]">access_time</span> 2 Minggu yang lalu
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </aside>
+           <!-- SIDEBAR -->
+<aside class="space-y-8">
+
+    {{-- ================= KATEGORI ARTIKEL ================= --}}
+    <div
+        class="bg-gray-50 dark:bg-card-dark rounded-xl p-6 shadow-sm border border-border-light dark:border-border-dark">
+
+        <h3
+            class="text-lg font-bold text-gray-900 dark:text-white mb-4 pb-2 border-b border-gray-200 dark:border-gray-700">
+            Kategori Artikel
+        </h3>
+
+        <ul class="space-y-3">
+            @forelse ($kategoriArtikel as $kat)
+                @if(!empty($kat->kategori))
+                    <li>
+                        <a
+                            href="{{ route('artikel.kategori', ['kategori' => $kat->kategori]) }}"
+                            class="flex justify-between items-center text-gray-600 dark:text-gray-300 hover:text-primary transition-colors group">
+
+                            <span>{{ $kat->kategori }}</span>
+
+                            <span
+                                class="bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400 text-xs px-2 py-1 rounded-full
+                                       group-hover:bg-primary group-hover:text-white transition-colors">
+                                {{ $kat->total }}
+                            </span>
+                        </a>
+                    </li>
+                @endif
+            @empty
+                <li class="text-sm text-gray-500">
+                    Belum ada kategori
+                </li>
+            @endforelse
+        </ul>
+    </div>
+
+    {{-- ================= ARTIKEL TERBARU ================= --}}
+    <div
+        class="bg-gray-50 dark:bg-card-dark rounded-xl p-6 shadow-sm border border-border-light dark:border-border-dark">
+
+        <h3
+            class="text-lg font-bold text-gray-900 dark:text-white mb-4 pb-2 border-b border-gray-200 dark:border-gray-700">
+            Artikel Terbaru
+        </h3>
+
+        <ul class="space-y-4">
+            @forelse ($artikelTerbaru as $item)
+                <li class="pb-3 border-b border-gray-200 dark:border-gray-700 last:border-0 last:pb-0">
+                    <a class="group block" href="{{ route('artikel.show', $item->id) }}">
+                        <h4
+                            class="text-sm font-semibold text-gray-800 dark:text-gray-200 group-hover:text-primary transition-colors mb-1">
+                            {{ $item->judul }}
+                        </h4>
+
+                        <div class="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1">
+                            <span class="material-icons text-[10px]">access_time</span>
+                            {{ \Carbon\Carbon::parse($item->tanggal)->diffForHumans() }}
+                        </div>
+                    </a>
+                </li>
+            @empty
+                <li class="text-sm text-gray-500">
+                    Belum ada artikel
+                </li>
+            @endforelse
+        </ul>
+    </div>
+
+</aside>
+
         </div>
     </main>
 

@@ -59,6 +59,21 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 /*
 |--------------------------------------------------------------------------
+| FRONT ARTIKEL (PUBLIC)
+|--------------------------------------------------------------------------
+*/
+Route::get('/artikel', [FrontArtikelController::class, 'index'])
+    ->name('artikel.index');
+
+Route::get('/artikel/kategori/{kategori}', [FrontArtikelController::class, 'kategori'])
+    ->name('artikel.kategori');
+
+Route::get('/artikel/{id}', [FrontArtikelController::class, 'show'])
+    ->name('artikel.show');
+
+
+/*
+|--------------------------------------------------------------------------
 | Admin Area (AUTH)
 |--------------------------------------------------------------------------
 */
@@ -77,16 +92,11 @@ Route::middleware('auth')
         Route::resource('artikel', ArtikelController::class);
         Route::resource('galeri', GaleriController::class);
         Route::resource('prestasi', PrestasiController::class);
-
         Route::resource('fasilitas', FasilitasController::class)
         ->parameters(['fasilitas' => 'fasilitas']);
         Route::resource('agenda', AgendaController::class);
         Route::resource('staff-pengajar', StaffPengajarController::class);
         Route::resource('tenaga', TenagaKependidikanController::class);
         Route::resource('ekstrakulikuler', EkstrakulikulerController::class);
-
-
-
-        
 
 });

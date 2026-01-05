@@ -1,16 +1,30 @@
 <?php
 
-namespace App\Http\Controllers\front;
+namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Models\Artikel;
-use Illuminate\Http\Request;
 
 class ArtikelController extends Controller
 {
-    public function index() {
-
+    public function index()
+    {
+        // Artikel utama (konten)
         $artikels = Artikel::latest()->paginate(6);
-        return view('pages.artikel' , compact('artikels'));
+
+        // Sidebar: artikel terbaru
+        $artikelTerbaru = Artikel::latest()->take(5)->get();
+
+        // Sidebar: kategori + jumlah
+        $kategoriArtikel = Artikel::select('kategori')
+            ->selectRaw('COUNT(*) as total')
+            ->groupBy('kategori')
+            ->get();
+
+        return view('pages.artikel', compact(
+            'artikels',
+            'artikelTerbaru',
+            'kategoriArtikel'
+        ));
     }
 }

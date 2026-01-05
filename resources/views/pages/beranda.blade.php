@@ -381,7 +381,7 @@
             </div>
         </div>
     </section>
-    <section class="container mx-auto px-4 mb-20">
+   <section class="container mx-auto px-4 mb-20">
         <div class="flex justify-between items-end mb-8">
             <div>
                 <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Ekstrakulikuler</h2>
