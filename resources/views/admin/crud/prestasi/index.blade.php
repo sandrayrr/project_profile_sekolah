@@ -40,35 +40,65 @@
     </div>
 
     {{-- FILTER DAN SEARCH --}}
-    <div class="card border-0 shadow-sm mb-4">
-        <div class="card-body">
-            <div class="row g-3">
-                <div class="col-md-6">
-                    <div class="input-group">
-                        <span class="input-group-text bg-transparent border-end-0">
-                            <i class="bi bi-search"></i>
-                        </span>
-                        <input type="text" class="form-control border-start-0" placeholder="Cari judul prestasi..." id="searchInput">
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <select class="form-select" id="filterKelas">
-                        <option value="">Semua Kelas</option>
-                        <option value="X">Kelas X</option>
-                        <option value="XI">Kelas XI</option>
-                        <option value="XII">Kelas XII</option>
-                    </select>
-                </div>
-                <div class="col-md-3">
-                    <select class="form-select" id="sortBy">
-                        <option value="newest">Terbaru</option>
-                        <option value="oldest">Terlama</option>
-                        <option value="title">Judul A-Z</option>
-                    </select>
+  <div class="card border-0 shadow-sm mb-4">
+    <div class="card-body">
+        <div class="row g-3 align-items-end">
+
+            {{-- SEARCH --}}
+            <div class="col-md-6">
+                <label class="form-label fw-semibold small text-muted">Cari</label>
+                <div class="input-group">
+                    <span class="input-group-text bg-transparent border-end-0">
+                        <i class="bi bi-search"></i>
+                    </span>
+                    <input
+                        type="text"
+                        class="form-control border-start-0"
+                        placeholder="Cari judul prestasi..."
+                        id="searchInput">
                 </div>
             </div>
+
+            {{-- FILTER KELAS --}}
+            <div class="col-md-2">
+                <label class="form-label fw-semibold small text-muted">Kelas</label>
+                <select class="form-select" id="filterKelas">
+                    <option value="">Semua</option>
+                    <option value="X">Kelas X</option>
+                    <option value="XI">Kelas XI</option>
+                    <option value="XII">Kelas XII</option>
+                </select>
+            </div>
+
+            {{-- FILTER JURUSAN --}}
+            <div class="col-md-2">
+                <label class="form-label fw-semibold small text-muted">Jurusan</label>
+                <select class="form-select" id="filterJurusan">
+                    <option value="">Semua</option>
+                    <option value="TJKT">TJKT</option>
+                    <option value="TO">TO</option>
+                    <option value="PPLG">PPLG</option>
+                    <option value="DPIB">DPIB</option>
+                    <option value="MPLB">MPLB</option>
+                    <option value="AKL">AKL</option>
+                    <option value="SP">SP</option>
+                </select>
+            </div>
+
+            {{-- SORT --}}
+            <div class="col-md-2">
+                <label class="form-label fw-semibold small text-muted">Urutkan</label>
+                <select class="form-select" id="sortBy">
+                    <option value="newest">Terbaru</option>
+                    <option value="oldest">Terlama</option>
+                    <option value="title">Judul A–Z</option>
+                </select>
+            </div>
+
         </div>
     </div>
+</div>
+
 
     {{-- TABLE --}}
     <div class="card border-0 shadow-sm">
@@ -88,7 +118,12 @@
 
                     <tbody>
                         @forelse ($prestasi as $p)
-                        <tr class="prestasi-row" data-judul="{{ strtolower($p->judul) }}" data-kelas="{{ $p->kelas }}">
+                       <tr class="prestasi-row"
+    data-judul="{{ strtolower($p->judul) }}"
+    data-kelas="{{ $p->kelas }}"
+    data-jurusan="{{ $p->jurusan }}"
+    data-tanggal="{{ $p->tanggal }}">
+
                             <td class="text-center">
                                 <span class="badge bg-light text-dark rounded-pill">{{ $loop->iteration }}</span>
                             </td>
@@ -256,58 +291,89 @@
 </style>
 
 <script>
-// Search functionality
-document.getElementById('searchInput').addEventListener('input', function(e) {
-    const searchTerm = e.target.value.toLowerCase();
-    const rows = document.querySelectorAll('.prestasi-row');
-    
-    rows.forEach(row => {
-        const judul = row.dataset.judul;
-        if (judul.includes(searchTerm)) {
-            row.style.display = '';
-        } else {
-            row.style.display = 'none';
-        }
-    });
-});
+const searchInput   = document.getElementById('searchInput');
+const filterKelas   = document.getElementById('filterKelas');
+const filterJurusan = document.getElementById('filterJurusan');
+const sortBy        = document.getElementById('sortBy');
 
-// Filter by class
-document.getElementById('filterKelas').addEventListener('change', function(e) {
-    const filterValue = e.target.value;
-    const rows = document.querySelectorAll('.prestasi-row');
-    
-    rows.forEach(row => {
-        const kelas = row.dataset.kelas;
-        if (filterValue === '' || kelas === filterValue) {
-            row.style.display = '';
-        } else {
-            row.style.display = 'none';
-        }
-    });
-});
+function applyFilter() {
+    const search   = searchInput.value.toLowerCase();
+    const kelas    = filterKelas.value;
+    const jurusan  = filterJurusan.value;
 
-// Show image modal
-function showImageModal(imageSrc) {
-    document.getElementById('modalImage').src = imageSrc;
-    new bootstrap.Modal(document.getElementById('imageModal')).show();
+    const rows = Array.from(document.querySelectorAll('.prestasi-row'));
+
+    rows.forEach(row => {
+        const judulRow   = row.dataset.judul;
+        const kelasRow   = row.dataset.kelas;
+        const jurusanRow = row.dataset.jurusan;
+
+        let visible = true;
+
+        if (search && !judulRow.includes(search)) {
+            visible = false;
+        }
+
+        if (kelas && kelasRow !== kelas) {
+            visible = false;
+        }
+
+        if (jurusan && jurusanRow !== jurusan) {
+            visible = false;
+        }
+
+        row.style.display = visible ? '' : 'none';
+    });
 }
 
-// Custom confirm dialog
-function confirmDelete(message) {
-    return Swal.fire({
-        title: 'Konfirmasi Hapus',
-        text: message,
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#dc3545',
-        cancelButtonColor: '#6c757d',
-        confirmButtonText: 'Ya, hapus!',
-        cancelButtonText: 'Batal'
-    }).then((result) => {
-        return result.isConfirmed;
+// ================= SORTING =================
+function applySort() {
+    const rows = Array.from(document.querySelectorAll('.prestasi-row'));
+    const tbody = document.querySelector('#prestasiTable tbody');
+
+    rows.sort((a, b) => {
+
+        // SORT BY KELAS → JURUSAN
+        const kelasA = a.dataset.kelas;
+        const kelasB = b.dataset.kelas;
+
+        if (kelasA !== kelasB) {
+            return kelasA.localeCompare(kelasB);
+        }
+
+        const jurusanA = a.dataset.jurusan;
+        const jurusanB = b.dataset.jurusan;
+
+        if (jurusanA !== jurusanB) {
+            return jurusanA.localeCompare(jurusanB);
+        }
+
+        // SORT OPSIONAL
+        if (sortBy.value === 'title') {
+            return a.dataset.judul.localeCompare(b.dataset.judul);
+        }
+
+        if (sortBy.value === 'oldest') {
+            return new Date(a.dataset.tanggal) - new Date(b.dataset.tanggal);
+        }
+
+        return new Date(b.dataset.tanggal) - new Date(a.dataset.tanggal);
     });
+
+    rows.forEach(row => tbody.appendChild(row));
 }
+
+// ================= EVENT =================
+searchInput.addEventListener('input', applyFilter);
+filterKelas.addEventListener('change', applyFilter);
+filterJurusan.addEventListener('change', applyFilter);
+
+sortBy.addEventListener('change', () => {
+    applySort();
+    applyFilter();
+});
 </script>
+
 
 {{-- Include SweetAlert2 if not already included --}}
 @if(!View::hasSection('scripts'))
