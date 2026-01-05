@@ -44,8 +44,6 @@ Route::get('/staffpengajar', [FrontStaffPengajarController::class, 'index'])->na
 Route::view('/tenaga-pengajar', 'pages.tenaga-pengajar')->name('tenaga-pengajar');
 Route::view('/organisasi', 'pages.organisasi')->name('organisasi');
 
-
-
 /*
 |--------------------------------------------------------------------------
 | Auth
@@ -98,5 +96,7 @@ Route::middleware('auth')
         Route::resource('staff-pengajar', StaffPengajarController::class);
         Route::resource('tenaga', TenagaKependidikanController::class);
         Route::resource('ekstrakulikuler', EkstrakulikulerController::class);
+
+
 
 });
