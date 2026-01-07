@@ -64,9 +64,9 @@
                 <label class="form-label fw-semibold small text-muted">Kelas</label>
                 <select class="form-select" id="filterKelas">
                     <option value="">Semua</option>
-                    <option value="X">Kelas X</option>
-                    <option value="XI">Kelas XI</option>
-                    <option value="XII">Kelas XII</option>
+                    <option value="Kelas X">Kelas X</option>
+                    <option value="Kelas XI">Kelas XI</option>
+                    <option value="Kelas XII">Kelas XII</option>
                 </select>
             </div>
 
@@ -99,30 +99,45 @@
     </div>
 </div>
 
+{{-- UNTUK MEGUBAH WARNA JURUSAN SESUAI DENGAN WARNA JURUSAN --}}
+
+{{-- @php
+$warnaJurusan = [
+    'TO'    => 'info',       // biru muda
+    'TJKT'  => 'primary',    // biru tua
+    'PPLG'  => 'warning',    // kuning
+    'DPIB'  => 'secondary',  // abu
+    'MPLB'  => 'danger',     // merah
+    'AKL'   => 'orange',     // custom
+    'SP'    => 'dark-solid',       // hitam
+];
+@endphp --}}
+
 
     {{-- TABLE --}}
     <div class="card border-0 shadow-sm">
         <div class="card-body p-0">
             <div class="table-responsive">
                 <table class="table table-hover align-middle mb-0" id="prestasiTable">
-                    <thead class="bg-light border-bottom">
-                        <tr>
-                            <th class="text-center" style="width:60px">No</th>
-                            <th class="text-center" style="width:120px">Foto</th>
-                            <th class="text-start">Judul</th>
-                            <th class="text-center" style="width:140px">Kelas</th>
-                            <th class="text-center" style="width:140px">Tanggal</th>
-                            <th class="text-center" style="width:120px">Aksi</th>
-                        </tr>
-                    </thead>
+            <thead class="bg-light border-bottom">
+                <tr>
+                    <th class="text-center" style="width:60px">No</th>
+                    <th class="text-center" style="width:120px">Foto</th>
+                    <th class="text-start">Judul</th>
+                    <th class="text-center" style="width:120px">Kelas</th>
+                    <th class="text-center" style="width:120px">Jurusan</th>
+                    <th class="text-center" style="width:140px">Tanggal</th>
+                    <th class="text-center" style="width:120px">Aksi</th>
+                </tr>
+            </thead>
 
                     <tbody>
                         @forelse ($prestasi as $p)
-                       <tr class="prestasi-row"
-    data-judul="{{ strtolower($p->judul) }}"
-    data-kelas="{{ $p->kelas }}"
-    data-jurusan="{{ $p->jurusan }}"
-    data-tanggal="{{ $p->tanggal }}">
+                      <tr class="prestasi-row"
+                     data-judul="{{ strtolower($p->judul) }}"
+                     data-kelas="{{ $p->kelas }}"
+                     data-jurusan="{{ $p->jurusan }}"
+                     data-tanggal="{{ $p->tanggal }}">
 
                             <td class="text-center">
                                 <span class="badge bg-light text-dark rounded-pill">{{ $loop->iteration }}</span>
@@ -159,10 +174,32 @@
 
                             {{-- KELAS --}}
                             <td class="text-center">
-                                <span class="badge bg-info bg-opacity-10 text-info px-3 py-2 rounded-pill fw-semibold">
+                                <span class="badge bg-info bg-opacity-10 text-secondary px-3 py-2 rounded-pill fw-semibold">
                                     {{ $p->kelas }}
                                 </span>
                             </td>
+
+                            {{-- JURUSAN --}}
+
+                            <td class="text-center">
+                            <span class="badge bg-secondary bg-opacity-10 text-info px-3 py-2 rounded-pill fw-semibold">
+                              {{ $p->jurusan }}
+                          </span>
+                                 </td>
+
+                            {{-- <td class="text-center">
+                               @php
+                                $warna = $warnaJurusan[$p->jurusan] ?? 'secondary';
+                               @endphp
+
+                        <span
+                             class="badge 
+                             bg-{{ $warna }} bg-opacity-10 
+                             text-{{ $warna }} 
+                             px-3 py-2 rounded-pill fw-semibold">
+                             {{ $p->jurusan }}
+                         </span>
+                       </td> --}}
 
                             {{-- TANGGAL --}}
                             <td class="text-center">
@@ -288,6 +325,19 @@
     border-color: #667eea;
     box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
 }
+/* .bg-orange {
+    background-color: #fd7e14 !important;
+}
+.text-orange {
+    color: #fd7e14 !important;
+}
+.bg-dark-solid {
+    background-color: #000 !important;
+}
+.text-dark-solid {
+    color: #fff !important;
+} */
+
 </style>
 
 <script>

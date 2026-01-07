@@ -16,25 +16,34 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <script>
+       <script>
         tailwind.config = {
             darkMode: "class",
             theme: {
                 extend: {
                     colors: {
-                        primary: "#1e40af", // deep blue
-                        "background-light": "#f3f4f6", // gray-100
-                        "background-dark": "#111827", // gray-900
-                        "surface-light": "#ffffff",
-                        "surface-dark": "#1f2937", // gray-800
+                        primary: "#6b7280", // Warna abu-abu
+                        "background-light": "#f9fafb",
+                        "background-dark": "#111827",
+                        "card-light": "#ffffff",
+                        "card-dark": "#1f2937",
+                        "border-light": "#e5e7eb",
+                        "border-dark": "#374151",
+                        "text-light": "#111318",
+                        "text-dark": "#f9fafb",
                     },
                     fontFamily: {
-                        display: ["Inter", "sans-serif"],
                         body: ["Inter", "sans-serif"],
                     },
-                    borderRadius: {
-                        DEFAULT: "0.5rem",
+                    animation: {
+                        'fade-in': 'fadeIn 0.6s ease-out',
                     },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
                 },
             },
         };
