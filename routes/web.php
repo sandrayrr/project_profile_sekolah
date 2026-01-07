@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\GaleriController;
 use App\Http\Controllers\Admin\FasilitasController;
 use App\Http\Controllers\Admin\AgendaController;
 use App\Http\Controllers\Admin\TenagaKependidikanController;
+use App\Http\Controllers\Admin\EkstrakulikulerController;
 use App\Http\Controllers\BerandaController as ControllersBerandaController;
 use App\Http\Controllers\front\TenagaKependidikanController as FrontTenagaKependidikanController;
 use App\Http\Controllers\front\AgendaController as FrontAgendaController;
@@ -19,6 +20,10 @@ use App\Http\Controllers\front\PrestasiController as FrontPrestasiController;
 use App\Http\Controllers\front\GaleriController as FrontGaleriController;
 use App\Http\Controllers\front\FasilitasController as FrontFasilitasController;
 use App\Http\Controllers\front\StaffPengajarController as FrontStaffPengajarController;
+use App\Http\Controllers\front\EkstrakulikulerController as FrontEkstrakulikuler;
+use App\Http\Controllers\front\PplgController as FrontPplgController;
+use App\Http\Controllers\front\TjktController as FrontTjktController;
+use App\Http\Controllers\Admin\StaffPengajarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,18 +33,21 @@ use App\Http\Controllers\front\StaffPengajarController as FrontStaffPengajarCont
 Route::get('/', [ControllersBerandaController::class, 'index'])->name('beranda');
 Route::view('/profil', 'pages.profil')->name('profil');
 Route::view('/jurusan', 'pages.jurusan')->name('jurusan');
-Route::get('/artikel', [FrontArtikelController::class, 'index'])->name('artikel');
-Route::get('/galeri', [FrontGaleriController::class, 'index'])->name('galeri');
-Route::get('/prestasi', [FrontPrestasiController::class, 'index'])->name('prestasi');
-Route::get('/agenda', [FrontAgendaController::class, 'index'])->name('agenda');
+Route::get('/artikel', [FrontArtikelController::class , 'index'])->name('artikel');
+Route::get('/galeri', [FrontGaleriController::class , 'index'])->name('galeri');
+Route::get('/prestasi', [FrontPrestasiController::class , 'index'])->name('prestasi');
+Route::get('/agenda', [FrontAgendaController::class , 'index'])->name('agenda');
 Route::view('/link', 'pages.link')->name('link');
 Route::get('/fasilitas', [FrontFasilitasController::class, 'index'])->name('fasilitas');
 Route::view('/akreditasi', 'pages.akreditasi')->name('akreditasi');
-Route::get('/tenagakependidikan', [FrontTenagaKependidikanController::class, 'index'])->name('tenagakependidikan');
-Route::view('/ekstrakulikuler', 'pages.ekstrakulikuler')->name('ekstrakulikuler');
-Route::get('/staffpengajar', [FrontStaffPengajarController::class, 'index'])->name('staffpengajar');
-Route::get('/tenagapengajar', [FrontTenagaKependidikanController::class, 'index'])->name('tenagapengajar');
+Route::get('/tenagakependidikan', [FrontTenagaKependidikanController::class , 'index'])->name('tenagakependidikan');
+Route::get('/ekstrakulikuler', [FrontEkstrakulikuler::class, 'index'])->name('ekstrakulikuler');
+Route::get('/staffpengajar', [FrontStaffPengajarController::class, 'index'])->name('staff-pengajar');
+Route::get('/pplg', [FrontPplgController::class, 'index'])->name('pplg');
+Route::get('/tjkt', [FrontTjktController::class, 'index'])->name('tjkt');
+Route::view('/tenaga-pengajar', 'pages.tenaga-pengajar')->name('tenaga-pengajar');
 Route::view('/organisasi', 'pages.organisasi')->name('organisasi');
+
 
 
 /*
@@ -55,6 +63,21 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 /*
 |--------------------------------------------------------------------------
+| FRONT ARTIKEL (PUBLIC)
+|--------------------------------------------------------------------------
+*/
+Route::get('/artikel', [FrontArtikelController::class, 'index'])
+    ->name('artikel.index');
+
+Route::get('/artikel/kategori/{kategori}', [FrontArtikelController::class, 'kategori'])
+    ->name('artikel.kategori');
+
+Route::get('/artikel/{id}', [FrontArtikelController::class, 'show'])
+    ->name('artikel.show');
+
+
+/*
+|--------------------------------------------------------------------------
 | Admin Area (AUTH)
 |--------------------------------------------------------------------------
 */
@@ -66,20 +89,18 @@ Route::middleware('auth')
         // Dashboard
         Route::get('/dashboard', [AdminController::class, 'dashboard'])
             ->name('dashboard');
-
+        
         // CRUD
         Route::resource('users', UserController::class);
         Route::resource('beranda', BerandaController::class);
-        Route::resource('users', UserController::class);
         Route::resource('artikel', ArtikelController::class);
         Route::resource('galeri', GaleriController::class);
         Route::resource('prestasi', PrestasiController::class);
-
         Route::resource('fasilitas', FasilitasController::class)
-            ->parameters(['fasilitas' => 'fasilitas']);
+        ->parameters(['fasilitas' => 'fasilitas']);
         Route::resource('agenda', AgendaController::class);
+        Route::resource('staff-pengajar', StaffPengajarController::class);
         Route::resource('tenaga', TenagaKependidikanController::class);
+        Route::resource('ekstrakulikuler', EkstrakulikulerController::class);
 
-
-
-    });
+});

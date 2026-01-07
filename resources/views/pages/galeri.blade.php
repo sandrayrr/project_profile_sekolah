@@ -20,7 +20,7 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: "#6b7280", // Warna abu-abu sebagai pengganti biru
+                        primary: "#6b7280", // Warna abu-abu
                         "background-light": "#f9fafb",
                         "background-dark": "#111827",
                         "card-light": "#ffffff",
@@ -29,7 +29,7 @@
                         "border-dark": "#374151",
                     },
                     fontFamily: {
-                        sans: ["Inter", "sans-serif"],
+                        body: ["Inter", "sans-serif"],
                     },
                     animation: {
                         'fade-in': 'fadeIn 0.6s ease-out',
@@ -66,28 +66,23 @@
             transition: transform 0.3s ease;
         }
 
-        /* --- PERBAIKAN PAGINATION --- */
-        /* Menghilangkan margin default dari pagination Laravel */
+        /* Pagination styling */
         .pagination {
             @apply flex list-none -space-x-px;
         }
-
-        /* Style untuk setiap tombol/link pagination */
+        
         .page-link {
             @apply relative block py-2 px-3 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white;
         }
-
-        /* Style untuk tombol aktif (halaman saat ini) */
+        
         .page-item.active .page-link {
             @apply z-10 text-primary-600 bg-primary-50 border-primary-500 dark:text-primary-300 dark:bg-primary-900 dark:border-primary-400;
         }
-
-        /* Style untuk tombol yang dinonaktifkan (Previous/Next di ujung) */
+        
         .page-item.disabled .page-link {
             @apply opacity-50 cursor-not-allowed bg-gray-100 dark:bg-gray-800;
         }
         
-        /* Membulatkan sudut untuk tombol pertama dan terakhir */
         .page-item:first-child .page-link {
             @apply rounded-l-lg;
         }
@@ -98,17 +93,11 @@
     </style>
 </head>
 
-<body
-    class="bg-background-light dark:bg-background-dark 
-           text-gray-800 dark:text-gray-100 
-           font-sans transition-colors duration-300">
+<body class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-100 font-body transition-colors duration-300">
 
-    <!-- NAVBAR -->
-    <header class="bg-card-light dark:bg-card-dark shadow-sm border-b border-border-light dark:border-border-dark sticky top-0 z-40">
-        @include('layouts.navbar')
-    </header>
+    @include('layouts.navbar')
 
-    <!-- HEADER PAGE -->
+    <!-- HEADER -->
     <div class="relative bg-gradient-to-br from-primary to-gray-600 dark:from-gray-700 dark:to-gray-900 py-20">
         <!-- Optional: Add a subtle pattern overlay -->
         <div class="absolute inset-0 bg-black opacity-10"></div>
@@ -124,7 +113,7 @@
 
     <!-- SEARCH -->
     <div class="max-w-4xl mx-auto mt-10 px-4">
-        <form action="#" method="GET"
+        <form action="{{ route('galeri') }}" method="GET"
             class="flex shadow-md rounded-xl overflow-hidden">
             <div class="relative flex-grow">
                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -184,7 +173,7 @@
                     <div
                         class="overlay absolute inset-0 opacity-0 transition-opacity duration-300 flex items-end p-4">
                         <div class="overlay-text text-white">
-                           
+                            <p class="font-semibold text-lg">{{ $item->judul }}</p>
                             <p class="text-sm opacity-90">{{ \Carbon\Carbon::parse($item->tanggal)->format('d M Y') }}</p>
                         </div>
                     </div>
@@ -208,7 +197,7 @@
                         </div>
                     </div>
 
-                    
+                   
                 </div>
             </div>
             @empty
@@ -227,17 +216,15 @@
 
         </div>
 
-        <!-- PAGINATION YANG TELAH DIPERBAIKI -->
-        @if($galeri->hasPages())
-        <div class="mt-16 flex justify-center">
-            <!-- Menggunakan default Laravel pagination, styling di-handle oleh CSS -->
+        <!-- PAGINATION -->
+        @if(isset($galeri) && method_exists($galeri, 'links') && $galeri->hasPages())
+        <div class="flex justify-center mt-10">
             {{ $galeri->links() }}
         </div>
         @endif
 
     </main>
 
-    <!-- FOOTER -->
     @include('layouts.footer')
 
     <!-- DARK MODE BUTTON -->

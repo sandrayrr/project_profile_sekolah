@@ -33,21 +33,6 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-3 col-sm-6 mb-3">
-            <div class="card border-0 bg-gradient-info text-white shadow-sm">
-                <div class="card-body">
-                    <div class="d-flex align-items-center">
-                        <div class="flex-grow-1">
-                            <h6 class="mb-0 text-white-50">Ditambahkan Bulan Ini</h6>
-                            <h3 class="mb-0 fw-bold">{{ $fasilitas->where('created_at', '>=', now()->startOfMonth())->count() }}</h3>
-                        </div>
-                        <div class="ms-3">
-                            <i class="bi bi-calendar-plus fs-1 opacity-75"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
     {{-- NOTIFIKASI SUKSES --}}
@@ -58,17 +43,37 @@
     </div>
     @endif
 
-    {{-- SEARCH BAR --}}
     <div class="card border-0 shadow-sm mb-4">
-        <div class="card-body">
-            <div class="input-group">
-                <span class="input-group-text bg-transparent border-end-0">
-                    <i class="bi bi-search"></i>
-                </span>
-                <input type="text" class="form-control border-start-0" id="searchInput" placeholder="Cari berdasarkan nama fasilitas...">
+    <div class="card-body">
+        <div class="row g-3 align-items-center">
+
+            {{-- SEARCH BAR --}}
+            <div class="col-md-9">
+                <div class="input-group">
+                    <span class="input-group-text bg-transparent border-end-0">
+                        <i class="bi bi-search"></i>
+                    </span>
+                    <input
+                        type="text"
+                        class="form-control border-start-0"
+                        id="searchInput"
+                        placeholder="Cari berdasarkan judul foto...">
+                </div>
             </div>
+
+            {{-- FILTER / SORT --}}
+            <div class="col-md-3">
+                <select class="form-select" id="sortSelect">
+                    <option value="newest">Terbaru</option>
+                    <option value="oldest">Terlama</option>
+                    <option value="title">Judul A–Z</option>
+                </select>
+            </div>
+
         </div>
     </div>
+</div>
+
 
     {{-- FASILITAS GRID --}}
     <div class="row g-4" id="fasilitasContainer">

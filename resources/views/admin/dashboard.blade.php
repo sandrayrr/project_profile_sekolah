@@ -223,7 +223,7 @@
 <div class="dashboard-welcome mb-4">
     <div class="row align-items-center">
         <div class="col-md-8">
-            <h2 class="fw-bold">Selamat Datang, Super Admin! 👑</h2>
+            <h2 class="fw-bold">Selamat Datang, Super Admin!</h2>
             <p class="mt-2">Kelola seluruh konten dan data website dengan mudah melalui dashboard profesional ini.</p>
             <div class="mt-3">
                 <span class="badge bg-white text-primary p-2 me-2">

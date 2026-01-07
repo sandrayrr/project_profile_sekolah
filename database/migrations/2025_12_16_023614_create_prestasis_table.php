@@ -15,6 +15,7 @@ return new class extends Migration
         $table->id();
         $table->string('judul');
         $table->string('kelas');
+        $table->string('jurusan');
         $table->date('tanggal');
         $table->string('foto')->nullable();
         $table->timestamps();

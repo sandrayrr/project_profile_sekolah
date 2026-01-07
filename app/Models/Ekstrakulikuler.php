@@ -1,19 +1,18 @@
 <?php
 
+// app/Models/Ekstrakulikuler.php
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Prestasi extends Model
+class Ekstrakulikuler extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'judul',
-        'kelas',
-        'jurusan',
-        'tanggal',
-        'foto'
+    protected $fillable = 
+    ['judul', 
+     'kategori',
+     'foto'
     ];
 }

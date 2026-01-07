@@ -7,16 +7,15 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
-        Schema::table('staff_pengajars', function (Blueprint $table) {
-            $table->string('foto')->nullable()->after('jabatan');
+        Schema::table('artikels', function (Blueprint $table) {
+            $table->string('kategori')->after('judul');
         });
     }
 
     public function down(): void
     {
-        Schema::table('staff_pengajars', function (Blueprint $table) {
-            $table->dropColumn('foto');
+        Schema::table('artikels', function (Blueprint $table) {
+            $table->dropColumn('kategori');
         });
     }
 };
-

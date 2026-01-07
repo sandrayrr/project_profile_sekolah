@@ -16,25 +16,34 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <script>
+       <script>
         tailwind.config = {
             darkMode: "class",
             theme: {
                 extend: {
                     colors: {
-                        primary: "#1e40af", // deep blue
-                        "background-light": "#f3f4f6", // gray-100
-                        "background-dark": "#111827", // gray-900
-                        "surface-light": "#ffffff",
-                        "surface-dark": "#1f2937", // gray-800
+                        primary: "#6b7280", // Warna abu-abu
+                        "background-light": "#f9fafb",
+                        "background-dark": "#111827",
+                        "card-light": "#ffffff",
+                        "card-dark": "#1f2937",
+                        "border-light": "#e5e7eb",
+                        "border-dark": "#374151",
+                        "text-light": "#111318",
+                        "text-dark": "#f9fafb",
                     },
                     fontFamily: {
-                        display: ["Inter", "sans-serif"],
                         body: ["Inter", "sans-serif"],
                     },
-                    borderRadius: {
-                        DEFAULT: "0.5rem",
+                    animation: {
+                        'fade-in': 'fadeIn 0.6s ease-out',
                     },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
                 },
             },
         };
@@ -265,32 +274,43 @@
                     Selengkapnya <span class="material-icons text-sm ml-1">arrow_forward</span>
                 </a>
             </div>
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 text-center">
-                    <div class="w-full aspect-square bg-gray-200 dark:bg-gray-700 rounded-lg mb-4 overflow-hidden">
-                        <img alt="Staff" class="w-full h-full object-cover opacity-90"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCL_bH2iMzrxfDta2DSpZrZaJ6VAKUpblqahE6cZlUM4ocHdLb2wQfiibEwuEhpTC8Tl7PC1_3Sc3qyQFU8mARZhLehESB0u9CC7CxHmGUGW91Dh7A5-6QGATGfdeUsDe0Np6jbTq-9iQvqVFZrTy1gCl5_dP_kEkD-zKzTxKnF6QdMYKMMZRRQhMuplrx4i2mKZjwNlpVUARbSwKzDuvozmuGNwdbkPo4DjLcrQ7plyHmd-f9Ctg26e8Yow5G0Hh1sL66qdZ1yLA-5" />
-                    </div>
-                    <h4 class="text-lg font-bold text-gray-900 dark:text-white">Asep Suherman</h4>
-                    <p class="text-gray-500 dark:text-gray-400 text-sm">Kepala Tata Usaha</p>
-                </div>
-                <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 text-center">
-                    <div class="w-full aspect-square bg-gray-200 dark:bg-gray-700 rounded-lg mb-4 overflow-hidden">
-                        <img alt="Staff" class="w-full h-full object-cover opacity-90"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxkuRaKPnLDW6vITtE0XxBrM7XnHngrKhYaRsR6YyNLTXsmKB3dhMg5ICvAYIjNZ_93oLQB8i-xwXD4smEyzRBWSuOVdD00CTuZyPAKG3LdpYZ4P2eEVxT4X4ctUh2RzTlEcV-z67WAZ9GZamw-vhbr7SjIWVkEIN11tfM9Wh_JQ4nAyf9XHyJC_DNaDWzeOHpkm9m2GSIQ3hz_xfhX8cH5ZS4C1dVt4tvgTYj84NFIdj5_apYjbKX4nrHIUnPfLQZjBojUV4y0_US" />
-                    </div>
-                    <h4 class="text-lg font-bold text-gray-900 dark:text-white">Nurul Hidayah</h4>
-                    <p class="text-gray-500 dark:text-gray-400 text-sm">Staff Administrasi</p>
-                </div>
-                <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 text-center">
-                    <div class="w-full aspect-square bg-gray-200 dark:bg-gray-700 rounded-lg mb-4 overflow-hidden">
-                        <img alt="Staff" class="w-full h-full object-cover opacity-90"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8FxTITpCWOTaOQBFu19S0wtAOBCLen5OczK5LvlA1y-_avOPkVVe56LHOJQkPGbly4JsQ79ebjrB8afk30bMDSAIv7sDoDDHYJPPr8rZa-m7tYh8Fku6UwORyMHlzI3qPo497xwaGZBim4KhStT7wPrmyMA2ZRbjqTLZxARcEMQ0pqeVkN605F7MEi0z_OA-8gx7Umu8lZkkfR9DkBMRBWfnCqDTKPsFgEaWvpoSnocvifYO20jZXE1UDGRudrRFZTAz80agdpy0m" />
-                    </div>
-                    <h4 class="text-lg font-bold text-gray-900 dark:text-white">Bambang Irawan</h4>
-                    <p class="text-gray-500 dark:text-gray-400 text-sm">Staff Keuangan</p>
-                </div>
+           <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+    @forelse ($tenagakependidikan as $item)
+        <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 text-center
+                    hover:-translate-y-1 transition duration-300">
+
+            {{-- FOTO --}}
+            <div class="w-full aspect-square bg-gray-200 dark:bg-gray-700 rounded-lg
+                        mb-4 overflow-hidden">
+                <img
+                    src="{{ $item->foto
+                        ? asset('storage/' . $item->foto)
+                        : 'https://ui-avatars.com/api/?name=' . urlencode($item->nama) . '&background=0D8ABC&color=fff'
+                    }}"
+                    alt="{{ $item->nama }}"
+                    class="w-full h-full object-cover opacity-90">
             </div>
+
+            {{-- NAMA --}}
+            <h4 class="text-lg font-bold text-gray-900 dark:text-white">
+                {{ $item->nama }}
+            </h4>
+
+            {{-- JABATAN --}}
+            <p class="text-gray-500 dark:text-gray-400 text-sm">
+                {{ $item->jabatan }}
+            </p>
+        </div>
+
+    @empty
+        <div class="col-span-full text-center text-gray-500 py-10">
+            Belum ada data tenaga kependidikan
+        </div>
+    @endforelse
+
+</div>
+
         </div>
     </section>
     <section class="container mx-auto px-4 mb-20">
@@ -370,7 +390,7 @@
             </div>
         </div>
     </section>
-    <section class="container mx-auto px-4 mb-20">
+   <section class="container mx-auto px-4 mb-20">
         <div class="flex justify-between items-end mb-8">
             <div>
                 <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Ekstrakulikuler</h2>

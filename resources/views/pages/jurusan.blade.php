@@ -46,7 +46,7 @@
 </head>
 
 <body
-    class="bg-background-light dark:bg-background-dark font-display text-[#111318] antialiased flex min-h-screen flex-col">
+    class="bg-background-light bg-background-dark font-display text-[#111318] antialiased flex min-h-screen flex-col">
     <!-- Header Section -->
    @include('layouts.navbar')
     <!-- Main Content -->

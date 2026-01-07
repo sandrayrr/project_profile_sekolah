@@ -10,8 +10,8 @@ return new class extends Migration {
         Schema::create('staff_pengajars', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->string('jabatan');
-            $table->string('foto')->nullable();
+            $table->string('foto')->nullable(); // simpan nama file / path foto
+            $table->string('pengampu'); // mata pelajaran / bidang
             $table->timestamps();
         });
     }
