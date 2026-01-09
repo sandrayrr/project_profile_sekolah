@@ -21,6 +21,8 @@ use App\Http\Controllers\front\GaleriController as FrontGaleriController;
 use App\Http\Controllers\front\FasilitasController as FrontFasilitasController;
 use App\Http\Controllers\front\StaffPengajarController as FrontStaffPengajarController;
 use App\Http\Controllers\front\EkstrakulikulerController as FrontEkstrakulikuler;
+use App\Http\Controllers\front\PplgController as FrontPplgController;
+use App\Http\Controllers\front\TjktController as FrontTjktController;
 use App\Http\Controllers\Admin\StaffPengajarController;
 
 /*
@@ -41,6 +43,8 @@ Route::view('/akreditasi', 'pages.akreditasi')->name('akreditasi');
 Route::get('/tenagakependidikan', [FrontTenagaKependidikanController::class , 'index'])->name('tenagakependidikan');
 Route::get('/ekstrakulikuler', [FrontEkstrakulikuler::class, 'index'])->name('ekstrakulikuler');
 Route::get('/staffpengajar', [FrontStaffPengajarController::class, 'index'])->name('staff-pengajar');
+Route::get('/pplg', [FrontPplgController::class, 'index'])->name('pplg');
+Route::get('/tjkt', [FrontTjktController::class, 'index'])->name('tjkt');
 Route::view('/tenaga-pengajar', 'pages.tenaga-pengajar')->name('tenaga-pengajar');
 Route::view('/organisasi', 'pages.organisasi')->name('organisasi');
 

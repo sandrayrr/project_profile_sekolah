@@ -113,7 +113,7 @@
 
     <!-- SEARCH -->
     <div class="max-w-4xl mx-auto mt-10 px-4">
-        <form action="#" method="GET"
+        <form action="{{ route('galeri') }}" method="GET"
             class="flex shadow-md rounded-xl overflow-hidden">
             <div class="relative flex-grow">
                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">

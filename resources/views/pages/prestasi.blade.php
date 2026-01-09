@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Prestasi - SMK Negeri 1 Kawali</title>
 
+    <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
 
     <script>
@@ -15,15 +20,13 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: "#6b7280", // Warna abu-abu sebagai pengganti biru
+                        primary: "#6b7280",
                         "background-light": "#f9fafb",
                         "background-dark": "#111827",
                         "card-light": "#ffffff",
                         "card-dark": "#1f2937",
                         "border-light": "#e5e7eb",
                         "border-dark": "#374151",
-                        "surface-light": "#f3f4f6",
-                        "surface-dark": "#1f2937",
                     },
                     fontFamily: {
                         body: ["Inter", "sans-serif"],
@@ -41,8 +44,8 @@
             },
         };
     </script>
+
     <style>
-        /* Custom styles for visual enhancement */
         .prestasi-card {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -62,31 +65,6 @@
             transform: translateY(10px);
             transition: transform 0.3s ease;
         }
-
-        /* Pagination styling */
-        .pagination {
-            @apply flex list-none -space-x-px;
-        }
-        
-        .page-link {
-            @apply relative block py-2 px-3 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white;
-        }
-        
-        .page-item.active .page-link {
-            @apply z-10 text-primary-600 bg-primary-50 border-primary-500 dark:text-primary-300 dark:bg-primary-900 dark:border-primary-400;
-        }
-        
-        .page-item.disabled .page-link {
-            @apply opacity-50 cursor-not-allowed bg-gray-100 dark:bg-gray-800;
-        }
-        
-        .page-item:first-child .page-link {
-            @apply rounded-l-lg;
-        }
-
-        .page-item:last-child .page-link {
-            @apply rounded-r-lg;
-        }
     </style>
 </head>
 
@@ -96,7 +74,6 @@
 
     <!-- HEADER -->
     <div class="relative bg-gradient-to-br from-primary to-gray-600 dark:from-gray-700 dark:to-gray-900 py-20">
-        <!-- Optional: Add a subtle pattern overlay -->
         <div class="absolute inset-0 bg-black opacity-10"></div>
         <div class="relative container mx-auto px-4">
             <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-3">
@@ -130,21 +107,11 @@
                 Cari
             </button>
         </form>
-        
-        <!-- Tombol Reset Search -->
-        @if(request('cari'))
-        <div class="mt-3 text-right">
-            <a href="{{ route('prestasi') }}" class="text-sm text-slate-600 dark:text-slate-400 hover:text-primary">
-                <i class="fa-solid fa-times-circle mr-1"></i> Hapus pencarian
-            </a>
-        </div>
-        @endif
     </div>
 
     <!-- CONTENT -->
     <main class="container mx-auto px-4 py-12 lg:py-16 min-h-screen">
 
-        <!-- NOTIFIKASI HASIL PENCARIAN -->
         @if(request('cari'))
         <div class="mb-6 bg-gray-50 dark:bg-gray-900/20 border-l-4 border-gray-500 p-4 rounded">
             <p class="text-sm">
@@ -157,85 +124,77 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-12">
 
             @forelse ($prestasi as $item)
-                <div
-                    class="prestasi-card bg-card-light dark:bg-card-dark 
-                           rounded-2xl shadow-lg border border-border-light dark:border-border-dark 
-                           overflow-hidden animate-fade-in group">
+            <div
+                class="prestasi-card bg-card-light dark:bg-card-dark 
+                       rounded-2xl shadow-lg border border-border-light dark:border-border-dark 
+                       overflow-hidden animate-fade-in group">
 
-                    <!-- FOTO -->
-                    <div class="prestasi-image-container aspect-[4/3] bg-gray-200 dark:bg-gray-700 relative overflow-hidden">
-                        @if ($item->foto)
-                            <img src="{{ asset('storage/' . $item->foto) }}"
-                                alt="{{ $item->judul }}"
-                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                        @else
-                            <div class="w-full h-full flex items-center justify-center text-gray-400 dark:text-gray-500">
-                                <i class="fa-solid fa-trophy text-6xl"></i>
-                            </div>
-                        @endif
-
-                        <!-- OVERLAY -->
-                        <div
-                            class="overlay absolute inset-0 opacity-0 transition-opacity duration-300 flex items-end p-4">
-                            <div class="overlay-text text-white">
-                                <p class="text-sm opacity-90">{{ \Carbon\Carbon::parse($item->tanggal)->format('d M Y') }}</p>
-                            </div>
+                <!-- FOTO -->
+                <div class="prestasi-image-container aspect-[4/3] bg-gray-200 dark:bg-gray-700 relative overflow-hidden">
+                    @if ($item->foto)
+                        <img
+                            src="{{ asset('storage/' . $item->foto) }}"
+                            alt="{{ $item->judul }}"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    @else
+                        <div class="w-full h-full flex items-center justify-center text-gray-400 dark:text-gray-500">
+                            <i class="fa-solid fa-trophy text-6xl"></i>
                         </div>
-                    </div>
+                    @endif
 
-                    <!-- BODY -->
-                    <div class="p-5 flex flex-col flex-grow">
-                        <div class="flex justify-end mb-3">
-                            <span class="text-xs bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary-300 px-3 py-1 rounded-full font-medium">
-                                {{ \Carbon\Carbon::parse($item->tanggal)->translatedFormat('d F Y') }}
-                            </span>
+                    <!-- OVERLAY -->
+                    <div class="overlay absolute inset-0 opacity-0 transition-opacity duration-300 flex items-end p-4">
+                        <div class="overlay-text text-white">
+                            <p class="font-semibold text-lg">{{ $item->judul }}</p>
+                            <p class="text-sm opacity-90">
+                                {{ \Carbon\Carbon::parse($item->tanggal)->format('d M Y') }}
+                            </p>
                         </div>
-
-                        <div class="border-t pt-4 flex-grow">
-                            <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white truncate">
-                                {{ $item->judul }}
-                            </h3>
-                            <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
-                                <i class="fas fa-graduation-cap mr-2"></i>
-                                <span>{{ $item->kelas }}</span>
-                            </div>
-                        </div>
-
-                      
                     </div>
                 </div>
+
+                <!-- BODY -->
+                <div class="p-5 flex flex-col flex-grow">
+                    <div class="flex justify-end mb-3">
+                        <span class="text-xs bg-primary/10 dark:bg-primary/20 text-primary px-3 py-1 rounded-full font-medium">
+                            Prestasi
+                        </span>
+                    </div>
+
+                    <div class="border-t pt-4 flex-grow">
+                        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white truncate">
+                            {{ $item->judul }}
+                        </h3>
+                        <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                            <i class="fa-solid fa-graduation-cap mr-2"></i>
+                            <span>{{ $item->kelas }}</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
             @empty
                 <div class="col-span-full flex flex-col items-center justify-center text-center py-20">
                     <div class="w-24 h-24 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mb-6">
                         <i class="fa-solid fa-trophy text-5xl text-gray-400"></i>
                     </div>
-                    @if(request('cari'))
-                        <h3 class="text-2xl font-bold text-gray-700 dark:text-gray-300 mb-2">
-                            Tidak ada hasil untuk "{{ request('cari') }}"
-                        </h3>
-                        <p class="text-gray-500 dark:text-gray-400 max-w-md mb-4">
-                            Coba kata kunci lain atau lihat semua prestasi
-                        </p>
-                        <a href="{{ route('prestasi') }}" class="mt-4 inline-block bg-primary text-white px-6 py-2 rounded-lg hover:bg-gray-700 transition-colors">
-                            Lihat Semua Prestasi
-                        </a>
-                    @else
-                        <h3 class="text-2xl font-bold text-gray-700 dark:text-gray-300 mb-2">
-                            Belum Ada Data Prestasi
-                        </h3>
-                        <p class="text-gray-500 dark:text-gray-400 max-w-md">
-                            Belum ada data prestasi yang tersedia saat ini. Kunjungi kembali lain hari untuk melihat prestasi terbaru dari kami.
-                        </p>
-                    @endif
+                    <h3 class="text-2xl font-bold text-gray-700 dark:text-gray-300 mb-2">
+                        Belum Ada Prestasi
+                    </h3>
+                    <p class="text-gray-500 dark:text-gray-400 max-w-md">
+                        Belum ada data prestasi yang ditampilkan saat ini.
+                    </p>
                 </div>
             @endforelse
 
         </div>
 
         <!-- PAGINATION -->
+        @if(isset($prestasi) && method_exists($prestasi, 'links') && $prestasi->hasPages())
         <div class="flex justify-center mt-10">
             {{ $prestasi->links() }}
         </div>
+        @endif
 
     </main>
 
@@ -250,7 +209,6 @@
     </button>
 
     <script>
-        // Dark mode toggle
         const toggle = document.getElementById('darkToggle');
         const html = document.documentElement;
 
@@ -260,22 +218,10 @@
 
         toggle.addEventListener('click', () => {
             html.classList.toggle('dark');
-            localStorage.setItem('theme',
+            localStorage.setItem(
+                'theme',
                 html.classList.contains('dark') ? 'dark' : 'light'
             );
-        });
-
-        // Search functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const searchInput = document.getElementById('searchInput');
-            
-            // Auto-submit form on Enter key
-            searchInput.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    e.preventDefault();
-                    this.form.submit();
-                }
-            });
         });
     </script>
 
