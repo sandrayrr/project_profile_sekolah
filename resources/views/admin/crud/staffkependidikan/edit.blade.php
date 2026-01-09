@@ -1,6 +1,6 @@
 @extends('admin.layout')
 
-@section('title', 'Edit Ekstrakulikuler')
+@section('title', 'Edit Staff Kependidikan')
 
 @section('content')
 
@@ -26,7 +26,7 @@
 
 /* === CARD === */
 .popup-card{
-    width: 800px;
+    width: 700px;
     max-width: 95%;
     max-height: 90vh;
     overflow-y: auto;
@@ -84,9 +84,9 @@
         <div class="popup-header">
             <h5>
                 <i class="bi bi-pencil-square me-2"></i>
-                Edit Ekstrakulikuler
+                Edit Staff Kependidikan
             </h5>
-            <a href="{{ route('admin.ekstrakulikuler.index') }}"
+            <a href="{{ route('admin.staffkependidikan.index') }}"
                class="popup-close">&times;</a>
         </div>
 
@@ -104,41 +104,34 @@
                 </div>
             @endif
 
-            <form action="{{ route('admin.ekstrakulikuler.update', $ekstrakulikuler->id) }}"
+            <form action="{{ route('admin.staffkependidikan.update', $staff->id) }}"
                   method="POST"
                   enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
-                {{-- JUDUL --}}
+                {{-- NAMA --}}
                 <div class="mb-3">
-                    <label class="form-label fw-bold">Judul Ekstrakulikuler</label>
+                    <label class="form-label fw-bold">Nama</label>
                     <input type="text"
-                           name="judul"
-                           class="form-control @error('judul') is-invalid @enderror"
-                           value="{{ old('judul', $ekstrakulikuler->judul) }}"
-                           placeholder="Contoh: Futsal, Pramuka, Tari Tradisional"
+                           name="nama"
+                           class="form-control @error('nama') is-invalid @enderror"
+                           value="{{ old('nama', $staff->nama) }}"
                            required>
-                    @error('judul')
+                    @error('nama')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
 
-                {{-- KATEGORI --}}
+                {{-- JABATAN --}}
                 <div class="mb-3">
-                    <label class="form-label fw-bold">Kategori</label>
-                    <select name="kategori"
-                            class="form-select @error('kategori') is-invalid @enderror"
-                            required>
-                        <option value="">-- Pilih Kategori --</option>
-                        @foreach (['Olahraga','Seni','Kepramukaan','Keagamaan','Akademik','Lainnya'] as $kat)
-                            <option value="{{ $kat }}"
-                                {{ old('kategori', $ekstrakulikuler->kategori) == $kat ? 'selected' : '' }}>
-                                {{ $kat }}
-                            </option>
-                        @endforeach
-                    </select>
-                    @error('kategori')
+                    <label class="form-label fw-bold">Jabatan</label>
+                    <input type="text"
+                           name="jabatan"
+                           class="form-control @error('jabatan') is-invalid @enderror"
+                           value="{{ old('jabatan', $staff->jabatan) }}"
+                           required>
+                    @error('jabatan')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
@@ -146,23 +139,20 @@
                 {{-- FOTO --}}
                 <div class="mb-4">
                     <label class="form-label fw-bold">Foto</label>
-
-                    @if ($ekstrakulikuler->foto)
-                        <div class="mb-2">
-                            <small class="text-muted d-block mb-1">Foto Saat Ini</small>
-                            <img src="{{ asset('storage/'.$ekstrakulikuler->foto) }}"
-                                 class="rounded shadow-sm"
-                                 style="width:200px;height:130px;object-fit:cover;">
-                        </div>
-                    @endif
-
                     <input type="file"
                            name="foto"
                            class="form-control @error('foto') is-invalid @enderror"
                            accept="image/*">
-                    <small class="text-muted">
-                        Kosongkan jika tidak ingin mengganti foto (JPG / PNG • Maks 2MB)
-                    </small>
+
+                    @if($staff->foto)
+                        <div class="mt-3">
+                            <small class="text-muted d-block mb-1">Foto Saat Ini</small>
+                            <img src="{{ asset('storage/'.$staff->foto) }}"
+                                 alt="{{ $staff->nama }}"
+                                 class="rounded shadow-sm"
+                                 style="width:120px;height:120px;object-fit:cover;">
+                        </div>
+                    @endif
 
                     @error('foto')
                         <div class="invalid-feedback">{{ $message }}</div>
@@ -171,18 +161,18 @@
 
                 {{-- BUTTON --}}
                 <div class="d-flex justify-content-end gap-2">
-                    <a href="{{ route('admin.ekstrakulikuler.index') }}"
+                    <a href="{{ route('admin.staffkependidikan.index') }}"
                        class="btn btn-light">
                         Batal
                     </a>
-                    <button class="btn btn-success px-4">
+                    <button class="btn btn-primary px-4">
                         <i class="bi bi-save me-1"></i> Update
                     </button>
                 </div>
 
             </form>
-
         </div>
+
     </div>
 </div>
 

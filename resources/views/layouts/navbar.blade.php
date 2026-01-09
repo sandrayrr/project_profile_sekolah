@@ -73,17 +73,17 @@
                                 class="block px-4 py-2 hover:bg-gray-100">
                                     Profil
                                 </a>
-                                <a href="{{ route('staff-pengajar') }}"
+                                <a href="{{ route('tenagapengajar') }}"
                                 class="block px-4 py-2 hover:bg-gray-100">
-                                    Staf Pengajar
+                                    Tenaga Pengajar
                                 </a>
                                 <a href="{{ route('organisasi') }}"
                                 class="block px-4 py-2 hover:bg-gray-100">
                                     Organisasi
                                 </a>
-                                <a href="{{ route('tenaga-pengajar') }}"
+                                <a href="{{ route('staffkependidikan') }}"
                                 class="block px-4 py-2 hover:bg-gray-100">
-                                    Tenaga Pengajar
+                                    Staff Kependidkan
                                 </a>
                             </div>
                         </div>

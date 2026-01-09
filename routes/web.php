@@ -1,106 +1,113 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
+/*
+|--------------------------------------------------------------------------
+| CONTROLLERS
+|--------------------------------------------------------------------------
+*/
+
+// Auth & Admin
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\Admin\PrestasiController;
+
+// Admin CRUD
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\BerandaController;
 use App\Http\Controllers\Admin\ArtikelController;
 use App\Http\Controllers\Admin\GaleriController;
+use App\Http\Controllers\Admin\PrestasiController;
 use App\Http\Controllers\Admin\FasilitasController;
 use App\Http\Controllers\Admin\AgendaController;
-use App\Http\Controllers\Admin\TenagaKependidikanController;
 use App\Http\Controllers\Admin\EkstrakulikulerController;
-use App\Http\Controllers\BerandaController as ControllersBerandaController;
-use App\Http\Controllers\front\TenagaKependidikanController as FrontTenagaKependidikanController;
-use App\Http\Controllers\front\AgendaController as FrontAgendaController;
-use App\Http\Controllers\front\ArtikelController as FrontArtikelController;
-use App\Http\Controllers\front\PrestasiController as FrontPrestasiController;
-use App\Http\Controllers\front\GaleriController as FrontGaleriController;
-use App\Http\Controllers\front\FasilitasController as FrontFasilitasController;
-use App\Http\Controllers\front\StaffPengajarController as FrontStaffPengajarController;
-use App\Http\Controllers\front\EkstrakulikulerController as FrontEkstrakulikuler;
-use App\Http\Controllers\front\PplgController as FrontPplgController;
-use App\Http\Controllers\front\TjktController as FrontTjktController;
-use App\Http\Controllers\Admin\StaffPengajarController;
+use App\Http\Controllers\Admin\TenagaPengajarController;
+use App\Http\Controllers\Admin\StaffKependidikanController;
+
+// Front Controllers
+use App\Http\Controllers\BerandaController as FrontBerandaController;
+use App\Http\Controllers\Front\ArtikelController as FrontArtikelController;
+use App\Http\Controllers\Front\GaleriController as FrontGaleriController;
+use App\Http\Controllers\Front\PrestasiController as FrontPrestasiController;
+use App\Http\Controllers\Front\AgendaController as FrontAgendaController;
+use App\Http\Controllers\Front\FasilitasController as FrontFasilitasController;
+use App\Http\Controllers\Front\EkstrakulikulerController as FrontEkstrakulikulerController;
+use App\Http\Controllers\Front\TenagaPengajarController as FrontTenagaPengajarController;
+use App\Http\Controllers\Front\StaffKependidikanController as FrontStaffKependidikanController;
+use App\Http\Controllers\Front\PplgController;
+use App\Http\Controllers\Front\TjktController;
+
 
 /*
 |--------------------------------------------------------------------------
-| Public Pages
+| PUBLIC / FRONT PAGES
 |--------------------------------------------------------------------------
 */
-Route::get('/', [ControllersBerandaController::class, 'index'])->name('beranda');
+
+Route::get('/', [FrontBerandaController::class, 'index'])->name('beranda');
+
 Route::view('/profil', 'pages.profil')->name('profil');
-Route::view('/jurusan', 'pages.jurusan')->name('jurusan');
-Route::get('/artikel', [FrontArtikelController::class , 'index'])->name('artikel');
-Route::get('/galeri', [FrontGaleriController::class , 'index'])->name('galeri');
-Route::get('/prestasi', [FrontPrestasiController::class , 'index'])->name('prestasi');
-Route::get('/agenda', [FrontAgendaController::class , 'index'])->name('agenda');
-Route::view('/link', 'pages.link')->name('link');
-Route::get('/fasilitas', [FrontFasilitasController::class, 'index'])->name('fasilitas');
-Route::view('/akreditasi', 'pages.akreditasi')->name('akreditasi');
-Route::get('/tenagakependidikan', [FrontTenagaKependidikanController::class , 'index'])->name('tenagakependidikan');
-Route::get('/ekstrakulikuler', [FrontEkstrakulikuler::class, 'index'])->name('ekstrakulikuler');
-Route::get('/staffpengajar', [FrontStaffPengajarController::class, 'index'])->name('staff-pengajar');
-Route::get('/pplg', [FrontPplgController::class, 'index'])->name('pplg');
-Route::get('/tjkt', [FrontTjktController::class, 'index'])->name('tjkt');
-Route::view('/tenaga-pengajar', 'pages.tenaga-pengajar')->name('tenaga-pengajar');
 Route::view('/organisasi', 'pages.organisasi')->name('organisasi');
+Route::view('/jurusan', 'pages.jurusan')->name('jurusan');
+Route::view('/link', 'pages.link')->name('link');
+Route::view('/akreditasi', 'pages.akreditasi')->name('akreditasi');
 
+// Artikel
+Route::get('/artikel', [FrontArtikelController::class, 'index'])->name('artikel.index');
+Route::get('/artikel/kategori/{kategori}', [FrontArtikelController::class, 'kategori'])->name('artikel.kategori');
+Route::get('/artikel/{id}', [FrontArtikelController::class, 'show'])->name('artikel.show');
+
+// Front Content
+Route::get('/galeri', [FrontGaleriController::class, 'index'])->name('galeri');
+Route::get('/prestasi', [FrontPrestasiController::class, 'index'])->name('prestasi');
+Route::get('/agenda', [FrontAgendaController::class, 'index'])->name('agenda');
+Route::get('/fasilitas', [FrontFasilitasController::class, 'index'])->name('fasilitas');
+Route::get('/ekstrakulikuler', [FrontEkstrakulikulerController::class, 'index'])->name('ekstrakulikuler');
+
+// SDM Sekolah
+Route::get('/tenagapengajar', [FrontTenagaPengajarController::class, 'index'])->name('tenagapengajar');
+Route::get('/staffkependidikan', [FrontStaffKependidikanController::class, 'index'])->name('staffkependidikan');
+// Jurusan
+Route::get('/pplg', [PplgController::class, 'index'])->name('pplg');
+Route::get('/tjkt', [TjktController::class, 'index'])->name('tjkt');
 
 
 /*
 |--------------------------------------------------------------------------
-| Auth
+| AUTH
 |--------------------------------------------------------------------------
 */
+
 Route::get('/login', [AuthController::class, 'loginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
+
 Route::get('/register', [AuthController::class, 'registerForm'])->name('register');
 Route::post('/register', [AuthController::class, 'register']);
+
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-/*
-|--------------------------------------------------------------------------
-| FRONT ARTIKEL (PUBLIC)
-|--------------------------------------------------------------------------
-*/
-Route::get('/artikel', [FrontArtikelController::class, 'index'])
-    ->name('artikel.index');
-
-Route::get('/artikel/kategori/{kategori}', [FrontArtikelController::class, 'kategori'])
-    ->name('artikel.kategori');
-
-Route::get('/artikel/{id}', [FrontArtikelController::class, 'show'])
-    ->name('artikel.show');
-
 
 /*
 |--------------------------------------------------------------------------
-| Admin Area (AUTH)
+| ADMIN (AUTH)
 |--------------------------------------------------------------------------
 */
+
 Route::middleware('auth')
     ->prefix('admin')
     ->name('admin.')
     ->group(function () {
 
-        // Dashboard
-        Route::get('/dashboard', [AdminController::class, 'dashboard'])
-            ->name('dashboard');
-        
-        // CRUD
+        Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+
         Route::resource('users', UserController::class);
         Route::resource('beranda', BerandaController::class);
         Route::resource('artikel', ArtikelController::class);
         Route::resource('galeri', GaleriController::class);
         Route::resource('prestasi', PrestasiController::class);
-        Route::resource('fasilitas', FasilitasController::class)
-        ->parameters(['fasilitas' => 'fasilitas']);
+        Route::resource('fasilitas', FasilitasController::class);
         Route::resource('agenda', AgendaController::class);
-        Route::resource('staff-pengajar', StaffPengajarController::class);
-        Route::resource('tenaga', TenagaKependidikanController::class);
+        Route::resource('tenagapengajar', TenagaPengajarController::class);
+        Route::resource('staffkependidikan', StaffKependidikanController::class);
         Route::resource('ekstrakulikuler', EkstrakulikulerController::class);
-
-});
+    });

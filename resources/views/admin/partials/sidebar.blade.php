@@ -166,16 +166,22 @@
             <i class="material-icons">business</i> Fasilitas
         </a>
 
-        <a href="{{ route('admin.tenaga.index') }}"
-   class="nav-link {{ request()->routeIs('admin.tenaga*') ? 'active' : '' }}">
-    <i class="material-icons">groups</i> Tenaga Kependidikan
-</a>
+        <a href="{{ route('admin.tenagapengajar.index') }}"
+             class="nav-link {{ request()->routeIs('admin.tenagapengajar*') ? 'active' : '' }}">
+            <i class="material-icons">groups</i> Tenaga Pengajar
+        </a>
+
+        <a href="{{ route('admin.staffkependidikan.index') }}"
+            class="nav-link {{ request()->routeIs('admin.staffkependidikan*') ? 'active' : '' }}">
+            <i class="material-icons">badge</i> Staff Kependidikan
+        </a>
 
        <a href="{{ route('admin.ekstrakulikuler.index') }}"
             class="nav-link {{ request()->routeIs('admin.ekstrakulikuler*') ? 'active' : '' }}">
             <i class="material-icons">diversity_3</i> Ekstrakurikuler
         </a>
-        
+
+         
 
         <div class="nav-title">User</div>
         <a href="{{ route('admin.users.index') }}"
