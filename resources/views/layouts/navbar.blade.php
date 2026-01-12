@@ -18,7 +18,7 @@
                     <div class="flex items-center gap-2">
                         <div
                             class="w-8 h-8 rounded-full bg-black dark:bg-white text-white dark:text-black flex items-center justify-center">
-                            <i class="fa-solid fa  -phone text-xs"></i>
+                            <i class="fa-solid fa-phone text-xs"></i>
                         </div>
                         <div class="flex flex-col">
                             <span class="text-xs text-gray-500 dark:text-gray-400 font-medium uppercase">Telepon</span>
@@ -39,10 +39,10 @@
                 <div class="hidden md:block h-10 w-px bg-gray-300 dark:bg-gray-600"></div>
                 <div class="flex items-center gap-4 text-xl text-black dark:text-white">
                     <a class="hover:text-primary transition-colors" href="#"><i class="fa-brands fa-whatsapp"></i></a>
-                    <a class="hover:text-primary transition-colors" href="https://www.facebook.com/smkn1kawali?mibextid=rS40aB7S9Ucbxw6v"><i class="fa-brands fa-facebook"></i></a>
+                    <a class="hover:text-primary transition-colors" href="#"><i class="fa-brands fa-facebook"></i></a>
                     <a class="hover:text-primary transition-colors" href="#"><i class="fa-brands fa-twitter"></i></a>
-                    <a class="hover:text-primary transition-colors" href="https://www.instagram.com/smkn1kawali?igsh=MW1nNHV2YTNrZTQ5NQ=="><i class="fa-brands fa-instagram"></i></a>
-                    <a class="hover:text-primary transition-colors" href="www.youtube.com/@SMKN1KawaliOfficial"><i class="fa-brands fa-youtube"></i></a>
+                    <a class="hover:text-primary transition-colors" href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a class="hover:text-primary transition-colors" href="#"><i class="fa-brands fa-youtube"></i></a>
                     <a class="hover:text-primary transition-colors" href="#"><i class="fa-brands fa-tiktok"></i></a>
                 </div>
             </div>
@@ -60,33 +60,33 @@
                     <a class="hover:text-primary transition-colors" href="{{ route('beranda') }}">Beranda</a>
 
                    <div class="relative group">
-    <a class="group flex items-center gap-1 hover:text-primary transition-colors cursor-pointer">
-        Profil
-        <i class="fa-solid fa-chevron-down text-xs opacity-50"></i>
-    </a>
+                                <a class="group flex items-center gap-1 hover:text-primary transition-colors cursor-pointer">
+                                    Profil
+                                    <i class="fa-solid fa-chevron-down text-xs opacity-50"></i>
+                                </a>
 
     <!-- Dropdown -->
-    <div class="absolute left-0 mt-2 w-48 bg-white border rounded-md shadow-lg
-                opacity-0 invisible group-hover:opacity-100 group-hover:visible
-                transition-all duration-200">
-
-        <a href="{{ route('staff-pengajar') }}"
-           class="block px-4 py-2 hover:bg-gray-100">
-            Staf Pengajar
-        </a>
-
-        <a href="{{ route('organisasi') }}"
-           class="block px-4 py-2 hover:bg-gray-100">
-            Organisasi
-        </a>
-
-        <a href="{{ route('tenaga-pengajar') }}"
-           class="block px-4 py-2 hover:bg-gray-100">
-            Tenaga Pengajar
-        </a>
-    </div>
-</div>
-
+                            <div class="absolute left-0 mt-2 w-48 bg-white border rounded-md shadow-lg
+                                        opacity-0 invisible group-hover:opacity-100 group-hover:visible
+                                        transition-all duration-200">
+                                <a href="{{ route('profil') }}"
+                                class="block px-4 py-2 hover:bg-gray-100">
+                                    Profil
+                                </a>
+                                <a href="{{ route('tenagapengajar') }}"
+                                class="block px-4 py-2 hover:bg-gray-100">
+                                    Tenaga Pengajar
+                                </a>
+                                <a href="{{ route('organisasi') }}"
+                                class="block px-4 py-2 hover:bg-gray-100">
+                                    Organisasi
+                                </a>
+                                <a href="{{ route('staffkependidikan') }}"
+                                class="block px-4 py-2 hover:bg-gray-100">
+                                    Staff Kependidkan
+                                </a>
+                            </div>
+                        </div>
 
 
                     <div class="relative group">

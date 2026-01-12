@@ -78,72 +78,104 @@
     </div>
 
     {{-- TABLE --}}
-    <div class="card border-0 shadow-sm">
-        <div class="table-responsive">
-            <table class="table table-hover align-middle mb-0" id="agendaTable">
-                <thead class="bg-light">
-                    <tr>
-                        <th>Judul</th>
-                        <th width="160">Tanggal</th>
-                        <th width="120">Waktu</th>
-                        <th width="120" class="text-center">Aksi</th>
-                    </tr>
-                </thead>
+  <div class="card border-0 shadow-sm rounded-4">
+    <div class="table-responsive">
 
-                <tbody>
-                @forelse($agendas as $agenda)
-                    <tr class="agenda-row"
-                        data-judul="{{ strtolower($agenda->judul) }}"
-                        data-tanggal="{{ $agenda->tanggal }}">
+        <table class="table table-borderless align-middle mb-0" id="agendaTable">
 
-                        <td class="fw-semibold">
+            {{-- HEADER --}}
+            <thead class="border-bottom bg-light">
+                <tr class="text-muted small">
+                    <th class="text-center" width="60">No</th>
+                    <th>Judul</th>
+                    <th class="text-center" width="160">Tanggal</th>
+                    <th class="text-center" width="140">Waktu</th>
+                    <th class="text-center" width="120">Aksi</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            @forelse($agendas as $agenda)
+                <tr class="agenda-row border-bottom"
+                    data-judul="{{ strtolower($agenda->judul) }}"
+                    data-tanggal="{{ $agenda->tanggal }}">
+
+                    {{-- NO --}}
+                    <td class="text-center text-muted">
+                        {{ $loop->iteration }}
+                    </td>
+
+                    {{-- JUDUL --}}
+                    <td>
+                        <div class="fw-semibold text-dark">
                             {{ $agenda->judul }}
-                        </td>
+                        </div>
+                        <small class="text-muted">
+                            {{ \Carbon\Carbon::parse($agenda->tanggal)->diffForHumans() }}
+                        </small>
+                    </td>
 
-                        <td>
-                            <span class="badge bg-info bg-opacity-10 text-info px-3 py-2 rounded-pill">
-                                <i class="bi bi-calendar-event me-1"></i>
-                                {{ \Carbon\Carbon::parse($agenda->tanggal)->format('d M Y') }}
-                            </span>
-                        </td>
+                    {{-- TANGGAL --}}
+                    <td class="text-center">
+                        <span class="badge rounded-pill px-3 py-2 bg-info bg-opacity-10 text-info">
+                            <i class="bi bi-calendar-event me-1"></i>
+                            {{ \Carbon\Carbon::parse($agenda->tanggal)->format('d M Y') }}
+                        </span>
+                    </td>
 
-                        <td>
-                            <span class="badge bg-secondary px-3 py-2 rounded-pill">
-                                <i class="bi bi-clock me-1"></i>
-                                {{ $agenda->waktu }} WIB
-                            </span>
-                        </td>
+                    {{-- WAKTU --}}
+                    <td class="text-center">
+                        <span class="badge rounded-pill px-3 py-2 bg-secondary bg-opacity-10 text-secondary">
+                            <i class="bi bi-clock me-1"></i>
+                            {{ $agenda->waktu }} WIB
+                        </span>
+                    </td>
 
-                        <td class="text-center">
+                    {{-- AKSI --}}
+                    <td class="text-center">
+                        <div class="d-inline-flex gap-1">
+
                             <a href="{{ route('admin.agenda.edit',$agenda->id) }}"
-                               class="btn btn-sm btn-outline-primary px-3">
-                                <i class="bi bi-pencil-square"></i>
+                               class="btn btn-sm btn-light border">
+                                <i class="bi bi-pencil text-primary"></i>
                             </a>
 
                             <form action="{{ route('admin.agenda.destroy',$agenda->id) }}"
                                   method="POST"
-                                  class="d-inline"
                                   onsubmit="return confirm('Hapus agenda ini?')">
                                 @csrf
                                 @method('DELETE')
-                                <button class="btn btn-sm btn-outline-danger px-3">
-                                    <i class="bi bi-trash"></i>
+                                <button class="btn btn-sm btn-light border">
+                                    <i class="bi bi-trash text-danger"></i>
                                 </button>
                             </form>
-                        </td>
-                    </tr>
-                @empty
-                    <tr>
-                        <td colspan="4" class="text-center py-5 text-muted">
-                            <i class="bi bi-calendar-x fs-1 mb-2"></i><br>
-                            Belum ada agenda
-                        </td>
-                    </tr>
-                @endforelse
-                </tbody>
-            </table>
-        </div>
+
+                        </div>
+                    </td>
+                </tr>
+
+            @empty
+                {{-- EMPTY STATE --}}
+                <tr>
+                    <td colspan="5" class="text-center py-5">
+                        <div class="d-flex flex-column align-items-center gap-2 text-muted">
+                            <i class="material-icons fs-1">event_busy</i>
+                            <span class="fw-semibold">
+                                Data agenda belum tersedia
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+            @endforelse
+            </tbody>
+
+        </table>
+
     </div>
+</div>
+
+
+
 
 </div>
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Beranda;
 use App\Models\TenagaKependidikan;
+use App\Models\TenagaPengajar;
 use Illuminate\Http\Request;
 
 class BerandaController extends Controller
@@ -14,7 +15,7 @@ class BerandaController extends Controller
         $beranda = Beranda::latest()->first();
 
         // Tenaga kependidikan (tanpa pagination, cocok untuk beranda)
-        $tenagakependidikan = TenagaKependidikan::latest()
+        $tenagakependidikan = TenagaPengajar::latest()
             ->take(8)
             ->get();
 
