@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
-use App\Models\StaffPengajar;
+use App\Models\TenagaPengajar;
 
-class StaffPengajarController extends Controller
+class TenagaPengajarController extends Controller
 {
     public function index()
     {
-        $staffPengajar = StaffPengajar::latest()->paginate(12);
-        return view('pages.staff-pengajar', compact('staffPengajar'));
+        $tenagaPengajar = TenagaPengajar::latest()->get();
+        return view('pages.tenagapengajar', compact('tenagaPengajar'));
     }
 }

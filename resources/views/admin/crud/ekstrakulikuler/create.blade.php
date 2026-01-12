@@ -4,30 +4,105 @@
 
 @section('content')
 
-{{-- ERROR VALIDATION --}}
-@if ($errors->any())
-    <div class="alert alert-danger shadow-sm">
-        <ul class="mb-0">
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+<style>
+/* === OVERLAY === */
+.popup-overlay{
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.35);
+    backdrop-filter: blur(6px);
+    z-index: 999;
+}
 
-<div class="container">
+/* === CONTAINER === */
+.popup-container{
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
 
-    {{-- HEADER --}}
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h4 class="fw-bold mb-0">Tambah Ekstrakulikuler</h4>
-        <a href="{{ route('admin.ekstrakulikuler.index') }}" class="btn btn-light">
-            <i class="bi bi-arrow-left"></i> Kembali
-        </a>
-    </div>
+/* === CARD === */
+.popup-card{
+    width: 750px;
+    max-width: 95%;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: #fff;
+    border-radius: 18px;
+    animation: popupScale .25s ease;
+    box-shadow: 0 30px 80px rgba(0,0,0,.25);
+}
 
-    {{-- FORM --}}
-    <div class="card border-0 shadow-sm">
-        <div class="card-body">
+/* === HEADER === */
+.popup-header{
+    padding: 18px 24px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.popup-header h5{
+    margin: 0;
+    font-weight: 600;
+}
+
+.popup-close{
+    font-size: 28px;
+    text-decoration: none;
+    color: #666;
+    line-height: 1;
+}
+
+/* === BODY === */
+.popup-body{
+    padding: 24px;
+}
+
+/* === ANIMATION === */
+@keyframes popupScale{
+    from{
+        opacity: 0;
+        transform: scale(.96);
+    }
+    to{
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+</style>
+
+<div class="popup-overlay"></div>
+
+<div class="popup-container">
+    <div class="popup-card">
+
+        {{-- HEADER --}}
+        <div class="popup-header">
+            <h5>
+                <i class="bi bi-trophy-fill me-2"></i>
+                Tambah Ekstrakulikuler
+            </h5>
+            <a href="{{ route('admin.ekstrakulikuler.index') }}"
+               class="popup-close">&times;</a>
+        </div>
+
+        {{-- BODY --}}
+        <div class="popup-body">
+
+            {{-- ERROR VALIDATION --}}
+            @if ($errors->any())
+                <div class="alert alert-danger shadow-sm">
+                    <ul class="mb-0">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 
             <form action="{{ route('admin.ekstrakulikuler.store') }}"
                   method="POST"
@@ -36,20 +111,23 @@
 
                 {{-- JUDUL --}}
                 <div class="mb-3">
-                    <label class="form-label fw-semibold">Judul Ekstrakulikuler</label>
+                    <label class="form-label fw-bold">Judul Ekstrakulikuler</label>
                     <input type="text"
                            name="judul"
                            value="{{ old('judul') }}"
-                           class="form-control"
+                           class="form-control @error('judul') is-invalid @enderror"
                            placeholder="Contoh: Futsal, Pramuka, Tari Tradisional"
                            required>
+                    @error('judul')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
 
                 {{-- KATEGORI --}}
                 <div class="mb-3">
-                    <label class="form-label fw-semibold">Kategori</label>
+                    <label class="form-label fw-bold">Kategori</label>
                     <select name="kategori"
-                            class="form-select"
+                            class="form-select @error('kategori') is-invalid @enderror"
                             required>
                         <option value="">-- Pilih Kategori --</option>
                         <option value="Olahraga" {{ old('kategori')=='Olahraga'?'selected':'' }}>Olahraga</option>
@@ -59,25 +137,31 @@
                         <option value="Akademik" {{ old('kategori')=='Akademik'?'selected':'' }}>Akademik</option>
                         <option value="Lainnya" {{ old('kategori')=='Lainnya'?'selected':'' }}>Lainnya</option>
                     </select>
+                    @error('kategori')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
 
                 {{-- FOTO --}}
                 <div class="mb-4">
-                    <label class="form-label fw-semibold">Foto</label>
+                    <label class="form-label fw-bold">Foto</label>
                     <input type="file"
                            name="foto"
-                           class="form-control"
+                           class="form-control @error('foto') is-invalid @enderror"
                            accept="image/*"
                            required>
                     <small class="text-muted">
                         JPG / PNG • Maks 2MB
                     </small>
+                    @error('foto')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
 
                 {{-- BUTTON --}}
                 <div class="d-flex justify-content-end gap-2">
                     <a href="{{ route('admin.ekstrakulikuler.index') }}"
-                       class="btn btn-secondary">
+                       class="btn btn-light">
                         Batal
                     </a>
                     <button class="btn btn-success px-4">
@@ -86,8 +170,8 @@
                 </div>
 
             </form>
-
         </div>
+
     </div>
 </div>
 

@@ -10,22 +10,21 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-{
-    Schema::create('tenaga_kependidikans', function (Blueprint $table) {
-        $table->id();
-        $table->string('nama');
-        $table->string('jabatan');
-        $table->string('foto')->nullable();
-        $table->timestamps();
-    });
-}
-
+    {
+        Schema::create('tenaga_pengajars', function (Blueprint $table) {
+            $table->id();
+            $table->string('nama');
+            $table->string('pengampu');
+            $table->string('foto')->nullable();
+            $table->timestamps();
+        });
+    }
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('tenaga_kependidikans');
+        Schema::dropIfExists('tenaga_pengajars');
     }
 };
