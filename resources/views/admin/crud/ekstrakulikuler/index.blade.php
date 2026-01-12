@@ -74,102 +74,124 @@
     </div>
 
     {{-- TABLE --}}
-    <div class="card border-0 shadow-sm">
-        <div class="table-responsive">
-            <table class="table table-hover align-middle mb-0" id="ekstrakulikulerTable">
-                <thead class="bg-light">
-                    <tr>
-                        <th class="text-center">No</th>
-                        <th class="text-center">Foto</th>
-                        <th>Judul</th>
-                        <th class="text-center">Kategori</th>
-                        <th class="text-center">Tanggal</th>
-                        <th class="text-center">Aksi</th>
-                    </tr>
-                </thead>
+   <div class="card border-0 shadow-sm rounded-4">
+    <div class="table-responsive">
 
-                <tbody>
-                @forelse ($ekstrakulikulers as $item)
-                    <tr class="ekstrakulikuler-row"
-                        data-judul="{{ strtolower($item->judul) }}"
-                        data-kategori="{{ strtolower($item->kategori) }}"
-                        data-tanggal="{{ $item->created_at }}">
+        <table class="table table-borderless align-middle mb-0" id="ekstrakulikulerTable">
 
-                        <td class="text-center">{{ $loop->iteration }}</td>
+            {{-- HEADER --}}
+            <thead class="border-bottom bg-light">
+                <tr class="text-muted small">
+                    <th class="text-center" width="60">No</th>
+                    <th class="text-center" width="120">Foto</th>
+                    <th>Judul</th>
+                    <th class="text-center" width="150">Kategori</th>
+                    <th class="text-center" width="150">Tanggal</th>
+                    <th class="text-center" width="120">Aksi</th>
+                </tr>
+            </thead>
 
-                        {{-- FOTO --}}
-                        <td class="text-center">
-                            @if($item->foto)
-                                <img src="{{ asset('storage/'.$item->foto) }}"
-                                     class="rounded shadow-sm"
-                                     style="width:90px;height:60px;object-fit:cover;cursor:pointer"
-                                     onclick="showImageModal(this.src,'{{ $item->judul }}')">
-                            @else
-                                <i class="bi bi-image text-muted fs-3"></i>
-                            @endif
-                        </td>
+            <tbody>
 
-                        {{-- JUDUL --}}
-                        <td>
-                            <strong>{{ $item->judul }}</strong><br>
-                            <small class="text-muted">
-                                {{ $item->created_at->diffForHumans() }}
-                            </small>
-                        </td>
+            @forelse ($ekstrakulikulers as $item)
+                <tr class="ekstrakulikuler-row border-bottom">
 
-                        {{-- KATEGORI --}}
-                        <td class="text-center">
-                            @php
-                                $badge = match($item->kategori) {
-                                    'Olahraga' => 'bg-success',
-                                    'Seni' => 'bg-warning text-dark',
-                                    'Kepramukaan' => 'bg-primary',
-                                    'Keagamaan' => 'bg-info',
-                                    'Akademik' => 'bg-dark',
-                                    'Lainnya' => 'bg-secondary',
-                                    default => 'bg-secondary'
-                                };
-                            @endphp
-                            <span class="badge {{ $badge }}">
-                                {{ $item->kategori }}
-                            </span>
-                        </td>
+                    {{-- NO --}}
+                    <td class="text-center text-muted">
+                        {{ $loop->iteration }}
+                    </td>
 
-                        {{-- TANGGAL --}}
-                        <td class="text-center">
-                            {{ $item->created_at->format('d M Y') }}
-                        </td>
+                    {{-- FOTO --}}
+                    <td class="text-center">
+                        @if($item->foto)
+                            <img src="{{ asset('storage/'.$item->foto) }}"
+                                 class="rounded-3 shadow-sm"
+                                 style="width:90px;height:60px;object-fit:cover;cursor:pointer"
+                                 onclick="showImageModal(this.src,'{{ $item->judul }}')">
+                        @else
+                            <div class="text-muted">
+                                <i class="bi bi-image fs-3"></i>
+                            </div>
+                        @endif
+                    </td>
 
-                        {{-- AKSI --}}
-                        <td class="text-center">
+                    {{-- JUDUL --}}
+                    <td>
+                        <div class="fw-semibold text-dark">
+                            {{ $item->judul }}
+                        </div>
+                        <small class="text-muted">
+                            {{ $item->created_at->diffForHumans() }}
+                        </small>
+                    </td>
+
+                    {{-- KATEGORI --}}
+                    <td class="text-center">
+                        @php
+                            $badge = match($item->kategori) {
+                                'Olahraga' => 'bg-success bg-opacity-10 text-success',
+                                'Seni' => 'bg-warning bg-opacity-10 text-warning',
+                                'Kepramukaan' => 'bg-primary bg-opacity-10 text-primary',
+                                'Keagamaan' => 'bg-info bg-opacity-10 text-info',
+                                'Akademik' => 'bg-dark bg-opacity-10 text-dark',
+                                default => 'bg-secondary bg-opacity-10 text-secondary'
+                            };
+                        @endphp
+
+                        <span class="badge rounded-pill px-3 py-2 {{ $badge }}">
+                            {{ $item->kategori }}
+                        </span>
+                    </td>
+
+                    {{-- TANGGAL --}}
+                    <td class="text-center text-muted">
+                        {{ $item->created_at->format('d M Y') }}
+                    </td>
+
+                    {{-- AKSI --}}
+                    <td class="text-center">
+                        <div class="d-inline-flex gap-1">
+
                             <a href="{{ route('admin.ekstrakulikuler.edit',$item->id) }}"
-                               class="btn btn-sm btn-outline-primary">
-                                <i class="bi bi-pencil"></i>
+                               class="btn btn-sm btn-light border">
+                                <i class="bi bi-pencil text-primary"></i>
                             </a>
 
                             <form action="{{ route('admin.ekstrakulikuler.destroy',$item->id) }}"
                                   method="POST"
-                                  class="d-inline"
                                   onsubmit="return confirm('Yakin ingin menghapus data ini?')">
                                 @csrf
                                 @method('DELETE')
-                                <button class="btn btn-sm btn-outline-danger">
-                                    <i class="bi bi-trash"></i>
+                                <button class="btn btn-sm btn-light border">
+                                    <i class="bi bi-trash text-danger"></i>
                                 </button>
                             </form>
-                        </td>
-                    </tr>
-                @empty
-                    <tr>
-                        <td colspan="6" class="text-center py-5 text-muted">
-                            Data ekstrakulikuler belum tersedia
-                        </td>
-                    </tr>
-                @endforelse
-                </tbody>
-            </table>
-        </div>
+
+                        </div>
+                    </td>
+
+                </tr>
+
+            @empty
+                {{-- EMPTY STATE --}}
+                <tr>
+                    <td colspan="6" class="text-center py-5">
+                        <div class="d-flex flex-column align-items-center gap-2 text-muted">
+                            <i class="material-icons fs-1">diversity_3</i>
+                            <span class="fw-semibold">
+                                Data ekstrakulikuler belum tersedia
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+            @endforelse
+
+            </tbody>
+        </table>
+
     </div>
+</div>
+
 </div>
 
 {{-- SCRIPT --}}

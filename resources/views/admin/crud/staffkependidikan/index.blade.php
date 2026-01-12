@@ -61,20 +61,24 @@
     </div>
 
     {{-- TABLE --}}
-    <div class="card border-0 shadow-sm">
+   <div class="card border-0 shadow-sm">
+    <div class="card-body p-0">
         <div class="table-responsive">
+
             <table class="table table-hover align-middle mb-0">
-                <thead class="bg-light">
+                {{-- HEADER --}}
+                <thead class="table-light border-bottom">
                     <tr>
-                        <th class="text-center">No</th>
-                        <th class="text-center">Foto</th>
+                        <th class="text-center" width="5%">No</th>
+                        <th class="text-center" width="15%">Foto</th>
                         <th>Nama</th>
                         <th>Jabatan</th>
-                        <th class="text-center">Tanggal</th>
-                        <th class="text-center">Aksi</th>
+                        <th class="text-center" width="15%">Tanggal</th>
+                        <th class="text-center" width="15%">Aksi</th>
                     </tr>
                 </thead>
 
+                {{-- BODY --}}
                 <tbody id="staffTable">
                 @forelse ($staff as $item)
                     <tr class="staff-row"
@@ -82,62 +86,92 @@
                         data-jabatan="{{ strtolower($item->jabatan) }}"
                         data-tanggal="{{ $item->created_at }}">
 
-                        <td class="text-center">{{ $loop->iteration }}</td>
+                        {{-- NO --}}
+                        <td class="text-center">
+                            <span class="badge bg-light text-dark rounded-pill">
+                                {{ $loop->iteration }}
+                            </span>
+                        </td>
 
                         {{-- FOTO --}}
                         <td class="text-center">
                             @if($item->foto)
                                 <img src="{{ asset('storage/'.$item->foto) }}"
-                                     class="rounded shadow-sm"
+                                     class="rounded-3 shadow-sm"
                                      style="width:60px;height:60px;object-fit:cover">
                             @else
-                                <i class="bi bi-person-circle fs-3 text-muted"></i>
+                                <div class="bg-light rounded-3 d-flex align-items-center justify-content-center"
+                                     style="width:60px;height:60px">
+                                    <i class="bi bi-person text-muted fs-4"></i>
+                                </div>
                             @endif
                         </td>
 
                         {{-- NAMA --}}
                         <td>
-                            <strong>{{ $item->nama }}</strong>
+                            <div class="fw-semibold">{{ $item->nama }}</div>
                         </td>
 
                         {{-- JABATAN --}}
-                        <td>{{ $item->jabatan }}</td>
+                        <td>
+                            <span class="badge bg-secondary bg-opacity-10 text-secondary px-3 py-2 rounded-pill">
+                                {{ $item->jabatan }}
+                            </span>
+                        </td>
 
                         {{-- TANGGAL --}}
-                        <td class="text-center">
+                        <td class="text-center text-muted">
+                            <i class="bi bi-calendar3 me-1"></i>
                             {{ $item->created_at->format('d M Y') }}
                         </td>
 
                         {{-- AKSI --}}
                         <td class="text-center">
-                            <a href="{{ route('admin.staffkependidikan.edit',$item->id) }}"
-                               class="btn btn-sm btn-outline-primary">
-                                <i class="bi bi-pencil"></i>
-                            </a>
+                            <div class="btn-group">
+                                <a href="{{ route('admin.staffkependidikan.edit',$item->id) }}"
+                                   class="btn btn-sm btn-outline-primary px-3">
+                                    <i class="bi bi-pencil-square"></i>
+                                </a>
 
-                            <form action="{{ route('admin.staffkependidikan.destroy',$item->id) }}"
-                                  method="POST"
-                                  class="d-inline"
-                                  onsubmit="return confirm('Yakin ingin menghapus data ini?')">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-sm btn-outline-danger">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-                            </form>
+                                <form action="{{ route('admin.staffkependidikan.destroy',$item->id) }}"
+                                      method="POST"
+                                      class="d-inline"
+                                      onsubmit="return confirm('Yakin ingin menghapus data ini?')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-sm btn-outline-danger px-3">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
+
                 @empty
+                    {{-- EMPTY STATE --}}
                     <tr>
-                        <td colspan="6" class="text-center py-5 text-muted">
-                            Data staff kependidikan belum tersedia
+                        <td colspan="6" class="text-center py-5">
+                            <div class="d-flex flex-column align-items-center gap-2 text-muted">
+                                <i class="material-icons fs-1">badge</i>
+                                <span class="fw-semibold">Data staff kependidikan belum tersedia</span>
+                                {{-- <small>Tambahkan staff kependidikan untuk ditampilkan</small>
+                                <a href="{{ route('admin.staffkependidikan.create') }}"
+                                   class="btn btn-primary btn-sm mt-2">
+                                    <i class="bi bi-plus-circle me-1"></i>
+                                    Tambah Staff
+                                </a> --}}
+                            </div>
                         </td>
                     </tr>
                 @endforelse
                 </tbody>
+
             </table>
+
         </div>
     </div>
+</div>
+
 </div>
 
 {{-- SCRIPT --}}

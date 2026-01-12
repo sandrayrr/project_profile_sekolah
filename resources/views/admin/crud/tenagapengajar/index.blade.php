@@ -80,10 +80,12 @@
 
     {{-- TABLE --}}
     <div class="card border-0 shadow-sm">
-        <div class="card-body table-responsive">
+    <div class="card-body p-0">
+        <div class="table-responsive">
 
             <table class="table table-hover align-middle mb-0">
-                <thead class="table-light">
+                {{-- HEADER --}}
+                <thead class="table-light border-bottom">
                     <tr>
                         <th class="text-center" width="5%">No</th>
                         <th class="text-center" width="15%">Foto</th>
@@ -93,6 +95,7 @@
                     </tr>
                 </thead>
 
+                {{-- BODY --}}
                 <tbody>
                 @forelse($tenagaPengajar as $item)
                     <tr class="staff-row"
@@ -100,16 +103,24 @@
                         data-pengampu="{{ strtolower($item->pengampu) }}"
                         data-tanggal="{{ $item->created_at }}">
 
-                        <td class="text-center">{{ $loop->iteration }}</td>
+                        {{-- NO --}}
+                        <td class="text-center">
+                            <span class="badge bg-light text-dark rounded-pill">
+                                {{ $loop->iteration }}
+                            </span>
+                        </td>
 
                         {{-- FOTO --}}
                         <td class="text-center">
                             @if($item->foto)
                                 <img src="{{ asset('storage/'.$item->foto) }}"
-                                     class="rounded shadow-sm"
+                                     class="rounded-3 shadow-sm"
                                      style="width:60px;height:60px;object-fit:cover">
                             @else
-                                <span class="text-muted">-</span>
+                                <div class="bg-light rounded-3 d-flex align-items-center justify-content-center"
+                                     style="width:60px;height:60px">
+                                    <i class="bi bi-person text-muted fs-4"></i>
+                                </div>
                             @endif
                         </td>
 
@@ -124,35 +135,46 @@
 
                         {{-- PENGAMPU --}}
                         <td class="text-center">
-                            <span class="badge bg-info-subtle text-info">
+                            <span class="badge bg-info bg-opacity-10 text-info px-3 py-2 rounded-pill">
                                 {{ $item->pengampu }}
                             </span>
                         </td>
 
                         {{-- AKSI --}}
                         <td class="text-center">
-                            <a href="{{ route('admin.tenagapengajar.edit',$item->id) }}"
-                               class="btn btn-sm btn-outline-primary me-1">
-                                <i class="bi bi-pencil-square"></i>
-                            </a>
+                            <div class="btn-group">
+                                <a href="{{ route('admin.tenagapengajar.edit',$item->id) }}"
+                                   class="btn btn-sm btn-outline-primary px-3">
+                                    <i class="bi bi-pencil-square"></i>
+                                </a>
 
-                            <form action="{{ route('admin.tenagapengajar.destroy',$item->id) }}"
-                                  method="POST"
-                                  class="d-inline"
-                                  onsubmit="return confirm('Yakin ingin menghapus data ini?')">
-                                @csrf @method('DELETE')
-                                <button class="btn btn-sm btn-outline-danger">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-                            </form>
+                                <form action="{{ route('admin.tenagapengajar.destroy',$item->id) }}"
+                                      method="POST"
+                                      class="d-inline"
+                                      onsubmit="return confirm('Yakin ingin menghapus data ini?')">
+                                    @csrf @method('DELETE')
+                                    <button class="btn btn-sm btn-outline-danger px-3">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </form>
+                            </div>
                         </td>
-
                     </tr>
+
                 @empty
+                    {{-- EMPTY STATE --}}
                     <tr>
-                        <td colspan="5" class="text-center py-5 text-muted">
-                            <i class="bi bi-people fs-1 d-block mb-2"></i>
-                            Data tenaga kependidikan belum tersedia
+                        <td colspan="5" class="text-center py-5">
+                            <div class="d-flex flex-column align-items-center gap-2 text-muted">
+                                <i class="material-icons fs-1">groups</i>
+                                <span class="fw-semibold">Data tenaga pengajar belum tersedia</span>
+                                <small>Tambahkan tenaga pengajar untuk ditampilkan</small>
+                                {{-- <a href="{{ route('admin.tenagapengajar.create') }}"
+                                   class="btn btn-primary btn-sm mt-2">
+                                    <i class="bi bi-plus-circle me-1"></i>
+                                    Tambah Tenaga Pengajar
+                                </a> --}}
+                            </div>
                         </td>
                     </tr>
                 @endforelse
@@ -161,6 +183,9 @@
             </table>
 
         </div>
+    </div>
+</div>
+
     </div>
 
 </div>

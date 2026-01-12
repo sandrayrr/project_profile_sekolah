@@ -262,57 +262,97 @@
             </div>
         </div>
     </section>
-    <section class="bg-white dark:bg-surface-dark py-16 mb-20">
-        <div class="container mx-auto px-4">
-            <div class="flex justify-between items-end mb-8">
-                <div>
-                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Staff Tenaga Kependidikan</h2>
-                    <p class="text-gray-600 dark:text-gray-400">Staff Tenaga Kependidikan Di SMK Negeri 1 Kawali</p>
-                </div>
-                <a class="hidden sm:inline-flex items-center px-4 py-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 rounded-full text-xs font-semibold text-gray-700 dark:text-gray-200 transition"
-                    href="#">
-                    Selengkapnya <span class="material-icons text-sm ml-1">arrow_forward</span>
-                </a>
-            </div>
-           <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+  <section class="bg-white dark:bg-surface-dark py-16 mb-20">
+    <div class="container mx-auto px-4">
 
-    @forelse ($tenagakependidikan as $item)
-        <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 text-center
-                    hover:-translate-y-1 transition duration-300">
-
-            {{-- FOTO --}}
-            <div class="w-full aspect-square bg-gray-200 dark:bg-gray-700 rounded-lg
-                        mb-4 overflow-hidden">
-                <img
-                    src="{{ $item->foto
-                        ? asset('storage/' . $item->foto)
-                        : 'https://ui-avatars.com/api/?name=' . urlencode($item->nama) . '&background=0D8ABC&color=fff'
-                    }}"
-                    alt="{{ $item->nama }}"
-                    class="w-full h-full object-cover opacity-90">
+        <!-- HEADER -->
+        <div class="flex justify-between items-end mb-10">
+            <div>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                    Staff Kependidikan
+                </h2>
+                <p class="text-gray-600 dark:text-gray-400">
+                    Staff Tenaga Kependidikan di SMK Negeri 1 Kawali
+                </p>
             </div>
 
-            {{-- NAMA --}}
-            <h4 class="text-lg font-bold text-gray-900 dark:text-white">
-                {{ $item->nama }}
-            </h4>
-
-            {{-- JABATAN --}}
-            <p class="text-gray-500 dark:text-gray-400 text-sm">
-                {{ $item->jabatan }}
-            </p>
+            <a href="#"
+               class="hidden sm:inline-flex items-center px-4 py-2
+                      bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600
+                      rounded-full text-xs font-semibold text-gray-700 dark:text-gray-200 transition">
+                Selengkapnya
+                <span class="material-icons text-sm ml-1">arrow_forward</span>
+            </a>
         </div>
 
-    @empty
-        <div class="col-span-full text-center text-gray-500 py-10">
-            Belum ada data tenaga kependidikan
+        <!-- GRID -->
+     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+    <!-- CARD 1 -->
+    <div
+        class="bg-white dark:bg-surface-dark rounded-lg shadow p-4 text-center
+               hover:-translate-y-1 transition duration-300">
+
+        <div class="w-full aspect-square bg-gray-200 dark:bg-gray-700 rounded-lg mb-4 overflow-hidden">
+            <img
+                src="{{ asset('storage/beranda/tu ypi 2.jpg') }}"
+                alt="Staff Kependidikan"
+                class="w-full h-full object-cover">
         </div>
-    @endforelse
+
+        <h4 class="text-lg font-bold text-gray-900 dark:text-white">
+            Ahmad Fauzi
+        </h4>
+        <p class="text-primary text-sm">
+            Tata Usaha
+        </p>
+    </div>
+
+    <!-- CARD 2 -->
+    <div
+        class="bg-white dark:bg-surface-dark rounded-lg shadow p-4 text-center
+               hover:-translate-y-1 transition duration-300">
+
+        <div class="w-full aspect-square bg-gray-200 dark:bg-gray-700 rounded-lg mb-4 overflow-hidden">
+            <img
+                src="{{ asset('storage/beranda/tu ypi.jpg') }}"
+                alt="Staff Kependidikan"
+                class="w-full h-full object-cover">
+        </div>
+
+        <h4 class="text-lg font-bold text-gray-900 dark:text-white">
+            Siti Nurhaliza
+        </h4>
+        <p class="text-primary text-sm">
+            Administrasi
+        </p>
+    </div>
+
+    <!-- CARD 3 -->
+    <div
+        class="bg-white dark:bg-surface-dark rounded-lg shadow p-4 text-center
+               hover:-translate-y-1 transition duration-300">
+
+        <div class="w-full aspect-square bg-gray-200 dark:bg-gray-700 rounded-lg mb-4 overflow-hidden">
+            <img
+                src="{{ asset('storage/beranda/tu ypi 3.jpg') }}"
+                alt="Staff Kependidikan"
+                class="w-full h-full object-cover">
+        </div>
+
+        <h4 class="text-lg font-bold text-gray-900 dark:text-white">
+            Rudi Hartono
+        </h4>
+        <p class="text-primary text-sm">
+            Operator Sekolah
+        </p>
+    </div>
 
 </div>
 
-        </div>
-    </section>
+    </div>
+</section>
+
     <section class="container mx-auto px-4 mb-20">
         <div class="flex justify-between items-end mb-8">
             <div>
