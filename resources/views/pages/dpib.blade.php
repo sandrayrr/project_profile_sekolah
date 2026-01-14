@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Program PPLG - SMKN 1 Kawali</title>
+    <title>Program DPIB - SMKN 1 Kawali</title>
 
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -16,8 +16,8 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: "#8b5cf6",
-                        secondary: "#ec4899",
+                        primary: "#14b8a6", // Warna teal untuk tema desain/kreatif
+                        secondary: "#0d9488",
                         "background-light": "#f9fafb",
                         "background-dark": "#111827",
                         "card-light": "#ffffff",
@@ -51,8 +51,8 @@
 
     <style>
         .tab-active {
-            border-bottom: 3px solid #8b5cf6;
-            color: #8b5cf6;
+            border-bottom: 3px solid #14b8a6;
+            color: #14b8a6;
         }
         .org-chart {
             position: relative;
@@ -90,20 +90,10 @@
         .org-chart-item:last-child::before {
             display: none;
         }
-        .card-hover {
-            transition: all 0.3s ease;
-        }
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-        .dark .card-hover:hover {
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        }
     </style>
 </head>
 
-<body class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-100 font-body">
+<body class="bg-white dark:bg-background-dark text-gray-800 dark:text-gray-100 font-body">
 
     @include('layouts.navbar')
 
@@ -122,23 +112,21 @@
                     </span>
 
                     <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6 text-white">
-                        Pengembangan <br> Perangkat Lunak dan Gim
+                        Desain Permodelan <br> dan Informasi Bangunan
                     </h1>
 
                     <p class="text-gray-100 text-lg leading-relaxed mb-8 max-w-xl">
-                        Jurusan yang fokus pada kreativitas dan logika untuk membangun aplikasi web, mobile,
-                        hingga game interaktif yang inovatif.
+                        Jurusan kreatif yang menggabungkan seni dan teknologi untuk merancang bangunan,
+                        membuat model 3D, dan mengelola informasi konstruksi digital (BIM).
                     </p>
 
                     <div class="flex flex-wrap gap-4">
                         <a href="#"
-                            class="bg-white text-primary px-8 py-4 rounded-xl font-medium hover:bg-gray-100 transition shadow-lg flex items-center">
-                            <span class="material-icons mr-2">info</span>
-                            Info Pendaftaran
+                            class="bg-white text-primary px-8 py-4 rounded-xl font-medium hover:bg-gray-100 transition shadow-lg">
+                            Daftar Sekarang
                         </a>
                         <a href="#informasi"
-                            class="border border-white text-white px-8 py-4 rounded-xl font-medium hover:bg-white hover:text-primary transition flex items-center">
-                            <span class="material-icons mr-2">school</span>
+                            class="border border-white text-white px-8 py-4 rounded-xl font-medium hover:bg-white hover:text-primary transition">
                             Pelajari Lebih Lanjut
                         </a>
                     </div>
@@ -147,8 +135,8 @@
                 <!-- RIGHT -->
                 <div class="lg:w-1/2 flex justify-center">
                     <img
-                        src="https://sfile.chatglm.cn/images-ppt/8e5b2f9e9e9c.jpg"
-                        alt="Siswa PPLG"
+                        src="https://sfile.chatglm.cn/images-ppt/b1c2d3e4f5g6.jpg" <!-- Gambar placeholder desain arsitektur -->
+                        alt="Siswa DPIB"
                         class="w-full max-w-xl h-[420px] object-cover rounded-2xl shadow-2xl">
                 </div>
             </div>
@@ -159,21 +147,21 @@
     <section class="py-16 bg-white dark:bg-gray-800">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div class="text-center card-hover p-6 rounded-xl bg-gray-50 dark:bg-gray-700">
-                    <div class="text-4xl font-bold text-primary mb-2">150+</div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-primary mb-2">95+</div>
                     <div class="text-gray-600 dark:text-gray-400">Siswa Aktif</div>
                 </div>
-                <div class="text-center card-hover p-6 rounded-xl bg-gray-50 dark:bg-gray-700">
-                    <div class="text-4xl font-bold text-primary mb-2">10</div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-primary mb-2">6</div>
                     <div class="text-gray-600 dark:text-gray-400">Guru Profesional</div>
                 </div>
-                <div class="text-center card-hover p-6 rounded-xl bg-gray-50 dark:bg-gray-700">
-                    <div class="text-4xl font-bold text-primary mb-2">98%</div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-primary mb-2">96%</div>
                     <div class="text-gray-600 dark:text-gray-400">Tingkat Kelulusan</div>
                 </div>
-                <div class="text-center card-hover p-6 rounded-xl bg-gray-50 dark:bg-gray-700">
-                    <div class="text-4xl font-bold text-primary mb-2">90%</div>
-                    <div class="text-gray-600 dark:text-gray-400">Terserap Kerja</div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-primary mb-2">88%</div>
+                    <div class="text-gray-600 dark:text-gray-400">Terserab Kerja</div>
                 </div>
             </div>
         </div>
@@ -210,67 +198,67 @@
                         <div class="grid md:grid-cols-2 gap-8">
                             <div>
                                 <h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Identitas Jurusan</h3>
-                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl card-hover">
-                                        <div class="flex items-center mb-2">
-                                            <span class="material-icons text-primary mr-2">code</span>
+                                <div class="space-y-4">
+                                    <div class="flex items-start">
+                                        <span class="material-icons text-primary mr-3 mt-1">architecture</span>
+                                        <div>
                                             <h4 class="font-semibold text-gray-900 dark:text-white">Nama Jurusan</h4>
+                                            <p class="text-gray-600 dark:text-gray-400">Desain Permodelan dan Informasi Bangunan</p>
                                         </div>
-                                        <p class="text-gray-600 dark:text-gray-400">Pengembangan Perangkat Lunak dan Gim</p>
                                     </div>
-                                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl card-hover">
-                                        <div class="flex items-center mb-2">
-                                            <span class="material-icons text-primary mr-2">tag</span>
+                                    <div class="flex items-start">
+                                        <span class="material-icons text-primary mr-3 mt-1">tag</span>
+                                        <div>
                                             <h4 class="font-semibold text-gray-900 dark:text-white">Kode Jurusan</h4>
+                                            <p class="text-gray-600 dark:text-gray-400">DPIB</p>
                                         </div>
-                                        <p class="text-gray-600 dark:text-gray-400">PPLG</p>
                                     </div>
-                                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl card-hover">
-                                        <div class="flex items-center mb-2">
-                                            <span class="material-icons text-primary mr-2">history</span>
+                                    <div class="flex items-start">
+                                        <span class="material-icons text-primary mr-3 mt-1">history</span>
+                                        <div>
                                             <h4 class="font-semibold text-gray-900 dark:text-white">Tahun Berdiri</h4>
+                                            <p class="text-gray-600 dark:text-gray-400">2015</p>
                                         </div>
-                                        <p class="text-gray-600 dark:text-gray-400">2018</p>
                                     </div>
-                                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl card-hover">
-                                        <div class="flex items-center mb-2">
-                                            <span class="material-icons text-primary mr-2">description</span>
+                                    <div class="flex items-start">
+                                        <span class="material-icons text-primary mr-3 mt-1">description</span>
+                                        <div>
                                             <h4 class="font-semibold text-gray-900 dark:text-white">Deskripsi</h4>
+                                            <p class="text-gray-600 dark:text-gray-400">Jurusan DPIB fokus pada perancangan bangunan dengan memanfaatkan teknologi digital. Siswa belajar membuat gambar teknik 2D, model 3D, rendering fotorealistik, hingga penerapan BIM (Building Information Modeling).</p>
                                         </div>
-                                        <p class="text-gray-600 dark:text-gray-400 text-sm">Jurusan PPLG dirancang untuk menghasilkan lulusan yang ahli dalam merancang, mengembangkan, dan memelihara perangkat lunak serta gim.</p>
                                     </div>
                                 </div>
                             </div>
                             <div>
                                 <h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Data Statistik</h3>
-                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl card-hover">
-                                        <div class="flex items-center mb-2">
-                                            <span class="material-icons text-primary mr-2">people</span>
+                                <div class="space-y-4">
+                                    <div class="flex items-start">
+                                        <span class="material-icons text-primary mr-3 mt-1">people</span>
+                                        <div>
                                             <h4 class="font-semibold text-gray-900 dark:text-white">Jumlah Siswa</h4>
+                                            <p class="text-gray-600 dark:text-gray-400">95 siswa (sekitar 23-24 siswa per kelas)</p>
                                         </div>
-                                        <p class="text-gray-600 dark:text-gray-400">150 siswa (37-38 siswa per kelas)</p>
                                     </div>
-                                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl card-hover">
-                                        <div class="flex items-center mb-2">
-                                            <span class="material-icons text-primary mr-2">person</span>
+                                    <div class="flex items-start">
+                                        <span class="material-icons text-primary mr-3 mt-1">person</span>
+                                        <div>
                                             <h4 class="font-semibold text-gray-900 dark:text-white">Jumlah Guru</h4>
+                                            <p class="text-gray-600 dark:text-gray-400">6 guru profesional dengan latar belakang arsitektur & desain</p>
                                         </div>
-                                        <p class="text-gray-600 dark:text-gray-400">10 guru profesional dengan sertifikasi industri</p>
                                     </div>
-                                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl card-hover">
-                                        <div class="flex items-center mb-2">
-                                            <span class="material-icons text-primary mr-2">business</span>
+                                    <div class="flex items-start">
+                                        <span class="material-icons text-primary mr-3 mt-1">business</span>
+                                        <div>
                                             <h4 class="font-semibold text-gray-900 dark:text-white">Mitra Industri</h4>
+                                            <p class="text-gray-600 dark:text-gray-400">Konsultan arsitek, developer properti, dan kontraktor</p>
                                         </div>
-                                        <p class="text-gray-600 dark:text-gray-400">20+ perusahaan teknologi dan startup</p>
                                     </div>
-                                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl card-hover">
-                                        <div class="flex items-center mb-2">
-                                            <span class="material-icons text-primary mr-2">work</span>
+                                    <div class="flex items-start">
+                                        <span class="material-icons text-primary mr-3 mt-1">work</span>
+                                        <div>
                                             <h4 class="font-semibold text-gray-900 dark:text-white">Prospek Kerja</h4>
+                                            <p class="text-gray-600 dark:text-gray-400">Arsitek, 3D Visualizer, BIM Modeler, Drafter, dll.</p>
                                         </div>
-                                        <p class="text-gray-600 dark:text-gray-400">Programmer, Game Developer, UI/UX Designer</p>
                                     </div>
                                 </div>
                             </div>
@@ -283,47 +271,47 @@
                     <div class="bg-card-light dark:bg-card-dark rounded-2xl shadow-lg p-8">
                         <h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Fasilitas Jurusan</h3>
                         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 card-hover">
+                            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 hover:shadow-lg transition">
                                 <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mb-4">
                                     <span class="material-icons text-primary">computer</span>
                                 </div>
-                                <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Lab Pemrograman</h4>
-                                <p class="text-gray-600 dark:text-gray-400 text-sm">40 unit PC high-spec untuk coding dan development</p>
+                                <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Lab Desain & Gambar</h4>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm">30 unit PC high-spec dengan software AutoCAD, SketchUp, Revit, dan 3ds Max.</p>
                             </div>
-                            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 card-hover">
+                            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 hover:shadow-lg transition">
                                 <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mb-4">
-                                    <span class="material-icons text-primary">sports_esports</span>
+                                    <span class="material-icons text-primary">view_in_ar</span>
                                 </div>
-                                <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Lab Game Dev</h4>
-                                <p class="text-gray-600 dark:text-gray-400 text-sm">PC dengan GPU khusus untuk pengembangan dan testing game</p>
+                                <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Studio Arsitektur</h4>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm">Ruang kreatif dengan meja gambar, papan tulis besar, dan pencahayaan optimal.</p>
                             </div>
-                            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 card-hover">
+                            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 hover:shadow-lg transition">
                                 <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mb-4">
-                                    <span class="material-icons text-primary">dns</span>
+                                    <span class="material-icons text-primary">category</span>
                                 </div>
-                                <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Server Room</h4>
-                                <p class="text-gray-600 dark:text-gray-400 text-sm">Praktikum backend, database, dan deployment</p>
+                                <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Workshop Maket</h4>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm">Lengkap dengan alat pemotong, perekat, dan berbagai material untuk membuat maket fisik.</p>
                             </div>
-                            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 card-hover">
+                            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 hover:shadow-lg transition">
                                 <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mb-4">
-                                    <span class="material-icons text-primary">brush</span>
+                                    <span class="material-icons text-primary">print</span>
                                 </div>
-                                <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Lab Desain</h4>
-                                <p class="text-gray-600 dark:text-gray-400 text-sm">PC dengan tablet grafis untuk desain UI/UX dan aset game</p>
+                                <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Lab 3D Printing & Plotter</h4>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm">Printer 3D dan plotter untuk mencetak model fisik dan gambar teknik berukuran besar.</p>
                             </div>
-                            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 card-hover">
+                            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 hover:shadow-lg transition">
                                 <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mb-4">
-                                    <span class="material-icons text-primary">videogame_asset</span>
+                                    <span class="material-icons text-primary">menu_book</span>
                                 </div>
-                                <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Gaming Corner</h4>
-                                <p class="text-gray-600 dark:text-gray-400 text-sm">Area untuk riset game dan testing dengan konsol modern</p>
+                                <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Perpustakaan Desain</h4>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm">Koleksi buku referensi arsitektur, desain interior, dan material konstruksi.</p>
                             </div>
-                            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 card-hover">
+                            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 hover:shadow-lg transition">
                                 <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mb-4">
-                                    <span class="material-icons text-primary">wifi</span>
+                                    <span class="material-icons text-primary">slideshow</span>
                                 </div>
-                                <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Internet Fiber</h4>
-                                <p class="text-gray-600 dark:text-gray-400 text-sm">Koneksi internet dedicated berkecepatan tinggi</p>
+                                <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Ruang Presentasi</h4>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm">Dilengkapi proyektor dan layar besar untuk presentasi desain dan review.</p>
                             </div>
                         </div>
                     </div>
@@ -337,62 +325,68 @@
                             <div class="min-w-full">
                                 <!-- Kepala Jurusan -->
                                 <div class="flex justify-center mb-8">
-                                    <div class="bg-primary text-white rounded-xl p-6 text-center max-w-xs card-hover">
+                                    <div class="bg-primary text-white rounded-xl p-6 text-center max-w-xs">
                                         <div class="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                                            <span class="material-icons text-3xl">code</span>
+                                            <span class="material-icons text-3xl">architecture</span>
                                         </div>
                                         <h4 class="font-bold text-lg">Kepala Jurusan</h4>
-                                        <p class="text-sm opacity-90">Bapak Candra Kusuma, S.Kom., M.T.</p>
+                                        <p class="text-sm opacity-90">Bapak Firman Hakim, S.T., M.Ars.</p>
                                     </div>
                                 </div>
                                 
                                 <!-- Guru Produktif -->
                                 <div class="org-chart flex justify-center mb-8">
                                     <div class="flex gap-4">
-                                        <div class="org-chart-item bg-gray-100 dark:bg-gray-800 rounded-xl p-4 text-center max-w-xs card-hover">
+                                        <div class="org-chart-item bg-gray-100 dark:bg-gray-800 rounded-xl p-4 text-center max-w-xs">
                                             <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-3">
-                                                <span class="material-icons text-primary">laptop_mac</span>
+                                                <span class="material-icons text-primary">brush</span>
                                             </div>
-                                            <h4 class="font-semibold text-gray-900 dark:text-white">Guru Pemrograman</h4>
-                                            <p class="text-sm text-gray-600 dark:text-gray-400">6 Guru</p>
-                                        </div>
-                                        <div class="org-chart-item bg-gray-100 dark:bg-gray-800 rounded-xl p-4 text-center max-w-xs card-hover">
-                                            <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-3">
-                                                <span class="material-icons text-primary">palette</span>
-                                            </div>
-                                            <h4 class="font-semibold text-gray-900 dark:text-white">Guru Desain & Multimedia</h4>
+                                            <h4 class="font-semibold text-gray-900 dark:text-white">Guru Desain & Permodelan</h4>
                                             <p class="text-sm text-gray-600 dark:text-gray-400">4 Guru</p>
+                                        </div>
+                                        <div class="org-chart-item bg-gray-100 dark:bg-gray-800 rounded-xl p-4 text-center max-w-xs">
+                                            <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-3">
+                                                <span class="material-icons text-primary">straighten</span>
+                                            </div>
+                                            <h4 class="font-semibold text-gray-900 dark:text-white">Guru Gambar Teknik & Konstruksi</h4>
+                                            <p class="text-sm text-gray-600 dark:text-gray-400">2 Guru</p>
                                         </div>
                                     </div>
                                 </div>
                                 
                                 <!-- Struktur Kelas -->
                                 <div class="grid md:grid-cols-2 gap-6">
-                                    <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 card-hover">
-                                        <h4 class="font-semibold text-gray-900 dark:text-white mb-4">Struktur Kelas X PPLG</h4>
-                                        <div class="grid grid-cols-1 gap-3">
-                                            <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
-                                                <span class="text-gray-700 dark:text-gray-300">Wali Kelas: Ibu Maya Putri, S.Kom.</span>
+                                    <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
+                                        <h4 class="font-semibold text-gray-900 dark:text-white mb-4">Struktur Kelas X DPIB</h4>
+                                        <div class="space-y-3">
+                                            <div class="flex items-center">
+                                                <span class="material-icons text-primary mr-3 text-sm">person</span>
+                                                <span class="text-gray-700 dark:text-gray-300">Wali Kelas: Ibu Indah Permata Sari, S.T.</span>
                                             </div>
-                                            <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
-                                                <span class="text-gray-700 dark:text-gray-300">Ketua Kelas: Rizki Pratama</span>
+                                            <div class="flex items-center">
+                                                <span class="material-icons text-primary mr-3 text-sm">groups</span>
+                                                <span class="text-gray-700 dark:text-gray-300">Ketua Kelas: Rizki Ananda</span>
                                             </div>
-                                            <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
-                                                <span class="text-gray-700 dark:text-gray-300">Wakil Ketua: Salsa Bilqis</span>
+                                            <div class="flex items-center">
+                                                <span class="material-icons text-primary mr-3 text-sm">groups</span>
+                                                <span class="text-gray-700 dark:text-gray-300">Wakil Ketua: Dina Azahra</span>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 card-hover">
-                                        <h4 class="font-semibold text-gray-900 dark:text-white mb-4">Struktur Kelas XI PPLG</h4>
-                                        <div class="grid grid-cols-1 gap-3">
-                                            <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
-                                                <span class="text-gray-700 dark:text-gray-300">Wali Kelas: Bapak Adi Nugroho, S.T.</span>
+                                    <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
+                                        <h4 class="font-semibold text-gray-900 dark:text-white mb-4">Struktur Kelas XI DPIB</h4>
+                                        <div class="space-y-3">
+                                            <div class="flex items-center">
+                                                <span class="material-icons text-primary mr-3 text-sm">person</span>
+                                                <span class="text-gray-700 dark:text-gray-300">Wali Kelas: Bapak Yudi Pratama, S.Pd.</span>
                                             </div>
-                                            <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
-                                                <span class="text-gray-700 dark:text-gray-300">Ketua Kelas: Bayu Setiawan</span>
+                                            <div class="flex items-center">
+                                                <span class="material-icons text-primary mr-3 text-sm">groups</span>
+                                                <span class="text-gray-700 dark:text-gray-300">Ketua Kelas: Fajar Saputra</span>
                                             </div>
-                                            <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
-                                                <span class="text-gray-700 dark:text-gray-300">Wakil Ketua: Citra Dewi</span>
+                                            <div class="flex items-center">
+                                                <span class="material-icons text-primary mr-3 text-sm">groups</span>
+                                                <span class="text-gray-700 dark:text-gray-300">Wakil Ketua: Siti Nurhaliza</span>
                                             </div>
                                         </div>
                                     </div>
@@ -409,73 +403,83 @@
                         <div class="grid md:grid-cols-2 gap-8">
                             <div>
                                 <h4 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Kompetensi Inti</h4>
-                                <div class="grid grid-cols-1 gap-3">
-                                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl card-hover">
-                                        <span class="text-gray-700 dark:text-gray-300">Pemrograman Dasar & Algoritma (Pseudocode, Flowchart)</span>
-                                    </div>
-                                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl card-hover">
-                                        <span class="text-gray-700 dark:text-gray-300">Pemrograman Web (HTML, CSS, JavaScript)</span>
-                                    </div>
-                                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl card-hover">
-                                        <span class="text-gray-700 dark:text-gray-300">Pemrograman Mobile (Kotlin/Java, Swift)</span>
-                                    </div>
-                                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl card-hover">
-                                        <span class="text-gray-700 dark:text-gray-300">Pengembangan Game (Unity, Unreal Engine)</span>
-                                    </div>
-                                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl card-hover">
-                                        <span class="text-gray-700 dark:text-gray-300">Manajemen Database (SQL, NoSQL)</span>
-                                    </div>
-                                </div>
+                                <ul class="space-y-3">
+                                    <li class="flex items-start">
+                                        <span class="material-icons text-primary mr-3 mt-1 text-sm">check_circle</span>
+                                        <span class="text-gray-700 dark:text-gray-300">Menggambar Gambar Teknik 2D (Denah, Tampak, Potong)</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="material-icons text-primary mr-3 mt-1 text-sm">check_circle</span>
+                                        <span class="text-gray-700 dark:text-gray-300">Membuat Model 3D Bangunan dengan Software CAD</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="material-icons text-primary mr-3 mt-1 text-sm">check_circle</span>
+                                        <span class="text-gray-700 dark:text-gray-300">Rendering Presentasi 3D (Eksterior & Interior)</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="material-icons text-primary mr-3 mt-1 text-sm">check_circle</span>
+                                        <span class="text-gray-700 dark:text-gray-300">Menerapkan Konsep Building Information Modeling (BIM)</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="material-icons text-primary mr-3 mt-1 text-sm">check_circle</span>
+                                        <span class="text-gray-700 dark:text-gray-300">Membuat Maket Fisik dan Digital</span>
+                                    </li>
+                                </ul>
                             </div>
                             <div>
                                 <h4 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Kompetensi Pendukung</h4>
-                                <div class="grid grid-cols-1 gap-3">
-                                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl card-hover">
-                                        <span class="text-gray-700 dark:text-gray-300">Prinsip Desain UI/UX</span>
-                                    </div>
-                                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl card-hover">
-                                        <span class="text-gray-700 dark:text-gray-300">Version Control dengan Git & GitHub</span>
-                                    </div>
-                                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl card-hover">
-                                        <span class="text-gray-700 dark:text-gray-300">Manajemen Proyek (Agile, Scrum)</span>
-                                    </div>
-                                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl card-hover">
-                                        <span class="text-gray-700 dark:text-gray-300">Pembuatan Aset Digital 2D/3D</span>
-                                    </div>
-                                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl card-hover">
-                                        <span class="text-gray-700 dark:text-gray-300">Digital Marketing & Entrepreneurship</span>
-                                    </div>
-                                </div>
+                                <ul class="space-y-3">
+                                    <li class="flex items-start">
+                                        <span class="material-icons text-primary mr-3 mt-1 text-sm">check_circle</span>
+                                        <span class="text-gray-700 dark:text-gray-300">Dasar-Dasar Desain Arsitektur & Estetika</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="material-icons text-primary mr-3 mt-1 text-sm">check_circle</span>
+                                        <span class="text-gray-700 dark:text-gray-300">Menghitung Rencana Anggaran Biaya (RAB)</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="material-icons text-primary mr-3 mt-1 text-sm">check_circle</span>
+                                        <span class="text-gray-700 dark:text-gray-300">Presentasi Desain dan Komunikasi Visual</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="material-icons text-primary mr-3 mt-1 text-sm">check_circle</span>
+                                        <span class="text-gray-700 dark:text-gray-300">Pemahaman Material & Struktur Bangunan</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="material-icons text-primary mr-3 mt-1 text-sm">check_circle</span>
+                                        <span class="text-gray-700 dark:text-gray-300">Fotografi & Videografi Arsitektur</span>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                         
-                        <div class="mt-8 p-6 bg-purple-50 dark:bg-purple-900 dark:bg-opacity-20 rounded-xl">
+                        <div class="mt-8 p-6 bg-teal-50 dark:bg-teal-900 dark:bg-opacity-20 rounded-xl">
                             <h4 class="text-xl font-semibold mb-3 text-gray-900 dark:text-white">Peluang Karir</h4>
-                            <p class="text-gray-700 dark:text-gray-300 mb-4">Lulusan jurusan PPLG sangat diminati di era digital dan memiliki peluang karir yang luas:</p>
+                            <p class="text-gray-700 dark:text-gray-300 mb-4">Lulusan DPIB memiliki keterampilan yang sangat dicari di industri properti dan konstruksi:</p>
                             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                <div class="bg-white dark:bg-gray-800 p-4 rounded-xl text-center card-hover">
+                                <div class="text-center">
                                     <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mx-auto mb-2">
-                                        <span class="material-icons text-primary">web</span>
+                                        <span class="material-icons text-primary">architecture</span>
                                     </div>
-                                    <p class="text-sm text-gray-700 dark:text-gray-300">Web Developer</p>
+                                    <p class="text-sm text-gray-700 dark:text-gray-300">Arsitek</p>
                                 </div>
-                                <div class="bg-white dark:bg-gray-800 p-4 rounded-xl text-center card-hover">
+                                <div class="text-center">
                                     <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mx-auto mb-2">
-                                        <span class="material-icons text-primary">smartphone</span>
+                                        <span class="material-icons text-primary">view_in_ar</span>
                                     </div>
-                                    <p class="text-sm text-gray-700 dark:text-gray-300">Mobile Developer</p>
+                                    <p class="text-sm text-gray-700 dark:text-gray-300">3D Visualizer</p>
                                 </div>
-                                <div class="bg-white dark:bg-gray-800 p-4 rounded-xl text-center card-hover">
+                                <div class="text-center">
                                     <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mx-auto mb-2">
-                                        <span class="material-icons text-primary">sports_esports</span>
+                                        <span class="material-icons text-primary">view_in_ar</span>
                                     </div>
-                                    <p class="text-sm text-gray-700 dark:text-gray-300">Game Developer</p>
+                                    <p class="text-sm text-gray-700 dark:text-gray-300">BIM Modeler</p>
                                 </div>
-                                <div class="bg-white dark:bg-gray-800 p-4 rounded-xl text-center card-hover">
+                                <div class="text-center">
                                     <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mx-auto mb-2">
-                                        <span class="material-icons text-primary">brush</span>
+                                        <span class="material-icons text-primary">straighten</span>
                                     </div>
-                                    <p class="text-sm text-gray-700 dark:text-gray-300">UI/UX Designer</p>
+                                    <p class="text-sm text-gray-700 dark:text-gray-300">Drafter</p>
                                 </div>
                             </div>
                         </div>
@@ -493,49 +497,49 @@
             </h2>
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 <div class="relative overflow-hidden rounded-lg group">
-                    <img src="https://picsum.photos/seed/pplg1/400/300.jpg" alt="Kegiatan PPLG" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
+                    <img src="https://picsum.photos/seed/dpib1/400/300.jpg" alt="Kegiatan DPIB" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
                     <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
                         <span class="material-icons text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">zoom_in</span>
                     </div>
                 </div>
                 <div class="relative overflow-hidden rounded-lg group">
-                    <img src="https://picsum.photos/seed/pplg2/400/300.jpg" alt="Kegiatan PPLG" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
+                    <img src="https://picsum.photos/seed/dpib2/400/300.jpg" alt="Kegiatan DPIB" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
                     <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
                         <span class="material-icons text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">zoom_in</span>
                     </div>
                 </div>
                 <div class="relative overflow-hidden rounded-lg group">
-                    <img src="https://picsum.photos/seed/pplg3/400/300.jpg" alt="Kegiatan PPLG" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
+                    <img src="https://picsum.photos/seed/dpib3/400/300.jpg" alt="Kegiatan DPIB" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
                     <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
                         <span class="material-icons text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">zoom_in</span>
                     </div>
                 </div>
                 <div class="relative overflow-hidden rounded-lg group">
-                    <img src="https://picsum.photos/seed/pplg4/400/300.jpg" alt="Kegiatan PPLG" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
+                    <img src="https://picsum.photos/seed/dpib4/400/300.jpg" alt="Kegiatan DPIB" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
                     <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
                         <span class="material-icons text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">zoom_in</span>
                     </div>
                 </div>
                 <div class="relative overflow-hidden rounded-lg group">
-                    <img src="https://picsum.photos/seed/pplg5/400/300.jpg" alt="Kegiatan PPLG" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
+                    <img src="https://picsum.photos/seed/dpib5/400/300.jpg" alt="Kegiatan DPIB" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
                     <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
                         <span class="material-icons text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">zoom_in</span>
                     </div>
                 </div>
                 <div class="relative overflow-hidden rounded-lg group">
-                    <img src="https://picsum.photos/seed/pplg6/400/300.jpg" alt="Kegiatan PPLG" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
+                    <img src="https://picsum.photos/seed/dpib6/400/300.jpg" alt="Kegiatan DPIB" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
                     <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
                         <span class="material-icons text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">zoom_in</span>
                     </div>
                 </div>
                 <div class="relative overflow-hidden rounded-lg group">
-                    <img src="https://picsum.photos/seed/pplg7/400/300.jpg" alt="Kegiatan PPLG" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
+                    <img src="https://picsum.photos/seed/dpib7/400/300.jpg" alt="Kegiatan DPIB" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
                     <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
                         <span class="material-icons text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">zoom_in</span>
                     </div>
                 </div>
                 <div class="relative overflow-hidden rounded-lg group">
-                    <img src="https://picsum.photos/seed/pplg8/400/300.jpg" alt="Kegiatan PPLG" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
+                    <img src="https://picsum.photos/seed/dpib8/400/300.jpg" alt="Kegiatan DPIB" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
                     <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
                         <span class="material-icons text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">zoom_in</span>
                     </div>
@@ -551,15 +555,15 @@
                 Apa Kata Alumni
             </h2>
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-card-light dark:bg-card-dark rounded-2xl shadow-lg p-6 card-hover">
+                <div class="bg-card-light dark:bg-card-dark rounded-2xl shadow-lg p-6">
                     <div class="flex items-center mb-4">
-                        <img src="https://picsum.photos/seed/alumni-pplg1/100/100.jpg" alt="Alumni" class="w-12 h-12 rounded-full mr-4">
+                        <img src="https://picsum.photos/seed/alumni-dpib1/100/100.jpg" alt="Alumni" class="w-12 h-12 rounded-full mr-4">
                         <div>
-                            <h4 class="font-semibold text-gray-900 dark:text-white">Reza Fahlevi</h4>
-                            <p class="text-sm text-gray-600 dark:text-gray-400">Alumni 2021 - Frontend Developer</p>
+                            <h4 class="font-semibold text-gray-900 dark:text-white">Cahya Kusuma</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Alumni 2021 - 3D Visualis</p>
                         </div>
                     </div>
-                    <p class="text-gray-700 dark:text-gray-300 italic">"Belajar di jurusan PPLG memberikan saya fondasi coding yang kuat. Materinya selalu update dan guru-gurunya sangat mendukung untuk eksplorasi teknologi baru."</p>
+                    <p class="text-gray-700 dark:text-gray-300 italic">"Portfolio yang saya bangun di DPIB menjadi modal utama saya diterima di studio visualisasi ternama. Pembelajaran softwarenya sangat mendalam dan relevan industri."</p>
                     <div class="flex mt-4">
                         <span class="material-icons text-yellow-500 text-sm">star</span>
                         <span class="material-icons text-yellow-500 text-sm">star</span>
@@ -568,15 +572,15 @@
                         <span class="material-icons text-yellow-500 text-sm">star</span>
                     </div>
                 </div>
-                <div class="bg-card-light dark:bg-card-dark rounded-2xl shadow-lg p-6 card-hover">
+                <div class="bg-card-light dark:bg-card-dark rounded-2xl shadow-lg p-6">
                     <div class="flex items-center mb-4">
-                        <img src="https://picsum.photos/seed/alumni-pplg2/100/100.jpg" alt="Alumni" class="w-12 h-12 rounded-full mr-4">
+                        <img src="https://picsum.photos/seed/alumni-dpib2/100/100.jpg" alt="Alumni" class="w-12 h-12 rounded-full mr-4">
                         <div>
-                            <h4 class="font-semibold text-gray-900 dark:text-white">Nadia Permata</h4>
-                            <p class="text-sm text-gray-600 dark:text-gray-400">Alumni 2020 - Game Designer</p>
+                            <h4 class="font-semibold text-gray-900 dark:text-white">Lina Marlina</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Alumni 2020 - Arsitek Junior</p>
                         </div>
                     </div>
-                    <p class="text-gray-700 dark:text-gray-300 italic">"Lab Game Development-nya luar biasa! Saya bisa langsung praktek membuat game dari nol. Pengalaman ini sangat membantu karir saya di industri game."</p>
+                    <p class="text-gray-700 dark:text-gray-300 italic">"Pembelajaran desain yang seimbang antara teori dan praktikum, ditambah dengan bimbingan dari guru yang ahli, membentuk fondasi arsitektur yang kuat bagi saya."</p>
                     <div class="flex mt-4">
                         <span class="material-icons text-yellow-500 text-sm">star</span>
                         <span class="material-icons text-yellow-500 text-sm">star</span>
@@ -585,15 +589,15 @@
                         <span class="material-icons text-yellow-500 text-sm">star</span>
                     </div>
                 </div>
-                <div class="bg-card-light dark:bg-card-dark rounded-2xl shadow-lg p-6 card-hover">
+                <div class="bg-card-light dark:bg-card-dark rounded-2xl shadow-lg p-6">
                     <div class="flex items-center mb-4">
-                        <img src="https://picsum.photos/seed/alumni-pplg3/100/100.jpg" alt="Alumni" class="w-12 h-12 rounded-full mr-4">
+                        <img src="https://picsum.photos/seed/alumni-dpib3/100/100.jpg" alt="Alumni" class="w-12 h-12 rounded-full mr-4">
                         <div>
-                            <h4 class="font-semibold text-gray-900 dark:text-white">Dimas Aryo</h4>
-                            <p class="text-sm text-gray-600 dark:text-gray-400">Alumni 2022 - UI/UX Designer</p>
+                            <h4 class="font-semibold text-gray-900 dark:text-white">Bayu Anggara</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Alumni 2022 - BIM Modeler</p>
                         </div>
                     </div>
-                    <p class="text-gray-700 dark:text-gray-300 italic">"Kurikulum PPLG tidak hanya mengajarkan coding, tapi juga desain. Ini membuat saya menjadi seorang designer yang paham teknis, yang sangat dicari perusahaan."</p>
+                    <p class="text-gray-700 dark:text-gray-300 italic">"Kebetulan sekali, jurusan ini sudah mengajarkan BIM sejak dulu. Ini membuat saya langsung siap kerja dan menjadi unggul di proyek-proyek konstruksi besar."</p>
                     <div class="flex mt-4">
                         <span class="material-icons text-yellow-500 text-sm">star</span>
                         <span class="material-icons text-yellow-500 text-sm">star</span>
@@ -610,18 +614,16 @@
     <section class="py-20 bg-gradient-to-br from-primary to-secondary dark:from-gray-700 dark:to-gray-900">
         <div class="container mx-auto px-4 text-center">
             <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">
-                Tertarik Bergabung dengan Jurusan PPLG?
+                Tertarik Menjadi Arsitek dan Desainer?
             </h2>
             <p class="text-xl text-gray-100 mb-8 max-w-2xl mx-auto">
-                Wujudkan mimpi Anda menjadi seorang creator digital. Temukan informasi lengkap tentang jurusan kami dan proses pendaftaran!
+                Wujudkan imajinasi Anda menjadi bangunan nyata. Daftar sekarang dan rancang masa depan Anda!
             </p>
             <div class="flex flex-wrap justify-center gap-4">
-                <a href="#" class="bg-white text-primary px-8 py-4 rounded-xl font-medium hover:bg-gray-100 transition shadow-lg flex items-center">
-                    <span class="material-icons mr-2">contact_support</span>
-                    Hubungi Kami
+                <a href="#" class="bg-white text-primary px-8 py-4 rounded-xl font-medium hover:bg-gray-100 transition shadow-lg">
+                    Daftar Sekarang
                 </a>
-                <a href="#" class="border border-white text-white px-8 py-4 rounded-xl font-medium hover:bg-white hover:text-primary transition flex items-center">
-                    <span class="material-icons mr-2">description</span>
+                <a href="#" class="border border-white text-white px-8 py-4 rounded-xl font-medium hover:bg-white hover:text-primary transition">
                     Download Brosur
                 </a>
             </div>
@@ -652,4 +654,4 @@
         });
     </script>
 </body>
-</html> 
+</html>

@@ -20,7 +20,9 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: "#6b7280", // Warna abu-abu
+                        primary: "#2563eb", // Warna biru
+                        "primary-light": "#dbeafe",
+                        "primary-dark": "#1e40af",
                         "background-light": "#f9fafb",
                         "background-dark": "#111827",
                         "card-light": "#ffffff",
@@ -33,11 +35,22 @@
                     },
                     animation: {
                         'fade-in': 'fadeIn 0.6s ease-out',
+                        'float': 'float 3s ease-in-out infinite',
+                        'zoom-in': 'zoomIn 0.3s ease-out',
                     },
                     keyframes: {
                         fadeIn: {
                             '0%': { opacity: '0', transform: 'translateY(10px)' },
                             '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                            '100%': { transform: 'translateY(0px)' },
+                        },
+                        zoomIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.8)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' },
                         }
                     }
                 },
@@ -48,12 +61,14 @@
         /* Custom styles for visual enhancement */
         .gallery-card {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
         .gallery-card:hover {
             transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
         .gallery-image-container .overlay {
-            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 60%);
+            background: linear-gradient(to top, rgba(37, 99, 235, 0.8) 0%, rgba(37, 99, 235, 0) 60%);
         }
         .gallery-card:hover .overlay {
             opacity: 1;
@@ -66,6 +81,17 @@
             transition: transform 0.3s ease;
         }
 
+        /* Image cursor */
+        .gallery-image-container {
+            cursor: pointer;
+        }
+
+        /* Modal styles */
+        .modal-backdrop {
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+
         /* Pagination styling */
         .pagination {
             @apply flex list-none -space-x-px;
@@ -76,7 +102,7 @@
         }
         
         .page-item.active .page-link {
-            @apply z-10 text-primary-600 bg-primary-50 border-primary-500 dark:text-primary-300 dark:bg-primary-900 dark:border-primary-400;
+            @apply z-10 text-white bg-primary border-primary dark:bg-primary-dark dark:border-primary-dark;
         }
         
         .page-item.disabled .page-link {
@@ -90,6 +116,33 @@
         .page-item:last-child .page-link {
             @apply rounded-r-lg;
         }
+
+        /* Header pattern overlay */
+        .header-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        /* Smooth scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        .dark ::-webkit-scrollbar-track {
+            background: #374151;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #6b7280;
+        }
     </style>
 </head>
 
@@ -98,14 +151,14 @@
     @include('layouts.navbar')
 
     <!-- HEADER -->
-    <div class="relative bg-gradient-to-br from-primary to-gray-600 dark:from-gray-700 dark:to-gray-900 py-20">
+    <div class="relative bg-gradient-to-br from-primary to-primary-dark dark:from-blue-800 dark:to-blue-900 py-20 header-pattern">
         <!-- Optional: Add a subtle pattern overlay -->
         <div class="absolute inset-0 bg-black opacity-10"></div>
         <div class="relative container mx-auto px-4">
-            <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-3">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-3 animate-fade-in">
                 Galeri
             </h1>
-            <p class="text-gray-100 text-lg md:text-xl max-w-2xl">
+            <p class="text-gray-100 text-lg md:text-xl max-w-2xl animate-fade-in" style="animation-delay: 0.2s">
                 Dokumentasi kegiatan, prestasi, dan momen berharga di SMK Negeri 1 Kawali.
             </p>
         </div>
@@ -114,7 +167,7 @@
     <!-- SEARCH -->
     <div class="max-w-4xl mx-auto mt-10 px-4">
         <form action="{{ route('galeri') }}" method="GET"
-            class="flex shadow-md rounded-xl overflow-hidden">
+            class="flex shadow-lg rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700">
             <div class="relative flex-grow">
                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                     <i class="fa-solid fa-search text-gray-400"></i>
@@ -129,8 +182,9 @@
             </div>
             <button
                 type="submit"
-                class="bg-primary text-white px-8 py-4 font-medium hover:bg-gray-700 transition-colors">
-                Cari
+                class="bg-primary hover:bg-primary-dark text-white px-8 py-4 font-medium transition-colors duration-300 flex items-center">
+                <span>Cari</span>
+                <i class="fas fa-arrow-right ml-2"></i>
             </button>
         </form>
     </div>
@@ -140,7 +194,7 @@
 
         <!-- NOTIFIKASI HASIL PENCARIAN -->
         @if(request('cari'))
-        <div class="mb-6 bg-gray-50 dark:bg-gray-900/20 border-l-4 border-gray-500 p-4 rounded">
+        <div class="mb-6 bg-primary-light dark:bg-blue-900/20 border-l-4 border-primary p-4 rounded animate-fade-in">
             <p class="text-sm">
                 Menampilkan hasil pencarian untuk: <strong>{{ request('cari') }}</strong>
             </p>
@@ -148,21 +202,23 @@
         @endif
 
         <!-- GRID CARD -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-12">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-12" id="galleryGrid">
 
-            @forelse ($galeri as $item)
+            @forelse ($galeri as $index => $item)
             <div
                 class="gallery-card bg-card-light dark:bg-card-dark 
-                       rounded-2xl shadow-lg border border-border-light dark:border-border-dark 
-                       overflow-hidden animate-fade-in group">
+                       rounded-2xl overflow-hidden animate-fade-in group"
+                data-index="{{ $index }}">
 
                 <!-- FOTO -->
-                <div class="gallery-image-container aspect-[4/3] bg-gray-200 dark:bg-gray-700 relative overflow-hidden">
+                <div class="gallery-image-container aspect-[4/3] bg-gray-200 dark:bg-gray-700 relative overflow-hidden"
+                     onclick="openModal({{ $index }})">
                     @if ($item->foto)
                         <img
                             src="{{ asset('storage/' . $item->foto) }}"
                             alt="{{ $item->judul }}"
-                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                            data-full="{{ asset('storage/' . $item->foto) }}">
                     @else
                         <div class="w-full h-full flex items-center justify-center text-gray-400 dark:text-gray-500">
                             <span class="material-icons text-6xl">image_not_supported</span>
@@ -202,8 +258,8 @@
             </div>
             @empty
                 <div class="col-span-full flex flex-col items-center justify-center text-center py-20">
-                    <div class="w-24 h-24 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mb-6">
-                        <i class="material-icons text-5xl text-gray-400">photo_library</i>
+                    <div class="w-24 h-24 bg-primary-light dark:bg-blue-900/20 rounded-full flex items-center justify-center mb-6 animate-float">
+                        <i class="material-icons text-5xl text-primary">photo_library</i>
                     </div>
                     <h3 class="text-2xl font-bold text-gray-700 dark:text-gray-300 mb-2">
                         Belum Ada Galeri
@@ -227,15 +283,140 @@
 
     @include('layouts.footer')
 
+    <!-- IMAGE MODAL -->
+    <div id="imageModal" class="fixed inset-0 z-50 hidden">
+        <div class="modal-backdrop absolute inset-0 bg-black/80" onclick="closeModal()"></div>
+        <div class="relative h-full flex items-center justify-center p-4">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors z-10">
+                <i class="fas fa-times text-3xl"></i>
+            </button>
+            
+            <button onclick="previousImage()" class="absolute left-4 text-white hover:text-gray-300 transition-colors z-10 hidden md:block">
+                <i class="fas fa-chevron-left text-4xl"></i>
+            </button>
+            
+            <button onclick="nextImage()" class="absolute right-4 text-white hover:text-gray-300 transition-colors z-10 hidden md:block">
+                <i class="fas fa-chevron-right text-4xl"></i>
+            </button>
+            
+            <div class="relative max-w-7xl mx-auto">
+                <img id="modalImage" src="" alt="" class="max-w-full max-h-[80vh] object-contain animate-zoom-in rounded-lg">
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 rounded-b-lg">
+                    <h3 id="modalTitle" class="text-white text-2xl font-bold mb-2"></h3>
+                    <p id="modalDate" class="text-gray-300"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- DARK MODE BUTTON -->
     <button
         id="darkToggle"
-        class="fixed bottom-6 right-6 bg-primary text-white p-3 rounded-full shadow-lg z-50 hover:bg-gray-600 transition-colors">
+        class="fixed bottom-6 right-6 bg-primary hover:bg-primary-dark text-white p-3 rounded-full shadow-lg z-40 transition-all duration-300 hover:scale-110">
         <i class="fa-solid fa-moon dark:hidden"></i>
         <i class="fa-solid fa-sun hidden dark:block"></i>
     </button>
 
     <script>
+        // Gallery data for modal
+        const galleryData = [];
+        @forelse ($galeri as $item)
+        galleryData.push({
+            image: "{{ asset('storage/' . $item->foto) }}",
+            title: "{{ $item->judul }}",
+            date: "{{ \Carbon\Carbon::parse($item->tanggal)->translatedFormat('d F Y') }}"
+        });
+        @empty
+        @endforelse
+
+        let currentImageIndex = 0;
+
+        // Modal functions
+        function openModal(index) {
+            currentImageIndex = index;
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalDate = document.getElementById('modalDate');
+            
+            if (galleryData[index]) {
+                modalImage.src = galleryData[index].image;
+                modalTitle.textContent = galleryData[index].title;
+                modalDate.textContent = galleryData[index].date;
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function nextImage() {
+            currentImageIndex = (currentImageIndex + 1) % galleryData.length;
+            updateModalImage();
+        }
+
+        function previousImage() {
+            currentImageIndex = (currentImageIndex - 1 + galleryData.length) % galleryData.length;
+            updateModalImage();
+        }
+
+        function updateModalImage() {
+            const modalImage = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalDate = document.getElementById('modalDate');
+            
+            modalImage.style.opacity = '0';
+            setTimeout(() => {
+                modalImage.src = galleryData[currentImageIndex].image;
+                modalTitle.textContent = galleryData[currentImageIndex].title;
+                modalDate.textContent = galleryData[currentImageIndex].date;
+                modalImage.style.opacity = '1';
+            }, 200);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            const modal = document.getElementById('imageModal');
+            if (!modal.classList.contains('hidden')) {
+                if (e.key === 'Escape') {
+                    closeModal();
+                } else if (e.key === 'ArrowRight') {
+                    nextImage();
+                } else if (e.key === 'ArrowLeft') {
+                    previousImage();
+                }
+            }
+        });
+
+        // Touch/swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            const modal = document.getElementById('imageModal');
+            if (!modal.classList.contains('hidden')) {
+                if (touchEndX < touchStartX - 50) {
+                    nextImage();
+                }
+                if (touchEndX > touchStartX + 50) {
+                    previousImage();
+                }
+            }
+        }
+
         // Dark mode toggle
         const toggle = document.getElementById('darkToggle');
         const html = document.documentElement;

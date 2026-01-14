@@ -427,105 +427,93 @@
         margin-right: 0.5rem;
     }
     
-    /* Modern Empty State */
-    .empty-state-container {
-        margin-top: 3rem;
-        position: relative;
-    }
-    
-    .empty-state-card {
+    /* Chart Container */
+    .chart-container {
         background: white;
         border-radius: 20px;
-        padding: 3rem;
+        padding: 1.5rem;
         box-shadow: var(--shadow-lg);
+        margin-bottom: 1.5rem;
         position: relative;
         overflow: hidden;
-        text-align: center;
+        height: 100%;
+        border: 1px solid rgba(0,0,0,0.05);
     }
     
-    .empty-state-card::before {
+    .chart-container::before {
         content: '';
         position: absolute;
         top: 0;
         left: 0;
-        width: 100%;
-        height: 5px;
+        width: 4px;
+        height: 100%;
         background: var(--gradient-modern);
     }
     
-    .empty-state-illustration {
-        width: 300px;
-        height: 300px;
-        margin: 0 auto 2rem;
-        position: relative;
+    .chart-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
     }
     
-    .empty-state-circle {
-        position: absolute;
-        border-radius: 50%;
-    }
-    
-    .circle-1 {
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 200px;
-        height: 200px;
-        background: var(--gradient-primary);
-        opacity: 0.1;
-    }
-    
-    .circle-2 {
-        top: 50px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 150px;
-        height: 150px;
-        background: var(--gradient-accent);
-        opacity: 0.1;
-    }
-    
-    .circle-3 {
-        top: 100px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 100px;
-        height: 100px;
-        background: var(--gradient-secondary);
-        opacity: 0.1;
-    }
-    
-    .empty-state-icon {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 4rem;
-        color: var(--primary-blue);
-        z-index: 1;
-    }
-    
-    .empty-state-title {
-        font-size: 1.8rem;
+    .chart-title {
+        font-size: 1.3rem;
         font-weight: 700;
         color: var(--dark-color);
-        margin-bottom: 1rem;
     }
     
-    .empty-state-description {
-        font-size: 1rem;
-        color: var(--text-muted);
-        margin-bottom: 2rem;
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
+    .chart-actions {
+        display: flex;
+        gap: 0.5rem;
     }
     
-    .empty-state-actions {
+    .chart-action-btn {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--light-blue);
+        color: var(--primary-blue);
+        border: none;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+    
+    .chart-action-btn:hover {
+        background: var(--primary-blue);
+        color: white;
+        transform: scale(1.1);
+    }
+    
+    .chart-canvas-container {
+        position: relative;
+        height: 300px;
+        width: 100%;
+    }
+    
+    .chart-legend {
         display: flex;
         justify-content: center;
-        gap: 1rem;
         flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
+    
+    .chart-legend-item {
+        display: flex;
+        align-items: center;
+        font-size: 0.9rem;
+        color: var(--text-muted);
+    }
+    
+    .chart-legend-color {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        margin-right: 0.5rem;
     }
     
     /* Tombol */
@@ -614,56 +602,47 @@
         box-shadow: var(--shadow-2xl);
     }
     
-    /* Feature Cards */
-    .feature-card {
-        background: white;
-        border-radius: 20px;
-        padding: 2rem;
-        box-shadow: var(--shadow-lg);
-        margin-bottom: 1.5rem;
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-    
-    .feature-card:hover {
-        transform: translateY(-5px);
-        box-shadow: var(--shadow-2xl);
-    }
-    
-    .feature-icon {
-        width: 80px;
-        height: 80px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 1.5rem;
-        font-size: 2rem;
-        color: white;
-        background: var(--gradient-modern);
-        box-shadow: var(--shadow-md);
-    }
-    
-    .feature-title {
-        font-size: 1.3rem;
-        font-weight: 700;
-        color: var(--dark-color);
-        margin-bottom: 1rem;
-    }
-    
-    .feature-description {
-        font-size: 1rem;
-        color: var(--text-muted);
-        margin-bottom: 1.5rem;
-    }
-    
     /* Responsive */
+    @media (max-width: 1200px) {
+        .container-fluid {
+            padding: 1.5rem;
+        }
+        
+        .dashboard-header {
+            padding: 2rem;
+        }
+        
+        .dashboard-header h1 {
+            font-size: 2.2rem;
+        }
+        
+        .stat-value {
+            font-size: 2.2rem;
+        }
+    }
+    
+    @media (max-width: 992px) {
+        .container-fluid {
+            padding: 1.2rem;
+        }
+        
+        .dashboard-header {
+            padding: 1.8rem;
+        }
+        
+        .dashboard-header h1 {
+            font-size: 2rem;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+        }
+        
+        .chart-canvas-container {
+            height: 250px;
+        }
+    }
+    
     @media (max-width: 768px) {
         .container-fluid {
             padding: 1rem;
@@ -678,7 +657,7 @@
         }
         
         .stat-value {
-            font-size: 2rem;
+            font-size: 1.8rem;
         }
         
         .school-logo-watermark {
@@ -695,20 +674,48 @@
             gap: 0.5rem;
         }
         
-        .empty-state-illustration {
-            width: 200px;
+        .chart-canvas-container {
             height: 200px;
         }
         
-        .empty-state-icon {
-            font-size: 3rem;
+        .chart-legend {
+            gap: 0.5rem;
         }
         
-        .empty-state-title {
-            font-size: 1.5rem;
+        .chart-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        .dashboard-header {
+            padding: 1.2rem;
+        }
+        
+        .dashboard-header h1 {
+            font-size: 1.6rem;
+        }
+        
+        .stat-value {
+            font-size: 1.6rem;
+        }
+        
+        .chart-canvas-container {
+            height: 180px;
+        }
+        
+        .fab {
+            width: 50px;
+            height: 50px;
+            font-size: 1.2rem;
         }
     }
 </style>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <!-- Background Pattern -->
 <div class="bg-pattern"></div>
@@ -729,7 +736,7 @@
     <div class="dashboard-header fade-in">
         <div class="dashboard-header-content">
             <div class="row align-items-center">
-                <div class="col-md-8">
+                <div class="col-lg-8 col-md-7">
                     <h1>Dashboard Admin</h1>
                     <p>SMKN 1 Kawali - Kab. Ciamis</p>
                     <div class="info-badges">
@@ -744,8 +751,15 @@
                         </span>
                     </div>
                 </div>
-                <div class="col-md-4 text-end">
-                    <img src="https://picsum.photos/seed/smkn1kawali/200/150.jpg" alt="SMKN 1 Kawali" class="img-fluid rounded-3 shadow-lg float-animation" style="max-height: 150px;">
+                <div class="col-lg-4 col-md-5 text-end">
+                    <div class="header-actions d-flex justify-content-end gap-2">
+                        <button class="btn btn-outline-primary">
+                            <i class="bi bi-download"></i> <span class="d-none d-md-inline">Export</span>
+                        </button>
+                        <button class="btn btn-primary">
+                            <i class="bi bi-plus-circle"></i> <span class="d-none d-md-inline">Tambah</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -753,7 +767,7 @@
 
     <!-- Statistik Utama -->
     <div class="row mb-4">
-        <div class="col-md-3 col-sm-6 mb-3 fade-in" style="animation-delay: 0.1s;">
+        <div class="col-xl-3 col-lg-6 col-md-6 mb-3 fade-in" style="animation-delay: 0.1s;">
             <div class="stat-card">
                 <div class="stat-icon blue">
                     <i class="bi bi-people-fill"></i>
@@ -766,7 +780,7 @@
             </div>
         </div>
         
-        <div class="col-md-3 col-sm-6 mb-3 fade-in" style="animation-delay: 0.2s;">
+        <div class="col-xl-3 col-lg-6 col-md-6 mb-3 fade-in" style="animation-delay: 0.2s;">
             <div class="stat-card yellow">
                 <div class="stat-icon yellow">
                     <i class="bi bi-person-badge-fill"></i>
@@ -779,7 +793,7 @@
             </div>
         </div>
         
-        <div class="col-md-3 col-sm-6 mb-3 fade-in" style="animation-delay: 0.3s;">
+        <div class="col-xl-3 col-lg-6 col-md-6 mb-3 fade-in" style="animation-delay: 0.3s;">
             <div class="stat-card">
                 <div class="stat-icon blue">
                     <i class="bi bi-building"></i>
@@ -792,7 +806,7 @@
             </div>
         </div>
         
-        <div class="col-md-3 col-sm-6 mb-3 fade-in" style="animation-delay: 0.4s;">
+        <div class="col-xl-3 col-lg-6 col-md-6 mb-3 fade-in" style="animation-delay: 0.4s;">
             <div class="stat-card red">
                 <div class="stat-icon red">
                     <i class="bi bi-trophy-fill"></i>
@@ -806,77 +820,113 @@
         </div>
     </div>
 
-    <!-- Modern Empty State -->
-    <div class="empty-state-container">
-        <div class="empty-state-card slide-in-up">
-            <div class="empty-state-illustration">
-                <div class="empty-state-circle circle-1"></div>
-                <div class="empty-state-circle circle-2"></div>
-                <div class="empty-state-circle circle-3"></div>
-                <div class="empty-state-icon">
-                    <i class="bi bi-graph-up-arrow"></i>
+    <!-- Grafik Real-time -->
+    <div class="row mb-4">
+        <div class="col-lg-8 mb-3 fade-in" style="animation-delay: 0.5s;">
+            <div class="chart-container">
+                <div class="chart-header">
+                    <h3 class="chart-title">Statistik Real-time</h3>
+                    <div class="chart-actions">
+                        <button class="chart-action-btn" onclick="updateLineChart()">
+                            <i class="bi bi-arrow-clockwise"></i>
+                        </button>
+                        <button class="chart-action-btn" onclick="downloadLineChart()">
+                            <i class="bi bi-download"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="chart-canvas-container">
+                    <canvas id="realtimeChart"></canvas>
+                </div>
+                <div class="chart-legend">
+                    <div class="chart-legend-item">
+                        <div class="chart-legend-color" style="background-color: rgba(54, 162, 235, 0.8);"></div>
+                        <span>Siswa</span>
+                    </div>
+                    <div class="chart-legend-item">
+                        <div class="chart-legend-color" style="background-color: rgba(255, 193, 7, 0.8);"></div>
+                        <span>Guru</span>
+                    </div>
+                    <div class="chart-legend-item">
+                        <div class="chart-legend-color" style="background-color: rgba(75, 192, 192, 0.8);"></div>
+                        <span>Prestasi</span>
+                    </div>
                 </div>
             </div>
-            <h2 class="empty-state-title">Dashboard Modern SMKN 1 Kawali</h2>
-            <p class="empty-state-description">
-                Selamat datang di dashboard administrasi SMKN 1 Kawali. Sistem ini dirancang untuk memudahkan pengelolaan konten website sekolah dengan antarmuka yang modern dan intuitif.
-            </p>
-            <div class="empty-state-actions">
-                <a href="{{ route('admin.artikel.create') }}" class="btn btn-primary">
-                    <i class="bi bi-plus-circle"></i> Tambah Konten
-                </a>
-                <a href="{{ route('admin.users.index') }}" class="btn btn-outline-primary">
-                    <i class="bi bi-people"></i> Kelola Pengguna
-                </a>
+        </div>
+        
+        <div class="col-lg-4 mb-3 fade-in" style="animation-delay: 0.6s;">
+            <div class="chart-container">
+                <div class="chart-header">
+                    <h3 class="chart-title">Distribusi Jurusan</h3>
+                    <div class="chart-actions">
+                        <button class="chart-action-btn" onclick="updateDoughnutChart()">
+                            <i class="bi bi-arrow-clockwise"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="chart-canvas-container">
+                    <canvas id="jurusanChart"></canvas>
+                </div>
+                <div class="chart-legend">
+                    <div class="chart-legend-item">
+                        <div class="chart-legend-color" style="background-color: rgba(255, 99, 132, 0.8);"></div>
+                        <span>RPL</span>
+                    </div>
+                    <div class="chart-legend-item">
+                        <div class="chart-legend-color" style="background-color: rgba(54, 162, 235, 0.8);"></div>
+                        <span>TKJ</span>
+                    </div>
+                    <div class="chart-legend-item">
+                        <div class="chart-legend-color" style="background-color: rgba(255, 206, 86, 0.8);"></div>
+                        <span>Multimedia</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Feature Cards -->
-    <div class="row mt-5">
-        <div class="col-md-4 mb-4 slide-in-left" style="animation-delay: 0.5s;">
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="bi bi-speedometer2"></i>
+    <!-- Grafik Bar -->
+    <div class="row mb-4">
+        <div class="col-lg-6 mb-3 fade-in" style="animation-delay: 0.7s;">
+            <div class="chart-container">
+                <div class="chart-header">
+                    <h3 class="chart-title">Pendaftaran Siswa Baru</h3>
+                    <div class="chart-actions">
+                        <button class="chart-action-btn" onclick="updateBarChart()">
+                            <i class="bi bi-arrow-clockwise"></i>
+                        </button>
+                    </div>
                 </div>
-                <h3 class="feature-title">Performa Tinggi</h3>
-                <p class="feature-description">
-                    Sistem kami dioptimalkan untuk memberikan performa terbaik dengan waktu loading yang cepat dan responsif di berbagai perangkat.
-                </p>
+                <div class="chart-canvas-container">
+                    <canvas id="pendaftaranChart"></canvas>
+                </div>
             </div>
         </div>
         
-        <div class="col-md-4 mb-4 slide-in-up" style="animation-delay: 0.6s;">
-            <div class="feature-card">
-                <div class="feature-icon" style="background: var(--gradient-accent);">
-                    <i class="bi bi-shield-check"></i>
+        <div class="col-lg-6 mb-3 fade-in" style="animation-delay: 0.8s;">
+            <div class="chart-container">
+                <div class="chart-header">
+                    <h3 class="chart-title">Aktivitas Bulanan</h3>
+                    <div class="chart-actions">
+                        <button class="chart-action-btn" onclick="updateActivityChart()">
+                            <i class="bi bi-arrow-clockwise"></i>
+                        </button>
+                    </div>
                 </div>
-                <h3 class="feature-title">Keamanan Terjamin</h3>
-                <p class="feature-description">
-                    Dilengkapi dengan sistem keamanan berlapis untuk melindungi data sensitif dan mencegah akses tidak sah ke dalam sistem.
-                </p>
-            </div>
-        </div>
-        
-        <div class="col-md-4 mb-4 slide-in-right" style="animation-delay: 0.7s;">
-            <div class="feature-card">
-                <div class="feature-icon" style="background: var(--gradient-secondary);">
-                    <i class="bi bi-palette"></i>
+                <div class="chart-canvas-container">
+                    <canvas id="activityChart"></canvas>
                 </div>
-                <h3 class="feature-title">Desain Modern</h3>
-                <p class="feature-description">
-                    Tampilan antarmuka yang modern dan intuitif dirancang khusus untuk memberikan pengalaman pengguna yang terbaik.
-                </p>
             </div>
         </div>
     </div>
-</div>
 
-<!-- Floating Action Button -->
-<div class="fab-container">
-    <button class="fab pulse-animation">
-        <i class="bi bi-plus"></i>
-    </button>
+    <!-- Floating Action Button -->
+    <div class="fab-container">
+        <button class="fab pulse-animation">
+            <i class="bi bi-plus"></i>
+        </button>
+    </div>
 </div>
 
 <script>
@@ -895,5 +945,183 @@
         // Redirect to create content page or show modal
         window.location.href = '{{ route("admin.artikel.create") }}';
     });
+    
+    // Chart configurations
+    const chartOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                display: false
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                grid: {
+                    color: 'rgba(0, 0, 0, 0.05)'
+                }
+            },
+            x: {
+                grid: {
+                    display: false
+                }
+            }
+        }
+    };
+    
+    // Real-time Line Chart
+    const realtimeCtx = document.getElementById('realtimeChart').getContext('2d');
+    const realtimeChart = new Chart(realtimeCtx, {
+        type: 'line',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+            datasets: [
+                {
+                    label: 'Siswa',
+                    data: [1200, 1210, 1225, 1230, 1240, 1248],
+                    borderColor: 'rgba(54, 162, 235, 0.8)',
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    tension: 0.4,
+                    fill: true
+                },
+                {
+                    label: 'Guru',
+                    data: [80, 81, 82, 83, 85, 86],
+                    borderColor: 'rgba(255, 193, 7, 0.8)',
+                    backgroundColor: 'rgba(255, 193, 7, 0.2)',
+                    tension: 0.4,
+                    fill: true
+                },
+                {
+                    label: 'Prestasi',
+                    data: [45, 46, 48, 49, 50, 52],
+                    borderColor: 'rgba(75, 192, 192, 0.8)',
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    tension: 0.4,
+                    fill: true
+                }
+            ]
+        },
+        options: chartOptions
+    });
+    
+    // Jurusan Doughnut Chart
+    const jurusanCtx = document.getElementById('jurusanChart').getContext('2d');
+    const jurusanChart = new Chart(jurusanCtx, {
+        type: 'doughnut',
+        data: {
+            labels: ['RPL', 'TKJ', 'Multimedia', 'PPLG', 'AKL', 'OTKP'],
+            datasets: [{
+                data: [320, 280, 240, 200, 120, 88],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.8)',
+                    'rgba(54, 162, 235, 0.8)',
+                    'rgba(255, 206, 86, 0.8)',
+                    'rgba(75, 192, 192, 0.8)',
+                    'rgba(153, 102, 255, 0.8)',
+                    'rgba(255, 159, 64, 0.8)'
+                ],
+                borderWidth: 0
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
+        }
+    });
+    
+    // Pendaftaran Bar Chart
+    const pendaftaranCtx = document.getElementById('pendaftaranChart').getContext('2d');
+    const pendaftaranChart = new Chart(pendaftaranCtx, {
+        type: 'bar',
+        data: {
+            labels: ['2018', '2019', '2020', '2021', '2022', '2023'],
+            datasets: [{
+                label: 'Pendaftaran',
+                data: [180, 220, 190, 250, 280, 320],
+                backgroundColor: 'rgba(54, 162, 235, 0.8)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: chartOptions
+    });
+    
+    // Activity Chart
+    const activityCtx = document.getElementById('activityChart').getContext('2d');
+    const activityChart = new Chart(activityCtx, {
+        type: 'bar',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+            datasets: [
+                {
+                    label: 'Event',
+                    data: [12, 19, 15, 25, 22, 30],
+                    backgroundColor: 'rgba(255, 99, 132, 0.8)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Kompetisi',
+                    data: [8, 11, 13, 15, 12, 18],
+                    backgroundColor: 'rgba(54, 162, 235, 0.8)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }
+            ]
+        },
+        options: chartOptions
+    });
+    
+    // Update functions for charts
+    function updateLineChart() {
+        realtimeChart.data.datasets.forEach(dataset => {
+            dataset.data = dataset.data.map(value => {
+                return value + Math.floor(Math.random() * 10) - 5;
+            });
+        });
+        realtimeChart.update();
+    }
+    
+    function updateDoughnutChart() {
+        jurusanChart.data.datasets[0].data = jurusanChart.data.datasets[0].data.map(value => {
+                return value + Math.floor(Math.random() * 20) - 10;
+            });
+        jurusanChart.update();
+    }
+    
+    function updateBarChart() {
+        pendaftaranChart.data.datasets[0].data = pendaftaranChart.data.datasets[0].data.map(value => {
+                return value + Math.floor(Math.random() * 20) - 10;
+            });
+        pendaftaranChart.update();
+    }
+    
+    function updateActivityChart() {
+        activityChart.data.datasets.forEach(dataset => {
+            dataset.data = dataset.data.map(value => {
+                return value + Math.floor(Math.random() * 5) - 2;
+            });
+        });
+        activityChart.update();
+    }
+    
+    function downloadLineChart() {
+        const link = document.createElement('a');
+        link.download = 'statistik.png';
+        link.href = realtimeChart.toBase64Image();
+        link.click();
+    }
+    
+    // Auto update charts every 5 seconds
+    setInterval(() => {
+        updateLineChart();
+    }, 5000);
 </script>
 @endsection

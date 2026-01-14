@@ -20,7 +20,9 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: "#6b7280",
+                        primary: "#2563eb", // Warna biru
+                        "primary-light": "#dbeafe",
+                        "primary-dark": "#1e40af",
                         "background-light": "#f9fafb",
                         "background-dark": "#111827",
                         "card-light": "#ffffff",
@@ -31,10 +33,77 @@
                     fontFamily: {
                         body: ["Inter", "sans-serif"],
                     },
+                    animation: {
+                        'fade-in': 'fadeIn 0.6s ease-out',
+                        'float': 'float 3s ease-in-out infinite',
+                        'zoom-in': 'zoomIn 0.3s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                            '100%': { transform: 'translateY(0px)' },
+                        },
+                        zoomIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.8)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' },
+                        }
+                    }
                 },
             },
         };
     </script>
+    <style>
+        /* Header pattern overlay */
+        .header-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        /* Card hover effect */
+        .org-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .org-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Profile hover effect */
+        .profile-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .profile-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Smooth scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        .dark ::-webkit-scrollbar-track {
+            background: #374151;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #6b7280;
+        }
+    </style>
 </head>
 
 <body class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-100 font-body transition-colors duration-300">
@@ -42,13 +111,13 @@
     @include('layouts.navbar')
 
     <!-- HEADER -->
-    <div class="relative bg-gradient-to-br from-primary to-gray-600 dark:from-gray-700 dark:to-gray-900 py-20">
+    <div class="relative bg-gradient-to-br from-primary to-primary-dark dark:from-blue-800 dark:to-blue-900 py-20 header-pattern">
         <div class="absolute inset-0 bg-black opacity-10"></div>
         <div class="relative container mx-auto px-4">
-            <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-3">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-3 animate-fade-in">
                 Organisasi
             </h1>
-            <p class="text-gray-100 text-lg md:text-xl max-w-2xl">
+            <p class="text-gray-100 text-lg md:text-xl max-w-2xl animate-fade-in" style="animation-delay: 0.2s">
                 Struktur dan kegiatan organisasi siswa SMK Negeri 1 Kawali.
             </p>
         </div>
@@ -61,14 +130,14 @@
         <section class="space-y-16">
 
             <!-- DESKRIPSI -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 items-center">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 items-center animate-fade-in" style="animation-delay: 0.3s">
                 <div class="flex justify-center">
-                    <div class="w-64 h-64 bg-card-light dark:bg-card-dark rounded-2xl shadow border border-border-light dark:border-border-dark flex items-center justify-center">
+                    <div class="w-64 h-64 bg-card-light dark:bg-card-dark rounded-2xl border border-border-light dark:border-border-dark flex items-center justify-center org-card">
                         <span class="text-gray-400 font-semibold">Logo MPK</span>
                     </div>
                 </div>
                 <div class="md:col-span-2">
-                    <h2 class="text-3xl font-bold mb-4">MPK</h2>
+                    <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white">MPK</h2>
                     <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
                         Majelis Perwakilan Kelas (MPK) bertugas mengawasi kinerja OSIS serta menampung aspirasi siswa.
                     </p>
@@ -77,15 +146,21 @@
 
             <!-- VISI MISI -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-card-light dark:bg-card-dark rounded-2xl shadow border border-border-light dark:border-border-dark p-8 text-center">
-                    <h3 class="text-2xl font-bold mb-4">Visi</h3>
-                    <p class="text-gray-500 dark:text-gray-400">
+                <div class="org-card bg-card-light dark:bg-card-dark rounded-2xl border border-border-light dark:border-border-dark p-8 text-center animate-fade-in" style="animation-delay: 0.4s">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center">
+                        <i class="fas fa-eye text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Visi</h3>
+                    <p class="text-gray-600 dark:text-gray-300">
                         Menjadikan MPK sebagai organisasi yang aspiratif dan bertanggung jawab.
                     </p>
                 </div>
-                <div class="bg-card-light dark:bg-card-dark rounded-2xl shadow border border-border-light dark:border-border-dark p-8 text-center">
-                    <h3 class="text-2xl font-bold mb-4">Misi</h3>
-                    <ul class="text-gray-500 dark:text-gray-400 space-y-2">
+                <div class="org-card bg-card-light dark:bg-card-dark rounded-2xl border border-border-light dark:border-border-dark p-8 text-center animate-fade-in" style="animation-delay: 0.5s">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center">
+                        <i class="fas fa-rocket text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Misi</h3>
+                    <ul class="text-gray-600 dark:text-gray-300 space-y-2">
                         <li>Mengawasi kinerja OSIS</li>
                         <li>Menampung aspirasi siswa</li>
                     </ul>
@@ -93,26 +168,26 @@
             </div>
 
             <!-- STRUKTUR -->
-            <div class="space-y-8">
-                <h3 class="text-3xl font-bold text-center">Struktur MPK</h3>
+            <div class="space-y-8 animate-fade-in" style="animation-delay: 0.6s">
+                <h3 class="text-3xl font-bold text-center text-gray-900 dark:text-white">Struktur MPK</h3>
 
                 <div class="flex justify-center">
                     <div class="text-center">
-                        <div class="w-40 h-40 rounded-full bg-card-light dark:bg-card-dark border border-border-light dark:border-border-dark shadow flex items-center justify-center mb-4">
+                        <div class="w-40 h-40 rounded-full bg-card-light dark:bg-card-dark border border-border-light dark:border-border-dark flex items-center justify-center mb-4 profile-card">
                             <span class="text-gray-400">Foto</span>
                         </div>
-                        <h4 class="font-bold">Nama Pembina</h4>
+                        <h4 class="font-bold text-gray-900 dark:text-white">Nama Pembina</h4>
                         <span class="text-sm text-primary">Pembina MPK</span>
                     </div>
                 </div>
 
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 justify-items-center">
                     @foreach(['Ketua','Wakil','Sekretaris 1','Sekretaris 2','Bendahara'] as $jabatan)
-                    <div class="text-center">
-                        <div class="w-32 h-32 rounded-full bg-card-light dark:bg-card-dark border border-border-light dark:border-border-dark shadow flex items-center justify-center mb-3">
+                    <div class="text-center animate-fade-in" style="animation-delay: {{ $loop->iteration * 0.1 + 0.7 }}s">
+                        <div class="w-32 h-32 rounded-full bg-card-light dark:bg-card-dark border border-border-light dark:border-border-dark flex items-center justify-center mb-3 profile-card">
                             <span class="text-xs text-gray-400">Foto</span>
                         </div>
-                        <div class="font-semibold text-sm">{{ $jabatan }}</div>
+                        <div class="font-semibold text-sm text-gray-900 dark:text-white">{{ $jabatan }}</div>
                         <div class="text-xs text-gray-500 dark:text-gray-400">Nama Siswa</div>
                     </div>
                     @endforeach
@@ -124,14 +199,14 @@
         <!-- ================= OSIS ================= -->
         <section class="space-y-16">
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 items-center">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 items-center animate-fade-in" style="animation-delay: 0.8s">
                 <div class="flex justify-center">
-                    <div class="w-64 h-64 bg-card-light dark:bg-card-dark rounded-2xl shadow border border-border-light dark:border-border-dark flex items-center justify-center">
+                    <div class="w-64 h-64 bg-card-light dark:bg-card-dark rounded-2xl border border-border-light dark:border-border-dark flex items-center justify-center org-card">
                         <span class="text-gray-400 font-semibold">Logo OSIS</span>
                     </div>
                 </div>
                 <div class="md:col-span-2">
-                    <h2 class="text-3xl font-bold mb-4">OSIS</h2>
+                    <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white">OSIS</h2>
                     <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
                         Organisasi Siswa Intra Sekolah sebagai wadah kegiatan dan pengembangan siswa.
                     </p>
@@ -139,15 +214,21 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-card-light dark:bg-card-dark rounded-2xl shadow border border-border-light dark:border-border-dark p-8 text-center">
-                    <h3 class="text-2xl font-bold mb-4">Visi</h3>
-                    <p class="text-gray-500 dark:text-gray-400">
+                <div class="org-card bg-card-light dark:bg-card-dark rounded-2xl border border-border-light dark:border-border-dark p-8 text-center animate-fade-in" style="animation-delay: 0.9s">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center">
+                        <i class="fas fa-eye text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Visi</h3>
+                    <p class="text-gray-600 dark:text-gray-300">
                         Mewujudkan siswa berkarakter dan berprestasi.
                     </p>
                 </div>
-                <div class="bg-card-light dark:bg-card-dark rounded-2xl shadow border border-border-light dark:border-border-dark p-8 text-center">
-                    <h3 class="text-2xl font-bold mb-4">Misi</h3>
-                    <ul class="text-gray-500 dark:text-gray-400 space-y-2">
+                <div class="org-card bg-card-light dark:bg-card-dark rounded-2xl border border-border-light dark:border-border-dark p-8 text-center animate-fade-in" style="animation-delay: 1.0s">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center">
+                        <i class="fas fa-rocket text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Misi</h3>
+                    <ul class="text-gray-600 dark:text-gray-300 space-y-2">
                         <li>Meningkatkan keimanan</li>
                         <li>Mengembangkan bakat siswa</li>
                     </ul>
@@ -159,6 +240,31 @@
     </main>
 
     @include('layouts.footer')
+
+    <!-- DARK MODE BUTTON -->
+    <button
+        id="darkToggle"
+        class="fixed bottom-6 right-6 bg-primary hover:bg-primary-dark text-white p-3 rounded-full shadow-lg z-40 transition-all duration-300 hover:scale-110">
+        <i class="fa-solid fa-moon dark:hidden"></i>
+        <i class="fa-solid fa-sun hidden dark:block"></i>
+    </button>
+
+    <script>
+        // Dark mode toggle
+        const toggle = document.getElementById('darkToggle');
+        const html = document.documentElement;
+
+        if (localStorage.getItem('theme') === 'dark') {
+            html.classList.add('dark');
+        }
+
+        toggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            localStorage.setItem('theme',
+                html.classList.contains('dark') ? 'dark' : 'light'
+            );
+        });
+    </script>
 
 </body>
 </html>
