@@ -230,7 +230,6 @@
         border-bottom: 1px solid var(--border-color);
         color: var(--dark-color);
         font-weight: 600;
-<<<<<<< Updated upstream
         padding: 1rem;
         font-size: 0.875rem;
         text-transform: uppercase;
@@ -241,20 +240,6 @@
         padding: 1rem;
         vertical-align: middle;
         border-bottom: 1px solid var(--border-color);
-=======
-        padding: 18px 15px;
-        background: rgba(0, 86, 179, 0.05);
-        white-space: nowrap;
-        font-size: 0.875rem;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-    }
-    
-    .table tbody td {
-        padding: 20px 15px;
-        vertical-align: middle;
-        border-bottom: 1px solid rgba(0,0,0,0.05);
->>>>>>> Stashed changes
     }
     
     .table tbody tr:last-child td {
@@ -262,29 +247,7 @@
     }
     
     .table tbody tr:hover {
-<<<<<<< Updated upstream
         background-color: var(--lighter-blue);
-=======
-        background-color: var(--light-blue);
-    }
-    
-    /* PERBAIKAN: Border biru yang lebih kecil */
-    .table tbody tr::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        height: 100%;
-        width: 2px; /* Diperkecil dari 3px */
-        background: var(--gradient-primary);
-        border-radius: 2px;
-        transform: scaleY(0);
-        transition: transform 0.3s ease;
-    }
-    
-    .table tbody tr:hover::before {
-        transform: scaleY(1);
->>>>>>> Stashed changes
     }
     
     /* Kolom Nomor */
@@ -340,16 +303,9 @@
         padding: 0.375rem 0.75rem;
         border-radius: 9999px;
         font-weight: 500;
-<<<<<<< Updated upstream
         font-size: 0.75rem;
         text-transform: uppercase;
         letter-spacing: 0.05em;
-=======
-        font-size: 0.8rem;
-        transition: all 0.3s ease;
-        display: inline-block;
-        white-space: nowrap;
->>>>>>> Stashed changes
     }
     
     .badge-primary {
@@ -402,29 +358,6 @@
     }
     
     .btn-light {
-<<<<<<< Updated upstream
-=======
-        background: rgba(255, 255, 255, 0.9);
-        color: var(--primary-blue);
-        box-shadow: var(--shadow-sm);
-    }
-    
-    .btn-light:hover {
-        background: white;
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-md);
-    }
-    
-    /* Action Buttons - PERBAIKAN */
-    .btn-action {
-        width: 36px;
-        height: 36px;
-        border-radius: 10px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.3s ease;
->>>>>>> Stashed changes
         background: white;
         color: var(--dark-color);
         border: 1px solid var(--border-color);
@@ -470,11 +403,7 @@
     
     /* Empty State */
     .empty-state {
-<<<<<<< Updated upstream
         padding: 3rem;
-=======
-        padding: 60px 0;
->>>>>>> Stashed changes
         text-align: center;
     }
     
@@ -592,7 +521,6 @@
                 </div>
             </div>
         </div>
-<<<<<<< Updated upstream
         <div class="col-md-3 col-sm-6 mb-3">
             <div class="stat-card slide-in" style="animation-delay: 0.1s;">
                 <div class="d-flex justify-content-between align-items-center">
@@ -602,73 +530,6 @@
                     </div>
                     <div class="stat-icon" style="background: var(--gradient-primary);">
                         <i class="bi bi-check-circle"></i>
-=======
-        <div class="col-md-3 col-sm-6 mb-3 slide-in-left" style="animation-delay: 0.2s;">
-            <div class="stat-card">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <span class="text-muted small d-block mb-1">Artikel Aktif</span>
-                        <h2 class="fw-bold mb-0">{{ $artikels->where('status', 'aktif')->count() }}</h2>
-                    </div>
-                    <div class="stat-icon" style="background: var(--gradient-success);">
-                        <i class="bi bi-check-circle"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6 mb-3 slide-in-left" style="animation-delay: 0.3s;">
-            <div class="stat-card">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <span class="text-muted small d-block mb-1">Artikel Draft</span>
-                        <h2 class="fw-bold mb-0">{{ $artikels->where('status', 'draft')->count() }}</h2>
-                    </div>
-                    <div class="stat-icon" style="background: var(--gradient-warning);">
-                        <i class="bi bi-file-earmark-text"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6 mb-3 slide-in-left" style="animation-delay: 0.4s;">
-            <div class="stat-card">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <span class="text-muted small d-block mb-1">Total Views</span>
-                        <h2 class="fw-bold mb-0">{{ number_format($artikels->sum('views'), 0, ',', '.') }}</h2>
-                    </div>
-                    <div class="stat-icon" style="background: var(--gradient-vibrant);">
-                        <i class="bi bi-eye"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    {{-- ALERT --}}
-    @if(session('success'))
-        <div class="alert alert-success alert-dismissible fade show shadow-sm mb-4 slide-in-up" style="animation-delay: 0.2s;">
-            <i class="bi bi-check-circle-fill me-2"></i> {{ session('success') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        </div>
-    @endif
-
-    {{-- FILTER --}}
-    <div class="filter-card slide-in-up" style="animation-delay: 0.3s;">
-        <div class="card-body">
-            <div class="row g-3">
-                <div class="col-md-5">
-                    <label class="form-label small text-muted fw-semibold">
-                        Cari Artikel
-                    </label>
-                    <div class="input-group">
-                        <span class="input-group-text">
-                            <i class="bi bi-search"></i>
-                        </span>
-                        <input type="text"
-                               class="form-control"
-                               id="searchInput"
-                               placeholder="Cari judul atau isi artikel...">
->>>>>>> Stashed changes
                     </div>
                 </div>
             </div>
@@ -757,7 +618,6 @@
         <div class="table-responsive">
             <table class="table" id="artikelTable">
                 <thead>
-<<<<<<< Updated upstream
                     <tr>
                         <th width="60">No</th>
                         <th width="120">Foto</th>
@@ -765,15 +625,6 @@
                         <th width="160">Kategori</th>
                         <th width="150">Tanggal</th>
                         <th width="120">Aksi</th>
-=======
-                    <tr class="text-muted small">
-                        <th>No</th>
-                        <th>Foto</th>
-                        <th>Informasi Artikel</th>
-                        <th>Kategori</th>
-                        <th>Tanggal</th>
-                        <th>Aksi</th>
->>>>>>> Stashed changes
                     </tr>
                 </thead>
                 <tbody id="artikelContainer">
@@ -794,13 +645,8 @@
                             data-kategori="{{ $item->kategori }}"
                             data-tanggal="{{ $item->tanggal }}">
 
-<<<<<<< Updated upstream
                             <!-- NO -->
                             <td class="text-muted">
-=======
-                            {{-- NO --}}
-                            <td class="text-center text-muted fw-semibold">
->>>>>>> Stashed changes
                                 {{ $loop->iteration }}
                             </td>
 
@@ -808,26 +654,15 @@
                             <td>
                                 @if($item->foto)
                                     <img src="{{ asset('storage/'.$item->foto) }}"
-<<<<<<< Updated upstream
                                          class="rounded"
                                          style="width:80px;height:60px;object-fit:cover">
                                 @else
                                     <div class="bg-light rounded d-flex align-items-center justify-content-center" style="width:80px;height:60px;">
                                         <i class="bi bi-image text-muted"></i>
-=======
-                                         class="rounded-3 shadow-sm"
-                                         style="width:100px;height:70px;object-fit:cover;transition:transform 0.3s"
-                                         onmouseover="this.style.transform='scale(1.05)'"
-                                         onmouseout="this.style.transform='scale(1)'">
-                                @else
-                                    <div class="bg-light rounded-3 d-flex align-items-center justify-content-center" style="width:100px;height:70px">
-                                        <i class="bi bi-image text-muted fs-4"></i>
->>>>>>> Stashed changes
                                     </div>
                                 @endif
                             </td>
 
-<<<<<<< Updated upstream
                             <!-- INFORMASI ARTIKEL -->
                             <td>
                                 <div class="fw-semibold text-dark mb-1">
@@ -836,22 +671,6 @@
                                 <small class="text-muted">
                                     {{ Str::limit(strip_tags($item->deskripsi), 80) }}
                                 </small>
-=======
-                            {{-- INFORMASI ARTIKEL --}}
-                            <td>
-                                <div class="d-flex flex-column">
-                                    <div class="fw-semibold text-dark mb-1" style="font-size: 0.95rem; line-height: 1.4;">
-                                        {{ $item->judul }}
-                                    </div>
-                                    <div class="text-muted small mb-2">
-                                        <i class="bi bi-person-circle me-1"></i>
-                                        {{ $item->penulis ?? 'Admin' }}
-                                    </div>
-                                    <div class="text-muted small" style="line-height: 1.4;">
-                                        {{ Str::limit(strip_tags($item->deskripsi), 120) }}
-                                    </div>
-                                </div>
->>>>>>> Stashed changes
                             </td>
 
                             <!-- KATEGORI -->
@@ -861,7 +680,6 @@
                                 </span>
                             </td>
 
-<<<<<<< Updated upstream
                             <!-- TANGGAL -->
                             <td class="text-muted">
                                 {{ \Carbon\Carbon::parse($item->tanggal)->format('d M Y') }}
@@ -873,42 +691,14 @@
                                     <a href="{{ route('admin.artikel.edit', $item->id) }}"
                                        class="btn btn-icon btn-icon-primary">
                                         <i class="bi bi-pencil"></i>
-=======
-                            {{-- TANGGAL --}}
-                            <td class="text-center">
-                                <div class="text-muted small">
-                                    <div class="fw-semibold">{{ \Carbon\Carbon::parse($item->tanggal)->format('d M') }}</div>
-                                    <div class="text-muted">{{ \Carbon\Carbon::parse($item->tanggal)->format('Y') }}</div>
-                                </div>
-                            </td>
-
-                            {{-- AKSI --}}
-                            <td class="text-center">
-                                <div class="d-inline-flex gap-1 justify-content-center">
-                                    <a href="{{ route('admin.artikel.show', $item->id) }}"
-                                       class="btn btn-action"
-                                       title="Lihat Detail">
-                                        <i class="bi bi-eye text-info"></i>
-                                    </a>
-                                    <a href="{{ route('admin.artikel.edit', $item->id) }}"
-                                       class="btn btn-action"
-                                       title="Edit">
-                                        <i class="bi bi-pencil text-primary"></i>
->>>>>>> Stashed changes
                                     </a>
                                     <form action="{{ route('admin.artikel.destroy', $item->id) }}"
                                           method="POST"
                                           onsubmit="return confirmDelete()"
                                           style="display: inline;">
                                         @csrf @method('DELETE')
-<<<<<<< Updated upstream
                                         <button class="btn btn-icon btn-icon-danger">
                                             <i class="bi bi-trash"></i>
-=======
-                                        <button class="btn btn-action"
-                                                title="Hapus">
-                                            <i class="bi bi-trash text-danger"></i>
->>>>>>> Stashed changes
                                         </button>
                                     </form>
                                 </div>
