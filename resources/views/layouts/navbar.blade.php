@@ -7,7 +7,9 @@
             <div class="flex items-center gap-4 w-full md:w-auto justify-center md:justify-start">
                 <div class="w-12 h-12 md:w-16 md:h-16 flex-shrink-0">
                     <img alt="Logo SMK Negeri 1 Kawali" class="w-full h-full object-contain filter drop-shadow-sm"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-VV-Jjh0LnHs_AlXI2Xhj8e9gPM66vsCBQRmqxr6XayPRhZIQRDpWcXbdptxikANaYLh25kEv8qoXYeVNWoVjYIbegQW_fImKC0SXY_Qzx4rQUhvW-pm2QvKfQZZXzKhXuP3sT-w2DL8DNQ0vRjBrZc7hPWhWx7Q9DQXpb0cSraKDqnhusny8rc9Zlqw9DpbJhJUdrb1gln4hSsuoWy6ejC-SB8RnGsQHp3P11q_b5vAExPejijp0MwbYo5pMreb3MkHTAVTPKrbu" />
+                   <img src="{{ asset('asset/esemkey.png') }}" alt="Logo SMK">
+
+
                 </div>
                 <span class="text-xl md:text-2xl font-semibold tracking-tight text-gray-800 dark:text-white">
                     SMK Negeri 1 Kawali
@@ -147,6 +149,7 @@
                     <a class="hover:text-blue-600 transition-all duration-200 transform hover:-translate-y-0.5"
                         href="{{ route('ekstrakulikuler') }}">Ekstrakulikuler</a>
                     <a class="hover:text-blue-600 transition-all duration-200 transform hover:-translate-y-0.5" href="{{ route('agenda') }}">Agenda</a>
+                    <a class="hover:text-blue-600 transition-all duration-200 transform hover:-translate-y-0.5" href="{{ route('marketplace') }}">Marketplace</a>
                 </div>
 
                 <a class="px-6 py-2 rounded-full bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 hover:scale-105 hover:shadow-lg transition-all duration-300 ease-out"

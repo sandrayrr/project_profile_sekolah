@@ -41,6 +41,7 @@ use App\Http\Controllers\Front\TkrController;
 use App\Http\Controllers\Front\MpController;
 use App\Http\Controllers\Front\DpibController;
 use App\Http\Controllers\Front\SkController;
+use App\Http\Controllers\Front\MarketPlaceController;
 
 
 /*
@@ -80,6 +81,7 @@ Route::get('/tkr',  [TkrController::class,  'index'])->name('tkr');
 Route::get('/mp',   [MpController::class,   'index'])->name('mp');
 Route::get('/dpib', [DpibController::class, 'index'])->name('dpib');
 Route::get('/sk',   [SkController::class,   'index'])->name('sk');
+Route::get('/marketplace',   [MarketPlaceController::class,   'index'])->name('marketplace');
 /*
 |--------------------------------------------------------------------------
 | AUTH

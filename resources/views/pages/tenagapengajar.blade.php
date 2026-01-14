@@ -150,65 +150,56 @@
                 Filter
             </button>
             <span class="text-sm text-gray-500 dark:text-gray-400">
-                Menampilkan 1–8 dari 24 Tenaga Pengajar
+                Menampilkan {{ $tenagaPengajar->count() }} Tenaga Pengajar
             </span>
         </div>
 
         <!-- GRID -->
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-            @foreach([
-            ['nama'=>'Siti Nurhaliza, S.Pd','jabatan'=>'Administrasi'],
-            ['nama'=>'Ahmad Rahman, A.Md','jabatan'=>'Laboran'],
-            ['nama'=>'Maya Sari, S.E','jabatan'=>'Keuangan'],
-            ['nama'=>'Budi Setiawan','jabatan'=>'Teknisi'],
-            ['nama'=>'Rina Amelia','jabatan'=>'Perpustakaan'],
-            ['nama'=>'Dedi Kurniawan','jabatan'=>'Keamanan'],
-            ['nama'=>'Lina Marlina, S.Sos','jabatan'=>'Konselor'],
-            ['nama'=>'Hendra Gunawan','jabatan'=>'IT Support'],
-            ] as $index => $staff)
+            @forelse ($tenagaPengajar as $index => $pengajar)
             <div
                 class="staff-card bg-card-light dark:bg-card-dark rounded-2xl border border-border-light dark:border-border-dark overflow-hidden group animate-fade-in"
                 style="animation-delay: {{ $index * 0.1 + 0.4 }}s">
                 <div class="staff-image-container h-64 bg-gray-200 dark:bg-gray-700 flex items-center justify-center cursor-pointer" onclick="openModal({{ $index }})">
-                    <span class="text-gray-400 text-sm">Foto</span>
+                    @if($pengajar->foto)
+                        <img src="{{ asset('storage/' . $pengajar->foto) }}" alt="{{ $pengajar->nama }}" class="w-full h-full object-cover">
+                    @else
+                        <div class="flex flex-col items-center justify-center">
+                            <i class="fas fa-user-tie text-4xl text-gray-400 mb-2"></i>
+                            <span class="text-gray-400 text-sm">Foto Tidak Tersedia</span>
+                        </div>
+                    @endif
                     <div class="overlay absolute inset-0 opacity-0 transition-opacity duration-300 flex items-end p-4">
                         <div class="overlay-text text-white">
-                            <p class="font-semibold">{{ $staff['nama'] }}</p>
-                            <p class="text-sm opacity-90">{{ $staff['jabatan'] }}</p>
+                            <p class="font-semibold">{{ $pengajar->nama }}</p>
+                            <p class="text-sm opacity-90">{{ $pengajar->pengampu }}</p>
                         </div>
                     </div>
                 </div>
                 <div class="p-6 text-center">
                     <h3
                         class="font-semibold text-lg group-hover:text-primary transition">
-                        {{ $staff['nama'] }}
+                        {{ $pengajar->nama }}
                     </h3>
                     <p class="text-sm text-gray-500 dark:text-gray-400">
-                        {{ $staff['jabatan'] }}
+                        {{ $pengajar->pengampu }}
                     </p>
                 </div>
             </div>
-            @endforeach
+            @empty
+            <div class="col-span-full text-center py-12">
+                <i class="fas fa-user-tie text-6xl text-gray-300 dark:text-gray-600 mb-4"></i>
+                <p class="text-xl text-gray-500 dark:text-gray-400">Belum ada data tenaga pengajar</p>
+            </div>
+            @endforelse
         </div>
 
         <!-- PAGINATION -->
+        @if($tenagaPengajar->hasPages())
         <div class="flex justify-center mt-14">
-            <nav class="inline-flex rounded-xl overflow-hidden shadow border border-border-light dark:border-border-dark">
-                <a href="#"
-                    class="px-4 py-2 text-sm bg-card-light dark:bg-card-dark text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700">
-                    Prev
-                </a>
-                <span class="px-4 py-2 text-sm bg-primary text-white">1</span>
-                <a href="#"
-                    class="px-4 py-2 text-sm bg-card-light dark:bg-card-dark hover:bg-gray-100 dark:hover:bg-gray-700">
-                    2
-                </a>
-                <a href="#"
-                    class="px-4 py-2 text-sm bg-card-light dark:bg-card-dark hover:bg-gray-100 dark:hover:bg-gray-700">
-                    Next
-                </a>
-            </nav>
+            {{ $tenagaPengajar->links() }}
         </div>
+        @endif
 
     </main>
 
@@ -251,14 +242,13 @@
     <script>
         // Staff data for modal
         const staffData = [
-            { name: 'Siti Nurhaliza, S.Pd', position: 'Administrasi' },
-            { name: 'Ahmad Rahman, A.Md', position: 'Laboran' },
-            { name: 'Maya Sari, S.E', position: 'Keuangan' },
-            { name: 'Budi Setiawan', position: 'Teknisi' },
-            { name: 'Rina Amelia', position: 'Perpustakaan' },
-            { name: 'Dedi Kurniawan', position: 'Keamanan' },
-            { name: 'Lina Marlina, S.Sos', position: 'Konselor' },
-            { name: 'Hendra Gunawan', position: 'IT Support' }
+            @foreach($tenagaPengajar as $pengajar)
+            {
+                name: '{{ $pengajar->nama }}',
+                position: '{{ $pengajar->pengampu }}',
+                photo: '{{ $pengajar->foto ? asset('storage/' . $pengajar->foto) : '' }}'
+            },
+            @endforeach
         ];
 
         let currentImageIndex = 0;
@@ -269,10 +259,20 @@
             const modal = document.getElementById('imageModal');
             const modalTitle = document.getElementById('modalTitle');
             const modalPosition = document.getElementById('modalPosition');
+            const modalImage = document.getElementById('modalImage');
             
             if (staffData[index]) {
                 modalTitle.textContent = staffData[index].name;
                 modalPosition.textContent = staffData[index].position;
+                
+                // Set image if available
+                if (staffData[index].photo) {
+                    modalImage.src = staffData[index].photo;
+                    modalImage.style.display = 'block';
+                } else {
+                    modalImage.style.display = 'none';
+                }
+                
                 modal.classList.remove('hidden');
                 document.body.style.overflow = 'hidden';
             }
@@ -297,9 +297,18 @@
         function updateModalContent() {
             const modalTitle = document.getElementById('modalTitle');
             const modalPosition = document.getElementById('modalPosition');
+            const modalImage = document.getElementById('modalImage');
             
             modalTitle.textContent = staffData[currentImageIndex].name;
             modalPosition.textContent = staffData[currentImageIndex].position;
+            
+            // Update image if available
+            if (staffData[currentImageIndex].photo) {
+                modalImage.src = staffData[currentImageIndex].photo;
+                modalImage.style.display = 'block';
+            } else {
+                modalImage.style.display = 'none';
+            }
         }
 
         // Keyboard navigation
