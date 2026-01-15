@@ -627,10 +627,10 @@
                     <i class="bi bi-image"></i>
                     <h5>Data galeri belum tersedia</h5>
                     <p>Belum ada foto yang ditambahkan. Mulai dengan menambahkan foto baru.</p>
-                    <a href="{{ route('admin.galeri.create') }}" class="btn btn-primary">
+                    {{-- <a href="{{ route('admin.galeri.create') }}" class="btn btn-primary">
                         <i class="bi bi-plus-circle me-2"></i>
                         Tambah Foto
-                    </a>
+                    </a> --}}
                 </div>
             @endforelse
         </div>

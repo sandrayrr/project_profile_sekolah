@@ -11,7 +11,7 @@ class AgendaController extends Controller
     public function index()
     {
         // INI YANG KEMARIN KURANG
-        $agendas = Agenda::orderBy('tanggal', 'asc')->get();
+        $agendas = Agenda::orderBy('tanggal', 'asc')->paginate();
 
         return view('admin.crud.agenda.index', compact('agendas'));
     }

@@ -712,10 +712,10 @@
                                     <i class="bi bi-file-text"></i>
                                     <h5>Data artikel belum tersedia</h5>
                                     <p>Belum ada artikel yang ditambahkan. Mulai dengan menambahkan artikel baru.</p>
-                                    <a href="{{ route('admin.artikel.create') }}" class="btn btn-primary">
+                                    {{-- <a href="{{ route('admin.artikel.create') }}" class="btn btn-primary">
                                         <i class="bi bi-plus-circle me-2"></i>
                                         Tambah Artikel Baru
-                                    </a>
+                                    </a> --}}
                                 </div>
                             </td>
                         </tr>

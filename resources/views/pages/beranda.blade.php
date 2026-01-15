@@ -16,7 +16,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-       <script>
+    <script>
         tailwind.config = {
             darkMode: "class",
             theme: {
@@ -36,12 +36,30 @@
                         body: ["Inter", "sans-serif"],
                     },
                     animation: {
-                        'fade-in': 'fadeIn 0.6s ease-out',
+                        'fade-in': 'fadeIn 0.8s ease-out',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'counter': 'counter 2s ease-out',
+                        'float': 'float 3s ease-in-out infinite',
+                        'pulse-slow': 'pulse 3s infinite',
                     },
                     keyframes: {
                         fadeIn: {
-                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
                             '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        counter: {
+                            '0%': { transform: 'scale(0.8)', opacity: '0' },
+                            '50%': { transform: 'scale(1.1)', opacity: '1' },
+                            '100%': { transform: 'scale(1)', opacity: '1' },
+                        },
+                        float: {
+                            '0%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                            '100%': { transform: 'translateY(0px)' },
                         }
                     }
                 },
@@ -93,6 +111,104 @@
         .dark .carousel-container::-webkit-scrollbar-thumb:hover {
             background: #9ca3af;
         }
+        
+        /* Animasi scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Animasi untuk statistik counter */
+        .counter {
+            display: inline-block;
+        }
+        
+        /* Animasi untuk card */
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+        }
+        
+        /* Animasi untuk tombol */
+        .btn-animate {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-animate::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .btn-animate:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        /* Animasi untuk gambar */
+        .img-hover {
+            transition: all 0.5s ease;
+        }
+        
+        /* Animasi untuk judul section */
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #6b7280;
+            transition: width 0.5s ease;
+        }
+        
+        .section-title.active::after {
+            width: 100%;
+        }
+        
+        /* Animasi untuk link */
+        .link-underline {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .link-underline::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: currentColor;
+            transition: width 0.3s ease;
+        }
+        
+        .link-underline:hover::after {
+            width: 100%;
+        }
     </style>
 </head>
 
@@ -107,14 +223,14 @@
         <div class="slider-wrapper relative w-full h-full">
             <!-- Slide 1 -->
             <div class="slide absolute inset-0 w-full h-full transition-opacity duration-1000 opacity-100">
-                <img alt="School Atmosphere" class="absolute inset-0 w-full h-full object-cover opacity-30 dark:opacity-20"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqMZggap8sbrsWBeQRfEvM54vjG5NBbXa8RcSD9jOIoxPciY89gu4wfihHnBB7TAbrpaVbjDaEpvaBkajffOrrfSKv2-zUk3r9bAWCFGomQdjs6QibJS1wKdMmZWJTQNwOs_95HsHOPEBQwUbFwL0UmXVbh9yXc-5CVH-lSwPFjtvj6wOkrKBcE6BBhg1Amwh9MvBKptuPaAGr_Awv-OBbN0Jc_-0BNKwXLd4zTZ9npg2oewr7zAyskK1ToubBTF46I7qDnzl4zKOG" />
+                <img alt="School Atmosphere" class="absolute inset-0 w-full h-full object-cover opacity-30 dark:opacity-20 img-hover"
+                    src="{{ asset('storage/beranda/Foto SMKN 1.jpeg') }}" />
                 <div class="relative z-10 flex flex-col items-center justify-center h-full w-full px-6">
-                    <div class="text-center max-w-4xl">
+                    <div class="text-center max-w-4xl reveal">
                         <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">Mewujudkan Generasi Unggul dan Berkarakter</h2>
                         <p class="text-lg text-gray-700 dark:text-gray-300">Selamat datang di website resmi SMK Negeri 1 Kawali. Pusat informasi dan layanan digital sekolah.</p>
                         <div class="flex justify-center space-x-4 mt-8">
-                            <button class="bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 text-gray-800 dark:text-white px-6 py-2 rounded-full shadow-lg transition flex items-center gap-2">
+                            <button class="bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 text-gray-800 dark:text-white px-6 py-2 rounded-full shadow-lg transition flex items-center gap-2 btn-animate">
                                 Selengkapnya <span class="material-icons text-sm">arrow_forward</span>
                             </button>
                         </div>
@@ -124,14 +240,14 @@
             
             <!-- Slide 2 -->
             <div class="slide absolute inset-0 w-full h-full transition-opacity duration-1000 opacity-0">
-                <img alt="Students Learning" class="absolute inset-0 w-full h-full object-cover opacity-30 dark:opacity-20"
-                    src="https://picsum.photos/seed/smkn1kawali-students/1920/1080.jpg" />
+                <img alt="Students Learning" class="absolute inset-0 w-full h-full object-cover opacity-30 dark:opacity-20 img-hover"
+                    src="{{ asset('storage/beranda/Foto SMKN 2.jpeg') }}" />
                 <div class="relative z-10 flex flex-col items-center justify-center h-full w-full px-6">
-                    <div class="text-center max-w-4xl">
+                    <div class="text-center max-w-4xl reveal">
                         <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">Pembelajaran Inovatif dan Berbasis Teknologi</h2>
                         <p class="text-lg text-gray-700 dark:text-gray-300">Kami menyediakan lingkungan belajar yang modern dengan fasilitas lengkap untuk mendukung pengembangan skill siswa.</p>
                         <div class="flex justify-center space-x-4 mt-8">
-                            <button class="bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 text-gray-800 dark:text-white px-6 py-2 rounded-full shadow-lg transition flex items-center gap-2">
+                            <button class="bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 text-gray-800 dark:text-white px-6 py-2 rounded-full shadow-lg transition flex items-center gap-2 btn-animate">
                                 Jelajahi Jurusan <span class="material-icons text-sm">arrow_forward</span>
                             </button>
                         </div>
@@ -141,14 +257,14 @@
             
             <!-- Slide 3 -->
             <div class="slide absolute inset-0 w-full h-full transition-opacity duration-1000 opacity-0">
-                <img alt="School Facilities" class="absolute inset-0 w-full h-full object-cover opacity-30 dark:opacity-20"
-                    src="https://picsum.photos/seed/smkn1kawali-facilities/1920/1080.jpg" />
+                <img alt="School Facilities" class="absolute inset-0 w-full h-full object-cover opacity-30 dark:opacity-20 img-hover"
+                    src="{{ asset('storage/beranda/Foto SMKN 3.jpeg') }}" />
                 <div class="relative z-10 flex flex-col items-center justify-center h-full w-full px-6">
-                    <div class="text-center max-w-4xl">
+                    <div class="text-center max-w-4xl reveal">
                         <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">Fasilitas Lengkap untuk Mendukung Prestasi</h2>
                         <p class="text-lg text-gray-700 dark:text-gray-300">Dari lab komputer hingga bengkel modern, kami menyediakan semua yang siswa butuhkan untuk unggul dalam bidangnya.</p>
                         <div class="flex justify-center space-x-4 mt-8">
-                            <button class="bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 text-gray-800 dark:text-white px-6 py-2 rounded-full shadow-lg transition flex items-center gap-2">
+                            <button class="bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 text-gray-800 dark:text-white px-6 py-2 rounded-full shadow-lg transition flex items-center gap-2 btn-animate">
                                 Lihat Fasilitas <span class="material-icons text-sm">arrow_forward</span>
                             </button>
                         </div>
@@ -157,7 +273,7 @@
             </div>
             
             <!-- Slide 4 -->
-            <div class="slide absolute inset-0 w-full h-full transition-opacity duration-1000 opacity-0">
+            {{-- <div class="slide absolute inset-0 w-full h-full transition-opacity duration-1000 opacity-0">
                 <img alt="Student Activities" class="absolute inset-0 w-full h-full object-cover opacity-30 dark:opacity-20"
                     src="https://picsum.photos/seed/smkn1kawali-activities/1920/1080.jpg" />
                 <div class="relative z-10 flex flex-col items-center justify-center h-full w-full px-6">
@@ -171,7 +287,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
         
         <!-- Navigation Controls -->
@@ -224,6 +340,12 @@
             indicators[index].classList.add('bg-white/80', 'dark:bg-white/70');
             
             currentSlide = index;
+            
+            // Trigger reveal animation for current slide
+            const revealElements = slides[index].querySelectorAll('.reveal');
+            revealElements.forEach(el => {
+                el.classList.add('active');
+            });
         }
         
         // Function to show next slide
@@ -281,20 +403,26 @@
                 startSlideshow();
             }
         });
+        
+        // Trigger initial reveal animation
+        const initialRevealElements = slides[currentSlide].querySelectorAll('.reveal');
+        initialRevealElements.forEach(el => {
+            el.classList.add('active');
+        });
     });
 </script>
     <div class="container mx-auto px-4 -mt-24 relative z-20 mb-20">
-        <div class="bg-white dark:bg-surface-dark rounded-xl shadow-xl p-8 flex flex-col lg:flex-row gap-8 lg:gap-12">
+        <div class="bg-white dark:bg-surface-dark rounded-xl shadow-xl p-8 flex flex-col lg:flex-row gap-8 lg:gap-12 reveal">
             <div
                 class="lg:w-1/2 flex flex-col sm:flex-row items-center sm:items-start gap-6 border-b lg:border-b-0 lg:border-r border-gray-200 dark:border-gray-700 pb-8 lg:pb-0 lg:pr-8">
                 <div class="shrink-0">
-                    <div class="w-24 h-24 rounded-full bg-gray-300 dark:bg-gray-600 overflow-hidden shadow-inner">
+                    <div class="w-24 h-24 rounded-full bg-gray-300 dark:bg-gray-600 overflow-hidden shadow-inner img-hover">
                         <img alt="Kepala Sekolah" class="w-full h-full object-cover"
-                            src="{{ asset('storage/artikel/dede.jpg') }}">
+                            src="{{ asset('storage/beranda/Foto Kepsek Kawali.jpg') }}">
                     </div>
                 </div>
                 <div class="w-full max-w-full">
-                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 break-words">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 break-words section-title">
                         {{ $beranda->judul ?? 'Sambutan Kepala Sekolah' }}
                     </h3>
 
@@ -302,49 +430,45 @@
                         {{ $beranda->deskripsi ?? 'Belum ada sambutan.' }}
                     </p>
                 </div>
-
-
-
             </div>
-            <div class="grid grid-cols-3 gap-4 text-center divide-x divide-gray-200 dark:divide-gray-700">
-                <div class="px-2">
-                    <span class="block text-3xl font-bold text-primary">
-                        {{ $beranda->jumlah_siswa ?? 0 }}
-                    </span>
-                    <span class="text-xs text-gray-500 uppercase tracking-wide">Siswa</span>
-                </div>
+          <div class="grid grid-cols-3 text-center pl-6 lg:pl-8">
+    <div class="px-6">
+        <span class="block text-3xl font-bold text-primary counter" data-target="{{ $beranda->jumlah_siswa ?? 0 }}">
+            0
+        </span>
+        <span class="text-xs text-gray-500 uppercase tracking-wide">Siswa</span>
+    </div>
 
-                <div class="px-2">
-                    <span class="block text-3xl font-bold text-primary">
-                        {{ $beranda->jumlah_guru ?? 0 }}
-                    </span>
-                    <span class="text-xs text-gray-500 uppercase tracking-wide">Guru</span>
-                </div>
+    <div class="px-6 border-l border-gray-200 dark:border-gray-700">
+        <span class="block text-3xl font-bold text-primary counter" data-target="{{ $beranda->jumlah_guru ?? 0 }}">
+            0
+        </span>
+        <span class="text-xs text-gray-500 uppercase tracking-wide">Guru</span>
+    </div>
 
-                <div class="px-2">
-                    <span class="block text-3xl font-bold text-primary">
-                        {{ $beranda->jumlah_jurusan ?? 0 }}
-                    </span>
-                    <span class="text-xs text-gray-500 uppercase tracking-wide">Jurusan</span>
-                </div>
-            </div>
-
+    <div class="px-6 border-l border-gray-200 dark:border-gray-700">
+        <span class="block text-3xl font-bold text-primary counter" data-target="{{ $beranda->jumlah_jurusan ?? 0 }}">
+            0
+        </span>
+        <span class="text-xs text-gray-500 uppercase tracking-wide">Jurusan</span>
+    </div>
+</div>
         </div>
     </div>
-    <section class="container mx-auto px-4 mb-20">
+    <section class="container mx-auto px-4 mb-20 reveal">
         <div class="flex justify-between items-end mb-8">
             <div>
-                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Agenda</h2>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2 section-title">Agenda</h2>
                 <p class="text-gray-600 dark:text-gray-400">Agenda kegiatan dan aktivitas sekolah yang akan datang</p>
             </div>
-            <a class="hidden sm:inline-flex items-center px-4 py-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 rounded-full text-xs font-semibold text-gray-700 dark:text-gray-200 transition"
-                href="#">
+            <a class="hidden sm:inline-flex items-center px-4 py-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 rounded-full text-xs font-semibold text-gray-700 dark:text-gray-200 transition link-underline"
+                href="{{ route('agenda') }}">
                 Selengkapnya <span class="material-icons text-sm ml-1">arrow_forward</span>
             </a>
         </div>
         <div class="grid md:grid-cols-2 gap-6">
             <div
-                class="bg-white dark:bg-surface-dark rounded-lg shadow-md overflow-hidden border border-gray-100 dark:border-gray-700 hover:shadow-lg transition">
+                class="bg-white dark:bg-surface-dark rounded-lg shadow-md overflow-hidden border border-gray-100 dark:border-gray-700 hover:shadow-lg transition card-hover">
                 <div class="bg-gray-100 dark:bg-gray-800 p-8 flex items-center justify-center">
                     <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-200 text-center">Rapat Koordinasi Guru
                     </h4>
@@ -356,7 +480,7 @@
                 </div>
             </div>
             <div
-                class="bg-white dark:bg-surface-dark rounded-lg shadow-md overflow-hidden border border-gray-100 dark:border-gray-700 hover:shadow-lg transition">
+                class="bg-white dark:bg-surface-dark rounded-lg shadow-md overflow-hidden border border-gray-100 dark:border-gray-700 hover:shadow-lg transition card-hover">
                 <div class="bg-gray-100 dark:bg-gray-800 p-8 flex items-center justify-center">
                     <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-200 text-center">Ujian Tengah Semester
                     </h4>
@@ -369,246 +493,239 @@
             </div>
         </div>
     </section>
-    <section class="bg-white dark:bg-surface-dark py-16 mb-20">
+    <section class="bg-white dark:bg-surface-dark py-16 mb-20 reveal">
         <div class="container mx-auto px-4">
             <div class="flex justify-between items-end mb-10">
                 <div>
-                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Berita, Artikel &amp; Informasi
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2 section-title">Berita, Artikel &amp; Informasi
                     </h2>
                     <p class="text-gray-600 dark:text-gray-400">Berita, Artikel &amp; Informasi sekolah kami</p>
                 </div>
-                <a class="hidden sm:inline-flex items-center px-4 py-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 rounded-full text-xs font-semibold text-gray-700 dark:text-gray-200 transition"
-                    href="#">
+                <a class="hidden sm:inline-flex items-center px-4 py-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 rounded-full text-xs font-semibold text-gray-700 dark:text-gray-200 transition link-underline"
+                    href="{{ route('artikel.index') }}">
                     Selengkapnya <span class="material-icons text-sm ml-1">arrow_forward</span>
                 </a>
             </div>
             <div class="grid md:grid-cols-2 gap-8">
-                <div class="group cursor-pointer">
+                <div class="group cursor-pointer card-hover">
                     <div class="h-64 bg-gray-300 dark:bg-gray-700 rounded-lg overflow-hidden mb-4 relative">
                         <img alt="Kegiatan Siswa"
-                            class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDU1EQ3wz8YsV31GyNFWbPlL27NMnjyfoh9ei1_xhToiA6vPoEsQC_Q1VsgQHJHOcKaeczLk8olARwGCGL_UwvZhn_1Cm1CDiOocHEq41VvxGGbqeg_7BCwuz_bTC_tvGps1MR8daO_Qq6rJb14JuAgzctvGi2RKDaAiHybcRVGj6eCBqFJd_3hms8RA05u1Jxh4J70gM1iiIyGQHODfOYlR4CYzF6xUsqBBblfy9J-BDcUD8yoU-przuOzG-CSg7dSSd7JTvy_QnUK" />
+                            class="w-full h-full object-cover group-hover:scale-105 transition duration-500 img-hover"
+                            src="{{ asset('storage/beranda/Foto Berita 1.jpeg') }}" />
                     </div>
                     <div class="flex flex-col">
                         <span class="text-sm text-primary font-semibold mb-1">10 Oktober 2023</span>
                         <h3 class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-primary transition">
-                            Siswa SMK Negeri 1 Kawali Juara LKS Provinsi</h3>
-                        <p class="text-gray-600 dark:text-gray-400 mt-2 line-clamp-2">Prestasi membanggakan kembali
-                            diraih oleh siswa jurusan TKJ dalam ajang Lomba Kompetensi Siswa...</p>
+                            SMK Negeri 1 Kawali Membuka Acara Job Fair & Open House</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mt-2 line-clamp-2">
+                        SMK Negeri 1 Kawali sukses menyelenggarakan kegiatan Job Fair dan Open House sebagai wadah mempertemukan siswa dengan dunia industri.
+                    </p>
+
                     </div>
                 </div>
-                <div class="group cursor-pointer">
+                <div class="group cursor-pointer card-hover">
                     <div class="h-64 bg-gray-300 dark:bg-gray-700 rounded-lg overflow-hidden mb-4 relative">
                         <img alt="Kegiatan Belajar"
-                            class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMu9tAxcl84Y9IGQTRIgxa3Kmg-FeY8dWLb-IEXNf6qeIBBpD4zAWgoVhSn0Jw8Hc8naswWORscExDIi5eehwK0EJ0zkYQ3FngG1dYMbyErChe_WKs0seIsSliNqwxPX7FsVIegFbpsWQsoKnRVEUJL1ZwQI-YlRhgYpT6lxQiZdCG6X1wWbyoy4WGNmh0__zbwae3iejjDTW1YxZmcnPcw_FDWJKzHZcg7JrjwKuZPNNPekCXl4ristHe5LLiV-GI7GaZZebFJTZI" />
+                            class="w-full h-full object-cover group-hover:scale-105 transition duration-500 img-hover"
+                            src="{{ asset('storage/beranda/Foto Artikel 4.jpeg') }}" />
                     </div>
                     <div class="flex flex-col">
-                        <span class="text-sm text-primary font-semibold mb-1">08 Oktober 2023</span>
+                        <span class="text-sm text-primary font-semibold mb-1">08 Oktober 2024</span>
                         <h3 class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-primary transition">
-                            Kunjungan Industri ke PT Telkom Indonesia</h3>
-                        <p class="text-gray-600 dark:text-gray-400 mt-2 line-clamp-2">Untuk meningkatkan wawasan
-                            industri, siswa kelas XI melakukan kunjungan industri ke kantor pusat...</p>
+                            Bulan Bahasa & Sastra Ajang Mencari Bakat</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mt-2 line-clamp-2">
+                       Kegiatan Bulan Bahasa dan Sastra menjadi ajang pengembangan kreativitas serta pencarian bakat siswa dalam bidang bahasa, seni, dan sastra.
+                    </p>
+
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <section class="container mx-auto px-4 mb-20">
+    <section class="container mx-auto px-4 mb-20 reveal">
         <div class="flex justify-between items-end mb-8">
             <div>
-                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Guru</h2>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2 section-title">Tenaga Pengajar</h2>
                 <p class="text-gray-600 dark:text-gray-400">Guru Di SMK Negeri 1 Kawali</p>
             </div>
-            <a class="hidden sm:inline-flex items-center px-4 py-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 rounded-full text-xs font-semibold text-gray-700 dark:text-gray-200 transition"
-                href="#">
+            <a class="hidden sm:inline-flex items-center px-4 py-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 rounded-full text-xs font-semibold text-gray-700 dark:text-gray-200 transition link-underline"
+                href="{{ route('tenagapengajar') }}">
                 Selengkapnya <span class="material-icons text-sm ml-1">arrow_forward</span>
             </a>
         </div>
         
         <!-- Teacher Carousel -->
-        <div class="relative">
-            <div class="overflow-hidden">
-                <div id="teacherCarousel" class="flex transition-transform duration-300 ease-in-out gap-6">
-                    <!-- Teacher Card 1 -->
-                    <div class="flex-none w-72">
-                        <div class="bg-white dark:bg-surface-dark rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                            <div class="h-64 bg-gray-200 dark:bg-gray-700 overflow-hidden">
-                                <img alt="Teacher" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuARq0UDPZmw7Hkpsb-c3yGXzuA4NFBb7plWBiBHLKSikY15wQuUa0jEXCS30FSwJCx9cLDRr1y0Ocko7P0-tVZUBli5EcmB47HdZzEFM98zYe_7zztp2Q-BS-HMyAjnugQe89p0iuMkhQJpkJ95YIENo6cnDHdAhsQRki99ucrEclw4XVDY5PlnAS5MtyjQ9V1jB05Jn1SIHIglAfixkIV2qOMvSoYAHOUhnQg1ywehzvPwTHPGDcRacWlt-YyrLw0VHV9l3SMiUpyz" />
-                            </div>
-                            <div class="p-6 text-center">
-                                <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Dra. Siti Aminah</h4>
-                                <p class="text-primary text-sm">Bahasa Indonesia</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Teacher Card 2 -->
-                    <div class="flex-none w-72">
-                        <div class="bg-white dark:bg-surface-dark rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                            <div class="h-64 bg-gray-200 dark:bg-gray-700 overflow-hidden">
-                                <img alt="Teacher" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZ7GN7MRkzkskSWEdRs-cBMtsqUF9yz_Nv0zOBKnuqCix9vDtzGH97Sp6xzJOc18Xk5Q-61ZZOEzR4pUvtIThfFSSggnmxSU-iazeg07IPLCW0KMBdfBjddXks9YbG0EB9xQZJBUvQ6TWpOW72Hy5dGridIsr0H8cF3NqHFqc30vipTdfZsqPY0g3bAsZu8-f5XiAEfu7179XJkerqHB5HJfzDvdifiJBBpcta2WEpy114-Xqy2-78XcxVWjvG-kUxSeve5k-DFyYZ" />
-                            </div>
-                            <div class="p-6 text-center">
-                                <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Budi Santoso, S.Pd</h4>
-                                <p class="text-primary text-sm">Matematika</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Teacher Card 3 -->
-                    <div class="flex-none w-72">
-                        <div class="bg-white dark:bg-surface-dark rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                            <div class="h-64 bg-gray-200 dark:bg-gray-700 overflow-hidden">
-                                <img alt="Teacher" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAK5fQTAKP8PPqeOuKm4RJDBVx83M6O1nOnY8l68WDBjFfFSdZkKwQ1WrnQt0eNcRQmecWL2AHJHl8WF3QALvTpsZySRWC1KdHwO3Iee5IaVX6ipEidz6Kliu3iKor1IfqXIeoHPgbg4qiAuoGY7ZvzeajDlqn4Y2C2AiKP-XZY-osgjh3GUMkAjW6VHyUCAeKkgPFZG2wpZ96oIhur3AyXZ6-vpyvNkIwsqw2d-fu2yDkO2MtU__9ymQIIChIuycle1G4c0xT4jOor" />
-                            </div>
-                            <div class="p-6 text-center">
-                                <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Rina Wati, M.Kom</h4>
-                                <p class="text-primary text-sm">Teknik Komputer</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Teacher Card 4 -->
-                    <div class="flex-none w-72">
-                        <div class="bg-white dark:bg-surface-dark rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                            <div class="h-64 bg-gray-200 dark:bg-gray-700 overflow-hidden">
-                                <img alt="Teacher" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                                    src="https://picsum.photos/seed/teacher4/400/500.jpg" />
-                            </div>
-                            <div class="p-6 text-center">
-                                <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Ahmad Fauzi, S.T</h4>
-                                <p class="text-primary text-sm">Teknik Elektro</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Teacher Card 5 -->
-                    <div class="flex-none w-72">
-                        <div class="bg-white dark:bg-surface-dark rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                            <div class="h-64 bg-gray-200 dark:bg-gray-700 overflow-hidden">
-                                <img alt="Teacher" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                                    src="https://picsum.photos/seed/teacher5/400/500.jpg" />
-                            </div>
-                            <div class="p-6 text-center">
-                                <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Dewi Lestari, S.Pd</h4>
-                                <p class="text-primary text-sm">Bahasa Inggris</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Navigation Buttons -->
-            <button id="teacherPrev" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white dark:bg-gray-800 rounded-full p-2 shadow-lg hover:shadow-xl transition-shadow z-10">
-                <span class="material-icons text-gray-700 dark:text-gray-300">chevron_left</span>
-            </button>
-            <button id="teacherNext" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white dark:bg-gray-800 rounded-full p-2 shadow-lg hover:shadow-xl transition-shadow z-10">
-                <span class="material-icons text-gray-700 dark:text-gray-300">chevron_right</span>
-            </button>
+       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <!-- Teacher Card 1 -->
+    <div class="bg-white dark:bg-surface-dark rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 card-hover">
+        <div class="h-64 bg-gray-200 dark:bg-gray-700 overflow-hidden">
+            <img alt="Teacher" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300 img-hover"
+                src="{{ asset('storage/beranda/Guru 1.jpeg') }}" />
         </div>
+        <div class="p-6 text-center">
+            <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Teti Novianti,S.Pd.</h4>
+            <p class="text-primary text-sm">Bahasa Inggris</p>
+        </div>
+    </div>
+    
+    <!-- Teacher Card 2 -->
+    <div class="bg-white dark:bg-surface-dark rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 card-hover">
+        <div class="h-64 bg-gray-200 dark:bg-gray-700 overflow-hidden">
+            <img alt="Teacher" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300 img-hover"
+                src="{{ asset('storage/beranda/Guru 2.jpeg') }}" />
+        </div>
+        <div class="p-6 text-center">
+            <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Abu Bakar,S.T.</h4>
+            <p class="text-primary text-sm">DDPK</p>
+        </div>
+    </div>
+    
+    <!-- Teacher Card 3 -->
+    <div class="bg-white dark:bg-surface-dark rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 card-hover">
+        <div class="h-64 bg-gray-200 dark:bg-gray-700 overflow-hidden">
+            <img alt="Teacher" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300 img-hover"
+                src="{{ asset('storage/beranda/Guru 3.jpeg') }}" />
+        </div>
+        <div class="p-6 text-center">
+            <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Irma Sri Suryantini,S.Pd.</h4>
+            <p class="text-primary text-sm">Projek Ilmu Pengetahuan Alam & Sosial</p>
+        </div>
+    </div>
+    
+    <!-- Teacher Card 4 -->
+    <div class="bg-white dark:bg-surface-dark rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 card-hover">
+        <div class="h-64 bg-gray-200 dark:bg-gray-700 overflow-hidden">
+            <img alt="Teacher" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300 img-hover"
+                src="{{ asset('storage/beranda/Guru 4.jpeg') }}" />
+        </div>
+        <div class="p-6 text-center">
+            <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Farid Ma'ruf,M.Pd.</h4>
+            <p class="text-primary text-sm">Bahasa Indonesia</p>
+        </div>
+    </div>
+    
+    <!-- Teacher Card 5 (jika diperlukan) -->
+    {{-- <div class="bg-white dark:bg-surface-dark rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+        <div class="h-64 bg-gray-200 dark:bg-gray-700 overflow-hidden">
+            <img alt="Teacher" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                src="https://picsum.photos/seed/teacher5/400/500.jpg" />
+        </div>
+        <div class="p-6 text-center">
+            <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Dewi Lestari, S.Pd</h4>
+            <p class="text-primary text-sm">Bahasa Inggris</p>
+        </div>
+    </div> --}}
+</div>
     </section>
-    <section class="bg-white dark:bg-surface-dark py-16 mb-20">
+    <section class="bg-white dark:bg-surface-dark py-16 mb-20 reveal">
         <div class="container mx-auto px-4">
             <div class="flex justify-between items-end mb-8">
                 <div>
-                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Staff Tenaga Kependidikan</h2>
-                    <p class="text-gray-600 dark:text-gray-400">Staff Tenaga Kependidikan Di SMK Negeri 1 Kawali</p>
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2 section-title">Staff Kependidikan</h2>
+                    <p class="text-gray-600 dark:text-gray-400">Staff Kependidikan Di SMK Negeri 1 Kawali</p>
                 </div>
-                <a class="hidden sm:inline-flex items-center px-4 py-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 rounded-full text-xs font-semibold text-gray-700 dark:text-gray-200 transition"
-                    href="#">
+                <a class="hidden sm:inline-flex items-center px-4 py-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 rounded-full text-xs font-semibold text-gray-700 dark:text-gray-200 transition link-underline"
+                    href="{{ route('staffkependidikan') }}">
                     Selengkapnya <span class="material-icons text-sm ml-1">arrow_forward</span>
                 </a>
             </div>
-           <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-    @forelse ($tenagakependidikan as $item)
-        <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 text-center
-                    hover:-translate-y-1 transition duration-300">
-
-            {{-- FOTO --}}
-            <div class="w-full aspect-square bg-gray-200 dark:bg-gray-700 rounded-lg
-                        mb-4 overflow-hidden">
-                <img
-                    src="{{ $item->foto
-                        ? asset('storage/' . $item->foto)
-                        : 'https://ui-avatars.com/api/?name=' . urlencode($item->nama) . '&background=0D8ABC&color=fff'
-                    }}"
-                    alt="{{ $item->nama }}"
-                    class="w-full h-full object-cover opacity-90">
-            </div>
-
-            {{-- NAMA --}}
-            <h4 class="text-lg font-bold text-gray-900 dark:text-white">
-                {{ $item->nama }}
-            </h4>
-
-            {{-- JABATAN --}}
-            <p class="text-gray-500 dark:text-gray-400 text-sm">
-                {{ $item->jabatan }}
-            </p>
+           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <!-- Teacher Card 1 -->
+    <div class="bg-white dark:bg-surface-dark rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 card-hover">
+        <div class="h-64 bg-gray-200 dark:bg-gray-700 overflow-hidden">
+            <img alt="Teacher" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300 img-hover"
+                src="{{ asset('storage/beranda/Staff TU 1.jpeg') }}" />
         </div>
-
-    @empty
-        <div class="col-span-full text-center text-gray-500 py-10">
-            Belum ada data tenaga kependidikan
+        <div class="p-6 text-center">
+            <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Elin Herlina,S.Sos.</h4>
+            <p class="text-primary text-sm">Tata Usaha</p>
         </div>
-    @endforelse
-
+    </div>
+    
+    <!-- Teacher Card 2 -->
+    <div class="bg-white dark:bg-surface-dark rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 card-hover">
+        <div class="h-64 bg-gray-200 dark:bg-gray-700 overflow-hidden">
+            <img alt="Teacher" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300 img-hover"
+                src="{{ asset('storage/beranda/Staff TU 3.jpeg') }}" />
+        </div>
+        <div class="p-6 text-center">
+            <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Sayidina Ali Ade Mahendra,A.Md.</h4>
+            <p class="text-primary text-sm">Tool Man</p>
+        </div>
+    </div>
+    
+    <!-- Teacher Card 3 -->
+    <div class="bg-white dark:bg-surface-dark rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 card-hover">
+        <div class="h-64 bg-gray-200 dark:bg-gray-700 overflow-hidden">
+            <img alt="Teacher" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300 img-hover"
+                src="{{ asset('storage/beranda/Staff TU 2.jpeg') }}" />
+        </div>
+        <div class="p-6 text-center">
+            <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Ani Karlina,S.I.Pust.</h4>
+            <p class="text-primary text-sm">Pustakawan</p>
+        </div>
+    </div>
+    
+    <!-- Teacher Card 4 -->
+    <div class="bg-white dark:bg-surface-dark rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 card-hover">
+        <div class="h-64 bg-gray-200 dark:bg-gray-700 overflow-hidden">
+            <img alt="Teacher" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300 img-hover"
+                src="{{ asset('storage/beranda/Staff TU 4.jpeg') }}" />
+        </div>
+        <div class="p-6 text-center">
+            <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Maman Hilman</h4>
+            <p class="text-primary text-sm">Tata Usaha</p>
+        </div>
+    </div>
 </div>
 
         </div>
     </section>
-    <section class="container mx-auto px-4 mb-20">
+    <section class="container mx-auto px-4 mb-20 reveal">
         <div class="flex justify-between items-end mb-8">
             <div>
-                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Program Keahlian</h2>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2 section-title">Program Keahlian</h2>
                 <p class="text-gray-600 dark:text-gray-400">Program Keahlian yang terdapat di sekolah kami</p>
             </div>
-            <a class="hidden sm:inline-flex items-center px-4 py-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 rounded-full text-xs font-semibold text-gray-700 dark:text-gray-200 transition"
-                href="#">
+            <a class="hidden sm:inline-flex items-center px-4 py-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 rounded-full text-xs font-semibold text-gray-700 dark:text-gray-200 transition link-underline"
+                href="{{ route('jurusan') }}">
                 Selengkapnya <span class="material-icons text-sm ml-1">arrow_forward</span>
             </a>
         </div>
         <div class="grid md:grid-cols-2 gap-8">
             <div
-                class="flex bg-white dark:bg-surface-dark rounded-xl overflow-hidden shadow hover:shadow-lg transition h-48">
+                class="flex bg-white dark:bg-surface-dark rounded-xl overflow-hidden shadow hover:shadow-lg transition h-48 card-hover">
                 <div class="w-1/2 p-6 flex flex-col justify-center bg-gray-100 dark:bg-gray-800">
-                    <h3 class="text-xl font-bold text-gray-900 dark:text-white">Teknik Komputer &amp; Jaringan</h3>
-                    <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">Mempelajari infrastruktur jaringan dan
-                        hardware...</p>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white">Teknik Jaringan, Komputer &amp; Telekomunikasi</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mt-2"> Mempelajari instalasi, konfigurasi, dan pemeliharaan jaringan komputer serta sistem telekomunikasi.</p>
                 </div>
                 <div class="w-1/2 bg-gray-300 dark:bg-gray-700 relative">
-                    <img alt="TKJ" class="absolute inset-0 w-full h-full object-cover"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDn2NcQI-jcH2CH5E5oFHyXOXfs4Fc8FDclMSjDBqy0gMW5GV-0b_Ls-IehJrD21jHM4qcbDIjUAERl7Lr-YMG2qwILybbQ8dUw2jFsZ8Gt-izSH5VMSZBC3rRqxEfRIIT13qs-5R6s-p0TE2T2Cd6q4Jatp73lojdjuwfem868yW-9jddPmyyoOXubwO81YGo0ntPtw84nWuAXv3nqHOZwOszhlaEdlXxxdaGuIIOdDn0TVZNYku6V3ypoDw27b1OTgfV0wWp1f6Sw" />
+                    <img alt="TKJ" class="absolute inset-0 w-full h-full object-cover img-hover"
+                        src="{{ asset('storage/beranda/Jurusan Tjkt.jpeg') }}" />
                 </div>
             </div>
             <div
-                class="flex bg-white dark:bg-surface-dark rounded-xl overflow-hidden shadow hover:shadow-lg transition h-48">
+                class="flex bg-white dark:bg-surface-dark rounded-xl overflow-hidden shadow hover:shadow-lg transition h-48 card-hover">
                 <div class="w-1/2 p-6 flex flex-col justify-center bg-gray-100 dark:bg-gray-800">
-                    <h3 class="text-xl font-bold text-gray-900 dark:text-white">Otomatisasi Tata Kelola Perkantoran
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white">Pengembangan Perangkat Lunak &amp; Gim
                     </h3>
-                    <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">Keahlian administrasi dan manajemen
-                        perkantoran...</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">Mempelajari pembuatan aplikasi, website, dan gim, serta pengelolaan sistem perangkat lunak berbasis teknologi digital.</p>
                 </div>
                 <div class="w-1/2 bg-gray-300 dark:bg-gray-700 relative">
-                    <img alt="OTKP" class="absolute inset-0 w-full h-full object-cover"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_jNarI90shseD2uF6hBp6uy496XLeOpRVTtziBi1u1eRXp6cDXbTp8tuq1pQD4zu7Xt6u1lb16OCNpCzdo44PaKw02PFvAeujoDWyDCEYtTMPaJxfosfyUG7niZxLkVGQX-NGlcB5cSA5X_cibtQoOOBklhqQVvUm3pB8nfyDdYptCrdjNrxo3PLoHvt2UwVxBDMeJtY-xeKhyemdklMjp4CoPVCQU68gul20AELOBHcyoo0xM1ycbjZSHhBZ0YDs84TZaAouHsw9" />
+                    <img alt="OTKP" class="absolute inset-0 w-full h-full object-cover img-hover"
+                        src="{{ asset('storage/beranda/Jurusan PPLG.jpeg') }}" />
                 </div>
             </div>
         </div>
     </section>
-    <section class="bg-white dark:bg-surface-dark py-16 mb-20">
+    <section class="bg-white dark:bg-surface-dark py-16 mb-20 reveal">
         <div class="container mx-auto px-4">
             <div class="flex justify-between items-end mb-8">
                 <div>
-                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Fasilitas Sekolah</h2>
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2 section-title">Fasilitas Sekolah</h2>
                     <p class="text-gray-600 dark:text-gray-400">Fasilitas sekolah yang kami miliki</p>
                 </div>
-                <a class="hidden sm:inline-flex items-center px-4 py-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 rounded-full text-xs font-semibold text-gray-700 dark:text-gray-200 transition"
+                <a class="hidden sm:inline-flex items-center px-4 py-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 rounded-full text-xs font-semibold text-gray-700 dark:text-gray-200 transition link-underline"
                     href="{{ route('fasilitas') }}">
                     Selengkapnya
                     <span class="material-icons text-sm ml-1">arrow_forward</span>
@@ -616,55 +733,55 @@
 
             </div>
             <div class="grid md:grid-cols-2 gap-8">
-                <div class="flex bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden h-48">
+                <div class="flex bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden h-48 card-hover">
                     <div class="w-1/2 bg-gray-200 dark:bg-gray-700 relative">
-                        <img alt="Lab Komputer" class="absolute inset-0 w-full h-full object-cover"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkOvwsua9flYBC8zG-4gv1RUNazW_zyPR9nTBPk4iWPGuWnnIkdmOFSLKPmsTeuoSqIhd7WXzXZiiWJMTGsCHBHVgVW4wQpYh8zH4zWBvNm7knzduS_aPRULq6ndAVAIZ-NV1zG9CD-7EG4lk6SNuJc350eHCy94tA-NjuxSWc7gN15HxTOamh1_6CXwE4Ke255VvE7_xhbw6jO_UcV8v_eH65JViQjpm1Y6NKoXVUcvvzV-iLY7rmHTPMiTTJzT2hQ7ZL9cmCBFzM" />
+                        <img alt="Lab Komputer" class="absolute inset-0 w-full h-full object-cover img-hover"
+                            src="{{ asset('storage/beranda/Lab.jpeg') }}" />
                     </div>
                     <div class="w-1/2 p-6 flex items-center justify-center bg-gray-300 dark:bg-gray-600">
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white text-center">Laboratorium Komputer
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white text-center">Laboratorium Jaringan & Telekomunikasi
                         </h3>
                     </div>
                 </div>
-                <div class="flex bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden h-48">
+                <div class="flex bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden h-48 card-hover">
                     <div class="w-1/2 bg-gray-200 dark:bg-gray-700 relative">
-                        <img alt="Perpustakaan" class="absolute inset-0 w-full h-full object-cover"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaHr3WrgRzeE1SlsYgH2JOxni8qbWeW9bbmxmhudSBIYK2gqD8FQy67kY3VEGJBXFBE70wmALMqDBiyAbeIyh5vphmsFvgr2WI84ojwJZbqWm8TwudY6NcNvcqwrejI-riNjeoBEHVUdvVEzu7KN4m7vMU8I4nUsk9XLSdrtLHgOco9RvwXzoBnkXiVRU4V3m82NNH18EjiSYkiYM3uqImH_t7JJPFon8UHX-7sm0DYNRxOS_HTDzqm6I6ccJ7xfQXjRCUFjmKRnrF" />
+                        <img alt="Perpustakaan" class="absolute inset-0 w-full h-full object-cover img-hover"
+                            src="{{ asset('storage/beranda/Perpustakaan.jpeg') }}" />
                     </div>
                     <div class="w-1/2 p-6 flex items-center justify-center bg-gray-300 dark:bg-gray-600">
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white text-center">Perpustakaan Digital
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white text-center">Perpustakaan 
                         </h3>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-   <section class="container mx-auto px-4 mb-20">
+   <section class="container mx-auto px-4 mb-20 reveal">
         <div class="flex justify-between items-end mb-8">
             <div>
-                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Ekstrakulikuler</h2>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2 section-title">Ekstrakulikuler</h2>
                 <p class="text-gray-600 dark:text-gray-400">Ektrakulikuler yang ada di sekolah kami</p>
             </div>
-           <a class="hidden sm:inline-flex items-center px-4 py-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 rounded-full text-xs font-semibold text-gray-700 dark:text-gray-200 transition"
+           <a class="hidden sm:inline-flex items-center px-4 py-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 rounded-full text-xs font-semibold text-gray-700 dark:text-gray-200 transition link-underline"
                     href="{{ route('ekstrakulikuler') }}">
                     Selengkapnya
                     <span class="material-icons text-sm ml-1">arrow_forward</span>
                 </a>
         </div>
         <div class="grid md:grid-cols-2 gap-8">
-            <div class="rounded-xl overflow-hidden shadow">
+            <div class="rounded-xl overflow-hidden shadow card-hover">
                 <div class="h-48 bg-gray-100 dark:bg-gray-800 flex items-center justify-center relative">
-                    <img alt="Basket" class="absolute inset-0 w-full h-full object-cover"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkaXxZHFmeQ6TeZu17XUGxLoX9Kwt7VXpjMRgTz-L3rR8N_S2TPzeY-To-Sr7GnkUQs6QuSeZnYj3fqI62SUwL8fF3j73JHeGMD505CQnQFMkuGb9nKsXfZKiinoSyswDl0VN6yU-NqfxdzUO2UUZ63uvNGhhg84a88f9sipOJ6OrPnhOKaX4hVquNtu3F1WpT9Mng5cXPU9iTO0ls1cPeHEndAomkZLvTX2Tl5RcoKRRPID8GDeojU2oxXHxz-d_MhA8X8QMszxFW" />
+                    <img alt="Paskibra" class="absolute inset-0 w-full h-full object-cover img-hover"
+                        src="{{ asset('storage/beranda/Ekstra 1.jpeg') }}" />
                 </div>
                 <div class="bg-gray-200 dark:bg-gray-700 p-4 text-center">
-                    <h3 class="text-lg font-bold text-gray-900 dark:text-white">Basket</h3>
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white">Paskibra</h3>
                 </div>
             </div>
-            <div class="rounded-xl overflow-hidden shadow">
+            <div class="rounded-xl overflow-hidden shadow card-hover">
                 <div class="h-48 bg-gray-100 dark:bg-gray-800 flex items-center justify-center relative">
-                    <img alt="Pramuka" class="absolute inset-0 w-full h-full object-cover"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKzPVStPA0vtH1JFMbDbcyunXyaTVdDyhkvgJ7a_cjpD1ajqHOf06wjSGfSgmCWiYRQHNO-ll64DcWnVDeb8JwsHxpOpVqeFG-ihbvb9zXpE_1cyduykl-K1gi1fYaNTV8bkhWbHAjV-i99W2Pjf_lIHaNnPuyVTFkWrp761rkx_6ML4GUWfgaXmZUKJXkqZd3q1jCqhLUg-4N01yuGC2h2EaIjH76vX0XCJZTi5D8QuWDOtlHnmK6VCWvW4I7AOaNnlDEK2MMzUrN" />
+                    <img alt="Pramuka" class="absolute inset-0 w-full h-full object-cover img-hover"
+                        src="{{ asset('storage/beranda/Ekstra 2.jpeg') }}" />
                 </div>
                 <div class="bg-gray-200 dark:bg-gray-700 p-4 text-center">
                     <h3 class="text-lg font-bold text-gray-900 dark:text-white">Pramuka</h3>
@@ -672,14 +789,14 @@
             </div>
         </div>
     </section>
-    <section class="bg-white dark:bg-surface-dark py-16 mb-20">
+    <section class="bg-white dark:bg-surface-dark py-16 mb-20 reveal">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
-                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Testimoni</h2>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2 section-title">Testimoni</h2>
                 <p class="text-gray-600 dark:text-gray-400">Tesimoni Alumni mengenai sekolah kami</p>
             </div>
             <div class="grid md:grid-cols-2 gap-8">
-                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-8 relative">
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-8 relative card-hover">
                     <span
                         class="material-icons text-6xl text-gray-200 dark:text-gray-700 absolute top-4 right-4">format_quote</span>
                     <div class="relative z-10">
@@ -688,7 +805,7 @@
                             dan fasilitasnya lengkap."</p>
                         <div class="border-t border-gray-200 dark:border-gray-700 pt-4 flex items-center gap-4">
                             <div class="w-12 h-12 rounded-full bg-gray-300 overflow-hidden">
-                                <img alt="Alumni" class="w-full h-full object-cover"
+                                <img alt="Alumni" class="w-full h-full object-cover img-hover"
                                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNXM1vhZWtIJy-oekTaE-HwZ8q1YNIVqwingTLJRuyJ_jm8VT2EC9TenGCsNytjZLYvR1nc--EaA0HsbLmauU2-BKPze9rnLIvpBRNiIfla4yyvWhAd9gwGi-uRnXDsigDBsmP8-eGmil3lYAaroGw-bgxMryJJeueQ4EAZKHY8uoT_lJWXDtsswddlQea1R-Lz1QFG_bSRY0V-5wYuJQGD0zExLhsBQfsAPkFaJSWyeRwd1X51l6swaK6ZODgRDtubY9p9Ynt0LG" />
                             </div>
                             <div>
@@ -698,7 +815,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-8 relative">
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-8 relative card-hover">
                     <span
                         class="material-icons text-6xl text-gray-200 dark:text-gray-700 absolute top-4 right-4">format_quote</span>
                     <div class="relative z-10">
@@ -706,7 +823,7 @@
                             menyenangkan dan disiplin yang diterapkan membentuk karakter saya menjadi lebih baik."</p>
                         <div class="border-t border-gray-200 dark:border-gray-700 pt-4 flex items-center gap-4">
                             <div class="w-12 h-12 rounded-full bg-gray-300 overflow-hidden">
-                                <img alt="Alumni" class="w-full h-full object-cover"
+                                <img alt="Alumni" class="w-full h-full object-cover img-hover"
                                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9yqJplvnPF02a_kibFYRO994h_gv34c0zOuKb1HWwDnqyyDUsWGRUs06plkzHb8S4HlRRFzR_B3AWbvsqgWQuqS3G2zGQf43bmV8_r7nHUqiga6s600L5qAf9kYUUIbj2PR-bQL6jdCffeec8w5i8YwDXrVVf4ZeOuzVpWUSuFjIiynB9QUMOehrED7i0wUhEMCvqM8I3uH4p8F5yaRs4KQxIC0JQcsjUyUJVcvHqsEs-YT4Zy5zQP0ELONy6pNCiAasWNxOhtgIl" />
                             </div>
                             <div>
@@ -722,6 +839,75 @@
     @include('layouts.footer')
     
     <script>
+        // Scroll reveal animation
+        function reveal() {
+            const reveals = document.querySelectorAll('.reveal');
+            const sectionTitles = document.querySelectorAll('.section-title');
+            
+            for (let i = 0; i < reveals.length; i++) {
+                const windowHeight = window.innerHeight;
+                const elementTop = reveals[i].getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add('active');
+                } else {
+                    reveals[i].classList.remove('active');
+                }
+            }
+            
+            for (let i = 0; i < sectionTitles.length; i++) {
+                const windowHeight = window.innerHeight;
+                const elementTop = sectionTitles[i].getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    sectionTitles[i].classList.add('active');
+                }
+            }
+        }
+        
+        window.addEventListener('scroll', reveal);
+        
+        // To check the scroll position on page load
+        reveal();
+        
+        // Counter animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter');
+            const speed = 200;
+            
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    const inc = target / speed;
+                    
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + inc);
+                        setTimeout(updateCount, 1);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                
+                // Start animation when element is in viewport
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            updateCount();
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                });
+                
+                observer.observe(counter);
+            });
+        }
+        
+        // Initialize counter animation
+        animateCounters();
+        
         // Teacher Carousel
         document.addEventListener('DOMContentLoaded', function() {
             const teacherCarousel = document.getElementById('teacherCarousel');

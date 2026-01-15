@@ -593,10 +593,10 @@
                                     <i class="bi bi-house-door"></i>
                                     <h5>Data beranda belum tersedia</h5>
                                     <p>Belum ada konten beranda yang ditambahkan. Mulai dengan menambahkan konten baru.</p>
-                                    <a href="{{ route('admin.beranda.create') }}" class="btn btn-primary">
+                                    {{-- <a href="{{ route('admin.beranda.create') }}" class="btn btn-primary">
                                         <i class="bi bi-plus-circle me-2"></i>
                                         Tambah Beranda
-                                    </a>
+                                    </a> --}}
                                 </div>
                             </td>
                         </tr>

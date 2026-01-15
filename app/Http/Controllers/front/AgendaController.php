@@ -8,9 +8,10 @@ use Illuminate\Http\Request;
 
 class AgendaController extends Controller
 {
-    public function index() {
+  public function index()
+{
+    $agendas = Agenda::latest()->paginate(6);
+    return view('pages.agenda', compact('agendas'));
+}
 
-        $agenda = Agenda::latest()->paginate(6);
-        return view('pages.agenda' , compact('agenda'));
-    }
 }
