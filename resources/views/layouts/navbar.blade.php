@@ -92,52 +92,58 @@
 </div>
 
 
-                    <div class="relative group desktop-dropdown">
-                        <a href="{{ route('jurusan') }}"
-                        class="flex items-center gap-1 hover:text-blue-600 transition-all duration-300 transform hover:-translate-y-0.5 hover:scale-105 cursor-pointer">
-                            Jurusan
-                            <i class="fa-solid fa-chevron-down text-xs opacity-50 transition-all duration-300 group-hover:rotate-180 group-hover:opacity-100"></i>
-                        </a>
+            <!-- Ganti bagian dropdown jurusan dengan kode berikut -->
 
-                        <!-- Desktop Dropdown dengan Animasi -->
-                        <div
-                            class="absolute left-0 mt-2 w-44 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg
-                                   opacity-0 invisible scale-95 -translate-y-2
-                                   group-hover:opacity-100 group-hover:visible group-hover:scale-100 group-hover:translate-y-0
-                                   transition-all duration-300 ease-out z-50">
+<div class="relative group desktop-dropdown">
+    <a href="{{ route('jurusan') }}"
+    class="flex items-center gap-1 hover:text-blue-600 transition-all duration-300 transform hover:-translate-y-0.5 hover:scale-105 cursor-pointer">
+        Jurusan
+        <i class="fa-solid fa-chevron-down text-xs opacity-50 transition-all duration-300 group-hover:rotate-180 group-hover:opacity-100"></i>
+    </a>
 
-                            <a href="{{ route('pplg') }}"
-                               class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 hover:translate-x-1 transition-all duration-200">
-                                PPLG
-                            </a>
-                            <a href="{{ route('tjkt') }}"
-                               class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 hover:translate-x-1 transition-all duration-200">
-                                TJKT
-                            </a>
-                            <a href="{{ route('akl') }}"
-                               class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 hover:translate-x-1 transition-all duration-200">
-                                AKL
-                            </a>
-                            <a href="{{ route('tkr') }}"
-                               class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 hover:translate-x-1 transition-all duration-200">
-                                TKR
-                            </a>
-                            <a href="{{ route('mp') }}"
-                               class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 hover:translate-x-1 transition-all duration-200">
-                                MP
-                            </a>
-                            <a href="{{ route('dpib') }}"
-                               class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 hover:translate-x-1 transition-all duration-200">
-                                DPIB
-                            </a>
-                            <a href="{{ route('sk') }}"
-                               class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 hover:translate-x-1 transition-all duration-200">
-                                SK
-                            </a>
+    <!-- Desktop Dropdown dengan Animasi -->
+    <div
+        class="absolute left-0 mt-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg
+               opacity-0 invisible scale-95 -translate-y-2
+               group-hover:opacity-100 group-hover:visible group-hover:scale-100 group-hover:translate-y-0
+               transition-all duration-300 ease-out z-50"
+        style="min-width: 380px; width: max-content;">
 
-                        </div>
-                    </div>
+         <a href="{{ route('dpib') }}"
+           class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 hover:translate-x-1 transition-all duration-200 whitespace-nowrap">
+            Desain Permodelan Infrastruktur dan Bangunan
+        </a>
+         <a href="{{ route('tjkt') }}"
+           class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 hover:translate-x-1 transition-all duration-200 whitespace-nowrap">
+            Teknik Jaringan Komputer dan Telekomunikasi
+        </a>
 
+        <a href="{{ route('pplg') }}"
+           class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 hover:translate-x-1 transition-all duration-200 whitespace-nowrap">
+            Pengembangan Perangkat Lunak Dan Game
+        </a>
+       
+        <a href="{{ route('akl') }}"
+           class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 hover:translate-x-1 transition-all duration-200 whitespace-nowrap">
+            Akuntansi Keuangan Lembaga
+        </a>
+
+        <a href="{{ route('mp') }}"
+           class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 hover:translate-x-1 transition-all duration-200 whitespace-nowrap">
+            Manajemen Perkantoran
+        </a>
+
+        <a href="{{ route('sk') }}"
+           class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 hover:translate-x-1 transition-all duration-200 whitespace-nowrap">
+            Seni Pertunjukan
+        </a>
+
+        <a href="{{ route('tkr') }}"
+           class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 hover:translate-x-1 transition-all duration-200 whitespace-nowrap">
+            Teknik Otomotif
+        </a>   
+    </div>
+</div>
                     <a class="hover:text-blue-600 transition-all duration-300 transform hover:-translate-y-0.5 hover:scale-105" href="{{ route('artikel.index') }}">Artikel</a>
                     <a class="hover:text-blue-600 transition-all duration-300 transform hover:-translate-y-0.5 hover:scale-105" href="{{ route('galeri') }}">Galeri</a>
                     <a class="hover:text-blue-600 transition-all duration-300 transform hover:-translate-y-0.5 hover:scale-105" href="{{ route('prestasi') }}">Prestasi</a>

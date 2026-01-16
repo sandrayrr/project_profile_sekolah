@@ -134,7 +134,7 @@
         <!-- GRID CARD -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="agendaGrid">
 
-            @forelse ($agenda as $index => $item)
+            @forelse ($agendas as $index => $item)
                 <div class="agenda-card bg-card-light dark:bg-card-dark rounded-2xl overflow-hidden animate-fade-in group" data-index="{{ $index }}">
                     
                     <!-- HEADER WITH ICON -->
@@ -273,7 +273,7 @@
     <script>
         // Agenda data for modal
         const agendaData = [];
-        @forelse ($agenda as $item)
+        @forelse ($agendas as $item)
         agendaData.push({
             title: "{{ $item->judul }}",
             description: "{{ $item->deskripsi }}",
