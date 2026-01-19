@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
-
+    <link rel="stylesheet" href="css/global.css">
     <script>
         tailwind.config = {
             darkMode: "class",
@@ -62,6 +63,7 @@
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
+
         .agenda-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
@@ -83,31 +85,38 @@
             width: 8px;
             height: 8px;
         }
+
         ::-webkit-scrollbar-track {
             background: #f1f1f1;
         }
+
         ::-webkit-scrollbar-thumb {
             background: #888;
             border-radius: 4px;
         }
+
         ::-webkit-scrollbar-thumb:hover {
             background: #555;
         }
+
         .dark ::-webkit-scrollbar-track {
             background: #374151;
         }
+
         .dark ::-webkit-scrollbar-thumb {
             background: #6b7280;
         }
     </style>
 </head>
 
-<body class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-100 font-body transition-colors duration-300 min-h-screen flex flex-col">
+<body
+    class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-100 font-body transition-colors duration-300 min-h-screen flex flex-col">
 
     @include('layouts.navbar')
 
     <!-- HEADER WITH BLUE BACKGROUND -->
-    <div class="relative bg-gradient-to-br from-primary to-primary-dark dark:from-blue-800 dark:to-blue-900 py-20 header-pattern">
+    <div
+        class="relative bg-gradient-to-br from-primary to-primary-dark dark:from-blue-800 dark:to-blue-900 py-20 header-pattern">
         <div class="absolute inset-0 bg-black opacity-10"></div>
         <div class="relative container mx-auto px-4">
             <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-3 animate-fade-in">
@@ -124,23 +133,25 @@
 
         <!-- NOTIFIKASI (opsional) -->
         @if(request('cari'))
-        <div class="mb-6 bg-primary-light dark:bg-blue-900/20 border-l-4 border-primary p-4 rounded animate-fade-in">
-            <p class="text-sm">
-                Menampilkan hasil pencarian untuk: <strong>{{ request('cari') }}</strong>
-            </p>
-        </div>
+            <div class="mb-6 bg-primary-light dark:bg-blue-900/20 border-l-4 border-primary p-4 rounded animate-fade-in">
+                <p class="text-sm">
+                    Menampilkan hasil pencarian untuk: <strong>{{ request('cari') }}</strong>
+                </p>
+            </div>
         @endif
 
         <!-- GRID CARD -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="agendaGrid">
 
-            @forelse ($agendas as $index => $item)
-                <div class="agenda-card bg-card-light dark:bg-card-dark rounded-2xl overflow-hidden animate-fade-in group" data-index="{{ $index }}">
-                    
+            @forelse ($agenda as $index => $item)
+                <div class="agenda-card bg-card-light dark:bg-card-dark rounded-2xl overflow-hidden animate-fade-in group"
+                    data-index="{{ $index }}">
+
                     <!-- HEADER WITH ICON -->
                     <div class="bg-primary/10 dark:bg-primary/20 p-6 border-b border-border-light dark:border-border-dark">
                         <div class="flex items-center">
-                            <div class="w-12 h-12 bg-primary/20 dark:bg-primary/30 rounded-full flex items-center justify-center mr-4">
+                            <div
+                                class="w-12 h-12 bg-primary/20 dark:bg-primary/30 rounded-full flex items-center justify-center mr-4">
                                 <span class="material-icons text-primary text-2xl">
                                     {{ $item->ikon ?? 'event' }}
                                 </span>
@@ -173,7 +184,8 @@
 
                         <!-- BUTTON -->
                         <div class="mt-4 flex justify-end">
-                            <button onclick="openModal({{ $index }})" class="inline-flex items-center gap-2 bg-primary/10 hover:bg-primary hover:text-white text-primary dark:text-primary-300 dark:hover:text-white text-sm font-semibold py-2 px-4 rounded-full transition-colors">
+                            <button onclick="openModal({{ $index }})"
+                                class="inline-flex items-center gap-2 bg-primary/10 hover:bg-primary hover:text-white text-primary dark:text-primary-300 dark:hover:text-white text-sm font-semibold py-2 px-4 rounded-full transition-colors">
                                 Detail <i class="fa-solid fa-arrow-right"></i>
                             </button>
                         </div>
@@ -181,14 +193,16 @@
                 </div>
             @empty
                 <div class="col-span-full flex flex-col items-center justify-center text-center py-20">
-                    <div class="w-24 h-24 bg-primary-light dark:bg-blue-900/20 rounded-full flex items-center justify-center mb-6 animate-float">
+                    <div
+                        class="w-24 h-24 bg-primary-light dark:bg-blue-900/20 rounded-full flex items-center justify-center mb-6 animate-float">
                         <span class="material-icons text-5xl text-primary">event_busy</span>
                     </div>
                     <h3 class="text-2xl font-bold text-gray-700 dark:text-gray-300 mb-2">
                         Belum Ada Agenda
                     </h3>
                     <p class="text-gray-500 dark:text-gray-400 max-w-md">
-                        Belum ada agenda sekolah yang tersedia saat ini. Kunjungi kembali lain hari untuk melihat agenda terbaru dari kami.
+                        Belum ada agenda sekolah yang tersedia saat ini. Kunjungi kembali lain hari untuk melihat agenda
+                        terbaru dari kami.
                     </p>
                 </div>
             @endforelse
@@ -197,9 +211,9 @@
 
         <!-- PAGINATION (jika diperlukan) -->
         @if(isset($agenda) && method_exists($agenda, 'links') && $agenda->hasPages())
-        <div class="flex justify-center mt-10">
-            {{ $agenda->links() }}
-        </div>
+            <div class="flex justify-center mt-10">
+                {{ $agenda->links() }}
+            </div>
         @endif
 
     </main>
@@ -210,11 +224,13 @@
     <div id="agendaModal" class="fixed inset-0 z-50 hidden">
         <div class="modal-backdrop absolute inset-0 bg-black/80" onclick="closeModal()"></div>
         <div class="relative h-full flex items-center justify-center p-4">
-            <button onclick="closeModal()" class="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors z-10">
+            <button onclick="closeModal()"
+                class="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors z-10">
                 <i class="fas fa-times text-3xl"></i>
             </button>
-            
-            <div class="relative max-w-3xl w-full bg-white dark:bg-gray-800 rounded-2xl shadow-2xl overflow-hidden animate-zoom-in">
+
+            <div
+                class="relative max-w-3xl w-full bg-white dark:bg-gray-800 rounded-2xl shadow-2xl overflow-hidden animate-zoom-in">
                 <!-- Modal Header -->
                 <div class="bg-gradient-to-r from-primary to-primary-dark p-6">
                     <div class="flex items-center">
@@ -226,14 +242,14 @@
                         <h2 id="modalTitle" class="text-2xl font-bold text-white"></h2>
                     </div>
                 </div>
-                
+
                 <!-- Modal Body -->
                 <div class="p-6">
                     <div class="mb-6">
                         <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Deskripsi</h3>
                         <p id="modalDescription" class="text-gray-600 dark:text-gray-300"></p>
                     </div>
-                    
+
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
                             <div class="flex items-center mb-2">
@@ -242,7 +258,7 @@
                             </div>
                             <p id="modalDate" class="text-gray-600 dark:text-gray-300"></p>
                         </div>
-                        
+
                         <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
                             <div class="flex items-center mb-2">
                                 <i class="fa-regular fa-clock text-primary mr-2"></i>
@@ -251,9 +267,10 @@
                             <p id="modalTime" class="text-gray-600 dark:text-gray-300"></p>
                         </div>
                     </div>
-                    
+
                     <div class="mt-6 flex justify-end">
-                        <button onclick="closeModal()" class="bg-primary hover:bg-primary-dark text-white font-medium py-2 px-6 rounded-lg transition-colors">
+                        <button onclick="closeModal()"
+                            class="bg-primary hover:bg-primary-dark text-white font-medium py-2 px-6 rounded-lg transition-colors">
                             Tutup
                         </button>
                     </div>
@@ -263,8 +280,7 @@
     </div>
 
     <!-- DARK MODE BUTTON -->
-    <button
-        id="darkToggle"
+    <button id="darkToggle"
         class="fixed bottom-6 right-6 bg-primary hover:bg-primary-dark text-white p-3 rounded-full shadow-lg z-40 transition-all duration-300 hover:scale-110">
         <i class="fa-solid fa-moon dark:hidden"></i>
         <i class="fa-solid fa-sun hidden dark:block"></i>
@@ -273,6 +289,7 @@
     <script>
         // Agenda data for modal
         const agendaData = [];
+<<<<<<< Updated upstream
         @forelse ($agendas as $item)
         agendaData.push({
             title: "{{ $item->judul }}",
@@ -281,29 +298,39 @@
             time: "{{ $item->waktu }}",
             icon: "{{ $item->ikon ?? 'event' }}"
         });
+=======
+        @forelse ($agenda as $item)
+            agendaData.push({
+                title: "{{ $item->judul }}",
+                description: "{{ $item->deskripsi }}",
+                date: "{{ \Carbon\Carbon::parse($item->tanggal)->translatedFormat('d F Y') }}",
+                time: "{{ $item->waktu }}",
+                icon: "{{ $item->ikon ?? 'event' }}"
+            });
+>>>>>>> Stashed changes
         @empty
         @endforelse
 
-        // Modal functions
-        function openModal(index) {
-            const modal = document.getElementById('agendaModal');
-            const modalTitle = document.getElementById('modalTitle');
-            const modalDescription = document.getElementById('modalDescription');
-            const modalDate = document.getElementById('modalDate');
-            const modalTime = document.getElementById('modalTime');
-            const modalIcon = document.getElementById('modalIcon');
-            
-            if (agendaData[index]) {
-                modalTitle.textContent = agendaData[index].title;
-                modalDescription.textContent = agendaData[index].description;
-                modalDate.textContent = agendaData[index].date;
-                modalTime.textContent = agendaData[index].time;
-                modalIcon.textContent = agendaData[index].icon;
-                
-                modal.classList.remove('hidden');
-                document.body.style.overflow = 'hidden';
+            // Modal functions
+            function openModal(index) {
+                const modal = document.getElementById('agendaModal');
+                const modalTitle = document.getElementById('modalTitle');
+                const modalDescription = document.getElementById('modalDescription');
+                const modalDate = document.getElementById('modalDate');
+                const modalTime = document.getElementById('modalTime');
+                const modalIcon = document.getElementById('modalIcon');
+
+                if (agendaData[index]) {
+                    modalTitle.textContent = agendaData[index].title;
+                    modalDescription.textContent = agendaData[index].description;
+                    modalDate.textContent = agendaData[index].date;
+                    modalTime.textContent = agendaData[index].time;
+                    modalIcon.textContent = agendaData[index].icon;
+
+                    modal.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
+                }
             }
-        }
 
         function closeModal() {
             const modal = document.getElementById('agendaModal');
@@ -312,7 +339,7 @@
         }
 
         // Keyboard navigation
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', function (e) {
             const modal = document.getElementById('agendaModal');
             if (!modal.classList.contains('hidden')) {
                 if (e.key === 'Escape') {
@@ -338,4 +365,5 @@
     </script>
 
 </body>
+
 </html>
