@@ -617,10 +617,6 @@
                                     <i class="bi bi-calendar-x"></i>
                                     <h5>Data agenda belum tersedia</h5>
                                     <p>Belum ada agenda yang ditambahkan. Mulai dengan menambahkan agenda baru.</p>
-                                    <a href="{{ route('admin.agenda.create') }}" class="btn btn-primary">
-                                        <i class="bi bi-plus-circle me-2"></i>
-                                        Tambah Agenda
-                                    </a>
                                 </div>
                             </td>
                         </tr>

@@ -48,8 +48,8 @@
             </div>
         </div>
     </header>
-    <nav
-        class="w-full bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50 shadow-sm">
+   <nav
+        class="w-full bg-gray-200 dark:bg-gray-900 border-b border-gray-300 dark:border-gray-800 sticky top-0 z-50 shadow-sm">
         <div class="container mx-auto px-4">
             <div class="flex items-center justify-between h-16">
                 <!-- Mobile menu button -->
@@ -76,7 +76,7 @@
 
         <a href="{{ route('staffkependidikan') }}"
            class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 hover:translate-x-1 transition-all duration-200">
-            Staf Pengajar
+            Staff Kependidikan
         </a>
 
         <a href="{{ route('organisasi') }}"

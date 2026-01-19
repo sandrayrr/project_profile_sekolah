@@ -696,10 +696,6 @@
                                     <i class="bi bi-trophy"></i>
                                     <h5>Data prestasi belum tersedia</h5>
                                     <p>Belum ada data prestasi yang ditambahkan. Mulai dengan menambahkan prestasi baru.</p>
-                                    <a href="{{ route('admin.prestasi.create') }}" class="btn btn-primary">
-                                        <i class="bi bi-plus-circle me-2"></i>
-                                        Tambah Prestasi
-                                    </a>
                                 </div>
                             </td>
                         </tr>

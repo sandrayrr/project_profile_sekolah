@@ -649,10 +649,6 @@
                     <i class="bi bi-building"></i>
                     <h5>Data fasilitas belum tersedia</h5>
                     <p>Belum ada fasilitas yang ditambahkan. Mulai dengan menambahkan fasilitas baru.</p>
-                    <a href="{{ route('admin.fasilitas.create') }}" class="btn btn-primary">
-                        <i class="bi bi-plus-circle me-2"></i>
-                        Tambah Fasilitas
-                    </a>
                 </div>
             @endforelse
         </div>
