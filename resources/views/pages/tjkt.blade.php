@@ -4,7 +4,11 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<<<<<<< HEAD
+    <title>Program tkjt - SMKN 1 Kawali</title>
+=======
     <title>Program TJKT - SMKN 1 Kawali</title>
+>>>>>>> 1165083e272c405d0fa74f9a32e02d28678f5fdb
 
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -90,13 +94,10 @@
         .org-chart-item:last-child::before {
             display: none;
         }
-        .network-bg {
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230ea5e9' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        }
     </style>
 </head>
 
-<body class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-100 font-body network-bg">
+<body class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-100 font-body">
 
     @include('layouts.navbar')
 
@@ -118,19 +119,18 @@
                         Teknik Jaringan Komputer <br> dan Telekomunikasi
                     </h1>
 
-                    <p class="text-gray-100 text-lg leading-relaxed mb-8 max-w-xl">
-                        Jurusan yang mendalami infrastruktur digital, dari instalasi hingga keamanan jaringan,
-                        serta manajemen server untuk mendukung konektivitas global.
-                    </p>
+            <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6 text-gray-900 dark:text-white">
+                tkj <br> Keuangan dan Lembaga
+            </h1>
 
                     <div class="flex flex-wrap gap-4">
-                        <a href="#"
-                            class="bg-white text-primary px-8 py-4 rounded-xl font-medium hover:bg-gray-100 transition shadow-lg">
-                            Daftar Sekarang
-                        </a>
                         <a href="#informasi"
-                            class="border border-white text-white px-8 py-4 rounded-xl font-medium hover:bg-white hover:text-primary transition">
+                            class="bg-white text-primary px-8 py-4 rounded-xl font-medium hover:bg-gray-100 transition shadow-lg">
                             Pelajari Lebih Lanjut
+                        </a>
+                        <a href="#galeri"
+                            class="border border-white text-white px-8 py-4 rounded-xl font-medium hover:bg-white hover:text-primary transition">
+                            Lihat Galeri
                         </a>
                     </div>
                 </div>
@@ -493,7 +493,7 @@
     </section>
 
     <!-- GALLERY -->
-    <section class="py-20 bg-white dark:bg-gray-800">
+    <section id="galeri" class="py-20 bg-white dark:bg-gray-800">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white">
                 Galeri Kegiatan
@@ -613,18 +613,18 @@
         </div>
     </section>
 
-    <!-- CTA -->
+    <!-- INFO SECTION -->
     <section class="py-20 bg-gradient-to-br from-primary to-secondary dark:from-gray-700 dark:to-gray-900">
         <div class="container mx-auto px-4 text-center">
             <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">
-                Tertarik Menjadi Ahli Infrastruktur Digital?
+                Pelajari Lebih Lanjut Tentang Jurusan TJKT
             </h2>
             <p class="text-xl text-gray-100 mb-8 max-w-2xl mx-auto">
-                Bangun karir di bidang vital yang menghubungkan dunia. Daftar sekarang dan jadi ahli jaringan telekomunikasi!
+                Jurusan TJKT mempersiapkan siswa menjadi ahli infrastruktur digital yang siap menghadapi tantangan teknologi masa depan.
             </p>
             <div class="flex flex-wrap justify-center gap-4">
-                <a href="#" class="bg-white text-primary px-8 py-4 rounded-xl font-medium hover:bg-gray-100 transition shadow-lg">
-                    Daftar Sekarang
+                <a href="#informasi" class="bg-white text-primary px-8 py-4 rounded-xl font-medium hover:bg-gray-100 transition shadow-lg">
+                    Informasi Lengkap
                 </a>
                 <a href="#" class="border border-white text-white px-8 py-4 rounded-xl font-medium hover:bg-white hover:text-primary transition">
                     Download Brosur

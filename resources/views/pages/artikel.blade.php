@@ -206,12 +206,21 @@
     <!-- CONTENT -->
     <main class="container mx-auto px-4 py-12 lg:py-16 min-h-screen">
 
-        <!-- NOTIFIKASI HASIL PENCARIAN -->
+        <!-- NOTIFIKASI HASIL PENCARIAN / FILTER -->
         @if(request('cari'))
         <div class="mb-6 bg-blue-50 dark:bg-blue-900/20 border-l-4 border-primary p-4 rounded animate-fade-in">
             <p class="text-sm">
                 Menampilkan hasil pencarian untuk: <strong class="gradient-text">{{ request('cari') }}</strong>
             </p>
+        </div>
+        @elseif(request('kategori'))
+        <div class="mb-6 bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-4 rounded flex justify-between items-center">
+            <p class="text-sm">
+                Menampilkan kategori: <strong>{{ request('kategori') }}</strong>
+            </p>
+            <a href="{{ route('artikel.index') }}" class="text-sm text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300">
+                <i class="fas fa-times mr-1"></i> Hapus Filter
+            </a>
         </div>
         @endif
 
@@ -219,80 +228,81 @@
             <!-- ARTIKEL GRID -->
             <div class="lg:col-span-2">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    @foreach ($artikels as $item)
-                    <div
-                        class="artikel-card bg-card-light dark:bg-card-dark 
-                               rounded-2xl shadow-lg border border-border-light dark:border-border-dark 
-                               overflow-hidden animate-fade-in group">
+                    @forelse ($artikels as $item)
+                    <a href="{{ route('artikel.show', $item->id) }}" class="block group">
+                        <div
+                            class="artikel-card bg-card-light dark:bg-card-dark 
+                                   rounded-2xl shadow-lg border border-border-light dark:border-border-dark 
+                                   overflow-hidden animate-fade-in h-full flex flex-col">
 
-                        <!-- FOTO -->
-                        <div class="artikel-image-container aspect-[4/3] bg-gray-200 dark:bg-gray-700 relative overflow-hidden">
-                            @if ($item->foto)
-                                <img
-                                    src="{{ asset('storage/' . $item->foto) }}"
-                                    alt="{{ $item->judul }}"
-                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                            @else
-                                <div class="w-full h-full flex items-center justify-center text-gray-400 dark:text-gray-500">
-                                    <span class="material-icons text-6xl">article</span>
-                                </div>
-                            @endif
+                            <!-- FOTO -->
+                            <div class="artikel-image-container aspect-[4/3] bg-gray-200 dark:bg-gray-700 relative overflow-hidden">
+                                @if ($item->foto)
+                                    <img
+                                        src="{{ asset('storage/' . $item->foto) }}"
+                                        alt="{{ $item->judul }}"
+                                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                                @else
+                                    <div class="w-full h-full flex items-center justify-center text-gray-400 dark:text-gray-500">
+                                        <span class="material-icons text-6xl">article</span>
+                                    </div>
+                                @endif
 
-                            <!-- OVERLAY -->
-                            <div
-                                class="overlay absolute inset-0 opacity-0 transition-opacity duration-300 flex items-end p-4">
-                                <div class="overlay-text text-white">
-                                    <p class="font-semibold text-lg">Baca Selengkapnya</p>
-                                    <p class="text-sm opacity-90">{{ \Carbon\Carbon::parse($item->tanggal)->format('d M Y') }}</p>
+                                <!-- OVERLAY -->
+                                <div
+                                    class="overlay absolute inset-0 opacity-0 transition-opacity duration-300 flex items-end p-4">
+                                    <div class="overlay-text text-white">
+                                        <p class="font-semibold text-lg">Baca Selengkapnya</p>
+                                        <p class="text-sm opacity-90">{{ \Carbon\Carbon::parse($item->tanggal)->format('d M Y') }}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <!-- BODY -->
-                        <div class="p-5 flex flex-col flex-grow">
-                            <div class="flex justify-between items-center mb-3">
-                                <span class="text-xs bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary-300 px-3 py-1 rounded-full font-medium">
-                                    Artikel
-                                </span>
-                                <div class="text-xs text-gray-500 dark:text-gray-400 flex items-center">
+                            <!-- BODY -->
+                            <div class="p-5 flex flex-col flex-grow">
+                                <div class="flex justify-between items-center mb-3">
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-xs bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary-300 px-3 py-1 rounded-full font-medium">
+                                            Artikel
+                                        </span>
+                                        @if($item->kategori)
+                                        <span class="text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 px-3 py-1 rounded-full font-medium">
+                                            {{ $item->kategori }}
+                                        </span>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <div class="flex-grow">
+                                    <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white line-clamp-2 group-hover:text-primary transition-colors">
+                                        {{ $item->judul }}
+                                    </h3>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-3">
+                                        {{ Str::limit(strip_tags($item->deskripsi), 100) }}
+                                    </p>
+                                </div>
+
+                                <div class="text-xs text-gray-500 dark:text-gray-400 flex items-center mt-4 pt-3 border-t border-border-light dark:border-border-dark">
                                     <i class="far fa-calendar-alt mr-1"></i>
                                     <span>{{ \Carbon\Carbon::parse($item->tanggal)->translatedFormat('d F Y') }}</span>
                                 </div>
                             </div>
-
-                            <div class="flex-grow">
-                                <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white line-clamp-2">
-                                    {{ $item->judul }}
-                                </h3>
-                                <p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-3">
-                                    {{ $item->deskripsi }}
-                                </p>
-                            </div>
-
-                            <div class="mt-4 flex justify-between items-center">
-                                <a href="{{ route('artikel.show', $item->id) }}" 
-                                   class="text-primary font-medium text-sm hover:underline flex items-center gap-1">
-                                    <span>Baca Selengkapnya</span>
-                                    <i class="fa-solid fa-arrow-right text-xs"></i>
-                                </a>
-                                <div class="flex items-center gap-3 text-gray-500 dark:text-gray-400">
-                                    <button class="hover:text-red-500 transition-colors">
-                                        <i class="far fa-heart"></i>
-                                    </button>
-                                    <button class="hover:text-blue-500 transition-colors">
-                                        <i class="far fa-share-square"></i>
-                                    </button>
-                                </div>
-                            </div>
                         </div>
+                    </a>
+                    @empty
+                    <div class="col-span-full text-center py-12">
+                        <i class="fas fa-inbox text-6xl text-gray-300 dark:text-gray-600 mb-4"></i>
+                        <p class="text-gray-500 dark:text-gray-400">Artikel tidak ditemukan.</p>
                     </div>
-                    @endforeach
+                    @endforelse
                 </div>
 
                 <!-- PAGINATION -->
+                @if($artikels->hasPages())
                 <div class="mt-8 flex justify-center">
-                    {{ $artikels->links() }}
+                    {{ $artikels->links('pagination::tailwind') }}
                 </div>
+                @endif
             </div>
 
            <!-- SIDEBAR -->
@@ -303,21 +313,21 @@
         class="bg-gray-50 dark:bg-card-dark rounded-xl p-6 shadow-sm border border-border-light dark:border-border-dark">
 
         <h3
-            class="text-lg font-bold text-gray-900 dark:text-white mb-4 pb-2 border-b border-gray-200 dark:border-gray-700 flex items-center gap-2">
-            <i class="material-icons text-primary">category</i>
+            class="text-lg font-bold text-gray-900 dark:text-white mb-4 pb-2 border-b border-gray-200 dark:border-gray-700 flex items-center">
+            <i class="fas fa-folder-open mr-2 text-primary"></i>
             Kategori Artikel
         </h3>
 
-        <ul class="space-y-3">
+        <ul class="space-y-2">
             @forelse ($kategoriArtikel as $kat)
                 @if(!empty($kat->kategori))
                     <li class="category-item">
                         <a
                             href="{{ route('artikel.kategori', ['kategori' => $kat->kategori]) }}"
-                            class="flex justify-between items-center text-gray-600 dark:text-gray-300 hover:text-primary transition-colors group">
+                            class="flex justify-between items-center text-gray-600 dark:text-gray-300 hover:text-primary transition-colors group py-2 px-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
 
-                            <span class="flex items-center gap-2">
-                                <i class="material-icons text-sm">label</i>
+                            <span class="flex items-center">
+                                <i class="fas fa-tag text-xs mr-2 opacity-60"></i>
                                 {{ $kat->kategori }}
                             </span>
 
@@ -330,8 +340,8 @@
                     </li>
                 @endif
             @empty
-                <li class="text-sm text-gray-500 flex items-center gap-2">
-                    <i class="material-icons text-sm">info</i>
+                <li class="text-sm text-gray-500 py-2 px-3">
+                    <i class="fas fa-info-circle mr-1"></i>
                     Belum ada kategori
                 </li>
             @endforelse
@@ -343,8 +353,8 @@
         class="bg-gray-50 dark:bg-card-dark rounded-xl p-6 shadow-sm border border-border-light dark:border-border-dark">
 
         <h3
-            class="text-lg font-bold text-gray-900 dark:text-white mb-4 pb-2 border-b border-gray-200 dark:border-gray-700 flex items-center gap-2">
-            <i class="material-icons text-primary">new_releases</i>
+            class="text-lg font-bold text-gray-900 dark:text-white mb-4 pb-2 border-b border-gray-200 dark:border-gray-700 flex items-center">
+            <i class="fas fa-clock mr-2 text-primary"></i>
             Artikel Terbaru
         </h3>
 
@@ -352,24 +362,10 @@
             @forelse ($artikelTerbaru as $item)
                 <li class="latest-article pb-3 border-b border-gray-200 dark:border-gray-700 last:border-0 last:pb-0">
                     <a class="group block" href="{{ route('artikel.show', $item->id) }}">
-                        <div class="flex gap-3">
-                            @if ($item->foto)
-                                <div class="flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden">
-                                    <img src="{{ asset('storage/' . $item->foto) }}" 
-                                         alt="{{ $item->judul }}" 
-                                         class="w-full h-full object-cover">
-                                </div>
-                            @else
-                                <div class="flex-shrink-0 w-16 h-16 rounded-lg bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-                                    <i class="material-icons text-gray-400">article</i>
-                                </div>
-                            @endif
-                            
-                            <div class="flex-grow">
-                                <h4
-                                    class="text-sm font-semibold text-gray-800 dark:text-gray-200 group-hover:text-primary transition-colors mb-1">
-                                    {{ $item->judul }}
-                                </h4>
+                        <h4
+                            class="text-sm font-semibold text-gray-800 dark:text-gray-200 group-hover:text-primary transition-colors mb-1 line-clamp-2">
+                            {{ $item->judul }}
+                        </h4>
 
                                 <div class="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1">
                                     <i class="material-icons text-[10px]">access_time</i>
@@ -387,29 +383,12 @@
             @endforelse
         </ul>
     </div>
-
-    {{-- ================= STATISTIK ================= --}}
-    <div
-        class="bg-gradient-to-br from-primary to-secondary dark:from-gray-700 dark:to-gray-900 rounded-xl p-6 shadow-sm text-white">
-
-        <h3
-            class="text-lg font-bold mb-4 pb-2 border-b border-white/20 flex items-center gap-2">
-            <i class="material-icons">bar_chart</i>
-            Statistik Artikel
-        </h3>
-
-        <div class="grid grid-cols-2 gap-4">
-            <div class="text-center">
-                <div class="text-2xl font-bold">{{ $totalArtikel ?? 0 }}</div>
-                <div class="text-xs opacity-80">Total Artikel</div>
-            </div>
-            <div class="text-center">
-                <div class="text-2xl font-bold">{{ $totalKategori ?? 0 }}</div>
-                <div class="text-xs opacity-80">Kategori</div>
-            </div>
+        <!-- PAGINATION -->
+        @if(isset($galeri) && method_exists($galeri, 'links') && $galeri->hasPages())
+        <div class="flex justify-center mt-10">
+            {{ $galeri->links() }}
         </div>
-    </div>
-
+        @endif
 </aside>
 
         </div>
@@ -437,7 +416,7 @@
         const toggle = document.getElementById('darkToggle');
         const html = document.documentElement;
 
-        if (localStorage.getItem('theme') === 'dark') {
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             html.classList.add('dark');
         }
 
@@ -485,3 +464,5 @@
 </body>
 
 </html>
+
+

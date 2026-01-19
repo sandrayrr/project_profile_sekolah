@@ -11,7 +11,7 @@ class ArtikelController extends Controller
 {
     public function index()
     {
-        $artikels = Artikel::latest()->paginate(6);
+        $artikels = Artikel::latest()->paginate(4);
         return view('admin.crud.artikel.index', compact('artikels'));
     }
 

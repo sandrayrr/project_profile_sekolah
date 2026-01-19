@@ -19,7 +19,6 @@ class ArtikelController extends Controller
         if ($request->filled('cari')) {
             $query->where(function ($q) use ($request) {
                 $q->where('judul', 'like', '%' . $request->cari . '%');
-                  
             });
         }
 
