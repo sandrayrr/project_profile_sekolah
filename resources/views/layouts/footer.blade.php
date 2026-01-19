@@ -4,7 +4,7 @@
             <div class="md:col-span-1">
                 <div class="flex items-center gap-3 mb-6">
                     <img alt="Logo SMK" class="w-12 h-12 rounded-full"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7I96ZuhYQCIrXGFKKYgefQyZr64GHCtzWjuXRF2_smDa4MBA_h010w3fcWihXwCqZ5SKdGxyXunVeg5nvcScAS9eVgMaDooUy0WsXZ-XjYE-0GEOeEbvT8OMYRoV__AgADOZDiwf-J8e_11tERyMR0q-s82qpIbq1nBPuxssZmdaKgT9n3voy30C1BD6N7nV_HTa3AAjGtGVuewdn_vjMNrK2OAID78Ci0Kzc0aXUW8C3-h4HMBFiI16I4PUBPe2zxPdoBSOhjrX5" />
+                        src="{{ asset('storage/beranda/logo smkn.png') }}" />
                     <span class="font-bold text-xl">SMK Negeri 1 Kawali</span>
                 </div>
                 <p class="text-muted-light dark:text-muted-dark mb-6">
@@ -45,7 +45,7 @@
                 <ul class="space-y-4 text-muted-light dark:text-muted-dark">
                     <li class="flex items-start gap-3">
                         <span class="material-icons text-primary mt-1">location_on</span>
-                        <span>Jl. Raya Kawali No. 123, Ciamis, Jawa Barat, Indonesia</span>
+                        <span>JL. Talagasari No. 35, Desa Kawalimukti, Kecamatan Kawali, Kabupaten Ciamis, Jawa Barat. </span>
                     </li>
                     <li class="flex items-center gap-3">
                         <span class="material-icons text-primary">phone</span>
@@ -53,7 +53,7 @@
                     </li>
                     <li class="flex items-center gap-3">
                         <span class="material-icons text-primary">email</span>
-                        <span>info@smkn1kawali.sch.id</span>
+                        <span>smkn1kawali@gmail.com</span>
                     </li>
                 </ul>
             </div>

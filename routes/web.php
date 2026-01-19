@@ -115,7 +115,9 @@ Route::middleware('auth')
         Route::resource('artikel', ArtikelController::class);
         Route::resource('galeri', GaleriController::class);
         Route::resource('prestasi', PrestasiController::class);
-        Route::resource('fasilitas', FasilitasController::class);
+       Route::resource('fasilitas', FasilitasController::class)
+     ->parameters(['fasilitas' => 'fasilitas']);
+
         Route::resource('agenda', AgendaController::class);
         Route::resource('tenagapengajar', TenagaPengajarController::class);
         Route::resource('staffkependidikan', StaffKependidikanController::class);

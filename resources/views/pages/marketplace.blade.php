@@ -113,7 +113,7 @@ body::before {
     outline: none;
 }
 
-.cart-btn {
+.back-btn {
     background: linear-gradient(90deg,var(--blue-main),#38BDF8);
     border: none;
     border-radius: 25px;
@@ -122,27 +122,15 @@ body::before {
     font-weight: 600;
     position: relative;
     transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
 }
 
-.cart-btn:hover {
+.back-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-}
-
-.cart-count {
-    position: absolute;
-    top: -8px;
-    right: -8px;
-    background: var(--red-accent);
     color: white;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.75rem;
-    font-weight: 700;
 }
 
 /* ================= MAIN CONTENT ================= */
@@ -480,11 +468,10 @@ body::before {
                 </div>
                 <div class="col-md-3">
                     <div class="text-end">
-                        <button class="cart-btn">
-                            <i class="bi bi-cart3 me-2"></i>
-                            Keranjang
-                            <span class="cart-count">3</span>
-                        </button>
+                        <a href="{{ route('beranda') }}" class="back-btn">
+                            <i class="bi bi-arrow-left me-2"></i>
+                            Kembali
+                        </a>
                     </div>
                 </div>
             </div>
@@ -734,10 +721,6 @@ body::before {
         // Add to cart functionality
         document.querySelectorAll('.btn-add-cart').forEach(btn => {
             btn.addEventListener('click', function() {
-                const cartCount = document.querySelector('.cart-count');
-                let count = parseInt(cartCount.textContent);
-                cartCount.textContent = count + 1;
-                
                 // Visual feedback
                 this.innerHTML = '<i class="bi bi-check-circle me-2"></i>Ditambahkan';
                 this.style.background = 'linear-gradient(90deg, #10B981, #059669)';
