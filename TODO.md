@@ -1,8 +1,6 @@
-# TODO: Fix Laravel Project Routes
+# TODO: Add Route for TKR and Update Navbar Dropdown
 
-## Tasks
-- [x] Update routes/web.php to add all missing routes for pages
-- [x] Change root route to return beranda view
-- [x] Add routes for profil, jurusan, artikel, galeri, prestasi, link, fasilitas, akreditasi, ekstrakurikuler, agenda
-- [x] Test the application by running it
-- [x] Remove all 'dark:' classes from blade templates to make them light theme only
+- [x] Add view route for 'tkr' in routes/web.php
+- [x] Add AKL and TKR links to the Jurusan dropdown in resources/views/layouts/navbar.blade.php
+- [x] Add routes for MP, DPIB, SK in routes/web.php
+- [x] Add MP, DPIB, SK links to the Jurusan dropdown in resources/views/layouts/navbar.blade.php

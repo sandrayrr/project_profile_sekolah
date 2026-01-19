@@ -359,7 +359,7 @@
 
     <!-- USER -->
     <div class="sidebar-user">
-        <img src="https://picsum.photos/seed/user/80/80">
+        <img src="{{ asset('storage/dashboard/Profesional Photos.jpeg') }}">
         <div class="user-info">
             <div class="user-name">{{ Auth::user()->name }}</div>
             <div class="user-role">{{ ucfirst(Auth::user()->role) }}</div>

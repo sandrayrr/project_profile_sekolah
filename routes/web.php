@@ -36,6 +36,12 @@ use App\Http\Controllers\Front\TenagaPengajarController as FrontTenagaPengajarCo
 use App\Http\Controllers\Front\StaffKependidikanController as FrontStaffKependidikanController;
 use App\Http\Controllers\Front\PplgController;
 use App\Http\Controllers\Front\TjktController;
+use App\Http\Controllers\Front\AklController;
+use App\Http\Controllers\Front\TkrController;
+use App\Http\Controllers\Front\MpController;
+use App\Http\Controllers\Front\DpibController;
+use App\Http\Controllers\Front\SkController;
+use App\Http\Controllers\Front\MarketPlaceController;
 
 
 /*
@@ -70,8 +76,12 @@ Route::get('/staffkependidikan', [FrontStaffKependidikanController::class, 'inde
 // Jurusan
 Route::get('/pplg', [PplgController::class, 'index'])->name('pplg');
 Route::get('/tjkt', [TjktController::class, 'index'])->name('tjkt');
-
-
+Route::get('/akl',  [AklController::class,  'index'])->name('akl');
+Route::get('/tkr',  [TkrController::class,  'index'])->name('tkr');
+Route::get('/mp',   [MpController::class,   'index'])->name('mp');
+Route::get('/dpib', [DpibController::class, 'index'])->name('dpib');
+Route::get('/sk',   [SkController::class,   'index'])->name('sk');
+Route::get('/marketplace',   [MarketPlaceController::class,   'index'])->name('marketplace');
 /*
 |--------------------------------------------------------------------------
 | AUTH
