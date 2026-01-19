@@ -1,6 +1,6 @@
 @extends('admin.layout')
 
-@section('title', 'Manajemen Tenaga Pengajar')
+@section('title', 'Manajemen Marketplace')
 
 @section('content')
 <style>
@@ -219,8 +219,8 @@
         gap: 0.5rem;
     }
     
-    /* Tenaga Card */
-    .tenaga-card {
+    /* Marketplace Card */
+    .marketplace-card {
         background: white;
         border-radius: 16px;
         overflow: hidden;
@@ -229,97 +229,53 @@
         border: 1px solid var(--border-color);
     }
     
-    .tenaga-card:hover {
+    .marketplace-card:hover {
         transform: translateY(-5px);
         box-shadow: var(--shadow-xl);
     }
     
-    .tenaga-image {
-        height: 180px; /* Diperkecil dari 200px */
+    .marketplace-image {
+        height: 180px; /* Sedikit diperkecil */
         width: 100%;
         object-fit: cover;
         cursor: pointer;
         transition: transform 0.3s ease;
     }
     
-    .tenaga-image:hover {
+    .marketplace-image:hover {
         transform: scale(1.05);
     }
     
-    .tenaga-body {
+    .marketplace-body {
         padding: 1.25rem; /* Diperkecil dari 1.5rem */
     }
     
-    .tenaga-title {
-        font-size: 1.1rem; /* Diperkecil dari 1.25rem */
+    .marketplace-title {
+        font-size: 1.1rem; /* Sedikit diperkecil */
         font-weight: 600;
         margin-bottom: 0.5rem;
         color: var(--dark-color);
     }
-    
-    .tenaga-description {
-        color: var(--gray-color);
-        margin-bottom: 1rem;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-    }
-    
-    .tenaga-meta {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
+
+    .marketplace-price {
+        font-size: 1.3rem; /* Sedikit diperkecil */
+        font-weight: 700;
+        color: var(--accent-green);
         margin-bottom: 1rem;
     }
     
-    .tenaga-date {
+    .marketplace-date {
         color: var(--gray-color);
         font-size: 0.875rem;
         margin-bottom: 1rem;
     }
     
-    .tenaga-footer {
+    .marketplace-footer {
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding-top: 1rem;
         border-top: 1px solid var(--border-color);
-    }
-    
-    /* Badge */
-    .badge {
-        padding: 0.375rem 0.75rem;
-        border-radius: 9999px;
-        font-weight: 500;
-        font-size: 0.75rem;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-    }
-    
-    .badge-primary {
-        background-color: rgba(59, 130, 246, 0.1);
-        color: var(--primary-blue);
-    }
-    
-    .badge-success {
-        background-color: rgba(16, 185, 129, 0.1);
-        color: var(--accent-green);
-    }
-    
-    .badge-warning {
-        background-color: rgba(234, 179, 8, 0.1);
-        color: var(--accent-yellow);
-    }
-    
-    .badge-danger {
-        background-color: rgba(239, 68, 68, 0.1);
-        color: var(--accent-red);
-    }
-    
-    .badge-info {
-        background-color: rgba(59, 130, 246, 0.1);
-        color: var(--primary-blue);
     }
     
     /* Button */
@@ -412,7 +368,7 @@
         margin-bottom: 1.5rem;
     }
     
-    /* Tombol tambah tenaga yang lebih kecil di empty state */
+    /* Tombol tambah produk yang lebih kecil di empty state */
     .empty-state .btn-primary {
         padding: 0.35rem 0.7rem;
         font-size: 0.7rem;
@@ -425,7 +381,7 @@
     }
     
     /* Grid Layout - YANG DIUBAH */
-    .tenaga-grid {
+    .marketplace-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); /* Diperkecil dari 300px */
         gap: 1.5rem;
@@ -453,7 +409,7 @@
             justify-content: flex-end;
         }
         
-        .tenaga-grid {
+        .marketplace-grid {
             grid-template-columns: 1fr;
             padding: 1rem;
         }
@@ -470,11 +426,11 @@
     <div class="page-header fade-in">
         <div class="d-flex justify-content-between align-items-center">
             <div>
-                <h1 class="fw-bold mb-1">Manajemen Tenaga Pengajar</h1>
-                <p class="mb-0 opacity-90">Kelola data tenaga pengajar sekolah</p>
+                <h1 class="fw-bold mb-1">Manajemen Marketplace</h1>
+                <p class="mb-0 opacity-90">Kelola seluruh produk yang tersedia di marketplace</p>
             </div>
-            <a href="{{ route('admin.tenagapengajar.create') }}" class="btn btn-light">
-                <i class="bi bi-plus-circle me-2"></i> Tambah Tenaga Pengajar
+            <a href="{{ route('admin.marketplace.create') }}" class="btn btn-light">
+                <i class="bi bi-plus-circle me-2"></i> Tambah Produk
             </a>
         </div>
     </div>
@@ -485,50 +441,11 @@
             <div class="stat-card slide-in">
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
-                        <p class="text-muted small mb-1">Total Tenaga Pengajar</p>
-                        <h2 class="fw-bold mb-0">{{ $tenagaPengajar->count() }}</h2>
+                        <p class="text-muted small mb-1">Total Produk</p>
+                        <h2 class="fw-bold mb-0">{{ $stats['total'] ?? $marketplaces->total() }}</h2>
                     </div>
                     <div class="stat-icon">
-                        <i class="bi bi-people"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6 mb-3">
-            <div class="stat-card slide-in" style="animation-delay: 0.1s;">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <p class="text-muted small mb-1">Pengampu</p>
-                        <h2 class="fw-bold mb-0">{{ $tenagaPengajar->pluck('pengampu')->unique()->count() }}</h2>
-                    </div>
-                    <div class="stat-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
-                        <i class="bi bi-person-badge"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6 mb-3">
-            <div class="stat-card slide-in" style="animation-delay: 0.2s;">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <p class="text-muted small mb-1">Guru Tetap</p>
-                        <h2 class="fw-bold mb-0">{{ $tenagaPengajar->where('status', 'Tetap')->count() }}</h2>
-                    </div>
-                    <div class="stat-icon" style="background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);">
-                        <i class="bi bi-person-check"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6 mb-3">
-            <div class="stat-card slide-in" style="animation-delay: 0.3s;">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <p class="text-muted small mb-1">Guru Honorer</p>
-                        <h2 class="fw-bold mb-0">{{ $tenagaPengajar->where('status', 'Honorer')->count() }}</h2>
-                    </div>
-                    <div class="stat-icon" style="background: linear-gradient(135deg, #eab308 0%, #d97706 100%);">
-                        <i class="bi bi-person-workspace"></i>
+                        <i class="bi bi-box-seam"></i>
                     </div>
                 </div>
             </div>
@@ -547,7 +464,7 @@
     <div class="filter-card slide-in" style="animation-delay: 0.3s;">
         <div class="filter-header">
             <i class="bi bi-funnel"></i>
-            <h5>Filter Tenaga Pengajar</h5>
+            <h5>Filter Produk</h5>
         </div>
         <div class="row g-3">
             <div class="col-md-6">
@@ -555,15 +472,15 @@
                     <span class="input-group-text">
                         <i class="bi bi-search"></i>
                     </span>
-                    <input type="text" class="form-control" id="searchInput" placeholder="Cari nama tenaga pengajar...">
+                    <input type="text" class="form-control" id="searchInput" placeholder="Cari nama produk...">
                 </div>
             </div>
             <div class="col-md-3">
-                <select class="form-select" id="filterPengampu">
-                    <option value="">Semua Pengampu</option>
-                    @foreach($tenagaPengajar->pluck('pengampu')->unique() as $p)
-                        <option value="{{ strtolower($p) }}">{{ $p }}</option>
-                    @endforeach
+                <select class="form-select" id="filterHarga">
+                    <option value="">Semua Harga</option>
+                    <option value="expensive">> 1.000.000</option>
+                    <option value="medium">500.000 - 1.000.000</option>
+                    <option value="cheap">< 500.000</option>
                 </select>
             </div>
             <div class="col-md-3">
@@ -571,15 +488,17 @@
                     <option value="newest">Terbaru</option>
                     <option value="oldest">Terlama</option>
                     <option value="name">Nama A-Z</option>
+                    <option value="price_low">Harga Terendah</option>
+                    <option value="price_high">Harga Tertinggi</option>
                 </select>
             </div>
         </div>
     </div>
 
-    <!-- CARD TENAGA PENGAJAR -->
+    <!-- CARD MARKETPLACE -->
     <div class="card-container slide-in" style="animation-delay: 0.4s;">
         <div class="card-header">
-            <h5 class="card-title">Daftar Tenaga Pengajar</h5>
+            <h5 class="card-title">Daftar Produk</h5>
             <div class="card-actions">
                 <button class="btn btn-light btn-sm">
                     <i class="bi bi-download me-2"></i> Export
@@ -587,54 +506,42 @@
             </div>
         </div>
         
-        <div class="tenaga-grid" id="tenagaGrid">
-            @forelse ($tenagaPengajar as $tenaga)
-                <div class="tenaga-card tenaga-item"
-                     data-nama="{{ strtolower($tenaga->nama) }}"
-                     data-pengampu="{{ strtolower($tenaga->pengampu) }}"
-                     data-tanggal="{{ $tenaga->created_at->format('Y-m-d') }}">
+        <div class="marketplace-grid" id="marketplaceGrid">
+            @forelse ($marketplaces as $item)
+                <div class="marketplace-card marketplace-item"
+                     data-nama="{{ strtolower($item->nama) }}"
+                     data-harga="{{ $item->harga }}"
+                     data-tanggal="{{ $item->created_at->format('Y-m-d') }}">
                     
-                    @if($tenaga->foto)
-                        <img src="{{ asset('storage/'.$tenaga->foto) }}"
-                             class="tenaga-image"
-                             alt="{{ $tenaga->nama }}"
-                             onclick="showImageModal('{{ asset('storage/'.$tenaga->foto) }}','{{ $tenaga->nama }}')">
+                    @if($item->foto)
+                        <img src="{{ asset('storage/'.$item->foto) }}"
+                             class="marketplace-image"
+                             alt="{{ $item->nama }}"
+                             onclick="showImageModal('{{ asset('storage/'.$item->foto) }}','{{ $item->nama }}')">
                     @else
-                        <div class="tenaga-image bg-light d-flex align-items-center justify-content-center">
-                            <i class="bi bi-person text-muted" style="font-size: 5rem;"></i>
+                        <div class="marketplace-image bg-light d-flex align-items-center justify-content-center">
+                            <i class="bi bi-image text-muted" style="font-size: 5rem;"></i>
                         </div>
                     @endif
                     
-                    <div class="tenaga-body">
-                        <h5 class="tenaga-title">{{ $tenaga->nama }}</h5>
-                        <p class="tenaga-description">
-                            {{ \Illuminate\Support\Str::limit(strip_tags($tenaga->deskripsi ?? ''), 120) }}
-                        </p>
+                    <div class="marketplace-body">
+                        <h5 class="marketplace-title">{{ $item->nama }}</h5>
                         
-                        <div class="tenaga-meta">
-                            <span class="badge badge-primary">
-                                <i class="bi bi-book me-1"></i>
-                                {{ $tenaga->pengampu }}
-                            </span>
-                            
-                            @if($tenaga->status == 'Tetap')
-                                <span class="badge badge-success">Tetap</span>
-                            @else
-                                <span class="badge badge-warning">Honorer</span>
-                            @endif
+                        <div class="marketplace-price">
+                            Rp {{ number_format($item->harga, 0, ',', '.') }}
                         </div>
                         
-                        <div class="tenaga-date">
+                        <div class="marketplace-date">
                             <i class="bi bi-calendar me-1"></i>
-                            {{ $tenaga->created_at->format('d M Y') }}
+                            {{ $item->created_at->format('d M Y') }}
                         </div>
                         
-                        <div class="tenaga-footer">
+                        <div class="marketplace-footer">
                             <div class="d-inline-flex gap-1">
-                                <a href="{{ route('admin.tenagapengajar.edit',$tenaga->id) }}" class="btn btn-icon btn-icon-primary">
+                                <a href="{{ route('admin.marketplace.edit',$item->id) }}" class="btn btn-icon btn-icon-primary">
                                     <i class="bi bi-pencil"></i>
                                 </a>
-                                <form action="{{ route('admin.tenagapengajar.destroy',$tenaga->id) }}" method="POST"
+                                <form action="{{ route('admin.marketplace.destroy',$item->id) }}" method="POST"
                                       onsubmit="return confirmDelete()">
                                     @csrf @method('DELETE')
                                     <button class="btn btn-icon btn-icon-danger">
@@ -648,18 +555,21 @@
             @empty
                 <!-- EMPTY STATE -->
                 <div class="empty-state" style="grid-column: 1 / -1;">
-                    <i class="bi bi-people"></i>
-                    <h5>Data tenaga pengajar belum tersedia</h5>
-                    <p>Belum ada tenaga pengajar yang ditambahkan. Mulai dengan menambahkan tenaga pengajar baru.</p>
+                    <i class="bi bi-box-seam"></i>
+                    <h5>Belum ada produk</h5>
+                    <p>Belum ada produk yang ditambahkan. Mulai dengan menambahkan produk baru.</p>
+                    <a href="{{ route('admin.marketplace.create') }}" class="btn btn-primary">
+                        <i class="bi bi-plus-circle me-2"></i> Tambah Produk Baru
+                    </a>
                 </div>
             @endforelse
         </div>
-    </div>
 
-    <!-- PAGINATION -->
-    {{-- <div class="d-flex justify-content-center mt-4">
-        {{ $tenagaPengajar->links('pagination::bootstrap-4') }}
-    </div> --}}
+        <!-- PAGINATION -->
+        <div class="d-flex justify-content-center p-3">
+            {{ $marketplaces->links() }}
+        </div>
+    </div>
 </div>
 
 <!-- MODAL GAMBAR -->
@@ -678,64 +588,79 @@
 </div>
 
 <script>
-// LOGIC TIDAK DIUBAH - HANYA PENYESUAIAN SELECTOR UNTUK CARD LAYOUT
+// Filter dan Sortir
 const searchInput = document.getElementById('searchInput');
-const filterPengampu = document.getElementById('filterPengampu');
+const filterHarga = document.getElementById('filterHarga');
 const sortBy = document.getElementById('sortBy');
 
 function applyFilter() {
     const search = searchInput.value.toLowerCase();
-    const pengampu = filterPengampu.value.toLowerCase();
+    const hargaFilter = filterHarga.value;
 
-    // Mengubah selector dari .tenaga-row menjadi .tenaga-item
-    document.querySelectorAll('.tenaga-item').forEach(item => {
+    document.querySelectorAll('.marketplace-item').forEach(item => {
         let visible = true;
         const nama = item.dataset.nama;
-        const pengampuItem = item.dataset.pengampu;
+        const harga = parseFloat(item.dataset.harga);
 
         if (search && !nama.includes(search)) visible = false;
-        if (pengampu && !pengampuItem.includes(pengampu)) visible = false;
+        
+        if (hargaFilter) {
+            if (hargaFilter === 'expensive' && harga <= 1000000) visible = false;
+            if (hargaFilter === 'medium' && (harga < 500000 || harga > 1000000)) visible = false;
+            if (hargaFilter === 'cheap' && harga >= 500000) visible = false;
+        }
 
         item.style.display = visible ? '' : 'none';
     });
 }
 
 function applySort() {
-    // Mengubah selector dari .tenaga-row menjadi .tenaga-item
-    const items = Array.from(document.querySelectorAll('.tenaga-item'));
-    const grid = document.getElementById('tenagaGrid');
+    const items = Array.from(document.querySelectorAll('.marketplace-item'));
+    const grid = document.getElementById('marketplaceGrid');
 
     items.sort((a,b)=>{
-        if (sortBy.value === 'name') {
-            return a.dataset.nama.localeCompare(b.dataset.nama);
+        const aNama = a.dataset.nama;
+        const bNama = b.dataset.nama;
+        const aHarga = parseFloat(a.dataset.harga);
+        const bHarga = parseFloat(b.dataset.harga);
+        const aTanggal = a.dataset.tanggal;
+        const bTanggal = b.dataset.tanggal;
+
+        switch (sortBy.value) {
+            case 'name':
+                return aNama.localeCompare(bNama);
+            case 'oldest':
+                return new Date(aTanggal) - new Date(bTanggal);
+            case 'price_low':
+                return aHarga - bHarga;
+            case 'price_high':
+                return bHarga - aHarga;
+            default: // 'newest'
+                return new Date(bTanggal) - new Date(aTanggal);
         }
-        if (sortBy.value === 'oldest') {
-            return new Date(a.dataset.tanggal) - new Date(b.dataset.tanggal);
-        }
-        return new Date(b.dataset.tanggal) - new Date(a.dataset.tanggal);
     });
 
     items.forEach(item => grid.appendChild(item));
 }
 
-// Event listeners tetap sama
+// Event listeners
 searchInput.addEventListener('input', applyFilter);
-filterPengampu.addEventListener('change', applyFilter);
+filterHarga.addEventListener('change', applyFilter);
 sortBy.addEventListener('change', () => {
     applySort();
     applyFilter();
 });
 
-// Fungsi modal gambar tidak diubah
+// Fungsi modal gambar
 function showImageModal(src,title){
     document.getElementById('modalImage').src = src;
     document.getElementById('imageModalLabel').innerText = title;
     new bootstrap.Modal(document.getElementById('imageModal')).show();
 }
 
-// Fungsi konfirmasi hapus tidak diubah
+// Fungsi konfirmasi hapus
 function confirmDelete(){
-    return confirm('Yakin ingin menghapus tenaga pengajar ini?');
+    return confirm('Yakin ingin menghapus produk ini?');
 }
 </script>
 @endsection

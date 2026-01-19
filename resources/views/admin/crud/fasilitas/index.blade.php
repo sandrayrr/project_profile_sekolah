@@ -235,7 +235,7 @@
     }
     
     .facility-image {
-        height: 200px;
+        height: 180px; /* Diperkecil dari 200px */
         width: 100%;
         object-fit: cover;
         cursor: pointer;
@@ -247,11 +247,11 @@
     }
     
     .facility-body {
-        padding: 1.5rem;
+        padding: 1.25rem; /* Diperkecil dari 1.5rem */
     }
     
     .facility-title {
-        font-size: 1.25rem;
+        font-size: 1.1rem; /* Diperkecil dari 1.25rem */
         font-weight: 600;
         margin-bottom: 0.5rem;
         color: var(--dark-color);
@@ -424,10 +424,10 @@
         margin-right: 0.3rem;
     }
     
-    /* Grid Layout */
+    /* Grid Layout - YANG DIUBAH */
     .facility-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); /* Diperkecil dari 300px */
         gap: 1.5rem;
         padding: 1.5rem;
     }

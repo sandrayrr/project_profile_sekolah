@@ -431,6 +431,12 @@
             <span>Ekstrakurikuler</span>
         </a>
 
+        <a href="{{ route('admin.marketplace.index') }}"
+            class="nav-link {{ request()->routeIs('admin.marketplace*') ? 'active' : '' }}">
+            <i class="material-icons">storefront</i>
+            <span>Marketplace</span>
+        </a>
+
         <div class="nav-title">User</div>
         <a href="{{ route('admin.users.index') }}"
             class="nav-link {{ request()->routeIs('admin.users*') ? 'active' : '' }}">

@@ -24,8 +24,6 @@
         --gradient-secondary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
         --gradient-success: linear-gradient(135deg, #10b981 0%, #059669 100%);
         --gradient-danger: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-        --gradient-modern: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        --gradient-vibrant: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
         --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
         --shadow-md: 0 4px 6px rgba(0,0,0,0.07);
         --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
@@ -41,7 +39,8 @@
     
     body {
         font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        /* Background yang lebih bersih dan elegan */
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
         color: var(--dark-color);
         position: relative;
         overflow-x: hidden;
@@ -49,7 +48,7 @@
         min-height: 100vh;
     }
     
-    /* Animasi */
+    /* Animasi yang lebih halus */
     @keyframes fadeIn {
         from { opacity: 0; transform: translateY(20px); }
         to { opacity: 1; transform: translateY(0); }
@@ -60,38 +59,9 @@
         to { opacity: 1; transform: translateX(0); }
     }
     
-    @keyframes slideInRight {
-        from { opacity: 0; transform: translateX(30px); }
-        to { opacity: 1; transform: translateX(0); }
-    }
-    
     @keyframes slideInUp {
         from { opacity: 0; transform: translateY(30px); }
         to { opacity: 1; transform: translateY(0); }
-    }
-    
-    @keyframes pulse {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.05); }
-        100% { transform: scale(1); }
-    }
-    
-    @keyframes float {
-        0% { transform: translateY(0px); }
-        50% { transform: translateY(-10px); }
-        100% { transform: translateY(0px); }
-    }
-    
-    @keyframes shimmer {
-        0% { background-position: -1000px 0; }
-        100% { background-position: 1000px 0; }
-    }
-    
-    @keyframes blob {
-        0% { transform: translate(0px, 0px) scale(1); }
-        33% { transform: translate(30px, -50px) scale(1.1); }
-        66% { transform: translate(-20px, 20px) scale(0.9); }
-        100% { transform: translate(0px, 0px) scale(1); }
     }
     
     .fade-in {
@@ -102,107 +72,8 @@
         animation: slideInLeft 0.8s ease-out;
     }
     
-    .slide-in-right {
-        animation: slideInRight 0.8s ease-out;
-    }
-    
     .slide-in-up {
         animation: slideInUp 0.8s ease-out;
-    }
-    
-    .pulse-animation {
-        animation: pulse 2s infinite;
-    }
-    
-    .float-animation {
-        animation: float 3s ease-in-out infinite;
-    }
-    
-    /* Watermark Logo Sekolah di tengah halaman */
-    .watermark-container {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        z-index: -1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden;
-    }
-    
-    .school-logo-watermark {
-        width: 600px;
-        height: 600px;
-        background-image: url('https://z-cdn-media.chatglm.cn/files/87692716-b454-4f10-975a-68b6e0678b15.png?auth_key=1867942909-fa1d2338d8714febac500b8f54a413df-0-48e85327eb38ab7c1cb8680e2576aa2d');
-        background-size: contain;
-        background-position: center;
-        background-repeat: no-repeat;
-        opacity: 0.05;
-        filter: grayscale(100%) contrast(1.2);
-    }
-    
-    .school-text-watermark {
-        font-size: 5rem;
-        font-weight: 900;
-        color: var(--dark-color);
-        opacity: 0.02;
-        letter-spacing: 0.5rem;
-        text-transform: uppercase;
-        margin-top: 2rem;
-        transform: rotate(-5deg);
-    }
-    
-    /* Background Pattern */
-    .bg-pattern {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: radial-gradient(var(--primary-blue) 1px, transparent 1px);
-        background-size: 30px 30px;
-        opacity: 0.03;
-        z-index: -2;
-    }
-    
-    /* Modern Background Elements */
-    .bg-blob {
-        position: fixed;
-        border-radius: 50%;
-        filter: blur(40px);
-        opacity: 0.4;
-        z-index: -1;
-    }
-    
-    .blob-1 {
-        top: 10%;
-        left: 10%;
-        width: 300px;
-        height: 300px;
-        background: var(--gradient-primary);
-        animation: blob 7s infinite;
-    }
-    
-    .blob-2 {
-        bottom: 10%;
-        right: 10%;
-        width: 400px;
-        height: 400px;
-        background: var(--gradient-accent);
-        animation: blob 9s infinite;
-    }
-    
-    .blob-3 {
-        top: 50%;
-        right: 30%;
-        width: 250px;
-        height: 250px;
-        background: var(--gradient-secondary);
-        animation: blob 11s infinite;
     }
     
     /* Container */
@@ -212,7 +83,7 @@
         margin: 0 auto;
     }
     
-    /* Header Section */
+    /* Header Section yang lebih bersih */
     .page-header {
         background: var(--gradient-primary);
         color: white;
@@ -222,6 +93,8 @@
         position: relative;
         overflow: hidden;
         margin-bottom: 2rem;
+        /* Menambahkan efek glassmorphism */
+        backdrop-filter: blur(10px);
     }
     
     .page-header::before {
@@ -238,42 +111,34 @@
         z-index: 0;
     }
     
-    .page-header::after {
-        content: '';
-        position: absolute;
-        top: -50%;
-        right: -50%;
-        width: 200%;
-        height: 200%;
-        background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
-        z-index: 0;
-    }
-    
     .page-header-content {
         position: relative;
         z-index: 1;
     }
     
-    /* Stat Card */
+    /* Stat Card yang lebih modern */
     .stat-card {
         background: white;
-        border-radius: 20px;
+        border-radius: 16px;
         padding: 1.5rem;
-        box-shadow: var(--shadow-lg);
-        transition: all 0.3s ease;
+        box-shadow: var(--shadow-md);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         position: relative;
         overflow: hidden;
         margin-bottom: 1.5rem;
         height: 100%;
         border: 1px solid rgba(0,0,0,0.05);
+        /* Border kiri yang menarik */
+        border-left: 4px solid transparent;
     }
     
     .stat-card:hover {
         transform: translateY(-5px);
-        box-shadow: var(--shadow-2xl);
+        box-shadow: var(--shadow-xl);
     }
     
-    .stat-card::before {
+    /* Memberi warna pada border kiri saat hover */
+    .stat-card:hover::before {
         content: '';
         position: absolute;
         top: 0;
@@ -282,54 +147,33 @@
         height: 100%;
         background: var(--gradient-primary);
     }
-    
-    .stat-card::after {
-        content: '';
-        position: absolute;
-        bottom: -50px;
-        right: -50px;
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-        background: var(--gradient-primary);
-        opacity: 0.05;
-    }
+
+    .stat-card:nth-child(1):hover::before { background: var(--gradient-modern); }
+    .stat-card:nth-child(2):hover::before { background: var(--gradient-danger); }
+    .stat-card:nth-child(3):hover::before { background: var(--gradient-secondary); }
+    .stat-card:nth-child(4):hover::before { background: var(--gradient-success); }
     
     .stat-icon {
-        width: 70px;
-        height: 70px;
-        border-radius: 16px;
+        width: 60px;
+        height: 60px;
+        border-radius: 12px;
         display: flex;
         align-items: center;
         justify-content: center;
         margin-bottom: 1.5rem;
-        font-size: 1.8rem;
+        font-size: 1.5rem;
         color: white;
-        position: relative;
-        z-index: 1;
         box-shadow: var(--shadow-md);
     }
     
     /* Filter Card */
     .filter-card {
         background: white;
-        border-radius: 20px;
+        border-radius: 16px;
         padding: 1.5rem;
-        box-shadow: var(--shadow-lg);
+        box-shadow: var(--shadow-md);
         margin-bottom: 1.5rem;
-        position: relative;
-        overflow: hidden;
         border: 1px solid rgba(0,0,0,0.05);
-    }
-    
-    .filter-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 5px;
-        background: var(--gradient-modern);
     }
     
     .input-group-text {
@@ -352,24 +196,13 @@
         box-shadow: 0 0 0 0.2rem rgba(0, 86, 179, 0.25);
     }
     
-    /* Table Card */
+    /* Table Card yang lebih rapi */
     .table-card {
         background: white;
-        border-radius: 20px;
+        border-radius: 16px;
         box-shadow: var(--shadow-lg);
         overflow: hidden;
-        position: relative;
         border: 1px solid rgba(0,0,0,0.05);
-    }
-    
-    .table-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 5px;
-        background: var(--gradient-primary);
     }
     
     .table {
@@ -382,55 +215,37 @@
         font-weight: 600;
         padding: 15px;
         background: rgba(0, 86, 179, 0.05);
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
     }
     
     .table tbody td {
         padding: 15px;
         vertical-align: middle;
+        border-bottom: 1px solid var(--border-color);
     }
     
+    /* Hover effect pada baris tabel yang lebih halus */
     .table tbody tr {
-        transition: all 0.3s ease;
-        position: relative;
+        transition: all 0.2s ease-in-out;
     }
     
     .table tbody tr:hover {
         background-color: var(--light-blue);
-        transform: translateX(5px);
-    }
-    
-    .table tbody tr::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        height: 100%;
-        width: 3px;
-        background: var(--gradient-primary);
-        border-radius: 3px;
-        transform: scaleY(0);
-        transition: transform 0.3s ease;
-    }
-    
-    .table tbody tr:hover::before {
-        transform: scaleY(1);
+        box-shadow: var(--shadow-sm);
     }
     
     /* Badge */
     .badge {
-        padding: 8px 12px;
+        padding: 6px 12px;
         border-radius: 50px;
         font-weight: 500;
-        font-size: 0.85rem;
-        transition: all 0.3s ease;
+        font-size: 0.8rem;
+        letter-spacing: 0.5px;
     }
     
-    .badge:hover {
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-sm);
-    }
-    
-    /* User Avatar */
+    /* User Avatar yang sedikit lebih baik */
     .user-avatar {
         width: 40px;
         height: 40px;
@@ -442,34 +257,25 @@
         color: white;
         margin-right: 12px;
         flex-shrink: 0;
+        box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
     }
     
-    .avatar-admin {
-        background: var(--gradient-danger);
-    }
+    .avatar-admin { background: var(--gradient-danger); }
+    .avatar-guru { background: var(--gradient-secondary); }
+    .avatar-siswa { background: var(--gradient-success); }
     
-    .avatar-guru {
-        background: var(--gradient-secondary);
-    }
-    
-    .avatar-siswa {
-        background: var(--gradient-success);
-    }
-    
-    /* Button */
+    /* Button yang lebih halus */
     .btn {
-        padding: 0.75rem 1.5rem;
-        border-radius: 12px;
+        padding: 0.6rem 1.2rem;
+        border-radius: 10px;
         font-weight: 600;
         transition: all 0.3s ease;
         border: none;
         cursor: pointer;
-        font-size: 0.95rem;
+        font-size: 0.9rem;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        position: relative;
-        overflow: hidden;
     }
     
     .btn i {
@@ -479,109 +285,52 @@
     .btn-primary {
         background: var(--gradient-primary);
         color: white;
-        box-shadow: var(--shadow-md);
-    }
-    
-    .btn-primary::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-        transition: left 0.5s;
-    }
-    
-    .btn-primary:hover::before {
-        left: 100%;
+        box-shadow: var(--shadow-sm);
     }
     
     .btn-primary:hover {
         transform: translateY(-2px);
-        box-shadow: var(--shadow-xl);
+        box-shadow: var(--shadow-lg);
+        color: white;
     }
     
     .btn-light {
-        background: rgba(255, 255, 255, 0.9);
+        background: white;
         color: var(--primary-blue);
         box-shadow: var(--shadow-sm);
+        border: 1px solid var(--border-color);
     }
     
     .btn-light:hover {
-        background: white;
+        background: var(--light-blue);
         transform: translateY(-2px);
         box-shadow: var(--shadow-md);
-    }
-    
-    .btn-outline-primary {
-        background: transparent;
         color: var(--primary-blue);
-        border: 1px solid var(--primary-blue);
     }
-    
-    .btn-outline-primary:hover {
-        background: var(--primary-blue);
-        color: white;
+
+    .btn-group .btn {
+        border-radius: 0;
     }
-    
-    .btn-outline-warning {
-        background: transparent;
-        color: var(--primary-yellow);
-        border: 1px solid var(--primary-yellow);
-    }
-    
-    .btn-outline-warning:hover {
-        background: var(--primary-yellow);
-        color: white;
-    }
-    
-    .btn-outline-danger {
-        background: transparent;
-        color: var(--primary-red);
-        border: 1px solid var(--primary-red);
-    }
-    
-    .btn-outline-danger:hover {
-        background: var(--primary-red);
-        color: white;
-    }
-    
-    /* Alert */
-    .alert {
-        border-radius: 15px;
-        border: none;
-        box-shadow: var(--shadow-sm);
-    }
-    
+    .btn-group .btn:first-child { border-radius: 8px 0 0 8px; }
+    .btn-group .btn:last-child { border-radius: 0 8px 8px 0; }
+    .btn-group .btn:not(:last-child) { border-right: 1px solid var(--border-color); }
+
     /* Empty State */
     .empty-state {
-        padding: 80px 0;
+        padding: 60px 20px;
         text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        min-height: 400px;
     }
     
     .empty-state i {
-        font-size: 5rem;
+        font-size: 4rem;
         color: var(--text-muted);
         margin-bottom: 1.5rem;
-        opacity: 0.7;
     }
     
     .empty-state h5 {
         margin-bottom: 1rem;
-        font-size: 1.5rem;
+        font-size: 1.25rem;
         font-weight: 600;
-    }
-    
-    .empty-state p {
-        margin-bottom: 2rem;
-        font-size: 1.1rem;
-        max-width: 500px;
     }
     
     /* Pagination */
@@ -604,38 +353,10 @@
     
     /* Responsive */
     @media (max-width: 768px) {
-        .container-fluid {
-            padding: 1rem;
-        }
-        
-        .page-header {
-            padding: 1.5rem;
-        }
-        
-        .school-logo-watermark {
-            width: 300px;
-            height: 300px;
-        }
-        
-        .school-text-watermark {
-            font-size: 2.5rem;
-        }
+        .container-fluid { padding: 1rem; }
+        .page-header { padding: 1.5rem; }
     }
 </style>
-
-<!-- Background Pattern -->
-<div class="bg-pattern"></div>
-
-<!-- Modern Background Elements -->
-<div class="bg-blob blob-1"></div>
-<div class="bg-blob blob-2"></div>
-<div class="bg-blob blob-3"></div>
-
-<!-- Watermark Container -->
-<div class="watermark-container">
-    <div class="school-logo-watermark"></div>
-    <div class="school-text-watermark">SMKN 1 Kawali</div>
-</div>
 
 <div class="container-fluid py-4">
 
@@ -644,10 +365,8 @@
         <div class="page-header-content">
             <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
                 <div>
-                    <h4 class="fw-bold mb-1">Manajemen User</h4>
-                    <p class="mb-0 opacity-75">
-                        Kelola akun pengguna sistem (Admin, Guru, Siswa)
-                    </p>
+                    <h1 class="fw-bold mb-1">Manajemen User</h1>
+                    <p class="mb-0 opacity-75">Kelola akun pengguna sistem (Admin, Guru, Siswa)</p>
                 </div>
                 <a href="{{ route('admin.users.create') }}" class="btn btn-light px-4 shadow-sm">
                     <i class="bi bi-person-plus-fill me-2"></i> Tambah User
@@ -733,20 +452,14 @@
             <form method="GET" action="{{ route('admin.users.index') }}">
                 <div class="row g-3">
                     <div class="col-md-6">
-                        <label class="form-label small text-muted fw-semibold">
-                            Cari User
-                        </label>
+                        <label class="form-label small text-muted fw-semibold">Cari User</label>
                         <div class="input-group">
-                            <span class="input-group-text">
-                                <i class="bi bi-search"></i>
-                            </span>
+                            <span class="input-group-text"><i class="bi bi-search"></i></span>
                             <input type="text" name="q" value="{{ $q ?? '' }}" class="form-control" placeholder="Cari nama atau email...">
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <label class="form-label small text-muted fw-semibold">
-                            Role
-                        </label>
+                        <label class="form-label small text-muted fw-semibold">Role</label>
                         <select name="role" class="form-select" id="filterRole">
                             <option value="">Semua Role</option>
                             <option value="admin" {{ request('role') == 'admin' ? 'selected' : '' }}>Admin</option>
@@ -755,9 +468,7 @@
                         </select>
                     </div>
                     <div class="col-md-3">
-                        <label class="form-label small text-muted fw-semibold">
-                            Filter
-                        </label>
+                        <label class="form-label small text-muted fw-semibold">Filter</label>
                         <button type="submit" class="btn btn-outline-secondary w-100">
                             <i class="bi bi-funnel me-2"></i> Terapkan Filter
                         </button>
@@ -768,7 +479,7 @@
     </div>
 
     {{-- TABLE --}}
-    <div class="table-card slide-in-right" style="animation-delay: 0.7s;">
+    <div class="table-card slide-in-up" style="animation-delay: 0.7s;">
         <div class="card-body p-0">
             <div class="table-responsive">
                 <table class="table table-hover align-middle mb-0">
@@ -786,9 +497,7 @@
                         @forelse($users as $u)
                         <tr>
                             <td class="text-center">
-                                <span class="badge bg-light text-dark rounded-pill">
-                                    {{ $users->firstItem() + $loop->index }}
-                                </span>
+                                <span class="badge bg-light text-dark rounded-pill">{{ $users->firstItem() + $loop->index }}</span>
                             </td>
                             <td>
                                 <div class="d-flex align-items-center">
@@ -819,9 +528,7 @@
                                     <a href="{{ route('admin.users.edit', $u->id) }}" class="btn btn-sm btn-outline-warning" title="Edit">
                                         <i class="bi bi-pencil-square"></i>
                                     </a>
-                                    <form action="{{ route('admin.users.destroy', $u->id) }}" 
-                                          method="POST" 
-                                          onsubmit="return confirmDelete('Yakin ingin menghapus user {{ $u->name }}?')">
+                                    <form action="{{ route('admin.users.destroy', $u->id) }}" method="POST" onsubmit="return confirmDelete('Yakin ingin menghapus user {{ $u->name }}?')">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-sm btn-outline-danger" title="Hapus">
@@ -834,14 +541,12 @@
                     @empty
                         <tr>
                             <td colspan="6" class="empty-state">
-                                <div class="empty-state-content">
-                                    <i class="bi bi-people"></i>
-                                    <h5 class="mt-3 text-muted">Belum ada user</h5>
-                                    <p class="text-muted">Tambahkan user pertama untuk memulai</p>
-                                    <a href="{{ route('admin.users.create') }}" class="btn btn-primary btn-lg px-4">
-                                        <i class="bi bi-person-plus-fill me-2"></i>Tambah User
-                                    </a>
-                                </div>
+                                <i class="bi bi-people"></i>
+                                <h5 class="mt-3 text-muted">Belum ada user</h5>
+                                <p class="text-muted">Tambahkan user pertama untuk memulai</p>
+                                <a href="{{ route('admin.users.create') }}" class="btn btn-primary btn-lg px-4">
+                                    <i class="bi bi-person-plus-fill me-2"></i>Tambah User
+                                </a>
                             </td>
                         </tr>
                     @endforelse
@@ -866,7 +571,7 @@
 </div>
 
 <script>
-// Custom confirm dialog
+// Custom confirm dialog dengan SweetAlert2 yang lebih menarik
 function confirmDelete(message) {
     return Swal.fire({
         title: 'Konfirmasi Hapus',
@@ -876,7 +581,8 @@ function confirmDelete(message) {
         confirmButtonColor: '#dc3545',
         cancelButtonColor: '#6c757d',
         confirmButtonText: 'Ya, hapus!',
-        cancelButtonText: 'Batal'
+        cancelButtonText: 'Batal',
+        reverseButtons: true
     }).then((result) => {
         return result.isConfirmed;
     });

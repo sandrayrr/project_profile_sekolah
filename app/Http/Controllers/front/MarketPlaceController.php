@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\front;
 
 use App\Http\Controllers\Controller;
+use App\Models\Marketplace;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -13,8 +14,8 @@ class MarketPlaceController extends Controller
      */
     public function index()
 {
-    $products = Product::latest()->get();
-    return view('pages.marketplace', compact('products'));
+    $marketplaces = Marketplace::latest()->paginate(10);
+    return view('pages.marketplace', compact('marketplaces'));
 }
 
 
