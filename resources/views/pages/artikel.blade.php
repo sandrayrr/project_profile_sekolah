@@ -229,7 +229,7 @@
             <div class="lg:col-span-2">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     @forelse ($artikels as $item)
-                    <a href="{{ route('artikel.show', $item->id) }}" class="block group">
+                    <div class="block group">
                         <div
                             class="artikel-card bg-card-light dark:bg-card-dark 
                                    rounded-2xl shadow-lg border border-border-light dark:border-border-dark 
@@ -252,8 +252,12 @@
                                 <div
                                     class="overlay absolute inset-0 opacity-0 transition-opacity duration-300 flex items-end p-4">
                                     <div class="overlay-text text-white">
-                                        <p class="font-semibold text-lg">Baca Selengkapnya</p>
-                                        <p class="text-sm opacity-90">{{ \Carbon\Carbon::parse($item->tanggal)->format('d M Y') }}</p>
+                                        <button 
+                                            class="font-semibold text-lg bg-primary/70 hover:bg-primary/90 px-4 py-2 rounded-lg transition-colors"
+                                            onclick="openModal({{ $item->id }}, '{{ $item->judul }}', '{{ asset('storage/' . $item->foto) }}', '{{ $item->deskripsi }}', '{{ \Carbon\Carbon::parse($item->tanggal)->format('d M Y') }}')">
+                                            Baca Selengkapnya
+                                        </button>
+                                        <p class="text-sm opacity-90 mt-2">{{ \Carbon\Carbon::parse($item->tanggal)->format('d M Y') }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -288,7 +292,7 @@
                                 </div>
                             </div>
                         </div>
-                    </a>
+                    </div>
                     @empty
                     <div class="col-span-full text-center py-12">
                         <i class="fas fa-inbox text-6xl text-gray-300 dark:text-gray-600 mb-4"></i>
@@ -464,5 +468,3 @@
 </body>
 
 </html>
-
-
