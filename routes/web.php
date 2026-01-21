@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use App\Models\User;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -44,7 +47,37 @@ use App\Http\Controllers\Front\MpController;
 use App\Http\Controllers\Front\DpibController;
 use App\Http\Controllers\Front\SkController;
 
+/*
+|--------------------------------------------------------------------------
+| API ROUTES (untuk status online/offline)
+|--------------------------------------------------------------------------
+*/
 
+Route::middleware('auth')->get('/user/status/{id}', function ($id) {
+    $user = User::find($id);
+
+    if (!$user) {
+        return response()->json(['online' => false]);
+    }
+
+    $isOnline = $user->last_activity &&
+                $user->last_activity->gt(now()->subMinutes(2));
+
+    return response()->json([
+        'online' => $isOnline,
+        'last_seen' => $user->last_activity
+            ? $user->last_activity->diffForHumans()
+            : 'Belum pernah aktif',
+    ]);
+});
+// Get all online users (optional)
+Route::get('/api/users/online', function() {
+    $onlineUsers = \App\Models\User::where('last_activity', '>=', now()->subMinutes(1))
+        ->select('id', 'name', 'email', 'role', 'last_activity')
+        ->get();
+    
+    return response()->json($onlineUsers);
+})->middleware('auth');
 
 /*
 |--------------------------------------------------------------------------
@@ -76,6 +109,7 @@ Route::get('/ekstrakulikuler', [FrontEkstrakulikulerController::class, 'index'])
 Route::get('/tenagapengajar', [FrontTenagaPengajarController::class, 'index'])->name('tenagapengajar');
 Route::get('/staffkependidikan', [FrontStaffKependidikanController::class, 'index'])->name('staffkependidikan');
 Route::get('/marketplace', [FrontMarketPlaceController::class, 'index'])->name('marketplace');
+
 // Jurusan
 Route::get('/pplg', [PplgController::class, 'index'])->name('pplg');
 Route::get('/tjkt', [TjktController::class, 'index'])->name('tjkt');
@@ -118,9 +152,8 @@ Route::middleware('auth')
         Route::resource('artikel', ArtikelController::class);
         Route::resource('galeri', GaleriController::class);
         Route::resource('prestasi', PrestasiController::class);
-       Route::resource('fasilitas', FasilitasController::class)
-     ->parameters(['fasilitas' => 'fasilitas']);
-
+        Route::resource('fasilitas', FasilitasController::class)
+            ->parameters(['fasilitas' => 'fasilitas']);
         Route::resource('agenda', AgendaController::class);
         Route::resource('tenagapengajar', TenagaPengajarController::class);
         Route::resource('staffkependidikan', StaffKependidikanController::class);

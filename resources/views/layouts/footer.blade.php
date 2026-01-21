@@ -4,7 +4,7 @@
             <div class="md:col-span-1">
                 <div class="flex items-center gap-3 mb-6">
                     <img alt="Logo SMK" class="w-12 h-12 rounded-full"
-                        src="{{ asset('storage/beranda/logo smkn.png') }}" />
+                        src="{{ asset('beranda/logo smkn.png') }}" />
                     <span class="font-bold text-xl">SMK Negeri 1 Kawali</span>
                 </div>
                 <p class="text-muted-light dark:text-muted-dark mb-6">

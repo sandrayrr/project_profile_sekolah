@@ -732,21 +732,24 @@ const filterKelas = document.getElementById('filterKelas');
 const filterJurusan = document.getElementById('filterJurusan');
 const sortBy = document.getElementById('sortBy');
 
-function filterPrestasi(){
-    const search = searchInput.value.toLowerCase();
-    const kelas = filterKelas.value;
-    const jurusan = filterJurusan.value;
+function filterPrestasi() {
+    const searchValue = searchInput.value.toLowerCase();
+    const kelasFilter = filterKelas.value;
+    const jurusanFilter = filterJurusan.value;
 
     document.querySelectorAll('.prestasi-row').forEach(item => {
-        const judul = item.dataset.judul;
-        const kelas = item.dataset.kelas;
-        const jurusan = item.dataset.jurusan;
+        const judul = item.dataset.judul.toLowerCase();
+        const kelasItem = item.dataset.kelas;
+        const jurusanItem = item.dataset.jurusan;
 
-        const matchesSearch = judul.includes(search);
-        const matchesKelas = kelas === '' || kelas === kelas;
-        const matchesJurusan = jurusan === '' || jurusan === jurusan;
+        const matchesSearch = judul.includes(searchValue);
+        const matchesKelas = !kelasFilter || kelasItem === kelasFilter;
+        const matchesJurusan = !jurusanFilter || jurusanItem === jurusanFilter;
 
-        item.style.display = matchesSearch && matchesKelas && matchesJurusan ? '' : 'none';
+        item.style.display =
+            matchesSearch && matchesKelas && matchesJurusan
+                ? ''
+                : 'none';
     });
 }
 
@@ -754,28 +757,22 @@ searchInput.addEventListener('input', filterPrestasi);
 filterKelas.addEventListener('change', filterPrestasi);
 filterJurusan.addEventListener('change', filterPrestasi);
 
-sortBy.addEventListener('change', function(){
+sortBy.addEventListener('change', function () {
     const items = [...document.querySelectorAll('.prestasi-row')];
     const tbody = document.querySelector('#prestasiTable tbody');
 
-    items.sort((a,b)=>{
-        if(this.value==='title') return a.dataset.judul.localeCompare(b.dataset.judul);
-        return this.value==='newest'
-            ? new Date(b.dataset.tanggal)-new Date(a.dataset.tanggal)
-            : new Date(a.dataset.tanggal)-new Date(b.dataset.tanggal);
+    items.sort((a, b) => {
+        if (this.value === 'title') {
+            return a.dataset.judul.localeCompare(b.dataset.judul);
+        }
+
+        return this.value === 'newest'
+            ? new Date(b.dataset.tanggal) - new Date(a.dataset.tanggal)
+            : new Date(a.dataset.tanggal) - new Date(b.dataset.tanggal);
     });
 
-    items.forEach(i=>tbody.appendChild(i));
+    items.forEach(item => tbody.appendChild(item));
 });
-
-function showImageModal(imageSrc, imageTitle) {
-    document.getElementById('modalImage').src = imageSrc;
-    document.getElementById('imageModalLabel').innerText = imageTitle;
-    new bootstrap.Modal(document.getElementById('imageModal')).show();
-}
-
-function confirmDelete(){
-    return confirm('Yakin ingin menghapus prestasi ini?');
-}
 </script>
+
 @endsection

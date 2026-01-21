@@ -7,7 +7,7 @@
             <div class="flex items-center gap-4 w-full md:w-auto justify-center md:justify-start group">
                 <div class="w-12 h-12 md:w-16 md:h-16 flex-shrink-0 transform transition-all duration-300 group-hover:scale-105">
                     <img alt="Logo SMK Negeri 1 Kawali" class="w-full h-full object-contain filter drop-shadow-sm rounded-lg"
-                        src="{{ asset('storage/beranda/logo smkn.png') }}" alt="Logo SMK">
+                        src="{{ asset('beranda/logo smkn.png') }}" alt="Logo SMK">
                 </div>
                 <span class="text-xl md:text-2xl font-semibold tracking-tight text-gray-800 dark:text-white transition-colors duration-300 group-hover:text-blue-600 dark:group-hover:text-blue-400">
                     SMK Negeri 1 Kawali

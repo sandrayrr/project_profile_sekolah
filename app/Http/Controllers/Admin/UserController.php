@@ -8,25 +8,50 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
+use Carbon\Carbon;
 
 class UserController extends Controller
 {
-    public function index(Request $request)
-    {
-        $q = $request->query('q');
+   public function index(Request $request)
+{
+    $q = $request->query('q');
 
-        $users = User::when($q, function ($query) use ($q) {
-                return $query->where(function ($sub) use ($q) {
-                    $sub->where('name', 'like', "%{$q}%")
-                        ->orWhere('email', 'like', "%{$q}%");
-                });
-            })
-            ->orderBy('id', 'desc')
-            ->paginate(10)
-            ->withQueryString();
+    $users = User::when($q, function ($query) use ($q) {
+            $query->where(function ($sub) use ($q) {
+                $sub->where('name', 'like', "%{$q}%")
+                    ->orWhere('email', 'like', "%{$q}%");
+            });
+        })
+        ->orderBy('id', 'desc')
+        ->paginate(10)
+        ->withQueryString();
 
-        return view('admin.crud.users.layout', compact('users', 'q'));
-    }
+    $users->getCollection()->transform(function ($user) {
+
+        if (!$user->last_activity) {
+            $user->status = 'offline';
+            $user->last_seen = 'Tidak pernah online';
+            return $user;
+        }
+
+        $diffSeconds = Carbon::parse($user->last_activity)->diffInSeconds(now());
+
+        if ($diffSeconds <= 120) {
+            $user->status = 'online';
+            $user->last_seen = 'Online sekarang';
+        } elseif ($diffSeconds <= 900) {
+            $user->status = 'idle';
+            $user->last_seen = 'Tidak aktif';
+        } else {
+            $user->status = 'offline';
+            $user->last_seen = Carbon::parse($user->last_activity)->diffForHumans();
+        }
+
+        return $user;
+    });
+
+    return view('admin.crud.users.layout', compact('users', 'q'));
+}
 
     public function create()
     {

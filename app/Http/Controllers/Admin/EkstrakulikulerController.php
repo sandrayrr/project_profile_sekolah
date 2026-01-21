@@ -49,23 +49,34 @@ class EkstrakulikulerController extends Controller
         return view('admin.crud.ekstrakulikuler.edit', compact('ekstrakulikuler'));
     }
 
-    public function update(Request $request, Ekstrakulikuler $ekstrakulikuler)
-    {
-        $request->validate([
-            'judul' => 'required',
-            'foto'  => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-        ]);
+   public function update(Request $request, Ekstrakulikuler $ekstrakulikuler)
+{
+    $request->validate([
+        'judul'    => 'required|string|max:255',
+        'kategori' => 'required|string',
+        'foto'     => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+    ]);
 
-        if ($request->hasFile('foto')) {
+    // Update foto jika ada
+    if ($request->hasFile('foto')) {
+        if ($ekstrakulikuler->foto) {
             Storage::disk('public')->delete($ekstrakulikuler->foto);
-            $ekstrakulikuler->foto = $request->file('foto')->store('ekstrakulikuler','public');
         }
 
-        $ekstrakulikuler->judul = $request->judul;
-        $ekstrakulikuler->save();
-
-        return redirect()->route('admin.ekstrakulikuler.index')->with('success','Data berhasil diupdate');
+        $ekstrakulikuler->foto = $request->file('foto')
+            ->store('ekstrakulikuler', 'public');
     }
+
+    // Update field lain
+    $ekstrakulikuler->judul    = $request->judul;
+    $ekstrakulikuler->kategori = $request->kategori;
+
+    $ekstrakulikuler->save();
+
+    return redirect()
+        ->route('admin.ekstrakulikuler.index')
+        ->with('success', 'Data berhasil diupdate');
+}
 
     public function destroy(Ekstrakulikuler $ekstrakulikuler)
     {

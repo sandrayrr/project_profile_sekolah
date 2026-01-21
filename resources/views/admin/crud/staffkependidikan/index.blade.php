@@ -524,8 +524,8 @@
             <div class="stat-card slide-in" style="animation-delay: 0.3s;">
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
-                        <p class="text-muted small mb-1">Lainnya</p>
-                        <h2 class="fw-bold mb-0">{{ $staff->whereNotIn('jabatan', ['Tata Usaha', 'Pustakawan'])->count() }}</h2>
+                        <p class="text-muted small mb-1">Toolman</p>
+                        <h2 class="fw-bold mb-0">{{ $staff->whereNotIn('jabatan', ['toolman'])->count() }}</h2>
                     </div>
                     <div class="stat-icon" style="background: linear-gradient(135deg, #eab308 0%, #d97706 100%);">
                         <i class="bi bi-three-dots"></i>
@@ -563,7 +563,7 @@
                     <option value="">Semua Jabatan</option>
                     <option value="tata usaha">Tata Usaha</option>
                     <option value="pustakawan">Pustakawan</option>
-                    <option value="tool man">Tool Man</option>
+                    <option value="toolman">Toolman</option>
                 </select>
             </div>
             <div class="col-md-3">

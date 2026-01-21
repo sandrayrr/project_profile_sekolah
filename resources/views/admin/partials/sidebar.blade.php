@@ -442,7 +442,7 @@
             class="nav-link {{ request()->routeIs('admin.users*') ? 'active' : '' }}">
             <i class="bi bi-people"></i>
             <span>Kelola User</span>
-            <span class="nav-badge">3</span>
+            
         </a>
 
     </nav>

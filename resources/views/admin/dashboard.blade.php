@@ -243,7 +243,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: url('https://picsum.photos/seed/smkn1kawali/1200/400.jpg');
+        background:  url('/admin/Foto SMKN 2.jpeg');
         background-size: cover;
         background-position: center;
         opacity: 0.1;
@@ -746,20 +746,70 @@
                         <span class="info-badge">
                             <i class="bi bi-clock"></i> <span id="current-time"></span>
                         </span>
+                        {{-- Script Jam Real Time --}}
+                        <script>
+    function updateTime() {
+        const now = new Date();
+
+        // Format jam:menit:detik
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+
+        const timeString = `${hours}:${minutes}:${seconds}`;
+        document.getElementById('current-time').textContent = timeString;
+    }
+
+    // Update setiap 1 detik
+    updateTime(); // panggil langsung supaya muncul tanpa delay
+    setInterval(updateTime, 1000);
+</script>
                         <span class="info-badge">
                             <i class="bi bi-person-circle"></i> Admin
                         </span>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-5 text-end">
-                    <div class="header-actions d-flex justify-content-end gap-2">
-                        <button class="btn btn-outline-primary">
-                            <i class="bi bi-download"></i> <span class="d-none d-md-inline">Export</span>
-                        </button>
-                        <button class="btn btn-primary">
-                            <i class="bi bi-plus-circle"></i> <span class="d-none d-md-inline">Tambah</span>
-                        </button>
-                    </div>
+                   <div class="header-actions d-flex flex-column align-items-end gap-1">
+    <!-- Greeting utama -->
+    <div class="info-badge greeting-badge" style="background: rgba(255,255,255,0.15); backdrop-filter: blur(5px); border-radius: 16px; padding: 0.8rem 1.2rem; cursor: default; box-shadow: var(--shadow-md); text-align: right; position: relative; overflow: hidden;">
+        <span id="timeGreeting" style="font-size: 1.2rem; font-weight: 400; color: white; display: inline-block;">
+            Selamat Pagi 🌅
+        </span>
+        <br>
+        <small style="font-size: 0.85rem; font-weight:500; color: white;">SMK BISA - HEBAT!</small>
+    </div>
+</div>
+<script>
+function updateGreeting() {
+    const greetingEl = document.getElementById('timeGreeting');
+    const now = new Date();
+    const hour = now.getHours();
+    let greeting = '';
+    let emoji = '';
+
+    // Aturan jam baru
+    if (hour >= 19 || hour < 0) { // 19:00 - 00:00
+        greeting = "Selamat Malam";
+        emoji = "🌙";
+    } else if (hour >= 0 && hour < 9) { // 00:00 - 09:00
+        greeting = "Selamat Pagi";
+        emoji = "🌅";
+    } else if (hour >= 9 && hour < 14) { // 09:00 - 14:00
+        greeting = "Selamat Siang";
+        emoji = "☀️";
+    } else if (hour >= 14 && hour < 19) { // 14:00 - 19:00
+        greeting = "Selamat Sore";
+        emoji = "🌇";
+    }
+
+    greetingEl.innerHTML = `${greeting} ${emoji}`;
+}
+
+// Update saat load halaman
+updateGreeting();
+setInterval(updateGreeting, 60000);
+</script>
                 </div>
             </div>
         </div>
@@ -767,127 +817,239 @@
 
     <!-- Statistik Utama -->
     <div class="row mb-4">
-        <div class="col-xl-3 col-lg-6 col-md-6 mb-3 fade-in" style="animation-delay: 0.1s;">
-            <div class="stat-card">
-                <div class="stat-icon blue">
-                    <i class="bi bi-people-fill"></i>
-                </div>
-                <div class="stat-value">1,248</div>
-                <div class="stat-label">Total Siswa</div>
-                <div class="stat-change positive">
-                    <i class="bi bi-arrow-up"></i> 12% dari tahun lalu
-                </div>
+    <div class="col-xl-3 col-lg-6 col-md-6 mb-3 fade-in" style="animation-delay: 0.1s;">
+        <div class="stat-card">
+            <div class="stat-icon blue">
+                <i class="bi bi-people-fill"></i>
             </div>
+           <div class="stat-value">{{ $siswaNow }}</div>
+           <div class="stat-label">Total Siswa</div>
+           <div class="stat-change {{ $siswaGrowth >= 0 ? 'positive' : 'negative' }}">
+           <i class="bi {{ $siswaGrowth >= 0 ? 'bi-arrow-up' : 'bi-arrow-down' }}"></i>
+           {{ abs($siswaGrowth) }}% dari tahun lalu
+           </div>
         </div>
-        
-        <div class="col-xl-3 col-lg-6 col-md-6 mb-3 fade-in" style="animation-delay: 0.2s;">
-            <div class="stat-card yellow">
-                <div class="stat-icon yellow">
-                    <i class="bi bi-person-badge-fill"></i>
-                </div>
-                <div class="stat-value">86</div>
-                <div class="stat-label">Total Guru</div>
-                <div class="stat-change positive">
-                    <i class="bi bi-arrow-up"></i> 5% dari tahun lalu
-                </div>
+    </div>
+
+    <div class="col-xl-3 col-lg-6 col-md-6 mb-3 fade-in" style="animation-delay: 0.2s;">
+        <div class="stat-card yellow">
+            <div class="stat-icon yellow">
+                <i class="bi bi-person-badge-fill"></i>
             </div>
+            <div class="stat-value">{{ $guruNow }}</div>
+            <div class="stat-label">Total Guru</div>
+            <div class="stat-change {{ $guruGrowth >= 0 ? 'positive' : 'negative' }}">
+            <i class="bi {{ $guruGrowth >= 0 ? 'bi-arrow-up' : 'bi-arrow-down' }}"></i>
+            {{ abs($guruGrowth) }}% dari tahun lalu
         </div>
-        
-        <div class="col-xl-3 col-lg-6 col-md-6 mb-3 fade-in" style="animation-delay: 0.3s;">
-            <div class="stat-card">
-                <div class="stat-icon blue">
-                    <i class="bi bi-building"></i>
-                </div>
-                <div class="stat-value">12</div>
-                <div class="stat-label">Jurusan</div>
-                <div class="stat-change positive">
-                    <i class="bi bi-arrow-up"></i> 1 jurusan baru
-                </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-md-6 mb-3 fade-in" style="animation-delay: 0.3s;">
+        <div class="stat-card">
+            <div class="stat-icon blue">
+                <i class="bi bi-building"></i>
             </div>
+            <div class="stat-value">{{ $jurusanNow }}</div>
+            <div class="stat-label">Jurusan</div>
+            <div class="stat-change {{ $jurusanGrowth >= 0 ? 'positive' : 'negative' }}">
+            <i class="bi {{ $jurusanGrowth >= 0 ? 'bi-arrow-up' : 'bi-arrow-down' }}"></i>
+            {{ abs($jurusanGrowth) }}% dari tahun lalu
         </div>
-        
-        <div class="col-xl-3 col-lg-6 col-md-6 mb-3 fade-in" style="animation-delay: 0.4s;">
-            <div class="stat-card red">
-                <div class="stat-icon red">
-                    <i class="bi bi-trophy-fill"></i>
-                </div>
-                <div class="stat-value">52</div>
-                <div class="stat-label">Prestasi</div>
-                <div class="stat-change positive">
-                    <i class="bi bi-arrow-up"></i> 8% dari tahun lalu
-                </div>
+      </div>
+    </div>
+
+    <div class="col-xl-3 col-lg-6 col-md-6 mb-3 fade-in" style="animation-delay: 0.4s;">
+        <div class="stat-card red">
+            <div class="stat-icon red">
+                <i class="bi bi-trophy-fill"></i>
+            </div>
+            <div class="stat-value">{{ $prestasiNow }}</div>
+            <div class="stat-label">Prestasi</div>
+            <div class="stat-change {{ $prestasiGrowth >= 0 ? 'positive' : 'negative' }}">
+            <i class="bi {{ $prestasiGrowth >= 0 ? 'bi-arrow-up' : 'bi-arrow-down' }}"></i>
+            {{ abs($prestasiGrowth) }}% dari tahun lalu
             </div>
         </div>
     </div>
+</div>
 
     <!-- Grafik Real-time -->
-    <div class="row mb-4">
-        <div class="col-lg-8 mb-3 fade-in" style="animation-delay: 0.5s;">
-            <div class="chart-container">
-                <div class="chart-header">
-                    <h3 class="chart-title">Statistik Real-time</h3>
-                    <div class="chart-actions">
-                        <button class="chart-action-btn" onclick="updateLineChart()">
-                            <i class="bi bi-arrow-clockwise"></i>
-                        </button>
-                        <button class="chart-action-btn" onclick="downloadLineChart()">
-                            <i class="bi bi-download"></i>
-                        </button>
+        <div class="row mb-4">
+            <div class="col-lg-8 mb-3 fade-in" style="animation-delay: 0.5s;">
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h3 class="chart-title">Statistik Real-time</h3>
+                        <div class="chart-actions">
+                            <button class="chart-action-btn" onclick="updateLineChart()">
+                                <i class="bi bi-arrow-clockwise"></i>
+                            </button>
+                            <button class="chart-action-btn" onclick="downloadLineChart()">
+                                <i class="bi bi-download"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="chart-canvas-container">
+                        <canvas id="realtimeChart"></canvas>
+                        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const ctxLine = document.getElementById('realtimeChart').getContext('2d');
+
+    const labels = @json($months); // bulan
+    const siswaData = @json($siswaHistory);
+    const guruData = @json($guruHistory);
+    const prestasiData = @json($prestasiHistory);
+
+    const realtimeChart = new Chart(ctxLine, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Siswa',
+                    data: siswaData,
+                    borderColor: 'rgba(54, 162, 235, 0.8)',
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    tension: 0.4,
+                    fill: true
+                },
+                {
+                    label: 'Guru',
+                    data: guruData,
+                    borderColor: 'rgba(255, 193, 7, 0.8)',
+                    backgroundColor: 'rgba(255, 193, 7, 0.2)',
+                    tension: 0.4,
+                    fill: true
+                },
+                {
+                    label: 'Prestasi',
+                    data: prestasiData,
+                    borderColor: 'rgba(75, 192, 192, 0.8)',
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    tension: 0.4,
+                    fill: true
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: true
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    grid: { color: 'rgba(0,0,0,0.05)' }
+                },
+                x: {
+                    grid: { display: false }
+                }
+            }
+        }
+    });
+
+    function updateLineChart() {
+        // Bisa dibuat untuk refresh data via AJAX jika mau
+        realtimeChart.update();
+    }
+
+    function downloadLineChart() {
+        const link = document.createElement('a');
+        link.href = realtimeChart.toBase64Image();
+        link.download = 'statistik-realtime.png';
+        link.click();
+    }
+</script>
+                    </div>
+                    <div class="chart-legend">
+                        <div class="chart-legend-item">
+                            <div class="chart-legend-color" style="background-color: rgba(54, 162, 235, 0.8);"></div>
+                            <span>Siswa</span>
+                        </div>
+                        <div class="chart-legend-item">
+                            <div class="chart-legend-color" style="background-color: rgba(255, 193, 7, 0.8);"></div>
+                            <span>Guru</span>
+                        </div>
+                        <div class="chart-legend-item">
+                            <div class="chart-legend-color" style="background-color: rgba(75, 192, 192, 0.8);"></div>
+                            <span>Prestasi</span>
+                        </div>
                     </div>
                 </div>
-                <div class="chart-canvas-container">
-                    <canvas id="realtimeChart"></canvas>
-                </div>
-                <div class="chart-legend">
-                    <div class="chart-legend-item">
-                        <div class="chart-legend-color" style="background-color: rgba(54, 162, 235, 0.8);"></div>
-                        <span>Siswa</span>
+            </div>
+            
+            <div class="col-lg-4 mb-3 fade-in" style="animation-delay: 0.6s;">
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h3 class="chart-title">Distribusi Jurusan</h3>
+                        <div class="chart-actions">
+                            <button class="chart-action-btn" onclick="updateDoughnutChart()">
+                                <i class="bi bi-arrow-clockwise"></i>
+                            </button>
+                        </div>
                     </div>
-                    <div class="chart-legend-item">
-                        <div class="chart-legend-color" style="background-color: rgba(255, 193, 7, 0.8);"></div>
-                        <span>Guru</span>
+                    <div class="chart-canvas-container">
+                        <canvas id="jurusanChart"></canvas>
+                        <script>
+    const ctxDoughnut = document.getElementById('jurusanChart').getContext('2d');
+
+    const jurusanChart = new Chart(ctxDoughnut, {
+        type: 'doughnut',
+        data: {
+            labels: ['RPL', 'TKJ', 'Multimedia'],
+            datasets: [{
+                data: [
+                    {{ $beranda->jurusan_rpl ?? 0 }},
+                    {{ $beranda->jurusan_tkj ?? 0 }},
+                    {{ $beranda->jurusan_multimedia ?? 0 }}
+                ],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.8)',
+                    'rgba(54, 162, 235, 0.8)',
+                    'rgba(255, 206, 86, 0.8)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }
+    });
+
+    function updateDoughnutChart() {
+        jurusanChart.update();
+    }
+</script>
                     </div>
-                    <div class="chart-legend-item">
-                        <div class="chart-legend-color" style="background-color: rgba(75, 192, 192, 0.8);"></div>
-                        <span>Prestasi</span>
+                    <div class="chart-legend">
+                        <div class="chart-legend-item">
+                            <div class="chart-legend-color" style="background-color: rgba(255, 99, 132, 0.8);"></div>
+                            <span>RPL</span>
+                        </div>
+                        <div class="chart-legend-item">
+                            <div class="chart-legend-color" style="background-color: rgba(54, 162, 235, 0.8);"></div>
+                            <span>TKJ</span>
+                        </div>
+                        <div class="chart-legend-item">
+                            <div class="chart-legend-color" style="background-color: rgba(255, 206, 86, 0.8);"></div>
+                            <span>Multimedia</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        
-        <div class="col-lg-4 mb-3 fade-in" style="animation-delay: 0.6s;">
-            <div class="chart-container">
-                <div class="chart-header">
-                    <h3 class="chart-title">Distribusi Jurusan</h3>
-                    <div class="chart-actions">
-                        <button class="chart-action-btn" onclick="updateDoughnutChart()">
-                            <i class="bi bi-arrow-clockwise"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="chart-canvas-container">
-                    <canvas id="jurusanChart"></canvas>
-                </div>
-                <div class="chart-legend">
-                    <div class="chart-legend-item">
-                        <div class="chart-legend-color" style="background-color: rgba(255, 99, 132, 0.8);"></div>
-                        <span>RPL</span>
-                    </div>
-                    <div class="chart-legend-item">
-                        <div class="chart-legend-color" style="background-color: rgba(54, 162, 235, 0.8);"></div>
-                        <span>TKJ</span>
-                    </div>
-                    <div class="chart-legend-item">
-                        <div class="chart-legend-color" style="background-color: rgba(255, 206, 86, 0.8);"></div>
-                        <span>Multimedia</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Grafik Bar -->
-    <div class="row mb-4">
+    {{-- <div class="row mb-4">
         <div class="col-lg-6 mb-3 fade-in" style="animation-delay: 0.7s;">
             <div class="chart-container">
                 <div class="chart-header">
@@ -919,7 +1081,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <!-- Floating Action Button -->
     <div class="fab-container">
