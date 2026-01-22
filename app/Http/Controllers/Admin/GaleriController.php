@@ -9,10 +9,11 @@ use Illuminate\Supprot\Facades\Storage;
 class GaleriController extends Controller
 {
     public function index()
-    {
-        $galeri = Galeri::latest()->get();
-        return view('admin.crud.galeri.index', compact('galeri'));
-    }
+{
+    $galeri = Galeri::latest()->paginate(6);
+    return view('admin.crud.galeri.index', compact('galeri'));
+}
+
 
     public function create()
     {

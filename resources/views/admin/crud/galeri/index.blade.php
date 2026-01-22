@@ -219,11 +219,12 @@
         gap: 0.5rem;
     }
     
-    /* Gallery Grid */
+    /* Gallery Grid - PERBAIKAN UTAMA */
     .gallery-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
         gap: 1.5rem;
+        padding: 1.5rem;
     }
     
     /* Gallery Card */
@@ -493,7 +494,39 @@
         .gallery-grid {
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 1rem;
+            padding: 1rem;
         }
+
+        .pagination-modern {
+    gap: 6px;
+}
+
+.pagination-modern .page-link {
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    color: var(--dark-color);
+    padding: 8px 14px;
+    transition: all 0.25s ease;
+    background: white;
+}
+
+.pagination-modern .page-item.active .page-link {
+    background: var(--gradient-primary);
+    color: white;
+    border-color: transparent;
+    box-shadow: var(--shadow-md);
+}
+
+.pagination-modern .page-link:hover {
+    background: var(--light-blue);
+    transform: translateY(-2px);
+}
+
+.pagination-modern .page-item.disabled .page-link {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
     }
 </style>
 
@@ -585,10 +618,10 @@
             </div>
         </div>
         
-        <!-- GALERI GRID -->
-        <div class="p-3">
-            @forelse ($galeri as $g)
-                <div class="gallery-grid">
+        <!-- PERBAIKAN UTAMA: Struktur grid yang benar -->
+        @if($galeri->count() > 0)
+            <div class="gallery-grid">
+                @foreach ($galeri as $g)
                     <div class="galeri-item" data-judul="{{ strtolower($g->judul) }}" data-date="{{ $g->created_at }}">
                         <div class="gallery-card">
                             <div class="gallery-image-wrapper">
@@ -620,22 +653,52 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            @empty
-                <!-- EMPTY STATE - PERBAIKAN UTAMA -->
-                <div class="empty-state">
-                    <i class="bi bi-image"></i>
-                    <h5>Data galeri belum tersedia</h5>
-                    <p>Belum ada foto yang ditambahkan. Mulai dengan menambahkan foto baru.</p>
-                    {{-- <a href="{{ route('admin.galeri.create') }}" class="btn btn-primary">
-                        <i class="bi bi-plus-circle me-2"></i>
-                        Tambah Foto
-                    </a> --}}
-                </div>
-            @endforelse
-        </div>
+                @endforeach
+            </div>
+        @else
+            <!-- EMPTY STATE  -->
+            <div class="empty-state">
+                <i class="bi bi-image"></i>
+                <h5>Data galeri belum tersedia</h5>
+                <p>Belum ada foto yang ditambahkan. Mulai dengan menambahkan foto baru.</p>
+                <a href="{{ route('admin.galeri.create') }}" class="btn btn-primary">
+                    <i class="bi bi-plus-circle me-2"></i> Tambah Foto
+                </a>
+            </div>
+        @endif
     </div>
 </div>
+
+{{-- PAGINATION --}}
+@if ($galeri->hasPages())
+    <div class="d-flex justify-content-center mt-4 fade-in">
+        <nav>
+            <ul class="pagination pagination-modern">
+                {{-- Previous --}}
+                <li class="page-item {{ $galeri->onFirstPage() ? 'disabled' : '' }}">
+                    <a class="page-link" href="{{ $galeri->previousPageUrl() ?? '#' }}">
+                        <i class="bi bi-chevron-left"></i>
+                    </a>
+                </li>
+
+                {{-- Page Numbers --}}
+                @foreach ($galeri->getUrlRange(1, $galeri->lastPage()) as $page => $url)
+                    <li class="page-item {{ $galeri->currentPage() == $page ? 'active' : '' }}">
+                        <a class="page-link" href="{{ $url }}">{{ $page }}</a>
+                    </li>
+                @endforeach
+
+                {{-- Next --}}
+                <li class="page-item {{ $galeri->hasMorePages() ? '' : 'disabled' }}">
+                    <a class="page-link" href="{{ $galeri->nextPageUrl() ?? '#' }}">
+                        <i class="bi bi-chevron-right"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+@endif
+
 
 <!-- Image Modal -->
 <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">

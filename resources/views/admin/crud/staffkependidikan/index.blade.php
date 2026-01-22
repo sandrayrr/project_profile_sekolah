@@ -651,9 +651,37 @@
     </div>
 
     <!-- PAGINATION -->
-    {{-- <div class="d-flex justify-content-center mt-4">
-        {{ $staff->links('pagination::bootstrap-4') }}
-    </div> --}}
+   @if ($staff->hasPages())
+    <div class="d-flex justify-content-center mt-4 fade-in">
+        <nav>
+            <ul class="pagination pagination-modern">
+
+                {{-- Prev --}}
+                <li class="page-item {{ $staff->onFirstPage() ? 'disabled' : '' }}">
+                    <a class="page-link" href="{{ $staff->previousPageUrl() ?? '#' }}">
+                        <i class="bi bi-chevron-left"></i>
+                    </a>
+                </li>
+
+                {{-- Number --}}
+                @foreach ($staff->getUrlRange(1, $staff->lastPage()) as $page => $url)
+                    <li class="page-item {{ $staff->currentPage() == $page ? 'active' : '' }}">
+                        <a class="page-link" href="{{ $url }}">{{ $page }}</a>
+                    </li>
+                @endforeach
+
+                {{-- Next --}}
+                <li class="page-item {{ $staff->hasMorePages() ? '' : 'disabled' }}">
+                    <a class="page-link" href="{{ $staff->nextPageUrl() ?? '#' }}">
+                        <i class="bi bi-chevron-right"></i>
+                    </a>
+                </li>
+
+            </ul>
+        </nav>
+    </div>
+@endif
+
 </div>
 
 <!-- MODAL GAMBAR -->

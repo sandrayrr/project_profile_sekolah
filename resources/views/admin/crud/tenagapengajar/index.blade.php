@@ -462,6 +462,37 @@
             width: 32px;
             height: 32px;
         }
+
+        .pagination-modern {
+    gap: 6px;
+}
+
+.pagination-modern .page-link {
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    color: var(--dark-color);
+    padding: 8px 14px;
+    background: white;
+    transition: all 0.25s ease;
+}
+
+.pagination-modern .page-item.active .page-link {
+    background: var(--gradient-primary);
+    color: white;
+    box-shadow: var(--shadow-md);
+    border-color: transparent;
+}
+
+.pagination-modern .page-link:hover {
+    background: var(--light-blue);
+    transform: translateY(-2px);
+}
+
+.pagination-modern .page-item.disabled .page-link {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
     }
 </style>
 
@@ -657,9 +688,35 @@
     </div>
 
     <!-- PAGINATION -->
-    {{-- <div class="d-flex justify-content-center mt-4">
-        {{ $tenagaPengajar->links('pagination::bootstrap-4') }}
-    </div> --}}
+    @if ($tenagaPengajar->hasPages())
+    <div class="d-flex justify-content-center mt-4 fade-in">
+        <nav>
+            <ul class="pagination pagination-modern">
+                {{-- Prev --}}
+                <li class="page-item {{ $tenagaPengajar->onFirstPage() ? 'disabled' : '' }}">
+                    <a class="page-link" href="{{ $tenagaPengajar->previousPageUrl() ?? '#' }}">
+                        <i class="bi bi-chevron-left"></i>
+                    </a>
+                </li>
+
+                {{-- Number --}}
+                @foreach ($tenagaPengajar->getUrlRange(1, $tenagaPengajar->lastPage()) as $page => $url)
+                    <li class="page-item {{ $tenagaPengajar->currentPage() == $page ? 'active' : '' }}">
+                        <a class="page-link" href="{{ $url }}">{{ $page }}</a>
+                    </li>
+                @endforeach
+
+                {{-- Next --}}
+                <li class="page-item {{ $tenagaPengajar->hasMorePages() ? '' : 'disabled' }}">
+                    <a class="page-link" href="{{ $tenagaPengajar->nextPageUrl() ?? '#' }}">
+                        <i class="bi bi-chevron-right"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+@endif
+
 </div>
 
 <!-- MODAL GAMBAR -->
