@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use App\Models\User;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +26,7 @@ use App\Http\Controllers\Admin\AgendaController;
 use App\Http\Controllers\Admin\EkstrakulikulerController;
 use App\Http\Controllers\Admin\TenagaPengajarController;
 use App\Http\Controllers\Admin\StaffKependidikanController;
+use App\Http\Controllers\Admin\MarketplaceController;
 
 // Front Controllers
 use App\Http\Controllers\BerandaController as FrontBerandaController;
@@ -34,6 +38,7 @@ use App\Http\Controllers\Front\FasilitasController as FrontFasilitasController;
 use App\Http\Controllers\Front\EkstrakulikulerController as FrontEkstrakulikulerController;
 use App\Http\Controllers\Front\TenagaPengajarController as FrontTenagaPengajarController;
 use App\Http\Controllers\Front\StaffKependidikanController as FrontStaffKependidikanController;
+use App\Http\Controllers\Front\MarketPlaceController as FrontMarketPlaceController;
 use App\Http\Controllers\Front\PplgController;
 use App\Http\Controllers\Front\TjktController;
 use App\Http\Controllers\Front\AklController;
@@ -41,8 +46,38 @@ use App\Http\Controllers\Front\TkrController;
 use App\Http\Controllers\Front\MpController;
 use App\Http\Controllers\Front\DpibController;
 use App\Http\Controllers\Front\SkController;
-use App\Http\Controllers\Front\MarketPlaceController;
 
+/*
+|--------------------------------------------------------------------------
+| API ROUTES (untuk status online/offline)
+|--------------------------------------------------------------------------
+*/
+
+Route::middleware('auth')->get('/user/status/{id}', function ($id) {
+    $user = User::find($id);
+
+    if (!$user) {
+        return response()->json(['online' => false]);
+    }
+
+    $isOnline = $user->last_activity &&
+                $user->last_activity->gt(now()->subMinutes(2));
+
+    return response()->json([
+        'online' => $isOnline,
+        'last_seen' => $user->last_activity
+            ? $user->last_activity->diffForHumans()
+            : 'Belum pernah aktif',
+    ]);
+});
+// Get all online users (optional)
+Route::get('/api/users/online', function() {
+    $onlineUsers = \App\Models\User::where('last_activity', '>=', now()->subMinutes(1))
+        ->select('id', 'name', 'email', 'role', 'last_activity')
+        ->get();
+    
+    return response()->json($onlineUsers);
+})->middleware('auth');
 
 /*
 |--------------------------------------------------------------------------
@@ -73,6 +108,8 @@ Route::get('/ekstrakulikuler', [FrontEkstrakulikulerController::class, 'index'])
 // SDM Sekolah
 Route::get('/tenagapengajar', [FrontTenagaPengajarController::class, 'index'])->name('tenagapengajar');
 Route::get('/staffkependidikan', [FrontStaffKependidikanController::class, 'index'])->name('staffkependidikan');
+Route::get('/marketplace', [FrontMarketPlaceController::class, 'index'])->name('marketplace');
+
 // Jurusan
 Route::get('/pplg', [PplgController::class, 'index'])->name('pplg');
 Route::get('/tjkt', [TjktController::class, 'index'])->name('tjkt');
@@ -81,7 +118,7 @@ Route::get('/tkr',  [TkrController::class,  'index'])->name('tkr');
 Route::get('/mp',   [MpController::class,   'index'])->name('mp');
 Route::get('/dpib', [DpibController::class, 'index'])->name('dpib');
 Route::get('/sk',   [SkController::class,   'index'])->name('sk');
-Route::get('/marketplace',   [MarketPlaceController::class,   'index'])->name('marketplace');
+
 /*
 |--------------------------------------------------------------------------
 | AUTH
@@ -115,11 +152,11 @@ Route::middleware('auth')
         Route::resource('artikel', ArtikelController::class);
         Route::resource('galeri', GaleriController::class);
         Route::resource('prestasi', PrestasiController::class);
-       Route::resource('fasilitas', FasilitasController::class)
-     ->parameters(['fasilitas' => 'fasilitas']);
-
+        Route::resource('fasilitas', FasilitasController::class)
+            ->parameters(['fasilitas' => 'fasilitas']);
         Route::resource('agenda', AgendaController::class);
         Route::resource('tenagapengajar', TenagaPengajarController::class);
         Route::resource('staffkependidikan', StaffKependidikanController::class);
         Route::resource('ekstrakulikuler', EkstrakulikulerController::class);
+        Route::resource('marketplace', MarketplaceController::class);
     });

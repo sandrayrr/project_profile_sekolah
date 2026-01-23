@@ -224,7 +224,7 @@
             <!-- Slide 1 -->
             <div class="slide absolute inset-0 w-full h-full transition-opacity duration-1000 opacity-100">
                 <img alt="School Atmosphere" class="absolute inset-0 w-full h-full object-cover opacity-30 dark:opacity-20 img-hover"
-                    src="{{ asset('storage/beranda/Foto SMKN 1.jpeg') }}" />
+                    src="{{ asset('beranda/Foto SMKN 1.jpeg') }}" />
                 <div class="relative z-10 flex flex-col items-center justify-center h-full w-full px-6">
                     <div class="text-center max-w-4xl reveal">
                         <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">Mewujudkan Generasi Unggul dan Berkarakter</h2>
@@ -241,7 +241,7 @@
             <!-- Slide 2 -->
             <div class="slide absolute inset-0 w-full h-full transition-opacity duration-1000 opacity-0">
                 <img alt="Students Learning" class="absolute inset-0 w-full h-full object-cover opacity-30 dark:opacity-20 img-hover"
-                    src="{{ asset('storage/beranda/Foto SMKN 2.jpeg') }}" />
+                    src="{{ asset('beranda/Foto SMKN 2.jpeg') }}" />
                 <div class="relative z-10 flex flex-col items-center justify-center h-full w-full px-6">
                     <div class="text-center max-w-4xl reveal">
                         <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">Pembelajaran Inovatif dan Berbasis Teknologi</h2>
@@ -258,7 +258,7 @@
             <!-- Slide 3 -->
             <div class="slide absolute inset-0 w-full h-full transition-opacity duration-1000 opacity-0">
                 <img alt="School Facilities" class="absolute inset-0 w-full h-full object-cover opacity-30 dark:opacity-20 img-hover"
-                    src="{{ asset('storage/beranda/Foto SMKN 3.jpeg') }}" />
+                    src="{{ asset('beranda/Foto SMKN 3.jpeg') }}" />
                 <div class="relative z-10 flex flex-col items-center justify-center h-full w-full px-6">
                     <div class="text-center max-w-4xl reveal">
                         <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">Fasilitas Lengkap untuk Mendukung Prestasi</h2>
@@ -418,7 +418,7 @@
                 <div class="shrink-0">
                     <div class="w-24 h-24 rounded-full bg-gray-300 dark:bg-gray-600 overflow-hidden shadow-inner img-hover">
                         <img alt="Kepala Sekolah" class="w-full h-full object-cover"
-                            src="{{ asset('storage/beranda/Foto Kepsek Kawali.jpg') }}">
+                            src="{{ asset('beranda/Foto Kepsek Kawali.jpg') }}">
                     </div>
                 </div>
                 <div class="w-full max-w-full">
@@ -511,7 +511,7 @@
                     <div class="h-64 bg-gray-300 dark:bg-gray-700 rounded-lg overflow-hidden mb-4 relative">
                         <img alt="Kegiatan Siswa"
                             class="w-full h-full object-cover group-hover:scale-105 transition duration-500 img-hover"
-                            src="{{ asset('storage/beranda/Foto Berita 1.jpeg') }}" />
+                            src="{{ asset('beranda/Foto Berita 1.jpeg') }}" />
                     </div>
                     <div class="flex flex-col">
                         <span class="text-sm text-primary font-semibold mb-1">10 Oktober 2023</span>
@@ -527,7 +527,7 @@
                     <div class="h-64 bg-gray-300 dark:bg-gray-700 rounded-lg overflow-hidden mb-4 relative">
                         <img alt="Kegiatan Belajar"
                             class="w-full h-full object-cover group-hover:scale-105 transition duration-500 img-hover"
-                            src="{{ asset('storage/beranda/Foto Artikel 4.jpeg') }}" />
+                            src="{{ asset('beranda/Foto Artikel 4.jpeg') }}" />
                     </div>
                     <div class="flex flex-col">
                         <span class="text-sm text-primary font-semibold mb-1">08 Oktober 2024</span>
@@ -560,7 +560,7 @@
     <div class="bg-white dark:bg-surface-dark rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 card-hover">
         <div class="h-64 bg-gray-200 dark:bg-gray-700 overflow-hidden">
             <img alt="Teacher" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300 img-hover"
-                src="{{ asset('storage/beranda/Guru 1.jpeg') }}" />
+                src="{{ asset('beranda/Guru 1.jpeg') }}" />
         </div>
         <div class="p-6 text-center">
             <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Teti Novianti,S.Pd.</h4>
@@ -572,7 +572,7 @@
     <div class="bg-white dark:bg-surface-dark rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 card-hover">
         <div class="h-64 bg-gray-200 dark:bg-gray-700 overflow-hidden">
             <img alt="Teacher" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300 img-hover"
-                src="{{ asset('storage/beranda/Guru 2.jpeg') }}" />
+                src="{{ asset('beranda/Guru 2.jpeg') }}" />
         </div>
         <div class="p-6 text-center">
             <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Abu Bakar,S.T.</h4>
@@ -584,7 +584,7 @@
     <div class="bg-white dark:bg-surface-dark rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 card-hover">
         <div class="h-64 bg-gray-200 dark:bg-gray-700 overflow-hidden">
             <img alt="Teacher" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300 img-hover"
-                src="{{ asset('storage/beranda/Guru 3.jpeg') }}" />
+                src="{{ asset('beranda/Guru 3.jpeg') }}" />
         </div>
         <div class="p-6 text-center">
             <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Irma Sri Suryantini,S.Pd.</h4>
@@ -596,7 +596,7 @@
     <div class="bg-white dark:bg-surface-dark rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 card-hover">
         <div class="h-64 bg-gray-200 dark:bg-gray-700 overflow-hidden">
             <img alt="Teacher" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300 img-hover"
-                src="{{ asset('storage/beranda/Guru 4.jpeg') }}" />
+                src="{{ asset('beranda/Guru 4.jpeg') }}" />
         </div>
         <div class="p-6 text-center">
             <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Farid Ma'ruf,M.Pd.</h4>
@@ -634,7 +634,7 @@
     <div class="bg-white dark:bg-surface-dark rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 card-hover">
         <div class="h-64 bg-gray-200 dark:bg-gray-700 overflow-hidden">
             <img alt="Teacher" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300 img-hover"
-                src="{{ asset('storage/beranda/Staff TU 1.jpeg') }}" />
+                src="{{ asset('beranda/Staff TU 1.jpeg') }}" />
         </div>
         <div class="p-6 text-center">
             <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Elin Herlina,S.Sos.</h4>
@@ -646,7 +646,7 @@
     <div class="bg-white dark:bg-surface-dark rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 card-hover">
         <div class="h-64 bg-gray-200 dark:bg-gray-700 overflow-hidden">
             <img alt="Teacher" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300 img-hover"
-                src="{{ asset('storage/beranda/Staff TU 3.jpeg') }}" />
+                src="{{ asset('beranda/Staff TU 3.jpeg') }}" />
         </div>
         <div class="p-6 text-center">
             <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Sayidina Ali Ade Mahendra,A.Md.</h4>
@@ -658,7 +658,7 @@
     <div class="bg-white dark:bg-surface-dark rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 card-hover">
         <div class="h-64 bg-gray-200 dark:bg-gray-700 overflow-hidden">
             <img alt="Teacher" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300 img-hover"
-                src="{{ asset('storage/beranda/Staff TU 2.jpeg') }}" />
+                src="{{ asset('beranda/Staff TU 2.jpeg') }}" />
         </div>
         <div class="p-6 text-center">
             <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Ani Karlina,S.I.Pust.</h4>
@@ -670,7 +670,7 @@
     <div class="bg-white dark:bg-surface-dark rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 card-hover">
         <div class="h-64 bg-gray-200 dark:bg-gray-700 overflow-hidden">
             <img alt="Teacher" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300 img-hover"
-                src="{{ asset('storage/beranda/Staff TU 4.jpeg') }}" />
+                src="{{ asset('beranda/Staff TU 4.jpeg') }}" />
         </div>
         <div class="p-6 text-center">
             <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Maman Hilman</h4>
@@ -701,7 +701,7 @@
                 </div>
                 <div class="w-1/2 bg-gray-300 dark:bg-gray-700 relative">
                     <img alt="TKJ" class="absolute inset-0 w-full h-full object-cover img-hover"
-                        src="{{ asset('storage/beranda/Jurusan Tjkt.jpeg') }}" />
+                        src="{{ asset('beranda/Jurusan Tjkt.jpeg') }}" />
                 </div>
             </div>
             <div
@@ -713,7 +713,7 @@
                 </div>
                 <div class="w-1/2 bg-gray-300 dark:bg-gray-700 relative">
                     <img alt="OTKP" class="absolute inset-0 w-full h-full object-cover img-hover"
-                        src="{{ asset('storage/beranda/Jurusan PPLG.jpeg') }}" />
+                        src="{{ asset('beranda/Jurusan PPLG.jpeg') }}" />
                 </div>
             </div>
         </div>
@@ -736,7 +736,7 @@
                 <div class="flex bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden h-48 card-hover">
                     <div class="w-1/2 bg-gray-200 dark:bg-gray-700 relative">
                         <img alt="Lab Komputer" class="absolute inset-0 w-full h-full object-cover img-hover"
-                            src="{{ asset('storage/beranda/Lab.jpeg') }}" />
+                            src="{{ asset('beranda/Lab.jpeg') }}" />
                     </div>
                     <div class="w-1/2 p-6 flex items-center justify-center bg-gray-300 dark:bg-gray-600">
                         <h3 class="text-xl font-bold text-gray-900 dark:text-white text-center">Laboratorium Jaringan & Telekomunikasi
@@ -746,7 +746,7 @@
                 <div class="flex bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden h-48 card-hover">
                     <div class="w-1/2 bg-gray-200 dark:bg-gray-700 relative">
                         <img alt="Perpustakaan" class="absolute inset-0 w-full h-full object-cover img-hover"
-                            src="{{ asset('storage/beranda/Perpustakaan.jpeg') }}" />
+                            src="{{ asset('beranda/Perpustakaan.jpeg') }}" />
                     </div>
                     <div class="w-1/2 p-6 flex items-center justify-center bg-gray-300 dark:bg-gray-600">
                         <h3 class="text-xl font-bold text-gray-900 dark:text-white text-center">Perpustakaan 
@@ -772,7 +772,7 @@
             <div class="rounded-xl overflow-hidden shadow card-hover">
                 <div class="h-48 bg-gray-100 dark:bg-gray-800 flex items-center justify-center relative">
                     <img alt="Paskibra" class="absolute inset-0 w-full h-full object-cover img-hover"
-                        src="{{ asset('storage/beranda/Ekstra 1.jpeg') }}" />
+                        src="{{ asset('beranda/Ekstra 1.jpeg') }}" />
                 </div>
                 <div class="bg-gray-200 dark:bg-gray-700 p-4 text-center">
                     <h3 class="text-lg font-bold text-gray-900 dark:text-white">Paskibra</h3>
@@ -781,7 +781,7 @@
             <div class="rounded-xl overflow-hidden shadow card-hover">
                 <div class="h-48 bg-gray-100 dark:bg-gray-800 flex items-center justify-center relative">
                     <img alt="Pramuka" class="absolute inset-0 w-full h-full object-cover img-hover"
-                        src="{{ asset('storage/beranda/Ekstra 2.jpeg') }}" />
+                        src="{{ asset('beranda/Ekstra 2.jpeg') }}" />
                 </div>
                 <div class="bg-gray-200 dark:bg-gray-700 p-4 text-center">
                     <h3 class="text-lg font-bold text-gray-900 dark:text-white">Pramuka</h3>

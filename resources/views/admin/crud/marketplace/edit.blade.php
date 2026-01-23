@@ -1,6 +1,6 @@
 @extends('admin.layout')
 
-@section('title', 'Tambah Ekstrakulikuler')
+@section('title','Edit Produk Marketplace')
 
 @section('content')
 
@@ -48,16 +48,13 @@ body {
 
 /* ================= CARD (Kartu Pop-up) ================= */
 .popup-card {
-    width: 800px;
-    max-width: 96%;
+    width: 520px;
+    max-width: 95%;
     background: #ffffff;
     border-radius: 24px;
     box-shadow: 0 25px 60px -10px var(--primary-shadow), 0 10px 20px -5px rgba(0, 0, 0, 0.1);
     animation: popupShow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    display: flex; /* Menggunakan flexbox untuk layout */
-    flex-direction: column; /* Menyusun elemen secara vertikal */
-    max-height: 90vh; /* Batasi tinggi maksimal pop-up */
-    overflow: hidden; /* Sembunyikan overflow di card utama */
+    overflow: hidden; /* Memastikan sudut header melengkung sempurna */
 }
 
 /* ================= HEADER (Bagian Atas) ================= */
@@ -68,7 +65,6 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-shrink: 0; /* Mencegah header menyusut */
 }
 
 .popup-header h5 {
@@ -82,9 +78,8 @@ body {
 
 .popup-close {
     font-size: 28px;
-    line-height: 1;
-    text-decoration: none;
     color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
@@ -102,8 +97,6 @@ body {
 /* ================= BODY (Isian Form) ================= */
 .popup-body {
     padding: 28px 26px;
-    overflow-y: auto; /* Hanya body yang bisa di-scroll */
-    flex-grow: 1; /* Biarkan body mengisi sisa ruang yang tersedia */
 }
 
 /* ================= FORM (Elemen Form) ================= */
@@ -130,6 +123,30 @@ body {
     box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
     transform: translateY(-2px);
     background-color: #fff;
+}
+
+/* Gaya khusus untuk input-group harga */
+.input-group {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+}
+
+.input-group .form-control {
+    padding-left: 2.5rem;
+}
+
+.input-group-text {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    z-index: 10;
+    font-weight: 600;
 }
 
 /* ================= ALERT (Pesan Error) ================= */
@@ -191,19 +208,12 @@ body {
 
 /* ================= ANIMASI ================= */
 @keyframes popupShow {
-    from {
-        opacity: 0;
-        transform: translateY(30px) scale(0.95);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
+    from{opacity:0;transform:translateY(20px) scale(.95);}
+    to{opacity:1;transform:translateY(0) scale(1);}
 }
-
 @keyframes fadeOverlay {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from{opacity:0;}
+    to{opacity:1;}
 }
 
 /* ================= LOADING STATE (Bonus!) ================= */
@@ -233,104 +243,115 @@ body {
         {{-- HEADER --}}
         <div class="popup-header">
             <h5>
-                <i class="bi bi-plus-circle"></i>
-                Tambah Ekstrakulikuler Baru
+                <i class="bi bi-bag-check"></i>
+                Edit Produk Marketplace
             </h5>
-            <a href="{{ route('admin.ekstrakulikuler.index') }}" class="popup-close" title="Tutup">&times;</a>
+            <a href="{{ route('admin.marketplace.index') }}" class="popup-close" title="Tutup">&times;</a>
         </div>
 
         {{-- BODY --}}
         <div class="popup-body">
 
             {{-- PESAN ERROR --}}
-            @if ($errors->any())
+            @if($errors->any())
                 <div class="alert-custom-danger">
                     <strong>Terjadi kesalahan:</strong>
                     <ul class="mb-0 mt-2">
-                        @foreach ($errors->all() as $error)
+                        @foreach($errors->all() as $error)
                             <li>{{ $error }}</li>
                         @endforeach
                     </ul>
                 </div>
             @endif
 
-            <form action="{{ route('admin.ekstrakulikuler.store') }}"
+            <form action="{{ route('admin.marketplace.update', $marketplace->id) }}"
                   method="POST"
                   enctype="multipart/form-data"
-                  id="ekstrakulikulerForm">
+                  id="marketplaceForm">
                 @csrf
+                @method('PUT')
 
-                {{-- JUDUL --}}
+                {{-- NAMA PRODUK --}}
                 <div class="mb-3">
-                    <label for="judul" class="form-label">Judul Ekstrakulikuler</label>
+                    <label for="nama" class="form-label">Nama Produk</label>
                     <input type="text"
-                           id="judul"
-                           name="judul"
-                           class="form-control @error('judul') is-invalid @enderror"
-                           value="{{ old('judul') }}"
-                           placeholder="Contoh: Futsal, Pramuka, Tari Tradisional"
-                           required>
-                    @error('judul')
+                           id="nama"
+                           name="nama"
+                           class="form-control @error('nama') is-invalid @enderror"
+                           placeholder="Contoh: Baju Batik Premium"
+                           value="{{ old('nama', $marketplace->nama) }}">
+
+                    @error('nama')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
 
-                {{-- KATEGORI --}}
+                {{-- HARGA --}}
                 <div class="mb-3">
-                    <label for="kategori" class="form-label">Kategori</label>
-                    <select id="kategori"
-                            name="kategori"
-                            class="form-select @error('kategori') is-invalid @enderror"
-                            required>
-                        <option value="">-- Pilih Kategori --</option>
-                        <option value="Olahraga" {{ old('kategori') == 'Olahraga' ? 'selected' : '' }}>Olahraga</option>
-                        <option value="Seni" {{ old('kategori') == 'Seni' ? 'selected' : '' }}>Seni</option>
-                        <option value="Kepramukaan" {{ old('kategori') == 'Kepramukaan' ? 'selected' : '' }}>Kepramukaan</option>
-                        <option value="Keagamaan" {{ old('kategori') == 'Keagamaan' ? 'selected' : '' }}>Keagamaan</option>
-                        <option value="Akademik" {{ old('kategori') == 'Akademik' ? 'selected' : '' }}>Akademik</option>
-                        <option value="Lainnya" {{ old('kategori') == 'Lainnya' ? 'selected' : '' }}>Lainnya</option>
-                    </select>
-                    @error('kategori')
+                    <label for="harga" class="form-label">Harga</label>
+                    <div class="input-group">
+                        <span class="input-group-text">Rp</span>
+                        <input type="number"
+                               id="harga"
+                               name="harga"
+                               class="form-control @error('harga') is-invalid @enderror"
+                               placeholder="0"
+                               value="{{ old('harga', $marketplace->harga) }}">
+                    </div>
+
+                    @error('harga')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
 
-                {{-- FOTO --}}
-                <div class="mb-4">
-                    <label for="foto" class="form-label">Foto</label>
+                {{-- FOTO PRODUK --}}
+                <div class="mb-3">
+                    <label for="foto" class="form-label">Foto Produk</label>
+                    @if($marketplace->foto)
+                        <div class="mb-3 p-2 border rounded bg-light">
+                            <p class="small text-muted mb-2">Foto Saat Ini:</p>
+                            <img src="{{ asset('storage/' . $marketplace->foto) }}"
+                                 alt="Foto Produk"
+                                 class="rounded shadow-sm"
+                                 style="max-width: 120px; height: auto;">
+                        </div>
+                    @endif
+
                     <input type="file"
                            id="foto"
                            name="foto"
                            class="form-control @error('foto') is-invalid @enderror"
-                           accept="image/*"
-                           required>
-                    <small class="text-muted">
-                        JPG / PNG • Maks 2MB
+                           accept="image/*">
+
+                    <small class="text-muted d-block mt-1">
+                        JPG / PNG • Maks 2MB • Kosongkan jika tidak ingin mengubah foto
                     </small>
+
                     @error('foto')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
 
-                {{-- TOMBOL AKSI --}}
+                {{-- ACTION --}}
                 <div class="d-flex justify-content-end gap-2">
-                    <a href="{{ route('admin.ekstrakulikuler.index') }}" class="btn btn-light">
+                    <a href="{{ route('admin.marketplace.index') }}" class="btn btn-light">
                         Batal
                     </a>
                     <button type="submit" class="btn btn-primary">
                         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                        <span class="btn-text"><i class="bi bi-save me-1"></i> Simpan Data</span>
+                        <span class="btn-text"><i class="bi bi-arrow-clockwise me-1"></i> Perbarui Produk</span>
                     </button>
                 </div>
 
             </form>
         </div>
+
     </div>
 </div>
 
 {{-- JAVASCRIPT UNTUK LOADING STATE --}}
 <script>
-    document.getElementById('ekstrakulikulerForm').addEventListener('submit', function() {
+    document.getElementById('marketplaceForm').addEventListener('submit', function() {
         const submitBtn = this.querySelector('button[type="submit"]');
         // Tambahkan class 'btn-loading' untuk menampilkan spinner
         submitBtn.classList.add('btn-loading');

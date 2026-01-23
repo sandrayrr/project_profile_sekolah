@@ -8,9 +8,17 @@ use Illuminate\Http\Request;
 
 class FasilitasController extends Controller
 {
-     public function index()
+    public function index(Request $request)
     {
-        $fasilitas = Fasilitas::latest()->paginate(6);
+        $query = Fasilitas::query();
+
+        if ($request->filled('cari')) {
+            $query->where('judul', 'like', '%' . $request->cari . '%');
+            // kalau field kamu bukan "nama", ganti sesuai kolom tabel
+        }
+
+        $fasilitas = $query->latest()->paginate(6);
+
         return view('pages.fasilitas', compact('fasilitas'));
     }
 }

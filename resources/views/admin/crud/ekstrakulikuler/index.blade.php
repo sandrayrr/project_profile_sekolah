@@ -462,6 +462,36 @@
             width: 32px;
             height: 32px;
         }
+        .pagination-modern {
+    gap: 6px;
+}
+
+.pagination-modern .page-link {
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    color: var(--dark-color);
+    padding: 8px 14px;
+    transition: all 0.25s ease;
+    background: white;
+}
+
+.pagination-modern .page-item.active .page-link {
+    background: var(--gradient-primary);
+    color: white;
+    border-color: transparent;
+    box-shadow: var(--shadow-md);
+}
+
+.pagination-modern .page-link:hover {
+    background: var(--light-blue);
+    transform: translateY(-2px);
+}
+
+.pagination-modern .page-item.disabled .page-link {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
     }
 </style>
 
@@ -665,9 +695,37 @@
     </div>
 
     <!-- PAGINATION -->
-    {{-- <div class="d-flex justify-content-center mt-4">
-        {{ $ekstrakulikulers->links('pagination::bootstrap-4') }}
-    </div> --}}
+   @if ($ekstrakulikulers->hasPages())
+    <div class="d-flex justify-content-center mt-4 fade-in">
+        <nav>
+            <ul class="pagination pagination-modern">
+                {{-- Previous --}}
+                <li class="page-item {{ $ekstrakulikulers->onFirstPage() ? 'disabled' : '' }}">
+                    <a class="page-link"
+                       href="{{ $ekstrakulikulers->previousPageUrl() ?? '#' }}">
+                        <i class="bi bi-chevron-left"></i>
+                    </a>
+                </li>
+
+                {{-- Page Numbers --}}
+                @foreach ($ekstrakulikulers->getUrlRange(1, $ekstrakulikulers->lastPage()) as $page => $url)
+                    <li class="page-item {{ $ekstrakulikulers->currentPage() == $page ? 'active' : '' }}">
+                        <a class="page-link" href="{{ $url }}">{{ $page }}</a>
+                    </li>
+                @endforeach
+
+                {{-- Next --}}
+                <li class="page-item {{ $ekstrakulikulers->hasMorePages() ? '' : 'disabled' }}">
+                    <a class="page-link"
+                       href="{{ $ekstrakulikulers->nextPageUrl() ?? '#' }}">
+                        <i class="bi bi-chevron-right"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+@endif
+
 </div>
 
 <!-- MODAL GAMBAR -->

@@ -103,6 +103,23 @@
     box-shadow:0 0 0 .15rem rgba(37,99,235,.25);
 }
 
+.form-section {
+    margin-bottom: 24px;
+    padding: 16px;
+    background-color: #f8fafc;
+    border-radius: 12px;
+    border-left: 4px solid #3b82f6;
+}
+
+.section-title {
+    font-weight: 600;
+    color: #1e40af;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
 /* ================= BUTTON ================= */
 .btn{
     border-radius:12px;
@@ -110,13 +127,13 @@
     font-weight:600;
 }
 
-.btn-success{
-    background:linear-gradient(135deg,#22c55e,#16a34a);
+.btn-primary{
+    background:linear-gradient(135deg,#3b82f6,#2563eb);
     border:none;
 }
-.btn-success:hover{
+.btn-primary:hover{
     transform:translateY(-2px);
-    box-shadow:0 10px 25px rgba(34,197,94,.35);
+    box-shadow:0 10px 25px rgba(37,99,235,.35);
 }
 
 .btn-light{
@@ -134,6 +151,22 @@
 @keyframes fadeOverlay{
     from{opacity:0;}
     to{opacity:1;}
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+    .popup-card {
+        width: 95%;
+        max-width: none;
+    }
+    
+    .popup-body {
+        padding: 20px;
+    }
+    
+    .form-section {
+        padding: 12px;
+    }
 }
 </style>
 
@@ -158,64 +191,91 @@
             @csrf
 
             {{-- ================= SAMBUTAN ================= --}}
-            <h6 class="fw-bold mb-3 text-primary">
-                <i class="bi bi-megaphone me-1"></i> Sambutan
-            </h6>
+            <div class="form-section">
+                <h6 class="section-title">
+                    <i class="bi bi-megaphone-fill"></i> Sambutan Kepala Sekolah
+                </h6>
 
-            <div class="mb-3">
-                <label class="form-label fw-semibold">Judul Sambutan</label>
-                <input type="text"
-                       name="judul"
-                       class="form-control @error('judul') is-invalid @enderror"
-                       placeholder="Contoh: Sambutan Kepala Sekolah"
-                       value="{{ old('judul') }}">
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Judul Sambutan</label>
+                    <input type="text"
+                           name="judul"
+                           class="form-control @error('judul') is-invalid @enderror"
+                           placeholder="Contoh: Sambutan Kepala Sekolah"
+                           value="{{ old('judul') }}">
 
-                @error('judul')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
+                    @error('judul')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Deskripsi Sambutan</label>
+                    <textarea name="deskripsi"
+                              rows="4"
+                              class="form-control @error('deskripsi') is-invalid @enderror"
+                              placeholder="Isi sambutan kepala sekolah...">{{ old('deskripsi') }}</textarea>
+                    
+                    @error('deskripsi')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
             </div>
-
-            <div class="mb-4">
-                <label class="form-label fw-semibold">Deskripsi Sambutan</label>
-                <textarea name="deskripsi"
-                          rows="4"
-                          class="form-control"
-                          placeholder="Isi sambutan kepala sekolah...">{{ old('deskripsi') }}</textarea>
-            </div>
-
-            <hr>
 
             {{-- ================= STATISTIK ================= --}}
-            <h6 class="fw-bold mb-3 text-success">
-                <i class="bi bi-bar-chart-fill me-1"></i> Statistik Sekolah
-            </h6>
+            <div class="form-section">
+                <h6 class="section-title">
+                    <i class="bi bi-bar-chart-fill"></i> Statistik Sekolah
+                </h6>
 
-            <div class="row g-3 mb-4">
-                <div class="col-md-4">
-                    <label class="form-label fw-semibold">Jumlah Siswa</label>
-                    <input type="number" name="jumlah_siswa" class="form-control"
-                           value="{{ old('jumlah_siswa',0) }}">
-                </div>
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <label class="form-label fw-semibold">Jumlah Siswa</label>
+                        <input type="number" 
+                               name="jumlah_siswa" 
+                               class="form-control @error('jumlah_siswa') is-invalid @enderror"
+                               placeholder="0"
+                               value="{{ old('jumlah_siswa', 0) }}">
+                        
+                        @error('jumlah_siswa')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
 
-                <div class="col-md-4">
-                    <label class="form-label fw-semibold">Jumlah Guru</label>
-                    <input type="number" name="jumlah_guru" class="form-control"
-                           value="{{ old('jumlah_guru',0) }}">
-                </div>
+                    <div class="col-md-4">
+                        <label class="form-label fw-semibold">Jumlah Guru</label>
+                        <input type="number" 
+                               name="jumlah_guru" 
+                               class="form-control @error('jumlah_guru') is-invalid @enderror"
+                               placeholder="0"
+                               value="{{ old('jumlah_guru', 0) }}">
+                        
+                        @error('jumlah_guru')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
 
-                <div class="col-md-4">
-                    <label class="form-label fw-semibold">Jumlah Jurusan</label>
-                    <input type="number" name="jumlah_jurusan" class="form-control"
-                           value="{{ old('jumlah_jurusan',0) }}">
+                    <div class="col-md-4">
+                        <label class="form-label fw-semibold">Jumlah Jurusan</label>
+                        <input type="number" 
+                               name="jumlah_jurusan" 
+                               class="form-control @error('jumlah_jurusan') is-invalid @enderror"
+                               placeholder="0"
+                               value="{{ old('jumlah_jurusan', 0) }}">
+                        
+                        @error('jumlah_jurusan')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
                 </div>
             </div>
 
             {{-- ACTION --}}
-            <div class="d-flex justify-content-end gap-2">
+            <div class="d-flex justify-content-end gap-2 mt-4">
                 <a href="{{ route('admin.beranda.index') }}" class="btn btn-light">
-                    Batal
+                    <i class="bi bi-x-circle me-1"></i> Batal
                 </a>
-                <button class="btn btn-success">
+                <button type="submit" class="btn btn-primary">
                     <i class="bi bi-save me-1"></i> Simpan
                 </button>
             </div>

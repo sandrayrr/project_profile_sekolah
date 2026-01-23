@@ -10,11 +10,11 @@ use Illuminate\Support\Facades\Storage;
 class TenagaPengajarController extends Controller
 {
     // Menampilkan semua data tenaga pengajar
-    public function index()
-    {
-        $tenagaPengajar = TenagaPengajar::latest()->get();
-        return view('admin.crud.tenagapengajar.index', compact('tenagaPengajar'));
-    }
+   public function index()
+{
+    $tenagaPengajar = TenagaPengajar::latest()->paginate(6);
+    return view('admin.crud.tenagapengajar.index', compact('tenagaPengajar'));
+}
 
     // Menampilkan form tambah data
     public function create()

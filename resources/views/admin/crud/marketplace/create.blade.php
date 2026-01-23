@@ -1,6 +1,6 @@
 @extends('admin.layout')
 
-@section('title', 'Tambah Ekstrakulikuler')
+@section('title','Tambah Produk Marketplace')
 
 @section('content')
 
@@ -48,16 +48,13 @@ body {
 
 /* ================= CARD (Kartu Pop-up) ================= */
 .popup-card {
-    width: 800px;
-    max-width: 96%;
+    width: 520px;
+    max-width: 95%;
     background: #ffffff;
     border-radius: 24px;
     box-shadow: 0 25px 60px -10px var(--primary-shadow), 0 10px 20px -5px rgba(0, 0, 0, 0.1);
     animation: popupShow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    display: flex; /* Menggunakan flexbox untuk layout */
-    flex-direction: column; /* Menyusun elemen secara vertikal */
-    max-height: 90vh; /* Batasi tinggi maksimal pop-up */
-    overflow: hidden; /* Sembunyikan overflow di card utama */
+    overflow: hidden; /* Memastikan sudut header melengkung sempurna */
 }
 
 /* ================= HEADER (Bagian Atas) ================= */
@@ -68,7 +65,6 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-shrink: 0; /* Mencegah header menyusut */
 }
 
 .popup-header h5 {
@@ -102,8 +98,6 @@ body {
 /* ================= BODY (Isian Form) ================= */
 .popup-body {
     padding: 28px 26px;
-    overflow-y: auto; /* Hanya body yang bisa di-scroll */
-    flex-grow: 1; /* Biarkan body mengisi sisa ruang yang tersedia */
 }
 
 /* ================= FORM (Elemen Form) ================= */
@@ -127,9 +121,33 @@ body {
 .form-control:focus,
 .form-select:focus {
     border-color: var(--primary-blue);
-    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+    box-shadow: 0 0 0 0 4px rgba(59, 130, 246, 0.15);
     transform: translateY(-2px);
     background-color: #fff;
+}
+
+/* Gaya khusus untuk input-group harga */
+.input-group {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+}
+
+.input-group .form-control {
+    padding-left: 2.5rem;
+}
+
+.input-group-text {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    z-index: 10;
+    font-weight: 600;
 }
 
 /* ================= ALERT (Pesan Error) ================= */
@@ -234,92 +252,101 @@ body {
         <div class="popup-header">
             <h5>
                 <i class="bi bi-plus-circle"></i>
-                Tambah Ekstrakulikuler Baru
+                Tambah Produk Baru
             </h5>
-            <a href="{{ route('admin.ekstrakulikuler.index') }}" class="popup-close" title="Tutup">&times;</a>
+            <a href="{{ route('admin.marketplace.index') }}" class="popup-close" title="Tutup">&times;</a>
         </div>
 
         {{-- BODY --}}
         <div class="popup-body">
 
             {{-- PESAN ERROR --}}
-            @if ($errors->any())
+            @if($errors->any())
                 <div class="alert-custom-danger">
                     <strong>Terjadi kesalahan:</strong>
                     <ul class="mb-0 mt-2">
-                        @foreach ($errors->all() as $error)
+                        @foreach($errors->all() as $error)
                             <li>{{ $error }}</li>
                         @endforeach
                     </ul>
                 </div>
             @endif
 
-            <form action="{{ route('admin.ekstrakulikuler.store') }}"
+            <form action="{{ route('admin.marketplace.store') }}"
                   method="POST"
                   enctype="multipart/form-data"
-                  id="ekstrakulikulerForm">
+                  id="marketplaceForm">
                 @csrf
 
-                {{-- JUDUL --}}
+                {{-- NAMA PRODUK --}}
                 <div class="mb-3">
-                    <label for="judul" class="form-label">Judul Ekstrakulikuler</label>
+                    <label for="nama" class="form-label">Nama Produk</label>
                     <input type="text"
-                           id="judul"
-                           name="judul"
-                           class="form-control @error('judul') is-invalid @enderror"
-                           value="{{ old('judul') }}"
-                           placeholder="Contoh: Futsal, Pramuka, Tari Tradisional"
+                           id="nama"
+                           name="nama"
+                           class="form-control @error('nama') is-invalid @enderror"
+                           value="{{ old('nama') }}"
+                           placeholder="Contoh: Baju Batik Premium"
                            required>
-                    @error('judul')
+                    @error('nama')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
 
-                {{-- KATEGORI --}}
+                {{-- HARGA --}}
                 <div class="mb-3">
-                    <label for="kategori" class="form-label">Kategori</label>
-                    <select id="kategori"
-                            name="kategori"
-                            class="form-select @error('kategori') is-invalid @enderror"
-                            required>
-                        <option value="">-- Pilih Kategori --</option>
-                        <option value="Olahraga" {{ old('kategori') == 'Olahraga' ? 'selected' : '' }}>Olahraga</option>
-                        <option value="Seni" {{ old('kategori') == 'Seni' ? 'selected' : '' }}>Seni</option>
-                        <option value="Kepramukaan" {{ old('kategori') == 'Kepramukaan' ? 'selected' : '' }}>Kepramukaan</option>
-                        <option value="Keagamaan" {{ old('kategori') == 'Keagamaan' ? 'selected' : '' }}>Keagamaan</option>
-                        <option value="Akademik" {{ old('kategori') == 'Akademik' ? 'selected' : '' }}>Akademik</option>
-                        <option value="Lainnya" {{ old('kategori') == 'Lainnya' ? 'selected' : '' }}>Lainnya</option>
-                    </select>
-                    @error('kategori')
+                    <label for="harga" class="form-label">Harga</label>
+                    <div class="input-group">
+                        <span class="input-group-text">Rp</span>
+                        <input type="number"
+                               id="harga"
+                               name="harga"
+                               class="form-control @error('harga') is-invalid @enderror"
+                               placeholder="0"
+                               value="{{ old('harga') }}">
+                    </div>
+                    @error('harga')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
 
-                {{-- FOTO --}}
+                {{-- DESKRIPSI --}}
+                {{-- <div class="mb-3">
+                    <label for="deskripsi" class="form-label">Deskripsi Produk</label>
+                    <textarea name="deskripsi"
+                              id="deskripsi"
+                              rows="4"
+                              class="form-control @error('deskripsi') is-invalid @enderror"
+                              placeholder="Deskripsi produk...">{{ old('deskripsi') }}</textarea>
+                    @error('deskripsi')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div> --}}
+
+                {{-- FOTO PRODUK --}}
                 <div class="mb-4">
-                    <label for="foto" class="form-label">Foto</label>
+                    <label for="foto" class="form-label">Foto Produk</label>
                     <input type="file"
                            id="foto"
                            name="foto"
                            class="form-control @error('foto') is-invalid @enderror"
-                           accept="image/*"
-                           required>
+                           accept="image/*">
                     <small class="text-muted">
-                        JPG / PNG • Maks 2MB
+                        JPG / PNG • Maksimal 2MB
                     </small>
                     @error('foto')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
 
-                {{-- TOMBOL AKSI --}}
+                {{-- ACTION --}}
                 <div class="d-flex justify-content-end gap-2">
-                    <a href="{{ route('admin.ekstrakulikuler.index') }}" class="btn btn-light">
+                    <a href="{{ route('admin.marketplace.index') }}" class="btn btn-light">
                         Batal
                     </a>
                     <button type="submit" class="btn btn-primary">
                         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                        <span class="btn-text"><i class="bi bi-save me-1"></i> Simpan Data</span>
+                        <span class="btn-text"><i class="bi bi-save me-1"></i> Simpan Produk</span>
                     </button>
                 </div>
 
@@ -330,7 +357,7 @@ body {
 
 {{-- JAVASCRIPT UNTUK LOADING STATE --}}
 <script>
-    document.getElementById('ekstrakulikulerForm').addEventListener('submit', function() {
+    document.getElementById('marketplaceForm').addEventListener('submit', function() {
         const submitBtn = this.querySelector('button[type="submit"]');
         // Tambahkan class 'btn-loading' untuk menampilkan spinner
         submitBtn.classList.add('btn-loading');

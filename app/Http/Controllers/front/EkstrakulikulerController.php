@@ -8,9 +8,17 @@ use Illuminate\Http\Request;
 
 class EkstrakulikulerController extends Controller
 {
-      public function index()
-    {
-        $ekstrakulikulers = Ekstrakulikuler::latest()->paginate(6);
-        return view('pages.ekstrakulikuler', compact('ekstrakulikulers'));
+    public function index(Request $request)
+{
+    $query = Ekstrakulikuler::query();
+
+    if ($request->filled('cari')) {
+        $query->where('judul', 'like', '%' . $request->cari . '%');
     }
+
+    $ekstrakulikulers = $query->latest()->paginate(6);
+
+    return view('pages.ekstrakulikuler', compact('ekstrakulikulers'));
+}
+
 }

@@ -144,11 +144,11 @@
 
         <!-- TOOLBAR -->
         <div class="flex justify-between items-center mb-10 animate-fade-in" style="animation-delay: 0.3s">
-            <button
+            {{-- <button
                 class="flex items-center gap-2 bg-card-light dark:bg-card-dark border border-border-light dark:border-border-dark px-4 py-2 rounded-xl text-sm shadow hover:bg-primary/10 hover:text-primary transition">
                 <i class="fas fa-sliders-h"></i>
                 Filter
-            </button>
+            </button> --}}
             <span class="text-sm text-gray-500 dark:text-gray-400">
                 Menampilkan {{ $tenagaPengajar->count() }} Tenaga Pengajar
             </span>

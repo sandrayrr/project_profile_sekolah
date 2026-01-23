@@ -2,26 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use App\Models\Beranda;
-use App\Models\TenagaKependidikan;
-use App\Models\TenagaPengajar;
-use Illuminate\Http\Request;
 
 class BerandaController extends Controller
 {
-    public function index()
+     public function index()
     {
-        // Sambutan kepala sekolah
         $beranda = Beranda::latest()->first();
 
-        // Tenaga kependidikan (tanpa pagination, cocok untuk beranda)
-        $tenagakependidikan = TenagaPengajar::latest()
-            ->take(8)
-            ->get();
-
-        return view('pages.beranda', compact(
-            'beranda',
-            'tenagakependidikan'
-        ));
+        return view('pages.beranda', compact('beranda'));
     }
 }

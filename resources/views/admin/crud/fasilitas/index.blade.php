@@ -235,7 +235,7 @@
     }
     
     .facility-image {
-        height: 200px;
+        height: 180px; /* Diperkecil dari 200px */
         width: 100%;
         object-fit: cover;
         cursor: pointer;
@@ -247,11 +247,11 @@
     }
     
     .facility-body {
-        padding: 1.5rem;
+        padding: 1.25rem; /* Diperkecil dari 1.5rem */
     }
     
     .facility-title {
-        font-size: 1.25rem;
+        font-size: 1.1rem; /* Diperkecil dari 1.25rem */
         font-weight: 600;
         margin-bottom: 0.5rem;
         color: var(--dark-color);
@@ -424,10 +424,10 @@
         margin-right: 0.3rem;
     }
     
-    /* Grid Layout */
+    /* Grid Layout - YANG DIUBAH */
     .facility-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); /* Diperkecil dari 300px */
         gap: 1.5rem;
         padding: 1.5rem;
     }
@@ -589,33 +589,33 @@
         </div>
         
         <div class="facility-grid" id="facilityGrid">
-            @forelse ($fasilitas as $fasilitas)
+            @forelse ($fasilitas as $item)
                 <div class="facility-card fasilitas-item"
-                     data-judul="{{ strtolower($fasilitas->judul) }}"
-                     data-lokasi="{{ strtolower($fasilitas->lokasi) }}"
-                     data-status="{{ strtolower($fasilitas->tersedia) }}"
-                     data-tanggal="{{ $fasilitas->created_at->format('Y-m-d') }}">
+                     data-judul="{{ strtolower($item->judul) }}"
+                     data-lokasi="{{ strtolower($item->lokasi) }}"
+                     data-status="{{ strtolower($item->tersedia) }}"
+                     data-tanggal="{{ $item->created_at->format('Y-m-d') }}">
                     
-                    <img src="{{ asset('storage/'.$fasilitas->foto) }}"
+                    <img src="{{ asset('storage/'.$item->foto) }}"
                          class="facility-image"
-                         alt="{{ $fasilitas->judul }}"
-                         onclick="showImageModal('{{ asset('storage/'.$fasilitas->foto) }}','{{ $fasilitas->judul }}')">
+                         alt="{{ $item->judul }}"
+                         onclick="showImageModal('{{ asset('storage/'.$item->foto) }}','{{ $item->judul }}')">
                     
                     <div class="facility-body">
-                        <h5 class="facility-title">{{ $fasilitas->judul }}</h5>
+                        <h5 class="facility-title">{{ $item->judul }}</h5>
                         <p class="facility-description">
-                            {{ \Illuminate\Support\Str::limit(strip_tags($fasilitas->deskripsi ?? ''), 120) }}
+                            {{ \Illuminate\Support\Str::limit(strip_tags($item->deskripsi ?? ''), 120) }}
                         </p>
                         
                         <div class="facility-meta">
                             <span class="badge badge-info">
                                 <i class="bi bi-geo-alt me-1"></i>
-                                {{ $fasilitas->lokasi }}
+                                {{ $item->lokasi }}
                             </span>
                             
-                            @if($fasilitas->tersedia == 'Tersedia')
+                            @if($item->tersedia == 'Tersedia')
                                 <span class="badge badge-success">Tersedia</span>
-                            @elseif($fasilitas->tersedia == 'Dalam Perbaikan')
+                            @elseif($item->tersedia == 'Dalam Perbaikan')
                                 <span class="badge badge-warning">Dalam Perbaikan</span>
                             @else
                                 <span class="badge badge-danger">Tidak Tersedia</span>
@@ -624,15 +624,15 @@
                         
                         <div class="facility-date">
                             <i class="bi bi-calendar me-1"></i>
-                            {{ $fasilitas->created_at->format('d M Y') }}
+                            {{ $item->created_at->format('d M Y') }}
                         </div>
                         
                         <div class="facility-footer">
                             <div class="d-inline-flex gap-1">
-                                <a href="{{ route('admin.fasilitas.edit',$fasilitas->id) }}" class="btn btn-icon btn-icon-primary">
+                                <a href="{{ route('admin.fasilitas.edit',$item->id) }}" class="btn btn-icon btn-icon-primary">
                                     <i class="bi bi-pencil"></i>
                                 </a>
-                                <form action="{{ route('admin.fasilitas.destroy',$fasilitas->id) }}" method="POST"
+                                <form action="{{ route('admin.fasilitas.destroy',$item->id) }}" method="POST"
                                       onsubmit="return confirmDelete()">
                                     @csrf @method('DELETE')
                                     <button class="btn btn-icon btn-icon-danger">
@@ -655,7 +655,33 @@
     </div>
 
     <!-- PAGINATION -->
-    
+   @if ($fasilitas->hasPages())
+    <div class="d-flex justify-content-center mt-4 fade-in">
+        <ul class="pagination pagination-modern">
+            {{-- prev --}}
+            <li class="page-item {{ $fasilitas->onFirstPage() ? 'disabled' : '' }}">
+                <a class="page-link" href="{{ $fasilitas->previousPageUrl() ?? '#' }}">
+                    <i class="bi bi-chevron-left"></i>
+                </a>
+            </li>
+
+            {{-- page --}}
+            @foreach ($fasilitas->getUrlRange(1, $fasilitas->lastPage()) as $page => $url)
+                <li class="page-item {{ $fasilitas->currentPage() == $page ? 'active' : '' }}">
+                    <a class="page-link" href="{{ $url }}">{{ $page }}</a>
+                </li>
+            @endforeach
+
+            {{-- next --}}
+            <li class="page-item {{ $fasilitas->hasMorePages() ? '' : 'disabled' }}">
+                <a class="page-link" href="{{ $fasilitas->nextPageUrl() ?? '#' }}">
+                    <i class="bi bi-chevron-right"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+@endif
+
 </div>
 
 <!-- MODAL GAMBAR -->

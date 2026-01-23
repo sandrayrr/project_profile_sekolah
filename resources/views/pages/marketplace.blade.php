@@ -223,18 +223,6 @@ body::before {
     position: relative;
 }
 
-.product-badge {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: var(--red-accent);
-    color: white;
-    padding: 5px 10px;
-    border-radius: 20px;
-    font-size: 0.75rem;
-    font-weight: 600;
-}
-
 .product-body {
     padding: 20px;
     flex-grow: 1;
@@ -249,53 +237,13 @@ body::before {
     margin-bottom: 10px;
 }
 
-.product-description {
-    color: rgba(255,255,255,0.8);
-    font-size: 0.9rem;
-    margin-bottom: 15px;
-    flex-grow: 1;
-}
-
 .product-price {
     color: var(--yellow-accent);
     font-weight: 700;
     font-size: 1.3rem;
-    margin-bottom: 15px;
+    margin-top: auto; // Mendorong harga ke bawah
 }
 
-.product-footer {
-    display: flex;
-    gap: 10px;
-}
-
-.btn-add-cart {
-    flex: 1;
-    background: linear-gradient(90deg,var(--blue-main),#38BDF8);
-    border: none;
-    border-radius: 10px;
-    padding: 10px;
-    color: white;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-
-.btn-add-cart:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-}
-
-.btn-detail {
-    background: rgba(255,255,255,0.25);
-    border: 1px solid rgba(255,255,255,0.3);
-    border-radius: 10px;
-    padding: 10px 15px;
-    color: white;
-    transition: all 0.3s ease;
-}
-
-.btn-detail:hover {
-    background: rgba(255,255,255,0.35);
-}
 
 /* ================= FILTER SECTION ================= */
 .filter-section {
@@ -537,129 +485,31 @@ body::before {
             <section>
                 <h2 class="section-title">Produk Terbaru</h2>
                 <div class="row g-4">
-                    <div class="col-md-6 col-lg-4">
-                        <div class="product-card">
-                            <div class="product-image" style="background-image: url('https://picsum.photos/seed/laptop/400/300.jpg');">
-                                <span class="product-badge">Promo</span>
-                            </div>
-                            <div class="product-body">
-                                <h3 class="product-title">Laptop ASUS VivoBook</h3>
-                                <p class="product-description">Laptop dengan performa tinggi untuk menunjang kegiatan belajar mengajar.</p>
-                                <div class="product-price">Rp 8.500.000</div>
-                                <div class="product-footer">
-                                    <button class="btn-add-cart">
-                                        <i class="bi bi-cart-plus me-2"></i>
-                                        Tambah
-                                    </button>
-                                    <button class="btn-detail">
-                                        <i class="bi bi-eye"></i>
-                                    </button>
+                    {{-- AWAL LOOPING PRODUK --}}
+                    @forelse ($marketplaces as $marketplace)
+                        <div class="col-md-6 col-lg-4">
+                            <div class="product-card">
+                                {{-- Menampilkan foto produk --}}
+                                {{-- Pastikan Anda sudah menjalankan `php artisan storage:link` --}}
+                                <div class="product-image" style="background-image: url('{{ $marketplace->foto ? asset('storage/' . $marketplace->foto) : 'https://picsum.photos/seed/default/400/300.jpg' }}');">
+                                </div>
+                                <div class="product-body">
+                                    {{-- Menampilkan nama produk --}}
+                                    <h3 class="product-title">{{ $marketplace->nama }}</h3>
+                                    {{-- Menampilkan harga produk dengan format Rupiah --}}
+                                    <div class="product-price">Rp {{ number_format($marketplace->harga, 0, ',', '.') }}</div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <div class="product-card">
-                            <div class="product-image" style="background-image: url('https://picsum.photos/seed/books/400/300.jpg');">
-                            </div>
-                            <div class="product-body">
-                                <h3 class="product-title">Paket Buku Teknik</h3>
-                                <p class="product-description">Kumpulan buku wajib untuk jurusan teknik komputer dan jaringan.</p>
-                                <div class="product-price">Rp 450.000</div>
-                                <div class="product-footer">
-                                    <button class="btn-add-cart">
-                                        <i class="bi bi-cart-plus me-2"></i>
-                                        Tambah
-                                    </button>
-                                    <button class="btn-detail">
-                                        <i class="bi bi-eye"></i>
-                                    </button>
-                                </div>
+                    @empty
+                        <div class="col-12">
+                            <div class="alert alert-info text-center">
+                                <h4>Belum ada produk</h4>
+                                <p>Belum ada produk yang ditambahkan saat ini.</p>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <div class="product-card">
-                            <div class="product-image" style="background-image: url('https://picsum.photos/seed/uniform/400/300.jpg');">
-                                <span class="product-badge">Baru</span>
-                            </div>
-                            <div class="product-body">
-                                <h3 class="product-title">Seragam SMKN 1</h3>
-                                <p class="product-description">Seragam lengkap SMKN 1 Kawali dengan kualitas terbaik.</p>
-                                <div class="product-price">Rp 250.000</div>
-                                <div class="product-footer">
-                                    <button class="btn-add-cart">
-                                        <i class="bi bi-cart-plus me-2"></i>
-                                        Tambah
-                                    </button>
-                                    <button class="btn-detail">
-                                        <i class="bi bi-eye"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <div class="product-card">
-                            <div class="product-image" style="background-image: url('https://picsum.photos/seed/stationery/400/300.jpg');">
-                            </div>
-                            <div class="product-body">
-                                <h3 class="product-title">Paket Alat Tulis</h3>
-                                <p class="product-description">P lengkap alat tulis untuk kegiatan sekolah sehari-hari.</p>
-                                <div class="product-price">Rp 75.000</div>
-                                <div class="product-footer">
-                                    <button class="btn-add-cart">
-                                        <i class="bi bi-cart-plus me-2"></i>
-                                        Tambah
-                                    </button>
-                                    <button class="btn-detail">
-                                        <i class="bi bi-eye"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <div class="product-card">
-                            <div class="product-image" style="background-image: url('https://picsum.photos/seed/tablet/400/300.jpg');">
-                                <span class="product-badge">Terlaris</span>
-                            </div>
-                            <div class="product-body">
-                                <h3 class="product-title">Tablet Samsung</h3>
-                                <p class="product-description">Tablet untuk mendukung pembelajaran digital di sekolah.</p>
-                                <div class="product-price">Rp 3.200.000</div>
-                                <div class="product-footer">
-                                    <button class="btn-add-cart">
-                                        <i class="bi bi-cart-plus me-2"></i>
-                                        Tambah
-                                    </button>
-                                    <button class="btn-detail">
-                                        <i class="bi bi-eye"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <div class="product-card">
-                            <div class="product-image" style="background-image: url('https://picsum.photos/seed/bag/400/300.jpg');">
-                            </div>
-                            <div class="product-body">
-                                <h3 class="product-title">Tas Ransel</h3>
-                                <p class="product-description">Tas ransel ergonomic dengan banyak kompartemen.</p>
-                                <div class="product-price">Rp 180.000</div>
-                                <div class="product-footer">
-                                    <button class="btn-add-cart">
-                                        <i class="bi bi-cart-plus me-2"></i>
-                                        Tambah
-                                    </button>
-                                    <button class="btn-detail">
-                                        <i class="bi bi-eye"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforelse
+                    {{-- AKHIR LOOPING PRODUK --}}
                 </div>
             </section>
         </div>
@@ -715,20 +565,6 @@ body::before {
             btn.addEventListener('click', function() {
                 document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
-            });
-        });
-
-        // Add to cart functionality
-        document.querySelectorAll('.btn-add-cart').forEach(btn => {
-            btn.addEventListener('click', function() {
-                // Visual feedback
-                this.innerHTML = '<i class="bi bi-check-circle me-2"></i>Ditambahkan';
-                this.style.background = 'linear-gradient(90deg, #10B981, #059669)';
-                
-                setTimeout(() => {
-                    this.innerHTML = '<i class="bi bi-cart-plus me-2"></i>Tambah';
-                    this.style.background = '';
-                }, 2000);
             });
         });
 

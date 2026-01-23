@@ -9,11 +9,12 @@ use Illuminate\Support\Facades\Storage;
 
 class StaffKependidikanController extends Controller
 {
-    public function index()
-    {
-        $staff = StaffKependidikan::latest()->get();
-        return view('admin.crud.staffkependidikan.index', compact('staff'));
-    }
+   public function index()
+{
+    $staff = StaffKependidikan::latest()->paginate(6);
+    return view('admin.crud.staffkependidikan.index', compact('staff'));
+}
+
 
     public function create()
     {

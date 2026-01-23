@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Ekstrakurikuler - SMK Negeri 1 Kawali</title>
+    <title>Ekstrakulikuler - SMK Negeri 1 Kawali</title>
 
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -158,37 +158,39 @@
         <div class="absolute inset-0 bg-black opacity-10"></div>
         <div class="relative container mx-auto px-4">
             <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-3 animate-fade-in">
-                Ekstrakurikuler
+                Ekstrakulikuler
             </h1>
             <p class="text-gray-100 text-lg md:text-xl max-w-2xl animate-fade-in" style="animation-delay: 0.2s">
-                Informasi lengkap mengenai kegiatan ekstrakurikuler yang tersedia di SMK Negeri 1 Kawali.
+                Informasi lengkap mengenai kegiatan ekstrakulikuler yang tersedia di SMK Negeri 1 Kawali.
             </p>
         </div>
     </div>
 
     <!-- SEARCH -->
     <div class="max-w-4xl mx-auto mt-10 px-4">
-        <form action="/ekstrakurikuler" method="GET"
-            class="flex shadow-lg rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700">
-            <div class="relative flex-grow">
-                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <i class="fa-solid fa-search text-gray-400"></i>
-                </div>
-                <input
-                    name="cari"
-                    value="{{ request('cari') }}"
-                    class="w-full pl-10 pr-3 py-4 bg-slate-50 dark:bg-slate-800 border-none focus:ring-2 focus:ring-primary focus:outline-none"
-                    placeholder="Cari Ekstrakurikuler..."
-                    type="text"
-                    id="searchInput">
-            </div>
-            <button
-                type="submit"
-                class="bg-primary hover:bg-primary-dark text-white px-8 py-4 font-medium transition-colors duration-300 flex items-center">
-                <span>Cari</span>
-                <i class="fas fa-arrow-right ml-2"></i>
-            </button>
-        </form>
+      <form action="{{ route('ekstrakulikuler') }}" method="GET"
+    class="flex shadow-lg rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700">
+
+    <div class="relative flex-grow">
+        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <i class="fa-solid fa-search text-gray-400"></i>
+        </div>
+
+        <input
+            type="text"
+            name="cari"
+            value="{{ request('cari') }}"
+            placeholder="Cari Ekstrakulikuler..."
+            class="w-full pl-10 pr-3 py-4 bg-slate-50 dark:bg-slate-800 border-none focus:ring-2 focus:ring-primary focus:outline-none">
+    </div>
+
+    <button type="submit"
+        class="bg-primary hover:bg-primary-dark text-white px-8 py-4 font-medium flex items-center">
+        <span>Cari</span>
+        <i class="fas fa-arrow-right ml-2"></i>
+    </button>
+</form>
+
     </div>
 
     <!-- CONTENT -->
@@ -236,31 +238,46 @@
                 </div>
 
                 <!-- BODY -->
-                <div class="p-5 flex flex-col flex-grow">
-                    <div class="flex justify-end mb-3">
-                        <span class="text-xs bg-primary/10 dark:bg-primary/20 
-                                     text-primary dark:text-primary-300 
-                                     px-3 py-1 rounded-full font-medium">
-                            Pilihan
-                        </span>
-                    </div>
+               {{-- @php
+    $kategoriStyle = [
+        'olahraga'    => 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300',
+        'seni'        => 'bg-pink-100 text-pink-700 dark:bg-pink-900/30 dark:text-pink-300',
+        'kepramukaan' => 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300',
+        'keagamaan'   => 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300',
+        'akademik'    => 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300',
+        'lainnya'     => 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300',
+    ];
+@endphp --}}
 
-                    <div class="border-t pt-4 flex-grow">
-                        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white truncate">
-                            {{ $item->judul }}
-                        </h3>
-                    </div>
+<div class="p-5 flex flex-col flex-grow">
 
-                    <div class="mt-4">
-                        <a href="#"
-                           class="text-primary hover:text-primary-dark 
-                                  dark:text-primary-300 dark:hover:text-primary-200 
-                                  font-medium text-sm flex items-center transition-colors">
-                            Lihat Detail
-                            <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
-                    </div>
-                </div>
+    {{-- Badge kategori --}}
+    <div class="flex justify-end mb-3">
+        <span
+            class="text-xs px-3 py-1 rounded-full font-medium
+            {{ $kategoriStyle[$item->kategori] ?? 'bg-gray-100 text-gray-700' }}">
+            {{ ucfirst($item->kategori) }}
+        </span>
+    </div>
+
+    <div class="border-t pt-4 flex-grow">
+        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white truncate">
+            {{ $item->judul }}
+        </h3>
+    </div>
+
+    <div class="mt-4">
+        <a href="#"
+           class="text-primary hover:text-primary-dark 
+                  dark:text-primary-300 dark:hover:text-primary-200 
+                  font-medium text-sm flex items-center transition-colors">
+            Lihat Detail
+            <i class="fas fa-arrow-right ml-2"></i>
+        </a>
+    </div>
+
+</div>
+
             </div>
             @empty
                 <div class="col-span-full text-center py-10">
@@ -289,14 +306,14 @@
                 @if(request('cari'))
                 Tidak ada hasil untuk pencarian "<strong>{{ request('cari') }}</strong>"
                 @else
-                Tidak ada data ekstrakurikuler
+                Tidak ada data ekstrakulikuler
                 @endif
             </h3>
             <p class="text-gray-500 dark:text-gray-400 max-w-md">
                 @if(request('cari'))
                 Coba kata kunci pencarian lainnya
                 @else
-                Data ekstrakurikuler akan segera ditambahkan
+                Data ekstrakulikuler akan segera ditambahkan
                 @endif
             </p>
         </div>
@@ -326,7 +343,7 @@
                 <img id="modalImage" src="" alt="" class="max-w-full max-h-[80vh] object-contain animate-zoom-in rounded-lg">
                 <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 rounded-b-lg">
                     <h3 id="modalTitle" class="text-white text-2xl font-bold mb-2"></h3>
-                    <p id="modalCategory" class="text-gray-300">Ekstrakurikuler</p>
+                    <p id="modalCategory" class="text-gray-300">Ekstrakulikuler</p>
                 </div>
             </div>
         </div>

@@ -8,10 +8,16 @@ use Illuminate\Http\Request;
 
 class PrestasiController extends Controller
 {
-   public function index(){
+    public function index(Request $request)
+    {
+        $query = Prestasi::query();
 
-    $prestasi = Prestasi::latest()->paginate(8); // ✅
-    return view('pages.prestasi', compact('prestasi'));
-}
+        if ($request->filled('cari')) {
+            $query->where('judul', 'like', '%' . $request->cari . '%');
+        }
 
+        $prestasi = $query->latest()->paginate(8);
+
+        return view('pages.prestasi', compact('prestasi'));
+    }
 }

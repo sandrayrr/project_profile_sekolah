@@ -4,142 +4,322 @@
 
 @section('content')
 
-    <style>
-        /* OVERLAY */
-        .popup-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, .35);
-            backdrop-filter: blur(6px);
-            z-index: 999;
-        }
+<style>
+/* ================= KONFIGURASI WARNA & TIPOGRAFI ================= */
+:root {
+    /* --- TEMA BIRU BIASA (SOLID) --- */
+    --primary-blue: #3b82f6;      /* Biru Utama */
+    --primary-dark: #2563eb;      /* Biru Lebih Gelap untuk Hover/Gradien */
+    --primary-light: #dbeafe;     /* Biru Sangat Muda untuk Background */
+    --primary-shadow: rgba(37, 99, 235, 0.4); /* Bayangan Biru */
 
-        /* CONTAINER */
-        .popup-container {
-            position: fixed;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-        }
+    /* --- WARNA NETRAL LAINNYA --- */
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+    --bg-subtle: #f8fafc;
+    --accent-red: #ef4444;
+    --dark-color: #1f2937;
+}
 
-        /* CARD */
-        .popup-card {
-            width: 520px;
-            max-width: 95%;
-            background: #fff;
-            border-radius: 18px;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, .25);
-            animation: popupScale .25s ease;
-        }
+body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
 
-        /* HEADER */
-        .popup-header {
-            padding: 16px 22px;
-            border-bottom: 1px solid #eee;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+/* ================= OVERLAY (Latar Belakang) ================= */
+.popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5); /* Overlay gelap biasa untuk fokus */
+    backdrop-filter: blur(6px);
+    z-index: 1200;
+    animation: fadeOverlay 0.4s ease-out;
+}
 
-        .popup-header h5 {
-            margin: 0;
-            font-weight: 600;
-        }
+/* ================= CONTAINER (Penampung Utama) ================= */
+.popup-container {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1300;
+    padding: 20px;
+}
 
-        .popup-close {
-            font-size: 26px;
-            text-decoration: none;
-            color: #666;
-        }
+/* ================= CARD (Kartu Pop-up) ================= */
+.popup-card {
+    width: 540px;
+    max-width: 95%;
+    background: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0 25px 60px -10px var(--primary-shadow), 0 10px 20px -5px rgba(0, 0, 0, 0.1);
+    animation: popupShow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden; /* Memastikan sudut header melengkung sempurna */
+}
 
-        /* BODY */
-        .popup-body {
-            padding: 22px;
-        }
+/* ================= HEADER (Bagian Atas) ================= */
+.popup-header {
+    padding: 22px 26px;
+    background: var(--primary-blue); /* Warna biru solid */
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-        /* ANIMATION */
-        @keyframes popupScale {
-            from {
-                opacity: 0;
-                transform: scale(.96);
-            }
+.popup-header h5 {
+    margin: 0;
+    font-weight: 700;
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
 
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-    </style>
+.popup-close {
+    font-size: 28px;
+    line-height: 1;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.9);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+}
+.popup-close:hover {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.15);
+    transform: rotate(90deg) scale(1.1);
+}
 
-    <div class="popup-overlay"></div>
+/* ================= BODY (Isian Form) ================= */
+.popup-body {
+    padding: 28px 26px;
+}
 
-    <div class="popup-container">
-        <div class="popup-card">
+/* ================= FORM (Elemen Form) ================= */
+.form-label {
+    font-size: .9rem;
+    font-weight: 600;
+    color: var(--dark-color);
+    margin-bottom: 8px;
+}
 
-            {{-- HEADER --}}
-            <div class="popup-header">
-                <h5>
-                    <i class="bi bi-pencil-square me-1"></i>
-                    Edit Fasilitas
-                </h5>
+.form-control,
+.form-select {
+    border-radius: 12px;
+    padding: 12px 16px;
+    border: 1.5px solid var(--border-color);
+    background-color: var(--bg-subtle);
+    transition: all 0.25s ease;
+    font-size: 0.95rem;
+}
 
-                <a href="{{ route('admin.fasilitas.index') }}" class="popup-close">&times;</a>
-            </div>
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+    transform: translateY(-2px);
+    background-color: #fff;
+}
 
-            {{-- BODY --}}
-            <div class="popup-body">
-                <form action="{{ route('admin.fasilitas.update', ['fasilitas' => $fasilitas->id]) }}" method="POST"
-                    enctype="multipart/form-data">
+/* ================= ALERT (Pesan Error) ================= */
+.alert-custom-danger {
+    background: linear-gradient(135deg, #fef2f2, #fee2e2);
+    border: 1px solid #fecaca;
+    color: #991b1b;
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin-bottom: 24px;
+}
+.alert-custom-danger ul {
+    margin-bottom: 0;
+}
 
-                    @csrf
-                    @method('PUT')
+/* Pesan error inline di bawah input */
+.invalid-feedback {
+    color: var(--accent-red);
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+}
 
+/* ================= BUTTON (Tombol Aksi) ================= */
+.btn {
+    border-radius: 12px;
+    padding: 12px 24px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.25s ease;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
 
-                    {{-- JUDUL --}}
-                    <div class="mb-3">
-                        <label class="form-label fw-semibold">
-                            Judul Fasilitas
-                        </label>
-                        <input type="text" name="judul" class="form-control" value="{{ old('judul', $fasilitas->judul) }}"
-                            required>
-                    </div>
+.btn-primary {
+    background: var(--primary-blue); /* Warna biru solid */
+    color: white;
+    box-shadow: 0 4px 15px var(--primary-shadow);
+}
+.btn-primary:hover:not(:disabled) {
+    background: var(--primary-dark); /* Warna lebih gelap saat hover */
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px var(--primary-shadow);
+}
+.btn-primary:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
 
-                    {{-- FOTO --}}
-                    <div class="mb-4">
-                        <label class="form-label fw-semibold d-block">
-                            Foto Saat Ini
-                        </label>
+.btn-light {
+    background: #e2e8f0;
+    color: #475569;
+}
+.btn-light:hover {
+    background: #cbd5e1;
+    transform: translateY(-2px);
+}
 
-                        <div class="d-flex align-items-center gap-3 flex-wrap">
-                            <img src="{{ asset('storage/' . $fasilitas->foto) }}" class="rounded border shadow-sm"
-                                style="width:160px;height:100px;object-fit:cover;">
+/* ================= ANIMASI ================= */
+@keyframes popupShow {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
 
-                            <div>
-                                <small class="text-muted d-block mb-1">
-                                    Ganti foto (opsional)
-                                </small>
-                                <input type="file" name="foto" class="form-control">
-                            </div>
+@keyframes fadeOverlay {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* ================= LOADING STATE (Bonus!) ================= */
+.spinner-border-sm {
+    width: 1rem;
+    height: 1rem;
+    border-width: 2px;
+}
+.btn .spinner-border-sm {
+    display: none; /* Sembunyikan spinner secara default */
+}
+.btn-loading .spinner-border-sm {
+    display: inline-block; /* Tampilkan saat loading */
+}
+.btn-loading .btn-text {
+    display: none; /* Sembunyikan teks saat loading */
+}
+</style>
+
+{{-- OVERLAY --}}
+<div class="popup-overlay"></div>
+
+{{-- CONTAINER --}}
+<div class="popup-container">
+    <div class="popup-card">
+
+        {{-- HEADER --}}
+        <div class="popup-header">
+            <h5>
+                <i class="bi bi-building"></i>
+                Edit Fasilitas
+            </h5>
+            <a href="{{ route('admin.fasilitas.index') }}" class="popup-close" title="Tutup">&times;</a>
+        </div>
+
+        {{-- BODY --}}
+        <div class="popup-body">
+
+            {{-- PESAN ERROR --}}
+            @if($errors->any())
+                <div class="alert-custom-danger">
+                    <strong>Terjadi kesalahan:</strong>
+                    <ul class="mb-0 mt-2">
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            <form action="{{ route('admin.fasilitas.update', ['fasilitas' => $fasilitas->id]) }}"
+                  method="POST"
+                  enctype="multipart/form-data"
+                  id="fasilitasForm">
+                @csrf
+                @method('PUT')
+
+                {{-- JUDUL --}}
+                <div class="mb-3">
+                    <label for="judul" class="form-label">Judul Fasilitas</label>
+                    <input type="text"
+                           id="judul"
+                           name="judul"
+                           class="form-control @error('judul') is-invalid @enderror"
+                           value="{{ old('judul', $fasilitas->judul) }}"
+                           placeholder="Masukkan nama fasilitas"
+                           required>
+                    @error('judul')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                {{-- FOTO --}}
+                <div class="mb-4">
+                    <label for="foto" class="form-label">Foto Fasilitas</label>
+
+                    <div class="p-3 border rounded bg-light d-flex align-items-center gap-3 flex-wrap">
+                        <img src="{{ asset('storage/' . $fasilitas->foto) }}"
+                             class="rounded shadow-sm"
+                             style="width:160px;height:100px;object-fit:cover;">
+
+                        <div style="flex-grow: 1;">
+                            <small class="text-muted d-block mb-2">
+                                Ganti foto (kosongkan jika tidak ingin mengubah)
+                            </small>
+                            <input type="file"
+                                   id="foto"
+                                   name="foto"
+                                   class="form-control @error('foto') is-invalid @enderror"
+                                   accept="image/*">
+                            @error('foto')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
+                </div>
 
-                    {{-- ACTION --}}
-                    <div class="d-flex justify-content-end gap-2">
-                        <a href="{{ route('admin.fasilitas.index') }}" class="btn btn-light">
-                            Batal
-                        </a>
+                {{-- TOMBOL AKSI --}}
+                <div class="d-flex justify-content-end gap-2">
+                    <a href="{{ route('admin.fasilitas.index') }}" class="btn btn-light">
+                        Batal
+                    </a>
+                    <button type="submit" class="btn btn-primary">
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        <span class="btn-text"><i class="bi bi-arrow-clockwise me-1"></i> Perbarui Fasilitas</span>
+                    </button>
+                </div>
 
-                        <button class="btn btn-primary">
-                            <i class="bi bi-save me-1"></i> Update
-                        </button>
-                    </div>
-
-                </form>
-
-            </div>
+            </form>
         </div>
     </div>
+</div>
+
+{{-- JAVASCRIPT UNTUK LOADING STATE --}}
+<script>
+    document.getElementById('fasilitasForm').addEventListener('submit', function() {
+        const submitBtn = this.querySelector('button[type="submit"]');
+        // Tambahkan class 'btn-loading' untuk menampilkan spinner
+        submitBtn.classList.add('btn-loading');
+        // Non-aktifkan tombol untuk mencegah submit ganda
+        submitBtn.disabled = true;
+    });
+</script>
 
 @endsection

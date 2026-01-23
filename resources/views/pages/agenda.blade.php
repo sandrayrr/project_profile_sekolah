@@ -143,7 +143,7 @@
         <!-- GRID CARD -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="agendaGrid">
 
-            @forelse ($agenda as $index => $item)
+            @forelse ($agendas as $index => $item)
                 <div class="agenda-card bg-card-light dark:bg-card-dark rounded-2xl overflow-hidden animate-fade-in group"
                     data-index="{{ $index }}">
 
@@ -289,7 +289,6 @@
     <script>
         // Agenda data for modal
         const agendaData = [];
-<<<<<<< Updated upstream
         @forelse ($agendas as $item)
         agendaData.push({
             title: "{{ $item->judul }}",
@@ -298,16 +297,6 @@
             time: "{{ $item->waktu }}",
             icon: "{{ $item->ikon ?? 'event' }}"
         });
-=======
-        @forelse ($agenda as $item)
-            agendaData.push({
-                title: "{{ $item->judul }}",
-                description: "{{ $item->deskripsi }}",
-                date: "{{ \Carbon\Carbon::parse($item->tanggal)->translatedFormat('d F Y') }}",
-                time: "{{ $item->waktu }}",
-                icon: "{{ $item->ikon ?? 'event' }}"
-            });
->>>>>>> Stashed changes
         @empty
         @endforelse
 

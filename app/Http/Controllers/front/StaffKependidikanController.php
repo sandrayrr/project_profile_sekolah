@@ -9,7 +9,7 @@ class StaffKependidikanController extends Controller
 {
     public function index()
     {
-        $staff = StaffKependidikan::latest()->get();
+        $staff = StaffKependidikan::latest()->paginate(8);
         return view('pages.staffkependidikan', compact('staff'));
     }
 }

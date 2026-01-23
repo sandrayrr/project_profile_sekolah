@@ -487,7 +487,7 @@
                         <h2 class="fw-bold mb-0">{{ $agendas->where('tanggal', '<', now())->count() }}</h2>
                     </div>
                     <div class="stat-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
-                        <i class="bi bi-calendar-check2"></i>
+                        <i class="bi bi-calendar-check"></i>
                     </div>
                 </div>
             </div>
@@ -555,7 +555,7 @@
                         <th>Informasi Agenda</th>
                         <th width="140">Tanggal</th>
                         <th width="120">Waktu</th>
-                        <th width="120">Status</th>
+                      
                         <th width="120">Aksi</th>
                     </tr>
                 </thead>
@@ -590,7 +590,9 @@
                                 @elseif($agenda->tanggal == now()->format('Y-m-d'))
                                     <span class="badge badge-primary">Hari Ini</span>
                                 @else
-                                    <span class="badge badge-success">Selesai</span>
+                                    <span class="badge badge-success">
+                                        <i class="bi bi-calendar-check me-1"></i>Selesai
+                                    </span>
                                 @endif
                             </td>
 

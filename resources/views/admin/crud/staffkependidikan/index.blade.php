@@ -235,7 +235,7 @@
     }
     
     .staff-image {
-        height: 200px;
+        height: 180px; /* Diperkecil dari 200px */
         width: 100%;
         object-fit: cover;
         cursor: pointer;
@@ -247,11 +247,11 @@
     }
     
     .staff-body {
-        padding: 1.5rem;
+        padding: 1.25rem; /* Diperkecil dari 1.5rem */
     }
     
     .staff-title {
-        font-size: 1.25rem;
+        font-size: 1.1rem; /* Diperkecil dari 1.25rem */
         font-weight: 600;
         margin-bottom: 0.5rem;
         color: var(--dark-color);
@@ -424,10 +424,10 @@
         margin-right: 0.3rem;
     }
     
-    /* Grid Layout */
+    /* Grid Layout - YANG DIUBAH */
     .staff-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); /* Diperkecil dari 300px */
         gap: 1.5rem;
         padding: 1.5rem;
     }
@@ -524,8 +524,8 @@
             <div class="stat-card slide-in" style="animation-delay: 0.3s;">
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
-                        <p class="text-muted small mb-1">Lainnya</p>
-                        <h2 class="fw-bold mb-0">{{ $staff->whereNotIn('jabatan', ['Tata Usaha', 'Pustakawan'])->count() }}</h2>
+                        <p class="text-muted small mb-1">Toolman</p>
+                        <h2 class="fw-bold mb-0">{{ $staff->whereNotIn('jabatan', ['toolman'])->count() }}</h2>
                     </div>
                     <div class="stat-icon" style="background: linear-gradient(135deg, #eab308 0%, #d97706 100%);">
                         <i class="bi bi-three-dots"></i>
@@ -563,7 +563,7 @@
                     <option value="">Semua Jabatan</option>
                     <option value="tata usaha">Tata Usaha</option>
                     <option value="pustakawan">Pustakawan</option>
-                    <option value="tool man">Tool Man</option>
+                    <option value="toolman">Toolman</option>
                 </select>
             </div>
             <div class="col-md-3">
@@ -651,9 +651,37 @@
     </div>
 
     <!-- PAGINATION -->
-    {{-- <div class="d-flex justify-content-center mt-4">
-        {{ $staff->links('pagination::bootstrap-4') }}
-    </div> --}}
+   @if ($staff->hasPages())
+    <div class="d-flex justify-content-center mt-4 fade-in">
+        <nav>
+            <ul class="pagination pagination-modern">
+
+                {{-- Prev --}}
+                <li class="page-item {{ $staff->onFirstPage() ? 'disabled' : '' }}">
+                    <a class="page-link" href="{{ $staff->previousPageUrl() ?? '#' }}">
+                        <i class="bi bi-chevron-left"></i>
+                    </a>
+                </li>
+
+                {{-- Number --}}
+                @foreach ($staff->getUrlRange(1, $staff->lastPage()) as $page => $url)
+                    <li class="page-item {{ $staff->currentPage() == $page ? 'active' : '' }}">
+                        <a class="page-link" href="{{ $url }}">{{ $page }}</a>
+                    </li>
+                @endforeach
+
+                {{-- Next --}}
+                <li class="page-item {{ $staff->hasMorePages() ? '' : 'disabled' }}">
+                    <a class="page-link" href="{{ $staff->nextPageUrl() ?? '#' }}">
+                        <i class="bi bi-chevron-right"></i>
+                    </a>
+                </li>
+
+            </ul>
+        </nav>
+    </div>
+@endif
+
 </div>
 
 <!-- MODAL GAMBAR -->

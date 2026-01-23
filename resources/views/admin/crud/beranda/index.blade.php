@@ -387,6 +387,15 @@
         margin-right: 0.3rem;
     }
     
+    /* Custom styles untuk deskripsi yang dipotong */
+    .description-truncate {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
     /* Responsive */
     @media (max-width: 768px) {
         .container {
@@ -432,9 +441,15 @@
                 <h1 class="fw-bold mb-1">Manajemen Beranda</h1>
                 <p class="mb-0 opacity-90">Kelola sambutan kepala sekolah & statistik beranda</p>
             </div>
-            <a href="{{ route('admin.beranda.create') }}" class="btn btn-light">
-                <i class="bi bi-plus-circle me-2"></i> Tambah Beranda
-            </a>
+            @if($data->count() > 0)
+                <a href="{{ route('admin.beranda.edit', $data->first()->id) }}" class="btn btn-light">
+                    <i class="bi bi-pencil me-2"></i> Edit Sambutan
+                </a>
+            @else
+                <a href="{{ route('admin.beranda.create') }}" class="btn btn-light">
+                    <i class="bi bi-plus-circle me-2"></i> Tambah Sambutan
+                </a>
+            @endif
         </div>
     </div>
 
@@ -502,35 +517,10 @@
         </div>
     @endif
 
-    <!-- FILTER -->
-    <div class="filter-card slide-in" style="animation-delay: 0.3s;">
-        <div class="filter-header">
-            <i class="bi bi-funnel"></i>
-            <h5>Filter Beranda</h5>
-        </div>
-        <div class="row g-3">
-            <div class="col-md-8">
-                <div class="input-group">
-                    <span class="input-group-text">
-                        <i class="bi bi-search"></i>
-                    </span>
-                    <input type="text" class="form-control" id="searchInput" placeholder="Cari judul atau isi sambutan...">
-                </div>
-            </div>
-            <div class="col-md-4">
-                <select class="form-select" id="sortSelect">
-                    <option value="newest">Terbaru</option>
-                    <option value="oldest">Terlama</option>
-                    <option value="title">Judul A-Z</option>
-                </select>
-            </div>
-        </div>
-    </div>
-
     <!-- TABEL BERANDA -->
     <div class="table-card slide-in" style="animation-delay: 0.4s;">
         <div class="table-header">
-            <h5 class="table-title">Daftar Beranda</h5>
+            <h5 class="table-title">Sambutan Kepala Sekolah</h5>
             <div class="table-actions">
                 <button class="btn btn-light btn-sm">
                     <i class="bi bi-download me-2"></i> Export
@@ -559,22 +549,13 @@
 
                             <td>
                                 <div class="fw-semibold mb-1">{{ $item->judul }}</div>
-                                <small class="text-muted d-block mb-2">
-                                    {{ \Illuminate\Support\Str::limit(strip_tags($item->deskripsi), 120) }}
+                                <small class="text-muted d-block mb-2 description-truncate">
+                                    {{ strip_tags($item->deskripsi) }}
                                 </small>
-
-                                <div class="d-flex gap-2 flex-wrap">
-                                    <span class="badge badge-primary">{{ $item->jumlah_siswa ?? 0 }} Siswa</span>
-                                    <span class="badge badge-success">{{ $item->jumlah_guru ?? 0 }} Guru</span>
-                                    <span class="badge badge-warning">{{ $item->jumlah_jurusan ?? 0 }} Jurusan</span>
-                                </div>
                             </td>
 
                             <td class="text-center">
-                                <div class="d-inline-flex gap-1">
-                                    <a href="{{ route('admin.beranda.edit',$item->id) }}" class="btn btn-icon btn-icon-primary">
-                                        <i class="bi bi-pencil"></i>
-                                    </a>
+                                <div class="d-inline-flex gap-1 me-5">
                                     <form action="{{ route('admin.beranda.destroy',$item->id) }}" method="POST"
                                           onsubmit="return confirmDelete()">
                                         @csrf @method('DELETE')
@@ -591,11 +572,11 @@
                             <td colspan="3">
                                 <div class="empty-state">
                                     <i class="bi bi-house-door"></i>
-                                    <h5>Data beranda belum tersedia</h5>
-                                    <p>Belum ada konten beranda yang ditambahkan. Mulai dengan menambahkan konten baru.</p>
+                                    <h5>Belum ada sambutan kepala sekolah</h5>
+                                    <p>Belum ada konten sambutan yang ditambahkan. Mulai dengan menambahkan sambutan baru.</p>
                                     {{-- <a href="{{ route('admin.beranda.create') }}" class="btn btn-primary">
                                         <i class="bi bi-plus-circle me-2"></i>
-                                        Tambah Beranda
+                                        Tambah Sambutan
                                     </a> --}}
                                 </div>
                             </td>
