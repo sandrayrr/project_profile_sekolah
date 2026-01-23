@@ -4,11 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<<<<<<< HEAD
-    <title>Program tkjt - SMKN 1 Kawali</title>
-=======
-    <title>Program TJKT - SMKN 1 Kawali</title>
->>>>>>> 1165083e272c405d0fa74f9a32e02d28678f5fdb
+    <title>Informasi Jurusan TJKT - SMKN 1 Kawali</title>
 
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -20,8 +16,8 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: "#0ea5e9", // Warna biru sky untuk tema jaringan/teknologi
-                        secondary: "#0891b2",
+                        primary: "#3b82f6",
+                        secondary: "#2563eb",
                         "background-light": "#f9fafb",
                         "background-dark": "#111827",
                         "card-light": "#ffffff",
@@ -55,12 +51,14 @@
 
     <style>
         .tab-active {
-            border-bottom: 3px solid #0ea5e9;
-            color: #0ea5e9;
+            border-bottom: 3px solid #3b82f6;
+            color: #3b82f6;
         }
+
         .org-chart {
             position: relative;
         }
+
         .org-chart::before {
             content: '';
             position: absolute;
@@ -71,13 +69,16 @@
             background-color: #e5e7eb;
             z-index: 0;
         }
+
         .dark .org-chart::before {
             background-color: #374151;
         }
+
         .org-chart-item {
             position: relative;
             z-index: 1;
         }
+
         .org-chart-item::before {
             content: '';
             position: absolute;
@@ -88,179 +89,198 @@
             background-color: #e5e7eb;
             transform: translate(-50%, -100%);
         }
+
         .dark .org-chart-item::before {
             background-color: #374151;
         }
+
         .org-chart-item:last-child::before {
             display: none;
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .dark .card-hover:hover {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .info-section {
+            border-left: 4px solid #3b82f6;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 8px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #3b82f6;
         }
     </style>
 </head>
 
 <body class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-100 font-body">
 
-    @include('layouts.navbar')
+   @include('layouts.navbar')
 
-    <!-- HERO -->
-    <section class="relative bg-gradient-to-br from-primary to-secondary dark:from-gray-700 dark:to-gray-900 py-20 overflow-hidden">
-        <div class="absolute inset-0 bg-black opacity-10"></div>
-        <div class="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full -mr-32 -mt-32"></div>
-        <div class="absolute bottom-0 left-0 w-96 h-96 bg-white opacity-5 rounded-full -ml-48 -mb-48"></div>
-        
-        <div class="container mx-auto px-4 relative z-10">
-            <div class="flex flex-col lg:flex-row items-center gap-12">
-                <!-- LEFT -->
-                <div class="lg:w-1/2">
-                    <span class="text-gray-100 font-semibold text-base mb-3 block">
-                        Kompetensi Keahlian
-                    </span>
-
-                    <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6 text-white">
-                        Teknik Jaringan Komputer <br> dan Telekomunikasi
+    <!-- HEADER JURUSAN -->
+    <header class="bg-gradient-to-br from-primary to-secondary dark:from-gray-700 dark:to-gray-900 py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center gap-8">
+                <div class="md:w-2/3">
+                    <div class="mb-4">
+                        <span class="text-gray-100 font-semibold text-base">SMKN 1 Kawali</span>
+                    </div>
+                    <h1 class="text-3xl md:text-4xl font-bold text-white mb-4">
+                        Jurusan Teknik Jaringan Komputer dan Telekomunikasi (TJKT)
                     </h1>
-
-            <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6 text-gray-900 dark:text-white">
-                tkj <br> Keuangan dan Lembaga
-            </h1>
-
+                    <p class="text-gray-100 text-lg mb-6">
+                        Jurusan yang mempersiapkan ahli dalam instalasi, konfigurasi, dan pemeliharaan
+                        jaringan komputer serta sistem telekomunikasi modern.
+                    </p>
                     <div class="flex flex-wrap gap-4">
-                        <a href="#informasi"
-                            class="bg-white text-primary px-8 py-4 rounded-xl font-medium hover:bg-gray-100 transition shadow-lg">
-                            Pelajari Lebih Lanjut
-                        </a>
-                        <a href="#galeri"
-                            class="border border-white text-white px-8 py-4 rounded-xl font-medium hover:bg-white hover:text-primary transition">
-                            Lihat Galeri
-                        </a>
+                        <div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-lg px-4 py-2 text-white">
+                            <span class="material-icons mr-2 text-sm">people</span>
+                            <span class="text-sm">120+ Siswa</span>
+                        </div>
+                        <div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-lg px-4 py-2 text-white">
+                            <span class="material-icons mr-2 text-sm">person</span>
+                            <span class="text-sm">8 Guru Profesional</span>
+                        </div>
+                        <div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-lg px-4 py-2 text-white">
+                            <span class="material-icons mr-2 text-sm">history</span>
+                            <span class="text-sm">Berdiri sejak 2014</span>
+                        </div>
                     </div>
                 </div>
-
-                <!-- RIGHT -->
-                <div class="lg:w-1/2 flex justify-center">
-                    <img
-                        src="https://sfile.chatglm.cn/images-ppt/a4f8c3e7d6b5.jpg" <!-- Gambar placeholder server/networking -->
-                        alt="Siswa TJKT"
-                        class="w-full max-w-xl h-[420px] object-cover rounded-2xl shadow-2xl">
+                <div class="md:w-1/3 flex justify-center">
+                    <img src="https://sfile.chatglm.cn/images-ppt/network-cable-server-room.jpg" alt="Siswa TJKT"
+                        class="w-full max-w-sm h-48 object-cover rounded-xl shadow-lg">
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- STATISTICS -->
-    <section class="py-16 bg-white dark:bg-gray-800">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div class="text-center">
-                    <div class="text-4xl font-bold text-primary mb-2">135+</div>
-                    <div class="text-gray-600 dark:text-gray-400">Siswa Aktif</div>
-                </div>
-                <div class="text-center">
-                    <div class="text-4xl font-bold text-primary mb-2">9</div>
-                    <div class="text-gray-600 dark:text-gray-400">Guru Profesional</div>
-                </div>
-                <div class="text-center">
-                    <div class="text-4xl font-bold text-primary mb-2">97%</div>
-                    <div class="text-gray-600 dark:text-gray-400">Tingkat Kelulusan</div>
-                </div>
-                <div class="text-center">
-                    <div class="text-4xl font-bold text-primary mb-2">92%</div>
-                    <div class="text-gray-600 dark:text-gray-400">Terserap Kerja</div>
-                </div>
-            </div>
-        </div>
-    </section>
+    </header>
 
     <!-- INFORMASI JURUSAN -->
-    <section id="informasi" class="py-20">
+    <main class="py-12">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white">
-                Informasi Jurusan
-            </h2>
-            
             <!-- TABS -->
-            <div class="flex flex-wrap justify-center mb-10 border-b border-gray-200 dark:border-gray-700">
-                <button class="tab-btn px-6 py-3 font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition tab-active" data-tab="identitas">
+            <div class="flex flex-wrap justify-center mb-8 border-b border-gray-200 dark:border-gray-700">
+                <button
+                    class="tab-btn px-6 py-3 font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition tab-active"
+                    data-tab="identitas">
                     Identitas
                 </button>
-                <button class="tab-btn px-6 py-3 font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition" data-tab="fasilitas">
+                <button
+                    class="tab-btn px-6 py-3 font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition"
+                    data-tab="fasilitas">
                     Fasilitas
                 </button>
-                <button class="tab-btn px-6 py-3 font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition" data-tab="struktur">
+                <button
+                    class="tab-btn px-6 py-3 font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition"
+                    data-tab="struktur">
                     Struktur Organisasi
                 </button>
-                <button class="tab-btn px-6 py-3 font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition" data-tab="kompetensi">
+                <button
+                    class="tab-btn px-6 py-3 font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition"
+                    data-tab="kompetensi">
                     Kompetensi
                 </button>
+                <button
+                    class="tab-btn px-6 py-3 font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition"
+                    data-tab="kurikulum">
+                    Kurikulum
+                </button>
             </div>
-            
+
             <!-- TAB CONTENT -->
             <div class="tab-content">
                 <!-- IDENTITAS -->
                 <div id="identitas" class="tab-pane">
                     <div class="bg-card-light dark:bg-card-dark rounded-2xl shadow-lg p-8">
+                        <h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Identitas Jurusan</h3>
+
+                        <div class="mb-8">
+                            <h4 class="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Profil Jurusan</h4>
+                            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
+                                <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                                    Jurusan Teknik Jaringan Komputer dan Telekomunikasi (TJKT) di SMKN 1 Kawali
+                                    dirancang untuk
+                                    menghasilkan lulusan yang ahli dalam instalasi, konfigurasi, dan pemeliharaan
+                                    infrastruktur jaringan komputer dan sistem telekomunikasi. Dengan kurikulum yang
+                                    selalu update sesuai kebutuhan
+                                    industri, siswa dibekali dengan keterampilan teknis dan sertifikasi internasional
+                                    yang relevan
+                                    untuk karir di era digital.
+                                </p>
+                            </div>
+                        </div>
+
                         <div class="grid md:grid-cols-2 gap-8">
                             <div>
-                                <h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Identitas Jurusan</h3>
+                                <h4 class="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Data Jurusan</h4>
                                 <div class="space-y-4">
                                     <div class="flex items-start">
-                                        <span class="material-icons text-primary mr-3 mt-1">router</span>
+                                        <span class="material-icons text-primary mr-3 mt-1">settings_ethernet</span>
                                         <div>
-                                            <h4 class="font-semibold text-gray-900 dark:text-white">Nama Jurusan</h4>
-                                            <p class="text-gray-600 dark:text-gray-400">Teknik Jaringan Komputer dan Telekomunikasi</p>
+                                            <h5 class="font-medium text-gray-900 dark:text-white">Nama Lengkap</h5>
+                                            <p class="text-gray-600 dark:text-gray-400">Teknik Jaringan Komputer dan
+                                                Telekomunikasi</p>
                                         </div>
                                     </div>
                                     <div class="flex items-start">
-                                        <span class="material-icons text-primary mr-3 mt-1">tag</span>
+                                        <span class="material-icons text-primary mr-3 mt-1">school</span>
                                         <div>
-                                            <h4 class="font-semibold text-gray-900 dark:text-white">Kode Jurusan</h4>
-                                            <p class="text-gray-600 dark:text-gray-400">TJKT</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-start">
-                                        <span class="material-icons text-primary mr-3 mt-1">history</span>
-                                        <div>
-                                            <h4 class="font-semibold text-gray-900 dark:text-white">Tahun Berdiri</h4>
-                                            <p class="text-gray-600 dark:text-gray-400">2012</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-start">
-                                        <span class="material-icons text-primary mr-3 mt-1">description</span>
-                                        <div>
-                                            <h4 class="font-semibold text-gray-900 dark:text-white">Deskripsi</h4>
-                                            <p class="text-gray-600 dark:text-gray-400">Jurusan TJKT fokus pada instalasi, konfigurasi, perawatan, dan keamanan infrastruktur jaringan komputer dan sistem telekomunikasi. Siswa akan belajar mengelola server, jaringan nirkabel, hingga teknologi cloud.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Data Statistik</h3>
-                                <div class="space-y-4">
-                                    <div class="flex items-start">
-                                        <span class="material-icons text-primary mr-3 mt-1">people</span>
-                                        <div>
-                                            <h4 class="font-semibold text-gray-900 dark:text-white">Jumlah Siswa</h4>
-                                            <p class="text-gray-600 dark:text-gray-400">135 siswa (33-34 siswa per kelas)</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-start">
-                                        <span class="material-icons text-primary mr-3 mt-1">person</span>
-                                        <div>
-                                            <h4 class="font-semibold text-gray-900 dark:text-white">Jumlah Guru</h4>
-                                            <p class="text-gray-600 dark:text-gray-400">9 guru profesional dengan sertifikasi jaringan</p>
+                                            <h5 class="font-medium text-gray-900 dark:text-white">Kepala Jurusan</h5>
+                                            <p class="text-gray-600 dark:text-gray-400">Bapak Ahmad Fauzi, S.Kom., M.T.
+                                            </p>
                                         </div>
                                     </div>
                                     <div class="flex items-start">
                                         <span class="material-icons text-primary mr-3 mt-1">business</span>
                                         <div>
-                                            <h4 class="font-semibold text-gray-900 dark:text-white">Mitra Industri</h4>
-                                            <p class="text-gray-600 dark:text-gray-400">18+ perusahaan ISP, provider, dan data center</p>
+                                            <h5 class="font-medium text-gray-900 dark:text-white">Mitra Industri</h5>
+                                            <p class="text-gray-600 dark:text-gray-400">ISP, Telkom, Cisco, Microsoft,
+                                                Huawei</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Pencapaian</h4>
+                                <div class="space-y-4">
+                                    <div class="flex items-start">
+                                        <span class="material-icons text-primary mr-3 mt-1">trending_up</span>
+                                        <div>
+                                            <h5 class="font-medium text-gray-900 dark:text-white">Tingkat Kelulusan</h5>
+                                            <p class="text-gray-600 dark:text-gray-400">97% (2022/2023)</p>
                                         </div>
                                     </div>
                                     <div class="flex items-start">
                                         <span class="material-icons text-primary mr-3 mt-1">work</span>
                                         <div>
-                                            <h4 class="font-semibold text-gray-900 dark:text-white">Prospek Kerja</h4>
-                                            <p class="text-gray-600 dark:text-gray-400">Network Admin, System Admin, Security Analyst, dll.</p>
+                                            <h5 class="font-medium text-gray-900 dark:text-white">Tingkat Penyerapan
+                                                Kerja</h5>
+                                            <p class="text-gray-600 dark:text-gray-400">92% dalam 6 bulan setelah lulus
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <span class="material-icons text-primary mr-3 mt-1">emoji_events</span>
+                                        <div>
+                                            <h5 class="font-medium text-gray-900 dark:text-white">Prestasi</h5>
+                                            <p class="text-gray-600 dark:text-gray-400">Juara 1 LKS Network
+                                                Administration
+                                                Tingkat Nasional 2023</p>
                                         </div>
                                     </div>
                                 </div>
@@ -268,221 +288,638 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- FASILITAS -->
                 <div id="fasilitas" class="tab-pane hidden">
                     <div class="bg-card-light dark:bg-card-dark rounded-2xl shadow-lg p-8">
                         <h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Fasilitas Jurusan</h3>
-                        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 hover:shadow-lg transition">
-                                <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mb-4">
-                                    <span class="material-icons text-primary">settings_ethernet</span>
+
+                        <div class="mb-8">
+                            <h4 class="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Laboratorium</h4>
+                            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 card-hover">
+                                    <div
+                                        class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mb-4">
+                                        <span class="material-icons text-primary">router</span>
+                                    </div>
+                                    <h5 class="font-semibold text-gray-900 dark:text-white mb-2">Lab Jaringan</h5>
+                                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">40 unit PC dengan perangkat
+                                        jaringan lengkap untuk praktikum</p>
+                                    <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
+                                        <li>• Switch Managed Layer 2/3</li>
+                                        <li>• Router Cisco & Mikrotik</li>
+                                        <li>• Access Point Enterprise</li>
+                                        <li>• Firewall & Security Appliance</li>
+                                    </ul>
                                 </div>
-                                <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Lab Jaringan</h4>
-                                <p class="text-gray-600 dark:text-gray-400 text-sm">Lengkap dengan router, switch, dan perangkat Cisco untuk simulasi jaringan nyata.</p>
+                                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 card-hover">
+                                    <div
+                                        class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mb-4">
+                                        <span class="material-icons text-primary">settings_input_antenna</span>
+                                    </div>
+                                    <h5 class="font-semibold text-gray-900 dark:text-white mb-2">Lab Telekomunikasi</h5>
+                                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">Peralatan praktikum untuk
+                                        sistem telekomunikasi modern</p>
+                                    <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
+                                        <li>• Perangkat FO (Fiber Optic)</li>
+                                        <li>• Radio Microwave & VSAT</li>
+                                        <li>• BTS & GSM Equipment</li>
+                                        <li>• VoIP Gateway & IP PBX</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 card-hover">
+                                    <div
+                                        class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mb-4">
+                                        <span class="material-icons text-primary">dns</span>
+                                    </div>
+                                    <h5 class="font-semibold text-gray-900 dark:text-white mb-2">Server Room</h5>
+                                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">Infrastruktur server untuk
+                                        praktikum administrasi jaringan</p>
+                                    <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
+                                        <li>• Server Dell PowerEdge</li>
+                                        <li>• NAS & SAN Storage</li>
+                                        <li>• VMware vSphere</li>
+                                        <li>• Backup & Disaster Recovery</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 card-hover">
+                                    <div
+                                        class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mb-4">
+                                        <span class="material-icons text-primary">security</span>
+                                    </div>
+                                    <h5 class="font-semibold text-gray-900 dark:text-white mb-2">Lab Keamanan Jaringan
+                                    </h5>
+                                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">Peralatan untuk praktikum
+                                        keamanan siber dan ethical hacking</p>
+                                    <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
+                                        <li>• Firewall Palo Alto</li>
+                                        <li>• SIEM Systems</li>
+                                        <li>• Intrusion Detection</li>
+                                        <li>• Forensics Tools</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 card-hover">
+                                    <div
+                                        class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mb-4">
+                                        <span class="material-icons text-primary">wifi</span>
+                                    </div>
+                                    <h5 class="font-semibold text-gray-900 dark:text-white mb-2">Lab Wireless</h5>
+                                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">Area khusus untuk praktikum
+                                        jaringan nirkabel</p>
+                                    <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
+                                        <li>• Wireless Controllers</li>
+                                        <li>• Spectrum Analyzer</li>
+                                        <li>• Site Survey Tools</li>
+                                        <li>• Heat Mapping Software</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 card-hover">
+                                    <div
+                                        class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mb-4">
+                                        <span class="material-icons text-primary">cloud</span>
+                                    </div>
+                                    <h5 class="font-semibold text-gray-900 dark:text-white mb-2">Cloud Lab</h5>
+                                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">Praktikum cloud computing
+                                        dan virtualisasi</p>
+                                    <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
+                                        <li>• AWS/Azure/GCP Access</li>
+                                        <li>• Docker & Kubernetes</li>
+                                        <li>• Private Cloud Setup</li>
+                                        <li>• DevOps Tools</li>
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 hover:shadow-lg transition">
-                                <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mb-4">
-                                    <span class="material-icons text-primary">dns</span>
+                        </div>
+
+                        <div>
+                            <h4 class="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Sertifikasi & Software
+                            </h4>
+                            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
+                                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                                    <div class="text-center">
+                                        <div
+                                            class="w-16 h-16 bg-white dark:bg-gray-700 rounded-lg flex items-center justify-center mx-auto mb-2">
+                                            <span class="material-icons text-primary">verified</span>
+                                        </div>
+                                        <p class="text-sm font-medium text-gray-900 dark:text-white">Cisco CCNA</p>
+                                        <p class="text-xs text-gray-600 dark:text-gray-400">Networking</p>
+                                    </div>
+                                    <div class="text-center">
+                                        <div
+                                            class="w-16 h-16 bg-white dark:bg-gray-700 rounded-lg flex items-center justify-center mx-auto mb-2">
+                                            <span class="material-icons text-primary">verified</span>
+                                        </div>
+                                        <p class="text-sm font-medium text-gray-900 dark:text-white">CompTIA Network+
+                                        </p>
+                                        <p class="text-xs text-gray-600 dark:text-gray-400">Foundation</p>
+                                    </div>
+                                    <div class="text-center">
+                                        <div
+                                            class="w-16 h-16 bg-white dark:bg-gray-700 rounded-lg flex items-center justify-center mx-auto mb-2">
+                                            <span class="material-icons text-primary">verified</span>
+                                        </div>
+                                        <p class="text-sm font-medium text-gray-900 dark:text-white">Mikrotik MTCNA</p>
+                                        <p class="text-xs text-gray-600 dark:text-gray-400">RouterOS</p>
+                                    </div>
+                                    <div class="text-center">
+                                        <div
+                                            class="w-16 h-16 bg-white dark:bg-gray-700 rounded-lg flex items-center justify-center mx-auto mb-2">
+                                            <span class="material-icons text-primary">verified</span>
+                                        </div>
+                                        <p class="text-sm font-medium text-gray-900 dark:text-white">AWS Cloud</p>
+                                        <p class="text-xs text-gray-600 dark:text-gray-400">Practitioner</p>
+                                    </div>
                                 </div>
-                                <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Lab Server</h4>
-                                <p class="text-gray-600 dark:text-gray-400 text-sm">Ruang server fisik dan virtual untuk praktikum administrasi sistem Windows/Linux.</p>
-                            </div>
-                            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 hover:shadow-lg transition">
-                                <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mb-4">
-                                    <span class="material-icons text-primary">security</span>
-                                </div>
-                                <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Lab Keamanan Siber</h4>
-                                <p class="text-gray-600 dark:text-gray-400 text-sm">Lingkungan terisolasi untuk praktikum penetration testing dan analisis malware.</p>
-                            </div>
-                            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 hover:shadow-lg transition">
-                                <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mb-4">
-                                    <span class="material-icons text-primary">cloud</span>
-                                </div>
-                                <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Mini Data Center</h4>
-                                <p class="text-gray-600 dark:text-gray-400 text-sm">Replika skala kecil data center untuk pembelajaran infrastruktur dan cloud.</p>
-                            </div>
-                            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 hover:shadow-lg transition">
-                                <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mb-4">
-                                    <span class="material-icons text-primary">build</span>
-                                </div>
-                                <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Workshop Teknisi</h4>
-                                <p class="text-gray-600 dark:text-gray-400 text-sm">Area untuk praktikum perakitan kabel (crimping), instalasi hardware, dan troubleshooting.</p>
-                            </div>
-                            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 hover:shadow-lg transition">
-                                <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mb-4">
-                                    <span class="material-icons text-primary">wifi</span>
-                                </div>
-                                <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Jaringan Khusus</h4>
-                                <p class="text-gray-600 dark:text-gray-400 text-sm">Akses internet dengan dedicated line dan berbagai ISP untuk simulasi.</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- STRUKTUR ORGANISASI -->
                 <div id="struktur" class="tab-pane hidden">
                     <div class="bg-card-light dark:bg-card-dark rounded-2xl shadow-lg p-8">
-                        <h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Struktur Organisasi Jurusan</h3>
-                        <div class="overflow-x-auto">
-                            <div class="min-w-full">
-                                <!-- Kepala Jurusan -->
-                                <div class="flex justify-center mb-8">
-                                    <div class="bg-primary text-white rounded-xl p-6 text-center max-w-xs">
-                                        <div class="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                                            <span class="material-icons text-3xl">router</span>
-                                        </div>
-                                        <h4 class="font-bold text-lg">Kepala Jurusan</h4>
-                                        <p class="text-sm opacity-90">Bapak Dedi Kurniawan, S.T., M.Kom.</p>
+                        <h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Struktur Organisasi Jurusan
+                        </h3>
+
+                        <!-- Kepala Jurusan -->
+                        <div class="flex justify-center mb-8">
+                            <div class="bg-primary text-white rounded-xl p-6 text-center max-w-xs card-hover">
+                                <div
+                                    class="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <span class="material-icons text-3xl">settings_ethernet</span>
+                                </div>
+                                <h4 class="font-bold text-lg">Kepala Jurusan</h4>
+                                <p class="text-sm opacity-90">Bapak Ahmad Fauzi, S.Kom., M.T.</p>
+                                <p class="text-xs opacity-75 mt-2">NIP. 198504152009011001</p>
+                            </div>
+                        </div>
+
+                        <!-- Guru Produktif -->
+                        <div class="org-chart flex justify-center mb-8">
+                            <div class="flex gap-4">
+                                <div
+                                    class="org-chart-item bg-gray-100 dark:bg-gray-800 rounded-xl p-4 text-center max-w-xs card-hover">
+                                    <div
+                                        class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-3">
+                                        <span class="material-icons text-primary">router</span>
+                                    </div>
+                                    <h4 class="font-semibold text-gray-900 dark:text-white">Guru Jaringan Komputer
+                                    </h4>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">5 Guru</p>
+                                </div>
+                                <div
+                                    class="org-chart-item bg-gray-100 dark:bg-gray-800 rounded-xl p-4 text-center max-w-xs card-hover">
+                                    <div
+                                        class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-3">
+                                        <span class="material-icons text-primary">settings_input_antenna</span>
+                                    </div>
+                                    <h4 class="font-semibold text-gray-900 dark:text-white">Guru Telekomunikasi
+                                    </h4>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">3 Guru</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Detail Guru -->
+                        <div class="grid md:grid-cols-2 gap-6 mb-8">
+                            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
+                                <h4 class="font-semibold text-gray-900 dark:text-white mb-4">Guru Jaringan Komputer</h4>
+                                <div class="space-y-3">
+                                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
+                                        <p class="font-medium text-gray-900 dark:text-white">Bapak Budi Santoso, S.Kom.
+                                        </p>
+                                        <p class="text-sm text-gray-600 dark:text-gray-400">Network Administration &
+                                            Security
+                                        </p>
+                                    </div>
+                                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
+                                        <p class="font-medium text-gray-900 dark:text-white">Ibu Sarah Permata, S.T.,
+                                            M.Kom.
+                                        </p>
+                                        <p class="text-sm text-gray-600 dark:text-gray-400">Routing & Switching
+                                        </p>
+                                    </div>
+                                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
+                                        <p class="font-medium text-gray-900 dark:text-white">Bapak Rizki Ananda, S.Kom.
+                                        </p>
+                                        <p class="text-sm text-gray-600 dark:text-gray-400">Wireless & Cloud Computing
+                                        </p>
                                     </div>
                                 </div>
-                                
-                                <!-- Guru Produktif -->
-                                <div class="org-chart flex justify-center mb-8">
-                                    <div class="flex gap-4">
-                                        <div class="org-chart-item bg-gray-100 dark:bg-gray-800 rounded-xl p-4 text-center max-w-xs">
-                                            <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-3">
-                                                <span class="material-icons text-primary">lan</span>
-                                            </div>
-                                            <h4 class="font-semibold text-gray-900 dark:text-white">Guru Jaringan Komputer</h4>
-                                            <p class="text-sm text-gray-600 dark:text-gray-400">5 Guru</p>
-                                        </div>
-                                        <div class="org-chart-item bg-gray-100 dark:bg-gray-800 rounded-xl p-4 text-center max-w-xs">
-                                            <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-3">
-                                                <span class="material-icons text-primary">settings_input_antenna</span>
-                                            </div>
-                                            <h4 class="font-semibold text-gray-900 dark:text-white">Guru Telekomunikasi & Keamanan</h4>
-                                            <p class="text-sm text-gray-600 dark:text-gray-400">4 Guru</p>
-                                        </div>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
+                                <h4 class="font-semibold text-gray-900 dark:text-white mb-4">Guru Telekomunikasi
+                                </h4>
+                                <div class="space-y-3">
+                                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
+                                        <p class="font-medium text-gray-900 dark:text-white">Bapak Yudi Pratama, S.T.
+                                        </p>
+                                        <p class="text-sm text-gray-600 dark:text-gray-400">Fiber Optic & Transmission
+                                        </p>
+                                    </div>
+                                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
+                                        <p class="font-medium text-gray-900 dark:text-white">Ibu Dina Azahra, S.T.
+                                        </p>
+                                        <p class="text-sm text-gray-600 dark:text-gray-400">Wireless Communication
+                                        </p>
+                                    </div>
+                                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
+                                        <p class="font-medium text-gray-900 dark:text-white">Bapak Fajar Saputra, S.T.
+                                        </p>
+                                        <p class="text-sm text-gray-600 dark:text-gray-400">VoIP & Unified
+                                            Communications
+                                        </p>
                                     </div>
                                 </div>
-                                
-                                <!-- Struktur Kelas -->
-                                <div class="grid md:grid-cols-2 gap-6">
-                                    <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
-                                        <h4 class="font-semibold text-gray-900 dark:text-white mb-4">Struktur Kelas X TJKT</h4>
-                                        <div class="space-y-3">
-                                            <div class="flex items-center">
-                                                <span class="material-icons text-primary mr-3 text-sm">person</span>
-                                                <span class="text-gray-700 dark:text-gray-300">Wali Kelas: Bapak Hendra Wijaya, S.Kom.</span>
-                                            </div>
-                                            <div class="flex items-center">
-                                                <span class="material-icons text-primary mr-3 text-sm">groups</span>
-                                                <span class="text-gray-700 dark:text-gray-300">Ketua Kelas: Rizki Hakim</span>
-                                            </div>
-                                            <div class="flex items-center">
-                                                <span class="material-icons text-primary mr-3 text-sm">groups</span>
-                                                <span class="text-gray-700 dark:text-gray-300">Wakil Ketua: Dewi Lestari</span>
-                                            </div>
-                                        </div>
+                            </div>
+                        </div>
+
+                        <!-- Struktur Kelas -->
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
+                                <h4 class="font-semibold text-gray-900 dark:text-white mb-4">Struktur Kelas X TJKT</h4>
+                                <div class="grid grid-cols-1 gap-3">
+                                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
+                                        <span class="text-gray-700 dark:text-gray-300">Wali Kelas: Ibu Sarah Permata,
+                                            S.T., M.Kom.</span>
                                     </div>
-                                    <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
-                                        <h4 class="font-semibold text-gray-900 dark:text-white mb-4">Struktur Kelas XI TJKT</h4>
-                                        <div class="space-y-3">
-                                            <div class="flex items-center">
-                                                <span class="material-icons text-primary mr-3 text-sm">person</span>
-                                                <span class="text-gray-700 dark:text-gray-300">Wali Kelas: Ibu Susi Susanti, S.T.</span>
-                                            </div>
-                                            <div class="flex items-center">
-                                                <span class="material-icons text-primary mr-3 text-sm">groups</span>
-                                                <span class="text-gray-700 dark:text-gray-300">Ketua Kelas: Fajar Prasetyo</span>
-                                            </div>
-                                            <div class="flex items-center">
-                                                <span class="material-icons text-primary mr-3 text-sm">groups</span>
-                                                <span class="text-gray-700 dark:text-gray-300">Wakil Ketua: Indah Permata</span>
-                                            </div>
-                                        </div>
+                                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
+                                        <span class="text-gray-700 dark:text-gray-300">Ketua Kelas: Rizki Pratama</span>
+                                    </div>
+                                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
+                                        <span class="text-gray-700 dark:text-gray-300">Wakil Ketua: Salsa Bilqis</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
+                                <h4 class="font-semibold text-gray-900 dark:text-white mb-4">Struktur Kelas XI TJKT</h4>
+                                <div class="grid grid-cols-1 gap-3">
+                                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
+                                        <span class="text-gray-700 dark:text-gray-300">Wali Kelas: Bapak Budi Santoso,
+                                            S.Kom.</span>
+                                    </div>
+                                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
+                                        <span class="text-gray-700 dark:text-gray-300">Ketua Kelas: Bayu Setiawan</span>
+                                    </div>
+                                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
+                                        <span class="text-gray-700 dark:text-gray-300">Wakil Ketua: Citra Dewi</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- KOMPETENSI -->
                 <div id="kompetensi" class="tab-pane hidden">
                     <div class="bg-card-light dark:bg-card-dark rounded-2xl shadow-lg p-8">
                         <h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Kompetensi Jurusan</h3>
-                        <div class="grid md:grid-cols-2 gap-8">
+
+                        <div class="grid md:grid-cols-2 gap-8 mb-8">
                             <div>
-                                <h4 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Kompetensi Inti</h4>
-                                <ul class="space-y-3">
-                                    <li class="flex items-start">
-                                        <span class="material-icons text-primary mr-3 mt-1 text-sm">check_circle</span>
-                                        <span class="text-gray-700 dark:text-gray-300">Instalasi dan Konfigurasi Jaringan LAN/WAN</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <span class="material-icons text-primary mr-3 mt-1 text-sm">check_circle</span>
-                                        <span class="text-gray-700 dark:text-gray-300">Administrasi Sistem Server (Windows/Linux)</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <span class="material-icons text-primary mr-3 mt-1 text-sm">check_circle</span>
-                                        <span class="text-gray-700 dark:text-gray-300">Keamanan Jaringan dan Dasar-Dasar Cybersecurity</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <span class="material-icons text-primary mr-3 mt-1 text-sm">check_circle</span>
-                                        <span class="text-gray-700 dark:text-gray-300">Teknologi Cloud Computing dan Virtualisasi</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <span class="material-icons text-primary mr-3 mt-1 text-sm">check_circle</span>
-                                        <span class="text-gray-700 dark:text-gray-300">Infrastruktur Jaringan Nirkabel</span>
-                                    </li>
-                                </ul>
+                                <h4 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Kompetensi Inti
+                                </h4>
+                                <div class="space-y-3">
+                                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl card-hover">
+                                        <div class="flex items-start">
+                                            <span class="material-icons text-primary mr-3 mt-1">router</span>
+                                            <div>
+                                                <h5 class="font-medium text-gray-900 dark:text-white">Administrasi
+                                                    Jaringan
+                                                </h5>
+                                                <p class="text-sm text-gray-600 dark:text-gray-400">Konfigurasi Router,
+                                                    Switch, & Firewall
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl card-hover">
+                                        <div class="flex items-start">
+                                            <span
+                                                class="material-icons text-primary mr-3 mt-1">settings_input_antenna</span>
+                                            <div>
+                                                <h5 class="font-medium text-gray-900 dark:text-white">Teknologi
+                                                    Telekomunikasi
+                                                </h5>
+                                                <p class="text-sm text-gray-600 dark:text-gray-400">FO, Wireless, VoIP,
+                                                    & Microwave
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl card-hover">
+                                        <div class="flex items-start">
+                                            <span class="material-icons text-primary mr-3 mt-1">security</span>
+                                            <div>
+                                                <h5 class="font-medium text-gray-900 dark:text-white">Keamanan Jaringan
+                                                </h5>
+                                                <p class="text-sm text-gray-600 dark:text-gray-400">Firewall, VPN, &
+                                                    Security Monitoring
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl card-hover">
+                                        <div class="flex items-start">
+                                            <span class="material-icons text-primary mr-3 mt-1">cloud</span>
+                                            <div>
+                                                <h5 class="font-medium text-gray-900 dark:text-white">Cloud Computing
+                                                </h5>
+                                                <p class="text-sm text-gray-600 dark:text-gray-400">Virtualisasi & Cloud
+                                                    Services
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl card-hover">
+                                        <div class="flex items-start">
+                                            <span class="material-icons text-primary mr-3 mt-1">wifi</span>
+                                            <div>
+                                                <h5 class="font-medium text-gray-900 dark:text-white">Jaringan Nirkabel
+                                                </h5>
+                                                <p class="text-sm text-gray-600 dark:text-gray-400">WiFi Design & Site
+                                                    Survey
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div>
-                                <h4 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Kompetensi Pendukung</h4>
-                                <ul class="space-y-3">
-                                    <li class="flex items-start">
-                                        <span class="material-icons text-primary mr-3 mt-1 text-sm">check_circle</span>
-                                        <span class="text-gray-700 dark:text-gray-300">Teknisi Perangkat Keras Komputer</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <span class="material-icons text-primary mr-3 mt-1 text-sm">check_circle</span>
-                                        <span class="text-gray-700 dark:text-gray-300">Pemrograman Dasar untuk Otomasi Jaringan</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <span class="material-icons text-primary mr-3 mt-1 text-sm">check_circle</span>
-                                        <span class="text-gray-700 dark:text-gray-300">Troubleshooting Perangkat Jaringan</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <span class="material-icons text-primary mr-3 mt-1 text-sm">check_circle</span>
-                                        <span class="text-gray-700 dark:text-gray-300">Komersialisasi Layanan Jaringan</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <span class="material-icons text-primary mr-3 mt-1 text-sm">check_circle</span>
-                                        <span class="text-gray-700 dark:text-gray-300">Etika Profesi dan Hukum TI</span>
-                                    </li>
-                                </ul>
+                                <h4 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Kompetensi
+                                    Pendukung</h4>
+                                <div class="space-y-3">
+                                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl card-hover">
+                                        <div class="flex items-start">
+                                            <span class="material-icons text-primary mr-3 mt-1">build</span>
+                                            <div>
+                                                <h5 class="font-medium text-gray-900 dark:text-white">Infrastruktur
+                                                    Jaringan
+                                                </h5>
+                                                <p class="text-sm text-gray-600 dark:text-gray-400">Cabling & Physical
+                                                    Layer
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl card-hover">
+                                        <div class="flex items-start">
+                                            <span class="material-icons text-primary mr-3 mt-1">dns</span>
+                                            <div>
+                                                <h5 class="font-medium text-gray-900 dark:text-white">Server
+                                                    Administration
+                                                </h5>
+                                                <p class="text-sm text-gray-600 dark:text-gray-400">Windows & Linux
+                                                    Server
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl card-hover">
+                                        <div class="flex items-start">
+                                            <span class="material-icons text-primary mr-3 mt-1">support_agent</span>
+                                            <div>
+                                                <h5 class="font-medium text-gray-900 dark:text-white">Technical Support
+                                                </h5>
+                                                <p class="text-sm text-gray-600 dark:text-gray-400">Troubleshooting &
+                                                    Help Desk
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl card-hover">
+                                        <div class="flex items-start">
+                                            <span class="material-icons text-primary mr-3 mt-1">language</span>
+                                            <div>
+                                                <h5 class="font-medium text-gray-900 dark:text-white">Programming Basics
+                                                </h5>
+                                                <p class="text-sm text-gray-600 dark:text-gray-400">Scripting &
+                                                    Automation
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl card-hover">
+                                        <div class="flex items-start">
+                                            <span class="material-icons text-primary mr-3 mt-1">business</span>
+                                            <div>
+                                                <h5 class="font-medium text-gray-900 dark:text-white">Project Management
+                                                </h5>
+                                                <p class="text-sm text-gray-600 dark:text-gray-400">ITIL & Service
+                                                    Management
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        
-                        <div class="mt-8 p-6 bg-sky-50 dark:bg-sky-900 dark:bg-opacity-20 rounded-xl">
-                            <h4 class="text-xl font-semibold mb-3 text-gray-900 dark:text-white">Peluang Karir</h4>
-                            <p class="text-gray-700 dark:text-gray-300 mb-4">Lulusan TJKT adalah tulang punggung infrastruktur digital dengan prospek karir yang sangat cerah:</p>
+
+                        <div class="p-6 bg-blue-50 dark:bg-blue-900 dark:bg-opacity-20 rounded-xl">
+                            <h4 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Peluang Karir</h4>
+                            <p class="text-gray-700 dark:text-gray-300 mb-6">Lulusan TJKT memiliki prospek karir yang
+                                sangat luas di era digital:</p>
                             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                <div class="text-center">
-                                    <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mx-auto mb-2">
-                                        <span class="material-icons text-primary">lan</span>
+                                <div class="bg-white dark:bg-gray-800 p-4 rounded-xl text-center card-hover">
+                                    <div
+                                        class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mx-auto mb-2">
+                                        <span class="material-icons text-primary">router</span>
                                     </div>
-                                    <p class="text-sm text-gray-700 dark:text-gray-300">Network Engineer</p>
+                                    <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Network Engineer</p>
+                                    <p class="text-xs text-gray-600 dark:text-gray-400">Rp 8-20 Juta/bulan</p>
                                 </div>
-                                <div class="text-center">
-                                    <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mx-auto mb-2">
-                                        <span class="material-icons text-primary">dns</span>
-                                    </div>
-                                    <p class="text-sm text-gray-700 dark:text-gray-300">System Administrator</p>
-                                </div>
-                                <div class="text-center">
-                                    <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mx-auto mb-2">
+                                <div class="bg-white dark:bg-gray-800 p-4 rounded-xl text-center card-hover">
+                                    <div
+                                        class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mx-auto mb-2">
                                         <span class="material-icons text-primary">security</span>
                                     </div>
-                                    <p class="text-sm text-gray-700 dark:text-gray-300">Security Analyst</p>
+                                    <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Security Engineer
+                                    </p>
+                                    <p class="text-xs text-gray-600 dark:text-gray-400">Rp 10-25 Juta/bulan</p>
                                 </div>
-                                <div class="text-center">
-                                    <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mx-auto mb-2">
+                                <div class="bg-white dark:bg-gray-800 p-4 rounded-xl text-center card-hover">
+                                    <div
+                                        class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mx-auto mb-2">
                                         <span class="material-icons text-primary">cloud</span>
                                     </div>
-                                    <p class="text-sm text-gray-700 dark:text-gray-300">Cloud Engineer</p>
+                                    <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Cloud Engineer</p>
+                                    <p class="text-xs text-gray-600 dark:text-gray-400">Rp 12-30 Juta/bulan</p>
+                                </div>
+                                <div class="bg-white dark:bg-gray-800 p-4 rounded-xl text-center card-hover">
+                                    <div
+                                        class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mx-auto mb-2">
+                                        <span class="material-icons text-primary">support_agent</span>
+                                    </div>
+                                    <p class="text-sm font-medium text-gray-700 dark:text-gray-300">IT Support</p>
+                                    <p class="text-xs text-gray-600 dark:text-gray-400">Rp 5-12 Juta/bulan</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KURIKULUM -->
+                <div id="kurikulum" class="tab-pane hidden">
+                    <div class="bg-card-light dark:bg-card-dark rounded-2xl shadow-lg p-8">
+                        <h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Kurikulum Jurusan</h3>
+
+                        <div class="mb-8">
+                            <h4 class="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Struktur Kurikulum</h4>
+                            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
+                                <p class="text-gray-700 dark:text-gray-300 mb-4">
+                                    Jurusan TJKT menerapkan kurikulum berbasis kompetensi yang disesuaikan dengan
+                                    kebutuhan industri teknologi informasi dan telekomunikasi terkini. Kurikulum ini
+                                    dirancang untuk memberikan
+                                    keseimbangan antara teori dan praktik, dengan porsi 70% praktikum dan 30% teori.
+                                </p>
+                                <div class="grid md:grid-cols-3 gap-4">
+                                    <div class="bg-white dark:bg-gray-700 p-4 rounded-lg">
+                                        <h5 class="font-medium text-gray-900 dark:text-white mb-2">Kelas X</h5>
+                                        <p class="text-sm text-gray-600 dark:text-gray-400">Fokus pada dasar-dasar
+                                            jaringan komputer dan telekomunikasi fundamental</p>
+                                    </div>
+                                    <div class="bg-white dark:bg-gray-700 p-4 rounded-lg">
+                                        <h5 class="font-medium text-gray-900 dark:text-white mb-2">Kelas XI</h5>
+                                        <p class="text-sm text-gray-600 dark:text-gray-400">Pengembangan jaringan
+                                            lanjutan,
+                                            keamanan, dan sistem telekomunikasi</p>
+                                    </div>
+                                    <div class="bg-white dark:bg-gray-700 p-4 rounded-lg">
+                                        <h5 class="font-medium text-gray-900 dark:text-white mb-2">Kelas XII</h5>
+                                        <p class="text-sm text-gray-600 dark:text-gray-400">Proyek integrasi, cloud
+                                            computing,
+                                            dan persiapan kerja/entrepreneurship</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-8">
+                            <h4 class="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Mata Pelajaran
+                                Produktif</h4>
+                            <div class="space-y-4">
+                                <div>
+                                    <h5 class="font-medium text-gray-900 dark:text-white mb-2">Kelas X</h5>
+                                    <div class="grid md:grid-cols-2 gap-3">
+                                        <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Dasar-Dasar
+                                                Jaringan Komputer</p>
+                                        </div>
+                                        <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Sistem Operasi
+                                                Jaringan
+                                            </p>
+                                        </div>
+                                        <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Kabel Jaringan &
+                                                Instalasi
+                                            </p>
+                                        </div>
+                                        <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Dasar Telekomunikasi
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-gray-900 dark:text-white mb-2">Kelas XI</h5>
+                                    <div class="grid md:grid-cols-2 gap-3">
+                                        <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Administrasi Jaringan
+                                                Lanjutan
+                                            </p>
+                                        </div>
+                                        <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Keamanan Jaringan
+                                            </p>
+                                        </div>
+                                        <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Jaringan Nirkabel
+                                            </p>
+                                        </div>
+                                        <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Teknologi FO & VoIP
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-gray-900 dark:text-white mb-2">Kelas XII</h5>
+                                    <div class="grid md:grid-cols-2 gap-3">
+                                        <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Proyek Jaringan
+                                                Terintegrasi
+                                            </p>
+                                        </div>
+                                        <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Cloud Computing &
+                                                Virtualisasi
+                                            </p>
+                                        </div>
+                                        <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Manajemen Layanan IT
+                                            </p>
+                                        </div>
+                                        <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Praktik Kerja Lapangan
+                                                (PKL)</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 class="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Kegiatan
+                                Ekstrakurikuler</h4>
+                            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 card-hover">
+                                    <div class="flex items-center mb-2">
+                                        <span class="material-icons text-primary mr-2">router</span>
+                                        <h5 class="font-medium text-gray-900 dark:text-white">Network Club</h5>
+                                    </div>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">Kompetisi networking,
+                                        workshop teknologi, dan sertifikasi preparation</p>
+                                </div>
+                                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 card-hover">
+                                    <div class="flex items-center mb-2">
+                                        <span class="material-icons text-primary mr-2">security</span>
+                                        <h5 class="font-medium text-gray-900 dark:text-white">Cyber Security Club</h5>
+                                    </div>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">Ethical hacking,
+                                        CTF competition, dan security awareness</p>
+                                </div>
+                                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 card-hover">
+                                    <div class="flex items-center mb-2">
+                                        <span class="material-icons text-primary mr-2">cloud</span>
+                                        <h5 class="font-medium text-gray-900 dark:text-white">Cloud Computing Club</h5>
+                                    </div>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">AWS/Azure study group,
+                                        cloud certification preparation</p>
+                                </div>
+                                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 card-hover">
+                                    <div class="flex items-center mb-2">
+                                        <span class="material-icons text-primary mr-2">wifi</span>
+                                        <h5 class="font-medium text-gray-900 dark:text-white">Wireless Club</h5>
+                                    </div>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">WiFi community projects,
+                                        mesh networking, dan hotspot setup</p>
+                                </div>
+                                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 card-hover">
+                                    <div class="flex items-center mb-2">
+                                        <span class="material-icons text-primary mr-2">code</span>
+                                        <h5 class="font-medium text-gray-900 dark:text-white">Programming Club</h5>
+                                    </div>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">Network automation,
+                                        scripting, dan DevOps basics</p>
+                                </div>
+                                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 card-hover">
+                                    <div class="flex items-center mb-2">
+                                        <span class="material-icons text-primary mr-2">business</span>
+                                        <h5 class="font-medium text-gray-900 dark:text-white">IT Entrepreneurship</h5>
+                                    </div>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">Startup teknologi,
+                                        IT service business, dan konsultasi</p>
                                 </div>
                             </div>
                         </div>
@@ -490,165 +927,157 @@
                 </div>
             </div>
         </div>
-    </section>
+    </main>
 
     <!-- GALLERY -->
-    <section id="galeri" class="py-20 bg-white dark:bg-gray-800">
+    <section class="py-12 bg-white dark:bg-gray-800">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white">
-                Galeri Kegiatan
+            <h2 class="text-2xl md:text-3xl font-bold text-center mb-8 text-gray-900 dark:text-white">
+                Dokumentasi Kegiatan Jurusan
             </h2>
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 <div class="relative overflow-hidden rounded-lg group">
-                    <img src="https://picsum.photos/seed/tjkt1/400/300.jpg" alt="Kegiatan TJKT" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
-                        <span class="material-icons text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">zoom_in</span>
+                    <img src="https://picsum.photos/seed/tjkt1/400/300.jpg" alt="Kegiatan TJKT"
+                        class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
+                        <span
+                            class="material-icons text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">zoom_in</span>
                     </div>
                 </div>
                 <div class="relative overflow-hidden rounded-lg group">
-                    <img src="https://picsum.photos/seed/tjkt2/400/300.jpg" alt="Kegiatan TJKT" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
-                        <span class="material-icons text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">zoom_in</span>
+                    <img src="https://picsum.photos/seed/tjkt2/400/300.jpg" alt="Kegiatan TJKT"
+                        class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
+                        <span
+                            class="material-icons text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">zoom_in</span>
                     </div>
                 </div>
                 <div class="relative overflow-hidden rounded-lg group">
-                    <img src="https://picsum.photos/seed/tjkt3/400/300.jpg" alt="Kegiatan TJKT" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
-                        <span class="material-icons text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">zoom_in</span>
+                    <img src="https://picsum.photos/seed/tjkt3/400/300.jpg" alt="Kegiatan TJKT"
+                        class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
+                        <span
+                            class="material-icons text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">zoom_in</span>
                     </div>
                 </div>
                 <div class="relative overflow-hidden rounded-lg group">
-                    <img src="https://picsum.photos/seed/tjkt4/400/300.jpg" alt="Kegiatan TJKT" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
-                        <span class="material-icons text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">zoom_in</span>
+                    <img src="https://picsum.photos/seed/tjkt4/400/300.jpg" alt="Kegiatan TJKT"
+                        class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
+                        <span
+                            class="material-icons text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">zoom_in</span>
                     </div>
                 </div>
                 <div class="relative overflow-hidden rounded-lg group">
-                    <img src="https://picsum.photos/seed/tjkt5/400/300.jpg" alt="Kegiatan TJKT" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
-                        <span class="material-icons text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">zoom_in</span>
+                    <img src="https://picsum.photos/seed/tjkt5/400/300.jpg" alt="Kegiatan TJKT"
+                        class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
+                        <span
+                            class="material-icons text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">zoom_in</span>
                     </div>
                 </div>
                 <div class="relative overflow-hidden rounded-lg group">
-                    <img src="https://picsum.photos/seed/tjkt6/400/300.jpg" alt="Kegiatan TJKT" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
-                        <span class="material-icons text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">zoom_in</span>
+                    <img src="https://picsum.photos/seed/tjkt6/400/300.jpg" alt="Kegiatan TJKT"
+                        class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
+                        <span
+                            class="material-icons text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">zoom_in</span>
                     </div>
                 </div>
                 <div class="relative overflow-hidden rounded-lg group">
-                    <img src="https://picsum.photos/seed/tjkt7/400/300.jpg" alt="Kegiatan TJKT" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
-                        <span class="material-icons text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">zoom_in</span>
+                    <img src="https://picsum.photos/seed/tjkt7/400/300.jpg" alt="Kegiatan TJKT"
+                        class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
+                        <span
+                            class="material-icons text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">zoom_in</span>
                     </div>
                 </div>
                 <div class="relative overflow-hidden rounded-lg group">
-                    <img src="https://picsum.photos/seed/tjkt8/400/300.jpg" alt="Kegiatan TJKT" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
-                        <span class="material-icons text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">zoom_in</span>
+                    <img src="https://picsum.photos/seed/tjkt8/400/300.jpg" alt="Kegiatan TJKT"
+                        class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
+                        <span
+                            class="material-icons text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">zoom_in</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- TESTIMONI -->
-    <section class="py-20">
+    <!-- ALUMNI -->
+    <section class="py-12 bg-white dark:bg-gray-800">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white">
-                Apa Kata Alumni
+            <h2 class="text-2xl md:text-3xl font-bold text-center mb-8 text-gray-900 dark:text-white">
+                Jejak Alumni
             </h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-card-light dark:bg-card-dark rounded-2xl shadow-lg p-6">
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 card-hover">
                     <div class="flex items-center mb-4">
-                        <img src="https://picsum.photos/seed/alumni-tjkt1/100/100.jpg" alt="Alumni" class="w-12 h-12 rounded-full mr-4">
+                        <img src="https://picsum.photos/seed/alumni-tjkt1/100/100.jpg" alt="Alumni"
+                            class="w-12 h-12 rounded-full mr-4">
                         <div>
-                            <h4 class="font-semibold text-gray-900 dark:text-white">Budi Santoso</h4>
-                            <p class="text-sm text-gray-600 dark:text-gray-400">Alumni 2020 - Network Engineer</p>
+                            <h4 class="font-semibold text-gray-900 dark:text-white">Reza Fahlevi</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Alumni 2021</p>
                         </div>
                     </div>
-                    <p class="text-gray-700 dark:text-gray-300 italic">"Lab Jaringan di SMKN 1 Kawali lengkap dengan perangkat Cisco. Pengalaman langsung ini membuat saya lulus CCNA dan langsung diterima di perusahaan besar."</p>
-                    <div class="flex mt-4">
-                        <span class="material-icons text-yellow-500 text-sm">star</span>
-                        <span class="material-icons text-yellow-500 text-sm">star</span>
-                        <span class="material-icons text-yellow-500 text-sm">star</span>
-                        <span class="material-icons text-yellow-500 text-sm">star</span>
-                        <span class="material-icons text-yellow-500 text-sm">star</span>
-                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-3">Network Engineer at Telkom Indonesia</p>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm italic">"Sertifikasi Cisco yang saya dapatkan di
+                        TJKT menjadi modal utama karir saya. Pembelajaran praktikum yang intensif sangat membantu siap
+                        kerja."</p>
                 </div>
-                <div class="bg-card-light dark:bg-card-dark rounded-2xl shadow-lg p-6">
+                <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 card-hover">
                     <div class="flex items-center mb-4">
-                        <img src="https://picsum.photos/seed/alumni-tjkt2/100/100.jpg" alt="Alumni" class="w-12 h-12 rounded-full mr-4">
+                        <img src="https://picsum.photos/seed/alumni-tjkt2/100/100.jpg" alt="Alumni"
+                            class="w-12 h-12 rounded-full mr-4">
                         <div>
-                            <h4 class="font-semibold text-gray-900 dark:text-white">Anisa Rahmawati</h4>
-                            <p class="text-sm text-gray-600 dark:text-gray-400">Alumni 2021 - System Administrator</p>
+                            <h4 class="font-semibold text-gray-900 dark:text-white">Nadia Permata</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Alumni 2020</p>
                         </div>
                     </div>
-                    <p class="text-gray-700 dark:text-gray-300 italic">"Saya belajar mengelola server dari nol. Guru-guru selalu memberikan tantangan nyata yang mempersiapkan saya untuk dunia kerja yang sebenarnya."</p>
-                    <div class="flex mt-4">
-                        <span class="material-icons text-yellow-500 text-sm">star</span>
-                        <span class="material-icons text-yellow-500 text-sm">star</span>
-                        <span class="material-icons text-yellow-500 text-sm">star</span>
-                        <span class="material-icons text-yellow-500 text-sm">star</span>
-                        <span class="material-icons text-yellow-500 text-sm">star</span>
-                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-3">Security Engineer at Bank Central Asia</p>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm italic">"Pengalaman praktikum di lab keamanan
+                        TJKT memberikan saya pemahaman mendalam tentang security yang sangat dibutuhkan industri."</p>
                 </div>
-                <div class="bg-card-light dark:bg-card-dark rounded-2xl shadow-lg p-6">
+                <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 card-hover">
                     <div class="flex items-center mb-4">
-                        <img src="https://picsum.photos/seed/alumni-tjkt3/100/100.jpg" alt="Alumni" class="w-12 h-12 rounded-full mr-4">
+                        <img src="https://picsum.photos/seed/alumni-tjkt3/100/100.jpg" alt="Alumni"
+                            class="w-12 h-12 rounded-full mr-4">
                         <div>
-                            <h4 class="font-semibold text-gray-900 dark:text-white">Fajar Hidayat</h4>
-                            <p class="text-sm text-gray-600 dark:text-gray-400">Alumni 2022 - Security Analyst</p>
+                            <h4 class="font-semibold text-gray-900 dark:text-white">Dimas Aryo</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Alumni 2022</p>
                         </div>
                     </div>
-                    <p class="text-gray-700 dark:text-gray-300 italic">"Lab Keamanan Siber adalah favorit saya. Praktikum di lingkungan yang aman memberikan saya kepercayaan diri untuk mengejar karir di bidang cybersecurity."</p>
-                    <div class="flex mt-4">
-                        <span class="material-icons text-yellow-500 text-sm">star</span>
-                        <span class="material-icons text-yellow-500 text-sm">star</span>
-                        <span class="material-icons text-yellow-500 text-sm">star</span>
-                        <span class="material-icons text-yellow-500 text-sm">star</span>
-                        <span class="material-icons text-gray-300 dark:text-gray-600 text-sm">star</span>
-                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-3">Cloud Engineer at Tokopedia</p>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm italic">"Kurikulum TJKT yang sudah mengadopsi
+                        cloud computing sejak dulu membuat saya siap menghadapi transformasi digital di industri
+                        teknologi."</p>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- INFO SECTION -->
-    <section class="py-20 bg-gradient-to-br from-primary to-secondary dark:from-gray-700 dark:to-gray-900">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">
-                Pelajari Lebih Lanjut Tentang Jurusan TJKT
-            </h2>
-            <p class="text-xl text-gray-100 mb-8 max-w-2xl mx-auto">
-                Jurusan TJKT mempersiapkan siswa menjadi ahli infrastruktur digital yang siap menghadapi tantangan teknologi masa depan.
-            </p>
-            <div class="flex flex-wrap justify-center gap-4">
-                <a href="#informasi" class="bg-white text-primary px-8 py-4 rounded-xl font-medium hover:bg-gray-100 transition shadow-lg">
-                    Informasi Lengkap
-                </a>
-                <a href="#" class="border border-white text-white px-8 py-4 rounded-xl font-medium hover:bg-white hover:text-primary transition">
-                    Download Brosur
-                </a>
-            </div>
-        </div>
-    </section>
-
-    @include('layouts.footer')
-
+@include('layouts.footer')
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Tab functionality
             const tabBtns = document.querySelectorAll('.tab-btn');
             const tabPanes = document.querySelectorAll('.tab-pane');
-            
+
             tabBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
+                btn.addEventListener('click', function () {
                     const tabId = this.getAttribute('data-tab');
-                    
+
                     // Remove active class from all tabs and panes
                     tabBtns.forEach(tab => tab.classList.remove('tab-active'));
                     tabPanes.forEach(pane => pane.classList.add('hidden'));
-                    
+
                     // Add active class to clicked tab and show corresponding pane
                     this.classList.add('tab-active');
                     document.getElementById(tabId).classList.remove('hidden');
@@ -657,4 +1086,5 @@
         });
     </script>
 </body>
+
 </html>
