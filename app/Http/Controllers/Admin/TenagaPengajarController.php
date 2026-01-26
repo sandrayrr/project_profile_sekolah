@@ -12,7 +12,7 @@ class TenagaPengajarController extends Controller
     // Menampilkan semua data tenaga pengajar
    public function index()
 {
-    $tenagaPengajar = TenagaPengajar::latest()->paginate(6);
+    $tenagaPengajar = TenagaPengajar::latest()->paginate(8);
     return view('admin.crud.tenagapengajar.index', compact('tenagaPengajar'));
 }
 
