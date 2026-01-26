@@ -1,396 +1,420 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Marketplace - SMKN 1 Kawali</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketplace - SMKN 1 Kawali</title>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<style>
-/* ================= ROOT ================= */
-:root{
-    --blue-dark:#0A2540;
-    --blue-main:#0D6EFD;
-    --blue-soft:#3B82F6;
-    --blue-light:#E8F1FF;
-    --yellow-accent:#FFC107;
-    --red-accent:#DC3545;
-}
+    <style>
+        /* ================= ROOT VARIABLES ================= */
+        :root {
+            /* Palette Biru Modern */
+            --primary-blue: #2563EB;     /* Biru Utama */
+            --dark-blue: #1E40AF;        /* Biru Gelap untuk Hover */
+            --light-blue: #EFF6FF;       /* Background lembut */
+            --accent-blue: #3B82F6;      /* Aksen */
+            
+            /* Netral */
+            --bg-body: #F8FAFC;          /* Abu-abu sangat muda ( Hampir putih ) */
+            --bg-card: #FFFFFF;          /* Putih Murni */
+            --text-main: #1E293B;        /* Abu gelap untuk teks utama */
+            --text-muted: #64748B;       /* Abu sedang untuk deskripsi */
+            --border-color: #E2E8F0;     /* Garis halus */
+            
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
 
-/* ================= BODY ================= */
-body{
-    margin:0;
-    font-family:'Poppins',sans-serif;
-    background: linear-gradient(135deg,var(--blue-dark),var(--blue-main),#38BDF8);
-    background-size:300% 300%;
-    animation: oceanMove 12s ease infinite;
-    min-height: 100vh;
-    position:relative;
-}
+        /* ================= BODY ================= */
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
 
-/* Background pattern */
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: radial-gradient(circle at 10% 20%, rgba(255,255,255,0.05) 0%, transparent 8%),
-                      radial-gradient(circle at 80% 50%, rgba(255,255,255,0.07) 0%, transparent 8%),
-                      radial-gradient(circle at 40% 80%, rgba(255,255,255,0.05) 0%, transparent 8%);
-    z-index: -1;
-}
+        /* ================= HEADER ================= */
+        .header {
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+        }
 
-/* Gradient movement */
-@keyframes oceanMove{
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
-}
+        .header-logo {
+            width: 45px;
+            height: 45px;
+            background-color: var(--bg-body);
+            border-radius: 12px;
+            padding: 5px;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+        
+        .header-logo:hover {
+            transform: rotate(-5deg);
+        }
 
-/* ================= HEADER ================= */
-.header {
-    background: rgba(255,255,255,0.15);
-    backdrop-filter: blur(18px);
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    padding: 15px 0;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
+        .header-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
 
-.header-logo {
-    width: 50px;
-    height: 50px;
-    background-color: white;
-    border-radius: 50%;
-    padding: 6px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    display: inline-block;
-}
+        .brand-text h1 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin: 0;
+            line-height: 1.2;
+        }
 
-.header-logo img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
+        .brand-text p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin: 0;
+            font-weight: 500;
+        }
 
-.header-title {
-    color: white;
-    font-weight: 700;
-    font-size: 1.5rem;
-    margin: 0;
-}
+        /* Modern Search Bar */
+        .search-container {
+            position: relative;
+        }
 
-.header-subtitle {
-    color: rgba(255,255,255,0.8);
-    font-size: 0.9rem;
-    margin: 0;
-}
+        .search-box {
+            background-color: var(--bg-body);
+            border: 1px solid var(--border-color);
+            border-radius: 50px; /* Pill shape */
+            padding: 10px 45px 10px 20px;
+            width: 100%;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
 
-.search-box {
-    background: rgba(255,255,255,0.25);
-    border: none;
-    border-radius: 25px;
-    padding: 10px 20px;
-    color: white;
-    width: 100%;
-    max-width: 400px;
-}
+        .search-box:focus {
+            background-color: #fff;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+            outline: none;
+        }
 
-.search-box::placeholder {
-    color: rgba(255,255,255,0.7);
-}
+        .search-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            pointer-events: none;
+        }
 
-.search-box:focus {
-    background: rgba(255,255,255,0.35);
-    box-shadow: 0 0 0 3px rgba(59,130,246,0.4);
-    color: white;
-    outline: none;
-}
+        /* Back Button - Minimalist Outline */
+        .back-btn {
+            background-color: transparent;
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            padding: 8px 20px;
+            color: var(--text-main);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
 
-.back-btn {
-    background: linear-gradient(90deg,var(--blue-main),#38BDF8);
-    border: none;
-    border-radius: 25px;
-    padding: 10px 20px;
-    color: white;
-    font-weight: 600;
-    position: relative;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-}
+        .back-btn:hover {
+            background-color: var(--bg-body);
+            border-color: var(--text-muted);
+            color: var(--primary-blue);
+            transform: translateX(-3px);
+        }
 
-.back-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-    color: white;
-}
+        /* ================= CATEGORIES ================= */
+        .category-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
 
-/* ================= MAIN CONTENT ================= */
-.main-content {
-    padding: 30px 0;
-}
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary-blue);
+        }
 
-/* ================= CATEGORIES ================= */
-.category-section {
-    margin-bottom: 40px;
-}
+        .category-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--light-blue);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+            color: var(--primary-blue);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
 
-.section-title {
-    color: white;
-    font-weight: 700;
-    font-size: 1.8rem;
-    margin-bottom: 25px;
-    position: relative;
-    padding-left: 15px;
-}
+        .category-card:hover .category-icon {
+            background-color: var(--primary-blue);
+            color: white;
+        }
 
-.section-title::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 5px;
-    height: 30px;
-    background: linear-gradient(180deg, var(--blue-main), #38BDF8);
-    border-radius: 3px;
-}
+        .category-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin: 0;
+            color: var(--text-main);
+        }
 
-.category-card {
-    background: rgba(255,255,255,0.15);
-    backdrop-filter: blur(18px);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 15px;
-    padding: 20px;
-    text-align: center;
-    color: white;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    height: 100%;
-}
+        /* ================= FILTER ================= */
+        .filter-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 15px 25px;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
 
-.category-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-    background: rgba(255,255,255,0.25);
-}
+        .filter-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin: 0;
+            color: var(--text-main);
+        }
 
-.category-icon {
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-    background: linear-gradient(135deg, var(--blue-main), #38BDF8);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
+        .filter-btn {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 6px 16px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
 
-.category-name {
-    font-weight: 600;
-    font-size: 1rem;
-    margin: 0;
-}
+        .filter-btn:hover {
+            border-color: var(--primary-blue);
+            color: var(--primary-blue);
+        }
 
-/* ================= PRODUCTS ================= */
-.product-card {
-    background: rgba(255,255,255,0.15);
-    backdrop-filter: blur(18px);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 15px;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
+        .filter-btn.active {
+            background-color: var(--primary-blue);
+            border-color: var(--primary-blue);
+            color: white;
+            box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
+        }
 
-.product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-}
+        /* ================= PRODUCTS ================= */
+        .product-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
 
-.product-image {
-    height: 200px;
-    background-size: cover;
-    background-position: center;
-    position: relative;
-}
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(37, 99, 235, 0.3);
+        }
 
-.product-body {
-    padding: 20px;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-}
+        .product-image {
+            height: 220px;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+            background-color: #f1f5f9;
+            position: relative;
+        }
 
-.product-title {
-    color: white;
-    font-weight: 600;
-    font-size: 1.1rem;
-    margin-bottom: 10px;
-}
+        /* Badge overlay */
+        .badge-new {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--primary-blue);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            box-shadow: var(--shadow-sm);
+        }
 
-.product-price {
-    color: var(--yellow-accent);
-    font-weight: 700;
-    font-size: 1.3rem;
-    margin-top: auto; // Mendorong harga ke bawah
-}
+        .product-body {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
 
+        .product-title {
+            color: var(--text-main);
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 8px;
+            line-height: 1.4;
+            /* Truncate text */
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
 
-/* ================= FILTER SECTION ================= */
-.filter-section {
-    background: rgba(255,255,255,0.15);
-    backdrop-filter: blur(18px);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 15px;
-    padding: 20px;
-    margin-bottom: 30px;
-}
+        .product-price {
+            color: var(--primary-blue);
+            font-weight: 700;
+            font-size: 1.15rem;
+            margin-top: auto;
+        }
 
-.filter-title {
-    color: white;
-    font-weight: 600;
-    font-size: 1.1rem;
-    margin-bottom: 15px;
-}
+        /* ================= FOOTER ================= */
+        .footer {
+            background-color: #0F172A; /* Dark Blue Slate */
+            padding: 60px 0 30px;
+            margin-top: 80px;
+            color: white;
+        }
 
-.filter-btn {
-    background: rgba(255,255,255,0.25);
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 20px;
-    padding: 8px 16px;
-    color: white;
-    font-size: 0.9rem;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    transition: all 0.3s ease;
-}
+        .footer-logo {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 8px;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        
+        .footer-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
 
-.filter-btn:hover, .filter-btn.active {
-    background: linear-gradient(90deg,var(--blue-main),#38BDF8);
-    border-color: transparent;
-}
+        .footer h3, .footer h4 {
+            color: white;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
 
-/* ================= FOOTER ================= */
-.footer {
-    background: rgba(10,37,64,0.8);
-    padding: 40px 0 20px;
-    margin-top: 60px;
-}
+        .footer p {
+            color: #94A3B8;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
 
-.footer-logo {
-    width: 60px;
-    height: 60px;
-    background-color: white;
-    border-radius: 50%;
-    padding: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    margin-bottom: 15px;
-}
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
 
-.footer-logo img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
+        .footer-links li {
+            margin-bottom: 12px;
+        }
 
-.footer-title {
-    color: white;
-    font-weight: 700;
-    font-size: 1.3rem;
-    margin-bottom: 10px;
-}
+        .footer-links a {
+            color: #94A3B8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
 
-.footer-text {
-    color: rgba(255,255,255,0.8);
-    font-size: 0.9rem;
-    margin-bottom: 20px;
-}
+        .footer-links a:hover {
+            color: var(--primary-blue);
+            padding-left: 5px;
+        }
 
-.footer-links {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
+        .social-links a {
+            width: 36px;
+            height: 36px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
 
-.footer-links li {
-    margin-bottom: 10px;
-}
+        .social-links a:hover {
+            background: var(--primary-blue);
+            transform: translateY(-3px);
+        }
 
-.footer-links a {
-    color: rgba(255,255,255,0.8);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 40px;
+            padding-top: 30px;
+            text-align: center;
+            color: #64748B;
+            font-size: 0.85rem;
+        }
 
-.footer-links a:hover {
-    color: var(--blue-light);
-}
+        /* ================= RESPONSIVE ================= */
+        @media (max-width: 768px) {
+            .header {
+                padding: 10px 0;
+            }
+            
+            .search-box {
+                margin: 10px 0;
+            }
+            
+            .category-card {
+                padding: 15px;
+            }
+            
+            .category-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            
+            .product-image {
+                height: 180px;
+            }
 
-.social-links {
-    display: flex;
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.social-links a {
-    width: 40px;
-    height: 40px;
-    background: rgba(255,255,255,0.1);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    transition: all 0.3s ease;
-}
-
-.social-links a:hover {
-    background: var(--blue-main);
-    transform: translateY(-3px);
-}
-
-.footer-bottom {
-    border-top: 1px solid rgba(255,255,255,0.1);
-    margin-top: 30px;
-    padding-top: 20px;
-    text-align: center;
-    color: rgba(255,255,255,0.6);
-    font-size: 0.85rem;
-}
-
-/* ================= RESPONSIVE ================= */
-@media (max-width: 768px) {
-    .header-title {
-        font-size: 1.2rem;
-    }
-    
-    .search-box {
-        max-width: 100%;
-        margin: 10px 0;
-    }
-    
-    .section-title {
-        font-size: 1.5rem;
-    }
-    
-    .category-icon {
-        font-size: 2rem;
-    }
-    
-    .product-image {
-        height: 150px;
-    }
-}
-</style>
+            .filter-section {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -398,22 +422,28 @@ body::before {
     <header class="header">
         <div class="container">
             <div class="row align-items-center">
+                <!-- Brand -->
                 <div class="col-md-3">
                     <div class="d-flex align-items-center">
                         <div class="header-logo me-3">
                             <img src="https://z-cdn-media.chatglm.cn/files/9d0ca30d-954f-4e5f-bf66-bfb4a115ecfc.png?auth_key=1868371606-21df551d97db4bbbadc671626e9e83a6-0-e0a0e057a73f58e5763d4379b39763b1" alt="Logo SMKN 1 Kawali">
                         </div>
-                        <div>
-                            <h1 class="header-title">Marketplace</h1>
-                            <p class="header-subtitle">SMKN 1 KAWALI</p>
+                        <div class="brand-text">
+                            <h1>Marketplace</h1>
+                            <p>SMKN 1 KAWALI</p>
                         </div>
                     </div>
                 </div>
+
+                <!-- Search -->
                 <div class="col-md-6">
-                    <div class="text-center">
-                        <input type="text" class="search-box" placeholder="Cari produk yang Anda inginkan...">
+                    <div class="search-container">
+                        <input type="text" class="search-box" placeholder="Cari buku, alat tulis, atau seragam...">
+                        <i class="bi bi-search search-icon"></i>
                     </div>
                 </div>
+
+                <!-- Back Button -->
                 <div class="col-md-3">
                     <div class="text-end">
                         <a href="{{ route('beranda') }}" class="back-btn">
@@ -428,11 +458,11 @@ body::before {
 
     <!-- Main Content -->
     <main class="main-content">
-        <div class="container">
+        <div class="container py-5">
+            
             <!-- Categories Section -->
-            <section class="category-section">
-                <h2 class="section-title">Kategori Populer</h2>
-                <div class="row g-4">
+            <section class="mb-5">
+                <div class="row g-3">
                     <div class="col-6 col-md-3">
                         <div class="category-card">
                             <div class="category-icon">
@@ -452,7 +482,7 @@ body::before {
                     <div class="col-6 col-md-3">
                         <div class="category-card">
                             <div class="category-icon">
-                                <i class="bi bi-brush"></i>
+                                <i class="bi bi-pencil-square"></i>
                             </div>
                             <p class="category-name">Alat Tulis</p>
                         </div>
@@ -460,7 +490,7 @@ body::before {
                     <div class="col-6 col-md-3">
                         <div class="category-card">
                             <div class="category-icon">
-                                <i class="bi bi-tshirt"></i>
+                                <i class="bi bi-handbag"></i>
                             </div>
                             <p class="category-name">Seragam</p>
                         </div>
@@ -471,41 +501,55 @@ body::before {
             <!-- Filter Section -->
             <section class="filter-section">
                 <h3 class="filter-title">Filter Produk</h3>
-                <div class="d-flex flex-wrap">
+                <div class="d-flex flex-wrap gap-2">
                     <button class="filter-btn active">Semua</button>
                     <button class="filter-btn">Terbaru</button>
                     <button class="filter-btn">Terlaris</button>
                     <button class="filter-btn">Harga Terendah</button>
-                    <button class="filter-btn">Harga Tertinggi</button>
                     <button class="filter-btn">Promo</button>
                 </div>
             </section>
 
             <!-- Products Section -->
             <section>
-                <h2 class="section-title">Produk Terbaru</h2>
+                <!-- Section Title (Optional, kept clean) -->
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="h4 fw-bold m-0" style="color: var(--text-main);">Rekomendasi Untukmu</h2>
+                    <small class="text-muted">Menampilkan semua produk</small>
+                </div>
+
                 <div class="row g-4">
                     {{-- AWAL LOOPING PRODUK --}}
                     @forelse ($marketplaces as $marketplace)
                         <div class="col-md-6 col-lg-4">
                             <div class="product-card">
                                 {{-- Menampilkan foto produk --}}
-                                {{-- Pastikan Anda sudah menjalankan `php artisan storage:link` --}}
-                                <div class="product-image" style="background-image: url('{{ $marketplace->foto ? asset('storage/' . $marketplace->foto) : 'https://picsum.photos/seed/default/400/300.jpg' }}');">
+                                <div class="product-image" style="background-image: url('{{ $marketplace->foto ? asset('storage/' . $marketplace->foto) : 'https://picsum.photos/seed/smkn1kawali/400/300.jpg' }}');">
+                                    <div class="badge-new">Baru</div>
                                 </div>
+                                
                                 <div class="product-body">
                                     {{-- Menampilkan nama produk --}}
                                     <h3 class="product-title">{{ $marketplace->nama }}</h3>
+                                    
                                     {{-- Menampilkan harga produk dengan format Rupiah --}}
                                     <div class="product-price">Rp {{ number_format($marketplace->harga, 0, ',', '.') }}</div>
+                                    
+                                    <!-- Tombol Beli Mini (Opsional) -->
+                                    <button class="btn btn-sm w-100 mt-3 fw-semibold" style="background-color: var(--primary-blue); color: white; border-radius: 8px;">
+                                        <i class="bi bi-cart-plus me-1"></i> Beli Sekarang
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     @empty
                         <div class="col-12">
-                            <div class="alert alert-info text-center">
-                                <h4>Belum ada produk</h4>
-                                <p>Belum ada produk yang ditambahkan saat ini.</p>
+                            <div class="text-center py-5">
+                                <div style="background: white; border-radius: 16px; padding: 40px; border: 1px dashed var(--border-color);">
+                                    <i class="bi bi-inbox text-muted" style="font-size: 3rem;"></i>
+                                    <h4 class="mt-3 fw-bold text-muted">Belum ada produk</h4>
+                                    <p class="text-muted">Silakan cek lagi lain waktu.</p>
+                                </div>
                             </div>
                         </div>
                     @endforelse
@@ -519,60 +563,61 @@ body::before {
     <footer class="footer">
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-4 mb-4">
                     <div class="footer-logo">
                         <img src="https://z-cdn-media.chatglm.cn/files/9d0ca30d-954f-4e5f-bf66-bfb4a115ecfc.png?auth_key=1868371606-21df551d97db4bbbadc671626e9e83a6-0-e0a0e057a73f58e5763d4379b39763b1" alt="Logo SMKN 1 Kawali">
                     </div>
-                    <h3 class="footer-title">SMKN 1 KAWALI</h3>
-                    <p class="footer-text">Marketplace resmi SMKN 1 Kawali untuk memenuhi kebutuhan belajar mengajar siswa dan guru.</p>
-                    <div class="social-links">
+                    <h3>SMKN 1 KAWALI</h3>
+                    <p>Marketplace resmi yang dikelola siswa untuk memenuhi kebutuhan belajar mengajar dengan cara yang praktis dan terpercaya.</p>
+                    <div class="social-links mt-4">
                         <a href="#"><i class="bi bi-facebook"></i></a>
                         <a href="#"><i class="bi bi-instagram"></i></a>
                         <a href="#"><i class="bi bi-youtube"></i></a>
-                        <a href="#"><i class="bi bi-twitter"></i></a>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <h4 class="footer-title">Link Cepat</h4>
+                <div class="col-md-4 mb-4">
+                    <h4>Navigasi</h4>
                     <ul class="footer-links">
+                        <li><a href="#">Beranda</a></li>
+                        <li><a href="#">Katalog Produk</a></li>
                         <li><a href="#">Tentang Kami</a></li>
-                        <li><a href="#">Cara Pemesanan</a></li>
-                        <li><a href="#">Pengiriman</a></li>
-                        <li><a href="#">Pengembalian</a></li>
-                        <li><a href="#">Bantuan</a></li>
+                        <li><a href="#">Hubungi Admin</a></li>
                     </ul>
                 </div>
-                <div class="col-md-4">
-                    <h4 class="footer-title">Kontak</h4>
+                <div class="col-md-4 mb-4">
+                    <h4>Hubungi Kami</h4>
                     <ul class="footer-links">
-                        <li><i class="bi bi-geo-alt me-2"></i> Jl. Pendidikan No. 1, Kawali, Ciamis</li>
-                        <li><i class="bi bi-telephone me-2"></i> (0265) 123456</li>
-                        <li><i class="bi bi-envelope me-2"></i> info@smkn1kawali.sch.id</li>
-                        <li><i class="bi bi-clock me-2"></i> Senin - Jumat: 07:00 - 15:00</li>
+                        <li><i class="bi bi-geo-alt me-2 text-primary"></i> Jl. Pendidikan No. 1, Kawali, Ciamis</li>
+                        <li><i class="bi bi-telephone me-2 text-primary"></i> (0265) 123456</li>
+                        <li><i class="bi bi-envelope me-2 text-primary"></i> info@smkn1kawali.sch.id</li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 SMKN 1 Kawali. All rights reserved.</p>
+                <p class="m-0">&copy; 2024 SMKN 1 Kawali. Dibuat dengan ❤️ oleh Tim IT.</p>
             </div>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Filter buttons functionality
+        // Filter buttons interaction
         document.querySelectorAll('.filter-btn').forEach(btn => {
             btn.addEventListener('click', function() {
+                // Hapus kelas active dari semua tombol
                 document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                // Tambahkan kelas active ke tombol yang diklik
                 this.classList.add('active');
             });
         });
 
-        // Search functionality
-        document.querySelector('.search-box').addEventListener('input', function(e) {
-            const searchTerm = e.target.value.toLowerCase();
-            // Here you would implement actual search logic
-            console.log('Searching for:', searchTerm);
+        // Search interaction (Simulasi)
+        const searchBox = document.querySelector('.search-box');
+        searchBox.addEventListener('focus', () => {
+            searchBox.parentElement.style.transform = "scale(1.02)";
+        });
+        searchBox.addEventListener('blur', () => {
+            searchBox.parentElement.style.transform = "scale(1)";
         });
     </script>
 </body>

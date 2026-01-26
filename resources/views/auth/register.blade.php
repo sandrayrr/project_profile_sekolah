@@ -20,7 +20,7 @@
     --red-accent:#DC3545;
 }
 
-/* ================= BODY ================= */
+/* ================= BODY & PRELOADER ================= */
 body{
     min-height:100vh;
     margin:0;
@@ -36,7 +36,7 @@ body{
     padding: 20px 0;
 }
 
-/* Background pattern */
+/* Background pattern & Floating Bubbles */
 body::before {
     content: "";
     position: absolute;
@@ -50,11 +50,67 @@ body::before {
     z-index: 1;
 }
 
+/* Preloader Animation */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--blue-dark);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease, visibility 0.5s;
+}
+
+.loader-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(255,255,255,0.1);
+    border-left-color: var(--blue-soft);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
 /* Gradient movement */
 @keyframes oceanMove{
     0%{background-position:0% 50%}
     50%{background-position:100% 50%}
     100%{background-position:0% 50%}
+}
+
+@keyframes spin{
+    to{transform:rotate(360deg)}
+}
+
+/* ================= KEYFRAMES ANIMATIONS ================= */
+@keyframes slideInLeft{
+    from{opacity:0;transform:translateX(-50px)}
+    to{opacity:1;transform:translateX(0)}
+}
+
+@keyframes slideInRight{
+    from{opacity:0;transform:translateX(50px)}
+    to{opacity:1;transform:translateX(0)}
+}
+
+@keyframes fadeInUp{
+    from{opacity:0;transform:translateY(20px)}
+    to{opacity:1;transform:translateY(0)}
+}
+
+@keyframes popIn{
+    0%{opacity:0;transform:scale(0.5)}
+    80%{transform:scale(1.1)}
+    100%{opacity:1;transform:scale(1)}
+}
+
+@keyframes floatContainer{
+    0%{transform:translateY(0px)}
+    50%{transform:translateY(-10px)}
+    100%{transform:translateY(0px)}
 }
 
 /* ================= REGISTER CONTAINER ================= */
@@ -68,13 +124,9 @@ body::before {
     box-shadow: 0 25px 60px rgba(0,0,0,.25);
     position: relative;
     z-index: 2;
-    animation: fadeUp .9s ease;
-}
-
-/* Card animation */
-@keyframes fadeUp{
-    from{opacity:0;transform:translateY(30px)}
-    to{opacity:1;transform:translateY(0)}
+    /* Efek Melayang Halus */
+    animation: floatContainer 6s ease-in-out infinite;
+    opacity: 0; /* Start hidden for JS reveal */
 }
 
 /* ================= SCHOOL IMAGE ================= */
@@ -87,6 +139,9 @@ body::before {
     justify-content: flex-end;
     padding: 35px;
     color: white;
+    opacity: 0; /* Hidden initially */
+    animation: slideInLeft 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    animation-delay: 0.5s;
 }
 
 .school-image::before {
@@ -105,24 +160,9 @@ body::before {
     z-index: 2;
 }
 
-.school-name {
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 10px;
-}
-
-.school-location {
-    font-size: 1.2rem;
-    opacity: 0.9;
-}
-
-.school-motto {
-    margin-top: 15px;
-    font-style: italic;
-    opacity: 0.8;
-    font-size: 0.95rem;
-    line-height: 1.3;
-}
+.school-name { font-size: 2rem; font-weight: 700; margin-bottom: 10px; }
+.school-location { font-size: 1.2rem; opacity: 0.9; }
+.school-motto { margin-top: 15px; font-style: italic; opacity: 0.8; font-size: 0.95rem; line-height: 1.3; }
 
 /* ================= REGISTER CARD ================= */
 .register-card {
@@ -135,7 +175,26 @@ body::before {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: relative;
+    opacity: 0; /* Hidden initially */
+    animation: slideInRight 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    animation-delay: 0.7s;
 }
+
+/* ================= ELEMENT ANIMATIONS (STAGGER) ================= */
+.anim-fade-up {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+/* Delays */
+.delay-100 { animation-delay: 0.9s; }
+.delay-200 { animation-delay: 1.1s; }
+.delay-300 { animation-delay: 1.3s; }
+.delay-400 { animation-delay: 1.4s; }
+.delay-500 { animation-delay: 1.5s; }
+.delay-600 { animation-delay: 1.6s; }
+.delay-700 { animation-delay: 1.7s; }
 
 /* ================= LOGO ================= */
 .school-logo {
@@ -148,90 +207,52 @@ body::before {
     padding: 8px;
     box-shadow: 0 8px 16px rgba(0,0,0,0.2);
     transition: transform 0.3s ease;
+    animation: popIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+    animation-delay: 0.9s;
 }
 
-.school-logo:hover {
-    transform: scale(1.05);
-}
-
-.school-logo img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-/* ================= HEADER ================= */
-.register-card h3{
-    font-weight:700;
-    margin-bottom:10px;
-    text-align:center;
-    font-size: 1.3rem;
-}
-
-.register-subtitle {
-    text-align: center;
-    font-size: 0.9rem;
-    margin-bottom: 30px;
-    font-weight: 500;
-    opacity: 0.9;
-}
+.school-logo img { width: 100%; height: 100%; object-fit: contain; }
 
 /* ================= FORM ================= */
-.form-label{
-    font-weight:600;
-    font-size:.8rem;
-    margin-bottom: 4px;
-}
-
-.form-control, .form-select {
-    border-radius:10px;
-    padding:8px 10px;
-    border:none;
-    background:rgba(255,255,255,.25);
-    color:#fff;
-    transition:.3s;
-    font-size: 0.85rem;
-    height: auto;
-}
-
-.form-control::placeholder{
-    color:#e5e7eb;
-}
-
-.form-control:focus, .form-select:focus{
-    background:rgba(255,255,255,.35);
-    box-shadow:0 0 0 3px rgba(59,130,246,.4);
-    color:#fff;
-}
-
-.form-select option {
-    color: #000;
-}
-
-.mb-3 {
-    margin-bottom: 0.8rem !important;
-}
-
-.mb-4 {
-    margin-bottom: 1.2rem !important;
-}
+.form-label{ font-weight:600; font-size:.8rem; margin-bottom: 4px; letter-spacing: 0.5px; }
 
 .input-group {
+    background: rgba(255,255,255,0.15);
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: all 0.3s ease;
+    overflow: hidden;
     margin-bottom: 16px;
 }
 
-.input-group-text {
-    padding: 8px 10px;
-    font-size: 0.85rem;
-    border-radius: 10px 0 0 10px;
+.input-group:focus-within {
     background: rgba(255,255,255,0.25);
-    border: none;
+    border-color: rgba(255,255,255,0.4);
+    transform: scale(1.02);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.input-group-text {
+    border-radius: 10px 0 0 10px; 
+    background: transparent; 
+    border: none; 
     color: white;
+    padding: 8px 10px;
 }
 
 .form-control, .form-select {
-    border-radius: 0 10px 10px 0;
+    padding:8px 10px;
+    border:none;
+    background:transparent;
+    color:#fff;
+    box-shadow: none;
+    height: auto;
+    font-size: 0.85rem;
 }
+
+.form-control:focus, .form-select:focus { background:transparent; color:#fff; box-shadow: none; }
+.form-control::placeholder{ color:#e5e7eb; }
+.form-select option { color: #000; }
 
 /* ================= BUTTON ================= */
 .btn-register{
@@ -247,17 +268,37 @@ body::before {
     overflow:hidden;
     margin-top:12px;
     font-size: 0.9rem;
+    box-shadow: 0 4px 15px rgba(13, 110, 253, 0.3);
 }
 
 .btn-register:hover{
-    transform:translateY(-2px);
-    box-shadow:0 10px 20px rgba(0,0,0,.35);
+    transform:translateY(-3px);
+    box-shadow:0 10px 25px rgba(0,0,0,.4);
+}
+
+/* Button Ripple Effect */
+.btn-register::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+.btn-register:active::after {
+    width: 300px;
+    height: 300px;
 }
 
 /* Loading effect */
 .btn-register.loading{
     pointer-events:none;
     opacity:.8;
+    color: transparent;
 }
 
 .btn-register.loading::after{
@@ -272,10 +313,7 @@ body::before {
     left:50%;
     transform:translate(-50%,-50%);
     animation:spin 1s linear infinite;
-}
-
-@keyframes spin{
-    to{transform:rotate(360deg) translate(-50%,-50%)}
+    background: transparent;
 }
 
 /* ================= ALERT ================= */
@@ -285,28 +323,32 @@ body::before {
     margin-bottom: 18px;
     font-size: 0.8rem;
     padding: 10px 15px;
+    backdrop-filter: blur(5px);
 }
 
-.alert-danger {
-    background-color: rgba(220, 53, 69, 0.2);
-    color: #fff;
-}
+.alert-danger { background-color: rgba(220, 53, 69, 0.25); color: #fff; border: 1px solid rgba(220, 53, 69, 0.5); }
 
 /* ================= FOOTER ================= */
 .register-footer{
     text-align:center;
     margin-top:25px;
     font-size:.85rem;
+    opacity: 0.8;
+    transition: opacity 0.3s;
 }
 
 .register-footer a{
-    color:#E0F2FE;
+    color:#fff;
     font-weight:600;
     text-decoration:none;
+    border-bottom: 1px dashed rgba(255,255,255,0.5);
+    padding-bottom: 2px;
+    transition: all 0.3s;
 }
 
 .register-footer a:hover{
-    text-decoration:underline;
+    border-bottom-color: #fff;
+    text-shadow: 0 0 10px rgba(255,255,255,0.5);
 }
 
 /* ================= DECORATIVE ELEMENTS ================= */
@@ -315,21 +357,11 @@ body::before {
     border-radius: 50%;
     background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
     z-index: 1;
+    animation: floatContainer 10s infinite ease-in-out;
 }
 
-.decorative-element-1 {
-    width: 280px;
-    height: 280px;
-    top: -140px;
-    right: -120px;
-}
-
-.decorative-element-2 {
-    width: 200px;
-    height: 200px;
-    bottom: -90px;
-    left: -90px;
-}
+.decorative-element-1 { width: 280px; height: 280px; top: -140px; right: -120px; }
+.decorative-element-2 { width: 200px; height: 200px; bottom: -90px; left: -90px; animation-delay: -5s; }
 
 /* ================= RESPONSIVE ================= */
 @media (max-width: 992px) {
@@ -338,59 +370,38 @@ body::before {
         width: 90%;
         height: auto;
         max-height: 90vh;
+        animation: fadeInUp 1s ease forwards; /* Use fade up instead of slide on mobile */
     }
     
     .school-image {
-        min-height: 220px;
+        min-height: 200px;
+        animation: fadeInUp 1s ease forwards;
     }
     
     .register-card {
         border-left: none;
         border-top: 1px solid rgba(255,255,255,0.1);
         padding: 35px 30px;
-    }
-    
-    .school-name {
-        font-size: 1.8rem;
-    }
-    
-    .school-logo {
-        width: 55px;
-        height: 55px;
+        animation: fadeInUp 1s ease forwards;
     }
 }
 
 @media (max-width: 480px) {
-    .register-container {
-        width: 95%;
-    }
-    
-    .school-image {
-        min-height: 200px;
-        padding: 20px;
-    }
-    
-    .school-name {
-        font-size: 1.5rem;
-    }
-    
-    .register-card {
-        padding: 30px 20px;
-    }
-    
-    .school-logo {
-        width: 50px;
-        height: 50px;
-    }
-    
-    .register-card h3 {
-        font-size: 1.2rem;
-    }
+    .register-container { width: 95%; }
+    .school-image { min-height: 200px; padding: 20px; }
+    .school-name { font-size: 1.5rem; }
+    .register-card { padding: 30px 20px; }
+    .school-logo { width: 50px; height: 50px; }
 }
 </style>
 </head>
 
 <body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader-spinner"></div>
+    </div>
+
     <!-- Decorative elements -->
     <div class="decorative-element decorative-element-1"></div>
     <div class="decorative-element decorative-element-2"></div>
@@ -398,7 +409,7 @@ body::before {
 <div class="register-container">
     <!-- School Image Section -->
     <div class="school-image">
-        <div class="school-info">
+        <div class="school-info anim-fade-up delay-100">
             <h2 class="school-name">SMKN 1 KAWALI</h2>
             <p class="school-location">KAB. CIAMIS</p>
             <p class="school-motto">"Membangun Masa Depan Melalui Pendidikan Berkualitas"</p>
@@ -412,15 +423,17 @@ body::before {
             <img src="https://z-cdn-media.chatglm.cn/files/9d0ca30d-954f-4e5f-bf66-bfb4a115ecfc.png?auth_key=1868371606-21df551d97db4bbbadc671626e9e83a6-0-e0a0e057a73f58e5763d4379b39763b1" alt="Logo SMKN 1 Kawali">
         </div>
         
-        <h3 class="text-center">
+        <h3 class="text-center anim-fade-up delay-200" style="font-weight:700; margin-bottom:10px; font-size: 1.3rem;">
             <i class="bi bi-person-plus-fill me-1"></i>
             Registrasi Akun
         </h3>
         
-        <p class="register-subtitle">Buat akun baru untuk mengakses sistem</p>
+        <p class="register-subtitle anim-fade-up delay-300" style="text-align: center; font-size: 0.9rem; margin-bottom: 30px; font-weight: 500; opacity: 0.9;">
+            Buat akun baru untuk mengakses sistem
+        </p>
 
         @if($errors->any())
-            <div class="alert alert-danger">
+            <div class="alert alert-danger anim-fade-up delay-200">
                 {{ $errors->first() }}
             </div>
         @endif
@@ -428,7 +441,7 @@ body::before {
         <form id="registerForm" action="{{ url('/register') }}" method="POST">
             @csrf
 
-            <div class="mb-3">
+            <div class="anim-fade-up delay-300">
                 <label class="form-label">Nama Lengkap</label>
                 <div class="input-group">
                     <span class="input-group-text">
@@ -442,7 +455,7 @@ body::before {
                 </div>
             </div>
 
-            <div class="mb-3">
+            <div class="anim-fade-up delay-400">
                 <label class="form-label">Email</label>
                 <div class="input-group">
                     <span class="input-group-text">
@@ -456,7 +469,7 @@ body::before {
                 </div>
             </div>
 
-            <div class="mb-3">
+            <div class="anim-fade-up delay-500">
                 <label class="form-label">Password</label>
                 <div class="input-group">
                     <span class="input-group-text">
@@ -470,7 +483,7 @@ body::before {
                 </div>
             </div>
 
-            <div class="mb-4">
+            <div class="anim-fade-up delay-600">
                 <label class="form-label">Role</label>
                 <div class="input-group">
                     <span class="input-group-text">
@@ -484,12 +497,12 @@ body::before {
                 </div>
             </div>
 
-            <button type="submit" class="btn-register">
+            <button type="submit" class="btn-register anim-fade-up delay-700">
                 Buat Akun
             </button>
         </form>
 
-        <div class="register-footer">
+        <div class="register-footer anim-fade-up delay-700">
             Sudah punya akun?
             <a href="{{ url('/login') }}">Login</a>
         </div>
@@ -497,24 +510,43 @@ body::before {
 </div>
 
 <script>
-/* ================= SMOOTH JS ================= */
-const form = document.getElementById('registerForm');
-const button = form.querySelector('button');
+// ================= PRELOADER & JS LOGIC =================
+window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    const container = document.querySelector('.register-container');
+    
+    // Fade out preloader
+    setTimeout(() => {
+        preloader.style.opacity = '0';
+        setTimeout(() => {
+            preloader.style.visibility = 'hidden';
+            // Reveal container
+            container.style.opacity = '1';
+        }, 500);
+    }, 800); // Small delay for effect
+});
 
-form.addEventListener('submit', () => {
+const form = document.getElementById('registerForm');
+const button = form.querySelector('button[type="submit"]');
+
+form.addEventListener('submit', (e) => {
+    // Prevent default is handled by form action, just animation here
     button.classList.add('loading');
+    // Keep text hidden while loading
     button.innerText = '';
 });
 
-// Add focus effect to form inputs
+// Add visual focus effect
 const inputs = document.querySelectorAll('.form-control, .form-select');
 inputs.forEach(input => {
     input.addEventListener('focus', function() {
         this.parentElement.style.transform = 'scale(1.02)';
+        this.parentElement.style.boxShadow = '0 0 15px rgba(255,255,255,0.2)';
     });
     
     input.addEventListener('blur', function() {
         this.parentElement.style.transform = 'scale(1)';
+        this.parentElement.style.boxShadow = 'none';
     });
 });
 </script>

@@ -1,231 +1,278 @@
-<!DOCTYPE html>
-<html lang="id">
+@extends('layouts.home')
 
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Link - SMK Negeri 1 Kawali</title>
+@section('content')
 
-    <!-- Tailwind -->
-    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
-
-    <!-- Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
-
-    <script>
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        primary: "#6b7280",
-                        "background-light": "#f9fafb",
-                        "background-dark": "#111827",
-                        "card-light": "#ffffff",
-                        "card-dark": "#1f2937",
-                        "border-light": "#e5e7eb",
-                        "border-dark": "#374151",
-                    },
-                    fontFamily: {
-                        body: ["Inter", "sans-serif"],
-                    },
-                    animation: {
-                        'fade-in': 'fadeIn 0.6s ease-out',
-                    },
-                    keyframes: {
-                        fadeIn: {
-                            '0%': { opacity: '0', transform: 'translateY(10px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        }
-                    }
-                },
-            },
-        };
-    </script>
-
-    <style>
+ <style>
+        /* Custom Styles */
         .link-card {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid #dbeafe;
         }
+
         .link-card:hover {
             transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(37, 99, 235, 0.15);
+            border-color: #93c5fd;
         }
-        .link-image-container .overlay {
-            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 60%);
+
+        .delay-100 {
+            animation-delay: 100ms;
         }
-        .link-card:hover .overlay {
-            opacity: 1;
+
+        .delay-200 {
+            animation-delay: 200ms;
         }
-        .link-card:hover .overlay-text {
-            transform: translateY(0);
+
+        .delay-300 {
+            animation-delay: 300ms;
         }
-        .overlay-text {
-            transform: translateY(10px);
-            transition: transform 0.3s ease;
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.5s ease-out forwards;
+            opacity: 0;
         }
     </style>
-</head>
 
-<body class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-100 font-body transition-colors duration-300">
+    <!-- HEADER SECTION (Hero) -->
+    <div class="relative bg-white border-b border-blue-100 pb-16 pt-16 overflow-hidden">
+        <!-- Background Decor (Blue blobs) -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
+            <div class="absolute -top-24 -right-24 w-96 h-96 bg-blue-100/50 rounded-full blur-3xl"></div>
+            <div class="absolute top-1/2 -left-24 w-72 h-72 bg-cyan-100/50 rounded-full blur-3xl"></div>
+        </div>
 
-    @include('layouts.navbar')
-
-    <!-- HEADER -->
-    <div class="relative bg-gradient-to-br from-primary to-gray-600 dark:from-gray-700 dark:to-gray-900 py-20">
-        <div class="absolute inset-0 bg-black opacity-10"></div>
-        <div class="relative container mx-auto px-4">
-            <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-3">
-                Link
+        <div class="relative container mx-auto px-4 z-10 text-center">
+            <div
+                class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-primary text-xs font-bold mb-4 border border-blue-200">
+                <i class="fa-solid fa-bolt"></i> Akses Terintegrasi
+            </div>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4 tracking-tight">
+                Portal Layanan <span class="text-primary">Sekolah</span>
             </h1>
-            <p class="text-gray-100 text-lg md:text-xl max-w-2xl">
-                Akses cepat ke berbagai layanan dan platform resmi SMK Negeri 1 Kawali.
+            <p class="text-slate-600 text-lg max-w-2xl mx-auto mb-8">
+                Pusat akses cepat ke Learning Management System (LMS), E-Rapor, Perpustakaan Digital, dan layanan
+                akademik lainnya.
             </p>
+
+            <!-- Search Bar Mockup -->
+            <div class="max-w-md mx-auto relative group">
+                <input type="text" placeholder="Cari layanan (misal: LMS, Rapor)..."
+                    class="w-full pl-12 pr-4 py-3 rounded-xl border border-blue-200 bg-white text-slate-900 focus:ring-2 focus:ring-primary focus:border-transparent outline-none shadow-sm transition group-hover:shadow-md">
+                <i
+                    class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400"></i>
+            </div>
         </div>
     </div>
 
     <!-- CONTENT -->
-    <main class="container mx-auto px-4 py-12 lg:py-16 min-h-screen">
-
-        <div class="mb-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
-                Telusuri Layanan Digital Sekolah
-            </h2>
-        </div>
+    <main class="container mx-auto px-4 py-12 -mt-10 z-20 relative">
 
         <!-- GRID CARD -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-12">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
 
-            <!-- LMS -->
-            <div class="link-card bg-card-light dark:bg-card-dark rounded-2xl shadow-lg border border-border-light dark:border-border-dark overflow-hidden animate-fade-in group">
-                <div class="link-image-container aspect-[4/3] bg-gray-200 dark:bg-gray-700 relative overflow-hidden">
-                    <div class="w-full h-full flex items-center justify-center text-gray-400">
-                        <i class="fas fa-graduation-cap text-6xl"></i>
+            <!-- CARD 1: LMS -->
+            <div class="link-card bg-white rounded-2xl shadow-lg overflow-hidden opacity-0 animate-fade-in-up group">
+                <!-- Card Header (Gradient Blue) -->
+                <div class="h-32 bg-gradient-to-br from-blue-500 to-blue-600 relative flex items-center justify-center">
+                    <div
+                        class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10">
                     </div>
-                    <div class="overlay absolute inset-0 opacity-0 transition-opacity duration-300 flex items-end p-4">
-                        <div class="overlay-text text-white">
-                            <p class="font-semibold text-lg">Kunjungi LMS</p>
-                            <p class="text-sm opacity-90">lms.smkn1kawali.sch.id</p>
-                        </div>
-                    </div>
+                    <i
+                        class="fas fa-graduation-cap text-white text-5xl drop-shadow-lg transform group-hover:scale-110 transition-transform duration-300"></i>
                 </div>
-                <div class="p-5 flex flex-col">
-                    <div class="flex justify-end mb-3">
-                        <span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full font-medium">
-                            Akademik
-                        </span>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-lg font-bold text-slate-900 group-hover:text-primary transition-colors">LMS
+                            Sekolah</h3>
+                        <span
+                            class="bg-blue-100 text-blue-600 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wide">Akademik</span>
                     </div>
-                    <div class="border-t pt-4">
-                        <h3 class="text-xl font-bold mb-2">LMS SMK Negeri 1 Kawali</h3>
-                        <div class="flex items-center text-sm text-gray-500">
-                            <i class="fas fa-link mr-2"></i>
-                            <span>Learning Management System</span>
-                        </div>
-                    </div>
-                    <div class="mt-4 flex justify-end">
-                        <a href="https://lms.smkn1kawali.sch.id" target="_blank"
-                            class="inline-flex items-center gap-2 bg-slate-100 hover:bg-primary hover:text-white text-gray-700 text-sm font-semibold py-2 px-4 rounded-full transition-colors">
-                            Buka <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </a>
-                    </div>
+                    <p class="text-sm text-slate-500 mb-4 line-clamp-2">
+                        Platform utama pembelajaran daring, materi, dan tugas siswa.
+                    </p>
+                    <a href="https://lms.smkn1kawali.sch.id" target="_blank"
+                        class="block w-full text-center bg-slate-50 hover:bg-primary hover:text-white text-slate-600 text-sm font-semibold py-2.5 rounded-lg transition-colors duration-200 border border-slate-200">
+                        Buka LMS <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-xs"></i>
+                    </a>
                 </div>
             </div>
 
-            <!-- E-RAPOR -->
-            <div class="link-card bg-card-light dark:bg-card-dark rounded-2xl shadow-lg border border-border-light dark:border-border-dark overflow-hidden animate-fade-in group">
-                <div class="link-image-container aspect-[4/3] bg-gray-200 dark:bg-gray-700 relative overflow-hidden">
-                    <div class="w-full h-full flex items-center justify-center text-gray-400">
-                        <i class="fas fa-file-alt text-6xl"></i>
+            <!-- CARD 2: E-RAPOR -->
+            <div
+                class="link-card bg-white rounded-2xl shadow-lg overflow-hidden opacity-0 animate-fade-in-up delay-100 group">
+                <div class="h-32 bg-gradient-to-br from-blue-600 to-cyan-500 relative flex items-center justify-center">
+                    <div
+                        class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10">
                     </div>
-                    <div class="overlay absolute inset-0 opacity-0 transition-opacity duration-300 flex items-end p-4">
-                        <div class="overlay-text text-white">
-                            <p class="font-semibold text-lg">Buka E-Rapor</p>
-                            <p class="text-sm opacity-90">erapor.smkn1kawali.sch.id</p>
-                        </div>
-                    </div>
+                    <i
+                        class="fas fa-file-contract text-white text-5xl drop-shadow-lg transform group-hover:scale-110 transition-transform duration-300"></i>
                 </div>
-                <div class="p-5 flex flex-col">
-                    <div class="flex justify-end mb-3">
-                        <span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full font-medium">
-                            Layanan Siswa
-                        </span>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors">E-Rapor
+                        </h3>
+                        <span
+                            class="bg-cyan-100 text-cyan-600 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wide">Siswa</span>
                     </div>
-                    <div class="border-t pt-4">
-                        <h3 class="text-xl font-bold mb-2">E-Rapor</h3>
-                        <div class="flex items-center text-sm text-gray-500">
-                            <i class="fas fa-link mr-2"></i>
-                            <span>Rapor Digital</span>
-                        </div>
-                    </div>
-                    <div class="mt-4 flex justify-end">
-                        <a href="https://erapor.smkn1kawali.sch.id" target="_blank"
-                            class="inline-flex items-center gap-2 bg-slate-100 hover:bg-primary hover:text-white text-gray-700 text-sm font-semibold py-2 px-4 rounded-full transition-colors">
-                            Buka <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </a>
-                    </div>
+                    <p class="text-sm text-slate-500 mb-4 line-clamp-2">
+                        Akses hasil belajar dan rapor digital semester siswa.
+                    </p>
+                    <a href="https://erapor.smkn1kawali.sch.id" target="_blank"
+                        class="block w-full text-center bg-slate-50 hover:bg-cyan-600 hover:text-white text-slate-600 text-sm font-semibold py-2.5 rounded-lg transition-colors duration-200 border border-slate-200">
+                        Buka Rapor <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-xs"></i>
+                    </a>
                 </div>
             </div>
 
-            <!-- PERPUSTAKAAN -->
-            <div class="link-card bg-card-light dark:bg-card-dark rounded-2xl shadow-lg border border-border-light dark:border-border-dark overflow-hidden animate-fade-in group">
-                <div class="link-image-container aspect-[4/3] bg-gray-200 dark:bg-gray-700 relative overflow-hidden">
-                    <div class="w-full h-full flex items-center justify-center text-gray-400">
-                        <i class="fas fa-book text-6xl"></i>
+            <!-- CARD 3: PERPUSTAKAAN -->
+            <div
+                class="link-card bg-white rounded-2xl shadow-lg overflow-hidden opacity-0 animate-fade-in-up delay-200 group">
+                <div
+                    class="h-32 bg-gradient-to-br from-indigo-500 to-purple-500 relative flex items-center justify-center">
+                    <div
+                        class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10">
                     </div>
-                    <div class="overlay absolute inset-0 opacity-0 transition-opacity duration-300 flex items-end p-4">
-                        <div class="overlay-text text-white">
-                            <p class="font-semibold text-lg">Perpustakaan Digital</p>
-                            <p class="text-sm opacity-90">digilib.smkn1kawali.sch.id</p>
-                        </div>
-                    </div>
+                    <i
+                        class="fas fa-book-open text-white text-5xl drop-shadow-lg transform group-hover:scale-110 transition-transform duration-300"></i>
                 </div>
-                <div class="p-5 flex flex-col">
-                    <div class="flex justify-end mb-3">
-                        <span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full font-medium">
-                            Akademik
-                        </span>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-lg font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">
+                            Perpustakaan</h3>
+                        <span
+                            class="bg-indigo-100 text-indigo-600 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wide">Literasi</span>
                     </div>
-                    <div class="border-t pt-4">
-                        <h3 class="text-xl font-bold mb-2">Perpustakaan Digital</h3>
-                        <div class="flex items-center text-sm text-gray-500">
-                            <i class="fas fa-link mr-2"></i>
-                            <span>Buku & Referensi</span>
-                        </div>
+                    <p class="text-sm text-slate-500 mb-4 line-clamp-2">
+                        Katalog buku, e-book, dan layanan peminjaman digital.
+                    </p>
+                    <a href="https://digilib.smkn1kawali.sch.id" target="_blank"
+                        class="block w-full text-center bg-slate-50 hover:bg-indigo-600 hover:text-white text-slate-600 text-sm font-semibold py-2.5 rounded-lg transition-colors duration-200 border border-slate-200">
+                        Cari Buku <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-xs"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- CARD 4: E-LEARNING -->
+            <div
+                class="link-card bg-white rounded-2xl shadow-lg overflow-hidden opacity-0 animate-fade-in-up delay-300 group">
+                <div class="h-32 bg-gradient-to-br from-sky-400 to-blue-500 relative flex items-center justify-center">
+                    <div
+                        class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10">
                     </div>
-                    <div class="mt-4 flex justify-end">
-                        <a href="https://digilib.smkn1kawali.sch.id" target="_blank"
-                            class="inline-flex items-center gap-2 bg-slate-100 hover:bg-primary hover:text-white text-gray-700 text-sm font-semibold py-2 px-4 rounded-full transition-colors">
-                            Buka <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </a>
+                    <i
+                        class="fas fa-laptop-code text-white text-5xl drop-shadow-lg transform group-hover:scale-110 transition-transform duration-300"></i>
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-lg font-bold text-slate-900 group-hover:text-sky-600 transition-colors">
+                            E-Learning</h3>
+                        <span
+                            class="bg-sky-100 text-sky-600 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wide">Kelas</span>
                     </div>
+                    <p class="text-sm text-slate-500 mb-4 line-clamp-2">
+                        Ruang belajar tambahan dan ujian online.
+                    </p>
+                    <a href="#" target="_blank"
+                        class="block w-full text-center bg-slate-50 hover:bg-sky-600 hover:text-white text-slate-600 text-sm font-semibold py-2.5 rounded-lg transition-colors duration-200 border border-slate-200">
+                        Masuk Kelas <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-xs"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- CARD 5: E-PAYMENT -->
+            <div
+                class="link-card bg-white rounded-2xl shadow-lg overflow-hidden opacity-0 animate-fade-in-up delay-100 group">
+                <div
+                    class="h-32 bg-gradient-to-br from-teal-400 to-emerald-500 relative flex items-center justify-center">
+                    <div
+                        class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10">
+                    </div>
+                    <i
+                        class="fas fa-wallet text-white text-5xl drop-shadow-lg transform group-hover:scale-110 transition-transform duration-300"></i>
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-lg font-bold text-slate-900 group-hover:text-teal-600 transition-colors">
+                            E-Payment</h3>
+                        <span
+                            class="bg-teal-100 text-teal-700 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wide">Keuangan</span>
+                    </div>
+                    <p class="text-sm text-slate-500 mb-4 line-clamp-2">
+                        Pembayaran SPP, Uang Gedung, dan lain-lain.
+                    </p>
+                    <a href="#" target="_blank"
+                        class="block w-full text-center bg-slate-50 hover:bg-teal-600 hover:text-white text-slate-600 text-sm font-semibold py-2.5 rounded-lg transition-colors duration-200 border border-slate-200">
+                        Bayar SPP <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-xs"></i>
+                    </a>
                 </div>
             </div>
 
         </div>
-
     </main>
 
-    @include('layouts.footer')
-
-    <!-- DARK MODE -->
-    <button id="darkToggle"
-        class="fixed bottom-6 right-6 bg-primary text-white p-3 rounded-full shadow-lg z-50 hover:bg-gray-600 transition">
-        <i class="fa-solid fa-moon dark:hidden"></i>
-        <i class="fa-solid fa-sun hidden dark:block"></i>
-    </button>
-
+     <!-- SCRIPT LOGIC (Dipindahkan ke sini agar valid) -->
     <script>
-        const toggle = document.getElementById('darkToggle');
-        const html = document.documentElement;
-
-        if (localStorage.getItem('theme') === 'dark') html.classList.add('dark');
-
-        toggle.addEventListener('click', () => {
-            html.classList.toggle('dark');
-            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle dengan animasi
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            
+            mobileMenuButton.addEventListener('click', function() {
+                // Toggle animasi max-height
+                if (mobileMenu.style.maxHeight && mobileMenu.style.maxHeight !== '0px') {
+                    mobileMenu.style.maxHeight = '0px';
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                    menuIcon.style.transform = 'rotate(0deg)';
+                } else {
+                    // Set max-height to a value large enough to contain the menu
+                    mobileMenu.style.maxHeight = mobileMenu.scrollHeight + "px";
+                    menuIcon.classList.remove('fa-bars');
+                    menuIcon.classList.add('fa-times');
+                    menuIcon.style.transform = 'rotate(180deg)';
+                }
+            });
+            
+            // Mobile dropdown toggles
+            const dropdownButtons = document.querySelectorAll('.mobile-dropdown-btn');
+            
+            dropdownButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const dropdownId = this.id.replace('-btn', '');
+                    const dropdown = document.getElementById(dropdownId);
+                    const chevron = this.querySelector('.fa-chevron-down');
+                    
+                    // Toggle dropdown visibility
+                    if (dropdown.classList.contains('hidden')) {
+                        dropdown.classList.remove('hidden');
+                        // Set max-height for animation
+                        setTimeout(() => {
+                            dropdown.style.maxHeight = dropdown.scrollHeight + "px";
+                        }, 10);
+                        chevron.style.transform = 'rotate(180deg)';
+                    } else {
+                        dropdown.style.maxHeight = '0px';
+                        chevron.style.transform = 'rotate(0deg)';
+                        // Hide after animation completes
+                        setTimeout(() => {
+                            dropdown.classList.add('hidden');
+                        }, 300);
+                    }
+                });
+            });
         });
     </script>
-
-</body>
-</html>
+@endsection
