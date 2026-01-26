@@ -1,137 +1,10 @@
-<!DOCTYPE html>
-<html lang="id">
+@extends('layouts.home')
 
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Informasi Jurusan DPIB - SMKN 1 Kawali</title>
 
-    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+@section('content')
 
-    <script>
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        primary: "#14b8a6",
-                        secondary: "#0d9488",
-                        "background-light": "#f9fafb",
-                        "background-dark": "#111827",
-                        "card-light": "#ffffff",
-                        "card-dark": "#1f2937",
-                        "border-light": "#e5e7eb",
-                        "border-dark": "#374151",
-                    },
-                    fontFamily: {
-                        body: ["Inter", "sans-serif"],
-                    },
-                    animation: {
-                        'fade-in': 'fadeIn 0.6s ease-out',
-                        'float': 'float 3s ease-in-out infinite',
-                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                    },
-                    keyframes: {
-                        fadeIn: {
-                            '0%': { opacity: '0', transform: 'translateY(10px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        },
-                        float: {
-                            '0%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-10px)' },
-                            '100%': { transform: 'translateY(0px)' },
-                        }
-                    }
-                },
-            },
-        };
-    </script>
-
-    <style>
-        .tab-active {
-            border-bottom: 3px solid #14b8a6;
-            color: #14b8a6;
-        }
-
-        .org-chart {
-            position: relative;
-        }
-
-        .org-chart::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background-color: #e5e7eb;
-            z-index: 0;
-        }
-
-        .dark .org-chart::before {
-            background-color: #374151;
-        }
-
-        .org-chart-item {
-            position: relative;
-            z-index: 1;
-        }
-
-        .org-chart-item::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 2px;
-            height: 30px;
-            background-color: #e5e7eb;
-            transform: translate(-50%, -100%);
-        }
-
-        .dark .org-chart-item::before {
-            background-color: #374151;
-        }
-
-        .org-chart-item:last-child::before {
-            display: none;
-        }
-
-        .card-hover {
-            transition: all 0.3s ease;
-        }
-
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .dark .card-hover:hover {
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-        }
-
-        .info-section {
-            border-left: 4px solid #14b8a6;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -8px;
-            top: 8px;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background-color: #14b8a6;
-        }
-    </style>
-</head>
 
 <body class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-100 font-body">
-
-    @include('layouts.navbar')
-
     <!-- HEADER JURUSAN -->
     <header class="bg-gradient-to-br from-primary to-secondary dark:from-gray-700 dark:to-gray-900 py-12">
         <div class="container mx-auto px-4">
@@ -1062,9 +935,6 @@
             </div>
         </div>
     </section>
-
-    <!-- FOOTER -->
-  @include('layouts.footer')
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // Tab functionality
@@ -1089,3 +959,4 @@
 </body>
 
 </html>
+@endsection

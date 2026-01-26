@@ -10,7 +10,8 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
 
     <!-- Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <!-- Menggunakan font 'Plus Jakarta Sans' untuk tampilan yang lebih modern dan geometris -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
 
@@ -20,18 +21,22 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: "#2563eb", // Warna biru
-                        "primary-light": "#dbeafe",
-                        "primary-dark": "#1e40af",
-                        "background-light": "#f9fafb",
-                        "background-dark": "#111827",
+                        // Palet warna yang lebih segar dan modern (Modern Blue & Slate)
+                        primary: "#4f46e5", // Indigo-600
+                        "primary-light": "#e0e7ff",
+                        "primary-dark": "#3730a3",
+                        
+                        "background-light": "#f8fafc", // Slate-50
+                        "background-dark": "#020617", // Slate-950
+                        
                         "card-light": "#ffffff",
-                        "card-dark": "#1f2937",
-                        "border-light": "#e5e7eb",
-                        "border-dark": "#374151",
+                        "card-dark": "#0f172a", // Slate-900
+                        
+                        "border-light": "#e2e8f0", // Slate-200
+                        "border-dark": "#1e293b", // Slate-800
                     },
                     fontFamily: {
-                        body: ["Inter", "sans-serif"],
+                        body: ["'Plus Jakarta Sans'", "sans-serif"],
                     },
                     animation: {
                         'fade-in': 'fadeIn 0.6s ease-out',
@@ -41,17 +46,22 @@
                     },
                     keyframes: {
                         fadeIn: {
-                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
                             '100%': { opacity: '1', transform: 'translateY(0)' },
                         },
                         float: {
-                            '0%': { transform: 'translateY(0px)' },
+                            '0%, 100%': { transform: 'translateY(0px)' },
                             '50%': { transform: 'translateY(-10px)' },
-                            '100%': { transform: 'translateY(0px)' },
                         },
                         zoomIn: {
-                            '0%': { opacity: '0', transform: 'scale(0.8)' },
+                            '0%': { opacity: '0', transform: 'scale(0.9)' },
                             '100%': { opacity: '1', transform: 'scale(1)' },
+                        },
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
                         }
                     }
                 },
@@ -59,22 +69,55 @@
         };
     </script>
     <style>
-        /* Header pattern overlay */
-        .header-pattern {
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        /* Modern Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #334155;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
         }
 
-        /* Card hover effect */
+        /* Header Pattern Subtle */
+        .header-pattern {
+            background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+
+        /* Glassmorphism Card Effect */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        .dark .glass-card {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Modern Card Hover */
         .org-card {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         .org-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 20px 40px -5px rgba(79, 70, 229, 0.15); /* Colored shadow */
+        }
+        .dark .org-card:hover {
+            box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.4);
         }
 
-        /* Profile hover effect */
+        /* Profile Hover */
         .profile-card {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
@@ -82,7 +125,9 @@
         }
         .profile-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .profile-card:hover .profile-overlay {
+            opacity: 1;
         }
         .profile-card::before {
             content: '';
@@ -142,44 +187,47 @@
             background-color: #374151;
         }
 
-        /* Smooth scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #888;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555;
-        }
-        .dark ::-webkit-scrollbar-track {
-            background: #374151;
-        }
-        .dark ::-webkit-scrollbar-thumb {
-            background: #6b7280;
+        /* Gradient Text Utility */
+        .text-gradient {
+            background: linear-gradient(to right, #4f46e5, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
     </style>
 </head>
 
-<body class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-100 font-body transition-colors duration-300">
+<body class="bg-background-light dark:bg-background-dark text-slate-600 dark:text-slate-300 font-body transition-colors duration-500 selection:bg-primary selection:text-white">
 
     @include('layouts.navbar')
 
-    <!-- HEADER -->
-    <div class="relative bg-gradient-to-br from-primary to-primary-dark dark:from-blue-800 dark:to-blue-900 py-20 header-pattern">
-        <div class="absolute inset-0 bg-black opacity-10"></div>
-        <div class="relative container mx-auto px-4">
-            <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-3 animate-fade-in">
-                Organisasi
+    <!-- HEADER SECTION -->
+    <!-- Menggunakan gradient yang lebih dalam dan modern -->
+    <div class="relative bg-gradient-to-r from-primary to-primary-dark dark:from-slate-900 dark:to-slate-800 overflow-hidden">
+        <!-- Background Decorations -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden opacity-30 pointer-events-none">
+            <div class="absolute top-0 left-1/4 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+            <div class="absolute top-0 right-1/4 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+        </div>
+        
+        <div class="absolute inset-0 header-pattern"></div>
+        
+        <div class="relative container mx-auto px-4 py-24 md:py-32 text-center">
+            <span class="inline-block py-1 px-3 rounded-full bg-white/20 text-white text-sm font-medium mb-4 backdrop-blur-sm border border-white/10 animate-fade-in">
+                <i class="fa-solid fa-users mr-2"></i>Student Organization
+            </span>
+            <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6 tracking-tight animate-fade-in" style="animation-delay: 0.1s">
+                Organisasi <span class="text-indigo-200">Siswa</span>
             </h1>
-            <p class="text-gray-100 text-lg md:text-xl max-w-2xl animate-fade-in" style="animation-delay: 0.2s">
-                Struktur dan kegiatan organisasi siswa SMK Negeri 1 Kawali.
+            <p class="text-lg md:text-xl text-indigo-100 max-w-2xl mx-auto font-light animate-fade-in" style="animation-delay: 0.2s">
+                Wadah aspirasi dan kreativitas siswa SMK Negeri 1 Kawali untuk membangun karakter dan prestasi.
             </p>
+        </div>
+        
+        <!-- Wave Separator -->
+        <div class="absolute bottom-0 left-0 right-0">
+            <svg class="fill-current text-background-light dark:text-background-dark h-16 w-full" viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg">
+                <path fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            </svg>
         </div>
     </div>
 
@@ -253,8 +301,10 @@
                                 <span class="text-sm text-gray-500 dark:text-gray-400">Foto</span>
                             </div>
                         </div>
-                        <h4 class="font-bold text-gray-900 dark:text-white">Nama Pembina</h4>
-                        <span class="text-sm text-primary">Pembina MPK</span>
+                        <h3 class="text-2xl font-bold mb-4 text-slate-900 dark:text-white">Visi</h3>
+                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                            Mewujudkan OSIS yang progresif, inovatif, dan berjiwa kepemimpinan serta mampu menjunjung tinggi nama baik sekolah.
+                        </p>
                     </div>
                 </div>
 
@@ -267,8 +317,11 @@
                                 <span class="text-xs text-gray-400">Foto</span>
                             </div>
                         </div>
-                        <div class="font-semibold text-sm text-gray-900 dark:text-white">{{ $jabatan }}</div>
-                        <div class="text-xs text-gray-500 dark:text-gray-400">Nama Siswa</div>
+                        <h3 class="text-2xl font-bold mb-4 text-slate-900 dark:text-white">Misi</h3>
+                        <ul class="text-slate-600 dark:text-slate-400 space-y-3">
+                            <li class="flex items-center gap-3"><i class="fas fa-check-circle text-emerald-500"></i> Meningkatkan keimanan dan ketaqwaan</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-check-circle text-emerald-500"></i> Mengembangkan potensi akademik & non-akademik</li>
+                        </ul>
                     </div>
                     @endforeach
                 </div>
@@ -403,15 +456,17 @@
     @include('layouts.footer')
 
     <!-- DARK MODE BUTTON -->
+    <!-- Tampilan tombol lebih modern dengan pill shape -->
     <button
         id="darkToggle"
-        class="fixed bottom-6 right-6 bg-primary hover:bg-primary-dark text-white p-3 rounded-full shadow-lg z-40 transition-all duration-300 hover:scale-110">
-        <i class="fa-solid fa-moon dark:hidden"></i>
-        <i class="fa-solid fa-sun hidden dark:block"></i>
+        class="fixed bottom-8 right-8 bg-slate-900 dark:bg-white text-white dark:text-slate-900 p-4 rounded-full shadow-2xl z-50 transition-all duration-300 hover:scale-110 flex items-center justify-center border border-slate-200 dark:border-slate-900 group">
+        <i class="fa-solid fa-moon text-lg dark:hidden"></i>
+        <i class="fa-solid fa-sun text-lg hidden dark:block animate-spin-slow"></i>
+        <span class="absolute right-full mr-4 px-3 py-1 bg-slate-800 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">Ganti Tema</span>
     </button>
 
     <script>
-        // Dark mode toggle
+        // Logic tetap sama 100%
         const toggle = document.getElementById('darkToggle');
         const html = document.documentElement;
 

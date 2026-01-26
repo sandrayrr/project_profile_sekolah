@@ -134,23 +134,8 @@
 <body class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-100 font-body">
 
     <!-- NAVBAR (Placeholder untuk include) -->
-    <!-- @include('layouts.navbar') -->
-    <nav class="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white font-bold">MP
-                </div>
-                <span class="font-bold text-xl dark:text-white">SMKN 1 Kawali</span>
-            </div>
-            <div class="hidden md:flex gap-6">
-                <a href="#" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium">Beranda</a>
-                <a href="#" class="text-primary font-medium">Jurusan MP</a>
-                <a href="#" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium">Berita</a>
-                <a href="#" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium">Kontak</a>
-            </div>
-        </div>
-    </nav>
-
+    @include('layouts.navbar')
+  
     <!-- HEADER JURUSAN -->
     <header class="bg-gradient-to-br from-primary to-secondary dark:from-gray-700 dark:to-gray-900 py-12">
         <div class="container mx-auto px-4">
