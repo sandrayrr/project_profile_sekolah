@@ -92,6 +92,7 @@ Route::view('/organisasi', 'pages.organisasi')->name('organisasi');
 Route::view('/jurusan', 'pages.jurusan')->name('jurusan');
 Route::view('/link', 'pages.link')->name('link');
 Route::view('/akreditasi', 'pages.akreditasi')->name('akreditasi');
+Route::view('/about', 'pages.about')->name('about');
 
 // Artikel
 Route::get('/artikel', [FrontArtikelController::class, 'index'])->name('artikel.index');
