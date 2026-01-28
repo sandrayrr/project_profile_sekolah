@@ -221,6 +221,68 @@ body {
 .btn-loading .btn-text {
     display: none; /* Sembunyikan teks saat loading */
 }
+
+/* ================= KATEGORI BADGES ================= */
+.kategori-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-right: 8px;
+    margin-bottom: 8px;
+}
+
+.kategori-olahraga {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: #059669;
+}
+
+.kategori-seni {
+    background-color: rgba(245, 158, 11, 0.1);
+    color: #d97706;
+}
+
+.kategori-kesehatan {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: #dc2626;
+}
+
+.kategori-teknologi {
+    background-color: rgba(59, 130, 246, 0.1);
+    color: #2563eb;
+}
+
+.kategori-kedisiplinan {
+    background-color: rgba(107, 114, 128, 0.1);
+    color: #374151;
+}
+
+.kategori-bela-negara {
+    background-color: rgba(6, 182, 212, 0.1);
+    color: #0891b2;
+}
+
+.kategori-kepramukaan {
+    background-color: rgba(59, 130, 246, 0.1);
+    color: #2563eb;
+}
+
+.kategori-keagamaan {
+    background-color: rgba(6, 182, 212, 0.1);
+    color: #0891b2;
+}
+
+.kategori-akademik {
+    background-color: rgba(107, 114, 128, 0.1);
+    color: #374151;
+}
+
+.kategori-lainnya {
+    background-color: rgba(156, 163, 175, 0.1);
+    color: #6b7280;
+}
 </style>
 
 {{-- OVERLAY --}}
@@ -285,12 +347,46 @@ body {
                         <option value="">-- Pilih Kategori --</option>
                         <option value="Olahraga" {{ old('kategori') == 'Olahraga' ? 'selected' : '' }}>Olahraga</option>
                         <option value="Seni" {{ old('kategori') == 'Seni' ? 'selected' : '' }}>Seni</option>
+                        <option value="Kesehatan" {{ old('kategori') == 'Kesehatan' ? 'selected' : '' }}>Kesehatan</option>
+                        <option value="Teknologi" {{ old('kategori') == 'Teknologi' ? 'selected' : '' }}>Teknologi</option>
+                        <option value="Kedisiplinan" {{ old('kategori') == 'Kedisiplinan' ? 'selected' : '' }}>Kedisiplinan</option>
+                        <option value="Bela Negara" {{ old('kategori') == 'Bela Negara' ? 'selected' : '' }}>Bela Negara</option>
                         <option value="Kepramukaan" {{ old('kategori') == 'Kepramukaan' ? 'selected' : '' }}>Kepramukaan</option>
                         <option value="Keagamaan" {{ old('kategori') == 'Keagamaan' ? 'selected' : '' }}>Keagamaan</option>
                         <option value="Akademik" {{ old('kategori') == 'Akademik' ? 'selected' : '' }}>Akademik</option>
                         <option value="Lainnya" {{ old('kategori') == 'Lainnya' ? 'selected' : '' }}>Lainnya</option>
                     </select>
                     @error('kategori')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                    
+                    {{-- KATEGORI VISUAL GUIDE --}}
+                    <div class="mt-2">
+                        <small class="text-muted">Kategori yang tersedia:</small>
+                        <div class="mt-1">
+                            <span class="kategori-badge kategori-olahraga">Olahraga</span>
+                            <span class="kategori-badge kategori-seni">Seni</span>
+                            <span class="kategori-badge kategori-kesehatan">Kesehatan</span>
+                            <span class="kategori-badge kategori-teknologi">Teknologi</span>
+                            <span class="kategori-badge kategori-kedisiplinan">Kedisiplinan</span>
+                            <span class="kategori-badge kategori-bela-negara">Bela Negara</span>
+                            <span class="kategori-badge kategori-kepramukaan">Kepramukaan</span>
+                            <span class="kategori-badge kategori-keagamaan">Keagamaan</span>
+                            <span class="kategori-badge kategori-akademik">Akademik</span>
+                            <span class="kategori-badge kategori-lainnya">Lainnya</span>
+                        </div>
+                    </div>
+                </div>
+
+                {{-- DESKRIPSI --}}
+                <div class="mb-3">
+                    <label for="deskripsi" class="form-label">Deskripsi</label>
+                    <textarea id="deskripsi"
+                              name="deskripsi"
+                              rows="4"
+                              class="form-control @error('deskripsi') is-invalid @enderror"
+                              placeholder="Jelaskan secara singkat mengenai ekstrakulikuler ini">{{ old('deskripsi') }}</textarea>
+                    @error('deskripsi')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>

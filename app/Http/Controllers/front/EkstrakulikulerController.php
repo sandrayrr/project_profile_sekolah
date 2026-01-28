@@ -16,7 +16,7 @@ class EkstrakulikulerController extends Controller
         $query->where('judul', 'like', '%' . $request->cari . '%');
     }
 
-    $ekstrakulikulers = $query->latest()->paginate(6);
+    $ekstrakulikulers = $query->latest()->paginate(8);
 
     return view('pages.ekstrakulikuler', compact('ekstrakulikulers'));
 }
