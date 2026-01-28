@@ -322,6 +322,16 @@
         color: var(--primary-blue);
     }
     
+    .badge-secondary {
+        background-color: rgba(107, 114, 128, 0.1);
+        color: var(--gray-color);
+    }
+    
+    .badge-dark {
+        background-color: rgba(31, 41, 55, 0.1);
+        color: var(--dark-color);
+    }
+    
     /* Button */
     .btn {
         padding: 0.75rem 1.5rem;
@@ -463,35 +473,34 @@
             height: 32px;
         }
         .pagination-modern {
-    gap: 6px;
-}
+            gap: 6px;
+        }
 
-.pagination-modern .page-link {
-    border-radius: 10px;
-    border: 1px solid var(--border-color);
-    color: var(--dark-color);
-    padding: 8px 14px;
-    transition: all 0.25s ease;
-    background: white;
-}
+        .pagination-modern .page-link {
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            color: var(--dark-color);
+            padding: 8px 14px;
+            transition: all 0.25s ease;
+            background: white;
+        }
 
-.pagination-modern .page-item.active .page-link {
-    background: var(--gradient-primary);
-    color: white;
-    border-color: transparent;
-    box-shadow: var(--shadow-md);
-}
+        .pagination-modern .page-item.active .page-link {
+            background: var(--gradient-primary);
+            color: white;
+            border-color: transparent;
+            box-shadow: var(--shadow-md);
+        }
 
-.pagination-modern .page-link:hover {
-    background: var(--light-blue);
-    transform: translateY(-2px);
-}
+        .pagination-modern .page-link:hover {
+            background: var(--light-blue);
+            transform: translateY(-2px);
+        }
 
-.pagination-modern .page-item.disabled .page-link {
-    opacity: 0.4;
-    pointer-events: none;
-}
-
+        .pagination-modern .page-item.disabled .page-link {
+            opacity: 0.4;
+            pointer-events: none;
+        }
     }
 </style>
 
@@ -555,10 +564,66 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
                         <p class="text-muted small mb-1">Lainnya</p>
-                        <h2 class="fw-bold mb-0">{{ $ekstrakulikulers->whereNotIn('kategori', ['Olahraga', 'Seni'])->count() }}</h2>
+                        <h2 class="fw-bold mb-0">{{ $ekstrakulikulers->whereNotIn('kategori', ['Olahraga', 'Seni', 'Kesehatan', 'Teknologi', 'Kedisiplinan', 'Bela Negara'])->count() }}</h2>
                     </div>
                     <div class="stat-icon" style="background: linear-gradient(135deg, #eab308 0%, #d97706 100%);">
                         <i class="bi bi-three-dots"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- STATISTIK TAMBAHAN UNTUK KATEGORI BARU -->
+    <div class="row mb-4">
+        <div class="col-md-3 col-sm-6 mb-3">
+            <div class="stat-card slide-in" style="animation-delay: 0.4s;">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <p class="text-muted small mb-1">Kesehatan</p>
+                        <h2 class="fw-bold mb-0">{{ $ekstrakulikulers->where('kategori', 'Kesehatan')->count() }}</h2>
+                    </div>
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);">
+                        <i class="bi bi-heart-pulse"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 mb-3">
+            <div class="stat-card slide-in" style="animation-delay: 0.5s;">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <p class="text-muted small mb-1">Teknologi</p>
+                        <h2 class="fw-bold mb-0">{{ $ekstrakulikulers->where('kategori', 'Teknologi')->count() }}</h2>
+                    </div>
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);">
+                        <i class="bi bi-cpu"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 mb-3">
+            <div class="stat-card slide-in" style="animation-delay: 0.6s;">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <p class="text-muted small mb-1">Kedisiplinan</p>
+                        <h2 class="fw-bold mb-0">{{ $ekstrakulikulers->where('kategori', 'Kedisiplinan')->count() }}</h2>
+                    </div>
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);">
+                        <i class="bi bi-shield-check"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 mb-3">
+            <div class="stat-card slide-in" style="animation-delay: 0.7s;">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <p class="text-muted small mb-1">Bela Negara</p>
+                        <h2 class="fw-bold mb-0">{{ $ekstrakulikulers->where('kategori', 'Bela Negara')->count() }}</h2>
+                    </div>
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #059669 0%, #047857 100%);">
+                        <i class="bi bi-flag"></i>
                     </div>
                 </div>
             </div>
@@ -593,6 +658,10 @@
                     <option value="">Semua Kategori</option>
                     <option value="olahraga">Olahraga</option>
                     <option value="seni">Seni</option>
+                    <option value="kesehatan">Kesehatan</option>
+                    <option value="teknologi">Teknologi</option>
+                    <option value="kedisiplinan">Kedisiplinan</option>
+                    <option value="bela negara">Bela Negara</option>
                     <option value="kepramukaan">Kepramukaan</option>
                     <option value="keagamaan">Keagamaan</option>
                     <option value="akademik">Akademik</option>
@@ -626,6 +695,10 @@
                     $badge = match($item->kategori) {
                         'Olahraga' => 'success',
                         'Seni' => 'warning',
+                        'Kesehatan' => 'danger',
+                        'Teknologi' => 'primary',
+                        'Kedisiplinan' => 'dark',
+                        'Bela Negara' => 'info',
                         'Kepramukaan' => 'primary',
                         'Keagamaan' => 'info',
                         'Akademik' => 'dark',

@@ -3,6 +3,7 @@
 @section('title','Manajemen Beranda')
 
 @section('content')
+
 <style>
     :root {
         /* Warna tema biru yang modern */
@@ -451,6 +452,10 @@
                 </a>
             @endif
         </div>
+
+        <a href="{{ route('admin.beranda.create') }}" class="btn btn-light fw-semibold">
+            <i class="bi bi-plus-circle me-2"></i> Tambah Beranda
+        </a>
     </div>
 
     <!-- STATISTIK -->
