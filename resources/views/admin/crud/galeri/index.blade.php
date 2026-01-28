@@ -191,7 +191,7 @@
         padding-left: 2.5rem;
     }
     
-    /* Table Card - PERBAIKAN UTAMA */
+    /* Table Card */
     .table-card {
         background: white;
         border-radius: 16px;
@@ -274,6 +274,7 @@
         justify-content: center;
         opacity: 0;
         transition: opacity 0.3s ease;
+        cursor: pointer;
     }
     
     .gallery-card:hover .gallery-overlay {
@@ -419,7 +420,7 @@
         color: var(--accent-red);
     }
     
-    /* Empty State - PERBAIKAN UTAMA */
+    /* Empty State */
     .empty-state {
         padding: 3rem;
         text-align: center;
@@ -559,7 +560,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-3 col-sm-6 mb-3">
+        {{-- <div class="col-md-3 col-sm-6 mb-3">
             <div class="stat-card slide-in" style="animation-delay: 0.1s;">
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
@@ -571,7 +572,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 
     <!-- ALERT -->
@@ -627,7 +628,7 @@
                             <div class="gallery-image-wrapper">
                                 <img src="{{ asset('storage/' . $g->foto) }}" class="gallery-image" alt="{{ $g->judul }}"
                                     onclick="showImageModal('{{ asset('storage/' . $g->foto) }}', '{{ $g->judul }}')">
-                                <div class="gallery-overlay">
+                                <div class="gallery-overlay" onclick="showImageModal('{{ asset('storage/' . $g->foto) }}', '{{ $g->judul }}')">
                                     <i class="bi bi-eye-fill fs-2"></i>
                                 </div>
                             </div>
@@ -638,14 +639,14 @@
                                     {{ $g->created_at->format('d M Y') }}
                                 </div>
                                 <div class="gallery-actions">
-                                    <a href="{{ route('admin.galeri.edit', $g->id) }}" class="btn btn-outline-primary">
+                                    <a href="{{ route('admin.galeri.edit', $g->id) }}" class="btn btn-outline-primary btn-sm">
                                         <i class="bi bi-pencil-square"></i> Edit
                                     </a>
                                     <form action="{{ route('admin.galeri.destroy', $g->id) }}" method="POST"
-                                        onsubmit="return confirmDelete()">
+                                        onsubmit="return confirmDelete()" style="display: inline;">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-outline-danger">
+                                        <button type="submit" class="btn btn-outline-danger btn-sm">
                                             <i class="bi bi-trash"></i>
                                         </button>
                                     </form>

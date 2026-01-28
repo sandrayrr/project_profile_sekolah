@@ -10,18 +10,22 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-{
-    Schema::create('prestasis', function (Blueprint $table) {
-        $table->id();
-        $table->string('judul');
-        $table->string('kelas');
-        $table->string('jurusan');
-        $table->date('tanggal');
-        $table->string('foto')->nullable();
-        $table->timestamps();
-    });
-}
-
+    {
+        Schema::create('prestasis', function (Blueprint $table) {
+            $table->id();
+            $table->string('judul');
+            $table->text('deskripsi')->nullable();
+            $table->string('kelas'); 
+             $table->string('jurusan'); 
+             $table->string('subkelas'); 
+            $table->string('juara'); 
+            $table->string('tingkat'); 
+            $table->string('penyelenggara')->nullable();
+            $table->date('tanggal');
+            $table->string('foto')->nullable();
+            $table->timestamps();
+        });
+    }
 
     /**
      * Reverse the migrations.

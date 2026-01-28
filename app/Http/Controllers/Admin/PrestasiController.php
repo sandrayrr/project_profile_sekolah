@@ -23,11 +23,16 @@ class PrestasiController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'judul'   => 'required|string|max:255',
-            'kelas'   => 'required|string|max:50',
-            'jurusan' => 'required|string|max:50',
-            'tanggal' => 'required|date',
-            'foto'    => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
+            'judul'         => 'required|string|max:255',
+            'deskripsi'     => 'nullable|string',
+            'kelas'         => 'required|string|max:50',   // X, XI, XII
+            'jurusan'       => 'required|string|max:50',   // TO, TJKT, PPLG
+            'subkelas'      => 'required|string|max:10',   // 1, 2, 3
+            'juara'         => 'required|string|max:50',
+            'tingkat'       => 'required|string|max:50',
+            'penyelenggara' => 'nullable|string|max:100',
+            'tanggal'       => 'required|date',
+            'foto'          => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
         ]);
 
         if ($request->hasFile('foto')) {
@@ -49,11 +54,16 @@ class PrestasiController extends Controller
     public function update(Request $request, Prestasi $prestasi)
     {
         $validated = $request->validate([
-            'judul'   => 'required|string|max:255',
-            'kelas'   => 'required|string|max:50',
-            'jurusan' => 'required|string|max:50',
-            'tanggal' => 'required|date',
-            'foto'    => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
+            'judul'         => 'required|string|max:255',
+            'deskripsi'     => 'nullable|string',
+            'kelas'         => 'required|string|max:50',
+            'jurusan'       => 'required|string|max:50',
+            'subkelas'      => 'required|string|max:10',
+            'juara'         => 'required|string|max:50',
+            'tingkat'       => 'required|string|max:50',
+            'penyelenggara' => 'nullable|string|max:100',
+            'tanggal'       => 'required|date',
+            'foto'          => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
         ]);
 
         if ($request->hasFile('foto')) {

@@ -221,6 +221,82 @@ body {
 .btn-loading .btn-text {
     display: none; /* Sembunyikan teks saat loading */
 }
+
+/* ================= KATEGORI BADGES ================= */
+.kategori-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-right: 8px;
+    margin-bottom: 8px;
+}
+
+.kategori-olahraga {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: #059669;
+}
+
+.kategori-seni {
+    background-color: rgba(245, 158, 11, 0.1);
+    color: #d97706;
+}
+
+.kategori-kesehatan {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: #dc2626;
+}
+
+.kategori-teknologi {
+    background-color: rgba(59, 130, 246, 0.1);
+    color: #2563eb;
+}
+
+.kategori-kedisiplinan {
+    background-color: rgba(107, 114, 128, 0.1);
+    color: #374151;
+}
+
+.kategori-bela-negara {
+    background-color: rgba(6, 182, 212, 0.1);
+    color: #0891b2;
+}
+
+.kategori-kepramukaan {
+    background-color: rgba(59, 130, 246, 0.1);
+    color: #2563eb;
+}
+
+.kategori-keagamaan {
+    background-color: rgba(6, 182, 212, 0.1);
+    color: #0891b2;
+}
+
+.kategori-akademik {
+    background-color: rgba(107, 114, 128, 0.1);
+    color: #374151;
+}
+
+.kategori-lainnya {
+    background-color: rgba(156, 163, 175, 0.1);
+    color: #6b7280;
+}
+
+/* ================= INFO BADGE ================= */
+.info-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: rgba(59, 130, 246, 0.1);
+    color: #1e40af;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-bottom: 16px;
+}
 </style>
 
 {{-- OVERLAY --}}
@@ -233,7 +309,7 @@ body {
         {{-- HEADER --}}
         <div class="popup-header">
             <h5>
-                <i class="bi bi-trophy-fill"></i>
+                <i class="bi bi-pencil-square"></i>
                 Edit Ekstrakulikuler
             </h5>
             <a href="{{ route('admin.ekstrakulikuler.index') }}" class="popup-close" title="Tutup">&times;</a>
@@ -241,6 +317,12 @@ body {
 
         {{-- BODY --}}
         <div class="popup-body">
+
+            {{-- INFO BADGE --}}
+            <div class="info-badge">
+                <i class="bi bi-info-circle"></i>
+                <span>Anda sedang mengedit data ekstrakulikuler</span>
+            </div>
 
             {{-- PESAN ERROR --}}
             @if ($errors->any())
@@ -284,14 +366,48 @@ body {
                             class="form-select @error('kategori') is-invalid @enderror"
                             required>
                         <option value="">-- Pilih Kategori --</option>
-                        @foreach (['Olahraga','Seni','Kepramukaan','Keagamaan','Akademik','Lainnya'] as $kat)
-                            <option value="{{ $kat }}"
-                                {{ old('kategori', $ekstrakulikuler->kategori) == $kat ? 'selected' : '' }}>
-                                {{ $kat }}
-                            </option>
-                        @endforeach
+                        <option value="Olahraga" {{ old('kategori', $ekstrakulikuler->kategori) == 'Olahraga' ? 'selected' : '' }}>Olahraga</option>
+                        <option value="Seni" {{ old('kategori', $ekstrakulikuler->kategori) == 'Seni' ? 'selected' : '' }}>Seni</option>
+                        <option value="Kesehatan" {{ old('kategori', $ekstrakulikuler->kategori) == 'Kesehatan' ? 'selected' : '' }}>Kesehatan</option>
+                        <option value="Teknologi" {{ old('kategori', $ekstrakulikuler->kategori) == 'Teknologi' ? 'selected' : '' }}>Teknologi</option>
+                        <option value="Kedisiplinan" {{ old('kategori', $ekstrakulikuler->kategori) == 'Kedisiplinan' ? 'selected' : '' }}>Kedisiplinan</option>
+                        <option value="Bela Negara" {{ old('kategori', $ekstrakulikuler->kategori) == 'Bela Negara' ? 'selected' : '' }}>Bela Negara</option>
+                        <option value="Kepramukaan" {{ old('kategori', $ekstrakulikuler->kategori) == 'Kepramukaan' ? 'selected' : '' }}>Kepramukaan</option>
+                        <option value="Keagamaan" {{ old('kategori', $ekstrakulikuler->kategori) == 'Keagamaan' ? 'selected' : '' }}>Keagamaan</option>
+                        <option value="Akademik" {{ old('kategori', $ekstrakulikuler->kategori) == 'Akademik' ? 'selected' : '' }}>Akademik</option>
+                        <option value="Lainnya" {{ old('kategori', $ekstrakulikuler->kategori) == 'Lainnya' ? 'selected' : '' }}>Lainnya</option>
                     </select>
                     @error('kategori')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                    
+                    {{-- KATEGORI VISUAL GUIDE --}}
+                    <div class="mt-2">
+                        <small class="text-muted">Kategori yang tersedia:</small>
+                        <div class="mt-1">
+                            <span class="kategori-badge kategori-olahraga">Olahraga</span>
+                            <span class="kategori-badge kategori-seni">Seni</span>
+                            <span class="kategori-badge kategori-kesehatan">Kesehatan</span>
+                            <span class="kategori-badge kategori-teknologi">Teknologi</span>
+                            <span class="kategori-badge kategori-kedisiplinan">Kedisiplinan</span>
+                            <span class="kategori-badge kategori-bela-negara">Bela Negara</span>
+                            <span class="kategori-badge kategori-kepramukaan">Kepramukaan</span>
+                            <span class="kategori-badge kategori-keagamaan">Keagamaan</span>
+                            <span class="kategori-badge kategori-akademik">Akademik</span>
+                            <span class="kategori-badge kategori-lainnya">Lainnya</span>
+                        </div>
+                    </div>
+                </div>
+
+                {{-- DESKRIPSI --}}
+                <div class="mb-3">
+                    <label for="deskripsi" class="form-label">Deskripsi</label>
+                    <textarea id="deskripsi"
+                              name="deskripsi"
+                              rows="4"
+                              class="form-control @error('deskripsi') is-invalid @enderror"
+                              placeholder="Jelaskan secara singkat mengenai ekstrakulikuler ini">{{ old('deskripsi', $ekstrakulikuler->deskripsi) }}</textarea>
+                    @error('deskripsi')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>

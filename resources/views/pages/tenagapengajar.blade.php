@@ -98,6 +98,11 @@
             -webkit-backdrop-filter: blur(5px);
         }
 
+        /* Search input focus effect */
+        .search-input:focus {
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+        }
+
         /* Smooth scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
@@ -139,19 +144,52 @@
         </div>
     </div>
 
+    <!-- SEARCH -->
+    <div class="max-w-4xl mx-auto mt-10 px-4">
+        <form action="{{ route('tenagapengajar') }}" method="GET"
+            class="flex shadow-lg rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 animate-fade-in" style="animation-delay: 0.3s">
+            <div class="relative flex-grow">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <i class="fa-solid fa-search text-gray-400"></i>
+                </div>
+                <input
+                    name="cari"
+                    value="{{ request('cari') }}"
+                    class="search-input w-full pl-10 pr-3 py-4 bg-slate-50 dark:bg-slate-800 border-none focus:ring-2 focus:ring-primary focus:outline-none transition-all duration-200"
+                    placeholder="Cari tenaga pengajar berdasarkan nama atau mata pelajaran..."
+                    type="text"
+                    id="searchInput">
+            </div>
+            <button
+                type="submit"
+                class="bg-primary hover:bg-primary-dark text-white px-8 py-4 font-medium transition-colors duration-300 flex items-center">
+                <span>Cari</span>
+                <i class="fas fa-arrow-right ml-2"></i>
+            </button>
+        </form>
+    </div>
+
     <!-- CONTENT -->
     <main class="container mx-auto px-4 py-12 min-h-screen">
 
+        @if(request('cari'))
+            <div class="mb-6 bg-primary-light dark:bg-blue-900/20 border-l-4 border-primary p-4 rounded animate-fade-in">
+                <p class="text-sm">
+                    Menampilkan hasil pencarian untuk: <strong>{{ request('cari') }}</strong>
+                </p>
+            </div>
+        @endif
+
         <!-- TOOLBAR -->
         <div class="flex justify-between items-center mb-10 animate-fade-in" style="animation-delay: 0.3s">
-            {{-- <button
-                class="flex items-center gap-2 bg-card-light dark:bg-card-dark border border-border-light dark:border-border-dark px-4 py-2 rounded-xl text-sm shadow hover:bg-primary/10 hover:text-primary transition">
-                <i class="fas fa-sliders-h"></i>
-                Filter
-            </button> --}}
-            <span class="text-sm text-gray-500 dark:text-gray-400">
-                Menampilkan {{ $tenagaPengajar->count() }} Tenaga Pengajar
-            </span>
+           
+            
+            <div class="flex items-center gap-2">
+                <button onclick="resetSearch()" class="text-sm text-gray-500 hover:text-primary transition-colors flex items-center gap-1">
+                    <i class="fas fa-sync-alt"></i>
+                    Reset
+                </button>
+            </div>
         </div>
 
         <!-- GRID -->
@@ -189,18 +227,142 @@
             @empty
             <div class="col-span-full text-center py-12">
                 <i class="fas fa-user-tie text-6xl text-gray-300 dark:text-gray-600 mb-4"></i>
-                <p class="text-xl text-gray-500 dark:text-gray-400">Belum ada data tenaga pengajar</p>
+                <p class="text-xl text-gray-500 dark:text-gray-400">
+                    @if(request('cari'))
+                        Tidak ada hasil untuk pencarian "<strong>{{ request('cari') }}</strong>"
+                    @else
+                        Belum ada data tenaga pengajar
+                    @endif
+                </p>
+                @if(request('cari'))
+                    <p class="text-gray-500 dark:text-gray-400 mt-2">Coba gunakan kata kunci yang berbeda atau kembali ke daftar lengkap</p>
+                @endif
             </div>
             @endforelse
         </div>
 
         <!-- PAGINATION -->
-        @if($tenagaPengajar->hasPages())
-        <div class="flex justify-center mt-14">
-            {{ $tenagaPengajar->links() }}
-        </div>
-        @endif
+        @if(isset($tenagaPengajar) && method_exists($tenagaPengajar, 'links') && $tenagaPengajar->hasPages())
+        <div class="flex flex-col items-center mt-14 space-y-4">
+            <!-- Pagination Info -->
+            <div class="text-sm text-gray-500 dark:text-gray-400">
+                @if(request('cari'))
+                    Menampilkan 
+                    <span class="font-semibold text-primary dark:text-primary-300">
+                        {{ $tenagaPengajar->firstItem() }}-{{ $tenagaPengajar->lastItem() }}
+                    </span> 
+                    dari 
+                    <span class="font-semibold text-primary dark:text-primary-300">
+                        {{ $tenagaPengajar->total() }}
+                    </span> 
+                    hasil pencarian
+                @else
 
+                @endif
+            </div>
+
+            <!-- Custom Pagination -->
+            <nav class="flex items-center space-x-1" aria-label="Pagination">
+                {{-- Previous Button --}}
+                @if($tenagaPengajar->onFirstPage())
+                    <button class="relative inline-flex items-center px-3 py-2 text-sm font-medium text-gray-300 bg-gray-100 dark:bg-gray-800 dark:text-gray-600 rounded-lg cursor-not-allowed" disabled>
+                        <i class="fas fa-chevron-left"></i>
+                        <span class="sr-only">Previous</span>
+                    </button>
+                @else
+                    <a href="{{ $tenagaPengajar->previousPageUrl() . (request('cari') ? '?cari=' . request('cari') : '') }}" 
+                       class="relative inline-flex items-center px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-primary hover:text-white hover:border-primary dark:hover:bg-primary dark:hover:text-white transition-all duration-200 shadow-sm hover:shadow-md">
+                        <i class="fas fa-chevron-left"></i>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                @endif
+
+                {{-- Page Numbers --}}
+                @foreach($tenagaPengajar->links()->elements as $element)
+                    @if(is_string($element))
+                        <span class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+                            {{ $element }}
+                        </span>
+                    @elseif(is_array($element))
+                        @foreach($element as $page => $url)
+                            @if($page == $tenagaPengajar->currentPage())
+                                <span aria-current="page" 
+                                      class="relative z-10 inline-flex items-center px-4 py-2 text-sm font-bold text-white bg-primary dark:bg-primary-dark border border-primary dark:border-primary-dark rounded-lg shadow-lg">
+                                    {{ $page }}
+                                </span>
+                            @else
+                                <a href="{{ $url . (request('cari') ? '?cari=' . request('cari') : '') }}" 
+                                   class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-primary hover:text-white hover:border-primary dark:hover:bg-primary dark:hover:text-white transition-all duration-200 shadow-sm hover:shadow-md">
+                                    {{ $page }}
+                                </a>
+                            @endif
+                        @endforeach
+                    @endif
+                @endforeach
+
+                {{-- Next Button --}}
+                @if($tenagaPengajar->hasMorePages())
+                    <a href="{{ $tenagaPengajar->nextPageUrl() . (request('cari') ? '?cari=' . request('cari') : '') }}" 
+                       class="relative inline-flex items-center px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-primary hover:text-white hover:border-primary dark:hover:bg-primary dark:hover:text-white transition-all duration-200 shadow-sm hover:shadow-md">
+                        <i class="fas fa-chevron-right"></i>
+                        <span class="sr-only">Next</span>
+                    </a>
+                @else
+                    <button class="relative inline-flex items-center px-3 py-2 text-sm font-medium text-gray-300 bg-gray-100 dark:bg-gray-800 dark:text-gray-600 rounded-lg cursor-not-allowed" disabled>
+                        <i class="fas fa-chevron-right"></i>
+                        <span class="sr-only">Next</span>
+                    </button>
+                @endif
+            </nav>
+
+            <!-- Jump to Page (Optional) -->
+            <div class="flex items-center space-x-2 text-sm">
+                <span class="text-gray-500 dark:text-gray-400">Lompat ke halaman:</span>
+                <div class="flex items-center space-x-1">
+                    <input type="number" 
+                           min="1" 
+                           max="{{ $tenagaPengajar->lastPage() }}" 
+                           class="w-16 px-2 py-1 text-center border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-primary-dark"
+                           id="jumpToPage">
+                    <button onclick="jumpToPage()" 
+                            class="px-3 py-1 bg-primary hover:bg-primary-dark text-white rounded-lg transition-colors duration-200">
+                        Go
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <script>
+        function jumpToPage() {
+            const pageInput = document.getElementById('jumpToPage');
+            const page = parseInt(pageInput.value);
+            const totalPages = {{ $tenagaPengajar->lastPage() }};
+            const searchQuery = '{{ request("cari") }}';
+            
+            if (page >= 1 && page <= totalPages) {
+                let url = new URL(window.location);
+                url.searchParams.set('page', page);
+                if (searchQuery) {
+                    url.searchParams.set('cari', searchQuery);
+                }
+                window.location.href = url.toString();
+            } else {
+                pageInput.value = '';
+                pageInput.classList.add('border-red-500');
+                setTimeout(() => {
+                    pageInput.classList.remove('border-red-500');
+                }, 2000);
+            }
+        }
+
+        // Allow Enter key to jump
+        document.getElementById('jumpToPage').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                jumpToPage();
+            }
+        });
+        </script>
+        @endif
     </main>
 
     @include('layouts.footer')
@@ -363,6 +525,23 @@
             localStorage.setItem('theme',
                 html.classList.contains('dark') ? 'dark' : 'light'
             );
+        });
+
+        // Search functionality
+        function resetSearch() {
+            window.location.href = "{{ route('tenagapengajar') }}";
+        }
+
+        // Auto-submit form on Enter key
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    this.form.submit();
+                }
+            });
         });
     </script>
 

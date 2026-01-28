@@ -20,7 +20,7 @@
     --red-accent:#DC3545;
 }
 
-/* ================= BODY & PRELOADER ================= */
+/* ================= BODY ================= */
 body{
     height:100vh;
     margin:0;
@@ -35,7 +35,7 @@ body{
     position:relative;
 }
 
-/* Background pattern & Floating Bubbles */
+/* Background pattern */
 body::before {
     content: "";
     position: absolute;
@@ -49,72 +49,11 @@ body::before {
     z-index: 1;
 }
 
-/* Preloader Animation */
-#preloader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--blue-dark);
-    z-index: 9999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: opacity 0.5s ease, visibility 0.5s;
-}
-
-.loader-spinner {
-    width: 50px;
-    height: 50px;
-    border: 4px solid rgba(255,255,255,0.1);
-    border-left-color: var(--blue-soft);
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-}
-
 /* Gradient movement */
 @keyframes oceanMove{
     0%{background-position:0% 50%}
     50%{background-position:100% 50%}
     100%{background-position:0% 50%}
-}
-
-@keyframes spin{
-    to{transform:rotate(360deg)}
-}
-
-/* ================= KEYFRAMES ANIMATIONS ================= */
-@keyframes slideInLeft{
-    from{opacity:0;transform:translateX(-50px)}
-    to{opacity:1;transform:translateX(0)}
-}
-
-@keyframes slideInRight{
-    from{opacity:0;transform:translateX(50px)}
-    to{opacity:1;transform:translateX(0)}
-}
-
-@keyframes fadeInUp{
-    from{opacity:0;transform:translateY(20px)}
-    to{opacity:1;transform:translateY(0)}
-}
-
-@keyframes popIn{
-    0%{opacity:0;transform:scale(0.5)}
-    80%{transform:scale(1.1)}
-    100%{opacity:1;transform:scale(1)}
-}
-
-@keyframes floatContainer{
-    0%{transform:translateY(0px)}
-    50%{transform:translateY(-10px)}
-    100%{transform:translateY(0px)}
-}
-
-@keyframes expandBorder {
-    0% { width: 0%; opacity: 0; }
-    100% { width: 100%; opacity: 1; }
 }
 
 /* ================= LOGIN CONTAINER ================= */
@@ -128,9 +67,13 @@ body::before {
     box-shadow: 0 25px 60px rgba(0,0,0,.25);
     position: relative;
     z-index: 2;
-    /* Efek Melayang Halus */
-    animation: floatContainer 6s ease-in-out infinite;
-    opacity: 0; /* Start hidden for JS reveal */
+    animation: fadeUp .9s ease;
+}
+
+/* Card animation */
+@keyframes fadeUp{
+    from{opacity:0;transform:translateY(30px)}
+    to{opacity:1;transform:translateY(0)}
 }
 
 /* ================= SCHOOL IMAGE ================= */
@@ -143,9 +86,6 @@ body::before {
     justify-content: flex-end;
     padding: 30px;
     color: white;
-    opacity: 0; /* Hidden initially */
-    animation: slideInLeft 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-    animation-delay: 0.5s;
 }
 
 .school-image::before {
@@ -164,9 +104,23 @@ body::before {
     z-index: 2;
 }
 
-.school-name { font-size: 2.2rem; font-weight: 700; margin-bottom: 10px; }
-.school-location { font-size: 1.3rem; opacity: 0.9; }
-.school-motto { margin-top: 20px; font-style: italic; opacity: 0.8; font-size: 1.1rem; }
+.school-name {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.school-location {
+    font-size: 1.3rem;
+    opacity: 0.9;
+}
+
+.school-motto {
+    margin-top: 20px;
+    font-style: italic;
+    opacity: 0.8;
+    font-size: 1.1rem;
+}
 
 /* ================= LOGIN CARD ================= */
 .login-card {
@@ -179,24 +133,7 @@ body::before {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    position: relative;
-    opacity: 0; /* Hidden initially */
-    animation: slideInRight 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-    animation-delay: 0.7s;
 }
-
-/* ================= ELEMENT ANIMATIONS (STAGGER) ================= */
-.anim-fade-up {
-    opacity: 0;
-    animation: fadeInUp 0.6s ease forwards;
-}
-
-/* Delays */
-.delay-100 { animation-delay: 0.9s; }
-.delay-200 { animation-delay: 1.1s; }
-.delay-300 { animation-delay: 1.3s; }
-.delay-400 { animation-delay: 1.5s; }
-.delay-500 { animation-delay: 1.7s; }
 
 /* ================= LOGO ================= */
 .school-logo {
@@ -209,48 +146,57 @@ body::before {
     padding: 10px;
     box-shadow: 0 8px 16px rgba(0,0,0,0.2);
     transition: transform 0.3s ease;
-    animation: popIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
-    animation-delay: 0.9s;
 }
 
-.school-logo img { width: 100%; height: 100%; object-fit: contain; }
+.school-logo:hover {
+    transform: scale(1.05);
+}
+
+.school-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* ================= HEADER ================= */
+.login-card h3{
+    font-weight:700;
+    margin-bottom:15px;
+    text-align:center;
+}
+
+.login-subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 35px;
+    font-weight: 500;
+    opacity: 0.9;
+}
 
 /* ================= FORM ================= */
-.form-label{ font-weight:600; font-size:.9rem; letter-spacing: 0.5px;}
-
-.input-group {
-    background: rgba(255,255,255,0.15);
-    border-radius: 14px;
-    border: 1px solid rgba(255,255,255,0.1);
-    transition: all 0.3s ease;
-    overflow: hidden;
-}
-
-.input-group:focus-within {
-    background: rgba(255,255,255,0.25);
-    border-color: rgba(255,255,255,0.4);
-    transform: scale(1.02);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-.input-group-text {
-    border-radius: 14px 0 0 14px; 
-    background: transparent; 
-    border: none; 
-    color: white;
-    padding: 12px 14px;
+.form-label{
+    font-weight:600;
+    font-size:.9rem;
 }
 
 .form-control{
+    border-radius:14px;
     padding:12px 14px;
     border:none;
-    background:transparent;
+    background:rgba(255,255,255,.25);
     color:#fff;
-    box-shadow: none;
+    transition:.3s;
 }
 
-.form-control:focus { background:transparent; color:#fff; box-shadow: none; }
-.form-control::placeholder{ color:#e5e7eb; }
+.form-control::placeholder{
+    color:#e5e7eb;
+}
+
+.form-control:focus{
+    background:rgba(255,255,255,.35);
+    box-shadow:0 0 0 3px rgba(59,130,246,.4);
+    color:#fff;
+}
 
 /* ================= BUTTON ================= */
 .btn-login{
@@ -265,37 +211,17 @@ body::before {
     position:relative;
     overflow:hidden;
     margin-top:10px;
-    box-shadow: 0 4px 15px rgba(13, 110, 253, 0.3);
 }
 
-.btn-login:hover {
+.btn-login:hover{
     transform:translateY(-3px);
-    box-shadow:0 10px 25px rgba(0,0,0,.4);
-}
-
-/* Button Ripple Effect */
-.btn-login::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: width 0.6s, height 0.6s;
-}
-.btn-login:active::after {
-    width: 300px;
-    height: 300px;
+    box-shadow:0 15px 30px rgba(0,0,0,.35);
 }
 
 /* Loading effect */
 .btn-login.loading{
     pointer-events:none;
     opacity:.8;
-    color: transparent;
 }
 
 .btn-login.loading::after{
@@ -310,7 +236,10 @@ body::before {
     left:50%;
     transform:translate(-50%,-50%);
     animation:spin 1s linear infinite;
-    background: transparent; /* Override ripple */
+}
+
+@keyframes spin{
+    to{transform:rotate(360deg) translate(-50%,-50%)}
 }
 
 /* ================= ALERT ================= */
@@ -318,33 +247,28 @@ body::before {
     border-radius:14px;
     border: none;
     margin-bottom: 20px;
-    backdrop-filter: blur(5px);
 }
 
-.alert-danger { background-color: rgba(220, 53, 69, 0.25); color: #fff; border: 1px solid rgba(220, 53, 69, 0.5); }
+.alert-danger {
+    background-color: rgba(220, 53, 69, 0.2);
+    color: #fff;
+}
 
 /* ================= FOOTER ================= */
 .login-footer{
     text-align:center;
     margin-top:20px;
     font-size:.9rem;
-    opacity: 0.8;
-    transition: opacity 0.3s;
 }
-.login-footer:hover { opacity: 1; }
 
 .login-footer a{
-    color:#fff;
+    color:#E0F2FE;
     font-weight:600;
     text-decoration:none;
-    border-bottom: 1px dashed rgba(255,255,255,0.5);
-    padding-bottom: 2px;
-    transition: all 0.3s;
 }
 
 .login-footer a:hover{
-    border-bottom-color: #fff;
-    text-shadow: 0 0 10px rgba(255,255,255,0.5);
+    text-decoration:underline;
 }
 
 /* ================= DECORATIVE ELEMENTS ================= */
@@ -353,11 +277,21 @@ body::before {
     border-radius: 50%;
     background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
     z-index: 1;
-    animation: floatContainer 10s infinite ease-in-out;
 }
 
-.decorative-element-1 { width: 300px; height: 300px; top: -150px; right: -100px; }
-.decorative-element-2 { width: 200px; height: 200px; bottom: -100px; left: -100px; animation-delay: -5s; }
+.decorative-element-1 {
+    width: 300px;
+    height: 300px;
+    top: -150px;
+    right: -100px;
+}
+
+.decorative-element-2 {
+    width: 200px;
+    height: 200px;
+    bottom: -100px;
+    left: -100px;
+}
 
 /* ================= RESPONSIVE ================= */
 @media (max-width: 992px) {
@@ -366,38 +300,55 @@ body::before {
         width: 90%;
         height: auto;
         max-height: 90vh;
-        animation: fadeInUp 1s ease forwards; /* Use fade up instead of slide on mobile */
     }
     
     .school-image {
-        min-height: 200px;
-        animation: fadeInUp 1s ease forwards;
+        min-height: 250px;
     }
     
     .login-card {
         border-left: none;
         border-top: 1px solid rgba(255,255,255,0.1);
         padding: 30px 20px;
-        animation: fadeInUp 1s ease forwards;
+    }
+    
+    .school-name {
+        font-size: 1.8rem;
+    }
+    
+    .school-logo {
+        width: 80px;
+        height: 80px;
     }
 }
 
 @media (max-width: 480px) {
-    .login-container { width: 95%; }
-    .school-image { padding: 20px; }
-    .school-name { font-size: 1.5rem; }
-    .login-card { padding: 25px 15px; }
-    .school-logo { width: 70px; height: 70px; }
+    .login-container {
+        width: 95%;
+    }
+    
+    .school-image {
+        min-height: 200px;
+        padding: 20px;
+    }
+    
+    .school-name {
+        font-size: 1.5rem;
+    }
+    
+    .login-card {
+        padding: 25px 15px;
+    }
+    
+    .school-logo {
+        width: 70px;
+        height: 70px;
+    }
 }
 </style>
 </head>
 
 <body>
-    <!-- Preloader -->
-    <div id="preloader">
-        <div class="loader-spinner"></div>
-    </div>
-
     <!-- Decorative elements -->
     <div class="decorative-element decorative-element-1"></div>
     <div class="decorative-element decorative-element-2"></div>
@@ -405,7 +356,7 @@ body::before {
 <div class="login-container">
     <!-- School Image Section -->
     <div class="school-image">
-        <div class="school-info anim-fade-up delay-100">
+        <div class="school-info">
             <h2 class="school-name">SMKN 1 KAWALI</h2>
             <p class="school-location">KAB. CIAMIS</p>
             <p class="school-motto">"Membangun Masa Depan Melalui Pendidikan Berkualitas"</p>
@@ -419,17 +370,15 @@ body::before {
             <img src="https://z-cdn-media.chatglm.cn/files/9d0ca30d-954f-4e5f-bf66-bfb4a115ecfc.png?auth_key=1868371606-21df551d97db4bbbadc671626e9e83a6-0-e0a0e057a73f58e5763d4379b39763b1" alt="Logo SMKN 1 Kawali">
         </div>
         
-        <h3 class="text-center anim-fade-up delay-200">
+        <h3 class="text-center">
             <i class="bi bi-shield-lock-fill me-1"></i>
             Login Admin
         </h3>
         
-        <p class="login-subtitle anim-fade-up delay-300" style="text-align: center; font-size: 1.1rem; margin-bottom: 35px; font-weight: 500; opacity: 0.9;">
-            Selamat datang di Portal Admin SMKN 1 Kawali
-        </p>
+        <p class="login-subtitle">Selamat datang di Portal Admin SMKN 1 Kawali</p>
 
         @if($errors->any())
-            <div class="alert alert-danger anim-fade-up delay-200">
+            <div class="alert alert-danger">
                 {{ $errors->first() }}
             </div>
         @endif
@@ -437,84 +386,67 @@ body::before {
         <form id="loginForm" action="{{ url('/login') }}" method="POST">
             @csrf
 
-            <div class="mb-3 anim-fade-up delay-300">
+            <div class="mb-3">
                 <label class="form-label">Email</label>
                 <div class="input-group">
-                    <span class="input-group-text">
+                    <span class="input-group-text" style="border-radius: 14px 0 0 14px; background: rgba(255,255,255,0.25); border: none; color: white;">
                         <i class="bi bi-envelope-fill"></i>
                     </span>
                     <input type="email"
                            name="email"
                            class="form-control"
                            placeholder="admin@example.com"
+                           style="border-radius: 0 14px 14px 0;"
                            required>
                 </div>
             </div>
 
-            <div class="mb-4 anim-fade-up delay-400">
+            <div class="mb-4">
                 <label class="form-label">Password</label>
                 <div class="input-group">
-                    <span class="input-group-text">
+                    <span class="input-group-text" style="border-radius: 14px 0 0 14px; background: rgba(255,255,255,0.25); border: none; color: white;">
                         <i class="bi bi-lock-fill"></i>
                     </span>
                     <input type="password"
                            name="password"
                            class="form-control"
                            placeholder="••••••••"
+                           style="border-radius: 0 14px 14px 0;"
                            required>
                 </div>
             </div>
 
-            <button type="submit" class="btn-login anim-fade-up delay-500">
+            <button type="submit" class="btn-login">
                 Masuk
             </button>
         </form>
 
-        <div class="login-footer anim-fade-up delay-500">
+        <div class="login-footer">
             Belum punya akun?
-            <a href="{{ url('/register') }}">Daftar Sekarang</a>
+            <a href="{{ url('/register') }}">Daftar</a>
         </div>
     </div>
 </div>
 
 <script>
-// ================= PRELOADER & JS LOGIC =================
-window.addEventListener('load', () => {
-    const preloader = document.getElementById('preloader');
-    const container = document.querySelector('.login-container');
-    
-    // Fade out preloader
-    setTimeout(() => {
-        preloader.style.opacity = '0';
-        setTimeout(() => {
-            preloader.style.visibility = 'hidden';
-            // Reveal container
-            container.style.opacity = '1';
-        }, 500);
-    }, 800); // Small delay for effect
-});
-
+/* ================= SMOOTH JS ================= */
 const form = document.getElementById('loginForm');
-const button = form.querySelector('button[type="submit"]');
+const button = form.querySelector('button');
 
-form.addEventListener('submit', (e) => {
-    // Prevent default is handled by form action, just animation here
+form.addEventListener('submit', () => {
     button.classList.add('loading');
-    // Keep text hidden while loading
     button.innerText = '';
 });
 
-// Add visual focus effect
+// Add focus effect to form inputs
 const inputs = document.querySelectorAll('.form-control');
 inputs.forEach(input => {
     input.addEventListener('focus', function() {
         this.parentElement.style.transform = 'scale(1.02)';
-        this.parentElement.style.boxShadow = '0 0 15px rgba(255,255,255,0.2)';
     });
     
     input.addEventListener('blur', function() {
         this.parentElement.style.transform = 'scale(1)';
-        this.parentElement.style.boxShadow = 'none';
     });
 });
 </script>

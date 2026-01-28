@@ -489,6 +489,34 @@
             width: 32px;
             height: 32px;
         }
+        
+        .table {
+            font-size: 0.875rem;
+        }
+        
+        .table thead th,
+        .table tbody td {
+            padding: 12px 8px;
+        }
+        
+        .btn-action {
+            width: 32px;
+            height: 32px;
+        }
+        
+        .table {
+            font-size: 0.875rem;
+        }
+        
+        .table thead th,
+        .table tbody td {
+            padding: 12px 8px;
+        }
+        
+        .btn-action {
+            width: 32px;
+            height: 32px;
+        }
     }
 </style>
 
