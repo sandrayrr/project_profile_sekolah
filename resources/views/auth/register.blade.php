@@ -392,6 +392,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Decorative elements -->
     <div class="decorative-element decorative-element-1"></div>
