@@ -445,10 +445,18 @@
 
                 <!-- Back Button -->
                 <div class="col-md-3">
-                    <div class="text-end">
-                        <a href="{{ route('beranda') }}" class="back-btn">
-                            <i class="bi bi-arrow-left me-2"></i>
-                            Kembali
+                    <div class="header-icons">
+                        <a href="#" class="header-icon">
+                            <i class="bi bi-cart3"></i>
+                            <span>Keranjang</span>
+                        </a>
+                        <a href="#" class="header-icon">
+                            <i class="bi bi-bell"></i>
+                            <span>Notifikasi</span>
+                        </a>
+                        <a href="#" class="header-icon">
+                            <i class="bi bi-person-circle"></i>
+                            <span>Akun</span>
                         </a>
                     </div>
                 </div>
@@ -555,17 +563,86 @@
                     @endforelse
                     {{-- AKHIR LOOPING PRODUK --}}
                 </div>
+                
+                <!-- PAGINATION -->
+                @if(isset($marketplaces) && method_exists($marketplaces, 'links') && $marketplaces->hasPages())
+                <div class="pagination-container">
+                    <!-- Pagination Info -->
+                    <div class="pagination-info">
+                        Menampilkan 
+                        <span class="fw-bold text-primary">
+                            {{ $marketplaces->firstItem() }}-{{ $marketplaces->lastItem() }}
+                        </span> 
+                        dari 
+                        <span class="fw-bold text-primary">
+                            {{ $marketplaces->total() }}
+                        </span> 
+                        produk
+                    </div>
+
+                    <!-- Custom Pagination -->
+                    <nav class="pagination" aria-label="Pagination">
+                        {{-- Previous Button --}}
+                        @if($marketplaces->onFirstPage())
+                            <div class="pagination-item disabled">
+                                <i class="bi bi-chevron-left"></i>
+                            </div>
+                        @else
+                            <a href="{{ $marketplaces->previousPageUrl() }}" class="pagination-item">
+                                <i class="bi bi-chevron-left"></i>
+                            </a>
+                        @endif
+
+                        {{-- Page Numbers --}}
+                        @foreach($marketplaces->links()->elements as $element)
+                            @if(is_string($element))
+                                <div class="pagination-dots">...</div>
+                            @elseif(is_array($element))
+                                @foreach($element as $page => $url)
+                                    @if($page == $marketplaces->currentPage())
+                                        <div class="pagination-item active">{{ $page }}</div>
+                                    @else
+                                        <a href="{{ $url }}" class="pagination-item">{{ $page }}</a>
+                                    @endif
+                                @endforeach
+                            @endif
+                        @endforeach
+
+                        {{-- Next Button --}}
+                        @if($marketplaces->hasMorePages())
+                            <a href="{{ $marketplaces->nextPageUrl() }}" class="pagination-item">
+                                <i class="bi bi-chevron-right"></i>
+                            </a>
+                        @else
+                            <div class="pagination-item disabled">
+                                <i class="bi bi-chevron-right"></i>
+                            </div>
+                        @endif
+                    </nav>
+
+                    <!-- Jump to Page -->
+                    <div class="pagination-jump">
+                        <span>Lompat ke halaman:</span>
+                        <input type="number" 
+                               min="1" 
+                               max="{{ $marketplaces->lastPage() }}" 
+                               class="form-control"
+                               id="jumpToPage">
+                        <button onclick="jumpToPage()" class="btn btn-primary">Go</button>
+                    </div>
+                </div>
+                @endif
             </section>
         </div>
     </main>
-
-    <!-- Footer -->
+  @include('layouts.footer')
+    {{-- <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="row">
                 <div class="col-md-4 mb-4">
                     <div class="footer-logo">
-                        <img src="https://z-cdn-media.chatglm.cn/files/9d0ca30d-954f-4e5f-bf66-bfb4a115ecfc.png?auth_key=1868371606-21df551d97db4bbbadc671626e9e83a6-0-e0a0e057a73f58e5763d4379b39763b1" alt="Logo SMKN 1 Kawali">
+                        <img src="https://z-cdn-media.chatglm.cn/files/9d0ca30d-954f-4e5f-bf66-bfb4a115ecfc.png?auth_key=1868371606-21df551d97db4bbbadc671626e9e83a6-0-e0a0e057a73f58e5763d4379b3963b1" alt="Logo SMKN 1 Kawali">
                     </div>
                     <h3>SMKN 1 KAWALI</h3>
                     <p>Marketplace resmi yang dikelola siswa untuk memenuhi kebutuhan belajar mengajar dengan cara yang praktis dan terpercaya.</p>
@@ -597,7 +674,7 @@
                 <p class="m-0">&copy; 2024 SMKN 1 Kawali. Dibuat dengan ❤️ oleh Tim IT.</p>
             </div>
         </div>
-    </footer>
+    </footer> --}}
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>

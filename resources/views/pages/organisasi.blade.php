@@ -559,7 +559,10 @@
                     <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white">Majelis Perwakilan Kelas (MPK)</h2>
                     <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
                         Majelis Perwakilan Kelas (MPK) bertugas mengawasi kinerja OSIS serta menampung aspirasi siswa. Sebagai wadah demokrasi di sekolah, MPK memastikan suara setiap siswa didengar dan diwakili dalam pengambilan keputusan.
+<<<<<<< Updated upstream
 >>>>>>> 608d2b588692002efdbfa903ec3664426efbdfdf
+=======
+>>>>>>> Stashed changes
                     </p>
                 </div>
             </div>
@@ -620,7 +623,10 @@
                                 <i class="fas fa-user-tie text-3xl text-primary mb-2"></i>
                                 <span class="text-sm text-gray-500 dark:text-gray-400">Foto</span>
                             </div>
+<<<<<<< Updated upstream
 >>>>>>> 608d2b588692002efdbfa903ec3664426efbdfdf
+=======
+>>>>>>> Stashed changes
                         </div>
                         <h3 class="text-2xl font-bold mb-4 text-slate-900 dark:text-white">Visi</h3>
                         <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
@@ -648,7 +654,10 @@
                                 <i class="fas fa-user text-2xl text-gray-400 mb-1"></i>
                                 <span class="text-xs text-gray-400">Foto</span>
                             </div>
+<<<<<<< Updated upstream
 >>>>>>> 608d2b588692002efdbfa903ec3664426efbdfdf
+=======
+>>>>>>> Stashed changes
                         </div>
                         <h3 class="text-2xl font-bold mb-4 text-slate-900 dark:text-white">Misi</h3>
                         <ul class="text-slate-600 dark:text-slate-400 space-y-3">
@@ -789,6 +798,7 @@
                 </div>
             </div>
 
+<<<<<<< Updated upstream
             
             <!-- STRUKTUR ORGANISASI OSIS -->
             <div class="space-y-12 pt-8">
@@ -844,6 +854,8 @@
                     </div>
                 </div>
             </div>
+=======
+>>>>>>> Stashed changes
         </section>
 
         <!-- ================= DOKUMENTASI OSIS (BARU) ================= -->
@@ -902,6 +914,29 @@
         });
 <<<<<<< HEAD
 =======
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with animation
+        document.querySelectorAll('.animate-fade-in').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(el);
+        });
 
         // Intersection Observer for animations
         const observerOptions = {

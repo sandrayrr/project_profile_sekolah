@@ -657,13 +657,22 @@
                 @endforeach
             </div>
         @else
+<<<<<<< Updated upstream
             <!-- EMPTY STATE  -->
+=======
+            <!-- EMPTY STATE -->
+>>>>>>> Stashed changes
             <div class="empty-state">
                 <i class="bi bi-image"></i>
                 <h5>Data galeri belum tersedia</h5>
                 <p>Belum ada foto yang ditambahkan. Mulai dengan menambahkan foto baru.</p>
                 <a href="{{ route('admin.galeri.create') }}" class="btn btn-primary">
+<<<<<<< Updated upstream
                     <i class="bi bi-plus-circle me-2"></i> Tambah Foto
+=======
+                    <i class="bi bi-plus-circle me-2"></i>
+                    Tambah Foto
+>>>>>>> Stashed changes
                 </a>
             </div>
         @endif
