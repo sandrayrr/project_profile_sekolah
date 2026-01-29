@@ -145,6 +145,31 @@
         .dark ::-webkit-scrollbar-thumb {
             background: #6b7280;
         }
+        
+        /* Custom scrollbar for modal */
+        .modal-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .modal-scrollbar::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        .modal-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+        .modal-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .dark .modal-scrollbar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .dark .modal-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        .dark .modal-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
     </style>
 </head>
 
@@ -238,51 +263,51 @@
                 </div>
 
                 <!-- BODY -->
-               {{-- @php
-    $kategoriStyle = [
-        'olahraga'    => 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300',
-        'seni'        => 'bg-pink-100 text-pink-700 dark:bg-pink-900/30 dark:text-pink-300',
-        'kepramukaan' => 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300',
-        'keagamaan'   => 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300',
-        'akademik'    => 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300',
-        'lainnya'     => 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300',
-    ];
-@endphp --}}
+                @php
+                    $kategoriStyle = [
+                        'olahraga'    => 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300',
+                        'seni'        => 'bg-pink-100 text-pink-700 dark:bg-pink-900/30 dark:text-pink-300',
+                        'kepramukaan' => 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300',
+                        'keagamaan'   => 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300',
+                        'akademik'    => 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300',
+                        'lainnya'     => 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300',
+                    ];
+                @endphp
 
-<div class="p-5 flex flex-col flex-grow">
+                <div class="p-5 flex flex-col flex-grow">
 
-    {{-- Badge kategori --}}
-    <div class="flex justify-end mb-3">
-        <span
-            class="text-xs px-3 py-1 rounded-full font-medium
-            {{ $kategoriStyle[$item->kategori] ?? 'bg-gray-100 text-gray-700' }}">
-            {{ ucfirst($item->kategori) }}
-        </span>
-    </div>
+                    <!-- Badge kategori -->
+                    <div class="flex justify-end mb-3">
+                        <span
+                            class="text-xs px-3 py-1 rounded-full font-medium
+                            {{ $kategoriStyle[$item->kategori] ?? 'bg-gray-100 text-gray-700' }}">
+                            {{ ucfirst($item->kategori) }}
+                        </span>
+                    </div>
 
-    <div class="border-t pt-4 flex-grow">
-        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white truncate">
-            {{ $item->judul }}
-        </h3>
-    </div>
+                    <div class="border-t pt-4 flex-grow">
+                        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white truncate">
+                            {{ $item->judul }}
+                        </h3>
+                    </div>
 
-    <div class="mt-4">
-        <a href="#"
-           class="text-primary hover:text-primary-dark 
-                  dark:text-primary-300 dark:hover:text-primary-200 
-                  font-medium text-sm flex items-center transition-colors">
-            Lihat Detail
-            <i class="fas fa-arrow-right ml-2"></i>
-        </a>
-    </div>
+                    <div class="mt-4">
+                        <button onclick="openDetailModal({{ $index }})"
+                               class="text-primary hover:text-primary-dark 
+                                      dark:text-primary-300 dark:hover:text-primary-200 
+                                      font-medium text-sm flex items-center transition-colors">
+                            Lihat Detail
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
 
-</div>
+                </div>
 
             </div>
             @empty
                 <div class="col-span-full text-center py-10">
                     <p class="text-gray-500 dark:text-gray-400">
-                        Data ekstrakurikuler belum tersedia.
+                        Data ekstrakulikuler belum tersedia.
                     </p>
                 </div>
             @endforelse
@@ -343,7 +368,59 @@
                 <img id="modalImage" src="" alt="" class="max-w-full max-h-[80vh] object-contain animate-zoom-in rounded-lg">
                 <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 rounded-b-lg">
                     <h3 id="modalTitle" class="text-white text-2xl font-bold mb-2"></h3>
-                    <p id="modalCategory" class="text-gray-300">Ekstrakulikuler</p>
+                    <p id="modalCategory" class="text-gray-300">Ekstrakurikuler</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DETAIL MODAL (Dapat di-scroll) -->
+    <div id="detailModal" class="fixed inset-0 z-50 hidden">
+        <div class="modal-backdrop absolute inset-0 bg-black/80" onclick="closeDetailModal()"></div>
+        <div class="relative h-full flex items-center justify-center p-4">
+            <button onclick="closeDetailModal()" class="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors z-10">
+                <i class="fas fa-times text-3xl"></i>
+            </button>
+            
+            <!-- Modal Content dengan Scroll -->
+            <div class="bg-white dark:bg-gray-800 rounded-xl max-w-3xl w-full max-h-[90vh] flex flex-col animate-zoom-in">
+                <!-- Foto Header (Fixed) -->
+                <div class="relative h-64 md:h-80 flex-shrink-0">
+                    <img id="detailModalImage" src="" alt="" class="w-full h-full object-cover rounded-t-xl">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent rounded-t-xl"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6">
+                        <h3 id="detailModalTitle" class="text-white text-2xl md:text-3xl font-bold mb-2"></h3>
+                    </div>
+                </div>
+                
+                <!-- Body Modal (Scrollable) -->
+                <div class="flex-1 overflow-y-auto modal-scrollbar p-6 space-y-6">
+                    <!-- DESKRIPSI -->
+                    <div>
+                        <h4 class="text-lg font-semibold mb-2 text-gray-900 dark:text-white">
+                            <i class="fas fa-info-circle mr-2 text-primary"></i>Deskripsi
+                        </h4>
+                        <div id="detailModalDescription" class="text-gray-700 dark:text-gray-300 leading-relaxed bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
+                        </div>
+                    </div>
+
+                    <!-- PEMBINA -->
+                    <div>
+                        <h4 class="text-lg font-semibold mb-2 text-gray-900 dark:text-white">
+                            <i class="fas fa-user-tie mr-2 text-primary"></i>Pembina
+                        </h4>
+                        <div id="detailModalMentor" class="text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
+                        </div>
+                    </div>
+                    
+                    <!-- KATEGORI -->
+                    <div>
+                        <h4 class="text-lg font-semibold mb-2 text-gray-900 dark:text-white">
+                            <i class="fas fa-tag mr-2 text-primary"></i>Kategori
+                        </h4>
+                        <div id="detailModalCategory" class="text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -363,14 +440,20 @@
         @forelse ($ekstrakulikulers as $item)
         ekstrakurikulerData.push({
             image: "{{ $item->foto ? asset('storage/' . $item->foto) : 'https://via.placeholder.com/800x600?text=Tidak+Ada+Gambar' }}",
-            title: "{{ $item->judul }}"
+            title: "{{ $item->judul }}",
+            category: "{{ $item->kategori }}",
+            description: "{{ $item->deskripsi ?? 'Tidak ada deskripsi tersedia untuk ekstrakulikuler ini.' }}",
+            // Data lain tetap ada di JS siapa tahu dibutuhkan di lain waktu
+            schedule: "{{ $item->jadwal ?? 'Belum ada jadwal yang ditentukan.' }}",
+            mentor: "{{ $item->pembina ?? 'Belum ada informasi pembina.' }}",
+            contact: "{{ $item->kontak ?? 'Belum ada informasi kontak.' }}"
         });
         @empty
         @endforelse
 
         let currentImageIndex = 0;
 
-        // Modal functions
+        // Image Modal functions
         function openModal(index) {
             currentImageIndex = index;
             const modal = document.getElementById('imageModal');
@@ -413,16 +496,60 @@
             }, 200);
         }
 
+        // Detail Modal functions (Diperbarui dengan Scroll)
+        function openDetailModal(index) {
+            const modal = document.getElementById('detailModal');
+            const modalImage = document.getElementById('detailModalImage');
+            const modalTitle = document.getElementById('detailModalTitle');
+            const modalDescription = document.getElementById('detailModalDescription');
+            const modalMentor = document.getElementById('detailModalMentor');
+            const modalCategory = document.getElementById('detailModalCategory');
+            
+            if (ekstrakurikulerData[index]) {
+                const data = ekstrakurikulerData[index];
+                
+                // Mengisi semua elemen
+                modalImage.src = data.image;
+                modalTitle.textContent = data.title;
+                modalDescription.textContent = data.description;
+                modalMentor.textContent = data.mentor;
+                modalCategory.textContent = data.category.charAt(0).toUpperCase() + data.category.slice(1);
+                
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+                
+                // Scroll ke atas modal saat dibuka
+                setTimeout(() => {
+                    const modalBody = modal.querySelector('.modal-scrollbar');
+                    if (modalBody) {
+                        modalBody.scrollTop = 0;
+                    }
+                }, 100);
+            }
+        }
+
+        function closeDetailModal() {
+            const modal = document.getElementById('detailModal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
         // Keyboard navigation
         document.addEventListener('keydown', function(e) {
-            const modal = document.getElementById('imageModal');
-            if (!modal.classList.contains('hidden')) {
+            const imageModal = document.getElementById('imageModal');
+            const detailModal = document.getElementById('detailModal');
+            
+            if (!imageModal.classList.contains('hidden')) {
                 if (e.key === 'Escape') {
                     closeModal();
                 } else if (e.key === 'ArrowRight') {
                     nextImage();
                 } else if (e.key === 'ArrowLeft') {
                     previousImage();
+                }
+            } else if (!detailModal.classList.contains('hidden')) {
+                if (e.key === 'Escape') {
+                    closeDetailModal();
                 }
             }
         });

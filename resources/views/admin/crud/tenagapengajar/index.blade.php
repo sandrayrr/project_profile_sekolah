@@ -322,6 +322,11 @@
         color: var(--primary-blue);
     }
     
+    .badge-secondary {
+        background-color: rgba(107, 114, 128, 0.1);
+        color: var(--gray-color);
+    }
+    
     /* Button */
     .btn {
         padding: 0.75rem 1.5rem;
@@ -464,36 +469,37 @@
         }
 
         .pagination-modern {
-    gap: 6px;
-}
+            gap: 6px;
+        }
 
-.pagination-modern .page-link {
-    border-radius: 10px;
-    border: 1px solid var(--border-color);
-    color: var(--dark-color);
-    padding: 8px 14px;
-    background: white;
-    transition: all 0.25s ease;
-}
+        .pagination-modern .page-link {
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            color: var(--dark-color);
+            padding: 8px 14px;
+            background: white;
+            transition: all 0.25s ease;
+        }
 
-.pagination-modern .page-item.active .page-link {
-    background: var(--gradient-primary);
-    color: white;
-    box-shadow: var(--shadow-md);
-    border-color: transparent;
-}
+        .pagination-modern .page-item.active .page-link {
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: var(--shadow-md);
+            border-color: transparent;
+        }
 
-.pagination-modern .page-link:hover {
-    background: var(--light-blue);
-    transform: translateY(-2px);
-}
+        .pagination-modern .page-link:hover {
+            background: var(--light-blue);
+            transform: translateY(-2px);
+        }
 
-.pagination-modern .page-item.disabled .page-link {
-    opacity: 0.4;
-    pointer-events: none;
-}
-
+        .pagination-modern .page-item.disabled .page-link {
+            opacity: 0.4;
+            pointer-events: none;
+        }
     }
+
+    
 </style>
 
 <div class="container">
@@ -542,8 +548,8 @@
             <div class="stat-card slide-in" style="animation-delay: 0.2s;">
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
-                        <p class="text-muted small mb-1">Guru Tetap</p>
-                        <h2 class="fw-bold mb-0">{{ $tenagaPengajar->where('status', 'Tetap')->count() }}</h2>
+                        <p class="text-muted small mb-1">PNS</p>
+                        <h2 class="fw-bold mb-0">{{ $tenagaPengajar->where('status', 'PNS')->count() }}</h2>
                     </div>
                     <div class="stat-icon" style="background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);">
                         <i class="bi bi-person-check"></i>
@@ -555,11 +561,41 @@
             <div class="stat-card slide-in" style="animation-delay: 0.3s;">
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
-                        <p class="text-muted small mb-1">Guru Honorer</p>
+                        <p class="text-muted small mb-1">Honorer</p>
                         <h2 class="fw-bold mb-0">{{ $tenagaPengajar->where('status', 'Honorer')->count() }}</h2>
                     </div>
                     <div class="stat-icon" style="background: linear-gradient(135deg, #eab308 0%, #d97706 100%);">
                         <i class="bi bi-person-workspace"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- STATISTIK TAMBAHAN UNTUK STATUS LAINNYA -->
+    <div class="row mb-4">
+        <div class="col-md-3 col-sm-6 mb-3">
+            <div class="stat-card slide-in" style="animation-delay: 0.4s;">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <p class="text-muted small mb-1">HONORER</p>
+                        <h2 class="fw-bold mb-0">{{ $tenagaPengajar->where('status', 'HONORER')->count() }}</h2>
+                    </div>
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);">
+                        <i class="bi bi-mortarboard"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 mb-3">
+            <div class="stat-card slide-in" style="animation-delay: 0.5s;">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <p class="text-muted small mb-1">Status Lainnya</p>
+                        <h2 class="fw-bold mb-0">{{ $tenagaPengajar->whereNotIn('status', ['PNS', 'Honorer', 'GTY/PTY'])->count() }}</h2>
+                    </div>
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);">
+                        <i class="bi bi-three-dots"></i>
                     </div>
                 </div>
             </div>
@@ -581,7 +617,7 @@
             <h5>Filter Tenaga Pengajar</h5>
         </div>
         <div class="row g-3">
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="input-group">
                     <span class="input-group-text">
                         <i class="bi bi-search"></i>
@@ -589,7 +625,7 @@
                     <input type="text" class="form-control" id="searchInput" placeholder="Cari nama tenaga pengajar...">
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <select class="form-select" id="filterPengampu">
                     <option value="">Semua Pengampu</option>
                     @foreach($tenagaPengajar->pluck('pengampu')->unique() as $p)
@@ -597,7 +633,18 @@
                     @endforeach
                 </select>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
+                <select class="form-select" id="filterStatus">
+                    <option value="">Semua Status</option>
+                    <option value="pns">PNS</option>
+                    <option value="honorer">Honorer</option>
+                    <option value="gty/pty">GTY/PTY</option>
+                    <option value="lainnya">Status Lainnya</option>
+                </select>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-12">
                 <select class="form-select" id="sortBy">
                     <option value="newest">Terbaru</option>
                     <option value="oldest">Terlama</option>
@@ -620,9 +667,19 @@
         
         <div class="tenaga-grid" id="tenagaGrid">
             @forelse ($tenagaPengajar as $tenaga)
+                @php
+                    $statusBadge = match($tenaga->status) {
+                        'PNS' => 'success',
+                        'Honorer' => 'warning',
+                        'GTY/PTY' => 'info',
+                        default => 'secondary'
+                    };
+                @endphp
+                
                 <div class="tenaga-card tenaga-item"
                      data-nama="{{ strtolower($tenaga->nama) }}"
                      data-pengampu="{{ strtolower($tenaga->pengampu) }}"
+                     data-status="{{ strtolower($tenaga->status) }}"
                      data-tanggal="{{ $tenaga->created_at->format('Y-m-d') }}">
                     
                     @if($tenaga->foto)
@@ -648,11 +705,9 @@
                                 {{ $tenaga->pengampu }}
                             </span>
                             
-                            @if($tenaga->status == 'Tetap')
-                                <span class="badge badge-success">Tetap</span>
-                            @else
-                                <span class="badge badge-warning">Honorer</span>
-                            @endif
+                            <span class="badge badge-{{ $statusBadge }}">
+                                {{ $tenaga->status }}
+                            </span>
                         </div>
                         
                         <div class="tenaga-date">
@@ -738,20 +793,24 @@
 // LOGIC TIDAK DIUBAH - HANYA PENYESUAIAN SELECTOR UNTUK CARD LAYOUT
 const searchInput = document.getElementById('searchInput');
 const filterPengampu = document.getElementById('filterPengampu');
+const filterStatus = document.getElementById('filterStatus'); // DITAMBAHKAN
 const sortBy = document.getElementById('sortBy');
 
 function applyFilter() {
     const search = searchInput.value.toLowerCase();
     const pengampu = filterPengampu.value.toLowerCase();
+    const status = filterStatus.value.toLowerCase(); // DITAMBAHKAN
 
     // Mengubah selector dari .tenaga-row menjadi .tenaga-item
     document.querySelectorAll('.tenaga-item').forEach(item => {
         let visible = true;
         const nama = item.dataset.nama;
         const pengampuItem = item.dataset.pengampu;
+        const statusItem = item.dataset.status; // DITAMBAHKAN
 
         if (search && !nama.includes(search)) visible = false;
         if (pengampu && !pengampuItem.includes(pengampu)) visible = false;
+        if (status && !statusItem.includes(status)) visible = false; // DITAMBAHKAN
 
         item.style.display = visible ? '' : 'none';
     });
@@ -778,6 +837,7 @@ function applySort() {
 // Event listeners tetap sama
 searchInput.addEventListener('input', applyFilter);
 filterPengampu.addEventListener('change', applyFilter);
+filterStatus.addEventListener('change', applyFilter); // DITAMBAHKAN
 sortBy.addEventListener('change', () => {
     applySort();
     applyFilter();

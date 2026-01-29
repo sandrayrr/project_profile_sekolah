@@ -28,6 +28,7 @@ class TenagaPengajarController extends Controller
         $data = $request->validate([
             'nama'     => 'required|string|max:255',
             'pengampu' => 'required|string|max:255',
+            'status' => 'required|string|max:255',
             'foto'     => 'nullable|image|mimes:jpg,jpeg,png|max:2048'
         ]);
 
@@ -56,6 +57,7 @@ class TenagaPengajarController extends Controller
         $data = $request->validate([
             'nama'     => 'required|string|max:255',
             'pengampu' => 'required|string|max:255',
+            'status' => 'required|string|max:255',
             'foto'     => 'nullable|image|mimes:jpg,jpeg,png|max:2048'
         ]);
 

@@ -92,6 +92,33 @@
             transform: translateY(0);
         }
 
+        /* Status badges */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 10px;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .status-pns {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: #059669;
+        }
+        
+        .status-p3k {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: #059669;
+        }
+        
+        .status-honorer {
+            background-color: rgba(245, 158, 11, 0.1);
+            color: #d97706;
+        }
+
         /* Modal styles */
         .modal-backdrop {
             backdrop-filter: blur(5px);
@@ -182,7 +209,6 @@
 
         <!-- TOOLBAR -->
         <div class="flex justify-between items-center mb-10 animate-fade-in" style="animation-delay: 0.3s">
-           
             
             <div class="flex items-center gap-2">
                 <button onclick="resetSearch()" class="text-sm text-gray-500 hover:text-primary transition-colors flex items-center gap-1">
@@ -214,14 +240,31 @@
                         </div>
                     </div>
                 </div>
-                <div class="p-6 text-center">
+                <div class="p-6">
                     <h3
-                        class="font-semibold text-lg group-hover:text-primary transition">
+                        class="font-semibold text-lg group-hover:text-primary transition text-center">
                         {{ $pengajar->nama }}
                     </h3>
-                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                    <p class="text-sm text-gray-500 dark:text-gray-400 text-center">
                         {{ $pengajar->pengampu }}
                     </p>
+                    
+                    <!-- STATUS BADGE -->
+                    <div class="flex justify-center mt-3">
+                        @php
+                            $statusClass = '';
+                            if ($pengajar->status == 'PNS' || $pengajar->status == 'P3K') {
+                                $statusClass = 'status-pns';
+                            } elseif ($pengajar->status == 'HONORER') {
+                                $statusClass = 'status-honorer';
+                            } else {
+                                $statusClass = 'status-pns'; // Default untuk status lainnya
+                            }
+                        @endphp
+                        <span class="status-badge {{ $statusClass }}">
+                            {{ $pengajar->status }}
+                        </span>
+                    </div>
                 </div>
             </div>
             @empty
@@ -388,6 +431,7 @@
                 <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 rounded-b-lg">
                     <h3 id="modalTitle" class="text-white text-2xl font-bold mb-2"></h3>
                     <p id="modalPosition" class="text-gray-300"></p>
+                    <p id="modalStatus" class="text-gray-300 mt-1"></p>
                 </div>
             </div>
         </div>
@@ -408,6 +452,7 @@
             {
                 name: '{{ $pengajar->nama }}',
                 position: '{{ $pengajar->pengampu }}',
+                status: '{{ $pengajar->status }}',
                 photo: '{{ $pengajar->foto ? asset('storage/' . $pengajar->foto) : '' }}'
             },
             @endforeach
@@ -421,11 +466,13 @@
             const modal = document.getElementById('imageModal');
             const modalTitle = document.getElementById('modalTitle');
             const modalPosition = document.getElementById('modalPosition');
+            const modalStatus = document.getElementById('modalStatus');
             const modalImage = document.getElementById('modalImage');
             
             if (staffData[index]) {
                 modalTitle.textContent = staffData[index].name;
                 modalPosition.textContent = staffData[index].position;
+                modalStatus.textContent = staffData[index].status;
                 
                 // Set image if available
                 if (staffData[index].photo) {
@@ -459,10 +506,12 @@
         function updateModalContent() {
             const modalTitle = document.getElementById('modalTitle');
             const modalPosition = document.getElementById('modalPosition');
+            const modalStatus = document.getElementById('modalStatus');
             const modalImage = document.getElementById('modalImage');
             
             modalTitle.textContent = staffData[currentImageIndex].name;
             modalPosition.textContent = staffData[currentImageIndex].position;
+            modalStatus.textContent = staffData[currentImageIndex].status;
             
             // Update image if available
             if (staffData[currentImageIndex].photo) {

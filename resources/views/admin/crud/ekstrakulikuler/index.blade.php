@@ -276,7 +276,20 @@
     .ekstrakulikuler-date {
         color: var(--gray-color);
         font-size: 0.875rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .ekstrakulikuler-pembina {
+        color: var(--gray-color);
+        font-size: 0.875rem;
         margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+    }
+    
+    .ekstrakulikuler-pembina i {
+        margin-right: 0.5rem;
+        color: var(--primary-blue);
     }
     
     .ekstrakulikuler-footer {
@@ -709,6 +722,7 @@
                 <div class="ekstrakulikuler-card ekstrakulikuler-item"
                      data-judul="{{ strtolower($item->judul) }}"
                      data-kategori="{{ strtolower($item->kategori) }}"
+                     data-pembina="{{ strtolower($item->pembina ?? '') }}"
                      data-tanggal="{{ $item->created_at->format('Y-m-d') }}">
                     
                     @if($item->foto)
@@ -738,6 +752,12 @@
                         <div class="ekstrakulikuler-date">
                             <i class="bi bi-calendar me-1"></i>
                             {{ $item->created_at->format('d M Y') }}
+                        </div>
+                        
+                        <!-- PEMBINA -->
+                        <div class="ekstrakulikuler-pembina">
+                            <i class="bi bi-person-badge"></i>
+                            <span>{{ $item->pembina ?? 'Belum ada pembina' }}</span>
                         </div>
                         
                         <div class="ekstrakulikuler-footer">
@@ -831,8 +851,9 @@ function applyFilter() {
         let visible = true;
         const judul = item.dataset.judul;
         const kategoriItem = item.dataset.kategori;
+        const pembina = item.dataset.pembina;
 
-        if (search && !judul.includes(search)) visible = false;
+        if (search && !judul.includes(search) && !pembina.includes(search)) visible = false;
         if (kategori && !kategoriItem.includes(kategori)) visible = false;
 
         item.style.display = visible ? '' : 'none';

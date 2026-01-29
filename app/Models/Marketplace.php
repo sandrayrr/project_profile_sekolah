@@ -20,6 +20,7 @@ class Marketplace extends Model
     protected $fillable = [
         'foto',
         'nama',
+        'kategori',
         'harga',
     ];
 

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('foto');          // path foto
             $table->string('nama');          // nama produk
+            $table->string('kategori');      // kategori             
             $table->decimal('harga', 12, 2); // harga produk
             $table->timestamps();
         });

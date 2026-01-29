@@ -293,6 +293,21 @@ body {
                     @enderror
                 </div>
 
+                {{-- KATEGORI (DITAMBAHKAN) --}}
+                <div class="mb-3">
+                    <label for="kategori" class="form-label">Kategori</label>
+                    <select name="kategori" id="kategori" class="form-select @error('kategori') is-invalid @enderror" required>
+                        <option value="" disabled selected>-- Pilih Kategori --</option>
+                        <option value="Elektronik">Elektronik</option>
+                        <option value="Buku">Buku</option>
+                        <option value="Alat Tulis">Alat Tulis</option>
+                        <option value="Seragam">Seragam</option>
+                    </select>
+                    @error('kategori')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
                 {{-- HARGA --}}
                 <div class="mb-3">
                     <label for="harga" class="form-label">Harga</label>

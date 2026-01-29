@@ -4,19 +4,10 @@
     class="bg-background-light dark:bg-background-dark text-gray-900 dark:text-gray-100 font-sans antialiased transition-colors duration-300">
     <header class="w-full bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-700 shadow-sm">
         <div class="container mx-auto px-4 py-4 md:py-6 flex flex-col md:flex-row justify-between items-center gap-4">
-<<<<<<< Updated upstream
             <div class="flex items-center gap-4 w-full md:w-auto justify-center md:justify-start group">
                 <div class="w-12 h-12 md:w-16 md:h-16 flex-shrink-0 transform transition-all duration-300 group-hover:scale-105">
                     <img alt="Logo SMK Negeri 1 Kawali" class="w-full h-full object-contain filter drop-shadow-sm rounded-lg"
                         src="{{ asset('beranda/logo smkn.png') }}" alt="Logo SMK">
-=======
-            <div class="flex items-center gap-4 w-full md:w-auto justify-center md:justify-start">
-                <div class="w-12 h-12 md:w-16 md:h-16 flex-shrink-0">
-                    <img alt="Logo SMK Negeri 1 Kawali" class="w-full h-full object-contain filter drop-shadow-sm"
-                   <img src="{{ asset('asset/esemkey.png') }}" alt="Logo SMK">
-
-
->>>>>>> Stashed changes
                 </div>
                 <span class="text-xl md:text-2xl font-semibold tracking-tight text-gray-800 dark:text-white transition-colors duration-300 group-hover:text-blue-600 dark:group-hover:text-blue-400">
                     SMK Negeri 1 Kawali
@@ -161,13 +152,8 @@
                     <a class="hover:text-blue-600 transition-all duration-300 transform hover:-translate-y-0.5 hover:scale-105" href="{{ route('akreditasi') }}">Akreditasi</a>
                     <a class="hover:text-blue-600 transition-all duration-300 transform hover:-translate-y-0.5 hover:scale-105"
                         href="{{ route('ekstrakulikuler') }}">Ekstrakulikuler</a>
-<<<<<<< Updated upstream
                     <a class="hover:text-blue-600 transition-all duration-300 transform hover:-translate-y-0.5 hover:scale-105" href="{{ route('agenda') }}">Agenda</a>
                     <a class="hover:text-blue-600 transition-all duration-300 transform hover:-translate-y-0.5 hover:scale-105" href="{{ route('marketplace') }}">Marketplace</a>
-=======
-                    <a class="hover:text-primary transition-colors" href="{{ route('agenda') }}">Agenda</a>
-                    <a class="hover:text-primary transition-colors" href="{{ route('marketplace') }}">Marketplace</a>
->>>>>>> Stashed changes
                 </div>
 
                 <a class="px-6 py-2 rounded-full bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 hover:scale-105 hover:shadow-lg transition-all duration-300 ease-out relative overflow-hidden group"

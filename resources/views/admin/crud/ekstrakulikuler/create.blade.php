@@ -283,6 +283,25 @@ body {
     background-color: rgba(156, 163, 175, 0.1);
     color: #6b7280;
 }
+
+/* ================= FIELD GROUP STYLING ================= */
+.field-group {
+    position: relative;
+}
+
+.field-icon {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    pointer-events: none;
+    z-index: 10;
+}
+
+.field-with-icon {
+    padding-right: 45px;
+}
 </style>
 
 {{-- OVERLAY --}}
@@ -387,6 +406,25 @@ body {
                               class="form-control @error('deskripsi') is-invalid @enderror"
                               placeholder="Jelaskan secara singkat mengenai ekstrakulikuler ini">{{ old('deskripsi') }}</textarea>
                     @error('deskripsi')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                {{-- PEMBINA (DITAMBAHKAN) --}}
+                <div class="mb-3 field-group">
+                    <label for="pembina" class="form-label">Pembina</label>
+                    <div class="input-group">
+                        <input type="text"
+                               id="pembina"
+                               name="pembina"
+                               class="form-control field-with-icon @error('pembina') is-invalid @enderror"
+                               value="{{ old('pembina') }}"
+                               placeholder="Nama pembina ekstrakulikuler"
+                               required>
+                        <i class="bi bi-person-badge field-icon"></i>
+                    </div>
+                    <small class="text-muted">Masukkan nama lengkap pembina atau guru pendamping ekstrakulikuler</small>
+                    @error('pembina')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>

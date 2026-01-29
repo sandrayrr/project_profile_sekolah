@@ -111,6 +111,7 @@ Route::get('/tenagapengajar', [FrontTenagaPengajarController::class, 'index'])->
 Route::get('/staffkependidikan', [FrontStaffKependidikanController::class, 'index'])->name('staffkependidikan');
 Route::get('/marketplace', [FrontMarketPlaceController::class, 'index'])->name('marketplace');
 
+
 // Jurusan
 Route::get('/pplg', [PplgController::class, 'index'])->name('pplg');
 Route::get('/tjkt', [TjktController::class, 'index'])->name('tjkt');

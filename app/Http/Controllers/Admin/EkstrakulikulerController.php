@@ -1,6 +1,5 @@
 <?php
 
-// app/Http/Controllers/Admin/EkstrakulikulerController.php
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -10,80 +9,93 @@ use Illuminate\Support\Facades\Storage;
 
 class EkstrakulikulerController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
     public function index()
     {
-        $ekstrakulikulers = Ekstrakulikuler::latest()->paginate(6);
+        $ekstrakulikulers = Ekstrakulikuler::latest()->paginate(8);
         return view('admin.crud.ekstrakulikuler.index', compact('ekstrakulikulers'));
     }
 
+    /**
+     * Show the form for creating a new resource.
+     */
     public function create()
     {
         return view('admin.crud.ekstrakulikuler.create');
     }
 
-   public function store(Request $request)
-{
-    $request->validate([
-        'judul' => 'required',
-        'kategori' => 'required',
-        'foto' => 'required|image|mimes:jpg,jpeg,png|max:2048'
-    ]);
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'judul'         => 'required|string|max:255',
+            'kategori'      => 'required|string|max:50',
+            'deskripsi'     => 'required|string',
+            'pembina'       => 'required|string|max:255', // <-- DITAMBAHKAN
+            'foto'          => 'required|image|mimes:jpg,png,jpeg|max:2048',
+        ]);
 
-    $data = $request->only('judul','kategori');
+        if ($request->hasFile('foto')) {
+            $validated['foto'] = $request->file('foto')->store('ekstrakulikuler', 'public');
+        }
 
-    if ($request->hasFile('foto')) {
-        $data['foto'] = $request->file('foto')
-            ->store('ekstrakulikuler', 'public');
+        Ekstrakulikuler::create($validated);
+
+        return redirect()
+            ->route('admin.ekstrakulikuler.index')
+            ->with('success', 'Ekstrakulikuler berhasil ditambahkan');
     }
 
-    // Simpan ke database
-    Ekstrakulikuler::create($data);
-
-    return redirect()->route('admin.ekstrakulikuler.index')
-                     ->with('success', 'Ekstrakulikuler berhasil ditambahkan!');
-}
-
-
+    /**
+     * Show the form for editing the specified resource.
+     */
     public function edit(Ekstrakulikuler $ekstrakulikuler)
     {
         return view('admin.crud.ekstrakulikuler.edit', compact('ekstrakulikuler'));
     }
 
-   public function update(Request $request, Ekstrakulikuler $ekstrakulikuler)
-{
-    $request->validate([
-        'judul'    => 'required|string|max:255',
-        'kategori' => 'required|string',
-        'foto'     => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-    ]);
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, Ekstrakulikuler $ekstrakulikuler)
+    {
+        $validated = $request->validate([
+            'judul'         => 'required|string|max:255',
+            'kategori'      => 'required|string|max:50',
+            'deskripsi'     => 'required|string',
+            'pembina'       => 'required|string|max:255', // <-- DITAMBAHKAN
+            'foto'          => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
+        ]);
 
-    // Update foto jika ada
-    if ($request->hasFile('foto')) {
+        if ($request->hasFile('foto')) {
+            if ($ekstrakulikuler->foto) {
+                Storage::disk('public')->delete($ekstrakulikuler->foto);
+            }
+            $validated['foto'] = $request->file('foto')->store('ekstrakulikuler', 'public');
+        }
+
+        $ekstrakulikuler->update($validated);
+
+        return redirect()
+            ->route('admin.ekstrakulikuler.index')
+            ->with('success', 'Ekstrakulikuler berhasil diupdate');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Ekstrakulikuler $ekstrakulikuler)
+    {
         if ($ekstrakulikuler->foto) {
             Storage::disk('public')->delete($ekstrakulikuler->foto);
         }
 
-        $ekstrakulikuler->foto = $request->file('foto')
-            ->store('ekstrakulikuler', 'public');
-    }
-
-    // Update field lain
-    $ekstrakulikuler->judul    = $request->judul;
-    $ekstrakulikuler->kategori = $request->kategori;
-
-    $ekstrakulikuler->save();
-
-    return redirect()
-        ->route('admin.ekstrakulikuler.index')
-        ->with('success', 'Data berhasil diupdate');
-}
-
-    public function destroy(Ekstrakulikuler $ekstrakulikuler)
-    {
-        Storage::disk('public')->delete($ekstrakulikuler->foto);
         $ekstrakulikuler->delete();
 
-        return back()->with('success','Data berhasil dihapus');
+        return back()->with('success', 'Ekstrakulikuler berhasil dihapus');
     }
 }
-

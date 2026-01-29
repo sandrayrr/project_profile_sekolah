@@ -286,6 +286,22 @@ body {
                     @enderror
                 </div>
 
+                            <div class="mb-3">
+                    <label for="kategori" class="form-label">Kategori</label>
+                    <select name="kategori" id="kategori" class="form-select @error('kategori') is-invalid @enderror" required>
+                        <option value="" disabled>-- Pilih Kategori --</option>
+                        <option value="Elektronik" @selected(old('kategori', $marketplace->kategori) == 'Elektronik')>Elektronik</option>
+                        <option value="Buku" @selected(old('kategori', $marketplace->kategori) == 'Buku')>Buku</option>
+                        <option value="Alat Tulis" @selected(old('kategori', $marketplace->kategori) == 'Alat Tulis')>Alat Tulis</option>
+                        <option value="Seragam" @selected(old('kategori', $marketplace->kategori) == 'Seragam')>Seragam</option>
+                    </select>
+
+                    @error('kategori')
+                        <div class="invalid-feedback d-block">{{ $message }}</div>
+                    @enderror
+                </div>
+
+
                 {{-- HARGA --}}
                 <div class="mb-3">
                     <label for="harga" class="form-label">Harga</label>

@@ -11,6 +11,8 @@ return new class extends Migration {
             $table->id();
             $table->string('judul');
             $table->string('kategori');
+            $table->longText('deskripsi'); 
+            $table->string('pembina');
             $table->string('foto');
             $table->timestamps();
         });

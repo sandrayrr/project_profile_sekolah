@@ -12,6 +12,7 @@ class TenagaPengajar extends Model
     protected $fillable = [
         'nama',
         'pengampu',
+        'status',
         'foto'
     ];
 }

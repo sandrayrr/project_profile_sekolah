@@ -388,6 +388,50 @@
         padding: 1.5rem;
     }
     
+    /* ==================== TAMBAHKAN CSS INI ==================== */
+    /* Category Tabs */
+    .category-tabs-container {
+        background: white;
+        border-radius: 16px;
+        padding: 0 1.5rem;
+        margin-bottom: 1.5rem;
+        box-shadow: var(--shadow-md);
+        overflow-x: auto; /* Untuk scroll horizontal di layar kecil */
+    }
+
+    .category-tabs {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 1rem 0;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .category-tab {
+        padding: 0.5rem 1.25rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: var(--gray-color);
+        cursor: pointer;
+        white-space: nowrap; /* Mencegah teks tab pecah baris */
+        transition: all 0.2s ease;
+        border: 1px solid transparent;
+    }
+
+    .category-tab:hover {
+        background-color: var(--light-gray);
+        color: var(--dark-color);
+    }
+
+    .category-tab.active {
+        background-color: var(--primary-blue);
+        color: white;
+        border-color: var(--primary-blue);
+        box-shadow: var(--shadow-sm);
+    }
+    /* =========================================================== */
+    
     /* Responsive */
     @media (max-width: 768px) {
         .container {
@@ -495,6 +539,24 @@
         </div>
     </div>
 
+    <!-- ==================== TAMBAHKAN HTML INI ==================== -->
+    <!-- TAB KATEGORI -->
+    <div class="category-tabs-container slide-in" style="animation-delay: 0.35s;">
+        <div class="category-tabs">
+            <span class="category-tab active" data-category="all">
+                <i class="bi bi-grid-3x3-gap-fill me-2"></i>Semua
+            </span>
+            @forelse ($categories as $category)
+                <span class="category-tab" data-category="{{ strtolower($category) }}">
+                    {{ $category }}
+                </span>
+            @empty
+                <span class="text-muted">Belum ada kategori</span>
+            @endforelse
+        </div>
+    </div>
+    <!-- =========================================================== -->
+
     <!-- CARD MARKETPLACE -->
     <div class="card-container slide-in" style="animation-delay: 0.4s;">
         <div class="card-header">
@@ -511,7 +573,8 @@
                 <div class="marketplace-card marketplace-item"
                      data-nama="{{ strtolower($item->nama) }}"
                      data-harga="{{ $item->harga }}"
-                     data-tanggal="{{ $item->created_at->format('Y-m-d') }}">
+                     data-tanggal="{{ $item->created_at->format('Y-m-d') }}"
+                     data-kategori="{{ strtolower($item->kategori) }}">  <!-- TAMBAHKAN INI -->
                     
                     @if($item->foto)
                         <img src="{{ asset('storage/'.$item->foto) }}"
@@ -526,6 +589,12 @@
                     
                     <div class="marketplace-body">
                         <h5 class="marketplace-title">{{ $item->nama }}</h5>
+                        
+                        <!-- TAMBAHKAN INI -->
+                        <div class="mb-2">
+                            <span class="badge bg-light text-dark">{{ $item->kategori }}</span>
+                        </div>
+                        <!-- ==================== -->
                         
                         <div class="marketplace-price">
                             Rp {{ number_format($item->harga, 0, ',', '.') }}
@@ -585,32 +654,45 @@
 </div>
 
 <script>
-// Filter dan Sortir
+// Ambil semua elemen yang dibutuhkan
 const searchInput = document.getElementById('searchInput');
 const filterHarga = document.getElementById('filterHarga');
 const sortBy = document.getElementById('sortBy');
+const categoryTabs = document.querySelectorAll('.category-tab');
 
-function applyFilter() {
+// Fungsi utama untuk menerapkan SEMUA filter
+function applyAllFilters() {
     const search = searchInput.value.toLowerCase();
     const hargaFilter = filterHarga.value;
+    const activeCategoryTab = document.querySelector('.category-tab.active');
+    const kategoriFilter = activeCategoryTab ? activeCategoryTab.dataset.category : 'all';
 
     document.querySelectorAll('.marketplace-item').forEach(item => {
         let visible = true;
         const nama = item.dataset.nama;
         const harga = parseFloat(item.dataset.harga);
+        const kategori = item.dataset.kategori;
 
+        // Filter berdasarkan pencarian
         if (search && !nama.includes(search)) visible = false;
         
+        // Filter berdasarkan harga
         if (hargaFilter) {
             if (hargaFilter === 'expensive' && harga <= 1000000) visible = false;
             if (hargaFilter === 'medium' && (harga < 500000 || harga > 1000000)) visible = false;
             if (hargaFilter === 'cheap' && harga >= 500000) visible = false;
         }
 
+        // Filter berdasarkan kategori
+        if (kategoriFilter !== 'all' && kategori !== kategoriFilter) {
+            visible = false;
+        }
+
         item.style.display = visible ? '' : 'none';
     });
 }
 
+// Fungsi untuk sortir
 function applySort() {
     const items = Array.from(document.querySelectorAll('.marketplace-item'));
     const grid = document.getElementById('marketplaceGrid');
@@ -637,15 +719,28 @@ function applySort() {
         }
     });
 
+    // Kembalikan item yang sudah diurutkan ke grid
     items.forEach(item => grid.appendChild(item));
+    
+    // Setelah diurutkan, terapkan filter lagi untuk memastikan yang tersembunyi tetap tersembunyi
+    applyAllFilters();
 }
 
-// Event listeners
-searchInput.addEventListener('input', applyFilter);
-filterHarga.addEventListener('change', applyFilter);
-sortBy.addEventListener('change', () => {
-    applySort();
-    applyFilter();
+// Event Listeners untuk filter
+searchInput.addEventListener('input', applyAllFilters);
+filterHarga.addEventListener('change', applyAllFilters);
+sortBy.addEventListener('change', applySort);
+
+// Event Listener untuk tab kategori
+categoryTabs.forEach(tab => {
+    tab.addEventListener('click', function() {
+        // Hapus class 'active' dari semua tab
+        categoryTabs.forEach(t => t.classList.remove('active'));
+        // Tambahkan class 'active' ke tab yang diklik
+        this.classList.add('active');
+        // Terapkan filter
+        applyAllFilters();
+    });
 });
 
 // Fungsi modal gambar

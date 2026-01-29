@@ -221,6 +221,28 @@ body {
 .btn-loading .btn-text {
     display: none; /* Sembunyikan teks saat loading */
 }
+
+/* ================= STATUS BADGES ================= */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-right: 8px;
+    margin-bottom: 8px;
+}
+
+.status-pns {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: #059669;
+}
+
+.status-honorer {
+    background-color: rgba(245, 158, 11, 0.1);
+    color: #d97706;
+}
 </style>
 
 {{-- OVERLAY --}}
@@ -287,6 +309,34 @@ body {
                            placeholder="Contoh: Matematika atau Kepala Lab Komputer"
                            required>
                     @error('pengampu')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                {{-- STATUS (DITAMBAHKAN) --}}
+                <div class="mb-3">
+                    <label for="status" class="form-label">Status Kepegawaian</label>
+                    <select id="status"
+                            name="status"
+                            class="form-select @error('status') is-invalid @enderror"
+                            required>
+                        <option value="">-- Pilih Status --</option>
+                        <option value="PNS" {{ old('status') == 'PNS' ? 'selected' : '' }}>PNS</option>
+                        <option value="P3K" {{ old('status') == 'P3K' ? 'selected' : '' }}>P3K</option>
+                        <option value="HONORER" {{ old('status') == 'HONORER' ? 'selected' : '' }}>HONORER</option>
+                    </select>
+                    
+                    {{-- STATUS VISUAL GUIDE --}}
+                    <div class="mt-2">
+                        <small class="text-muted">Status yang tersedia:</small>
+                        <div class="mt-1">
+                            <span class="status-badge status-pns">PNS</span>
+                            <span class="status-badge status-pns">P3K</span>
+                            <span class="status-badge status-honorer">HONORER</span>
+                        </div>
+                    </div>
+                    
+                    @error('status')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
