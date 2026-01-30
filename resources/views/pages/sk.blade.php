@@ -134,21 +134,7 @@
 <body class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-100 font-body">
 
     <!-- NAVBAR (Placeholder untuk include) -->
-    <!-- @include('layouts.navbar') -->
-    <nav class="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white font-bold">SP</div>
-                <span class="font-bold text-xl dark:text-white">SMKN 1 Kawali</span>
-            </div>
-            <div class="hidden md:flex gap-6">
-                <a href="#" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium">Beranda</a>
-                <a href="#" class="text-primary font-medium">Jurusan Seni Pertunjukan</a>
-                <a href="#" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium">Berita</a>
-                <a href="#" class="text-gray-600 dark:text-gray-300 hover:text-primary font-medium">Kontak</a>
-            </div>
-        </div>
-    </nav>
+    @include('layouts.navbar')
 
     <!-- HEADER JURUSAN -->
     <header class="bg-gradient-to-br from-primary to-secondary dark:from-gray-700 dark:to-gray-900 py-12">
@@ -822,35 +808,8 @@
     </section>
 
     <!-- FOOTER -->
-    <!-- @include('layouts.footer') -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="container mx-auto px-4 grid md:grid-cols-3 gap-8">
-            <div>
-                <h3 class="text-xl font-bold mb-4">SMKN 1 Kawali</h3>
-                <p class="text-gray-400 text-sm">Membangun karakter seni yang berkualitas dan berdaya saing global.</p>
-            </div>
-            <div>
-                <h3 class="text-lg font-semibold mb-4">Kontak</h3>
-                <ul class="text-sm text-gray-400 space-y-2">
-                    <li>Jl. Kawali-Ciamis KM.5</li>
-                    <li>info@smkn1kawali.sch.id</li>
-                    <li>(0265) 123456</li>
-                </ul>
-            </div>
-            <div>
-                <h3 class="text-lg font-semibold mb-4">Sosial Media</h3>
-                <div class="flex gap-4">
-                    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook fa-lg"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram fa-lg"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-youtube fa-lg"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="text-center text-gray-500 text-sm mt-8 pt-8 border-t border-gray-800">
-            &copy; 2023 SMKN 1 Kawali. All rights reserved.
-        </div>
-    </footer>
-
+     @include('layouts.footer')
+  
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // Tab functionality

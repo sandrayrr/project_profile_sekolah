@@ -635,47 +635,7 @@
             </section>
         </div>
     </main>
-  @include('layouts.footer')
-    {{-- <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="footer-logo">
-                        <img src="https://z-cdn-media.chatglm.cn/files/9d0ca30d-954f-4e5f-bf66-bfb4a115ecfc.png?auth_key=1868371606-21df551d97db4bbbadc671626e9e83a6-0-e0a0e057a73f58e5763d4379b3963b1" alt="Logo SMKN 1 Kawali">
-                    </div>
-                    <h3>SMKN 1 KAWALI</h3>
-                    <p>Marketplace resmi yang dikelola siswa untuk memenuhi kebutuhan belajar mengajar dengan cara yang praktis dan terpercaya.</p>
-                    <div class="social-links mt-4">
-                        <a href="#"><i class="bi bi-facebook"></i></a>
-                        <a href="#"><i class="bi bi-instagram"></i></a>
-                        <a href="#"><i class="bi bi-youtube"></i></a>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <h4>Navigasi</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">Beranda</a></li>
-                        <li><a href="#">Katalog Produk</a></li>
-                        <li><a href="#">Tentang Kami</a></li>
-                        <li><a href="#">Hubungi Admin</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <h4>Hubungi Kami</h4>
-                    <ul class="footer-links">
-                        <li><i class="bi bi-geo-alt me-2 text-primary"></i> Jl. Pendidikan No. 1, Kawali, Ciamis</li>
-                        <li><i class="bi bi-telephone me-2 text-primary"></i> (0265) 123456</li>
-                        <li><i class="bi bi-envelope me-2 text-primary"></i> info@smkn1kawali.sch.id</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p class="m-0">&copy; 2024 SMKN 1 Kawali. Dibuat dengan ❤️ oleh Tim IT.</p>
-            </div>
-        </div>
-    </footer> --}}
-
+  
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         // Filter buttons interaction

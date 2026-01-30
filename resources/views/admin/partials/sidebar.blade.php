@@ -307,7 +307,52 @@
         box-shadow: var(--shadow-sm);
         animation: pulse 2s infinite;
     }
+/* Loading spinner */
+.loading-spinner {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
 
+.loading-spinner.active {
+    display: flex;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid var(--primary-blue);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Page content animation */
+.page-content {
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Update nav-link cursor style */
+.nav-link {
+    cursor: pointer;
+}
     /* Animasi untuk menu */
     @keyframes slideIn {
         from {
@@ -464,3 +509,144 @@
 {{-- Cari elemen utama yang membungkus @yield('content') dan tambahkan style margin-left: 260px; --}}
 
 {{-- Contoh: <div class="content-wrapper p-4" style="margin-left: 260px;"> @yield('content') </div> --}}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    // Get all navigation links
+    const navLinks = document.querySelectorAll('.nav-link[data-url]');
+    const loadingSpinner = document.getElementById('loadingSpinner');
+    const mainContent = document.querySelector('.content-wrapper') || document.querySelector('main');
+    
+    // Add click event listener to each navigation link
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Get the URL from the data-url attribute
+            const url = this.getAttribute('data-url');
+            
+            // Show loading spinner
+            loadingSpinner.classList.add('active');
+            
+            // Make AJAX request to get the page content
+            fetch(url, {
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'Accept': 'text/html',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content')
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(html => {
+                // Create a temporary DOM element to parse the response
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = html;
+                
+                // Extract the main content from the response
+                const newContent = tempDiv.querySelector('.content-wrapper') || 
+                                 tempDiv.querySelector('main') || 
+                                 tempDiv.querySelector('#pageContent') ||
+                                 tempDiv.querySelector('.container') ||
+                                 tempDiv.querySelector('body');
+                
+                if (newContent && mainContent) {
+                    // Replace the current content with the new content
+                    mainContent.innerHTML = newContent.innerHTML;
+                    
+                    // Update the active state of navigation links
+                    navLinks.forEach(navLink => {
+                        navLink.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                    
+                    // Update the URL in the browser's history
+                    history.pushState({url: url}, '', url);
+                    
+                    // Reinitialize any JavaScript that might be needed for the new content
+                    initializePageScripts();
+                    
+                    // Scroll to top
+                    window.scrollTo(0, 0);
+                }
+                
+                // Hide loading spinner
+                loadingSpinner.classList.remove('active');
+            })
+            .catch(error => {
+                console.error('Error loading page:', error);
+                
+                // Hide loading spinner
+                loadingSpinner.classList.remove('active');
+                
+                // Show error message
+                if (mainContent) {
+                    mainContent.innerHTML = '<div class="alert alert-danger" style="padding: 15px; background-color: #f8d7da; border: 1px solid #f5c6cb; border-radius: 4px; color: #721c24;"><strong>Error:</strong> Failed to load page. Please try again.<br><small>' + error.message + '</small></div>';
+                }
+            });
+        });
+    });
+    
+    // Handle browser back/forward buttons
+    window.addEventListener('popstate', function(e) {
+        if (e.state && e.state.url) {
+            // Reload the page when using browser back/forward buttons
+            window.location.href = e.state.url;
+        }
+    });
+    
+    // Function to initialize page-specific scripts
+    function initializePageScripts() {
+        // Reinitialize tab functionality
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabPanes = document.querySelectorAll('.tab-pane');
+        
+        if (tabBtns.length > 0 && tabPanes.length > 0) {
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Remove active class from all tabs and panes
+                    tabBtns.forEach(tab => tab.classList.remove('tab-active'));
+                    tabPanes.forEach(pane => pane.classList.add('hidden'));
+                    
+                    // Add active class to clicked tab and show corresponding pane
+                    this.classList.add('tab-active');
+                    document.getElementById(tabId).classList.remove('hidden');
+                });
+            });
+        }
+        
+        // Reinitialize form submissions
+        const forms = document.querySelectorAll('form');
+        forms.forEach(form => {
+            // Skip the logout form
+            if (form.id === 'logout-form') return;
+            
+            form.addEventListener('submit', function(e) {
+                // Let forms submit normally for now
+                // You can add AJAX form handling here if needed
+            });
+        });
+        
+        // Reinitialize modal functionality if you have modals
+        const modalTriggers = document.querySelectorAll('[data-bs-toggle="modal"]');
+        modalTriggers.forEach(trigger => {
+            // Reinitialize Bootstrap modals or your custom modal logic
+        });
+        
+        // Reinitialize data tables if you use them
+        if (typeof $ !== 'undefined' && typeof $.fn.DataTable !== 'undefined') {
+            $('.datatable').DataTable();
+        }
+        
+        // Add any other page-specific initializations here
+    }
+    
+    // Initialize page scripts on initial load
+    initializePageScripts();
+});
+</script>

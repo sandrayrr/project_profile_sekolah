@@ -196,7 +196,7 @@
                     <div class="flex items-center justify-between">
                         <div>
                             <p class="text-gray-500 dark:text-gray-400 text-sm">Program Keahlian</p>
-                            <p class="text-3xl font-bold text-gray-900 dark:text-white">6</p>
+                            <p class="text-3xl font-bold text-gray-900 dark:text-white">7</p>
                         </div>
                         <div class="w-12 h-12 bg-primary/10 dark:bg-primary/20 rounded-full flex items-center justify-center">
                             <i class="fas fa-code text-primary"></i>
@@ -208,7 +208,7 @@
                     <div class="flex items-center justify-between">
                         <div>
                             <p class="text-gray-500 dark:text-gray-400 text-sm">Tahun Berdiri</p>
-                            <p class="text-3xl font-bold text-gray-900 dark:text-white">2005</p>
+                            <p class="text-3xl font-bold text-gray-900 dark:text-white">2004</p>
                         </div>
                         <div class="w-12 h-12 bg-primary/10 dark:bg-primary/20 rounded-full flex items-center justify-center">
                             <i class="fas fa-calendar-alt text-primary"></i>
@@ -225,16 +225,11 @@
                     <div class="w-10 h-10 bg-primary/10 dark:bg-primary/20 rounded-full flex items-center justify-center mr-3">
                         <i class="fas fa-history text-primary"></i>
                     </div>
-                    Sejarah Singkat
+                    Profil
                 </h2>
                 <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
-                    SMK Negeri 1 Kawali didirikan pada tahun 2005 sebagai respons terhadap kebutuhan akan tenaga kerja terampil di Kabupaten Ciamis dan sekitarnya. Sekolah ini memulai perjalanannya dengan hanya 3 program keahlian dan 150 siswa.
-                </p>
-                <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
-                    Seiring berjalannya waktu, SMK Negeri 1 Kawali terus berkembang dan menambah berbagai program keahlian yang relevan dengan kebutuhan industri. Pada tahun 2010, sekolah ini meraih akreditasi A dan menjadi salah satu SMK favorit di Jawa Barat.
-                </p>
-                <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-                    Hingga kini, SMK Negeri 1 Kawali terus berkomitmen untuk menghasilkan lulusan yang siap kerja, berkarakter, dan mampu bersaing di era globalisasi dengan didukung oleh fasilitas modern dan tenaga pendidik yang profesional.
+                    SMKN 1 Kawali adalah salah satu Sekolah Menengah Kejuruan Negeri yang berlokasi di wilayah Ciamis Utara dan berdiri sejak tahun 2004. Pada awal berdirinya, sekolah ini hanya memiliki satu Kompetensi Keahlian, yaitu Teknik Mesin Otomotif (TMO). Seiring berjalannya waktu, SMKN 1 Kawali terus berkembang hingga kini memiliki tujuh Kompetensi Keahlian, yaitu Teknik Otomotif (Teknik Otomotif), Teknik Jaringan Komputer dan Telekomunikasi (TJKT), Pengembangan Perangkat Lunak dan GIM (PPLG), Desain Pemodelan dan Informasi Bangunan (DPIB), Manajemen Perkantoran dan Layanan Bisnis(MP), Akuntansi Keuangan dan Lembaga (AKL), serta Seni Pertunjukan (SP).
+Jumlah peserta didik yang pada awalnya hanya 18 siswa kini telah meningkat pesat menjadi lebih dari 1.600 lebih siswa dan siswi SMKN 1 Kawali, yang berasal dari wilayah Ciamis Utara dan daerah lainnya.
                 </p>
             </div>
         </div>
@@ -249,8 +244,7 @@
                     Visi
                 </h3>
                 <p class="text-gray-600 dark:text-gray-300">
-                    Terwujudnya SMK Negeri 1 Kawali sebagai sekolah kejuruan unggulan
-                    yang berdaya saing nasional dan global.
+                    Terwujudnya lulusan yang berakhlak mulia, unggul, profesional, mandiri dan berdaya saig global pada tahun 2026.
                 </p>
             </div>
 
@@ -262,10 +256,11 @@
                     Misi
                 </h3>
                 <ul class="text-gray-600 dark:text-gray-300 list-disc list-inside space-y-2 text-left max-w-sm mx-auto">
-                    <li>Menyelenggarakan pendidikan berbasis teknologi</li>
-                    <li>Membentuk karakter siswa yang unggul</li>
-                    <li>Memperkuat kerja sama industri</li>
-                    <li>Mendorong jiwa kewirausahaan</li>
+                    <li>Membentuk insan yang beriman dan bertaqwa kepada Tuhan Yang Maha Esa, berkarakter pancasila dan berbudaya industri. </li>
+                    <li>Meningkatkan kualitas tata kelola kelembagaan sekolah, sumber daya manusia, dan akuntabilitas. </li>
+                    <li>Meningkatkan layanan pendidikan melalui pembelajaran berbasis industri dan teknologi informasi. </li>
+                    <li>Meningkatkan kerjasama kemitraan, penyerapan lulusan dengan IDUKA, Perguruan Tinggi, dan Lembaga Pemerintahan serta membangun jiwa wirausaha yang tangguh dan mandiri. </li>
+                    <li>Meningkatkan kualitas SDM, Menyediakan sarana dan prasarana yang berkualitas, dan menyajikan proses pembelajaran bermutu, menuju link and match dengan IDUKA. </li>
                 </ul>
             </div>
         </div>
@@ -273,55 +268,55 @@
         <!-- PROGRAM KEAHLIAN -->
         <div class="mb-16 animate-fade-in" style="animation-delay: 0.8s">
             <h2 class="text-3xl font-bold mb-8 text-gray-900 dark:text-white text-center">
-                Program Keahlian
+                Sejarah Program Keahlian
             </h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div class="feature-card bg-card-light dark:bg-card-dark rounded-xl border border-border-light dark:border-border-dark p-6">
                     <div class="w-14 h-14 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center mb-4">
                         <i class="fas fa-laptop-code text-primary text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Rekayasa Perangkat Lunak</h3>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm">Mempelajari pemrograman, pengembangan aplikasi, dan sistem informasi.</p>
+                    <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Pembukaan SMKN 1 Kawali</h3>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm">Dibuka pada 2 Oktober Tahun 2004</p>
                 </div>
                 
                 <div class="feature-card bg-card-light dark:bg-card-dark rounded-xl border border-border-light dark:border-border-dark p-6">
                     <div class="w-14 h-14 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center mb-4">
                         <i class="fas fa-network-wired text-primary text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Teknik Komputer dan Jaringan</h3>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm">Fokus pada instalasi jaringan, troubleshooting, dan administrasi sistem.</p>
+                    <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Pembukaan Jurusan TO</h3>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm">Dibuka pada 14 Oktober 2003/p>
                 </div>
                 
                 <div class="feature-card bg-card-light dark:bg-card-dark rounded-xl border border-border-light dark:border-border-dark p-6">
                     <div class="w-14 h-14 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center mb-4">
                         <i class="fas fa-bullhorn text-primary text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Multimedia</h3>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm">Mempelajari desain grafis, animasi, video editing, dan pengembangan konten digital.</p>
+                    <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Pembukaan Jurusan TJKT</h3>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm">Dibuka pada 31 Desember 2003</p>
                 </div>
                 
                 <div class="feature-card bg-card-light dark:bg-card-dark rounded-xl border border-border-light dark:border-border-dark p-6">
                     <div class="w-14 h-14 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center mb-4">
                         <i class="fas fa-cogs text-primary text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Teknik Mesin</h3>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm">Mempelajari permesinan, perawatan, dan perbaikan berbagai jenis mesin industri.</p>
+                    <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Pembukaan Jurusan PPLG</h3>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm">Dibuka 13 Oktober 2009</p>
                 </div>
                 
                 <div class="feature-card bg-card-light dark:bg-card-dark rounded-xl border border-border-light dark:border-border-dark p-6">
                     <div class="w-14 h-14 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center mb-4">
                         <i class="fas fa-bolt text-primary text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Teknik Instalasi Tenaga Listrik</h3>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm">Fokus pada instalasi, perawatan, dan perbaikan sistem tenaga listrik.</p>
+                    <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Pembukaan Jurusan AKL</h3>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm">Dibuka pada 13 Oktober 2015</p>
                 </div>
                 
                 <div class="feature-card bg-card-light dark:bg-card-dark rounded-xl border border-border-light dark:border-border-dark p-6">
                     <div class="w-14 h-14 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center mb-4">
                         <i class="fas fa-car text-primary text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Teknik Kendaraan Ringan</h3>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm">Mempelajari perawatan dan perbaikan sistem kelistrikan dan mesin kendaraan.</p>
+                    <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Pembukaan Jurusan DPIB</h3>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm">Dibuka pada 13 Oktober 2015</p>
                 </div>
             </div>
         </div>

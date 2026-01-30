@@ -1,10 +1,138 @@
-@extends('layouts.home')
+<!DOCTYPE html>
+<html lang="id">
 
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Informasi Jurusan DPIB - SMKN 1 Kawali</title>
 
-@section('content')
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/global.css">
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#8b5cf6",
+                        secondary: "#ec4899",
+                        "background-light": "#f9fafb",
+                        "background-dark": "#111827",
+                        "card-light": "#ffffff",
+                        "card-dark": "#1f2937",
+                        "border-light": "#e5e7eb",
+                        "border-dark": "#374151",
+                    },
+                    fontFamily: {
+                        body: ["Inter", "sans-serif"],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.6s ease-out',
+                        'float': 'float 3s ease-in-out infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                            '100%': { transform: 'translateY(0px)' },
+                        }
+                    }
+                },
+            },
+        };
+    </script>
 
+    <style>
+        .tab-active {
+            border-bottom: 3px solid #8b5cf6;
+            color: #8b5cf6;
+        }
+
+        .org-chart {
+            position: relative;
+        }
+
+        .org-chart::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #e5e7eb;
+            z-index: 0;
+        }
+
+        .dark .org-chart::before {
+            background-color: #374151;
+        }
+
+        .org-chart-item {
+            position: relative;
+            z-index: 1;
+        }
+
+        .org-chart-item::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 2px;
+            height: 30px;
+            background-color: #e5e7eb;
+            transform: translate(-50%, -100%);
+        }
+
+        .dark .org-chart-item::before {
+            background-color: #374151;
+        }
+
+        .org-chart-item:last-child::before {
+            display: none;
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .dark .card-hover:hover {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .info-section {
+            border-left: 4px solid #8b5cf6;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 8px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #8b5cf6;
+        }
+    </style>
+</head>
 
 <body class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-100 font-body">
+
+   @include('layouts.navbar')
+
     <!-- HEADER JURUSAN -->
     <header class="bg-gradient-to-br from-primary to-secondary dark:from-gray-700 dark:to-gray-900 py-12">
         <div class="container mx-auto px-4">
@@ -46,6 +174,31 @@
     <!-- INFORMASI JURUSAN -->
     <main class="py-12">
         <div class="container mx-auto px-4">
+            <!-- QUICK INFO -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="bg-gradient-to-r from-purple-500 to-purple-600 rounded-xl p-6 text-white card-hover">
+                    <div class="flex items-center mb-4">
+                        <span class="material-icons text-3xl mr-3">architecture</span>
+                        <h3 class="text-xl font-semibold">Desain Bangunan</h3>
+                    </div>
+                    <p class="text-white text-opacity-90">Mempelajari prinsip desain arsitektur dan interior yang modern dan fungsional</p>
+                </div>
+                <div class="bg-gradient-to-r from-pink-500 to-pink-600 rounded-xl p-6 text-white card-hover">
+                    <div class="flex items-center mb-4">
+                        <span class="material-icons text-3xl mr-3">view_in_ar</span>
+                        <h3 class="text-xl font-semibold">Modeling 3D</h3>
+                    </div>
+                    <p class="text-white text-opacity-90">Membuat model bangunan 3D yang realistis dengan software profesional</p>
+                </div>
+                <div class="bg-gradient-to-r from-indigo-500 to-indigo-600 rounded-xl p-6 text-white card-hover">
+                    <div class="flex items-center mb-4">
+                        <span class="material-icons text-3xl mr-3">integration_instructions</span>
+                        <h3 class="text-xl font-semibold">BIM Technology</h3>
+                    </div>
+                    <p class="text-white text-opacity-90">Menerapkan teknologi Building Information Modeling untuk konstruksi digital</p>
+                </div>
+            </div>
+
             <!-- TABS -->
             <div class="flex flex-wrap justify-center mb-8 border-b border-gray-200 dark:border-gray-700">
                 <button
@@ -585,7 +738,7 @@
                             </div>
                         </div>
 
-                        <div class="p-6 bg-teal-50 dark:bg-teal-900 dark:bg-opacity-20 rounded-xl">
+                        <div class="p-6 bg-purple-50 dark:bg-purple-900 dark:bg-opacity-20 rounded-xl">
                             <h4 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Peluang Karir</h4>
                             <p class="text-gray-700 dark:text-gray-300 mb-6">Lulusan DPIB memiliki keterampilan yang
                                 sangat dicari di industri properti dan konstruksi:</p>
@@ -883,6 +1036,53 @@
         </div>
     </section>
 
+    <!-- PRESTASI -->
+    <section class="py-12 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-gray-800 dark:to-gray-900">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl md:text-3xl font-bold text-center mb-8 text-gray-900 dark:text-white">
+                Prestasi Jurusan
+            </h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-yellow-100 dark:bg-yellow-900 rounded-full flex items-center justify-center mr-4">
+                            <span class="material-icons text-yellow-600 dark:text-yellow-400">emoji_events</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-900 dark:text-white">Juara 1 Kompetisi Desain</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Tingkat Provinsi 2023</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 text-sm">Tim dari jurusan DPIB berhasil meraih juara pertama dalam kompetisi desain bangunan berkelanjutan tingkat provinsi Jawa Barat.</p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-yellow-100 dark:bg-yellow-900 rounded-full flex items-center justify-center mr-4">
+                            <span class="material-icons text-yellow-600 dark:text-yellow-400">emoji_events</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-900 dark:text-white">Best BIM Implementation</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">National Architecture Week 2023</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 text-sm">Proyek BIM siswa DPIB mendapatkan penghargaan implementasi BIM terbaik dalam pameran arsitektur nasional.</p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-yellow-100 dark:bg-yellow-900 rounded-full flex items-center justify-center mr-4">
+                            <span class="material-icons text-yellow-600 dark:text-yellow-400">emoji_events</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-900 dark:text-white">Finalis LKS Tingkat Nasional</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Kategori Teknik Gambar Bangunan 2023</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 text-sm">Siswa DPIB berhasil menjadi finalis dalam Lomba Kompetensi Siswa (LKS) tingkat nasional untuk kategori Teknik Gambar Bangunan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ALUMNI -->
     <section class="py-12 bg-white dark:bg-gray-800">
         <div class="container mx-auto px-4">
@@ -935,6 +1135,9 @@
             </div>
         </div>
     </section>
+
+    <!-- FOOTER -->
+   @include('layouts.footer')
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // Tab functionality
@@ -959,4 +1162,3 @@
 </body>
 
 </html>
-@endsection

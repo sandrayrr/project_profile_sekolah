@@ -10,11 +10,12 @@ class Ekstrakulikuler extends Model
 {
     use HasFactory;
 
-    protected $fillable = 
-    ['judul', 
-     'kategori',
-     'deskripsi',
-     'pembina',
-     'foto'
-    ];
+  protected $fillable = [
+    'judul',
+    'kategori',
+    'deskripsi',
+    'pembina',
+    'foto'
+];
+
 }
