@@ -110,6 +110,25 @@
         .dark ::-webkit-scrollbar-thumb {
             background: #6b7280;
         }
+        
+        /* Staff card hover effect */
+        .staff-image-container {
+            position: relative;
+            overflow: hidden;
+        }
+        .staff-image-container .overlay {
+            background: linear-gradient(to top, rgba(37, 99, 235, 0.8) 0%, rgba(37, 99, 235, 0) 60%);
+        }
+        .staff-card:hover .overlay {
+            opacity: 1;
+        }
+        .overlay-text {
+            transform: translateY(10px);
+            transition: transform 0.3s ease;
+        }
+        .staff-card:hover .overlay-text {
+            transform: translateY(0);
+        }
     </style>
 </head>
 
@@ -185,7 +204,7 @@
 
         {{-- GRID --}}
         <div
-            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4
+            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4
                    gap-8 mb-12">
 
             @forelse ($staff as $index => $item)
@@ -194,11 +213,11 @@
                            rounded-2xl
                            border border-border-light dark:border-border-dark
                            overflow-hidden group animate-fade-in"
-                    style="animation-delay: {{ $index * 0.1 }}s">
+                    style="animation-delay: {{ $index * 0.1 + 0.4 }}s">
 
                     {{-- FOTO --}}
                     <div
-                        class="aspect-[3/4] bg-gray-200 dark:bg-gray-700
+                        class="staff-image-container h-64 bg-gray-200 dark:bg-gray-700
                                relative overflow-hidden cursor-pointer"
                         onclick="openModal({{ $index }})">
 
@@ -220,7 +239,7 @@
                                    opacity-0 group-hover:opacity-100
                                    transition-opacity duration-300
                                    flex items-end p-4">
-                            <div class="text-white">
+                            <div class="overlay-text text-white">
                                 <p class="font-semibold">{{ $item->nama }}</p>
                                 <p class="text-sm opacity-90">
                                     {{ $item->jabatan }}
@@ -230,13 +249,12 @@
                     </div>
 
                     {{-- BODY --}}
-                    <div class="p-5 text-center">
+                    <div class="p-6">
                         <h3
-                            class="text-lg font-bold
-                                   text-gray-900 dark:text-white mb-1">
+                            class="font-semibold text-lg group-hover:text-primary transition text-center">
                             {{ $item->nama }}
                         </h3>
-                        <p class="text-sm text-gray-500 dark:text-gray-400">
+                        <p class="text-sm text-gray-500 dark:text-gray-400 text-center">
                             {{ $item->jabatan }}
                         </p>
                     </div>

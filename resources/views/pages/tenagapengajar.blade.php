@@ -166,7 +166,7 @@
                 Tenaga Pengajar
             </h1>
             <p class="text-gray-100 text-lg md:text-xl max-w-2xl animate-fade-in" style="animation-delay: 0.2s">
-                Daftar tenaga pendidik dan kependidikan SMK Negeri 1 Kawali.
+                Daftar Tenaga Pengajar dan kependidikan SMK Negeri 1 Kawali.
             </p>
         </div>
     </div>

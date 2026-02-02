@@ -155,6 +155,42 @@
         .dark ::-webkit-scrollbar-thumb:hover {
             background: #6b7280;
         }
+        
+        /* Line clamp utility */
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .line-clamp-3 {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        /* Modal scrollbar styling */
+        .modal-content::-webkit-scrollbar {
+            width: 6px;
+        }
+        .modal-content::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .modal-content::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 3px;
+        }
+        .modal-content::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        .dark .modal-content::-webkit-scrollbar-thumb {
+            background: #475569;
+        }
+        .dark .modal-content::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
     </style>
 </head>
 
@@ -228,7 +264,7 @@
             <!-- ARTIKEL GRID -->
             <div class="lg:col-span-2">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    @forelse ($artikels as $item)
+                    @forelse ($artikels as $index => $item)
                     <div class="block group">
                         <div
                             class="artikel-card bg-card-light dark:bg-card-dark 
@@ -254,7 +290,7 @@
                                     <div class="overlay-text text-white">
                                         <button 
                                             class="font-semibold text-lg bg-primary/70 hover:bg-primary/90 px-4 py-2 rounded-lg transition-colors"
-                                            onclick="openModal({{ $item->id }}, '{{ $item->judul }}', '{{ asset('storage/' . $item->foto) }}', '{{ $item->deskripsi }}', '{{ \Carbon\Carbon::parse($item->tanggal)->format('d M Y') }}')">
+                                            onclick="openModal({{ $index }})">
                                             Baca Selengkapnya
                                         </button>
                                         <p class="text-sm opacity-90 mt-2">{{ \Carbon\Carbon::parse($item->tanggal)->format('d M Y') }}</p>
@@ -371,11 +407,9 @@
                             {{ $item->judul }}
                         </h4>
 
-                                <div class="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1">
-                                    <i class="material-icons text-[10px]">access_time</i>
-                                    {{ \Carbon\Carbon::parse($item->tanggal)->diffForHumans() }}
-                                </div>
-                            </div>
+                        <div class="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1">
+                            <i class="material-icons text-[10px]">access_time</i>
+                            {{ \Carbon\Carbon::parse($item->tanggal)->diffForHumans() }}
                         </div>
                     </a>
                 </li>
@@ -387,12 +421,6 @@
             @endforelse
         </ul>
     </div>
-        <!-- PAGINATION -->
-        @if(isset($galeri) && method_exists($galeri, 'links') && $galeri->hasPages())
-        <div class="flex justify-center mt-10">
-            {{ $galeri->links() }}
-        </div>
-        @endif
 </aside>
 
         </div>
@@ -415,7 +443,67 @@
         <i class="fa-solid fa-arrow-up"></i>
     </button>
 
+    <!-- ARTIKEL MODAL -->
+    <div id="artikelModal" class="fixed inset-0 z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <!-- Backdrop -->
+            <div class="fixed inset-0 bg-black/70 backdrop-blur-sm" onclick="closeModal()"></div>
+            
+            <!-- Modal Container -->
+            <div class="relative bg-white dark:bg-gray-800 rounded-lg shadow-2xl max-w-4xl w-full max-h-[90vh] flex flex-col z-10">
+                <!-- Modal Header with Close Button -->
+                <div class="absolute top-4 right-4 z-20">
+                    <button onclick="closeModal()" class="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white p-2 rounded-full shadow-lg transition-all">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                
+                <!-- Scrollable Content Area -->
+                <div class="modal-content overflow-y-auto max-h-[90vh]">
+                    <!-- Image Section -->
+                    <div id="modalImageContainer" class="relative w-full">
+                        <img id="modalImageElement" src="" alt="" class="w-full h-auto object-contain">
+                        <!-- Gradient overlay for better text visibility -->
+                        <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/50 to-transparent pointer-events-none"></div>
+                    </div>
+                    
+                    <!-- Content Section -->
+                    <div class="px-6 py-6">
+                        <h3 id="modalTitle" class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-3"></h3>
+                        <p id="modalDate" class="text-sm text-gray-500 dark:text-gray-400 mb-6 flex items-center">
+                            <i class="far fa-calendar-alt mr-2"></i>
+                            <span></span>
+                        </p>
+                        <div id="modalContent" class="prose prose-sm md:prose-base max-w-none dark:prose-invert prose-headings:text-gray-900 dark:prose-headings:text-white prose-p:text-gray-700 dark:prose-p:text-gray-300"></div>
+                    </div>
+                </div>
+                
+                <!-- Fixed Footer -->
+                <div class="bg-gray-50 dark:bg-gray-700/90 backdrop-blur-sm px-6 py-4 border-t border-gray-200 dark:border-gray-600">
+                    <div class="flex justify-end">
+                        <button onclick="closeModal()" class="bg-gray-300 hover:bg-gray-400 dark:bg-gray-600 dark:hover:bg-gray-500 text-gray-800 dark:text-white font-medium py-2 px-6 rounded-lg transition-colors">
+                            Tutup
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
+        // Store artikel data in JavaScript array
+        const artikelData = [
+            @foreach ($artikels as $item)
+            {
+                id: {{ $item->id }},
+                judul: "{{ $item->judul }}",
+                foto: "{{ $item->foto ? asset('storage/' . $item->foto) : '' }}",
+                deskripsi: @json($item->deskripsi),
+                tanggal: "{{ \Carbon\Carbon::parse($item->tanggal)->format('d M Y') }}"
+            },
+            @endforeach
+        ];
+        
         // Dark mode toggle
         const toggle = document.getElementById('darkToggle');
         const html = document.documentElement;
@@ -444,13 +532,91 @@
             });
         });
         
-       
+        // Back to top button
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.add('opacity-0', 'invisible');
+                backToTopButton.classList.remove('opacity-100', 'visible');
+            }
+        });
         
         backToTopButton.addEventListener('click', () => {
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
             });
+        });
+        
+        // Modal functions
+        function openModal(index) {
+            const modal = document.getElementById('artikelModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalImage = document.getElementById('modalImageElement');
+            const modalImageContainer = document.getElementById('modalImageContainer');
+            const modalContent = document.getElementById('modalContent');
+            const modalDate = document.getElementById('modalDate');
+            
+            const artikel = artikelData[index];
+            
+            modalTitle.textContent = artikel.judul;
+            modalDate.querySelector('span').textContent = artikel.tanggal;
+            
+            if (artikel.foto) {
+                modalImage.src = artikel.foto;
+                modalImageContainer.style.display = 'block';
+                // Preload image to get natural dimensions
+                const img = new Image();
+                img.onload = function() {
+                    // Set max height based on viewport
+                    const maxHeight = window.innerHeight * 0.5; // 50% of viewport height
+                    if (this.naturalHeight > maxHeight) {
+                        modalImage.style.maxHeight = maxHeight + 'px';
+                        modalImage.style.width = 'auto';
+                    } else {
+                        modalImage.style.maxHeight = 'none';
+                        modalImage.style.width = '100%';
+                    }
+                };
+                img.src = artikel.foto;
+            } else {
+                modalImageContainer.style.display = 'none';
+            }
+            
+            modalContent.innerHTML = artikel.deskripsi;
+            
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            
+            // Scroll to top of modal content
+            const modalContentArea = document.querySelector('.modal-content');
+            modalContentArea.scrollTop = 0;
+        }
+        
+        function closeModal() {
+            const modal = document.getElementById('artikelModal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close modal with ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+        
+        // Prevent modal content from closing when clicking inside
+        document.getElementById('artikelModal').addEventListener('click', function(e) {
+            if (e.target === this || e.target.classList.contains('modal-content')) {
+                // Allow closing when clicking on backdrop or content area
+                return;
+            }
+            e.stopPropagation();
         });
     </script>
 

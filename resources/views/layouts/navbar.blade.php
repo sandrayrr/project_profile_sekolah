@@ -117,7 +117,7 @@
                         <button
                             class="flex items-center gap-1 px-3 py-2 rounded-md hover:text-blue-600 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300">
                           <a class="px-3 py-2 rounded-md hover:text-blue-600 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300"
-                                href="{{ route('jurusan') }}">jurusan</a>
+                                href="{{ route('jurusan') }}">Jurusan</a>
                             <i
                                 class="fa-solid fa-chevron-down text-xs opacity-50 transition-all duration-300 group-hover:rotate-180 group-hover:opacity-100"></i>
                         </button>
@@ -139,7 +139,7 @@
 
                             <a href="{{ route('pplg') }}"
                                 class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 hover:translate-x-1 transition-all duration-200 whitespace-nowrap">
-                                Pengembangan Perangkat Lunak Dan Game
+                                Pengembangan Perangkat Lunak Dan Gim
                             </a>
 
                             <a href="{{ route('akl') }}"
