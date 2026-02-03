@@ -475,7 +475,6 @@
         margin-bottom: 1.5rem;
     }
     
-    /* Tombol tambah fasilitas yang lebih kecil di empty state */
     .empty-state .btn-primary {
         padding: 0.35rem 0.7rem;
         font-size: 0.7rem;

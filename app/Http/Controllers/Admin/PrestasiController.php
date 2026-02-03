@@ -48,7 +48,8 @@ class PrestasiController extends Controller
 
     public function store(Request $request)
     {
-        $validated = $request->validate([
+        // Aturan validasi
+        $rules = [
             'judul'         => 'required|string|max:255',
             'nama'          => 'required|string|max:255', // Field nama ditambahkan
             'deskripsi'     => 'nullable|string',
@@ -60,7 +61,37 @@ class PrestasiController extends Controller
             'penyelenggara' => 'nullable|string|max:100',
             'tanggal'       => 'required|date',
             'foto'          => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
-        ]);
+        ];
+
+        // Pesan error kustom dalam Bahasa Indonesia
+        $customMessages = [
+            'required' => ':attribute harus diisi.',
+            'string'   => ':attribute harus berupa teks.',
+            'max'      => [
+                'string' => ':attribute tidak boleh lebih dari :max karakter.',
+                'file'   => 'Ukuran :attribute tidak boleh lebih dari :max kilobyte.',
+            ],
+            'date'     => ':attribute bukan tanggal yang valid.',
+            'image'    => 'File yang diunggah untuk :attribute harus berupa gambar.',
+            'mimes'    => ':attribute harus berformat: :values.',
+        ];
+
+        // Nama atribut yang akan ditampilkan di pesan error
+        $customAttributes = [
+            'judul'         => 'Judul Prestasi',
+            'deskripsi'     => 'Deskripsi',
+            'kelas_input'   => 'Kelas',
+            'jurusan'       => 'Jurusan',
+            'subkelas'      => 'Sub Kelas',
+            'juara'         => 'Peringkat/Juara',
+            'tingkat'       => 'Tingkat Kompetisi',
+            'penyelenggara' => 'Penyelenggara',
+            'tanggal'       => 'Tanggal Prestasi',
+            'foto'          => 'Foto Prestasi',
+        ];
+
+        // Jalankan validasi dengan pesan kustom
+        $validated = $request->validate($rules, $customMessages, $customAttributes);
 
         $validated['kelas'] = $validated['kelas_input'];
         unset($validated['kelas_input']);
@@ -83,7 +114,8 @@ class PrestasiController extends Controller
 
     public function update(Request $request, Prestasi $prestasi)
     {
-        $validated = $request->validate([
+        // Aturan validasi (sama seperti store)
+        $rules = [
             'judul'         => 'required|string|max:255',
             'nama'          => 'required|string|max:255', // Field nama ditambahkan
             'deskripsi'     => 'nullable|string',
@@ -95,7 +127,37 @@ class PrestasiController extends Controller
             'penyelenggara' => 'nullable|string|max:100',
             'tanggal'       => 'required|date',
             'foto'          => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
-        ]);
+        ];
+
+        // Pesan error kustom (sama seperti store)
+        $customMessages = [
+            'required' => ':attribute harus diisi.',
+            'string'   => ':attribute harus berupa teks.',
+            'max'      => [
+                'string' => ':attribute tidak boleh lebih dari :max karakter.',
+                'file'   => 'Ukuran :attribute tidak boleh lebih dari :max kilobyte.',
+            ],
+            'date'     => ':attribute bukan tanggal yang valid.',
+            'image'    => 'File yang diunggah untuk :attribute harus berupa gambar.',
+            'mimes'    => ':attribute harus berformat: :values.',
+        ];
+
+        // Nama atribut (sama seperti store)
+        $customAttributes = [
+            'judul'         => 'Judul Prestasi',
+            'deskripsi'     => 'Deskripsi',
+            'kelas_input'   => 'Kelas',
+            'jurusan'       => 'Jurusan',
+            'subkelas'      => 'Sub Kelas',
+            'juara'         => 'Peringkat/Juara',
+            'tingkat'       => 'Tingkat Kompetisi',
+            'penyelenggara' => 'Penyelenggara',
+            'tanggal'       => 'Tanggal Prestasi',
+            'foto'          => 'Foto Prestasi',
+        ];
+
+        // Jalankan validasi dengan pesan kustom
+        $validated = $request->validate($rules, $customMessages, $customAttributes);
 
         $validated['kelas'] = $validated['kelas_input'];
         unset($validated['kelas_input']);

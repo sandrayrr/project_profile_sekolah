@@ -1,6 +1,3 @@
-{{-- SISIPKAN KODE INI DI DALAM FILE admin.layout.blade.php ANDA --}}
-{{-- Biasanya di dalam tag <body> dan sebagai pengganti sidebar lama Anda --}}
-
 <style>
     :root {
         /* Warna yang terinspirasi dari logo SMKN 1 Kawali */
@@ -307,52 +304,7 @@
         box-shadow: var(--shadow-sm);
         animation: pulse 2s infinite;
     }
-/* Loading spinner */
-.loading-spinner {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.8);
-    z-index: 9999;
-    justify-content: center;
-    align-items: center;
-}
 
-.loading-spinner.active {
-    display: flex;
-}
-
-.spinner {
-    width: 50px;
-    height: 50px;
-    border: 5px solid #f3f3f3;
-    border-top: 5px solid var(--primary-blue);
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-/* Page content animation */
-.page-content {
-    animation: fadeIn 0.5s ease-out;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Update nav-link cursor style */
-.nav-link {
-    cursor: pointer;
-}
     /* Animasi untuk menu */
     @keyframes slideIn {
         from {
@@ -404,7 +356,7 @@
 
     <!-- USER -->
     <div class="sidebar-user">
-        <img src="{{ asset('storage/dashboard/Profesional Photos.jpeg') }}">
+        <img src="{{ asset('storage/dashboard/muslimahmin.png') }}">
         <div class="user-info">
             <div class="user-name">{{ Auth::user()->name }}</div>
             <div class="user-role">{{ ucfirst(Auth::user()->role) }}</div>
@@ -512,20 +464,69 @@
 <script>
     document.addEventListener('DOMContentLoaded', function() {
     // Get all navigation links
-    const navLinks = document.querySelectorAll('.nav-link[data-url]');
-    const loadingSpinner = document.getElementById('loadingSpinner');
-    const mainContent = document.querySelector('.content-wrapper') || document.querySelector('main');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    // Object to store scroll positions for each page
+    const scrollPositions = {};
+    
+    // Get current page URL to use as key
+    function getCurrentPageKey() {
+        return window.location.pathname + window.location.search;
+    }
+    
+    // Save current scroll position
+    function saveScrollPosition() {
+        scrollPositions[getCurrentPageKey()] = {
+            x: window.pageXOffset || document.documentElement.scrollLeft,
+            y: window.pageYOffset || document.documentElement.scrollTop
+        };
+    }
+    
+    // Restore scroll position for a specific page
+    function restoreScrollPosition(pageKey) {
+        const position = scrollPositions[pageKey];
+        if (position) {
+            setTimeout(() => {
+                window.scrollTo(position.x, position.y);
+            }, 50); // Small delay to ensure content is loaded
+        }
+    }
+    
+    // Save scroll position when user scrolls
+    let scrollTimeout;
+    window.addEventListener('scroll', function() {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(saveScrollPosition, 100);
+    });
     
     // Add click event listener to each navigation link
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
+            // Skip if it's the logout link
+            if (this.classList.contains('logout-btn')) return;
+            
+            // Update the active state immediately for better UX
+            navLinks.forEach(navLink => {
+                navLink.classList.remove('active');
+            });
+            this.classList.add('active');
+            
+            // Skip the rest if it's a regular link (not AJAX)
+            if (!this.getAttribute('data-url')) {
+                // Save current scroll position before leaving
+                saveScrollPosition();
+                return;
+            }
+            
             e.preventDefault();
+            
+            // Save current scroll position before navigation
+            saveScrollPosition();
             
             // Get the URL from the data-url attribute
             const url = this.getAttribute('data-url');
-            
-            // Show loading spinner
-            loadingSpinner.classList.add('active');
+            const targetPageKey = new URL(url, window.location.origin).pathname + 
+                                 new URL(url, window.location.origin).search;
             
             // Make AJAX request to get the page content
             fetch(url, {
@@ -553,36 +554,32 @@
                                  tempDiv.querySelector('.container') ||
                                  tempDiv.querySelector('body');
                 
-                if (newContent && mainContent) {
-                    // Replace the current content with the new content
-                    mainContent.innerHTML = newContent.innerHTML;
+                if (newContent) {
+                    const mainContent = document.querySelector('.content-wrapper') || 
+                                       document.querySelector('main');
                     
-                    // Update the active state of navigation links
-                    navLinks.forEach(navLink => {
-                        navLink.classList.remove('active');
-                    });
-                    this.classList.add('active');
-                    
-                    // Update the URL in the browser's history
-                    history.pushState({url: url}, '', url);
-                    
-                    // Reinitialize any JavaScript that might be needed for the new content
-                    initializePageScripts();
-                    
-                    // Scroll to top
-                    window.scrollTo(0, 0);
+                    if (mainContent) {
+                        // Replace the current content with the new content
+                        mainContent.innerHTML = newContent.innerHTML;
+                        
+                        // Update the URL in the browser's history
+                        history.pushState({url: url}, '', url);
+                        
+                        // Restore scroll position for the target page
+                        restoreScrollPosition(targetPageKey);
+                        
+                        // Reinitialize any JavaScript that might be needed for the new content
+                        initializePageScripts();
+                    }
                 }
-                
-                // Hide loading spinner
-                loadingSpinner.classList.remove('active');
             })
             .catch(error => {
                 console.error('Error loading page:', error);
                 
-                // Hide loading spinner
-                loadingSpinner.classList.remove('active');
-                
                 // Show error message
+                const mainContent = document.querySelector('.content-wrapper') || 
+                                   document.querySelector('main');
+                                   
                 if (mainContent) {
                     mainContent.innerHTML = '<div class="alert alert-danger" style="padding: 15px; background-color: #f8d7da; border: 1px solid #f5c6cb; border-radius: 4px; color: #721c24;"><strong>Error:</strong> Failed to load page. Please try again.<br><small>' + error.message + '</small></div>';
                 }
@@ -593,8 +590,20 @@
     // Handle browser back/forward buttons
     window.addEventListener('popstate', function(e) {
         if (e.state && e.state.url) {
+            // Save current scroll position
+            saveScrollPosition();
+            
+            // Get the target page key
+            const targetPageKey = new URL(e.state.url, window.location.origin).pathname + 
+                                 new URL(e.state.url, window.location.origin).search;
+            
             // Reload the page when using browser back/forward buttons
             window.location.href = e.state.url;
+            
+            // Restore scroll position after page loads
+            setTimeout(() => {
+                restoreScrollPosition(targetPageKey);
+            }, 100);
         }
     });
     
@@ -648,5 +657,8 @@
     
     // Initialize page scripts on initial load
     initializePageScripts();
+    
+    // Restore scroll position for current page on load
+    restoreScrollPosition(getCurrentPageKey());
 });
 </script>

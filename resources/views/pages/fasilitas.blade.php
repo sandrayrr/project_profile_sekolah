@@ -171,72 +171,81 @@
     @endif
 
     <!-- GRID CARD -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-12" id="fasilitasGrid">
+   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-12" id="fasilitasGrid">
 
-        @forelse ($fasilitas as $index => $item)
-            <div
-                class="fasilitas-card bg-card-light dark:bg-card-dark 
-                       rounded-2xl overflow-hidden animate-fade-in group"
-                data-index="{{ $index }}">
+    @forelse ($fasilitas as $index => $item)
+        <div
+            class="fasilitas-card bg-card-light dark:bg-card-dark 
+                   rounded-2xl overflow-hidden animate-fade-in group relative"
+            data-index="{{ $index }}"
+            data-judul="{{ strtolower($item->judul) }}"
+            data-status="{{ strtolower($item->status ?? 'Tersedia') }}"> <!-- Tambahkan data-status untuk filter JS -->
 
-                <!-- FOTO -->
-                <div class="fasilitas-image-container aspect-[4/3] bg-gray-200 dark:bg-gray-700 relative overflow-hidden"
-                     onclick="openModal({{ $index }})">
-                    @if ($item->foto)
-                        <img src="{{ asset('storage/' . $item->foto) }}"
-                             alt="{{ $item->judul }}"
-                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                             data-full="{{ asset('storage/' . $item->foto) }}">
-                    @else
-                        <div class="w-full h-full flex items-center justify-center text-gray-400 dark:text-gray-500">
-                            <span class="material-icons text-6xl">meeting_room</span>
-                        </div>
-                    @endif
+            <!-- FOTO -->
+            <div class="fasilitas-image-container aspect-[4/3] bg-gray-200 dark:bg-gray-700 relative overflow-hidden"
+                 onclick="openModal({{ $index }})">
+                @if ($item->foto)
+                    <img src="{{ asset('storage/' . $item->foto) }}"
+                         alt="{{ $item->judul }}"
+                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                         data-full="{{ asset('storage/' . $item->foto) }}">
+                @else
+                    <div class="w-full h-full flex items-center justify-center text-gray-400 dark:text-gray-500">
+                        <span class="material-icons text-6xl">meeting_room</span>
+                    </div>
+                @endif
 
-                    <!-- OVERLAY -->
-                    <div class="overlay absolute inset-0 opacity-0 transition-opacity duration-300 flex items-end p-4">
-                        <div class="overlay-text text-white">
-                            <p class="font-semibold text-lg">{{ $item->judul }}</p>
-                            <p class="text-sm opacity-90">Fasilitas Sekolah</p>
-                        </div>
+                <!-- OVERLAY -->
+                <div class="overlay absolute inset-0 opacity-0 transition-opacity duration-300 flex items-end p-4">
+                    <div class="overlay-text text-white">
+                        <p class="font-semibold text-lg">{{ $item->judul }}</p>
+                        <p class="text-sm opacity-90">Fasilitas Sekolah</p>
                     </div>
                 </div>
-
-                <!-- BODY -->
-                <div class="p-5 flex flex-col flex-grow">
-                    <div class="flex justify-end mb-3">
-                        <span class="text-xs bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary-300 px-3 py-1 rounded-full font-medium">
-                            Fasilitas
-                        </span>
-                    </div>
-
-                    <div class="border-t pt-4 flex-grow">
-                        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white truncate">
-                            {{ $item->judul }}
-                        </h3>
-                        <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
-                            <i class="fas fa-building mr-2"></i>
-                            <span>Fasilitas Sekolah</span>
-                        </div>
-                    </div>
-                </div>
-
             </div>
-        @empty
-            <div class="col-span-full flex flex-col items-center justify-center text-center py-20">
-                <div class="w-24 h-24 bg-primary-light dark:bg-blue-900/20 rounded-full flex items-center justify-center mb-6 animate-float">
-                    <i class="material-icons text-5xl text-primary">meeting_room</i>
-                </div>
-                <h3 class="text-2xl font-bold text-gray-700 dark:text-gray-300 mb-2">
-                    Belum Ada Fasilitas
-                </h3>
-                <p class="text-gray-500 dark:text-gray-400 max-w-md">
-                    Belum ada data fasilitas yang tersedia saat ini.
-                </p>
-            </div>
-        @endforelse
 
-    </div>
+            <!-- BODY -->
+            <div class="p-5 flex flex-col flex-grow">
+              <div class="flex justify-between items-center mb-3">
+    <!-- STATUS BADGE -->
+    @if(($item->status ?? 'Tersedia') == 'Tersedia')
+        <span class="text-xs bg-green-100 text-green-800 px-3 py-1 rounded-full font-medium">
+            <i class="fas fa-check-circle mr-1"></i> Tersedia
+        </span>
+    @else
+        <!-- Ini akan menangani "Tidak Tersedia" atau nilai lainnya -->
+        <span class="text-xs bg-red-100 text-red-800 px-3 py-1 rounded-full font-medium">
+            <i class="fas fa-times-circle mr-1"></i> Tidak Tersedia
+        </span>
+    @endif
+</div>
+                <div class="border-t pt-4 flex-grow">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white truncate">
+                        {{ $item->judul }}
+                    </h3>
+                    <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                        <i class="fas fa-building mr-2"></i>
+                        <span>Fasilitas Sekolah</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    @empty
+        <div class="col-span-full flex flex-col items-center justify-center text-center py-20">
+            <div class="w-24 h-24 bg-primary-light dark:bg-blue-900/20 rounded-full flex items-center justify-center mb-6 animate-float">
+                <i class="material-icons text-5xl text-primary">meeting_room</i>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-700 dark:text-gray-300 mb-2">
+                Belum Ada Fasilitas
+            </h3>
+            <p class="text-gray-500 dark:text-gray-400 max-w-md">
+                Belum ada data fasilitas yang tersedia saat ini.
+            </p>
+        </div>
+    @endforelse
+
+</div>
 
     <!-- PAGINATION -->
     @if(isset($fasilitas) && method_exists($fasilitas, 'links') && $fasilitas->hasPages())
