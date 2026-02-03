@@ -219,14 +219,41 @@
         gap: 0.5rem;
     }
     
-    /* Facility Card */
-    .facility-card {
-        background: white;
+    /* Stat Card Single */
+    .stat-card-single {
+        background: var(--gradient-card);
         border-radius: 16px;
-        overflow: hidden;
+        padding: 1.5rem 2rem;
         box-shadow: var(--shadow-md);
-        transition: all 0.3s ease;
-        border: 1px solid var(--border-color);
+        margin-bottom: 2rem;
+        display: flex;
+        align-items: center;
+        border-left: 4px solid var(--primary-blue);
+    }
+    
+    .stat-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--gradient-primary);
+        color: white;
+        font-size: 1.5rem;
+        margin-right: 1.5rem;
+    }
+    
+    .stat-content h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin: 0;
+        color: var(--dark-color);
+    }
+    
+    .stat-content p {
+        margin: 0;
+        color: var(--gray-color);
     }
     
     .facility-card:hover {
@@ -480,58 +507,13 @@
     </div>
 
     <!-- STATISTIK -->
-    <div class="row mb-4">
-        <div class="col-md-3 col-sm-6 mb-3">
-            <div class="stat-card slide-in">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <p class="text-muted small mb-1">Total Fasilitas</p>
-                        <h2 class="fw-bold mb-0">{{ $fasilitas->count() }}</h2>
-                    </div>
-                    <div class="stat-icon">
-                        <i class="bi bi-building"></i>
-                    </div>
-                </div>
-            </div>
+    <div class="stat-card-single fade-in" style="animation-delay: 0.1s;">
+        <div class="stat-icon">
+            <i class="bi bi-trophy-fill"></i>
         </div>
-        <div class="col-md-3 col-sm-6 mb-3">
-            <div class="stat-card slide-in" style="animation-delay: 0.1s;">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <p class="text-muted small mb-1">Tersedia</p>
-                        <h2 class="fw-bold mb-0">{{ $fasilitas->where('tersedia', 'Tersedia')->count() }}</h2>
-                    </div>
-                    <div class="stat-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
-                        <i class="bi bi-check-circle"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6 mb-3">
-            <div class="stat-card slide-in" style="animation-delay: 0.2s;">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <p class="text-muted small mb-1">Dalam Perbaikan</p>
-                        <h2 class="fw-bold mb-0">{{ $fasilitas->where('tersedia', 'Dalam Perbaikan')->count() }}</h2>
-                    </div>
-                    <div class="stat-icon" style="background: linear-gradient(135deg, #eab308 0%, #d97706 100%);">
-                        <i class="bi bi-tools"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6 mb-3">
-            <div class="stat-card slide-in" style="animation-delay: 0.3s;">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <p class="text-muted small mb-1">Tidak Tersedia</p>
-                        <h2 class="fw-bold mb-0">{{ $fasilitas->where('tersedia', 'Tidak Tersedia')->count() }}</h2>
-                    </div>
-                    <div class="stat-icon" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);">
-                        <i class="bi bi-x-circle"></i>
-                    </div>
-                </div>
-            </div>
+        <div class="stat-content">
+            <h2>{{ $fasilitas->total() ?? 0 }}</h2>
+            <p>Total Fasilitas Tercatat</p>
         </div>
     </div>
 

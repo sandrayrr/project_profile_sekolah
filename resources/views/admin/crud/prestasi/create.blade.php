@@ -3,193 +3,380 @@
 @section('title', 'Tambah Prestasi')
 
 @section('content')
-<div class="container mt-4">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header bg-primary text-white">
-                    <h5 class="mb-0">
-                        <i class="bi bi-plus-circle me-2"></i>
-                        Tambah Prestasi Baru
-                    </h5>
+<style>
+/* ================= OVERLAY ================= */
+.popup-overlay{
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(219,234,254,.85),
+        rgba(191,219,254,.9)
+    );
+    backdrop-filter: blur(8px);
+    z-index: 1200;
+    animation: fadeOverlay .3s ease;
+}
+
+/* ================= CONTAINER ================= */
+.popup-container{
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1300;
+}
+
+/* ================= CARD ================= */
+.popup-card{
+    width: 680px;
+    max-width: 96%;
+    background: #fff;
+    border-radius: 22px;
+    box-shadow:
+        0 25px 60px rgba(37,99,235,.25),
+        0 10px 30px rgba(0,0,0,.15);
+    overflow: hidden;
+    animation: popupShow .35s cubic-bezier(.16,1,.3,1);
+}
+
+/* ================= HEADER ================= */
+.popup-header{
+    padding: 18px 24px;
+    background: linear-gradient(135deg,#3b82f6,#2563eb);
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.popup-header h5{
+    margin: 0;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.popup-close{
+    font-size: 28px;
+    color: rgba(255,255,255,.9);
+    text-decoration: none;
+    transition: .25s;
+}
+.popup-close:hover{
+    color: #fff;
+    transform: rotate(90deg) scale(1.1);
+}
+
+/* ================= BODY ================= */
+.popup-body{
+    padding: 26px;
+    max-height: 75vh;
+    overflow-y: auto;
+}
+
+/* Scrollbar */
+.popup-body::-webkit-scrollbar{ width:6px; }
+.popup-body::-webkit-scrollbar-thumb{
+    background:#93c5fd;
+    border-radius:10px;
+}
+
+/* ================= FORM ================= */
+.form-label{
+    font-size:.85rem;
+    color:#334155;
+}
+
+.form-control{
+    border-radius:12px;
+    padding:10px 14px;
+    border:1px solid #e5e7eb;
+    transition:.25s;
+}
+
+.form-control:focus{
+    border-color:#2563eb;
+    box-shadow:0 0 0 .15rem rgba(37,99,235,.25);
+}
+
+.form-section {
+    margin-bottom: 24px;
+    padding: 16px;
+    background-color: #f8fafc;
+    border-radius: 12px;
+    border-left: 4px solid #3b82f6;
+}
+
+.section-title {
+    font-weight: 600;
+    color: #1e40af;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ================= BUTTON ================= */
+.btn{
+    border-radius:12px;
+    padding:10px 18px;
+    font-weight:600;
+}
+
+.btn-primary{
+    background:linear-gradient(135deg,#3b82f6,#2563eb);
+    border:none;
+}
+.btn-primary:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 25px rgba(37,99,235,.35);
+}
+
+.btn-light{
+    background:#f1f5f9;
+}
+.btn-light:hover{
+    background:#e2e8f0;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+.btn-secondary:hover {
+    background-color: #5a6268;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(108, 117, 125, 0.35);
+}
+
+
+/* ================= ANIMATION ================= */
+@keyframes popupShow{
+    from{opacity:0;transform:translateY(20px) scale(.95);}
+    to{opacity:1;transform:translateY(0) scale(1);}
+}
+@keyframes fadeOverlay{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+    .popup-card {
+        width: 95%;
+        max-width: none;
+    }
+    
+    .popup-body {
+        padding: 20px;
+    }
+    
+    .form-section {
+        padding: 12px;
+    }
+}
+</style>
+
+<div class="popup-overlay"></div>
+
+<div class="popup-container">
+    <div class="popup-card">
+
+        {{-- HEADER --}}
+        <div class="popup-header">
+            <h5>
+                <i class="bi bi-plus-circle"></i>
+                Tambah Prestasi Baru
+            </h5>
+            <a href="{{ route('admin.prestasi.index') }}" class="popup-close">&times;</a>
+        </div>
+
+        {{-- BODY --}}
+        <div class="popup-body">
+            <form action="{{ route('admin.prestasi.store') }}" method="POST" enctype="multipart/form-data" id="prestasiForm">
+                @csrf
+
+                {{-- PESAN ERROR --}}
+                @if($errors->any())
+                    <div class="alert alert-danger mb-3">
+                        <ul class="mb-0">
+                            @foreach($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                {{-- ================= INFORMASI PRESTASI ================= --}}
+                <div class="form-section">
+                    <h6 class="section-title">
+                        <i class="bi bi-trophy-fill"></i> Informasi Prestasi
+                    </h6>
+
+                    <div class="mb-3">
+                        <label for="judul" class="form-label fw-semibold">Judul Prestasi</label>
+                        <input type="text" class="form-control @error('judul') is-invalid @enderror" 
+                               id="judul" name="judul" value="{{ old('judul') }}" 
+                               placeholder="Contoh: Juara 1 Lomba Futsal" required>
+                        @error('judul')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="deskripsi" class="form-label fw-semibold">Deskripsi</label>
+                        <textarea class="form-control @error('deskripsi') is-invalid @enderror" 
+                                  id="deskripsi" name="deskripsi" rows="3">{{ old('deskripsi') }}</textarea>
+                        @error('deskripsi')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
                 </div>
-                <div class="card-body">
 
-                    {{-- PESAN ERROR --}}
-                    @if($errors->any())
-                        <div class="alert alert-danger">
-                            <ul class="mb-0">
-                                @foreach($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
-
-                    <form action="{{ route('admin.prestasi.store') }}" method="POST" enctype="multipart/form-data" id="prestasiForm">
-                        @csrf
-
-                        <!-- Informasi Prestasi -->
-                        <h6 class="text-muted mb-3">Informasi Prestasi</h6>
-                        
-                        <div class="mb-3">
-                            <label for="judul" class="form-label">Judul Prestasi</label>
-                            <input type="text" class="form-control @error('judul') is-invalid @enderror" 
-                                   id="judul" name="judul" value="{{ old('judul') }}" 
-                                   placeholder="Contoh: Juara 1 Lomba Futsal" required>
-                            @error('judul')
+                {{-- ================= INFORMASI PESERTA ================= --}}
+                <div class="form-section">
+                    <h6 class="section-title">
+                        <i class="bi bi-people-fill"></i> Informasi Peserta
+                    </h6>
+                    
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label for="kelas_input" class="form-label fw-semibold">Kelas</label>
+                            <select class="form-select @error('kelas_input') is-invalid @enderror" 
+                                    id="kelas_input" name="kelas_input" required>
+                                <option value="">-- Pilih --</option>
+                                <option value="X" {{ old('kelas_input') == 'X' ? 'selected' : '' }}>X</option>
+                                <option value="XI" {{ old('kelas_input') == 'XI' ? 'selected' : '' }}>XI</option>
+                                <option value="XII" {{ old('kelas_input') == 'XII' ? 'selected' : '' }}>XII</option>
+                            </select>
+                            @error('kelas_input')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
 
-                        <div class="mb-3">
-                            <label for="deskripsi" class="form-label">Deskripsi</label>
-                            <textarea class="form-control @error('deskripsi') is-invalid @enderror" 
-                                      id="deskripsi" name="deskripsi" rows="3">{{ old('deskripsi') }}</textarea>
-                            @error('deskripsi')
+                        <div class="col-md-4 mb-3">
+                            <label for="jurusan" class="form-label fw-semibold">Jurusan</label>
+                            <select class="form-select @error('jurusan') is-invalid @enderror" 
+                                    id="jurusan" name="jurusan" required>
+                                <option value="">-- Pilih --</option>
+                                <option value="TO" {{ old('jurusan') == 'TO' ? 'selected' : '' }}>TO</option>
+                                <option value="TJKT" {{ old('jurusan') == 'TJKT' ? 'selected' : '' }}>TJKT</option>
+                                <option value="PPLG" {{ old('jurusan') == 'PPLG' ? 'selected' : '' }}>PPLG</option>
+                                <option value="DPIB" {{ old('jurusan') == 'DPIB' ? 'selected' : '' }}>DPIB</option>
+                                <option value="MPLB" {{ old('jurusan') == 'MPLB' ? 'selected' : '' }}>MPLB</option>
+                                <option value="AKL" {{ old('jurusan') == 'AKL' ? 'selected' : '' }}>AKL</option>
+                                <option value="SP" {{ old('jurusan') == 'SP' ? 'selected' : '' }}>SP</option>
+                            </select>
+                            @error('jurusan')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
 
-                        <hr>
-
-                        <!-- Informasi Peserta -->
-                        <h6 class="text-muted mb-3">Informasi Peserta</h6>
-                        
-                        <div class="row">
-                            <div class="col-md-4 mb-3">
-                                <label for="kelas_input" class="form-label">Kelas</label>
-                                <select class="form-select @error('kelas_input') is-invalid @enderror" 
-                                        id="kelas_input" name="kelas_input" required>
-                                    <option value="">-- Pilih --</option>
-                                    <option value="X" {{ old('kelas_input') == 'X' ? 'selected' : '' }}>X</option>
-                                    <option value="XI" {{ old('kelas_input') == 'XI' ? 'selected' : '' }}>XI</option>
-                                    <option value="XII" {{ old('kelas_input') == 'XII' ? 'selected' : '' }}>XII</option>
-                                </select>
-                                @error('kelas_input')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-
-                            <div class="col-md-4 mb-3">
-                                <label for="jurusan" class="form-label">Jurusan</label>
-                                <select class="form-select @error('jurusan') is-invalid @enderror" 
-                                        id="jurusan" name="jurusan" required>
-                                    <option value="">-- Pilih --</option>
-                                    <option value="TO" {{ old('jurusan') == 'TO' ? 'selected' : '' }}>TO</option>
-                                    <option value="TJKT" {{ old('jurusan') == 'TJKT' ? 'selected' : '' }}>TJKT</option>
-                                    <option value="PPLG" {{ old('jurusan') == 'PPLG' ? 'selected' : '' }}>PPLG</option>
-                                    <option value="DPIB" {{ old('jurusan') == 'DPIB' ? 'selected' : '' }}>DPIB</option>
-                                    <option value="MPLB" {{ old('jurusan') == 'MPLB' ? 'selected' : '' }}>MPLB</option>
-                                    <option value="AKL" {{ old('jurusan') == 'AKL' ? 'selected' : '' }}>AKL</option>
-                                    <option value="SP" {{ old('jurusan') == 'SP' ? 'selected' : '' }}>SP</option>
-                                </select>
-                                @error('jurusan')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-
-                            <div class="col-md-4 mb-3">
-                                <label for="subkelas" class="form-label">Sub Kelas</label>
-                                <select class="form-select @error('subkelas') is-invalid @enderror" 
-                                        id="subkelas" name="subkelas" disabled required>
-                                    <option value="">-- Pilih Jurusan --</option>
-                                </select>
-                                @error('subkelas')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                        </div>
-                        
-                        <!-- Hidden field untuk menggabungkan kelas -->
-                        <input type="hidden" id="kelas" name="kelas" value="{{ old('kelas') }}">
-                        
-                        <div class="alert alert-info mb-3">
-                            <small><i class="bi bi-info-circle me-1"></i> Format kelas yang akan disimpan: <strong id="kelas-preview">-</strong></small>
-                        </div>
-
-                        <hr>
-
-                        <!-- Detail Prestasi -->
-                        <h6 class="text-muted mb-3">Detail Prestasi</h6>
-
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label for="juara" class="form-label">Juara</label>
-                                <select class="form-select @error('juara') is-invalid @enderror" 
-                                        id="juara" name="juara" required>
-                                    <option value="">-- Pilih --</option>
-                                    <option value="1" {{ old('juara') == '1' ? 'selected' : '' }}>Juara 1</option>
-                                    <option value="2" {{ old('juara') == '2' ? 'selected' : '' }}>Juara 2</option>
-                                    <option value="3" {{ old('juara') == '3' ? 'selected' : '' }}>Juara 3</option>
-                                    <option value="Harapan 1" {{ old('juara') == 'Harapan 1' ? 'selected' : '' }}>Harapan 1</option>
-                                    <option value="Harapan 2" {{ old('juara') == 'Harapan 2' ? 'selected' : '' }}>Harapan 2</option>
-                                    <option value="Partisipasi" {{ old('juara') == 'Partisipasi' ? 'selected' : '' }}>Partisipasi</option>
-                                </select>
-                                @error('juara')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-
-                            <div class="col-md-6 mb-3">
-                                <label for="tingkat" class="form-label">Tingkat</label>
-                                <select class="form-select @error('tingkat') is-invalid @enderror" 
-                                        id="tingkat" name="tingkat" required>
-                                    <option value="">-- Pilih --</option>
-                                    <option value="Sekolah" {{ old('tingkat') == 'Sekolah' ? 'selected' : '' }}>Sekolah</option>
-                                    <option value="Kecamatan" {{ old('tingkat') == 'Kecamatan' ? 'selected' : '' }}>Kecamatan</option>
-                                    <option value="Kabupaten" {{ old('tingkat') == 'Kabupaten' ? 'selected' : '' }}>Kabupaten</option>
-                                    <option value="Provinsi" {{ old('tingkat') == 'Provinsi' ? 'selected' : '' }}>Provinsi</option>
-                                    <option value="Nasional" {{ old('tingkat') == 'Nasional' ? 'selected' : '' }}>Nasional</option>
-                                    <option value="Internasional" {{ old('tingkat') == 'Internasional' ? 'selected' : '' }}>Internasional</option>
-                                </select>
-                                @error('tingkat')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="penyelenggara" class="form-label">Penyelenggara</label>
-                            <input type="text" class="form-control @error('penyelenggara') is-invalid @enderror" 
-                                   id="penyelenggara" name="penyelenggara" value="{{ old('penyelenggara') }}" 
-                                   placeholder="Contoh: Dinas Pendidikan">
-                            @error('penyelenggara')
+                        <div class="col-md-4 mb-3">
+                            <label for="subkelas" class="form-label fw-semibold">Sub Kelas</label>
+                            <select class="form-select @error('subkelas') is-invalid @enderror" 
+                                    id="subkelas" name="subkelas" disabled required>
+                                <option value="">-- Pilih Jurusan --</option>
+                            </select>
+                            @error('subkelas')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-
-                        <div class="mb-3">
-                            <label for="tanggal" class="form-label">Tanggal</label>
-                            <input type="date" class="form-control @error('tanggal') is-invalid @enderror" 
-                                   id="tanggal" name="tanggal" value="{{ old('tanggal') }}" required>
-                            @error('tanggal')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="foto" class="form-label">Foto Prestasi</label>
-                            <input type="file" class="form-control @error('foto') is-invalid @enderror" 
-                                   id="foto" name="foto" accept="image/*">
-                            <small class="form-text text-muted">Format: JPG, PNG. Maks: 2MB</small>
-                            @error('foto')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <hr>
-
-                        <!-- Tombol Aksi -->
-                        <div class="d-flex justify-content-end gap-2">
-                            <a href="{{ route('admin.prestasi.index') }}" class="btn btn-secondary">Batal</a>
-                            <button type="submit" class="btn btn-primary">
-                                <i class="bi bi-save me-1"></i> Simpan
-                            </button>
-                        </div>
-                    </form>
+                    </div>
+                    
+                    <!-- Hidden field untuk menggabungkan kelas -->
+                    <input type="hidden" id="kelas" name="kelas" value="{{ old('kelas') }}">
+                    
+                    <div class="alert alert-info mb-0">
+                        <small><i class="bi bi-info-circle me-1"></i> Format kelas yang akan disimpan: <strong id="kelas-preview">-</strong></small>
+                    </div>
                 </div>
-            </div>
+
+                {{-- ================= DETAIL PRESTASI ================= --}}
+                <div class="form-section">
+                    <h6 class="section-title">
+                        <i class="bi bi-info-circle-fill"></i> Detail Prestasi
+                    </h6>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="juara" class="form-label fw-semibold">Juara</label>
+                            <select class="form-select @error('juara') is-invalid @enderror" 
+                                    id="juara" name="juara" required>
+                                <option value="">-- Pilih --</option>
+                                <option value="Juara 1" {{ old('juara') == 'Juara 1' ? 'selected' : '' }}>Juara 1</option>
+                                <option value="Juara 2" {{ old('juara') == 'Juara 2' ? 'selected' : '' }}>Juara 2</option>
+                                <option value="Juara 3" {{ old('juara') == 'Juara 3' ? 'selected' : '' }}>Juara 3</option>
+                                <option value="Harapan 1" {{ old('juara') == 'Harapan 1' ? 'selected' : '' }}>Harapan 1</option>
+                                <option value="Harapan 2" {{ old('juara') == 'Harapan 2' ? 'selected' : '' }}>Harapan 2</option>
+                                <option value="Partisipasi" {{ old('juara') == 'Partisipasi' ? 'selected' : '' }}>Partisipasi</option>
+                            </select>
+                            @error('juara')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label for="tingkat" class="form-label fw-semibold">Tingkat</label>
+                            <select class="form-select @error('tingkat') is-invalid @enderror" 
+                                    id="tingkat" name="tingkat" required>
+                                <option value="">-- Pilih --</option>
+                                <option value="Sekolah" {{ old('tingkat') == 'Sekolah' ? 'selected' : '' }}>Sekolah</option>
+                                <option value="Kecamatan" {{ old('tingkat') == 'Kecamatan' ? 'selected' : '' }}>Kecamatan</option>
+                                <option value="Kabupaten" {{ old('tingkat') == 'Kabupaten' ? 'selected' : '' }}>Kabupaten</option>
+                                <option value="Provinsi" {{ old('tingkat') == 'Provinsi' ? 'selected' : '' }}>Provinsi</option>
+                                <option value="Nasional" {{ old('tingkat') == 'Nasional' ? 'selected' : '' }}>Nasional</option>
+                                <option value="Internasional" {{ old('tingkat') == 'Internasional' ? 'selected' : '' }}>Internasional</option>
+                            </select>
+                            @error('tingkat')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="penyelenggara" class="form-label fw-semibold">Penyelenggara</label>
+                        <input type="text" class="form-control @error('penyelenggara') is-invalid @enderror" 
+                               id="penyelenggara" name="penyelenggara" value="{{ old('penyelenggara') }}" 
+                               placeholder="Contoh: Dinas Pendidikan">
+                        @error('penyelenggara')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="tanggal" class="form-label fw-semibold">Tanggal</label>
+                        <input type="date" class="form-control @error('tanggal') is-invalid @enderror" 
+                               id="tanggal" name="tanggal" value="{{ old('tanggal') }}" required>
+                        @error('tanggal')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="foto" class="form-label fw-semibold">Foto Prestasi</label>
+                        <input type="file" class="form-control @error('foto') is-invalid @enderror" 
+                               id="foto" name="foto" accept="image/*">
+                        <small class="form-text text-muted">Format: JPG, PNG. Maks: 2MB</small>
+                        @error('foto')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+
+                {{-- ACTION --}}
+                <div class="d-flex justify-content-end gap-2">
+                    <a href="{{ route('admin.prestasi.index') }}" class="btn btn-secondary">
+                        <i class="bi bi-x-circle me-1"></i> Batal
+                    </a>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-save me-1"></i> Simpan
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

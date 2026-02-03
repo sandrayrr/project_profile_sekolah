@@ -9,9 +9,32 @@ use Illuminate\Support\Facades\Storage;
 
 class PrestasiController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $prestasi = Prestasi::latest()->paginate(8);
+        $query = Prestasi::query();
+
+        // 🔍 Search judul
+        if ($request->filled('search')) {
+            $query->where('judul', 'like', '%' . $request->search . '%');
+        }
+
+        // 🎯 Filter rombel (X TJKT 1)
+        if ($request->filled('rombel')) {
+            [$kelas, $jurusan, $subkelas] = explode(' ', $request->rombel);
+
+            $query->where('kelas', $kelas)
+                  ->where('jurusan', $jurusan)
+                  ->where('subkelas', $subkelas);
+        }
+
+        // 🔃 Sorting
+        $query->orderBy(
+            'tanggal',
+            $request->sort === 'oldest' ? 'asc' : 'desc'
+        );
+
+        $prestasi = $query->paginate(8)->withQueryString();
+
         return view('admin.crud.prestasi.index', compact('prestasi'));
     }
 
@@ -25,15 +48,18 @@ class PrestasiController extends Controller
         $validated = $request->validate([
             'judul'         => 'required|string|max:255',
             'deskripsi'     => 'nullable|string',
-            'kelas'         => 'required|string|max:50',   // X, XI, XII
-            'jurusan'       => 'required|string|max:50',   // TO, TJKT, PPLG
-            'subkelas'      => 'required|string|max:10',   // 1, 2, 3
+            'kelas_input'   => 'required|string|max:10',
+            'jurusan'       => 'required|string|max:20',
+            'subkelas'      => 'required|string|max:5',
             'juara'         => 'required|string|max:50',
             'tingkat'       => 'required|string|max:50',
             'penyelenggara' => 'nullable|string|max:100',
             'tanggal'       => 'required|date',
             'foto'          => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
         ]);
+
+        $validated['kelas'] = $validated['kelas_input'];
+        unset($validated['kelas_input']);
 
         if ($request->hasFile('foto')) {
             $validated['foto'] = $request->file('foto')->store('prestasi', 'public');
@@ -56,15 +82,18 @@ class PrestasiController extends Controller
         $validated = $request->validate([
             'judul'         => 'required|string|max:255',
             'deskripsi'     => 'nullable|string',
-            'kelas'         => 'required|string|max:50',
-            'jurusan'       => 'required|string|max:50',
-            'subkelas'      => 'required|string|max:10',
+            'kelas_input'   => 'required|string|max:10',
+            'jurusan'       => 'required|string|max:20',
+            'subkelas'      => 'required|string|max:5',
             'juara'         => 'required|string|max:50',
             'tingkat'       => 'required|string|max:50',
             'penyelenggara' => 'nullable|string|max:100',
             'tanggal'       => 'required|date',
             'foto'          => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
         ]);
+
+        $validated['kelas'] = $validated['kelas_input'];
+        unset($validated['kelas_input']);
 
         if ($request->hasFile('foto')) {
             if ($prestasi->foto) {
@@ -77,7 +106,7 @@ class PrestasiController extends Controller
 
         return redirect()
             ->route('admin.prestasi.index')
-            ->with('success', 'Prestasi berhasil diupdate');
+            ->with('success', 'Prestasi berhasil diperbarui');
     }
 
     public function destroy(Prestasi $prestasi)

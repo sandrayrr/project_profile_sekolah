@@ -101,20 +101,16 @@
         transform: translate(-20%, 20%);
     }
     
-    /* Stat Card */
-    .stat-card {
+    /* Stat Card Single */
+    .stat-card-single {
         background: var(--gradient-card);
         border-radius: 16px;
-        padding: 1.5rem;
+        padding: 1.5rem 2rem;
         box-shadow: var(--shadow-md);
-        transition: all 0.3s ease;
+        margin-bottom: 2rem;
+        display: flex;
+        align-items: center;
         border-left: 4px solid var(--primary-blue);
-        height: 100%;
-    }
-    
-    .stat-card:hover {
-        transform: translateY(-5px);
-        box-shadow: var(--shadow-xl);
     }
     
     .stat-icon {
@@ -127,7 +123,19 @@
         background: var(--gradient-primary);
         color: white;
         font-size: 1.5rem;
-        margin-bottom: 1rem;
+        margin-right: 1.5rem;
+    }
+    
+    .stat-content h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin: 0;
+        color: var(--dark-color);
+    }
+    
+    .stat-content p {
+        margin: 0;
+        color: var(--gray-color);
     }
     
     /* Filter Card */
@@ -546,33 +554,14 @@
     </div>
 
     <!-- STATISTIK -->
-    <div class="row mb-4">
-        <div class="col-md-3 col-sm-6 mb-3">
-            <div class="stat-card slide-in">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <p class="text-muted small mb-1">Total Foto</p>
-                        <h2 class="fw-bold mb-0">{{ $galeri->count() }}</h2>
-                    </div>
-                    <div class="stat-icon">
-                        <i class="bi bi-images"></i>
-                    </div>
-                </div>
-            </div>
+   <div class="stat-card-single fade-in" style="animation-delay: 0.1s;">
+        <div class="stat-icon">
+            <i class="bi bi-image"></i>
         </div>
-        {{-- <div class="col-md-3 col-sm-6 mb-3">
-            <div class="stat-card slide-in" style="animation-delay: 0.1s;">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <p class="text-muted small mb-1">Bulan Ini</p>
-                        <h2 class="fw-bold mb-0">{{ $galeri->where('created_at', '>=', now()->subMonth())->count() }}</h2>
-                    </div>
-                    <div class="stat-icon" style="background: var(--gradient-primary);">
-                        <i class="bi bi-calendar-month"></i>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
+        <div class="stat-content">
+            <h2>{{ $galeri->total() ?? 0 }}</h2>
+            <p>Total Galeri Tercatat</p>
+        </div>
     </div>
 
     <!-- ALERT -->
@@ -657,23 +646,11 @@
                 @endforeach
             </div>
         @else
-<<<<<<< Updated upstream
             <!-- EMPTY STATE  -->
-=======
-            <!-- EMPTY STATE -->
->>>>>>> Stashed changes
             <div class="empty-state">
                 <i class="bi bi-image"></i>
                 <h5>Data galeri belum tersedia</h5>
                 <p>Belum ada foto yang ditambahkan. Mulai dengan menambahkan foto baru.</p>
-                <a href="{{ route('admin.galeri.create') }}" class="btn btn-primary">
-<<<<<<< Updated upstream
-                    <i class="bi bi-plus-circle me-2"></i> Tambah Foto
-=======
-                    <i class="bi bi-plus-circle me-2"></i>
-                    Tambah Foto
->>>>>>> Stashed changes
-                </a>
             </div>
         @endif
     </div>
