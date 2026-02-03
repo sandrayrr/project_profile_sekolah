@@ -160,7 +160,7 @@
                 </div>
                 <input name="cari" value="{{ request('cari') }}"
                     class="w-full pl-10 pr-3 py-4 bg-slate-50 dark:bg-slate-800 border-none focus:ring-2 focus:ring-primary focus:outline-none"
-                    placeholder="Cari Prestasi..." type="text" id="searchInput">
+                    placeholder="Cari Prestasi atau Nama Siswa..." type="text" id="searchInput">
             </div>
             <button type="submit"
                 class="bg-primary hover:bg-primary-dark text-white px-8 py-4 font-medium transition-colors duration-300 flex items-center">
@@ -225,13 +225,28 @@
                             <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white truncate">
                                 {{ $item->judul }}
                             </h3>
-                            <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                            
+                            <!-- NAMA SISWA DITAMBAHKAN DI SINI -->
+                            <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-2">
+                                <i class="fa-solid fa-user mr-2"></i>
+                                <span class="font-medium">
+                                    {{ $item->nama ?? 'Tidak tersedia' }}
+                                </span>
+                            </div>
+                            
+                            <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-3">
                                 <i class="fa-solid fa-graduation-cap mr-2"></i>
                                 <span>
                                     {{ $item->kelas }} {{ $item->jurusan }} {{ $item->subkelas }}
                                 </span>
                             </div>
-
+                            
+                            <!-- Tombol Lihat Selengkapnya -->
+                            <button onclick="openDetailModal({{ $index }})" 
+                                class="w-full mt-3 bg-primary hover:bg-primary-dark text-white py-2 px-4 rounded-lg transition-colors duration-300 flex items-center justify-center">
+                                <span>Lihat Selengkapnya</span>
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </button>
                         </div>
                     </div>
 
@@ -295,6 +310,71 @@
         </div>
     </div>
 
+    <!-- DETAIL MODAL - STRUKTUR YANG DIPERBAIKI -->
+    <div id="detailModal" class="fixed inset-0 z-50 hidden">
+        <div class="modal-backdrop absolute inset-0 bg-black/80" onclick="closeDetailModal()"></div>
+        
+        <!-- Tombol tutup di luar area scroll -->
+        <button onclick="closeDetailModal()"
+            class="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors z-20">
+            <i class="fas fa-times text-3xl"></i>
+        </button>
+
+        <div class="relative h-full flex items-center justify-center p-4">
+            <!-- Modal card dengan tinggi maksimal -->
+            <div class="bg-white dark:bg-gray-800 rounded-xl max-w-4xl w-full max-h-[90vh] animate-zoom-in">
+                <!-- Container untuk SEMUA konten yang dapat di-scroll -->
+                <div class="overflow-y-auto max-h-[90vh]">
+                    <!-- GAMBAR -->
+                    <div class="relative">
+                        <img id="detailModalImage" src="" alt=""
+                            class="w-full h-64 md:h-80 object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 right-4">
+                            <h3 id="detailModalTitle" class="text-white text-2xl md:text-3xl font-bold mb-2"></h3>
+                            <p id="detailModalDate" class="text-gray-300"></p>
+                        </div>
+                    </div>
+
+                    <!-- DETAIL INFORMASI -->
+                    <div class="p-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <h4 class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">Nama Siswa</h4>
+                                <p id="detailModalStudent" class="text-lg font-semibold"></p>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">Kelas</h4>
+                                <p id="detailModalClass" class="text-lg font-semibold"></p>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">Juara</h4>
+                                <p id="detailModalRank" class="text-lg font-semibold"></p>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">Tingkat</h4>
+                                <p id="detailModalLevel" class="text-lg font-semibold"></p>
+                            </div>
+                        </div>
+
+                        <div class="mb-6">
+                            <h4 class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">Deskripsi</h4>
+                            <p id="detailModalDescription" class="text-gray-700 dark:text-gray-300"></p>
+                        </div>
+
+                        <!-- TOMBOL TUTUP -->
+                        <div class="flex justify-end">
+                            <button onclick="closeDetailModal()"
+                                class="bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-white py-2 px-6 rounded-lg transition-colors duration-300">
+                                Tutup
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- DARK MODE BUTTON -->
     <button id="darkToggle"
         class="fixed bottom-6 right-6 bg-primary hover:bg-primary-dark text-white p-3 rounded-full shadow-lg z-40 transition-all duration-300 hover:scale-110">
@@ -309,7 +389,12 @@
             prestasiData.push({
                 image: "{{ asset('storage/' . $item->foto) }}",
                 title: "{{ $item->judul }}",
-                date: "{{ \Carbon\Carbon::parse($item->tanggal)->translatedFormat('d F Y') }}"
+                date: "{{ \Carbon\Carbon::parse($item->tanggal)->translatedFormat('d F Y') }}",
+                student: "{{ $item->nama ?? 'Tidak tersedia' }}",
+                class: "{{ $item->kelas }} {{ $item->jurusan }} {{ $item->subkelas }}",
+                rank: "{{ $item->juara ?? 'Tidak tersedia' }}",
+                level: "{{ $item->tingkat ?? 'Tidak tersedia' }}",
+                description: "{{ $item->deskripsi ?? 'Tidak ada deskripsi tersedia untuk prestasi ini.' }}"
             });
         @empty
         @endforelse
@@ -335,6 +420,39 @@
 
         function closeModal() {
             const modal = document.getElementById('imageModal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Detail Modal functions - SUDAH DIPERBAIKI
+        function openDetailModal(index) {
+            currentImageIndex = index;
+            const modal = document.getElementById('detailModal');
+            const modalImage = document.getElementById('detailModalImage');
+            const modalTitle = document.getElementById('detailModalTitle');
+            const modalDate = document.getElementById('detailModalDate');
+            const modalStudent = document.getElementById('detailModalStudent');
+            const modalClass = document.getElementById('detailModalClass');
+            const modalRank = document.getElementById('detailModalRank');
+            const modalLevel = document.getElementById('detailModalLevel');
+            const modalDescription = document.getElementById('detailModalDescription');
+
+            if (prestasiData[index]) {
+                modalImage.src = prestasiData[index].image;
+                modalTitle.textContent = prestasiData[index].title;
+                modalDate.textContent = prestasiData[index].date;
+                modalStudent.textContent = prestasiData[index].student;
+                modalClass.textContent = prestasiData[index].class;
+                modalRank.textContent = prestasiData[index].rank;
+                modalLevel.textContent = prestasiData[index].level;
+                modalDescription.textContent = prestasiData[index].description;
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeDetailModal() {
+            const modal = document.getElementById('detailModal');
             modal.classList.add('hidden');
             document.body.style.overflow = 'auto';
         }
@@ -365,14 +483,20 @@
 
         // Keyboard navigation
         document.addEventListener('keydown', function (e) {
-            const modal = document.getElementById('imageModal');
-            if (!modal.classList.contains('hidden')) {
+            const imageModal = document.getElementById('imageModal');
+            const detailModal = document.getElementById('detailModal');
+            
+            if (!imageModal.classList.contains('hidden')) {
                 if (e.key === 'Escape') {
                     closeModal();
                 } else if (e.key === 'ArrowRight') {
                     nextImage();
                 } else if (e.key === 'ArrowLeft') {
                     previousImage();
+                }
+            } else if (!detailModal.classList.contains('hidden')) {
+                if (e.key === 'Escape') {
+                    closeDetailModal();
                 }
             }
         });

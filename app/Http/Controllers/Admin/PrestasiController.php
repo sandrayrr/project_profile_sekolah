@@ -13,9 +13,12 @@ class PrestasiController extends Controller
     {
         $query = Prestasi::query();
 
-        // 🔍 Search judul
+        // 🔍 Search judul atau nama
         if ($request->filled('search')) {
-            $query->where('judul', 'like', '%' . $request->search . '%');
+            $query->where(function($q) use ($request) {
+                $q->where('judul', 'like', '%' . $request->search . '%')
+                  ->orWhere('nama', 'like', '%' . $request->search . '%');
+            });
         }
 
         // 🎯 Filter rombel (X TJKT 1)
@@ -47,6 +50,7 @@ class PrestasiController extends Controller
     {
         $validated = $request->validate([
             'judul'         => 'required|string|max:255',
+            'nama'          => 'required|string|max:255', // Field nama ditambahkan
             'deskripsi'     => 'nullable|string',
             'kelas_input'   => 'required|string|max:10',
             'jurusan'       => 'required|string|max:20',
@@ -81,6 +85,7 @@ class PrestasiController extends Controller
     {
         $validated = $request->validate([
             'judul'         => 'required|string|max:255',
+            'nama'          => 'required|string|max:255', // Field nama ditambahkan
             'deskripsi'     => 'nullable|string',
             'kelas_input'   => 'required|string|max:10',
             'jurusan'       => 'required|string|max:20',

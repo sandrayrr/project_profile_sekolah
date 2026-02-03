@@ -270,6 +270,22 @@ body {
                     @enderror
                 </div>
 
+                {{-- STATUS - DITAMBAHKAN --}}
+                <div class="mb-3">
+                    <label for="status" class="form-label">Status Fasilitas</label>
+                    <select id="status"
+                           name="status"
+                           class="form-select @error('status') is-invalid @enderror"
+                           required>
+                        <option value="">-- Pilih Status --</option>
+                        <option value="Tersedia" {{ old('status') == 'Tersedia' ? 'selected' : '' }}>Tersedia</option>
+                        <option value="Perbaikan" {{ old('status') == 'Perbaikan' ? 'selected' : '' }}>Perbaikan</option>
+                    </select>
+                    @error('status')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
                 {{-- FOTO --}}
                 <div class="mb-4">
                     <label for="foto" class="form-label">Foto Fasilitas</label>

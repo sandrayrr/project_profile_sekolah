@@ -253,6 +253,21 @@
                         <i class="bi bi-people-fill"></i> Informasi Peserta
                     </h6>
                     
+                    <!-- Field Nama yang ditambahkan -->
+                    <div class="mb-3">
+                        <label for="nama" class="form-label fw-semibold">Nama Siswa</label>
+                        <input type="text"
+                               id="nama"
+                               name="nama"
+                               class="form-control @error('nama') is-invalid @enderror"
+                               value="{{ old('nama', $prestasi->nama) }}"
+                               placeholder="Masukkan nama siswa"
+                               required>
+                        @error('nama')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    
                     <div class="row">
                         <div class="col-md-4 mb-3">
                             <label for="kelas_input" class="form-label fw-semibold">Kelas</label>

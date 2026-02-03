@@ -423,9 +423,10 @@
         <div class="hero-overlay"></div>
         <div class="container">
             <nav>
-                <a href="/beranda">Beranda</a> 
-                <a href="#tim">Tentang Kami</a>
-            </nav>
+    <a href="{{ route('beranda') }}">Beranda</a>
+    <a href="#tim">Tentang Kami</a>
+</nav>
+
             <div class="hero-content">
                 <h1 data-aos="fade-down" data-aos-duration="1500">Tim Kreatif Kami</h1>
                 <p data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200">Kami adalah tim yang terdiri dari individu-individu berbakat dan bersemangat, yang bekerja sama untuk mencapai tujuan bersama. Kenali lebih dekat anggota tim kami di bawah ini.</p>

@@ -274,7 +274,7 @@
             background-color: var(--lighter-blue);
         }
 
-        /* Kolom Tabel */
+        /* Kolom Tabel - PERUBAAN: Kolom Juara dihapus */
         .table thead th:nth-child(1),
         .table tbody td:nth-child(1) {
             width: 50px;
@@ -299,27 +299,29 @@
             white-space: nowrap;
         }
 
-        /* Tambahkan white-space: nowrap */
         .table thead th:nth-child(5),
+        /* Sekarang adalah Rombel */
         .table tbody td:nth-child(5) {
             width: 140px;
             text-align: center;
         }
 
-        /* Tambah lebar untuk Juara */
         .table thead th:nth-child(6),
+        /* Sekarang adalah Tingkat */
         .table tbody td:nth-child(6) {
             width: 130px;
             text-align: center;
         }
 
         .table thead th:nth-child(7),
+        /* Sekarang adalah Tanggal */
         .table tbody td:nth-child(7) {
             width: 120px;
             text-align: center;
         }
 
         .table thead th:nth-child(8),
+        /* Sekarang adalah Aksi */
         .table tbody td:nth-child(8) {
             width: 100px;
             text-align: center;
@@ -483,7 +485,6 @@
         }
     </style>
 
-    <!-- ... sisanya dari kode HTML Anda tetap sama ... -->
     <div class="container">
         <!-- HEADER -->
         <div class="page-header fade-in">
@@ -510,8 +511,9 @@
         </div>
 
         <!-- ALERT -->
-        @if(session('success'))
-            <div class="alert alert-success alert-dismissible fade show shadow-sm mb-4 fade-in" style="animation-delay: 0.2s;">
+        @if (session('success'))
+            <div class="alert alert-success alert-dismissible fade show shadow-sm mb-4 fade-in"
+                style="animation-delay: 0.2s;">
                 <i class="bi bi-check-circle-fill me-2"></i> {{ session('success') }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
             </div>
@@ -532,7 +534,7 @@
                             <i class="bi bi-search"></i>
                         </span>
                         <input type="text" name="search" value="{{ request('search') }}" class="form-control"
-                            placeholder="Cari judul prestasi..." id="searchInput">
+                            placeholder="Cari judul atau nama prestasi..." id="searchInput">
                     </div>
                 </div>
 
@@ -552,10 +554,11 @@
                             ];
                             $kelasList = ['X', 'XI', 'XII'];
                         @endphp
-                        @foreach($kelasList as $kelas)
-                            @foreach($rombelData as $jurusan => $subkelasList)
-                                @foreach($subkelasList as $subkelas)
-                                    <option value="{{ $kelas }} {{ $jurusan }} {{ $subkelas }}" @selected(request('rombel') === "$kelas $jurusan $subkelas")>
+                        @foreach ($kelasList as $kelas)
+                            @foreach ($rombelData as $jurusan => $subkelasList)
+                                @foreach ($subkelasList as $subkelas)
+                                    <option value="{{ $kelas }} {{ $jurusan }} {{ $subkelas }}"
+                                        @selected(request('rombel') === "$kelas $jurusan $subkelas")>
                                         {{ $kelas }} {{ $jurusan }} {{ $subkelas }}
                                     </option>
                                 @endforeach
@@ -593,8 +596,9 @@
                             <th>No</th>
                             <th>Foto</th>
                             <th>Informasi Prestasi</th>
+                            <th>Nama Siswa</th>
                             <th>Rombel</th>
-                            <th>Juara</th>
+                            <!-- KOLOM JUARA DIHAPUS DARI SINI -->
                             <th>Tingkat</th>
                             <th>Tanggal</th>
                             <th>Aksi</th>
@@ -605,7 +609,7 @@
                             <tr>
                                 <td class="text-muted">{{ $prestasi->firstItem() + $loop->index }}</td>
                                 <td>
-                                    @if($p->foto)
+                                    @if ($p->foto)
                                         <img src="{{ asset('storage/' . $p->foto) }}" class="rounded"
                                             style="width:80px;height:60px;object-fit:cover">
                                     @else
@@ -617,24 +621,25 @@
                                 </td>
                                 <td>
                                     <div class="fw-semibold text-dark mb-1">{{ $p->judul }}</div>
-                                    @if($p->penyelenggara)
+                                    @if ($p->penyelenggara)
                                         <small class="text-muted">{{ $p->penyelenggara }}</small>
                                     @endif
                                 </td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        
+                                        <div>
+                                            <div class="fw-semibold">{{ $p->nama }}</div>
+                                        </div>
+                                    </div>
+                                </td>
                                 <td class="text-center">
-                                    @php
-                                        $kelas = $p->kelas_only;
-                                        $jurusan = $p->jurusan_only;
-                                        $subkelas = $p->subkelas_only;
-                                    @endphp
-                                    <span class="badge bg-secondary">{{ $p->kelas }}</span>
-                                    <span class="badge bg-secondary">{{ $p->jurusan }}</span>
-                                    <span class="badge bg-secondary">{{ $p->subkelas }}</span>
+                                    <span class="badge bg-secondary px-3 py-2">
+                                        {{ $p->kelas }} {{ $p->jurusan }} {{ $p->subkelas }}
+                                    </span>
+                                </td>
 
-                                </td>
-                                <td class="text-center">
-                                    <span class="badge bg-primary">{{ $p->juara }}</span>
-                                </td>
+                                <!-- DATA JUARA DIHAPUS DARI SINI -->
                                 <td class="text-center">
                                     <span class="badge bg-dark">{{ $p->tingkat }}</span>
                                 </td>
@@ -657,6 +662,7 @@
                             </tr>
                         @empty
                             <tr>
+                                <!-- PERUBAAN: colspan dari 9 menjadi 8 -->
                                 <td colspan="8">
                                     <div class="empty-state">
                                         <i class="bi bi-trophy"></i>
@@ -672,7 +678,7 @@
         </div>
     </div>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             // Dapatkan elemen-elemen yang dibutuhkan
             const filterForm = document.getElementById('filterForm');
             const searchInput = document.getElementById('searchInput');

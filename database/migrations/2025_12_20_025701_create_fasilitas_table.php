@@ -11,6 +11,7 @@ return new class extends Migration {
             $table->id();
             $table->string('judul');
             $table->string('foto');
+            $table->string('status');
             $table->timestamps();
         });
     }
