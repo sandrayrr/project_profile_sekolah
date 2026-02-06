@@ -566,9 +566,6 @@
                     <i class="bi bi-box-seam"></i>
                     <h5>Belum ada produk</h5>
                     <p>Belum ada produk yang ditambahkan. Mulai dengan menambahkan produk baru.</p>
-                    <a href="{{ route('admin.marketplace.create') }}" class="btn btn-primary">
-                        <i class="bi bi-plus-circle me-2"></i> Tambah Produk
-                    </a>
                 </div>
             @endforelse
         </div>
