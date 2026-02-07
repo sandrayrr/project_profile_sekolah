@@ -102,7 +102,7 @@
                     <p class="text-sm text-slate-500 mb-4 line-clamp-2">
                         Platform utama pembelajaran daring, materi, dan tugas siswa.
                     </p>
-                    <a href="https://lms.smkn1kawali.sch.id" target="_blank"
+                    <a href="https://lms.smkn1kawali.sch.id/" target="_blank"
                         class="block w-full text-center bg-slate-50 hover:bg-primary hover:text-white text-slate-600 text-sm font-semibold py-2.5 rounded-lg transition-colors duration-200 border border-slate-200">
                         Buka LMS <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-xs"></i>
                     </a>

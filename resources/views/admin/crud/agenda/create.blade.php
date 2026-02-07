@@ -5,7 +5,6 @@
 @section('content')
 
 <style>
-<<<<<<< Updated upstream
 /* ================= KONFIGURASI WARNA & TIPOGRAFI ================= */
 :root {
     /* --- TEMA BIRU BIASA (SOLID) --- */
@@ -38,31 +37,12 @@ body {
 
 /* ================= CONTAINER (Penampung Utama) ================= */
 .popup-container {
-=======
-/* ================= OVERLAY ================= */
-.popup-overlay{
-    position: fixed;
-    inset: 0;
-    background: linear-gradient(
-        135deg,
-        rgba(219,234,254,.85),
-        rgba(191,219,254,.9)
-    );
-    backdrop-filter: blur(8px);
-    z-index: 1200;
-    animation: fadeOverlay .3s ease;
-}
-
-/* ================= CONTAINER ================= */
-.popup-container{
->>>>>>> Stashed changes
     position: fixed;
     inset: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 1300;
-<<<<<<< Updated upstream
     padding: 20px;
 }
 
@@ -84,28 +64,6 @@ body {
 .popup-header {
     padding: 22px 26px;
     background: var(--primary-blue); /* Warna biru solid */
-=======
-}
-
-/* ================= CARD ================= */
-.popup-card{
-    width: 800px;
-    max-width: 96%;
-    max-height: 92vh;
-    overflow-y: auto;
-    background: #fff;
-    border-radius: 22px;
-    box-shadow:
-        0 30px 70px rgba(37,99,235,.25),
-        0 10px 30px rgba(0,0,0,.15);
-    animation: popupShow .35s cubic-bezier(.16,1,.3,1);
-}
-
-/* ================= HEADER ================= */
-.popup-header{
-    padding: 20px 24px;
-    background: linear-gradient(135deg,#3b82f6,#2563eb);
->>>>>>> Stashed changes
     color: #fff;
     display: flex;
     justify-content: space-between;
@@ -116,7 +74,6 @@ body {
 .popup-header h5 {
     margin: 0;
     font-weight: 700;
-<<<<<<< Updated upstream
     font-size: 1.25rem;
     display: flex;
     align-items: center;
@@ -242,78 +199,6 @@ body {
         opacity: 1;
         transform: translateY(0) scale(1);
     }
-=======
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.popup-close{
-    font-size: 30px;
-    color: rgba(255,255,255,.9);
-    text-decoration: none;
-    transition: .25s;
-}
-.popup-close:hover{
-    color: #fff;
-    transform: rotate(90deg) scale(1.1);
-}
-
-/* ================= BODY ================= */
-.popup-body{
-    padding: 26px;
-}
-
-/* ================= FORM ================= */
-.form-label{
-    font-size: .85rem;
-    color: #334155;
-}
-
-.form-control{
-    border-radius: 12px;
-    padding: 10px 14px;
-    border: 1px solid #e5e7eb;
-    transition: .25s;
-}
-
-.form-control:focus{
-    border-color: #2563eb;
-    box-shadow: 0 0 0 .15rem rgba(37,99,235,.25);
-}
-
-/* ================= BUTTON ================= */
-.btn{
-    border-radius: 12px;
-    padding: 10px 20px;
-    font-weight: 600;
-}
-
-.btn-primary{
-    background: linear-gradient(135deg,#3b82f6,#2563eb);
-    border: none;
-}
-.btn-primary:hover{
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(37,99,235,.35);
-}
-
-.btn-light{
-    background: #f1f5f9;
-}
-.btn-light:hover{
-    background: #e2e8f0;
-}
-
-/* ================= ANIMATION ================= */
-@keyframes popupShow{
-    from{opacity:0;transform:translateY(20px) scale(.95);}
-    to{opacity:1;transform:translateY(0) scale(1);}
-}
-@keyframes fadeOverlay{
-    from{opacity:0;}
-    to{opacity:1;}
->>>>>>> Stashed changes
 }
 
 @keyframes fadeOverlay {
@@ -348,17 +233,10 @@ body {
         {{-- HEADER --}}
         <div class="popup-header">
             <h5>
-<<<<<<< Updated upstream
                 <i class="bi bi-plus-circle"></i>
                 Tambah Agenda Baru
             </h5>
             <a href="{{ route('admin.agenda.index') }}" class="popup-close" title="Tutup">&times;</a>
-=======
-                <i class="bi bi-calendar-event"></i>
-                Tambah Agenda
-            </h5>
-            <a href="{{ route('admin.agenda.index') }}" class="popup-close">&times;</a>
->>>>>>> Stashed changes
         </div>
 
         {{-- BODY --}}
@@ -381,13 +259,7 @@ body {
 
                 {{-- JUDUL --}}
                 <div class="mb-3">
-<<<<<<< Updated upstream
                     <label for="judul" class="form-label">Judul Agenda</label>
-=======
-                    <label class="form-label fw-semibold">
-                        Judul Agenda
-                    </label>
->>>>>>> Stashed changes
                     <input type="text"
                            id="judul"
                            name="judul"
@@ -402,13 +274,7 @@ body {
 
                 {{-- DESKRIPSI --}}
                 <div class="mb-3">
-<<<<<<< Updated upstream
                     <label for="deskripsi" class="form-label">Deskripsi</label>
-=======
-                    <label class="form-label fw-semibold">
-                        Deskripsi
-                    </label>
->>>>>>> Stashed changes
                     <textarea name="deskripsi"
                               id="deskripsi"
                               rows="4"
@@ -422,13 +288,7 @@ body {
                 {{-- TANGGAL & WAKTU --}}
                 <div class="row">
                     <div class="col-md-6 mb-3">
-<<<<<<< Updated upstream
                         <label for="tanggal" class="form-label">Tanggal</label>
-=======
-                        <label class="form-label fw-semibold">
-                            Tanggal
-                        </label>
->>>>>>> Stashed changes
                         <input type="date"
                                id="tanggal"
                                name="tanggal"
@@ -441,13 +301,7 @@ body {
                     </div>
 
                     <div class="col-md-6 mb-3">
-<<<<<<< Updated upstream
                         <label for="waktu" class="form-label">Waktu</label>
-=======
-                        <label class="form-label fw-semibold">
-                            Waktu
-                        </label>
->>>>>>> Stashed changes
                         <input type="time"
                                id="waktu"
                                name="waktu"
@@ -460,11 +314,7 @@ body {
                     </div>
                 </div>
 
-<<<<<<< Updated upstream
                 {{-- TOMBOL AKSI --}}
-=======
-                {{-- ACTION --}}
->>>>>>> Stashed changes
                 <div class="d-flex justify-content-end gap-2 mt-4">
                     <a href="{{ route('admin.agenda.index') }}"
                        class="btn btn-light">

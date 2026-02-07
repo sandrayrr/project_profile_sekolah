@@ -102,15 +102,43 @@
     }
     
     /* Stat Card */
-    .stat-card {
+  /* Stat Card Single */
+    .stat-card-single {
         background: var(--gradient-card);
         border-radius: 16px;
-        padding: 1.5rem;
+        padding: 1.5rem 2rem;
         box-shadow: var(--shadow-md);
-        transition: all 0.3s ease;
+        margin-bottom: 2rem;
+        display: flex;
+        align-items: center;
         border-left: 4px solid var(--primary-blue);
-        height: 100%;
     }
+    
+    .stat-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--gradient-primary);
+        color: white;
+        font-size: 1.5rem;
+        margin-right: 1.5rem;
+    }
+    
+    .stat-content h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin: 0;
+        color: var(--dark-color);
+    }
+    
+    .stat-content p {
+        margin: 0;
+        color: var(--gray-color);
+    }
+
     
     .stat-card:hover {
         transform: translateY(-5px);
@@ -532,114 +560,13 @@
     </div>
 
     <!-- STATISTIK -->
-    <div class="row mb-4">
-        <div class="col-md-3 col-sm-6 mb-3">
-            <div class="stat-card slide-in">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <p class="text-muted small mb-1">Total Ekstrakulikuler</p>
-                        <h2 class="fw-bold mb-0">{{ $ekstrakulikulers->count() }}</h2>
-                    </div>
-                    <div class="stat-icon">
-                        <i class="bi bi-trophy"></i>
-                    </div>
-                </div>
-            </div>
+    <div class="stat-card-single fade-in" style="animation-delay: 0.1s;">
+        <div class="stat-icon">
+            <i class="material-icons">groups</i>
         </div>
-        <div class="col-md-3 col-sm-6 mb-3">
-            <div class="stat-card slide-in" style="animation-delay: 0.1s;">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <p class="text-muted small mb-1">Olahraga</p>
-                        <h2 class="fw-bold mb-0">{{ $ekstrakulikulers->where('kategori', 'Olahraga')->count() }}</h2>
-                    </div>
-                    <div class="stat-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
-                        <i class="bi bi-bicycle"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6 mb-3">
-            <div class="stat-card slide-in" style="animation-delay: 0.2s;">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <p class="text-muted small mb-1">Seni</p>
-                        <h2 class="fw-bold mb-0">{{ $ekstrakulikulers->where('kategori', 'Seni')->count() }}</h2>
-                    </div>
-                    <div class="stat-icon" style="background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);">
-                        <i class="bi bi-palette"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6 mb-3">
-            <div class="stat-card slide-in" style="animation-delay: 0.3s;">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <p class="text-muted small mb-1">Lainnya</p>
-                        <h2 class="fw-bold mb-0">{{ $ekstrakulikulers->whereNotIn('kategori', ['Olahraga', 'Seni', 'Kesehatan', 'Teknologi', 'Kedisiplinan', 'Bela Negara'])->count() }}</h2>
-                    </div>
-                    <div class="stat-icon" style="background: linear-gradient(135deg, #eab308 0%, #d97706 100%);">
-                        <i class="bi bi-three-dots"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- STATISTIK TAMBAHAN UNTUK KATEGORI BARU -->
-    <div class="row mb-4">
-        <div class="col-md-3 col-sm-6 mb-3">
-            <div class="stat-card slide-in" style="animation-delay: 0.4s;">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <p class="text-muted small mb-1">Kesehatan</p>
-                        <h2 class="fw-bold mb-0">{{ $ekstrakulikulers->where('kategori', 'Kesehatan')->count() }}</h2>
-                    </div>
-                    <div class="stat-icon" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);">
-                        <i class="bi bi-heart-pulse"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6 mb-3">
-            <div class="stat-card slide-in" style="animation-delay: 0.5s;">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <p class="text-muted small mb-1">Teknologi</p>
-                        <h2 class="fw-bold mb-0">{{ $ekstrakulikulers->where('kategori', 'Teknologi')->count() }}</h2>
-                    </div>
-                    <div class="stat-icon" style="background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);">
-                        <i class="bi bi-cpu"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6 mb-3">
-            <div class="stat-card slide-in" style="animation-delay: 0.6s;">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <p class="text-muted small mb-1">Kedisiplinan</p>
-                        <h2 class="fw-bold mb-0">{{ $ekstrakulikulers->where('kategori', 'Kedisiplinan')->count() }}</h2>
-                    </div>
-                    <div class="stat-icon" style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);">
-                        <i class="bi bi-shield-check"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6 mb-3">
-            <div class="stat-card slide-in" style="animation-delay: 0.7s;">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <p class="text-muted small mb-1">Bela Negara</p>
-                        <h2 class="fw-bold mb-0">{{ $ekstrakulikulers->where('kategori', 'Bela Negara')->count() }}</h2>
-                    </div>
-                    <div class="stat-icon" style="background: linear-gradient(135deg, #059669 0%, #047857 100%);">
-                        <i class="bi bi-flag"></i>
-                    </div>
-                </div>
-            </div>
+        <div class="stat-content">
+            <h2>{{ $ekstrakulikulers->total() ?? 0 }}</h2>
+            <p>Total Ekstrakulikuler Tercatat</p>
         </div>
     </div>
 

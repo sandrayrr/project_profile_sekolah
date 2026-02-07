@@ -479,61 +479,61 @@
         </div>
     </div>
 
-    <!-- STATISTIK -->
-    <div class="row mb-4">
-        <div class="col-md-3 col-sm-6 mb-3">
-            <div class="stat-card slide-in">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <p class="text-muted small mb-1">Total Staff Kependidikan</p>
-                        <h2 class="fw-bold mb-0">{{ $staff->count() }}</h2>
-                    </div>
-                    <div class="stat-icon">
-                        <i class="bi bi-people"></i>
-                    </div>
+   <!-- STATISTIK -->
+<div class="row mb-4">
+    <div class="col-md-3 col-sm-6 mb-3">
+        <div class="stat-card slide-in">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <p class="text-muted small mb-1">Total Staff Kependidikan</p>
+                    <h2 class="fw-bold mb-0">{{ $staff->count() }}</h2>
                 </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6 mb-3">
-            <div class="stat-card slide-in" style="animation-delay: 0.1s;">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <p class="text-muted small mb-1">Tata Usaha</p>
-                        <h2 class="fw-bold mb-0">{{ $staff->where('jabatan', 'Tata Usaha')->count() }}</h2>
-                    </div>
-                    <div class="stat-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
-                        <i class="bi bi-card-text"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6 mb-3">
-            <div class="stat-card slide-in" style="animation-delay: 0.2s;">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <p class="text-muted small mb-1">Pustakawan</p>
-                        <h2 class="fw-bold mb-0">{{ $staff->where('jabatan', 'Pustakawan')->count() }}</h2>
-                    </div>
-                    <div class="stat-icon" style="background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);">
-                        <i class="bi bi-book"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6 mb-3">
-            <div class="stat-card slide-in" style="animation-delay: 0.3s;">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <p class="text-muted small mb-1">Toolman</p>
-                        <h2 class="fw-bold mb-0">{{ $staff->whereNotIn('jabatan', ['toolman'])->count() }}</h2>
-                    </div>
-                    <div class="stat-icon" style="background: linear-gradient(135deg, #eab308 0%, #d97706 100%);">
-                        <i class="bi bi-three-dots"></i>
-                    </div>
+                <div class="stat-icon">
+                    <i class="bi bi-people"></i>
                 </div>
             </div>
         </div>
     </div>
+    <div class="col-md-3 col-sm-6 mb-3">
+        <div class="stat-card slide-in" style="animation-delay: 0.1s;">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <p class="text-muted small mb-1">Tata Usaha</p>
+                    <h2 class="fw-bold mb-0">{{ $staff->where('jabatan', 'Tata Usaha')->count() }}</h2>
+                </div>
+                <div class="stat-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                    <i class="bi bi-card-text"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6 mb-3">
+        <div class="stat-card slide-in" style="animation-delay: 0.2s;">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <p class="text-muted small mb-1">Pustakawan</p>
+                    <h2 class="fw-bold mb-0">{{ $staff->where('jabatan', 'Pustakawan')->count() }}</h2>
+                </div>
+                <div class="stat-icon" style="background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);">
+                    <i class="bi bi-book"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6 mb-3">
+        <div class="stat-card slide-in" style="animation-delay: 0.3s;">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <p class="text-muted small mb-1">Toolman</p>
+                    <h2 class="fw-bold mb-0">{{ $staff->where('jabatan', 'Toolman')->count() }}</h2>
+                </div>
+                <div class="stat-icon" style="background: linear-gradient(135deg, #eab308 0%, #d97706 100%);">
+                    <i class="bi bi-tools"></i> <!-- Saya juga ganti ikonnya jadi lebih sesuai -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
     <!-- ALERT -->
     @if(session('success'))

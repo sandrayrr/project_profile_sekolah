@@ -14,7 +14,7 @@ class MarketPlaceController extends Controller
      */
     public function index()
 {
-    $marketplaces = Marketplace::latest()->paginate(4);
+    $marketplaces = Marketplace::latest()->paginate(2);
     return view('pages.marketplace', compact('marketplaces'));
 }
 

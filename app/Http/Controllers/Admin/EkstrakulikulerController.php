@@ -31,13 +31,38 @@ class EkstrakulikulerController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
+        // Aturan validasi
+        $rules = [
             'judul'         => 'required|string|max:255',
             'kategori'      => 'required|string|max:50',
             'deskripsi'     => 'required|string',
-            'pembina'       => 'required|string|max:255', // <-- DITAMBAHKAN
+            'pembina'       => 'required|string|max:255',
             'foto'          => 'required|image|mimes:jpg,png,jpeg|max:2048',
-        ]);
+        ];
+
+        // Pesan error kustom dalam Bahasa Indonesia
+        $customMessages = [
+            'required' => ':attribute harus diisi.',
+            'string'   => ':attribute harus berupa teks.',
+            'max'      => [
+                'string' => ':attribute tidak boleh lebih dari :max karakter.',
+                'file'   => 'Ukuran :attribute tidak boleh lebih dari :max kilobyte.',
+            ],
+            'image'    => 'File yang diunggah untuk :attribute harus berupa gambar.',
+            'mimes'    => ':attribute harus berformat: :values.',
+        ];
+
+        // Nama atribut yang akan ditampilkan di pesan error
+        $customAttributes = [
+            'judul'         => 'Judul Kegiatan',
+            'kategori'      => 'Kategori',
+            'deskripsi'     => 'Deskripsi',
+            'pembina'       => 'Nama Pembina',
+            'foto'          => 'Foto Kegiatan',
+        ];
+
+        // Jalankan validasi dengan pesan kustom
+        $validated = $request->validate($rules, $customMessages, $customAttributes);
 
         if ($request->hasFile('foto')) {
             $validated['foto'] = $request->file('foto')->store('ekstrakulikuler', 'public');
@@ -63,13 +88,38 @@ class EkstrakulikulerController extends Controller
      */
     public function update(Request $request, Ekstrakulikuler $ekstrakulikuler)
     {
-        $validated = $request->validate([
+        // Aturan validasi (sama seperti store, kecuali foto nullable)
+        $rules = [
             'judul'         => 'required|string|max:255',
             'kategori'      => 'required|string|max:50',
             'deskripsi'     => 'required|string',
-            'pembina'       => 'required|string|max:255', // <-- DITAMBAHKAN
+            'pembina'       => 'required|string|max:255',
             'foto'          => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
-        ]);
+        ];
+
+        // Pesan error kustom (sama seperti store)
+        $customMessages = [
+            'required' => ':attribute harus diisi.',
+            'string'   => ':attribute harus berupa teks.',
+            'max'      => [
+                'string' => ':attribute tidak boleh lebih dari :max karakter.',
+                'file'   => 'Ukuran :attribute tidak boleh lebih dari :max kilobyte.',
+            ],
+            'image'    => 'File yang diunggah untuk :attribute harus berupa gambar.',
+            'mimes'    => ':attribute harus berformat: :values.',
+        ];
+
+        // Nama atribut (sama seperti store)
+        $customAttributes = [
+            'judul'         => 'Judul Kegiatan',
+            'kategori'      => 'Kategori',
+            'deskripsi'     => 'Deskripsi',
+            'pembina'       => 'Nama Pembina',
+            'foto'          => 'Foto Kegiatan',
+        ];
+
+        // Jalankan validasi dengan pesan kustom
+        $validated = $request->validate($rules, $customMessages, $customAttributes);
 
         if ($request->hasFile('foto')) {
             if ($ekstrakulikuler->foto) {
@@ -82,7 +132,7 @@ class EkstrakulikulerController extends Controller
 
         return redirect()
             ->route('admin.ekstrakulikuler.index')
-            ->with('success', 'Ekstrakulikuler berhasil diupdate');
+            ->with('success', 'Ekstrakulikuler berhasil diperbarui'); // Saya perbaiki agar konsisten
     }
 
     /**

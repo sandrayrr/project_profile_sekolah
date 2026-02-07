@@ -102,19 +102,15 @@
     }
     
     /* Stat Card */
-    .stat-card {
+    .stat-card-single {
         background: var(--gradient-card);
         border-radius: 16px;
-        padding: 1.5rem;
+        padding: 1.5rem 2rem;
         box-shadow: var(--shadow-md);
-        transition: all 0.3s ease;
+        margin-bottom: 2rem;
+        display: flex;
+        align-items: center;
         border-left: 4px solid var(--primary-blue);
-        height: 100%;
-    }
-    
-    .stat-card:hover {
-        transform: translateY(-5px);
-        box-shadow: var(--shadow-xl);
     }
     
     .stat-icon {
@@ -127,8 +123,21 @@
         background: var(--gradient-primary);
         color: white;
         font-size: 1.5rem;
-        margin-bottom: 1rem;
+        margin-right: 1.5rem;
     }
+    
+    .stat-content h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin: 0;
+        color: var(--dark-color);
+    }
+    
+    .stat-content p {
+        margin: 0;
+        color: var(--gray-color);
+    }
+
     
     /* Filter Card */
     .filter-card {
@@ -517,88 +526,13 @@
     </div>
 
     <!-- STATISTIK -->
-    <div class="row mb-4">
-        <div class="col-md-3 col-sm-6 mb-3">
-            <div class="stat-card slide-in">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <p class="text-muted small mb-1">Total Tenaga Pengajar</p>
-                        <h2 class="fw-bold mb-0">{{ $tenagaPengajar->count() }}</h2>
-                    </div>
-                    <div class="stat-icon">
-                        <i class="bi bi-people"></i>
-                    </div>
-                </div>
-            </div>
+   <div class="stat-card-single fade-in" style="animation-delay: 0.1s;">
+        <div class="stat-icon">
+            <i class="bi bi-trophy-fill"></i>
         </div>
-        <div class="col-md-3 col-sm-6 mb-3">
-            <div class="stat-card slide-in" style="animation-delay: 0.1s;">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <p class="text-muted small mb-1">Pengampu</p>
-                        <h2 class="fw-bold mb-0">{{ $tenagaPengajar->pluck('pengampu')->unique()->count() }}</h2>
-                    </div>
-                    <div class="stat-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
-                        <i class="bi bi-person-badge"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6 mb-3">
-            <div class="stat-card slide-in" style="animation-delay: 0.2s;">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <p class="text-muted small mb-1">PNS</p>
-                        <h2 class="fw-bold mb-0">{{ $tenagaPengajar->where('status', 'PNS')->count() }}</h2>
-                    </div>
-                    <div class="stat-icon" style="background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);">
-                        <i class="bi bi-person-check"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6 mb-3">
-            <div class="stat-card slide-in" style="animation-delay: 0.3s;">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <p class="text-muted small mb-1">Honorer</p>
-                        <h2 class="fw-bold mb-0">{{ $tenagaPengajar->where('status', 'Honorer')->count() }}</h2>
-                    </div>
-                    <div class="stat-icon" style="background: linear-gradient(135deg, #eab308 0%, #d97706 100%);">
-                        <i class="bi bi-person-workspace"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- STATISTIK TAMBAHAN UNTUK STATUS LAINNYA -->
-    <div class="row mb-4">
-        <div class="col-md-3 col-sm-6 mb-3">
-            <div class="stat-card slide-in" style="animation-delay: 0.4s;">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <p class="text-muted small mb-1">HONORER</p>
-                        <h2 class="fw-bold mb-0">{{ $tenagaPengajar->where('status', 'HONORER')->count() }}</h2>
-                    </div>
-                    <div class="stat-icon" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);">
-                        <i class="bi bi-mortarboard"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6 mb-3">
-            <div class="stat-card slide-in" style="animation-delay: 0.5s;">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <p class="text-muted small mb-1">Status Lainnya</p>
-                        <h2 class="fw-bold mb-0">{{ $tenagaPengajar->whereNotIn('status', ['PNS', 'Honorer', 'GTY/PTY'])->count() }}</h2>
-                    </div>
-                    <div class="stat-icon" style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);">
-                        <i class="bi bi-three-dots"></i>
-                    </div>
-                </div>
-            </div>
+        <div class="stat-content">
+            <h2>{{ $tenagaPengajar->total() ?? 0 }}</h2>
+            <p>Total Tenaga Pengajar Tercatat</p>
         </div>
     </div>
 

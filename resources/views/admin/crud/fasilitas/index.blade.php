@@ -219,14 +219,52 @@
         gap: 0.5rem;
     }
     
-    /* Facility Card */
+    /* Stat Card Single */
+    .stat-card-single {
+        background: var(--gradient-card);
+        border-radius: 16px;
+        padding: 1.5rem 2rem;
+        box-shadow: var(--shadow-md);
+        margin-bottom: 2rem;
+        display: flex;
+        align-items: center;
+        border-left: 4px solid var(--primary-blue);
+    }
+    
+    .stat-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--gradient-primary);
+        color: white;
+        font-size: 1.5rem;
+        margin-right: 1.5rem;
+    }
+    
+    .stat-content h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin: 0;
+        color: var(--dark-color);
+    }
+    
+    .stat-content p {
+        margin: 0;
+        color: var(--gray-color);
+    }
+    
     .facility-card {
         background: white;
         border-radius: 16px;
         overflow: hidden;
         box-shadow: var(--shadow-md);
         transition: all 0.3s ease;
-        border: 1px solid var(--border-color);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
     }
     
     .facility-card:hover {
@@ -235,7 +273,7 @@
     }
     
     .facility-image {
-        height: 180px; /* Diperkecil dari 200px */
+        height: 180px;
         width: 100%;
         object-fit: cover;
         cursor: pointer;
@@ -247,11 +285,14 @@
     }
     
     .facility-body {
-        padding: 1.25rem; /* Diperkecil dari 1.5rem */
+        padding: 1.25rem;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
     }
     
     .facility-title {
-        font-size: 1.1rem; /* Diperkecil dari 1.25rem */
+        font-size: 1.1rem;
         font-weight: 600;
         margin-bottom: 0.5rem;
         color: var(--dark-color);
@@ -285,6 +326,7 @@
         align-items: center;
         padding-top: 1rem;
         border-top: 1px solid var(--border-color);
+        margin-top: auto;
     }
     
     /* Badge */
@@ -320,6 +362,27 @@
     .badge-info {
         background-color: rgba(59, 130, 246, 0.1);
         color: var(--primary-blue);
+    }
+    
+    /* Status Badge Styles */
+    .status-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+        font-weight: 500;
+        font-size: 0.75rem;
+        padding: 0.25rem 0.75rem;
+        border-radius: 9999px;
+    }
+    
+    .status-tersedia {
+        background-color: rgba(16, 185, 129, 0.1);
+        color: var(--accent-green);
+    }
+    
+    .status-perbaikan {
+        background-color: rgba(234, 179, 8, 0.1);
+        color: var(--accent-yellow);
     }
     
     /* Button */
@@ -412,7 +475,6 @@
         margin-bottom: 1.5rem;
     }
     
-    /* Tombol tambah fasilitas yang lebih kecil di empty state */
     .empty-state .btn-primary {
         padding: 0.35rem 0.7rem;
         font-size: 0.7rem;
@@ -424,10 +486,10 @@
         margin-right: 0.3rem;
     }
     
-    /* Grid Layout - YANG DIUBAH */
+    /* Grid Layout */
     .facility-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); /* Diperkecil dari 300px */
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
         gap: 1.5rem;
         padding: 1.5rem;
     }
@@ -480,58 +542,13 @@
     </div>
 
     <!-- STATISTIK -->
-    <div class="row mb-4">
-        <div class="col-md-3 col-sm-6 mb-3">
-            <div class="stat-card slide-in">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <p class="text-muted small mb-1">Total Fasilitas</p>
-                        <h2 class="fw-bold mb-0">{{ $fasilitas->count() }}</h2>
-                    </div>
-                    <div class="stat-icon">
-                        <i class="bi bi-building"></i>
-                    </div>
-                </div>
-            </div>
+    <div class="stat-card-single fade-in" style="animation-delay: 0.1s;">
+        <div class="stat-icon">
+            <i class="bi bi-building"></i>
         </div>
-        <div class="col-md-3 col-sm-6 mb-3">
-            <div class="stat-card slide-in" style="animation-delay: 0.1s;">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <p class="text-muted small mb-1">Tersedia</p>
-                        <h2 class="fw-bold mb-0">{{ $fasilitas->where('tersedia', 'Tersedia')->count() }}</h2>
-                    </div>
-                    <div class="stat-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
-                        <i class="bi bi-check-circle"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6 mb-3">
-            <div class="stat-card slide-in" style="animation-delay: 0.2s;">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <p class="text-muted small mb-1">Dalam Perbaikan</p>
-                        <h2 class="fw-bold mb-0">{{ $fasilitas->where('tersedia', 'Dalam Perbaikan')->count() }}</h2>
-                    </div>
-                    <div class="stat-icon" style="background: linear-gradient(135deg, #eab308 0%, #d97706 100%);">
-                        <i class="bi bi-tools"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6 mb-3">
-            <div class="stat-card slide-in" style="animation-delay: 0.3s;">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <p class="text-muted small mb-1">Tidak Tersedia</p>
-                        <h2 class="fw-bold mb-0">{{ $fasilitas->where('tersedia', 'Tidak Tersedia')->count() }}</h2>
-                    </div>
-                    <div class="stat-icon" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);">
-                        <i class="bi bi-x-circle"></i>
-                    </div>
-                </div>
-            </div>
+        <div class="stat-content">
+            <h2>{{ $fasilitas->total() ?? 0 }}</h2>
+            <p>Total Fasilitas Tercatat</p>
         </div>
     </div>
 
@@ -562,8 +579,7 @@
                 <select class="form-select" id="filterStatus">
                     <option value="">Semua Status</option>
                     <option value="tersedia">Tersedia</option>
-                    <option value="dalam perbaikan">Dalam Perbaikan</option>
-                    <option value="tidak tersedia">Tidak Tersedia</option>
+                    <option value="perbaikan">Perbaikan</option>
                 </select>
             </div>
             <div class="col-md-3">
@@ -571,7 +587,6 @@
                     <option value="newest">Terbaru</option>
                     <option value="oldest">Terlama</option>
                     <option value="name">Nama A-Z</option>
-                    <option value="location">Lokasi</option>
                 </select>
             </div>
         </div>
@@ -592,8 +607,7 @@
             @forelse ($fasilitas as $item)
                 <div class="facility-card fasilitas-item"
                      data-judul="{{ strtolower($item->judul) }}"
-                     data-lokasi="{{ strtolower($item->lokasi) }}"
-                     data-status="{{ strtolower($item->tersedia) }}"
+                     data-status="{{ strtolower($item->status) }}"
                      data-tanggal="{{ $item->created_at->format('Y-m-d') }}">
                     
                     <img src="{{ asset('storage/'.$item->foto) }}"
@@ -603,22 +617,21 @@
                     
                     <div class="facility-body">
                         <h5 class="facility-title">{{ $item->judul }}</h5>
-                        <p class="facility-description">
-                            {{ \Illuminate\Support\Str::limit(strip_tags($item->deskripsi ?? ''), 120) }}
-                        </p>
                         
-                        <div class="facility-meta">
-                            <span class="badge badge-info">
-                                <i class="bi bi-geo-alt me-1"></i>
-                                {{ $item->lokasi }}
-                            </span>
-                            
-                            @if($item->tersedia == 'Tersedia')
-                                <span class="badge badge-success">Tersedia</span>
-                            @elseif($item->tersedia == 'Dalam Perbaikan')
-                                <span class="badge badge-warning">Dalam Perbaikan</span>
+                        <!-- Status Badge -->
+                        <div class="facility-meta mb-2">
+                            @if($item->status == 'Tersedia')
+                                <span class="status-badge status-tersedia">
+                                    <i class="bi bi-check-circle-fill"></i> Tersedia
+                                </span>
+                            @elseif($item->status == 'Perbaikan')
+                                <span class="status-badge status-perbaikan">
+                                    <i class="bi bi-tools"></i> Perbaikan
+                                </span>
                             @else
-                                <span class="badge badge-danger">Tidak Tersedia</span>
+                                <span class="badge badge-danger">
+                                    <i class="bi bi-x-circle-fill"></i> Tidak Tersedia
+                                </span>
                             @endif
                         </div>
                         
@@ -649,6 +662,9 @@
                     <i class="bi bi-building"></i>
                     <h5>Data fasilitas belum tersedia</h5>
                     <p>Belum ada fasilitas yang ditambahkan. Mulai dengan menambahkan fasilitas baru.</p>
+                    <a href="{{ route('admin.fasilitas.create') }}" class="btn btn-primary">
+                        <i class="bi bi-plus-circle me-2"></i> Tambah Fasilitas
+                    </a>
                 </div>
             @endforelse
         </div>
@@ -713,10 +729,9 @@ function applyFilter() {
     document.querySelectorAll('.fasilitas-item').forEach(item => {
         let visible = true;
         const judul = item.dataset.judul;
-        const lokasi = item.dataset.lokasi;
         const statusFasilitas = item.dataset.status;
 
-        if (search && !judul.includes(search) && !lokasi.includes(search)) visible = false;
+        if (search && !judul.includes(search)) visible = false;
         if (status && !statusFasilitas.includes(status)) visible = false;
 
         item.style.display = visible ? '' : 'none';
@@ -731,9 +746,6 @@ function applySort() {
     items.sort((a,b)=>{
         if (sortBy.value === 'name') {
             return a.dataset.judul.localeCompare(b.dataset.judul);
-        }
-        if (sortBy.value === 'location') {
-            return a.dataset.lokasi.localeCompare(b.dataset.lokasi);
         }
         if (sortBy.value === 'oldest') {
             return new Date(a.dataset.tanggal) - new Date(b.dataset.tanggal);

@@ -162,3 +162,5 @@ Route::middleware('auth')
         Route::resource('ekstrakulikuler', EkstrakulikulerController::class);
         Route::resource('marketplace', MarketplaceController::class);
     });
+
+    

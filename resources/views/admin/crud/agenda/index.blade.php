@@ -227,13 +227,16 @@
     
     .table thead th {
         background-color: var(--light-gray);
-        border-bottom: 1px solid var(--border-color);
+        border-bottom: 2px solid var(--border-color);
         color: var(--dark-color);
         font-weight: 600;
         padding: 1rem;
         font-size: 0.875rem;
         text-transform: uppercase;
         letter-spacing: 0.05em;
+        position: sticky;
+        top: 0;
+        z-index: 10;
     }
     
     .table tbody td {
@@ -246,8 +249,14 @@
         border-bottom: none;
     }
     
+    .table tbody tr {
+        transition: all 0.2s ease;
+    }
+    
     .table tbody tr:hover {
         background-color: var(--lighter-blue);
+        transform: scale(1.01);
+        box-shadow: var(--shadow-sm);
     }
     
     /* Badge */
@@ -258,6 +267,9 @@
         font-size: 0.75rem;
         text-transform: uppercase;
         letter-spacing: 0.05em;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
     }
     
     .badge-primary {
@@ -332,6 +344,7 @@
         background: white;
         border: 1px solid var(--border-color);
         color: var(--gray-color);
+        transition: all 0.2s ease;
     }
     
     .btn-icon:hover {
@@ -349,8 +362,18 @@
         color: var(--primary-blue);
     }
     
+    .btn-icon-primary:hover {
+        background-color: var(--primary-blue);
+        color: white;
+    }
+    
     .btn-icon-danger {
         color: var(--accent-red);
+    }
+    
+    .btn-icon-danger:hover {
+        background-color: var(--accent-red);
+        color: white;
     }
     
     /* Empty State */
@@ -385,6 +408,31 @@
     .empty-state .btn-primary i {
         font-size: 0.75rem;
         margin-right: 0.3rem;
+    }
+    
+    /* Table Cell Styling */
+    .table-cell-no {
+        width: 50px;
+        text-align: center;
+    }
+    
+    .table-cell-info {
+        min-width: 300px;
+    }
+    
+    .table-cell-date {
+        width: 140px;
+        text-align: center;
+    }
+    
+    .table-cell-status {
+        width: 140px;
+        text-align: center;
+    }
+    
+    .table-cell-actions {
+        width: 100px;
+        text-align: center;
     }
     
     /* Responsive */
@@ -551,12 +599,11 @@
             <table class="table" id="agendaTable">
                 <thead>
                     <tr>
-                        <th width="60">No</th>
-                        <th>Informasi Agenda</th>
-                        <th width="140">Tanggal</th>
-                        <th width="120">Waktu</th>
-                      
-                        <th width="120">Aksi</th>
+                        <th class="table-cell-no">No</th>
+                        <th class="table-cell-info">Informasi Agenda</th>
+                        <th class="table-cell-date">Tanggal</th>
+                        <th class="table-cell-status">Status</th>
+                        <th class="table-cell-actions">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -566,25 +613,27 @@
                             data-tanggal="{{ $agenda->tanggal }}"
                             data-status="{{ $agenda->status ?? 'upcoming' }}">
                             
-                            <td class="text-center text-muted fw-semibold">
-                                {{ $loop->iteration }}
+                            <td class="table-cell-no">
+                                <span class="badge bg-light text-dark rounded-pill">
+                                    {{ $loop->iteration }}
+                                </span>
                             </td>
 
-                            <td>
+                            <td class="table-cell-info">
                                 <div class="fw-semibold mb-1">{{ $agenda->judul }}</div>
                                 <small class="text-muted">
                                     {{ \Illuminate\Support\Str::limit(strip_tags($agenda->deskripsi), 80) }}
                                 </small>
                             </td>
 
-                            <td class="text-center">
+                            <td class="table-cell-date">
                                 <span class="badge badge-info">
                                     <i class="bi bi-calendar-event me-1"></i>
                                     {{ \Carbon\Carbon::parse($agenda->tanggal)->format('d M Y') }}
                                 </span>
                             </td>
 
-                            <td class="text-center">
+                            <td class="table-cell-status">
                                 @if($agenda->tanggal > now())
                                     <span class="badge badge-warning">Akan Datang</span>
                                 @elseif($agenda->tanggal == now()->format('Y-m-d'))
@@ -596,15 +645,15 @@
                                 @endif
                             </td>
 
-                            <td class="text-center">
+                            <td class="table-cell-actions">
                                 <div class="d-inline-flex gap-1">
-                                    <a href="{{ route('admin.agenda.edit',$agenda->id) }}" class="btn btn-icon btn-icon-primary">
+                                    <a href="{{ route('admin.agenda.edit',$agenda->id) }}" class="btn btn-icon btn-icon-primary" title="Edit">
                                         <i class="bi bi-pencil"></i>
                                     </a>
                                     <form action="{{ route('admin.agenda.destroy',$agenda->id) }}" method="POST"
                                           onsubmit="return confirmDelete()">
                                         @csrf @method('DELETE')
-                                        <button class="btn btn-icon btn-icon-danger">
+                                        <button class="btn btn-icon btn-icon-danger" title="Hapus">
                                             <i class="bi bi-trash"></i>
                                         </button>
                                     </form>
@@ -614,11 +663,14 @@
                     @empty
                         <!-- EMPTY STATE -->
                         <tr>
-                            <td colspan="6">
+                            <td colspan="5">
                                 <div class="empty-state">
                                     <i class="bi bi-calendar-x"></i>
                                     <h5>Data agenda belum tersedia</h5>
                                     <p>Belum ada agenda yang ditambahkan. Mulai dengan menambahkan agenda baru.</p>
+                                    <a href="{{ route('admin.agenda.create') }}" class="btn btn-primary">
+                                        <i class="bi bi-plus-circle me-2"></i> Tambah Agenda
+                                    </a>
                                 </div>
                             </td>
                         </tr>

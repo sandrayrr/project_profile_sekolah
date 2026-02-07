@@ -190,82 +190,142 @@
             max-width: 600px;
             margin: 0 auto 60px auto;
         }
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-        }
 
-        /* --- Kartu Anggota (Gaya Premium) --- */
-        .team-member-card {
-            position: relative;
+        /* --- Struktur Grid Tim (2x2) --- */
+        .team-grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .team-module {
             background: var(--card-bg);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border-radius: 20px;
             border: 1px solid var(--card-border);
-            overflow: hidden;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            text-align: left;
-            color: white;
-        }
-        .team-member-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-        }
-        .member-image {
-            height: 250px;
-            overflow: hidden;
-        }
-        .member-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        .team-member-card:hover .member-image img {
-            transform: scale(1.1);
-        }
-        .member-details {
             padding: 25px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
-        .member-details h3 {
-            font-size: 1.8rem;
-            margin: 0 0 5px;
-        }
-        .member-details .role {
-            color: var(--accent-color);
-            font-weight: 600;
-            margin: 0 0 15px;
-        }
-        .member-details .short-desc {
-            color: #ddd;
-            font-size: 0.95rem;
+        
+        .module-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
             margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--card-border);
         }
-        .social-links a {
-            margin-right: 15px;
-            color: #aaa;
-            font-size: 1.2rem;
-            transition: color 0.3s ease, transform 0.3s ease;
-            display: inline-block;
+        
+        .module-icon {
+            font-size: 2rem;
+            color: var(--accent-color);
+            background: rgba(35, 213, 171, 0.1);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .social-links a:hover {
-            color: var(--primary-color);
+        
+        .module-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0;
+            color: var(--text-color);
+        }
+        
+        .team-members {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            flex-grow: 1;
+        }
+        
+        .team-member {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .team-member:hover {
+            background: rgba(255, 255, 255, 0.1);
             transform: translateY(-3px);
         }
+        
+        .member-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--card-border);
+            flex-shrink: 0;
+        }
+        
+        .member-info {
+            flex-grow: 1;
+        }
+        
+        .member-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 3px;
+            color: var(--text-color);
+        }
+        
+        .member-role {
+            color: var(--accent-color);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        .member-desc {
+            color: #aaa;
+            font-size: 0.85rem;
+            margin-top: 5px;
+        }
+        
+        .member-social {
+            display: flex;
+            gap: 10px;
+            margin-top: 8px;
+        }
+        
+        .member-social a {
+            color: #aaa;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+        
+        .member-social a:hover {
+            color: var(--primary-color);
+        }
+        
         .view-profile-btn {
-            margin-top: 20px;
-            width: 100%;
-            padding: 12px;
+            margin-top: 10px;
+            padding: 6px 12px;
             background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
             border: none;
-            border-radius: 8px;
+            border-radius: 6px;
             color: white;
             font-weight: 600;
             cursor: pointer;
             transition: opacity 0.3s ease;
+            font-size: 0.85rem;
         }
+        
         .view-profile-btn:hover {
             opacity: 0.9;
         }
@@ -347,6 +407,11 @@
             .section-title { font-size: 2.2rem; }
             .team-section { padding: 60px 15px; }
             .modal-content { width: 95%; padding: 20px; }
+            
+            .team-grid-container {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+            }
         }
     </style>
 </head>
@@ -358,9 +423,10 @@
         <div class="hero-overlay"></div>
         <div class="container">
             <nav>
-                <a href="/beranda">Beranda</a> 
-                <a href="#tim">Tentang Kami</a>
-            </nav>
+    <a href="{{ route('beranda') }}">Beranda</a>
+    <a href="#tim">Tentang Kami</a>
+</nav>
+
             <div class="hero-content">
                 <h1 data-aos="fade-down" data-aos-duration="1500">Tim Kreatif Kami</h1>
                 <p data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200">Kami adalah tim yang terdiri dari individu-individu berbakat dan bersemangat, yang bekerja sama untuk mencapai tujuan bersama. Kenali lebih dekat anggota tim kami di bawah ini.</p>
@@ -399,93 +465,134 @@
 
             <section id="tim" class="team-section">
                 <div class="container">
-                    <h2 class="section-title" data-aos="fade-up">Tim Hebat Kami</h2>
-                    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Berpikir di luar batas, menciptakan solusi luar biasa.</p>
+                    <h2 class="section-title" data-aos="fade-up">Struktur Tim Kami</h2>
+                    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Terorganisir, terkolaborasi, dan siap untuk inovasi.</p>
                     
-                    <div class="team-grid">
-                        <!-- Kartu Anggota 1 -->
-                        <div class="team-member-card" data-aos="flip-left" data-aos-delay="200">
-                            <div class="member-image">
-                                <!-- GANTI URL GAMBAR DI SINI -->
-                                <img src="https://i.pravatar.cc/400?img=53" alt="Foto Andi Pratama">
-                            </div>
-                            <div class="member-details">
-                                <h3>Andi Pratama</h3>
-                                <p class="role">Project Manager</p>
-                                <p class="short-desc">Memimpin tim dan memastikan semua proyek berjalan sesuai rencana.</p>
-                                <div class="social-links">
-                                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <!-- Grid Tim (2x2) -->
+                    <div class="team-grid-container" data-aos="fade-up" data-aos-delay="200">
+                        <!-- Tim Perancangan (2 Anggota) -->
+                        <div class="team-module" data-aos="zoom-in" data-aos-delay="300">
+                            <div class="module-header">
+                                <div class="module-icon">
+                                    <i class="fas fa-palette"></i>
                                 </div>
-                                <button class="view-profile-btn" data-id="0">Lihat Profil</button>
+                                <h3 class="module-title">Tim Perancangan</h3>
+                            </div>
+                            <div class="team-members">
+                                <div class="team-member">
+                                    <img src="https://i.pravatar.cc/150?img=47" alt="Foto Siti Nurhaliza" class="member-avatar">
+                                    <div class="member-info">
+                                        <h4 class="member-name">Siti Nurhaliza</h4>
+                                        <p class="member-role">Lead UI/UX Designer</p>
+                                        <p class="member-desc">Memimpin arah desain dan pengalaman pengguna.</p>
+                                        <div class="member-social">
+                                            <a href="#" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a>
+                                            <a href="#" aria-label="Behance"><i class="fab fa-behance"></i></a>
+                                        </div>
+                                        <button class="view-profile-btn" data-id="0">Lihat Profil</button>
+                                    </div>
+                                </div>
+                                <div class="team-member">
+                                    <img src="https://i.pravatar.cc/150?img=20" alt="Foto Maya Putri" class="member-avatar">
+                                    <div class="member-info">
+                                        <h4 class="member-name">Maya Putri</h4>
+                                        <p class="member-role">UI/UX Designer</p>
+                                        <p class="member-desc">Membuat visual dan prototipe yang interaktif.</p>
+                                        <div class="member-social">
+                                            <a href="#" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a>
+                                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                        </div>
+                                        <button class="view-profile-btn" data-id="1">Lihat Profil</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
-                        <!-- Kartu Anggota 2 -->
-                        <div class="team-member-card" data-aos="flip-left" data-aos-delay="300">
-                            <div class="member-image">
-                                <img src="https://i.pravatar.cc/400?img=47" alt="Foto Siti Nurhaliza">
-                            </div>
-                            <div class="member-details">
-                                <h3>Siti Nurhaliza</h3>
-                                <p class="role">Lead UI/UX Designer</p>
-                                <p class="short-desc">Merancang antarmuka yang menarik dan mudah digunakan oleh pengguna.</p>
-                                <div class="social-links">
-                                    <a href="#" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a>
-                                    <a href="#" aria-label="Behance"><i class="fab fa-behance"></i></a>
+                        
+                        <!-- Tim Frontend (1 Anggota) -->
+                        <div class="team-module" data-aos="zoom-in" data-aos-delay="400">
+                            <div class="module-header">
+                                <div class="module-icon">
+                                    <i class="fas fa-laptop-code"></i>
                                 </div>
-                                <button class="view-profile-btn" data-id="1">Lihat Profil</button>
+                                <h3 class="module-title">Tim Frontend</h3>
+                            </div>
+                            <div class="team-members">
+                                <div class="team-member">
+                                    <img src="https://i.pravatar.cc/150?img=32" alt="Foto Budi Santoso" class="member-avatar">
+                                    <div class="member-info">
+                                        <h4 class="member-name">Budi Santoso</h4>
+                                        <p class="member-role">Frontend Developer</p>
+                                        <p class="member-desc">Membangun antarmuka pengguna yang responsif dan cepat.</p>
+                                        <div class="member-social">
+                                            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                        </div>
+                                        <button class="view-profile-btn" data-id="2">Lihat Profil</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
-                        <!-- Kartu Anggota 3 -->
-                        <div class="team-member-card" data-aos="flip-left" data-aos-delay="400">
-                            <div class="member-image">
-                                <img src="https://i.pravatar.cc/400?img=32" alt="Foto Budi Santoso">
-                            </div>
-                            <div class="member-details">
-                                <h3>Budi Santoso</h3>
-                                <p class="role">Lead Frontend Developer</p>
-                                <p class="short-desc">Mengubah desain menjadi pengalaman web yang interaktif dan responsif.</p>
-                                <div class="social-links">
-                                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        
+                        <!-- Tim Backend (2 Anggota) -->
+                        <div class="team-module" data-aos="zoom-in" data-aos-delay="500">
+                            <div class="module-header">
+                                <div class="module-icon">
+                                    <i class="fas fa-server"></i>
                                 </div>
-                                <button class="view-profile-btn" data-id="2">Lihat Profil</button>
+                                <h3 class="module-title">Tim Backend</h3>
+                            </div>
+                            <div class="team-members">
+                                <div class="team-member">
+                                    <img src="https://i.pravatar.cc/150?img=26" alt="Foto Dewi Lestari" class="member-avatar">
+                                    <div class="member-info">
+                                        <h4 class="member-name">Dewi Lestari</h4>
+                                        <p class="member-role">Lead Backend Developer</p>
+                                        <p class="member-desc">Merancang arsitektur sistem dan database yang skalabel.</p>
+                                        <div class="member-social">
+                                            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                                            <a href="#" aria-label="Stack Overflow"><i class="fab fa-stack-overflow"></i></a>
+                                        </div>
+                                        <button class="view-profile-btn" data-id="3">Lihat Profil</button>
+                                    </div>
+                                </div>
+                                <div class="team-member">
+                                    <img src="https://i.pravatar.cc/150?img=53" alt="Foto Andi Pratama" class="member-avatar">
+                                    <div class="member-info">
+                                        <h4 class="member-name">Andi Pratama</h4>
+                                        <p class="member-role">Backend Developer</p>
+                                        <p class="member-desc">Mengembangkan API dan mengelola logika bisnis.</p>
+                                        <div class="member-social">
+                                            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                        </div>
+                                        <button class="view-profile-btn" data-id="4">Lihat Profil</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
-                        <!-- Kartu Anggota 4 -->
-                        <div class="team-member-card" data-aos="flip-left" data-aos-delay="500">
-                            <div class="member-image">
-                                <img src="https://i.pravatar.cc/400?img=26" alt="Foto Dewi Lestari">
-                            </div>
-                            <div class="member-details">
-                                <h3>Dewi Lestari</h3>
-                                <p class="role">Backend Developer</p>
-                                <p class="short-desc">Membangun dan menjaga stabilitas logika dan database aplikasi.</p>
-                                <div class="social-links">
-                                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                                    <a href="#" aria-label="Stack Overflow"><i class="fab fa-stack-overflow"></i></a>
+                        
+                        <!-- Tim Debugging (1 Anggota) -->
+                        <div class="team-module" data-aos="zoom-in" data-aos-delay="600">
+                            <div class="module-header">
+                                <div class="module-icon">
+                                    <i class="fas fa-bug"></i>
                                 </div>
-                                <button class="view-profile-btn" data-id="3">Lihat Profil</button>
+                                <h3 class="module-title">Tim Debugging</h3>
                             </div>
-                        </div>
-
-                        <!-- Kartu Anggota 5 -->
-                        <div class="team-member-card" data-aos="flip-left" data-aos-delay="600">
-                            <div class="member-image">
-                                <img src="https://i.pravatar.cc/400?img=44" alt="Foto Rizki Ahmad">
-                            </div>
-                            <div class="member-details">
-                                <h3>Rizki Ahmad</h3>
-                                <p class="role">Digital Marketing</p>
-                                <p class="short-desc">Memastikan produk kami menjangkau audiens yang tepat.</p>
-                                <div class="social-links">
-                                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <div class="team-members">
+                                <div class="team-member">
+                                    <img src="https://i.pravatar.cc/150?img=44" alt="Foto Rizki Ahmad" class="member-avatar">
+                                    <div class="member-info">
+                                        <h4 class="member-name">Rizki Ahmad</h4>
+                                        <p class="member-role">QA Engineer</p>
+                                        <p class="member-desc">Memastikan kualitas dan stabilitas produk sebelum rilis.</p>
+                                        <div class="member-social">
+                                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                                        </div>
+                                        <button class="view-profile-btn" data-id="5">Lihat Profil</button>
+                                    </div>
                                 </div>
-                                <button class="view-profile-btn" data-id="4">Lihat Profil</button>
                             </div>
                         </div>
                     </div>
@@ -513,13 +620,14 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
 
-            // --- DATA ANGGOTA TIM ---
+            // --- DATA ANGGOTA TIM (Diperbarui) ---
             const teamMembers = [
-                { id: 0, name: "Andi Pratama", role: "Project Manager", image: "https://i.pravatar.cc/150?img=53", tasks: ["Merencanakan dan mengelola jadwal proyek.", "Mengkoordinasikan komunikasi antar tim.", "Mengidentifikasi dan mengelola risiko proyek.", "Melaporkan perkembangan proyek kepada stakeholders."] },
-                { id: 1, name: "Siti Nurhaliza", role: "Lead UI/UX Designer", image: "https://i.pravatar.cc/150?img=47", tasks: ["Melakukan riset pengguna dan analisis kebutuhan.", "Membuat wireframe, prototype, dan desain visual.", "Melakukan pengujian usability.", "Berkolaborasi dengan tim pengembang."] },
-                { id: 2, name: "Budi Santoso", role: "Lead Frontend Developer", image: "https://i.pravatar.cc/150?img=32", tasks: ["Menerjemahkan desain UI menjadi kode.", "Membangun komponen web yang dapat digunakan kembali.", "Memastikan aplikasi web responsif.", "Mengoptimalkan kecepatan loading."] },
-                { id: 3, name: "Dewi Lestari", role: "Backend Developer", image: "https://i.pravatar.cc/150?img=26", tasks: ["Membangun dan mengelola API.", "Mendesain dan mengelola database.", "Mengimplementasikan logika bisnis di sisi server.", "Menjamin keamanan data dan aplikasi."] },
-                { id: 4, name: "Rizki Ahmad", role: "Digital Marketing", image: "https://i.pravatar.cc/150?img=44", tasks: ["Merencanakan dan mengeksekusi kampanye pemasaran.", "Mengelola media sosial perusahaan.", "Menganalisis data kampanye.", "Mengoptimalkan SEO."] }
+                { id: 0, name: "Siti Nurhaliza", role: "Lead UI/UX Designer", image: "https://i.pravatar.cc/150?img=47", tasks: ["Memimpin strategi desain dan riset pengguna.", "Membuat arsitektur informasi dan alur pengguna.", "Mengawasi konsistensi desain visual di seluruh produk.", "Mentor anggota tim desain lainnya."] },
+                { id: 1, name: "Maya Putri", role: "UI/UX Designer", image: "https://i.pravatar.cc/150?img=20", tasks: ["Membuat wireframe dan high-fidelity mockups.", "Mendesain elemen visual seperti ikon dan ilustrasi.", "Membangun prototipe interaktif untuk pengujian.", "Berkolaborasi dengan developer untuk implementasi desain."] },
+                { id: 2, name: "Budi Santoso", role: "Frontend Developer", image: "https://i.pravatar.cc/150?img=32", tasks: ["Menerjemahkan desain UI menjadi kode yang fungsional.", "Membangun komponen web yang dapat digunakan kembali.", "Memastikan aplikasi web responsif di berbagai perangkat.", "Mengoptimalkan kecepatan loading dan performa halaman."] },
+                { id: 3, name: "Dewi Lestari", role: "Lead Backend Developer", image: "https://i.pravatar.cc/150?img=26", tasks: ["Merancang arsitektur sistem dan database.", "Memimpin tim backend dalam pengembangan API.", "Menjamin keamanan, skalabilitas, dan performa server.", "Mengambil keputusan teknis terkait teknologi backend."] },
+                { id: 4, name: "Andi Pratama", role: "Backend Developer", image: "https://i.pravatar.cc/150?img=53", tasks: ["Membangun dan mengelola RESTful API/GraphQL.", "Mengimplementasikan logika bisnis di sisi server.", "Mengelola database dan optimasi query.", "Integrasi dengan layanan pihak ketiga."] },
+                { id: 5, name: "Rizki Ahmad", role: "QA Engineer", image: "https://i.pravatar.cc/150?img=44", tasks: ["Merencanakan dan menulis skrip pengujian (manual & otomatis).", "Melakukan pengujian fungsional, regresi, dan performa.", "Melaporkan bug dan melacak perbaikannya.", "Bekerja sama dengan tim pengembang untuk memastikan kualitas."] }
             ];
 
             // --- LOGIKA MODAL ---

@@ -126,7 +126,7 @@ body {
     background-color: #fff;
 }
 
-/* Gaya khusus untuk input-group harga */
+/* Gaya khusus untuk input-group harga - PERBAIKAN */
 .input-group {
     position: relative;
     display: flex;
@@ -135,12 +135,13 @@ body {
 }
 
 .input-group .form-control {
-    padding-left: 2.5rem;
+    padding-left: 45px; /* Tambah padding kiri untuk memberi ruang pada "Rp" */
+    border-radius: 12px;
 }
 
 .input-group-text {
     position: absolute;
-    left: 12px;
+    left: 16px; /* Posisikan lebih ke kanan */
     top: 50%;
     transform: translateY(-50%);
     background: transparent;
@@ -148,6 +149,14 @@ body {
     color: var(--text-muted);
     z-index: 10;
     font-weight: 600;
+    pointer-events: none; /* Mencegah interaksi dengan span */
+    font-size: 0.95rem;
+}
+
+/* Tambahkan styling untuk placeholder yang lebih baik */
+.form-control::placeholder {
+    color: #a0aec0;
+    opacity: 1;
 }
 
 /* ================= ALERT (Pesan Error) ================= */
@@ -263,7 +272,7 @@ body {
             {{-- PESAN ERROR --}}
             @if($errors->any())
                 <div class="alert-custom-danger">
-                    <strong>Terjadi kesalahan:</strong>
+                    <strong>Terdapat kesalahan pada input:</strong>
                     <ul class="mb-0 mt-2">
                         @foreach($errors->all() as $error)
                             <li>{{ $error }}</li>
@@ -289,7 +298,17 @@ body {
                            placeholder="Contoh: Baju Batik Premium"
                            required>
                     @error('nama')
-                        <div class="invalid-feedback">{{ $message }}</div>
+                        <div class="invalid-feedback">
+                            @if($message == 'The nama field is required.')
+                                Nama produk harus diisi.
+                            @elseif($message == 'The nama must be a string.')
+                                Nama produk harus berupa teks.
+                            @elseif($message == 'The nama may not be greater than 255 characters.')
+                                Nama produk tidak boleh lebih dari 255 karakter.
+                            @else
+                                {{ $message }}
+                            @endif
+                        </div>
                     @enderror
                 </div>
 
@@ -304,39 +323,43 @@ body {
                         <option value="Seragam">Seragam</option>
                     </select>
                     @error('kategori')
-                        <div class="invalid-feedback">{{ $message }}</div>
+                        <div class="invalid-feedback">
+                            @if($message == 'The kategori field is required.')
+                                Kategori harus dipilih.
+                            @else
+                                {{ $message }}
+                            @endif
+                        </div>
                     @enderror
                 </div>
 
-                {{-- HARGA --}}
+                {{-- HARGA - PERBAIKAN --}}
                 <div class="mb-3">
                     <label for="harga" class="form-label">Harga</label>
-                    <div class="input-group">
+                    <div class="input-group position-relative">
                         <span class="input-group-text">Rp</span>
                         <input type="number"
                                id="harga"
                                name="harga"
                                class="form-control @error('harga') is-invalid @enderror"
                                placeholder="0"
-                               value="{{ old('harga') }}">
+                               value="{{ old('harga') }}"
+                               style="padding-left: 45px;">
                     </div>
                     @error('harga')
-                        <div class="invalid-feedback">{{ $message }}</div>
+                        <div class="invalid-feedback">
+                            @if($message == 'The harga field is required.')
+                                Harga harus diisi.
+                            @elseif($message == 'The harga must be a number.')
+                                Harga harus berupa angka.
+                            @elseif($message == 'The harga must be at least 0.')
+                                Harga tidak boleh kurang dari 0.
+                            @else
+                                {{ $message }}
+                            @endif
+                        </div>
                     @enderror
                 </div>
-
-                {{-- DESKRIPSI --}}
-                {{-- <div class="mb-3">
-                    <label for="deskripsi" class="form-label">Deskripsi Produk</label>
-                    <textarea name="deskripsi"
-                              id="deskripsi"
-                              rows="4"
-                              class="form-control @error('deskripsi') is-invalid @enderror"
-                              placeholder="Deskripsi produk...">{{ old('deskripsi') }}</textarea>
-                    @error('deskripsi')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div> --}}
 
                 {{-- FOTO PRODUK --}}
                 <div class="mb-4">
@@ -350,7 +373,17 @@ body {
                         JPG / PNG • Maksimal 2MB
                     </small>
                     @error('foto')
-                        <div class="invalid-feedback">{{ $message }}</div>
+                        <div class="invalid-feedback">
+                            @if($message == 'The foto field is required.')
+                                Foto produk harus diunggah.
+                            @elseif($message == 'The foto must be an image.')
+                                File yang diunggah harus berupa gambar.
+                            @elseif($message == 'The foto may not be greater than 2048 kilobytes.')
+                                Ukuran foto tidak boleh lebih dari 2MB.
+                            @else
+                                {{ $message }}
+                            @endif
+                        </div>
                     @enderror
                 </div>
 

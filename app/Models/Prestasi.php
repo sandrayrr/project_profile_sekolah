@@ -11,6 +11,7 @@ class Prestasi extends Model
 
     protected $fillable = [
         'judul',
+        'nama',
         'deskripsi',
         'kelas',
         'jurusan',
@@ -72,4 +73,10 @@ class Prestasi extends Model
         // Pastikan format kelas konsisten (contoh: "X TO 1")
         $this->attributes['kelas'] = trim($value);
     }
+
+    public function getRombelAttribute()
+{
+    return "{$this->kelas} {$this->jurusan} {$this->subkelas}";
+}
+
 }

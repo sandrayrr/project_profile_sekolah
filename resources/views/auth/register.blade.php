@@ -481,7 +481,7 @@
                         </span>
                         <select name="role" class="form-select" required>
                             <option value="" disabled selected>Pilih Role...</option>
-                            <option value="user">User</option>
+                            <option value="admin marketplace">Admin Marketplace</option>
                             <option value="admin">Admin</option>
                         </select>
                     </div>

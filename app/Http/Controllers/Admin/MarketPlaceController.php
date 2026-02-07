@@ -39,18 +39,43 @@ class MarketPlaceController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        // Aturan validasi tetap sama
+        $rules = [
             'nama'     => 'required|string|max:255',
-            'kategori' => 'required|string|max:255', // VALIDASI KATEGORI DITAMBAHKAN
+            'kategori' => 'required|string|max:255',
             'harga'    => 'required|numeric',
             'foto'     => 'required|image|mimes:jpg,jpeg,png|max:2048',
-        ]);
+        ];
+
+        // Pesan error kustom dalam Bahasa Indonesia
+        $customMessages = [
+            'required' => ':attribute harus diisi.',
+            'string'   => ':attribute harus berupa teks.',
+            'max'      => [
+                'string' => ':attribute tidak boleh lebih dari :max karakter.',
+                'file'   => 'Ukuran :attribute tidak boleh lebih dari :max kilobyte.',
+            ],
+            'numeric'  => ':attribute harus berupa angka.',
+            'image'    => 'File yang diunggah untuk :attribute harus berupa gambar.',
+            'mimes'    => ':attribute harus berformat: :values.',
+        ];
+
+        // Nama atribut yang akan ditampilkan di pesan error
+        $customAttributes = [
+            'nama'     => 'Nama Produk',
+            'kategori' => 'Kategori',
+            'harga'    => 'Harga',
+            'foto'     => 'Foto Produk',
+        ];
+
+        // Jalankan validasi dengan pesan kustom
+        $request->validate($rules, $customMessages, $customAttributes);
 
         $fotoPath = $request->file('foto')->store('marketplace', 'public');
 
         Marketplace::create([
             'nama'     => $request->nama,
-            'kategori' => $request->kategori, // KATEGORI DITAMBAHKAN
+            'kategori' => $request->kategori,
             'harga'    => $request->harga,
             'foto'     => $fotoPath,
         ]);
@@ -72,16 +97,41 @@ class MarketPlaceController extends Controller
      */
     public function update(Request $request, Marketplace $marketplace)
     {
-        $request->validate([
+        // Aturan validasi untuk update (foto bisa kosong)
+        $rules = [
             'nama'     => 'required|string|max:255',
-            'kategori' => 'required|string|max:255', // VALIDASI KATEGORI DITAMBAHKAN
+            'kategori' => 'required|string|max:255',
             'harga'    => 'required|numeric',
             'foto'     => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-        ]);
+        ];
+
+        // Pesan error kustom (sama seperti di store)
+        $customMessages = [
+            'required' => ':attribute harus diisi.',
+            'string'   => ':attribute harus berupa teks.',
+            'max'      => [
+                'string' => ':attribute tidak boleh lebih dari :max karakter.',
+                'file'   => 'Ukuran :attribute tidak boleh lebih dari :max kilobyte.',
+            ],
+            'numeric'  => ':attribute harus berupa angka.',
+            'image'    => 'File yang diunggah untuk :attribute harus berupa gambar.',
+            'mimes'    => ':attribute harus berformat: :values.',
+        ];
+
+        // Nama atribut (sama seperti di store)
+        $customAttributes = [
+            'nama'     => 'Nama Produk',
+            'kategori' => 'Kategori',
+            'harga'    => 'Harga',
+            'foto'     => 'Foto Produk',
+        ];
+
+        // Jalankan validasi dengan pesan kustom
+        $request->validate($rules, $customMessages, $customAttributes);
 
         $data = [
             'nama'     => $request->nama,
-            'kategori' => $request->kategori, // KATEGORI DITAMBAHKAN
+            'kategori' => $request->kategori,
             'harga'    => $request->harga,
         ];
 

@@ -276,16 +276,18 @@ body {
                     @enderror
                 </div>
 
-                {{-- JABATAN --}}
+                 {{-- JABATAN --}}
                 <div class="mb-3">
                     <label for="jabatan" class="form-label">Jabatan</label>
-                    <input type="text"
-                           id="jabatan"
-                           name="jabatan"
-                           class="form-control @error('jabatan') is-invalid @enderror"
-                           value="{{ old('jabatan') }}"
-                           placeholder="Contoh: Staff Administrasi, Satpam"
-                           required>
+                    <select name="jabatan" 
+                            id="jabatan" 
+                            class="form-select @error('jabatan') is-invalid @enderror" 
+                            required>
+                        <option value="" disabled selected>-- Pilih Jabatan --</option>
+                        <option value="Tata Usaha" @selected(old('jabatan') == 'Tata Usaha')>Tata Usaha</option>
+                        <option value="Toolman" @selected(old('jabatan') == 'Toolman')>Toolman</option>
+                        <option value="Pustakawan" @selected(old('jabatan') == 'Pustakawan')>Pustakawan</option>
+                    </select>
                     @error('jabatan')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror

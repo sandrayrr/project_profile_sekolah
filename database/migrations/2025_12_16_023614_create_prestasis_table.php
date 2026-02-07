@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::create('prestasis', function (Blueprint $table) {
             $table->id();
             $table->string('judul');
+            $table->string('nama');
             $table->text('deskripsi')->nullable();
             $table->string('kelas'); 
-             $table->string('jurusan'); 
-             $table->string('subkelas'); 
+            $table->string('jurusan'); 
+            $table->string('subkelas'); 
             $table->string('juara'); 
             $table->string('tingkat'); 
             $table->string('penyelenggara')->nullable();

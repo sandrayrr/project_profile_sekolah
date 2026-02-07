@@ -38,12 +38,16 @@ body {
 /* ================= CONTAINER (Penampung Utama) ================= */
 .popup-container {
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 1300;
     padding: 20px;
+    overflow-y: auto; /* Tambahkan ini untuk memungkinkan scroll jika konten terlalu tinggi */
 }
 
 /* ================= CARD (Kartu Pop-up) ================= */
@@ -55,6 +59,10 @@ body {
     box-shadow: 0 25px 60px -10px var(--primary-shadow), 0 10px 20px -5px rgba(0, 0, 0, 0.1);
     animation: popupShow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     overflow: hidden; /* Memastikan sudut header melengkung sempurna */
+    margin: auto; /* Tambahkan ini untuk memastikan popup berada di tengah */
+    max-height: 90vh; /* Batasi tinggi maksimum popup */
+    display: flex;
+    flex-direction: column; /* Tambahkan ini untuk mengatur layout internal */
 }
 
 /* ================= HEADER (Bagian Atas) ================= */
@@ -65,6 +73,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-shrink: 0; /* Tambahkan ini untuk mencegah header mengecil */
 }
 
 .popup-header h5 {
@@ -97,6 +106,8 @@ body {
 /* ================= BODY (Isian Form) ================= */
 .popup-body {
     padding: 28px 26px;
+    overflow-y: auto; /* Tambahkan ini untuk memungkinkan scroll pada konten jika terlalu panjang */
+    flex-grow: 1; /* Tambahkan ini agar body mengisi sisa ruang yang tersedia */
 }
 
 /* ================= FORM (Elemen Form) ================= */
@@ -286,7 +297,7 @@ body {
                     @enderror
                 </div>
 
-                            <div class="mb-3">
+                <div class="mb-3">
                     <label for="kategori" class="form-label">Kategori</label>
                     <select name="kategori" id="kategori" class="form-select @error('kategori') is-invalid @enderror" required>
                         <option value="" disabled>-- Pilih Kategori --</option>
@@ -300,7 +311,6 @@ body {
                         <div class="invalid-feedback d-block">{{ $message }}</div>
                     @enderror
                 </div>
-
 
                 {{-- HARGA --}}
                 <div class="mb-3">

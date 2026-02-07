@@ -101,20 +101,16 @@
         transform: translate(-20%, 20%);
     }
     
-    /* Stat Card */
-    .stat-card {
+    /* Stat Card Single */
+    .stat-card-single {
         background: var(--gradient-card);
         border-radius: 16px;
-        padding: 1.5rem;
+        padding: 1.5rem 2rem;
         box-shadow: var(--shadow-md);
-        transition: all 0.3s ease;
+        margin-bottom: 2rem;
+        display: flex;
+        align-items: center;
         border-left: 4px solid var(--primary-blue);
-        height: 100%;
-    }
-    
-    .stat-card:hover {
-        transform: translateY(-5px);
-        box-shadow: var(--shadow-xl);
     }
     
     .stat-icon {
@@ -127,7 +123,19 @@
         background: var(--gradient-primary);
         color: white;
         font-size: 1.5rem;
-        margin-bottom: 1rem;
+        margin-right: 1.5rem;
+    }
+    
+    .stat-content h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin: 0;
+        color: var(--dark-color);
+    }
+    
+    .stat-content p {
+        margin: 0;
+        color: var(--gray-color);
     }
     
     /* Filter Card */
@@ -535,58 +543,13 @@
     </div>
 
     <!-- STATISTIK -->
-    <div class="row mb-4">
-        <div class="col-md-3 col-sm-6 mb-3">
-            <div class="stat-card slide-in">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <p class="text-muted small mb-1">Total Artikel</p>
-                        <h2 class="fw-bold mb-0">{{ $artikels->total() }}</h2>
-                    </div>
-                    <div class="stat-icon">
-                        <i class="bi bi-journal-text"></i>
-                    </div>
-                </div>
-            </div>
+      <div class="stat-card-single fade-in" style="animation-delay: 0.1s;">
+        <div class="stat-icon">
+            <i class="bi bi-file-text"></i>
         </div>
-        <div class="col-md-3 col-sm-6 mb-3">
-            <div class="stat-card slide-in" style="animation-delay: 0.1s;">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <p class="text-muted small mb-1">Dipublikasi</p>
-                        <h2 class="fw-bold mb-0">{{ $artikels->where('status', 'published')->count() }}</h2>
-                    </div>
-                    <div class="stat-icon" style="background: var(--gradient-primary);">
-                        <i class="bi bi-check-circle"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6 mb-3">
-            <div class="stat-card slide-in" style="animation-delay: 0.2s;">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <p class="text-muted small mb-1">Draft</p>
-                        <h2 class="fw-bold mb-0">{{ $artikels->where('status', 'draft')->count() }}</h2>
-                    </div>
-                    <div class="stat-icon" style="background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);">
-                        <i class="bi bi-file-earmark-text"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6 mb-3">
-            <div class="stat-card slide-in" style="animation-delay: 0.3s;">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <p class="text-muted small mb-1">Kategori</p>
-                        <h2 class="fw-bold mb-0">5</h2>
-                    </div>
-                    <div class="stat-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
-                        <i class="bi bi-tags"></i>
-                    </div>
-                </div>
-            </div>
+        <div class="stat-content">
+            <h2>{{ $artikels->total() ?? 0 }}</h2>
+            <p>Total Artikel Tercatat</p>
         </div>
     </div>
 
