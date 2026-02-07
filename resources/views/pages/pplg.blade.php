@@ -164,7 +164,7 @@
                     </div>
                 </div>
                 <div class="md:w-1/3 flex justify-center">
-                    <img src="https://sfile.chatglm.cn/images-ppt/8e5b2f9e9e9c.jpg" alt="Siswa PPLG"
+                    <img src="pplg1.jpg" alt="Siswa PPLG"
                         class="w-full max-w-sm h-48 object-cover rounded-xl shadow-lg">
                 </div>
             </div>
@@ -209,86 +209,70 @@
             <!-- TAB CONTENT -->
             <div class="tab-content">
                 <!-- IDENTITAS -->
+                <!-- IDENTITAS -->
                 <div id="identitas" class="tab-pane">
-                    <div class="bg-card-light dark:bg-card-dark rounded-2xl shadow-lg p-8">
-                        <h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Identitas Jurusan</h3>
+    <div class="bg-card-light dark:bg-card-dark rounded-2xl shadow-lg p-8">
+        <h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white text-center relative">
+            <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Identitas Jurusan</span>
+            <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
+        </h3>
 
-                        <div class="mb-8">
-                            <h4 class="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Profil Jurusan</h4>
-                            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
-                                <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-                                    Jurusan Pengembangan Perangkat Lunak dan Gim (PPLG) di SMKN 1 Kawali dirancang untuk
-                                    menghasilkan lulusan yang ahli dalam merancang, mengembangkan, dan memelihara
-                                    perangkat lunak serta gim. Dengan kurikulum yang selalu update sesuai kebutuhan
-                                    industri, siswa dibekali dengan keterampilan teknis dan soft skill yang relevan
-                                    untuk karir di era digital.
-                                </p>
+        <div class="mb-8">
+            <h4 class="text-lg font-semibold mb-4 text-gray-900 dark:text-white flex items-center">
+                <span class="w-8 h-8 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mr-3">
+                    <span class="material-icons text-primary text-sm">info</span>
+                </span>
+                Profil Jurusan
+            </h4>
+            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 border-l-4 border-primary shadow-sm">
+                <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                    Pengembangan Perangkat Lunak dan Gim adalah Kompetensi Kejuruan yang memiliki pengetahuan, keterampilan, nilai serta sikap yang terintegrasi dan kecakapan kerja dalam bidang perancangan, pengembangan, dan pemeliharaan perangkat lunak serta gim dengan menerapkan sikap kewirausahaan dan mampu beradaptasi dengan perkembangan teknologi informasi untuk memenuhi tuntutan dunia kerja masa kini dan masa yang akan datang.
+                </p>
+            </div>
+        </div>
+
+        <div class="flex justify-center">
+            <div class="max-w-2xl w-full">
+                <h4 class="text-lg font-semibold mb-6 text-gray-900 dark:text-white text-center flex items-center justify-center">
+                    <span class="w-8 h-8 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mr-3">
+                        <span class="material-icons text-primary text-sm">folder_shared</span>
+                    </span>
+                    Data Jurusan
+                </h4>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:-translate-y-1">
+                        <div class="flex flex-col items-center text-center">
+                            <div class="w-14 h-14 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900 dark:to-blue-800 rounded-full flex items-center justify-center mb-3">
+                                <span class="material-icons text-primary text-xl">account_balance</span>
                             </div>
+                            <h5 class="font-medium text-gray-900 dark:text-white mb-1">Nama Lengkap</h5>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">Pengembangan Perangkat Lunak dan Gim</p>
                         </div>
-
-                        <div class="grid md:grid-cols-2 gap-8">
-                            <div>
-                                <h4 class="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Data Jurusan</h4>
-                                <div class="space-y-4">
-                                    <div class="flex items-start">
-                                        <span class="material-icons text-primary mr-3 mt-1">tag</span>
-                                        <div>
-                                            <h5 class="font-medium text-gray-900 dark:text-white">Nama Lengkap</h5>
-                                            <p class="text-gray-600 dark:text-gray-400">Pengembangan Perangkat Lunak dan
-                                                Gim</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-start">
-                                        <span class="material-icons text-primary mr-3 mt-1">school</span>
-                                        <div>
-                                            <h5 class="font-medium text-gray-900 dark:text-white">Kepala Jurusan</h5>
-                                            <p class="text-gray-600 dark:text-gray-400">Bapak Candra Kusuma, S.Kom.,
-                                                M.T.</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-start">
-                                        <span class="material-icons text-primary mr-3 mt-1">business</span>
-                                        <div>
-                                            <h5 class="font-medium text-gray-900 dark:text-white">Mitra Industri</h5>
-                                            <p class="text-gray-600 dark:text-gray-400">20+ perusahaan teknologi dan
-                                                startup</p>
-                                        </div>
-                                    </div>
-                                </div>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:-translate-y-1">
+                        <div class="flex flex-col items-center text-center">
+                            <div class="w-14 h-14 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900 dark:to-blue-800 rounded-full flex items-center justify-center mb-3">
+                                <span class="material-icons text-primary text-xl">school</span>
                             </div>
-                            <div>
-                                <h4 class="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Pencapaian</h4>
-                                <div class="space-y-4">
-                                    <div class="flex items-start">
-                                        <span class="material-icons text-primary mr-3 mt-1">trending_up</span>
-                                        <div>
-                                            <h5 class="font-medium text-gray-900 dark:text-white">Tingkat Kelulusan</h5>
-                                            <p class="text-gray-600 dark:text-gray-400">98% (2022/2023)</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-start">
-                                        <span class="material-icons text-primary mr-3 mt-1">work</span>
-                                        <div>
-                                            <h5 class="font-medium text-gray-900 dark:text-white">Tingkat Penyerapan
-                                                Kerja</h5>
-                                            <p class="text-gray-600 dark:text-gray-400">90% dalam 6 bulan setelah lulus
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-start">
-                                        <span class="material-icons text-primary mr-3 mt-1">emoji_events</span>
-                                        <div>
-                                            <h5 class="font-medium text-gray-900 dark:text-white">Prestasi</h5>
-                                            <p class="text-gray-600 dark:text-gray-400">Juara 1 LKS Game Development
-                                                Tingkat Provinsi 2023</p>
-                                        </div>
-                                    </div>
-                                </div>
+                            <h5 class="font-medium text-gray-900 dark:text-white mb-1">Kepala Jurusan</h5>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">Yanto Supriyanto, S.Kom.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:-translate-y-1">
+                        <div class="flex flex-col items-center text-center">
+                            <div class="w-14 h-14 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900 dark:to-blue-800 rounded-full flex items-center justify-center mb-3">
+                                <span class="material-icons text-primary text-xl">business</span>
                             </div>
+                            <h5 class="font-medium text-gray-900 dark:text-white mb-1">Mitra Industri</h5>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">PT.Inovindo Digital Media</p>
                         </div>
                     </div>
                 </div>
-
+            </div>
+        </div>
+    </div>
+</div>
+ 
                 <!-- FASILITAS -->
                 <div id="fasilitas" class="tab-pane hidden">
                     <div class="bg-card-light dark:bg-card-dark rounded-2xl shadow-lg p-8">
@@ -433,131 +417,110 @@
                 </div>
 
                 <!-- STRUKTUR ORGANISASI -->
-                <div id="struktur" class="tab-pane hidden">
-                    <div class="bg-card-light dark:bg-card-dark rounded-2xl shadow-lg p-8">
-                        <h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Struktur Organisasi Jurusan
-                        </h3>
+               <div id="struktur" class="tab-pane hidden">
+    <div class="bg-card-light dark:bg-card-dark rounded-2xl shadow-lg p-8">
+        <h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Struktur Organisasi Jurusan</h3>
 
-                        <!-- Kepala Jurusan -->
-                        <div class="flex justify-center mb-8">
-                            <div class="bg-primary text-white rounded-xl p-6 text-center max-w-xs card-hover">
-                                <div
-                                    class="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                                    <span class="material-icons text-3xl">account_circle</span>
-                                </div>
-                                <h4 class="font-bold text-lg">Kepala Jurusan</h4>
-                                <p class="text-sm opacity-90">Bapak Candra Kusuma, S.Kom., M.T.</p>
-                                <p class="text-xs opacity-75 mt-2">NIP. 198504152009011001</p>
-                            </div>
-                        </div>
+        <!-- Kepala Jurusan -->
+        <div class="flex justify-center mb-8">
+            <div class="bg-primary text-white rounded-xl p-6 text-center max-w-xs card-hover">
+                <div class="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span class="material-icons text-3xl">architecture</span>
+                </div>
+                <h4 class="font-bold text-lg">Kepala Jurusan</h4>
+                <p class="text-sm opacity-90">Yanto Supriyanto, S.Kom.</p>
+                <p class="text-xs opacity-75 mt-2"></p>
+            </div>
+        </div>
 
-                        <!-- Guru Produktif -->
-                        <div class="org-chart flex justify-center mb-8">
-                            <div class="flex gap-4">
-                                <div
-                                    class="org-chart-item bg-gray-100 dark:bg-gray-800 rounded-xl p-4 text-center max-w-xs card-hover">
-                                    <div
-                                        class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-3">
-                                        <span class="material-icons text-primary">laptop_mac</span>
-                                    </div>
-                                    <h4 class="font-semibold text-gray-900 dark:text-white">Guru Pemrograman</h4>
-                                    <p class="text-sm text-gray-600 dark:text-gray-400">6 Guru</p>
-                                </div>
-                                <div
-                                    class="org-chart-item bg-gray-100 dark:bg-gray-800 rounded-xl p-4 text-center max-w-xs card-hover">
-                                    <div
-                                        class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-3">
-                                        <span class="material-icons text-primary">palette</span>
-                                    </div>
-                                    <h4 class="font-semibold text-gray-900 dark:text-white">Guru Desain & Multimedia
-                                    </h4>
-                                    <p class="text-sm text-gray-600 dark:text-gray-400">4 Guru</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Detail Guru -->
-                        <div class="grid md:grid-cols-2 gap-6 mb-8">
-                            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
-                                <h4 class="font-semibold text-gray-900 dark:text-white mb-4">Guru Pemrograman</h4>
-                                <div class="space-y-3">
-                                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
-                                        <p class="font-medium text-gray-900 dark:text-white">Bapak Ahmad Fauzi, S.Kom.
-                                        </p>
-                                        <p class="text-sm text-gray-600 dark:text-gray-400">Pemrograman Web & Mobile</p>
-                                    </div>
-                                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
-                                        <p class="font-medium text-gray-900 dark:text-white">Ibu Sarah Permata, S.T.,
-                                            M.Kom.</p>
-                                        <p class="text-sm text-gray-600 dark:text-gray-400">Algoritma & Struktur Data
-                                        </p>
-                                    </div>
-                                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
-                                        <p class="font-medium text-gray-900 dark:text-white">Bapak Budi Santoso, S.Kom.
-                                        </p>
-                                        <p class="text-sm text-gray-600 dark:text-gray-400">Database & Backend
-                                            Development</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
-                                <h4 class="font-semibold text-gray-900 dark:text-white mb-4">Guru Desain & Multimedia
-                                </h4>
-                                <div class="space-y-3">
-                                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
-                                        <p class="font-medium text-gray-900 dark:text-white">Ibu Rina Wijaya, S.Ds.</p>
-                                        <p class="text-sm text-gray-600 dark:text-gray-400">UI/UX Design</p>
-                                    </div>
-                                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
-                                        <p class="font-medium text-gray-900 dark:text-white">Bapak Dedi Pratama, S.Sn.
-                                        </p>
-                                        <p class="text-sm text-gray-600 dark:text-gray-400">Game Design & 3D Modeling
-                                        </p>
-                                    </div>
-                                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
-                                        <p class="font-medium text-gray-900 dark:text-white">Ibu Maya Sari, S.Kom.</p>
-                                        <p class="text-sm text-gray-600 dark:text-gray-400">Animasi & Visual Effects</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Struktur Kelas -->
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
-                                <h4 class="font-semibold text-gray-900 dark:text-white mb-4">Struktur Kelas X PPLG</h4>
-                                <div class="grid grid-cols-1 gap-3">
-                                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
-                                        <span class="text-gray-700 dark:text-gray-300">Wali Kelas: Ibu Maya Putri,
-                                            S.Kom.</span>
-                                    </div>
-                                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
-                                        <span class="text-gray-700 dark:text-gray-300">Ketua Kelas: Rizki Pratama</span>
-                                    </div>
-                                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
-                                        <span class="text-gray-700 dark:text-gray-300">Wakil Ketua: Salsa Bilqis</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
-                                <h4 class="font-semibold text-gray-900 dark:text-white mb-4">Struktur Kelas XI PPLG</h4>
-                                <div class="grid grid-cols-1 gap-3">
-                                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
-                                        <span class="text-gray-700 dark:text-gray-300">Wali Kelas: Bapak Adi Nugroho,
-                                            S.T.</span>
-                                    </div>
-                                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
-                                        <span class="text-gray-700 dark:text-gray-300">Ketua Kelas: Bayu Setiawan</span>
-                                    </div>
-                                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
-                                        <span class="text-gray-700 dark:text-gray-300">Wakil Ketua: Citra Dewi</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        <!-- Detail Guru -->
+        <div class="grid md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
+                <h4 class="font-semibold text-gray-900 dark:text-white mb-4">Guru Dasar Dasar Program Keahlian</h4>
+                <div class="space-y-3">
+                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
+                        <p class="font-medium text-gray-900 dark:text-white">Yanto Supriyanto, S. Kom</p>
+                        
+                    </div>
+                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
+                        <p class="font-medium text-gray-900 dark:text-white"> Rd. Gilang Yudiaputra, S.Kom</p>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
+                <h4 class="font-semibold text-gray-900 dark:text-white mb-4">Guru Pengembangan Perangkat Lunak</h4>
+                <div class="space-y-3">
+                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
+                        <p class="font-medium text-gray-900 dark:text-white">Ade Popon Nurlela, S.T</p>
+                        
+                    </div>
+                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
+                        <p class="font-medium text-gray-900 dark:text-white">Aji Prasetya, S.Pd</p>
+                       
                     </div>
                 </div>
+            </div>
+            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
+                <h4 class="font-semibold text-gray-900 dark:text-white mb-4">Guru Mata Pelajaran Pilihan</h4>
+                <div class="space-y-3">
+                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
+                        <p class="font-medium text-gray-900 dark:text-white"> Aceng Taofik, S, Kom.</p>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
 
+        <!-- Struktur Kelas -->
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
+                <h4 class="font-semibold text-gray-900 dark:text-white mb-4">Struktur Kelas X PPLG</h4>
+                <div class="grid grid-cols-1 gap-3">
+                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
+                        <span class="text-gray-700 dark:text-gray-300">Wali Kelas X PPLG 1 : Heni Sri Hartati, S.Pd</span>
+                    </div>
+                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
+                        <span class="text-gray-700 dark:text-gray-300">Wali Kelas X PPLG 2 : Aceng Taufik, S.Kom</span>
+                    </div>
+                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
+                        <span class="text-gray-700 dark:text-gray-300">Wali Kelas X Gim : Rd. Gilang Yudiaputra, S.Kom</span>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
+                <h4 class="font-semibold text-gray-900 dark:text-white mb-4">Struktur Kelas XI PPLG</h4>
+                <div class="grid grid-cols-1 gap-3">
+                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
+                        <span class="text-gray-700 dark:text-gray-300">Wali Kelas XI PPLG 1 : Yanti Apriliani, S.Pd.</span>
+                    </div>
+                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
+                        <span class="text-gray-700 dark:text-gray-300">Wali Kelas XI PPLG 2 :  Suci Ramdania, S.Pd</span>
+                    </div>
+                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
+                        <span class="text-gray-700 dark:text-gray-300">Wali Kelas XI Gim :  Aji Prasetya Wibisono, S.Pd</span>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
+                <h4 class="font-semibold text-gray-900 dark:text-white mb-4">Struktur Kelas XII PPLG</h4>
+                <div class="grid grid-cols-1 gap-3">
+                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
+                        <span class="text-gray-700 dark:text-gray-300">Wali Kelas XII PPLG 1 : Ade Popon, S.T</span>
+                    </div>
+                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
+                        <span class="text-gray-700 dark:text-gray-300">Wali Kelas XII PPLG 2 : Teti Novianti, S.Pd</span>
+                    </div>
+                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
+                        <span class="text-gray-700 dark:text-gray-300">Wali Kelas XII PPLG 3 :  Kokom Komalasari, S.Pd</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
                 <!-- KOMPETENSI -->
                 <div id="kompetensi" class="tab-pane hidden">
                     <div class="bg-card-light dark:bg-card-dark rounded-2xl shadow-lg p-8">
@@ -771,19 +734,17 @@
                                     <h5 class="font-medium text-gray-900 dark:text-white mb-2">Kelas X</h5>
                                     <div class="grid md:grid-cols-2 gap-3">
                                         <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
-                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Dasar-Dasar
-                                                Pemrograman</p>
+                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Memahami Dasar-dasar Rekayasa Perangkat Lunak</p>
                                         </div>
                                         <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
-                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Algoritma dan Struktur
-                                                Data</p>
+                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Memahami Algoritma dan Pemrograman Terstruktur</p>
                                         </div>
                                         <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
-                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Pemrograman Web Dasar
+                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Memahami Dasar Perancangan Basis Data
                                             </p>
                                         </div>
                                         <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
-                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Desain Grafis Dasar
+                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Memahami Pemrograman Berbasis Teks dan Antarmuka Sederhana
                                             </p>
                                         </div>
                                     </div>
@@ -792,20 +753,18 @@
                                     <h5 class="font-medium text-gray-900 dark:text-white mb-2">Kelas XI</h5>
                                     <div class="grid md:grid-cols-2 gap-3">
                                         <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
-                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Pemrograman Web Lanjut
+                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Menerapkan Perancangan dan Pengelolaan Basis Data
                                             </p>
-                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Pemrograman Web
-                                                Lanjutan</p>
+                                           
                                         </div>
                                         <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
-                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Pemrograman Mobile</p>
+                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Menerapkan Pemrograman Web Statis dan Dinamis</p>
                                         </div>
                                         <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
-                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Database dan SQL</p>
+                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Menerapkan Pemrograman Gim menggunakan Game Engine</p>
                                         </div>
                                         <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
-                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Pengenalan Game
-                                                Development</p>
+                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Menerapkan Pemrograman Gim menggunakan Game Engine</p>
                                         </div>
                                     </div>
                                 </div>
@@ -813,18 +772,16 @@
                                     <h5 class="font-medium text-gray-900 dark:text-white mb-2">Kelas XII</h5>
                                     <div class="grid md:grid-cols-2 gap-3">
                                         <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
-                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Proyek Pengembangan
-                                                Aplikasi</p>
+                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Menerapkan Pengembangan Aplikasi Berbasis Web dan Perangkat Bergerak</p>
                                         </div>
                                         <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
-                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Game Development
-                                                Lanjutan</p>
+                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Menerapkan Integrasi Basis Data, API, dan Framework</p>
                                         </div>
                                         <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
-                                            <p class="text-sm text-gray-700 dark:text-gray-300">• UI/UX Design</p>
+                                            <p class="text-sm text-gray-700 dark:text-gray-300">•Menerapkan Pengembangan Gim secara Utuh (Pemodelan, Pemrograman, dan UI/UX)</p>
                                         </div>
                                         <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
-                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Praktik Kerja Lapangan
+                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Menerapkan Audio Editing dan Integrasi Aset Gim
                                                 (PKL)</p>
                                         </div>
                                     </div>
@@ -900,7 +857,7 @@
             </h2>
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 <div class="relative overflow-hidden rounded-lg group">
-                    <img src="https://picsum.photos/seed/pplg1/400/300.jpg" alt="Kegiatan PPLG"
+                    <img src="pplg1.jpg" alt="Kegiatan PPLG"
                         class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
                     <div
                         class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
@@ -909,7 +866,7 @@
                     </div>
                 </div>
                 <div class="relative overflow-hidden rounded-lg group">
-                    <img src="https://picsum.photos/seed/pplg2/400/300.jpg" alt="Kegiatan PPLG"
+                    <img src="pplg2.jpg" alt="Kegiatan PPLG"
                         class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
                     <div
                         class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
@@ -918,7 +875,7 @@
                     </div>
                 </div>
                 <div class="relative overflow-hidden rounded-lg group">
-                    <img src="https://picsum.photos/seed/pplg3/400/300.jpg" alt="Kegiatan PPLG"
+                    <img src="pplg3.jpg" alt="Kegiatan PPLG"
                         class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
                     <div
                         class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
@@ -927,7 +884,7 @@
                     </div>
                 </div>
                 <div class="relative overflow-hidden rounded-lg group">
-                    <img src="https://picsum.photos/seed/pplg4/400/300.jpg" alt="Kegiatan PPLG"
+                    <img src="pplg4.jpg" alt="Kegiatan PPLG"
                         class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
                     <div
                         class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
@@ -936,7 +893,7 @@
                     </div>
                 </div>
                 <div class="relative overflow-hidden rounded-lg group">
-                    <img src="https://picsum.photos/seed/pplg5/400/300.jpg" alt="Kegiatan PPLG"
+                    <img src="pplg5.jpg" alt="Kegiatan PPLG"
                         class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
                     <div
                         class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
@@ -945,7 +902,7 @@
                     </div>
                 </div>
                 <div class="relative overflow-hidden rounded-lg group">
-                    <img src="https://picsum.photos/seed/pplg6/400/300.jpg" alt="Kegiatan PPLG"
+                    <img src="pplg6.jpg" alt="Kegiatan PPLG"
                         class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
                     <div
                         class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
@@ -954,7 +911,7 @@
                     </div>
                 </div>
                 <div class="relative overflow-hidden rounded-lg group">
-                    <img src="https://picsum.photos/seed/pplg7/400/300.jpg" alt="Kegiatan PPLG"
+                    <img src="pplg7.jpg" alt="Kegiatan PPLG"
                         class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
                     <div
                         class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
@@ -963,7 +920,7 @@
                     </div>
                 </div>
                 <div class="relative overflow-hidden rounded-lg group">
-                    <img src="https://picsum.photos/seed/pplg8/400/300.jpg" alt="Kegiatan PPLG"
+                    <img src="pplg8.jpg" alt="Kegiatan PPLG"
                         class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
                     <div
                         class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
@@ -974,8 +931,6 @@
             </div>
         </div>
     </section>
-
-    <!-- PRESTASI -->
    
     <!-- ALUMNI -->
     <section class="py-12 bg-white dark:bg-gray-800">
@@ -986,29 +941,27 @@
             <div class="grid md:grid-cols-3 gap-6">
                 <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 card-hover">
                     <div class="flex items-center mb-4">
-                        <img src="https://picsum.photos/seed/alumni-pplg1/100/100.jpg" alt="Alumni"
+                        <img src="usep.jpeg" alt="Alumni"
                             class="w-12 h-12 rounded-full mr-4">
                         <div>
-                            <h4 class="font-semibold text-gray-900 dark:text-white">Reza Fahlevi</h4>
-                            <p class="text-sm text-gray-600 dark:text-gray-400">Alumni 2021</p>
+                            <h4 class="font-semibold text-gray-900 dark:text-white">Usep Indra Ramdani </h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Universitas Siliwangi</p>
                         </div>
                     </div>
-                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-3">Frontend Developer at Tokopedia</p>
-                    <p class="text-gray-600 dark:text-gray-400 text-sm italic">"Belajar di jurusan PPLG memberikan saya
-                        fondasi coding yang kuat. Materinya selalu update dan guru-gurunya sangat mendukung."</p>
+                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-3">Alumni Jurusan PPLG Angkatan 2025</p>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm italic">"Saya sebagai lulusan Rekayasa Perangkat Lunak SMK Negeri 1 Kawali, mengucapkan terima kasih kepada seluruh guru dan pihak sekolah atas ilmu dan bimbingan yang telah diberikan. Dari jurusan ini, saya belajar logika, pemrograman, kerja tim, dan pemecahan masalah yang sangat berguna di dunia nyata. Jurusan RPL bukan hanya mengajarkan keterampilan teknis, tetapi juga membentuk pola pikir, kedisiplinan, dan rasa tanggung jawab yang menjadi pengalaman berharga bagi saya."</p>
                 </div>
                 <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 card-hover">
                     <div class="flex items-center mb-4">
-                        <img src="https://picsum.photos/seed/alumni-pplg2/100/100.jpg" alt="Alumni"
+                        <img src="dzikri.jpeg" alt="Alumni"
                             class="w-12 h-12 rounded-full mr-4">
                         <div>
-                            <h4 class="font-semibold text-gray-900 dark:text-white">Nadia Permata</h4>
-                            <p class="text-sm text-gray-600 dark:text-gray-400">Alumni 2020</p>
+                            <h4 class="font-semibold text-gray-900 dark:text-white">Muhammad Dzikri Fathulzahran </h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Akademi Komunitas Toyota Indonesia</p>
                         </div>
                     </div>
-                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-3">Game Designer at Agate Studio</p>
-                    <p class="text-gray-600 dark:text-gray-400 text-sm italic">"Lab Game Development-nya luar biasa!
-                        Saya bisa langsung praktek membuat game dari nol. Pengalaman ini sangat membantu karir saya."
+                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-3">Alumni Jurusan PPLG Angkatan 2024</p>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm italic">"Setelah saya lulus dari SMK Negeri 1 Kawali jurusan Rekayasa Perangkat Lunak (RPL), saya bisa mengimplementasikan banyak sekali pengetahuan dan pengalaman yang bermanfaat selama menjadi siswa di kehidupan saya sebagai mahasiswa di perguruan tinggi vokasi. Dengan modal pelajaran-pelajaran produktif yang relevan, bimbingan dan ilmu dari tenaga pengajar yang mahir dibidang nya, pengalaman PKL, lalu di tunjang dengan fasilitas yang mumpuni mempermudah saya dalam menimba ilmu disana dan mampu mengaplikasikan nya di lingkungan kampus. Ditambah dengan teknologi dan informasi yang terus maju pesat mendukung bakat dan minat saya selaku lulusan RPL yang mempelajari di bidang tersebut. Terima kasih RPL SMKN 1 Kawali."
                     </p>
                 </div>
                 <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 card-hover">

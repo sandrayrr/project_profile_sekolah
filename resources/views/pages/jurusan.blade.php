@@ -140,7 +140,7 @@
                 <!-- RIGHT -->
                 <div class="lg:w-1/2 flex justify-center">
                     <img
-                        src="https://sfile.chatglm.cn/images-ppt/03c07d81854f.jpg"
+                        src="jur.jpg"
                         alt="Jurusan SMKN 1 Kawali"
                         class="w-full max-w-xl h-[420px] object-cover rounded-2xl shadow-2xl">
                 </div>
@@ -324,7 +324,7 @@
                         </div>
                         <div class="card-content">
                             <h3 class="text-xl font-bold text-white mb-2">SK</h3>
-                            <p class="text-white/90">Tata Boga</p>
+                            <p class="text-white/90">Seni Pertunjukan</p>
                         </div>
                         <div class="card-overlay"></div>
                     </div>

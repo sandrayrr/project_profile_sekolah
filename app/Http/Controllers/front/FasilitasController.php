@@ -17,7 +17,7 @@ class FasilitasController extends Controller
             // kalau field kamu bukan "nama", ganti sesuai kolom tabel
         }
 
-        $fasilitas = $query->latest()->paginate(6);
+        $fasilitas = $query->latest()->paginate(8);
 
         return view('pages.fasilitas', compact('fasilitas'));
     }

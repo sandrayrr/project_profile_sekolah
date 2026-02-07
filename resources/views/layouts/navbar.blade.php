@@ -130,7 +130,7 @@
 
                             <a href="{{ route('dpib') }}"
                                 class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 hover:translate-x-1 transition-all duration-200 whitespace-nowrap">
-                                Desain Permodelan Infrastruktur dan Bangunan
+                                Desain Permodelan dan Informasi Bangunan
                             </a>
                             <a href="{{ route('tjkt') }}"
                                 class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 hover:translate-x-1 transition-all duration-200 whitespace-nowrap">
@@ -149,7 +149,7 @@
 
                             <a href="{{ route('mp') }}"
                                 class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 hover:translate-x-1 transition-all duration-200 whitespace-nowrap">
-                                Manajemen Perkantoran
+                                Manajemen Perkantoran dan Layanan Bisnis
                             </a>
 
                             <a href="{{ route('sk') }}"

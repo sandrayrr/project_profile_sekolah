@@ -168,7 +168,7 @@
                 </div>
                 <div class="md:w-1/3 flex justify-center">
                     <!-- Gambar placeholder teater/seni -->
-                    <img src="https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Siswa Seni Pertunjukan"
+                    <img src="sp7.jpg"
                         class="w-full max-w-sm h-48 object-cover rounded-xl shadow-lg border-4 border-white border-opacity-20">
                 </div>
             </div>
@@ -209,80 +209,69 @@
 
             <!-- TAB CONTENT -->
             <div class="tab-content">
-                <!-- IDENTITAS -->
-                <div id="identitas" class="tab-pane">
-                    <div class="bg-card-light dark:bg-card-dark rounded-2xl shadow-lg p-8">
-                        <h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Identitas Jurusan</h3>
+                 <!-- IDENTITAS -->
+               <div id="identitas" class="tab-pane">
+    <div class="bg-card-light dark:bg-card-dark rounded-2xl shadow-lg p-8">
+        <h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white text-center relative">
+            <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Identitas Jurusan</span>
+            <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
+        </h3>
 
-                        <div class="mb-8">
-                            <h4 class="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Profil Jurusan</h4>
-                            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
-                                <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-                                    Jurusan Seni Pertunjukan di SMKN 1 Kawali dirancang untuk mengembangkan bakat 
-                                    seni siswa secara profesional. Kurikulum kami memadukan teori seni dengan praktik 
-                                    panggung yang intensif. Siswa diajarkan untuk menguasai seni peran (acting), 
-                                    seni tari (tari tradisional & kontemporer), seni musik, serta manajemen 
-                                    produksi panggung secara terpadu.
-                                </p>
+        <div class="mb-8">
+            <h4 class="text-lg font-semibold mb-4 text-gray-900 dark:text-white flex items-center">
+                <span class="w-8 h-8 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mr-3">
+                    <span class="material-icons text-primary text-sm">info</span>
+                </span>
+                Profil Jurusan
+            </h4>
+            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 border-l-4 border-primary shadow-sm">
+                <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+            Seni Pertunjukan adalah Kompetensi Kejuruan yang memiliki pengetahuan, keterampilan, nilai serta sikap yang terintegrasi dan kecakapan kerja dalam bidang seni pertunjukan dengan menerapkan sikap kreatif, profesional, dan kewirausahaan serta mampu beradaptasi dengan perkembangan industri kreatif guna memenuhi tuntutan dunia kerja masa kini dan masa yang akan datang.
+                </p>
+            </div>
+        </div>
+
+        <div class="flex justify-center">
+            <div class="max-w-2xl w-full">
+                <h4 class="text-lg font-semibold mb-6 text-gray-900 dark:text-white text-center flex items-center justify-center">
+                    <span class="w-8 h-8 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mr-3">
+                        <span class="material-icons text-primary text-sm">folder_shared</span>
+                    </span>
+                    Data Jurusan
+                </h4>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:-translate-y-1">
+                        <div class="flex flex-col items-center text-center">
+                            <div class="w-14 h-14 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900 dark:to-blue-800 rounded-full flex items-center justify-center mb-3">
+                                <span class="material-icons text-primary text-xl">account_balance</span>
                             </div>
+                            <h5 class="font-medium text-gray-900 dark:text-white mb-1">Nama Lengkap</h5>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">Seni Pertunjukan</p>
                         </div>
-
-                        <div class="grid md:grid-cols-2 gap-8">
-                            <div>
-                                <h4 class="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Data Jurusan</h4>
-                                <div class="space-y-4">
-                                    <div class="flex items-start">
-                                        <span class="material-icons text-primary mr-3 mt-1">theater_comedy</span>
-                                        <div>
-                                            <h5 class="font-medium text-gray-900 dark:text-white">Nama Lengkap</h5>
-                                            <p class="text-gray-600 dark:text-gray-400">Seni Pertunjukan (SP)</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-start">
-                                        <span class="material-icons text-primary mr-3 mt-1">school</span>
-                                        <div>
-                                            <h5 class="font-medium text-gray-900 dark:text-white">Kaprog & Pembina</h5>
-                                            <p class="text-gray-600 dark:text-gray-400">Bapak Andi Wijaya, S.Sn., M.Sn.</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-start">
-                                        <span class="material-icons text-primary mr-3 mt-1">work</span>
-                                        <div>
-                                            <h5 class="font-medium text-gray-900 dark:text-white">Mitra Industri</h5>
-                                            <p class="text-gray-600 dark:text-gray-400">EO Nasional, TV Station, Teater Daerah, Dinas Pariwisata</p>
-                                        </div>
-                                    </div>
-                                </div>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:-translate-y-1">
+                        <div class="flex flex-col items-center text-center">
+                            <div class="w-14 h-14 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900 dark:to-blue-800 rounded-full flex items-center justify-center mb-3">
+                                <span class="material-icons text-primary text-xl">school</span>
                             </div>
-                            <div>
-                                <h4 class="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Pencapaian</h4>
-                                <div class="space-y-4">
-                                    <div class="flex items-start">
-                                        <span class="material-icons text-primary mr-3 mt-1">emoji_events</span>
-                                        <div>
-                                            <h5 class="font-medium text-gray-900 dark:text-white">Festival & Lomba</h5>
-                                            <p class="text-gray-600 dark:text-gray-400">Juara 1 FLS2N Teater Provinsi</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-start">
-                                        <span class="material-icons text-primary mr-3 mt-1">mic</span>
-                                        <div>
-                                            <h5 class="font-medium text-gray-900 dark:text-white">Pentas Keliling</h5>
-                                            <p class="text-gray-600 dark:text-gray-400">Tari & Musik Daerah di 5 Kabupaten</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-start">
-                                        <span class="material-icons text-primary mr-3 mt-1">people</span>
-                                        <div>
-                                            <h5 class="font-medium text-gray-900 dark:text-white">Karir Alumni</h5>
-                                            <p class="text-gray-600 dark:text-gray-400">80% Bekerja di Industri Kreatif</p>
-                                        </div>
-                                    </div>
-                                </div>
+                            <h5 class="font-medium text-gray-900 dark:text-white mb-1">Kepala Jurusan</h5>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">Deni Nugraha Sunjaya, S. Sn.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:-translate-y-1">
+                        <div class="flex flex-col items-center text-center">
+                            <div class="w-14 h-14 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900 dark:to-blue-800 rounded-full flex items-center justify-center mb-3">
+                                <span class="material-icons text-primary text-xl">business</span>
                             </div>
+                            <h5 class="font-medium text-gray-900 dark:text-white mb-1">Mitra Industri</h5>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">Sanggar Seni</p>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
 
                 <!-- FASILITAS -->
                 <div id="fasilitas" class="tab-pane hidden">
@@ -408,78 +397,90 @@
 
                 <!-- STRUKTUR ORGANISASI -->
                 <div id="struktur" class="tab-pane hidden">
-                    <div class="bg-card-light dark:bg-card-dark rounded-2xl shadow-lg p-8">
-                        <h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Struktur Organisasi Jurusan</h3>
+    <div class="bg-card-light dark:bg-card-dark rounded-2xl shadow-lg p-8">
+        <h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Struktur Organisasi Jurusan</h3>
 
-                        <!-- Kepala Jurusan -->
-                        <div class="flex justify-center mb-8">
-                            <div class="bg-primary text-white rounded-xl p-6 text-center max-w-xs card-hover">
-                                <div
-                                    class="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                                    <span class="material-icons text-3xl">theater_comedy</span>
-                                </div>
-                                <h4 class="font-bold text-lg">Kaprog Seni</h4>
-                                <p class="text-sm opacity-90">Bapak Andi Wijaya, S.Sn., M.Sn.</p>
-                                <p class="text-xs opacity-75 mt-2">NIP. 198209152005011002</p>
-                            </div>
-                        </div>
+        <!-- Kepala Jurusan -->
+        <div class="flex justify-center mb-8">
+            <div class="bg-primary text-white rounded-xl p-6 text-center max-w-xs card-hover">
+                <div class="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span class="material-icons text-3xl">architecture</span>
+                </div>
+                <h4 class="font-bold text-lg">Kepala Jurusan</h4>
+                <p class="text-sm opacity-90">Deni Nugraha Sunjaya, S. Sn.p>
+                <p class="text-xs opacity-75 mt-2"></p>
+            </div>
+        </div>
 
-                        <!-- Guru Produktif -->
-                        <div class="org-chart flex justify-center mb-8">
-                            <div class="flex gap-4">
-                                <div
-                                    class="org-chart-item bg-gray-100 dark:bg-gray-800 rounded-xl p-4 text-center max-w-xs card-hover">
-                                    <div
-                                        class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-3">
-                                        <span class="material-icons text-primary">mic</span>
-                                    </div>
-                                    <h4 class="font-semibold text-gray-900 dark:text-white">Bidang Musik</h4>
-                                    <p class="text-sm text-gray-600 dark:text-gray-400">2 Guru</p>
-                                </div>
-                                <div
-                                    class="org-chart-item bg-gray-100 dark:bg-gray-800 rounded-xl p-4 text-center max-w-xs card-hover">
-                                    <div
-                                        class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-3">
-                                        <span class="material-icons text-primary">directions_run</span>
-                                    </div>
-                                    <h4 class="font-semibold text-gray-900 dark:text-white">Bidang Tari</h4>
-                                    <p class="text-sm text-gray-600 dark:text-gray-400">2 Guru</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Detail Guru -->
-                        <div class="grid md:grid-cols-2 gap-6 mb-8">
-                            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
-                                <h4 class="font-semibold text-gray-900 dark:text-white mb-4">Tim Musik & Teater</h4>
-                                <div class="space-y-3">
-                                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
-                                        <p class="font-medium text-gray-900 dark:text-white">Bapak Hendra Gunawan, S.Sn.</p>
-                                        <p class="text-sm text-gray-600 dark:text-gray-400">Seni Peran & Sutradara</p>
-                                    </div>
-                                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
-                                        <p class="font-medium text-gray-900 dark:text-white">Ibu Rina Melodi, S.Pd.</p>
-                                        <p class="text-sm text-gray-600 dark:text-gray-400">Vokal & Teori Musik</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
-                                <h4 class="font-semibold text-gray-900 dark:text-white mb-4">Tim Tari</h4>
-                                <div class="space-y-3">
-                                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
-                                        <p class="font-medium text-gray-900 dark:text-white">Ibu Ratna Sari, S.Sn.</p>
-                                        <p class="text-sm text-gray-600 dark:text-gray-400">Tari Tradisional Sunda</p>
-                                    </div>
-                                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
-                                        <p class="font-medium text-gray-900 dark:text-white">Ibu Dian Ayu, S.Sn.</p>
-                                        <p class="text-sm text-gray-600 dark:text-gray-400">Tari Kontemporer & Kreasi</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        <!-- Detail Guru -->
+        <div class="grid md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
+                <h4 class="font-semibold text-gray-900 dark:text-white mb-4">Guru Dasar Dasar Program Keahlian</h4>
+                <div class="space-y-3">
+                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
+                        <p class="font-medium text-gray-900 dark:text-white">Agus Heri, S. Sn</p>
                     </div>
                 </div>
+            </div>
+            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
+                <h4 class="font-semibold text-gray-900 dark:text-white mb-4">Guru Seni Pertunjukan</h4>
+                <div class="space-y-3">
+                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
+                        <p class="font-medium text-gray-900 dark:text-white">Dadang Nurdiana, S.Pd</p>
+                    </div>
+                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
+                        <p class="font-medium text-gray-900 dark:text-white">Deni Nugraha Sunjaya, S. Sn</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
+                <h4 class="font-semibold text-gray-900 dark:text-white mb-4">Guru Mata Pelajaran Pilihan</h4>
+                <div class="space-y-3">
+                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
+                        <p class="font-medium text-gray-900 dark:text-white"> Ahmad Fakhri Ramadhan, S. Sn</p>
+                    </div>
+                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
+                        <p class="font-medium text-gray-900 dark:text-white">Agus Muya Heliadin, S.Tp>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        <!-- Struktur Kelas -->
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
+                <h4 class="font-semibold text-gray-900 dark:text-white mb-4">Struktur Kelas X SP</h4>
+                <div class="grid grid-cols-1 gap-3">
+                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
+                        <span class="text-gray-700 dark:text-gray-300">Wali Kelas X SP 1 : Yulianti Imaniar, S.Pd </span>
+                    </div>
+                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
+                        <span class="text-gray-700 dark:text-gray-300">Wali Kelas X SP 2 : Ahmad Fakhri Ramadhan, S. Sn </span>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
+                <h4 class="font-semibold text-gray-900 dark:text-white mb-4">Struktur Kelas XI SP</h4>
+                <div class="grid grid-cols-1 gap-3">
+                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
+                        <span class="text-gray-700 dark:text-gray-300">Wali Kelas XI SP 1 : Agus Heri, S. Sn</span>
+                    </div>
+                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
+                        <span class="text-gray-700 dark:text-gray-300">Wali Kelas XI SP 2 : Dadang Nurdiana, S.Pd</span>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
+                <h4 class="font-semibold text-gray-900 dark:text-white mb-4">Struktur Kelas XII SP</h4>
+                <div class="grid grid-cols-1 gap-3">
+                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
+                        <span class="text-gray-700 dark:text-gray-300">Wali Kelas XII SP :Ade Nopianti Muharomah, S.Pd</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
                 <!-- KOMPETENSI -->
                 <div id="kompetensi" class="tab-pane hidden">
                     <div class="bg-card-light dark:bg-card-dark rounded-2xl shadow-lg p-8">
@@ -631,16 +632,16 @@
                                     <h5 class="font-medium text-gray-900 dark:text-white mb-2">Kelas X</h5>
                                     <div class="grid md:grid-cols-2 gap-3">
                                         <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
-                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Dasar-Dasar Seni Pertunjukan</p>
+                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Memahami konsep karawitan bersama</p>
                                         </div>
                                         <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
-                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Apresiasi Seni</p>
+                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Memahami struktur gending/lagu dan sistem notasi karawitan</p>
                                         </div>
                                         <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
-                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Vokal Dasar</p>
+                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Memahami teknik dasar memainkan instrumen pokok karawitan</p>
                                         </div>
                                         <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
-                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Tari Dasar</p>
+                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Memahami teknik dasar vokal karawitan</p>
                                         </div>
                                     </div>
                                 </div>
@@ -648,16 +649,16 @@
                                     <h5 class="font-medium text-gray-900 dark:text-white mb-2">Kelas XI</h5>
                                     <div class="grid md:grid-cols-2 gap-3">
                                         <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
-                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Teknik Akting</p>
+                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Menerapkan praktik karawitan bersama dalam sajian gending/lagu</p>
                                         </div>
                                         <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
-                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Koreografi Tari</p>
+                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Menerapkan teknik permainan instrumen pokok karawitan</p>
                                         </div>
                                         <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
-                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Harmoni Musik</p>
+                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Menerapkan teknik vokal karawitan</p>
                                         </div>
                                         <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
-                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Naskah & Dramaturgi</p>
+                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Menerapkan pola garap instrumen dan/atau vokal karawitan</p>
                                         </div>
                                     </div>
                                 </div>
@@ -665,16 +666,16 @@
                                     <h5 class="font-medium text-gray-900 dark:text-white mb-2">Kelas XII</h5>
                                     <div class="grid md:grid-cols-2 gap-3">
                                         <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
-                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Produksi Teater</p>
+                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Menerapkan praktik karawitan dalam sajian konser atau iringan</p>
                                         </div>
                                         <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
-                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Konser Musik</p>
+                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Menerapkan penguasaan instrumen pokok dan/atau vokal karawitan sesuai tuntutan dunia kerja</p>
                                         </div>
                                         <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
-                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Manajemen Panggung</p>
+                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Menerapkan kreativitas karawitan dalam bentuk karya atau kemasan seni</p>
                                         </div>
                                         <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
-                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Praktik Kerja Lapangan (Magang EO)</p>
+                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Menyajikan karya kreativitas karawitan berbasis perkembangan teknologi</p>
                                         </div>
                                     </div>
                                 </div>
@@ -721,8 +722,7 @@
             </h2>
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 <div class="relative overflow-hidden rounded-lg group">
-                    <img src="https://images.unsplash.com/photo-1514306191717-452428336e2f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Pentas Seni"
-                        class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
+                    <img src="sp1.jpg">
                     <div
                         class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
                         <span
@@ -730,8 +730,7 @@
                     </div>
                 </div>
                 <div class="relative overflow-hidden rounded-lg group">
-                    <img src="https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Konser Musik"
-                        class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
+                    <img src="sp2.jpg">
                     <div
                         class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
                         <span
@@ -739,8 +738,7 @@
                     </div>
                 </div>
                 <div class="relative overflow-hidden rounded-lg group">
-                    <img src="https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Tari Tradisional"
-                        class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
+                    <img src="sp3.jpg">
                     <div
                         class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
                         <span
@@ -748,8 +746,39 @@
                     </div>
                 </div>
                 <div class="relative overflow-hidden rounded-lg group">
-                    <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Festival"
-                        class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
+                    <img src="sp4.jpg">
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
+                        <span
+                            class="material-icons text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">zoom_in</span>
+                    </div>
+                </div>
+                <div class="relative overflow-hidden rounded-lg group">
+                    <img src="sp5.jpg">
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
+                        <span
+                            class="material-icons text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">zoom_in</span>
+                    </div>
+                </div>
+                <div class="relative overflow-hidden rounded-lg group">
+                    <img src="sp6.jpg">
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
+                        <span
+                            class="material-icons text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">zoom_in</span>
+                    </div>
+                </div>
+                <div class="relative overflow-hidden rounded-lg group">
+                    <img src="sp7.jpg">
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
+                        <span
+                            class="material-icons text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">zoom_in</span>
+                    </div>
+                </div>
+                <div class="relative overflow-hidden rounded-lg group">
+                    <img src="sp8.jpg">
                     <div
                         class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
                         <span

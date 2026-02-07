@@ -37,13 +37,25 @@
                     },
                     keyframes: {
                         fadeIn: {
-                            '0%': { opacity: '0', transform: 'translateY(10px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                            '0%': {
+                                opacity: '0',
+                                transform: 'translateY(10px)'
+                            },
+                            '100%': {
+                                opacity: '1',
+                                transform: 'translateY(0)'
+                            },
                         },
                         float: {
-                            '0%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-10px)' },
-                            '100%': { transform: 'translateY(0px)' },
+                            '0%': {
+                                transform: 'translateY(0px)'
+                            },
+                            '50%': {
+                                transform: 'translateY(-10px)'
+                            },
+                            '100%': {
+                                transform: 'translateY(0px)'
+                            },
                         }
                     }
                 },
@@ -133,7 +145,7 @@
 <body class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-100 font-body">
 
     <!-- NAVBAR -->
-  @include('layouts.navbar')
+    @include('layouts.navbar')
 
     <!-- HEADER JURUSAN -->
     <header class="bg-gradient-to-br from-primary to-secondary dark:from-gray-700 dark:to-gray-900 py-12">
@@ -161,12 +173,12 @@
                         </div>
                         <div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-lg px-4 py-2 text-white">
                             <span class="material-icons mr-2 text-sm">history</span>
-                            <span class="text-sm">Berdiri sejak 2013</span>
+                            <span class="text-sm">Berdiri sejak 15 Oktober 2015 2013</span>
                         </div>
                     </div>
                 </div>
                 <div class="md:w-1/3 flex justify-center">
-                    <img src="https://sfile.chatglm.cn/images-ppt/accounting-finance-calculator.jpg" alt="Siswa AKL"
+                    <img src="ak6.jpg" alt="Siswa AKL"
                         class="w-full max-w-sm h-48 object-cover rounded-xl shadow-lg">
                 </div>
             </div>
@@ -208,85 +220,68 @@
             <!-- TAB CONTENT -->
             <div class="tab-content">
                 <!-- IDENTITAS -->
-                <div id="identitas" class="tab-pane">
-                    <div class="bg-card-light dark:bg-card-dark rounded-2xl shadow-lg p-8">
-                        <h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Identitas Jurusan</h3>
+              <div id="identitas" class="tab-pane">
+    <div class="bg-card-light dark:bg-card-dark rounded-2xl shadow-lg p-8">
+        <h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white text-center relative">
+            <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Identitas Jurusan</span>
+            <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
+        </h3>
 
-                        <div class="mb-8">
-                            <h4 class="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Profil Jurusan</h4>
-                            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
-                                <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-                                    Jurusan Akuntansi dan Keuangan Lembaga (AKL) di SMKN 1 Kawali dirancang untuk
-                                    menghasilkan lulusan yang ahli dalam pencatatan, pengolahan, dan pelaporan keuangan
-                                    perusahaan. Dengan kurikulum yang selalu update sesuai kebutuhan industri,
-                                    siswa dibekali dengan keterampilan teknis dan soft skill yang relevan
-                                    untuk karir di era digital.
-                                </p>
+        <div class="mb-8">
+            <h4 class="text-lg font-semibold mb-4 text-gray-900 dark:text-white flex items-center">
+                <span class="w-8 h-8 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mr-3">
+                    <span class="material-icons text-primary text-sm">info</span>
+                </span>
+                Profil Jurusan
+            </h4>
+            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 border-l-4 border-primary shadow-sm">
+                <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                    Akuntansi Keuangan Lembaga adalah Kompetensi Kejuruan yang memiliki pengetahuan, keterampilan dan nilai serta sikap yang terintegrasi dan kecakapan kerja dalam bidang Akuntansi dengan menerapkan kewiraswastaan serta mampu mengadaptasi perkembangan masyarakat yang sesuai dengan kemajuan ilmu dan teknologi serta dapat memenuhi tuntutan dunia kerja masa sekarang dan masa yang akan datang.
+                </p>
+            </div>
+        </div>
+
+        <div class="flex justify-center">
+            <div class="max-w-2xl w-full">
+                <h4 class="text-lg font-semibold mb-6 text-gray-900 dark:text-white text-center flex items-center justify-center">
+                    <span class="w-8 h-8 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mr-3">
+                        <span class="material-icons text-primary text-sm">folder_shared</span>
+                    </span>
+                    Data Jurusan
+                </h4>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:-translate-y-1">
+                        <div class="flex flex-col items-center text-center">
+                            <div class="w-14 h-14 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900 dark:to-blue-800 rounded-full flex items-center justify-center mb-3">
+                                <span class="material-icons text-primary text-xl">account_balance</span>
                             </div>
+                            <h5 class="font-medium text-gray-900 dark:text-white mb-1">Nama Lengkap</h5>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">Akuntansi dan Keuangan Lembaga</p>
                         </div>
-
-                        <div class="grid md:grid-cols-2 gap-8">
-                            <div>
-                                <h4 class="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Data Jurusan</h4>
-                                <div class="space-y-4">
-                                    <div class="flex items-start">
-                                        <span class="material-icons text-primary mr-3 mt-1">account_balance</span>
-                                        <div>
-                                            <h5 class="font-medium text-gray-900 dark:text-white">Nama Lengkap</h5>
-                                            <p class="text-gray-600 dark:text-gray-400">Akuntansi dan Keuangan Lembaga
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-start">
-                                        <span class="material-icons text-primary mr-3 mt-1">school</span>
-                                        <div>
-                                            <h5 class="font-medium text-gray-900 dark:text-white">Kepala Jurusan</h5>
-                                            <p class="text-gray-600 dark:text-gray-400">Ibu Siti Nurhaliza, S.E., M.Ak.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-start">
-                                        <span class="material-icons text-primary mr-3 mt-1">business</span>
-                                        <div>
-                                            <h5 class="font-medium text-gray-900 dark:text-white">Mitra Industri</h5>
-                                            <p class="text-gray-600 dark:text-gray-400">KAP, KPP, Bank, Perusahaan
-                                                Manufaktur</p>
-                                        </div>
-                                    </div>
-                                </div>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:-translate-y-1">
+                        <div class="flex flex-col items-center text-center">
+                            <div class="w-14 h-14 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900 dark:to-blue-800 rounded-full flex items-center justify-center mb-3">
+                                <span class="material-icons text-primary text-xl">school</span>
                             </div>
-                            <div>
-                                <h4 class="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Pencapaian</h4>
-                                <div class="space-y-4">
-                                    <div class="flex items-start">
-                                        <span class="material-icons text-primary mr-3 mt-1">trending_up</span>
-                                        <div>
-                                            <h5 class="font-medium text-gray-900 dark:text-white">Tingkat Kelulusan</h5>
-                                            <p class="text-gray-600 dark:text-gray-400">95% (2022/2023)</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-start">
-                                        <span class="material-icons text-primary mr-3 mt-1">work</span>
-                                        <div>
-                                            <h5 class="font-medium text-gray-900 dark:text-white">Tingkat Penyerapan
-                                                Kerja</h5>
-                                            <p class="text-gray-600 dark:text-gray-400">90% dalam 6 bulan setelah lulus
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-start">
-                                        <span class="material-icons text-primary mr-3 mt-1">emoji_events</span>
-                                        <div>
-                                            <h5 class="font-medium text-gray-900 dark:text-white">Prestasi</h5>
-                                            <p class="text-gray-600 dark:text-gray-400">Juara 1 LKS Akuntansi
-                                                Tingkat Provinsi 2023</p>
-                                        </div>
-                                    </div>
-                                </div>
+                            <h5 class="font-medium text-gray-900 dark:text-white mb-1">Kepala Jurusan</h5>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">Ibu Siti Nurhaliza, S.E., M.Ak.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:-translate-y-1">
+                        <div class="flex flex-col items-center text-center">
+                            <div class="w-14 h-14 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900 dark:to-blue-800 rounded-full flex items-center justify-center mb-3">
+                                <span class="material-icons text-primary text-xl">business</span>
                             </div>
+                            <h5 class="font-medium text-gray-900 dark:text-white mb-1">Mitra Industri</h5>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">KAP, KPP, Bank, Perusahaan Manufaktur</p>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
 
                 <!-- FASILITAS -->
                 <div id="fasilitas" class="tab-pane hidden">
@@ -422,139 +417,108 @@
                 </div>
 
                 <!-- STRUKTUR ORGANISASI -->
-                <div id="struktur" class="tab-pane hidden">
-                    <div class="bg-card-light dark:bg-card-dark rounded-2xl shadow-lg p-8">
-                        <h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Struktur Organisasi Jurusan
-                        </h3>
+ <div id="struktur" class="tab-pane hidden">
+    <div class="bg-card-light dark:bg-card-dark rounded-2xl shadow-lg p-8">
+        <h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Struktur Organisasi Jurusan</h3>
 
-                        <!-- Kepala Jurusan -->
-                        <div class="flex justify-center mb-8">
-                            <div class="bg-primary text-white rounded-xl p-6 text-center max-w-xs card-hover">
-                                <div
-                                    class="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                                    <span class="material-icons text-3xl">account_balance</span>
-                                </div>
-                                <h4 class="font-bold text-lg">Kepala Jurusan</h4>
-                                <p class="text-sm opacity-90">Ibu Siti Nurhaliza, S.E., M.Ak.</p>
-                                <p class="text-xs opacity-75 mt-2">NIP. 198504152009011001</p>
-                            </div>
-                        </div>
+        <!-- Kepala Jurusan -->
+        <div class="flex justify-center mb-8">
+            <div class="bg-primary text-white rounded-xl p-6 text-center max-w-xs card-hover">
+                <div class="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span class="material-icons text-3xl">architecture</span>
+                </div>
+                <h4 class="font-bold text-lg">Kepala Jurusan</h4>
+                <p class="text-sm opacity-90">Neng Tati Erlina, S.Pd.</p>
+                <p class="text-xs opacity-75 mt-2"></p>
+            </div>
+        </div>
 
-                        <!-- Guru Produktif -->
-                        <div class="org-chart flex justify-center mb-8">
-                            <div class="flex gap-4">
-                                <div
-                                    class="org-chart-item bg-gray-100 dark:bg-gray-800 rounded-xl p-4 text-center max-w-xs card-hover">
-                                    <div
-                                        class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-3">
-                                        <span class="material-icons text-primary">calculate</span>
-                                    </div>
-                                    <h4 class="font-semibold text-gray-900 dark:text-white">Guru Akuntansi
-                                    </h4>
-                                    <p class="text-sm text-gray-600 dark:text-gray-400">4 Guru</p>
-                                </div>
-                                <div
-                                    class="org-chart-item bg-gray-100 dark:bg-gray-800 rounded-xl p-4 text-center max-w-xs card-hover">
-                                    <div
-                                        class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-3">
-                                        <span class="material-icons text-primary">receipt_long</span>
-                                    </div>
-                                    <h4 class="font-semibold text-gray-900 dark:text-white">Guru Perpajakan
-                                    </h4>
-                                    <p class="text-sm text-gray-600 dark:text-gray-400">3 Guru</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Detail Guru -->
-                        <div class="grid md:grid-cols-2 gap-6 mb-8">
-                            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
-                                <h4 class="font-semibold text-gray-900 dark:text-white mb-4">Guru Akuntansi</h4>
-                                <div class="space-y-3">
-                                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
-                                        <p class="font-medium text-gray-900 dark:text-white">Ibu Rina Wijaya, S.E.,
-                                            M.Ak.
-                                        </p>
-                                        <p class="text-sm text-gray-600 dark:text-gray-400">Akuntansi Keuangan & Pajak
-                                        </p>
-                                    </div>
-                                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
-                                        <p class="font-medium text-gray-900 dark:text-white">Bapak Ahmad Fauzi, S.E.,
-                                            M.Ak.
-                                        </p>
-                                        <p class="text-sm text-gray-600 dark:text-gray-400">Akuntansi Manajerial &
-                                            Perpajakan
-                                        </p>
-                                    </div>
-                                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
-                                        <p class="font-medium text-gray-900 dark:text-white">Ibu Maya Sari, S.E.
-                                        </p>
-                                        <p class="text-sm text-gray-600 dark:text-gray-400">Akuntansi Biaya & Komersial
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
-                                <h4 class="font-semibold text-gray-900 dark:text-white mb-4">Guru Perpajakan
-                                </h4>
-                                <div class="space-y-3">
-                                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
-                                        <p class="font-medium text-gray-900 dark:text-white">Bapak Budi Santoso, S.E.
-                                        </p>
-                                        <p class="text-sm text-gray-600 dark:text-gray-400">Perpajakan & Audit
-                                        </p>
-                                    </div>
-                                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
-                                        <p class="font-medium text-gray-900 dark:text-white">Ibu Dina Azahra, S.E.
-                                        </p>
-                                        <p class="text-sm text-gray-600 dark:text-gray-400">Pajak & Perpajakan
-                                        </p>
-                                    </div>
-                                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
-                                        <p class="font-medium text-gray-900 dark:text-white">Bapak Fajar Saputra, S.E.
-                                        </p>
-                                        <p class="text-sm text-gray-600 dark:text-gray-400">Sistem Informasi Akuntansi
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Struktur Kelas -->
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
-                                <h4 class="font-semibold text-gray-900 dark:text-white mb-4">Struktur Kelas X AKL</h4>
-                                <div class="grid grid-cols-1 gap-3">
-                                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
-                                        <span class="text-gray-700 dark:text-gray-300">Wali Kelas: Ibu Rina Wijaya,
-                                            S.E., M.Ak.</span>
-                                    </div>
-                                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
-                                        <span class="text-gray-700 dark:text-gray-300">Ketua Kelas: Rizki Ananda</span>
-                                    </div>
-                                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
-                                        <span class="text-gray-700 dark:text-gray-300">Wakil Ketua: Dina Azahra</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
-                                <h4 class="font-semibold text-gray-900 dark:text-white mb-4">Struktur Kelas XI AKL</h4>
-                                <div class="grid grid-cols-1 gap-3">
-                                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
-                                        <span class="text-gray-700 dark:text-gray-300">Wali Kelas: Bapak Ahmad Fauzi,
-                                            S.E., M.Ak.</span>
-                                    </div>
-                                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
-                                        <span class="text-gray-700 dark:text-gray-300">Ketua Kelas: Bayu Setiawan</span>
-                                    </div>
-                                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
-                                        <span class="text-gray-700 dark:text-gray-300">Wakil Ketua: Citra Dewi</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        <!-- Detail Guru -->
+        <div class="grid md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
+                <h4 class="font-semibold text-gray-900 dark:text-white mb-4">Guru Dasar Dasar Program Keahlian</h4>
+                <div class="space-y-3">
+                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
+                        <p class="font-medium text-gray-900 dark:text-white">Eni Kusnaeni, S.Pd., M.M</p>
+                       
+                    </div>
+                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
+                        <p class="font-medium text-gray-900 dark:text-white">Ade Nuraisah, S.Pd.</p>
+                       
+                    </div>
+                
+                </div>
+            </div>
+            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
+                <h4 class="font-semibold text-gray-900 dark:text-white mb-4">Guru Akuntansi dan Keuangan Lembaga</h4>
+                <div class="space-y-3">
+                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
+                        <p class="font-medium text-gray-900 dark:text-white">Neng Tati Erlina, S.Pd</p>
+                        
+                    </div>
+                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
+                        <p class="font-medium text-gray-900 dark:text-white"> Ika Riskawati, S.Pd</p>
+                       
+                    </div>
+                <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
+                        <p class="font-medium text-gray-900 dark:text-white"> Neni Nuraeni, S.Pd</p>
+                       
                     </div>
                 </div>
+            </div>
+            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
+                <h4 class="font-semibold text-gray-900 dark:text-white mb-4">Guru Mata Pelajaran Pilihan</h4>
+                <div class="space-y-3">
+                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
+                        <p class="font-medium text-gray-900 dark:text-white"> Yani Handayani, S.Pd</p>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- Struktur Kelas -->
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
+                <h4 class="font-semibold text-gray-900 dark:text-white mb-4">Wali Kelas X AKL</h4>
+                <div class="grid grid-cols-1 gap-3">
+                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
+                        <span class="text-gray-700 dark:text-gray-300">Wali Kelas X AKL 1 : Eni Kusnaeni, S.Pd., M.M</span>
+                    </div>
+                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
+                        <span class="text-gray-700 dark:text-gray-300">Wali Kelas X AKL 2 : Yani Handayani, S.Pd</span>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
+                <h4 class="font-semibold text-gray-900 dark:text-white mb-4">Wali Kelas XI AKL</h4>
+                <div class="grid grid-cols-1 gap-3">
+                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
+                        <span class="text-gray-700 dark:text-gray-300">Wali Kelas XI AKL 1 : Ika Riskawati, S.Pd.</span>
+                    </div>
+                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
+                        <span class="text-gray-700 dark:text-gray-300">Wali Kelas XI AKL 2 : Ade Nuraisah, S.Pd</span>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
+                <h4 class="font-semibold text-gray-900 dark:text-white mb-4">Wali Kelas XII AKL</h4>
+                <div class="grid grid-cols-1 gap-3">
+                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
+                        <span class="text-gray-700 dark:text-gray-300">Wali Kelas XII AKL 1 : Tuti Fitriyah S.Pd</span>
+                    </div>
+                    <div class="bg-white dark:bg-gray-700 p-3 rounded-lg">
+                        <span class="text-gray-700 dark:text-gray-300">Wali Kelas XII AK 2 : Neni Nuraeni, S.Pd</span>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
                 <!-- KOMPETENSI -->
                 <div id="kompetensi" class="tab-pane hidden">
@@ -785,19 +749,18 @@
                                     <h5 class="font-medium text-gray-900 dark:text-white mb-2">Kelas X</h5>
                                     <div class="grid md:grid-cols-2 gap-3">
                                         <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
-                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Dasar-Dasar
-                                                Akuntansi</p>
+                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Memahami Etika Profesi dan Budaya Kerja Akuntansi</p>
                                         </div>
                                         <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
-                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Akuntansi Perusahaan
+                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Memahami Aplikasi Pengolah Angka (Spreadsheet)
                                             </p>
                                         </div>
                                         <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
-                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Prinsip Akuntansi
+                                            <p class="text-sm text-gray-700 dark:text-gray-300">•Memahami Akuntansi Dasar
                                             </p>
                                         </div>
                                         <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
-                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Etika Profesi
+                                            <p class="text-sm text-gray-700 dark:text-gray-300">•Memahami Perbankan Dasar
                                             </p>
                                         </div>
                                     </div>
@@ -806,19 +769,19 @@
                                     <h5 class="font-medium text-gray-900 dark:text-white mb-2">Kelas XI</h5>
                                     <div class="grid md:grid-cols-2 gap-3">
                                         <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
-                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Akuntansi Perusahaan
+                                            <p class="text-sm text-gray-700 dark:text-gray-300">•Menerapkan Akuntansi Perusahaan Jasa, Dagang, dan Manufaktur
                                             </p>
                                         </div>
                                         <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
-                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Perpajakan & Audit
+                                            <p class="text-sm text-gray-700 dark:text-gray-300">•Menerapkan Akuntansi Lembaga/Instansi
                                             </p>
                                         </div>
                                         <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
-                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Akuntansi Biaya
+                                            <p class="text-sm text-gray-700 dark:text-gray-300">•Menerapkan Komputer Akuntansi
                                             </p>
                                         </div>
                                         <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
-                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Perpajakan
+                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Menerapkan Akuntansi Keuangan
                                             </p>
                                         </div>
                                     </div>
@@ -827,20 +790,17 @@
                                     <h5 class="font-medium text-gray-900 dark:text-white mb-2">Kelas XII</h5>
                                     <div class="grid md:grid-cols-2 gap-3">
                                         <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
-                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Proyek Integrasi
-                                                Akuntansi</p>
+                                            <p class="text-sm text-gray-700 dark:text-gray-300">•Menerapkan Akuntansi Perusahaan Jasa, Dagang, dan Manufaktur secara Lanjutan</p>
                                         </div>
                                         <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
-                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Audit Laporan Keuangan
+                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Menerapkan Akuntansi Lembaga/Instansi secara Profesional
                                             </p>
                                         </div>
                                         <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
-                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Sistem Informasi
-                                                Akuntansi</p>
+                                            <p class="text-sm text-gray-700 dark:text-gray-300">•Menerapkan Penyusunan Laporan Keuangan</p>
                                         </div>
                                         <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
-                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Praktik Kerja Lapangan
-                                                (PKL)</p>
+                                            <p class="text-sm text-gray-700 dark:text-gray-300">• Menerapkan Administrasi Perpajakan sesuai Ketentuan</p>
                                         </div>
                                     </div>
                                 </div>
@@ -908,7 +868,7 @@
             </h2>
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 <div class="relative overflow-hidden rounded-lg group">
-                    <img src="https://picsum.photos/seed/seed/akl1/400/300.jpg" alt="Kegiatan AKL"
+                    <img src="ak1.jpg" alt="Kegiatan AKL"
                         class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
                     <div
                         class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
@@ -917,7 +877,7 @@
                     </div>
                 </div>
                 <div class="relative overflow-hidden rounded-lg group">
-                    <img src="https://picsum.photos/seed/akl2/400/300.jpg" alt="Kegiatan AKL"
+                    <img src="ak2.jpg" alt="Kegiatan AKL"
                         class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
                     <div
                         class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
@@ -926,7 +886,7 @@
                     </div>
                 </div>
                 <div class="relative overflow-hidden rounded-lg group">
-                    <img src="https://picsum.photos/seed/akl3/400/300.jpg" alt="Kegiatan AKL"
+                    <img src="ak3.jpg" alt="Kegiatan AKL"
                         class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
                     <div
                         class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
@@ -935,7 +895,7 @@
                     </div>
                 </div>
                 <div class="relative overflow-hidden rounded-lg group">
-                    <img src="https://picsum.photos/seed/akl4/400/300.jpg" alt="Kegiatan AKL"
+                    <img src="ak4.jpg" alt="Kegiatan AKL"
                         class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
                     <div
                         class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
@@ -944,7 +904,7 @@
                     </div>
                 </div>
                 <div class="relative overflow-hidden rounded-lg group">
-                    <img src="https://picsum.photos/seed/akl5/400/300.jpg" alt="Kegiatan AKL"
+                    <img src="ak5.jpg" alt="Kegiatan AKL"
                         class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
                     <div
                         class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
@@ -953,7 +913,7 @@
                     </div>
                 </div>
                 <div class="relative overflow-hidden rounded-lg group">
-                    <img src="https://picsum.photos/seed/akl6/400/300.jpg" alt="Kegiatan AKL"
+                    <img src="ak6.jpg" alt="Kegiatan AKL"
                         class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
                     <div
                         class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
@@ -962,7 +922,7 @@
                     </div>
                 </div>
                 <div class="relative overflow-hidden rounded-lg group">
-                    <img src="https://picsum.photos/seed/akl7/400/300.jpg" alt="Kegiatan AKL"
+                    <img src="ak7.jpg" alt="Kegiatan AKL"
                         class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
                     <div
                         class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
@@ -971,7 +931,7 @@
                     </div>
                 </div>
                 <div class="relative overflow-hidden rounded-lg group">
-                    <img src="https://picsum.photos/seed/akl8/400/300.jpg" alt="Kegiatan AKL"
+                    <img src="ak8.jpg" alt="Kegiatan AKL"
                         class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
                     <div
                         class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
@@ -992,21 +952,19 @@
             <div class="grid md:grid-cols-3 gap-6">
                 <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 card-hover">
                     <div class="flex items-center mb-4">
-                        <img src="https://sfile.chatglm.cn/images-ppt/accounting-finance-professional.jpg" alt="Alumni"
+                        <img src="Ak9.jpeg" alt="Alumni"
                             class="w-12 h-12 rounded-full mr-4">
                         <div>
-                            <h4 class="font-semibold text-gray-900 dark:text-white">Rizki Ananda</h4>
-                            <p class="text-sm text-gray-600 dark:text-gray-400">Alumni 2021</p>
+                            <h4 class="font-semibold text-gray-900 dark:text-white">Tarisha Oktaviani Hermansyah</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Putri Hijabfluencer 2025</p>
                         </div>
                     </div>
-                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-3">Junior Auditor at KAP</p>
-                    <p class="text-gray-600 dark:text-gray-400 text-sm italic">"Jurusan AKL memberikan saya fondasi yang
-                        kuat dalam akuntansi berstandar internasional. Materinya selalu update dan guru-gurunya sangat
-                        mendukung."</p>
+                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-3">Alumni AKL Angkatan 2022</p>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm italic">"Bersekolah di jurusan Akuntansi SMKN 1 Kawali memberikan saya banyak pengalaman berharga, tidak hanya dalam memahami pencatatan keuangan dan laporan akuntansi, tetapi juga dalam melatih ketelitian, tanggung jawab, dan disiplin. Didukung oleh guru-guru yang kompeten serta lingkungan belajar yang nyaman, saya merasa dibimbing untuk siap menghadapi dunia kerja maupun melanjutkan pendidikan ke jenjang yang lebih tinggi. Jurusan Akuntansi di SMKN 1 Kawali menjadi fondasi penting bagi saya dalam membangun keterampilan profesional dan kepercayaan diri untuk masa depan."</p>
                 </div>
                 <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 card-hover">
                     <div class="flex items-center mb-4">
-                        <img src="https://sfile.chatglm.cn/images-ppt/finance-analyst.jpg" alt="Alumni"
+                        <img src="dzikri.jpeg" alt="Alumni"
                             class="w-12 h-12 rounded-full mr-4">
                         <div>
                             <h4 class="font-semibold text-gray-900 dark:text-white">Nadia Permata</h4>
@@ -1035,16 +993,16 @@
     </section>
 
     <!-- FOOTER -->
-@include('layouts.footer')
+    @include('layouts.footer')
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             // Tab functionality
             const tabBtns = document.querySelectorAll('.tab-btn');
             const tabPanes = document.querySelectorAll('.tab-pane');
 
             tabBtns.forEach(btn => {
-                btn.addEventListener('click', function () {
+                btn.addEventListener('click', function() {
                     const tabId = this.getAttribute('data-tab');
 
                     // Remove active class from all tabs and panes
