@@ -25,7 +25,7 @@
 
             /* Netral */
             --bg-body: #F8FAFC;
-            /* Abu-abu sangat muda ( Hampir putih ) */
+            /* Abu-abu sangat muda (Hampir putih ) */
             --bg-card: #FFFFFF;
             /* Putih Murni */
             --text-main: #1E293B;
@@ -289,7 +289,7 @@
             position: absolute;
             top: 12px;
             left: 12px;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255,255,255, 0.95);
             color: var(--primary-blue);
             padding: 4px 10px;
             border-radius: 6px;
@@ -661,7 +661,7 @@
 
                 <div class="row g-4" id="products-container">
                     {{-- AWAL LOOPING PRODUK --}}
-                    @forelse ($marketplaces as $marketplace)
+                    @forelse ($marketplaces as $index => $marketplace)
                         <div class="col-md-6 col-lg-4 product-item"
                             data-category="{{ strtolower($marketplace->kategori) }}">
                             <div class="product-card">
@@ -681,14 +681,25 @@
                                     </div>
 
                                     {{-- Menampilkan harga produk dengan format Rupiah --}}
-                                    <div class="product-price">Rp {{ number_format($marketplace->harga, 0, ',', '.') }}
-                                    </div>
+                                    <div class="product-price">Rp {{ number_format($marketplace->harga, 0, ',', '.') }}</div>
 
-                                    <!-- Tombol Beli Mini (Opsional) -->
-                                    <button class="btn btn-sm w-100 mt-3 fw-semibold"
-                                        style="background-color: var(--primary-blue); color: white; border-radius: 8px;">
-                                        <i class="bi bi-cart-plus me-1"></i> Beli Sekarang
-                                    </button>
+                                    {{-- TOMBOL AKSI (BELI & WA) --}}
+                                    <div class="d-grid gap-2 mt-3">
+                                        
+                                        {{-- TOMBOL CHAT WHATSAPP (BARU) --}}
+                                        <a href="https://wa.me/6285860578364?text={{ urlencode("Halo, saya tertarik dengan produk $marketplace->nama di Marketplace SMKN 1 Kawali.") }}" 
+                                           target="_blank" 
+                                           class="btn btn-sm fw-semibold d-flex align-items-center justify-content-center gap-2 w-100"
+                                           style="background-color: #25D366; color: white; border: none; border-radius: 8px; transition: opacity 0.2s;">
+                                            <i class="bi bi-whatsapp"></i> Chat Penjual
+                                        </a>
+
+                                        {{-- TOMBOL BELI SEKARANG --}}
+                                        {{-- <button class="btn btn-sm w-100 fw-semibold" 
+                                                style="background-color: var(--primary-blue); color: white; border-radius: 8px;">
+                                            <i class="bi bi-cart-plus me-1"></i> Beli Sekarang
+                                        </button> --}}
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -775,8 +786,8 @@
                 @endif
             </section>
         </div>
-    </main>
-  
+    </main>  
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         // Category card interaction
@@ -804,7 +815,7 @@
                     sectionTitle.textContent = 'Rekomendasi Untukmu';
                     sectionSubtitle.textContent = 'Menampilkan semua produk';
                 } else {
-                    // Get the category name from the active card
+                    // Get category name from the active card
                     const activeCard = document.querySelector(`.category-card[data-category="${category}"]`);
                     if (activeCard) {
                         const categoryName = activeCard.querySelector('.category-name').textContent;
@@ -842,7 +853,7 @@
                     // Get the filter type
                     const filterType = this.dataset.filter;
 
-                    // Apply filter logic (you can expand this as needed)
+                    // Apply filter logic
                     if (filterType === 'all') {
                         // Show all products
                         productItems.forEach(item => {
@@ -886,8 +897,7 @@
                         });
 
                         sectionTitle.textContent = 'Produk dengan Harga Terendah';
-                        sectionSubtitle.textContent =
-                            'Menampilkan produk diurutkan dari harga terendah';
+                        sectionSubtitle.textContent = 'Menampilkan produk diurutkan dari harga terendah';
                     }
                     // Add more filter types as needed
                 });

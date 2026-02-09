@@ -66,9 +66,9 @@
                 akademik lainnya.
             </p>
 
-            <!-- Search Bar Mockup -->
+            <!-- Search Bar (TAMBAHAN: id="searchInput") -->
             <div class="max-w-md mx-auto relative group">
-                <input type="text" placeholder="Cari layanan (misal: LMS, Rapor)..."
+                <input type="text" id="searchInput" placeholder="Cari layanan (misal: LMS, Rapor)..."
                     class="w-full pl-12 pr-4 py-3 rounded-xl border border-blue-200 bg-white text-slate-900 focus:ring-2 focus:ring-primary focus:border-transparent outline-none shadow-sm transition group-hover:shadow-md">
                 <i
                     class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400"></i>
@@ -225,6 +225,29 @@
      <!-- SCRIPT LOGIC (Dipindahkan ke sini agar valid) -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // --- FITUR SEARCH (Ditambahkan) ---
+            const searchInput = document.getElementById('searchInput');
+            const cards = document.querySelectorAll('.link-card');
+
+            if(searchInput) {
+                searchInput.addEventListener('input', function(e) {
+                    const keyword = e.target.value.toLowerCase();
+                    
+                    cards.forEach(card => {
+                        // Mengambil seluruh teks di dalam card (Judul, Deskripsi, dll)
+                        const cardText = card.textContent.toLowerCase();
+                        
+                        // Cek apakah keyword ada di dalam teks card
+                        if (cardText.includes(keyword)) {
+                            card.style.display = ""; // Tampilkan (menghapus inline style)
+                        } else {
+                            card.style.display = "none"; // Sembunyikan
+                        }
+                    });
+                });
+            }
+            // ------------------------------------
+
             // Mobile menu toggle dengan animasi
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');

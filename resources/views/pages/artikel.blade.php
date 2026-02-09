@@ -254,11 +254,18 @@
             <p class="text-sm">
                 Menampilkan kategori: <strong>{{ request('kategori') }}</strong>
             </p>
-            <a href="{{ route('artikel.index') }}" class="text-sm text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300">
-                <i class="fas fa-times mr-1"></i> Hapus Filter
-            </a>
         </div>
         @endif
+
+        <!-- TOOLBAR (RESET) -->
+        <div class="flex justify-between items-center mb-10 animate-fade-in" style="animation-delay: 0.3s">
+            <div class="flex items-center gap-2">
+                <button onclick="resetSearch()" class="text-sm text-gray-500 hover:text-primary transition-colors flex items-center gap-1">
+                    <i class="fas fa-sync-alt"></i>
+                    Reset
+                </button>
+            </div>
+        </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <!-- ARTIKEL GRID -->
@@ -362,9 +369,9 @@
             @forelse ($kategoriArtikel as $kat)
                 @if(!empty($kat->kategori))
                     <li class="category-item">
-                        <a
-                            href="{{ route('artikel.kategori', ['kategori' => $kat->kategori]) }}"
-                            class="flex justify-between items-center text-gray-600 dark:text-gray-300 hover:text-primary transition-colors group py-2 px-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                        <!-- DIUBAH: Dari <a> menjadi <div> dan ditambahkan cursor-default agar tidak bisa diklik -->
+                        <div
+                            class="flex justify-between items-center text-gray-600 dark:text-gray-300 hover:text-primary transition-colors group py-2 px-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 cursor-default">
 
                             <span class="flex items-center">
                                 <i class="fas fa-tag text-xs mr-2 opacity-60"></i>
@@ -376,7 +383,7 @@
                                        group-hover:bg-primary group-hover:text-white transition-colors">
                                 {{ $kat->total }}
                             </span>
-                        </a>
+                        </div>
                     </li>
                 @endif
             @empty
@@ -401,7 +408,8 @@
         <ul class="space-y-4">
             @forelse ($artikelTerbaru as $item)
                 <li class="latest-article pb-3 border-b border-gray-200 dark:border-gray-700 last:border-0 last:pb-0">
-                    <a class="group block" href="{{ route('artikel.show', $item->id) }}">
+                    <!-- DIUBAH: Dari <a> menjadi <div> dan ditambahkan cursor-default agar tidak bisa diklik -->
+                    <div class="group block cursor-default">
                         <h4
                             class="text-sm font-semibold text-gray-800 dark:text-gray-200 group-hover:text-primary transition-colors mb-1 line-clamp-2">
                             {{ $item->judul }}
@@ -411,7 +419,7 @@
                             <i class="material-icons text-[10px]">access_time</i>
                             {{ \Carbon\Carbon::parse($item->tanggal)->diffForHumans() }}
                         </div>
-                    </a>
+                    </div>
                 </li>
             @empty
                 <li class="text-sm text-gray-500 flex items-center gap-2">
@@ -532,6 +540,12 @@
             });
         });
         
+        // --- FITUR RESET (SAME AS OTHERS) ---
+        function resetSearch() {
+            window.location.href = "{{ route('artikel.index') }}";
+        }
+        // ----------------------------------------
+
         // Back to top button
         const backToTopButton = document.getElementById('backToTop');
         

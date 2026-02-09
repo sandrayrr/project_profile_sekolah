@@ -170,6 +170,16 @@
         </div>
     @endif
 
+    <!-- TOOLBAR (RESET) -->
+    <div class="flex justify-between items-center mb-10 animate-fade-in" style="animation-delay: 0.3s">
+        <div class="flex items-center gap-2">
+            <button onclick="resetSearch()" class="text-sm text-gray-500 hover:text-primary transition-colors flex items-center gap-1">
+                <i class="fas fa-sync-alt"></i>
+                Reset
+            </button>
+        </div>
+    </div>
+
     <!-- GRID CARD -->
    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-12" id="fasilitasGrid">
 
@@ -206,18 +216,18 @@
 
             <!-- BODY -->
             <div class="p-5 flex flex-col flex-grow">
-              <div class="flex justify-between items-center mb-3">
-    <!-- STATUS BADGE -->
-    @if(($item->status ?? 'Tersedia') == 'Tersedia')
-        <span class="text-xs bg-green-100 text-green-800 px-3 py-1 rounded-full font-medium">
-            <i class="fas fa-check-circle mr-1"></i> Tersedia
-        </span>
-    @else
-        <!-- Ini akan menangani "Tidak Tersedia" atau nilai lainnya -->
-        <span class="text-xs bg-red-100 text-red-800 px-3 py-1 rounded-full font-medium">
-            <i class="fas fa-times-circle mr-1"></i> Tidak Tersedia
-        </span>
-    @endif
+              <div class="flex justify-end mb-3">
+                <!-- STATUS BADGE (DIUBAH: Tersedia = Hijau, Selain itu = Perbaikan/Kuning) -->
+                @if(($item->status ?? 'Tersedia') == 'Tersedia')
+                    <span class="text-xs bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300 px-3 py-1 rounded-full font-medium">
+                        <i class="fas fa-check-circle mr-1"></i> Tersedia
+                    </span>
+                @else
+                    <!-- Menampilkan Perbaikan jika status bukan Tersedia -->
+                    <span class="text-xs bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300 px-3 py-1 rounded-full font-medium">
+                        <i class="fas fa-tools mr-1"></i> Perbaikan
+                    </span>
+                @endif
 </div>
                 <div class="border-t pt-4 flex-grow">
                     <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white truncate">
@@ -415,6 +425,12 @@
             }
         });
     });
+
+    // --- FITUR RESET (SAME AS OTHERS) ---
+    function resetSearch() {
+        window.location.href = "{{ route('fasilitas') }}";
+    }
+    // ------------------------------------
 </script>
 
 </body>

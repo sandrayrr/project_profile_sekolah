@@ -230,6 +230,16 @@
         </div>
         @endif
 
+        <!-- TOOLBAR (RESET) -->
+        <div class="flex justify-between items-center mb-10 animate-fade-in" style="animation-delay: 0.3s">
+            <div class="flex items-center gap-2">
+                <button onclick="resetSearch()" class="text-sm text-gray-500 hover:text-primary transition-colors flex items-center gap-1">
+                    <i class="fas fa-sync-alt"></i>
+                    Reset
+                </button>
+            </div>
+        </div>
+
         <!-- GRID CARD -->
         @if($ekstrakulikulers->count() > 0)
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-12" id="ekstrakurikulerGrid">
@@ -606,6 +616,12 @@
                 }
             });
         });
+
+        // --- FITUR RESET (SAME AS OTHERS) ---
+        function resetSearch() {
+            window.location.href = "{{ route('ekstrakulikuler') }}";
+        }
+        // ------------------------------------
     </script>
 
 </body>

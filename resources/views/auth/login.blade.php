@@ -421,10 +421,10 @@ body::before {
             </button>
         </form>
 
-        <div class="login-footer">
+        {{-- <div class="login-footer">
             Belum punya akun?
             <a href="{{ url('/register') }}">Daftar</a>
-        </div>
+        </div> --}}
     </div>
 </div>
 
