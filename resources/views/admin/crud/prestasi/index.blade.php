@@ -583,11 +583,6 @@
         <div class="table-card slide-in" style="animation-delay: 0.4s;">
             <div class="table-header">
                 <h5 class="table-title">Daftar Prestasi</h5>
-                <div class="table-actions">
-                    <button class="btn btn-light btn-sm">
-                        <i class="bi bi-download me-2"></i> Export
-                    </button>
-                </div>
             </div>
             <div class="table-responsive">
                 <table class="table">

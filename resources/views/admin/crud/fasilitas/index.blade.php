@@ -596,11 +596,6 @@
     <div class="card-container slide-in" style="animation-delay: 0.4s;">
         <div class="card-header">
             <h5 class="card-title">Daftar Fasilitas</h5>
-            <div class="card-actions">
-                <button class="btn btn-light btn-sm">
-                    <i class="bi bi-download me-2"></i> Export
-                </button>
-            </div>
         </div>
         
         <div class="facility-grid" id="facilityGrid">
@@ -662,9 +657,6 @@
                     <i class="bi bi-building"></i>
                     <h5>Data fasilitas belum tersedia</h5>
                     <p>Belum ada fasilitas yang ditambahkan. Mulai dengan menambahkan fasilitas baru.</p>
-                    <a href="{{ route('admin.fasilitas.create') }}" class="btn btn-primary">
-                        <i class="bi bi-plus-circle me-2"></i> Tambah Fasilitas
-                    </a>
                 </div>
             @endforelse
         </div>

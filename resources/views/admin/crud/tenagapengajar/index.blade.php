@@ -528,7 +528,7 @@
     <!-- STATISTIK -->
    <div class="stat-card-single fade-in" style="animation-delay: 0.1s;">
         <div class="stat-icon">
-            <i class="bi bi-trophy-fill"></i>
+             <i class="material-icons">groups</i>
         </div>
         <div class="stat-content">
             <h2>{{ $tenagaPengajar->total() ?? 0 }}</h2>
@@ -592,11 +592,6 @@
     <div class="card-container slide-in" style="animation-delay: 0.4s;">
         <div class="card-header">
             <h5 class="card-title">Daftar Tenaga Pengajar</h5>
-            <div class="card-actions">
-                <button class="btn btn-light btn-sm">
-                    <i class="bi bi-download me-2"></i> Export
-                </button>
-            </div>
         </div>
         
         <div class="tenaga-grid" id="tenagaGrid">

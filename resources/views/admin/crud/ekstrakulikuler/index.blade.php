@@ -622,11 +622,6 @@
     <div class="card-container slide-in" style="animation-delay: 0.4s;">
         <div class="card-header">
             <h5 class="card-title">Daftar Ekstrakulikuler</h5>
-            <div class="card-actions">
-                <button class="btn btn-light btn-sm">
-                    <i class="bi bi-download me-2"></i> Export
-                </button>
-            </div>
         </div>
         
         <div class="ekstrakulikuler-grid" id="ekstrakulikulerGrid">
