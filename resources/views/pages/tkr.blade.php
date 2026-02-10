@@ -137,47 +137,29 @@
      @include('layouts.navbar')
   
     <!-- HEADER JURUSAN -->
-    <header class="bg-gradient-to-br from-primary to-secondary dark:from-gray-700 dark:to-gray-900 py-12">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row items-center gap-8">
-                <div class="md:w-2/3">
-                    <div class="mb-4">
-                        <span
-                            class="text-orange-100 font-semibold text-base bg-orange-800 bg-opacity-30 px-3 py-1 rounded-full">SMKN
-                            1 Kawali</span>
-                    </div>
-                    <h1 class="text-3xl md:text-4xl font-bold text-white mb-4">
-                        Jurusan Teknik Otomotif (TO)
-                    </h1>
-                    <p class="text-orange-100 text-lg mb-6">
-                        Jurusan unggulan yang mencetak tenaga teknis handal dalam perawatan, perbaikan kendaraan ringan,
-                        dan manajemen bengkel profesional sesuai standar industri otomotif modern.
-                    </p>
-                    <div class="flex flex-wrap gap-4">
-                        <div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-lg px-4 py-2 text-white">
-                            <span class="material-icons mr-2 text-sm">directions_car</span>
-                            <span class="text-sm">200+ Siswa</span>
-                        </div>
-                        <div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-lg px-4 py-2 text-white">
-                            <span class="material-icons mr-2 text-sm">engineering</span>
-                            <span class="text-sm">12 Guru Sertifikasi BNSP</span>
-                        </div>
-                        <div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-lg px-4 py-2 text-white">
-                            <span class="material-icons mr-2 text-sm">build</span>
-                            <span class="text-sm">Bengkel Standar Industri</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="md:w-1/3 flex justify-center">
-                    <!-- Gambar placeholder Otomotif -->
-                    <img src="tkr8.jpg"
-                        alt="Siswa Teknik Otomotif"
-                        class="w-full max-w-sm h-48 object-cover rounded-xl shadow-lg border-4 border-white border-opacity-20">
-                </div>
+    <header class="bg-gradient-to-b from-purple-50 to-purple-100 dark:from-gray-900 dark:to-gray-800 py-16 md:py-24">
+        <div class="container mx-auto px-4 text-center">
+           <!-- Button -->
+            <div class="mb-6">
+                <button class="px-6 py-2 bg-white dark:bg-gray-800 text-primary font-semibold rounded-full shadow-md hover:shadow-lg transition-shadow duration-300 border border-purple-200 dark:border-gray-700">
+                    <i class="fas fa-car mr-2"></i>
+                    Jurusan TO
+                </button>
             </div>
+
+            
+            <!-- Title -->
+            <h1 class="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+                Jurusan <span class="text-primary">TO</span>
+            </h1>
+            
+            <!-- Description -->
+            <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8">
+                Informasi Jurusan Teknik Otomotif SMK Negeri 1 Kawali.
+            </p>
+            
         </div>
     </header>
-
     <!-- INFORMASI JURUSAN -->
     <main class="py-12">
         <div class="container mx-auto px-4">
@@ -190,18 +172,8 @@
                 </button>
                 <button
                     class="tab-btn px-6 py-3 font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition"
-                    data-tab="fasilitas">
-                    Fasilitas
-                </button>
-                <button
-                    class="tab-btn px-6 py-3 font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition"
                     data-tab="struktur">
                     Struktur Organisasi
-                </button>
-                <button
-                    class="tab-btn px-6 py-3 font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition"
-                    data-tab="kompetensi">
-                    Kompetensi
                 </button>
                 <button
                     class="tab-btn px-6 py-3 font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition"
@@ -276,137 +248,6 @@
     </div>
 </div>
 
-                <!-- FASILITAS -->
-                <div id="fasilitas" class="tab-pane hidden">
-                    <div class="bg-card-light dark:bg-card-dark rounded-2xl shadow-lg p-8">
-                        <h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Fasilitas Jurusan</h3>
-
-                        <div class="mb-8">
-                            <h4 class="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Area Bengkel Praktik
-                            </h4>
-                            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 card-hover">
-                                    <div
-                                        class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mb-4">
-                                        <span class="material-icons text-primary">build_circle</span>
-                                    </div>
-                                    <h5 class="font-semibold text-gray-900 dark:text-white mb-2">Bengkel Perbaikan Mesin
-                                    </h5>
-                                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">Area turun mesin dan servis
-                                        ringan</p>
-                                    <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
-                                        <li>• Engine Stand</li>
-                                        <li>• Tool Set Lengkap</li>
-                                        <li>• Alat Ukur Presisi</li>
-                                        <li>• Kompresor Angin</li>
-                                    </ul>
-                                </div>
-                                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 card-hover">
-                                    <div
-                                        class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mb-4">
-                                        <span class="material-icons text-primary">bolt</span>
-                                    </div>
-                                    <h5 class="font-semibold text-gray-900 dark:text-white mb-2">Bengkel Kelistrikan
-                                    </h5>
-                                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">Diagnosa sistem kelistrikan
-                                        & EFI</p>
-                                    <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
-                                        <li>• Scanner Diagnosa OBD</li>
-                                        <li>• Multimeter Digital</li>
-                                        <li>• Osiloskop</li>
-                                        <li>• Trainer Kelistrikan</li>
-                                    </ul>
-                                </div>
-                                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 card-hover">
-                                    <div
-                                        class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mb-4">
-                                        <span class="material-icons text-primary">directions_car</span>
-                                    </div>
-                                    <h5 class="font-semibold text-gray-900 dark:text-white mb-2">Bengkel Sasis & Rem
-                                    </h5>
-                                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">Perawatan kaki-kaki &
-                                        pengereman</p>
-                                    <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
-                                        <li>• Lift Mobil (Hydraulic)</li>
-                                        <li>• Wheel Balancer</li>
-                                        <li>• Spooring Machine</li>
-                                        <li>• Brake Tester</li>
-                                    </ul>
-                                </div>
-                                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 card-hover">
-                                    <div
-                                        class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mb-4">
-                                        <span class="material-icons text-primary">water_drop</span>
-                                    </div>
-                                    <h5 class="font-semibold text-gray-900 dark:text-white mb-2">Bengkel Pendingin</h5>
-                                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">Servis AC dan sistem
-                                        pendingin</p>
-                                    <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
-                                        <li>• AC Refrigerant Machine</li>
-                                        <li>• Manifold Gauge</li>
-                                        <li>• Vacuum Pump</li>
-                                        <li>• Leak Detector</li>
-                                    </ul>
-                                </div>
-                                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 card-hover">
-                                    <div
-                                        class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mb-4">
-                                        <span class="material-icons text-primary">inventory</span>
-                                    </div>
-                                    <h5 class="font-semibold text-gray-900 dark:text-white mb-2">Gudang Sparepart</h5>
-                                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">Manajemen suku cadang</p>
-                                    <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
-                                        <li>• Rak Sistem Kartu</li>
-                                        <li>• Software Inventory</li>
-                                        <li>• Katalog Sparepart</li>
-                                        <li>• Minyak Pelumas</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div>
-                            <h4 class="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Sertifikasi & Tools
-                            </h4>
-                            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
-                                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-                                    <div class="text-center">
-                                        <div
-                                            class="w-16 h-16 bg-white dark:bg-gray-700 rounded-lg flex items-center justify-center mx-auto mb-2">
-                                            <span class="material-icons text-primary">verified</span>
-                                        </div>
-                                        <p class="text-sm font-medium text-gray-900 dark:text-white">UKK BNSP</p>
-                                        <p class="text-xs text-gray-600 dark:text-gray-400">Servis Ringan</p>
-                                    </div>
-                                    <div class="text-center">
-                                        <div
-                                            class="w-16 h-16 bg-white dark:bg-gray-700 rounded-lg flex items-center justify-center mx-auto mb-2">
-                                            <span class="material-icons text-primary">build</span>
-                                        </div>
-                                        <p class="text-sm font-medium text-gray-900 dark:text-white">Honda</p>
-                                        <p class="text-xs text-gray-600 dark:text-gray-400">Technical Training</p>
-                                    </div>
-                                    <div class="text-center">
-                                        <div
-                                            class="w-16 h-16 bg-white dark:bg-gray-700 rounded-lg flex items-center justify-center mx-auto mb-2">
-                                            <span class="material-icons text-primary">two_wheeler</span>
-                                        </div>
-                                        <p class="text-sm font-medium text-gray-900 dark:text-white">Yamaha</p>
-                                        <p class="text-xs text-gray-600 dark:text-gray-400">Technical Training</p>
-                                    </div>
-                                    <div class="text-center">
-                                        <div
-                                            class="w-16 h-16 bg-white dark:bg-gray-700 rounded-lg flex items-center justify-center mx-auto mb-2">
-                                            <span class="material-icons text-primary">school</span>
-                                        </div>
-                                        <p class="text-sm font-medium text-gray-900 dark:text-white">Tik BNSP</p>
-                                        <p class="text-xs text-gray-600 dark:text-gray-400">Tingkat Menengah</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <!-- STRUKTUR ORGANISASI -->
                 <div id="struktur" class="tab-pane hidden">
@@ -513,146 +354,6 @@
     </div>
 </div>
 
-          
-                <!-- KOMPETENSI -->
-                <div id="kompetensi" class="tab-pane hidden">
-                    <div class="bg-card-light dark:bg-card-dark rounded-2xl shadow-lg p-8">
-                        <h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Kompetensi Jurusan</h3>
-
-                        <div class="grid md:grid-cols-2 gap-8 mb-8">
-                            <div>
-                                <h4 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Kompetensi Utama
-                                </h4>
-                                <div class="space-y-3">
-                                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl card-hover">
-                                        <div class="flex items-start">
-                                            <span class="material-icons text-primary mr-3 mt-1">build</span>
-                                            <div>
-                                                <h5 class="font-medium text-gray-900 dark:text-white">Perbaikan Mesin
-                                                </h5>
-                                                <p class="text-sm text-gray-600 dark:text-gray-400">Overhaul, tune-up,
-                                                    penggantian part</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl card-hover">
-                                        <div class="flex items-start">
-                                            <span
-                                                class="material-icons text-primary mr-3 mt-1">settings_input_component</span>
-                                            <div>
-                                                <h5 class="font-medium text-gray-900 dark:text-white">Kelistrikan
-                                                    Kendaraan</h5>
-                                                <p class="text-sm text-gray-600 dark:text-gray-400">Diagnosa
-                                                    kelistrikan, body, charging</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl card-hover">
-                                        <div class="flex items-start">
-                                            <span class="material-icons text-primary mr-3 mt-1">disc_full</span>
-                                            <div>
-                                                <h5 class="font-medium text-gray-900 dark:text-white">Sasis & Pengereman
-                                                </h5>
-                                                <p class="text-sm text-gray-600 dark:text-gray-400">Suspensi, rem,
-                                                    steering, wheel alignment</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl card-hover">
-                                        <div class="flex items-start">
-                                            <span class="material-icons text-primary mr-3 mt-1">ac_unit</span>
-                                            <div>
-                                                <h5 class="font-medium text-gray-900 dark:text-white">Sistem Pendingin
-                                                </h5>
-                                                <p class="text-sm text-gray-600 dark:text-gray-400">AC Engine, radiator
-                                                    maintenance</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <h4 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Penunjang & K3</h4>
-                                <div class="space-y-3">
-                                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl card-hover">
-                                        <div class="flex items-start">
-                                            <span class="material-icons text-primary mr-3 mt-1">medical_services</span>
-                                            <div>
-                                                <h5 class="font-medium text-gray-900 dark:text-white">K3 Otomotif</h5>
-                                                <p class="text-sm text-gray-600 dark:text-gray-400">Keselamatan kerja &
-                                                    lingkungan</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl card-hover">
-                                        <div class="flex items-start">
-                                            <span class="material-icons text-primary mr-3 mt-1">psychology</span>
-                                            <div>
-                                                <h5 class="font-medium text-gray-900 dark:text-white">Pemecahan Masalah
-                                                </h5>
-                                                <p class="text-sm text-gray-600 dark:text-gray-400">Troubleshooting
-                                                    sistematis</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl card-hover">
-                                        <div class="flex items-start">
-                                            <span class="material-icons text-primary mr-3 mt-1">shopping_cart</span>
-                                            <div>
-                                                <h5 class="font-medium text-gray-900 dark:text-white">Manajemen Bengkel
-                                                </h5>
-                                                <p class="text-sm text-gray-600 dark:text-gray-400">Estimasi biaya,
-                                                    pelayanan pelanggan</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 bg-orange-50 dark:bg-orange-900 dark:bg-opacity-20 rounded-xl">
-                            <h4 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Peluang Karir</h4>
-                            <p class="text-gray-700 dark:text-gray-300 mb-6">Lulusan TO sangat dicari oleh ATPM dan
-                                bengkel umum:</p>
-                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                <div class="bg-white dark:bg-gray-800 p-4 rounded-xl text-center card-hover">
-                                    <div
-                                        class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mx-auto mb-2">
-                                        <span class="material-icons text-primary">build</span>
-                                    </div>
-                                    <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Mekanik Profesional
-                                    </p>
-                                    <p class="text-xs text-gray-600 dark:text-gray-400">Bengkel Resmi</p>
-                                </div>
-                                <div class="bg-white dark:bg-gray-800 p-4 rounded-xl text-center card-hover">
-                                    <div
-                                        class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mx-auto mb-2">
-                                        <span class="material-icons text-primary">engineering</span>
-                                    </div>
-                                    <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Foreman</p>
-                                    <p class="text-xs text-gray-600 dark:text-gray-400">Kepala Regu</p>
-                                </div>
-                                <div class="bg-white dark:bg-gray-800 p-4 rounded-xl text-center card-hover">
-                                    <div
-                                        class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mx-auto mb-2">
-                                        <span class="material-icons text-primary">support_agent</span>
-                                    </div>
-                                    <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Service Advisor</p>
-                                    <p class="text-xs text-gray-600 dark:text-gray-400">Konsultan Servis</p>
-                                </div>
-                                <div class="bg-white dark:bg-gray-800 p-4 rounded-xl text-center card-hover">
-                                    <div
-                                        class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mx-auto mb-2">
-                                        <span class="material-icons text-primary">store</span>
-                                    </div>
-                                    <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Pemilik Bengkel</p>
-                                    <p class="text-xs text-gray-600 dark:text-gray-400">Wirausaha</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- KURIKULUM -->
                 <div id="kurikulum" class="tab-pane hidden">
                     <div class="bg-card-light dark:bg-card-dark rounded-2xl shadow-lg p-8">
@@ -741,34 +442,6 @@
                                             <p class="text-sm text-gray-700 dark:text-gray-300">• Menerapkan Perawatan dan Overhaul Sistem Elektrikal Kendaraan Ringan </p>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div>
-                            <h4 class="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Ekstrakurikuler</h4>
-                            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 card-hover">
-                                    <div class="flex items-center mb-2">
-                                        <span class="material-icons text-primary mr-2">speed</span>
-                                        <h5 class="font-medium text-gray-900 dark:text-white">Klub Balap</h5>
-                                    </div>
-                                    <p class="text-sm text-gray-600 dark:text-gray-400">Tune-up & modifikasi motor</p>
-                                </div>
-                                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 card-hover">
-                                    <div class="flex items-center mb-2">
-                                        <span class="material-icons text-primary mr-2">electric_car</span>
-                                        <h5 class="font-medium text-gray-900 dark:text-white">Klub Mobil Listrik</h5>
-                                    </div>
-                                    <p class="text-sm text-gray-600 dark:text-gray-400">Eksperimen teknologi hijau</p>
-                                </div>
-                                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 card-hover">
-                                    <div class="flex items-center mb-2">
-                                        <span class="material-icons text-primary mr-2">groups</span>
-                                        <h5 class="font-medium text-gray-900 dark:text-white">Komunitas K3</h5>
-                                    </div>
-                                    <p class="text-sm text-gray-600 dark:text-gray-400">Pemasangan instalasi listrik
-                                        umum</p>
                                 </div>
                             </div>
                         </div>
@@ -906,13 +579,12 @@
                         <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
                             alt="Alumni" class="w-12 h-12 rounded-full mr-4 object-cover">
                         <div>
-                            <h4 class="font-semibold text-gray-900 dark:text-white">Rizky Pratama</h4>
-                            <p class="text-sm text-gray-600 dark:text-gray-400">Alumni 2021</p>
+                            <h4 class="font-semibold text-gray-900 dark:text-white">Ahmad Pratama</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">PT. Astra Honda Motor</p>
                         </div>
                     </div>
-                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-3">Service Advisor Toyota</p>
-                    <p class="text-gray-600 dark:text-gray-400 text-sm italic">"Pendidikan karakter dan disiplin di SMKN
-                        1 Kawali sangat terasa."</p>
+                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-3">Alumni Angkatan 2023</p>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm italic">"Menjadi siswa jurusan TKR di SMKN 1 Kawali memberi saya banyak pengalaman praktik langsung dalam perawatan dan perbaikan kendaraan. Melalui proses pembelajaran tersebut, saya tidak hanya memperoleh keterampilan teknis, tetapi juga dilatih untuk disiplin, bekerja secara sistematis, dan siap menghadapi tantangan di dunia kerja."</p>
                 </div>
             </div>
         </div>

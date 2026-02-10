@@ -209,139 +209,13 @@
         .link-underline:hover::after {
             width: 100%;
         }
-        
-        /* Loading Screen Styles */
-        .loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
-        }
-        
-        .loading-screen.hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
-        
-        .loading-content {
-            text-align: center;
-            color: white;
-        }
-        
-        .loading-logo {
-            width: 120px;
-            height: 120px;
-            margin-bottom: 30px;
-            animation: pulse 2s infinite;
-        }
-        
-        .loading-logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            border-radius: 50%;
-            background: white;
-            padding: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-        
-        .loading-text {
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-        
-        .loading-subtitle {
-            font-size: 16px;
-            opacity: 0.9;
-            margin-bottom: 30px;
-        }
-        
-        .loading-spinner {
-            width: 50px;
-            height: 50px;
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            border-top: 4px solid white;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto;
-        }
-        
-        .loading-bar-container {
-            width: 300px;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 2px;
-            overflow: hidden;
-            margin-top: 20px;
-        }
-        
-        .loading-bar {
-            height: 100%;
-            background: white;
-            border-radius: 2px;
-            animation: loadingBar 2s ease-in-out infinite;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
-        @keyframes loadingBar {
-            0% { width: 0%; }
-            50% { width: 70%; }
-            100% { width: 100%; }
-        }
-        
-        .main-content {
-            opacity: 0;
-            transition: opacity 0.5s ease-in;
-        }
-        
-        .main-content.loaded {
-            opacity: 1;
-        }
     </style>
 </head>
 
 <body class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200 transition-colors duration-300">
 
-    <!-- Loading Screen -->
-    <div id="loadingScreen" class="loading-screen">
-        <div class="loading-content">
-            <div class="loading-logo">
-                <img src="https://picsum.photos/seed/smkn1kawali/200/200.jpg" alt="SMK Negeri 1 Kawali">
-            </div>
-            
-            <h1 class="loading-text">SMK Negeri 1 Kawali</h1>
-            <p class="loading-subtitle">Mewujudkan Generasi Unggul dan Berkarakter</p>
-            
-            <div class="loading-spinner"></div>
-            
-            <p class="loading-subtitle" style="margin-top: 30px; font-size: 14px;">
-                Sedang memuat <span id="loadingPercent">0</span>%
-            </p>
-        </div>
-    </div>
-
     <!-- Main Content Wrapper -->
-    <div id="mainContent" class="main-content">
+    <div id="mainContent">
         @include('layouts.navbar')
 
         @yield('content')
@@ -350,49 +224,6 @@
     </div>
     
     <script>
-        // Loading Screen
-        document.addEventListener('DOMContentLoaded', function() {
-            const loadingScreen = document.getElementById('loadingScreen');
-            const mainContent = document.getElementById('mainContent');
-            const loadingPercent = document.getElementById('loadingPercent');
-            
-            // Simulasi proses loading
-            let progress = 0;
-            const loadingInterval = setInterval(function() {
-                progress += Math.random() * 15;
-                if (progress > 100) progress = 100;
-                
-                loadingPercent.textContent = Math.floor(progress);
-                
-                // Selesai loading
-                if (progress >= 100) {
-                    clearInterval(loadingInterval);
-                    
-                    // Tunggu sebentar lalu sembunyikan loading screen
-                    setTimeout(function() {
-                        loadingScreen.classList.add('hidden');
-                        mainContent.classList.add('loaded');
-                        
-                        // Hapus loading screen dari DOM setelah animasi selesai
-                        setTimeout(function() {
-                            loadingScreen.style.display = 'none';
-                        }, 500);
-                    }, 500);
-                }
-            }, 200);
-            
-            // Fallback: Sembunyikan loading screen setelah 5 detik
-            setTimeout(function() {
-                if (!loadingScreen.classList.contains('hidden')) {
-                    loadingScreen.classList.add('hidden');
-                    mainContent.classList.add('loaded');
-                    setTimeout(function() {
-                        loadingScreen.style.display = 'none';
-                    }, 500);
-                }
-            }, 5000);
-        });
-        
         // Scroll reveal animation
         function reveal() {
             const reveals = document.querySelectorAll('.reveal');

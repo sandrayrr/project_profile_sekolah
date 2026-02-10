@@ -41,6 +41,8 @@
                         'zoom-in': 'zoomIn 0.3s ease-out',
                         'slide-in-left': 'slideInLeft 0.6s ease-out',
                         'slide-in-right': 'slideInRight 0.6s ease-out',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'bounce-in': 'bounceIn 0.6s ease-out',
                     },
                     keyframes: {
                         fadeIn: {
@@ -63,6 +65,16 @@
                         slideInRight: {
                             '0%': { opacity: '0', transform: 'translateX(30px)' },
                             '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        bounceIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.3)' },
+                            '50%': { opacity: '1', transform: 'scale(1.05)' },
+                            '70%': { transform: 'scale(0.9)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' },
                         }
                     }
                 },
@@ -132,6 +144,31 @@
             background-color: #2563eb;
             box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
         }
+        
+        /* Badge animation */
+        .badge-pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+            }
+        }
+        
+        /* Gradient text */
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
     </style>
 </head>
 
@@ -139,16 +176,39 @@
 
     @include('layouts.navbar')
 
-    <!-- HEADER -->
-    <div class="relative bg-gradient-to-br from-primary to-primary-dark dark:from-blue-800 dark:to-blue-900 py-20 header-pattern">
-        <div class="absolute inset-0 bg-black opacity-10"></div>
-        <div class="relative container mx-auto px-4">
-            <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-3 animate-fade-in">
-                Profil Sekolah
+    <!-- HEADER PROFIL SEKOLAH -->
+    <div class="relative bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 border-b border-blue-100 dark:border-gray-700 pb-20 pt-20 overflow-hidden">
+        <!-- Background Decor (Blue blobs) -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
+            <div class="absolute -top-24 -right-24 w-96 h-96 bg-blue-100/50 dark:bg-blue-900/20 rounded-full blur-3xl"></div>
+            <div class="absolute top-1/2 -left-24 w-72 h-72 bg-cyan-100/50 dark:bg-cyan-900/20 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 right-1/4 w-64 h-64 bg-purple-100/30 dark:bg-purple-900/20 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="relative container mx-auto px-4 z-10 text-center">
+            <div
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-gray-800 text-primary text-xs font-bold mb-6 border border-blue-200 dark:border-blue-800 badge-pulse">
+                <i class="fa-solid fa-school"></i> Tentang Kami
+            </div>
+            <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 dark:text-white mb-6 tracking-tight">
+                Profil <span class="gradient-text">Sekolah</span>
             </h1>
-            <p class="text-gray-100 text-lg md:text-xl max-w-2xl animate-fade-in" style="animation-delay: 0.2s">
+            <p class="text-slate-600 dark:text-slate-300 text-lg max-w-2xl mx-auto mb-10">
                 Mengenal lebih dekat SMK Negeri 1 Kawali sebagai pusat pendidikan kejuruan unggulan.
             </p>
+
+            <!-- Search Bar -->
+            <div class="max-w-xl mx-auto relative group">
+                <form action="#" method="GET" class="relative">
+                    <input
+                        name="cari"
+                        value=""
+                        type="text" 
+                        placeholder="Cari informasi profil sekolah..."
+                        class="w-full pl-12 pr-4 py-4 rounded-xl border border-blue-200 dark:border-gray-600 bg-white dark:bg-gray-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none shadow-lg transition group-hover:shadow-xl">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400"></i>
+                </form>
+            </div>
         </div>
     </div>
 
@@ -158,11 +218,8 @@
         <!-- HERO IMAGE & STATISTICS -->
         <div class="grid lg:grid-cols-3 gap-8 mb-16">
             <div class="lg:col-span-2">
-                <div class="hero-image-container w-full h-[420px] rounded-2xl overflow-hidden shadow-lg bg-gray-200 dark:bg-gray-700 animate-fade-in" style="animation-delay: 0.3s">
-                    <img
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhGGaJSBXrVbjjuJh9rvNf2_Sw8wxAbpF1SRgVnoDmiYiJ1OD20ePBWR1IH5zUhTpkSzvlSyaq1HUhhL9z7iRrmarzGjNyfctJQ1zEFxE0QECKAn5KI36eABDUQC7dMWkilCS0FDWWasQnlDt3791ucW4S8jQ8A-xWIsTpoAZhrueDMFzFfWIVidv8BJS52hmbzd7KoovvePN-cPkZlYHeE70DEfvwcqZrntJ5-4jUPDxt0PktfUZ4xRrHODhG9oWJEG8a_j2x1v0X"
-                        alt="Gedung Sekolah"
-                        class="w-full h-full object-cover">
+                <div class="hero-image-container w-full h-[600px] rounded-2xl overflow-hidden shadow-lg bg-gray-200 dark:bg-gray-700 animate-fade-in" style="animation-delay: 0.3s">
+                    <img src="sekolah.jpeg">
                 </div>
             </div>
             
@@ -266,215 +323,89 @@ Jumlah peserta didik yang pada awalnya hanya 18 siswa kini telah meningkat pesat
         </div>
 
         <!-- PROGRAM KEAHLIAN -->
-        <div class="mb-16 animate-fade-in" style="animation-delay: 0.8s">
-            <h2 class="text-3xl font-bold mb-8 text-gray-900 dark:text-white text-center">
-                Sejarah Program Keahlian
-            </h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="feature-card bg-card-light dark:bg-card-dark rounded-xl border border-border-light dark:border-border-dark p-6">
-                    <div class="w-14 h-14 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center mb-4">
-                        <i class="fas fa-laptop-code text-primary text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Pembukaan SMKN 1 Kawali</h3>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm">Dibuka pada 2 Oktober Tahun 2004</p>
-                </div>
-                
-                <div class="feature-card bg-card-light dark:bg-card-dark rounded-xl border border-border-light dark:border-border-dark p-6">
-                    <div class="w-14 h-14 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center mb-4">
-                        <i class="fas fa-network-wired text-primary text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Pembukaan Jurusan TO</h3>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm">Dibuka pada 14 Oktober 2003/p>
-                </div>
-                
-                <div class="feature-card bg-card-light dark:bg-card-dark rounded-xl border border-border-light dark:border-border-dark p-6">
-                    <div class="w-14 h-14 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center mb-4">
-                        <i class="fas fa-bullhorn text-primary text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Pembukaan Jurusan TJKT</h3>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm">Dibuka pada 31 Desember 2003</p>
-                </div>
-                
-                <div class="feature-card bg-card-light dark:bg-card-dark rounded-xl border border-border-light dark:border-border-dark p-6">
-                    <div class="w-14 h-14 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center mb-4">
-                        <i class="fas fa-cogs text-primary text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Pembukaan Jurusan PPLG</h3>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm">Dibuka 13 Oktober 2009</p>
-                </div>
-                
-                <div class="feature-card bg-card-light dark:bg-card-dark rounded-xl border border-border-light dark:border-border-dark p-6">
-                    <div class="w-14 h-14 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center mb-4">
-                        <i class="fas fa-bolt text-primary text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Pembukaan Jurusan AKL</h3>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm">Dibuka pada 13 Oktober 2015</p>
-                </div>
-                
-                <div class="feature-card bg-card-light dark:bg-card-dark rounded-xl border border-border-light dark:border-border-dark p-6">
-                    <div class="w-14 h-14 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center mb-4">
-                        <i class="fas fa-car text-primary text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Pembukaan Jurusan DPIB</h3>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm">Dibuka pada 13 Oktober 2015</p>
-                </div>
+<div class="mb-16 animate-fade-in" style="animation-delay: 0.8s">
+    <h2 class="text-3xl font-bold mb-8 text-gray-900 dark:text-white text-center">
+        Sejarah Singkat Program Keahlian
+    </h2>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <!-- SMKN 1 Kawali -->
+        <div class="feature-card bg-card-light dark:bg-card-dark rounded-xl border border-border-light dark:border-border-dark p-6">
+            <div class="w-14 h-14 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center mb-4">
+                <i class="fas fa-school text-primary text-xl"></i>
             </div>
+            <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Pembukaan SMKN 1 Kawali</h3>
+            <p class="text-gray-600 dark:text-gray-300 text-sm">Dibuka pada 2 Oktober Tahun 2004</p>
         </div>
 
-        <!-- FASILITAS -->
-        <div class="mb-16 animate-fade-in" style="animation-delay: 0.9s">
-            <h2 class="text-3xl font-bold mb-8 text-gray-900 dark:text-white text-center">
-                Fasilitas Sekolah
-            </h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="feature-card bg-card-light dark:bg-card-dark rounded-xl border border-border-light dark:border-border-dark p-6 text-center">
-                    <div class="w-14 h-14 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-laptop text-primary text-xl"></i>
-                    </div>
-                    <h3 class="text-lg font-bold mb-2 text-gray-900 dark:text-white">Lab Komputer</h3>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm">4 lab dengan 40 unit komputer modern</p>
-                </div>
-                
-                <div class="feature-card bg-card-light dark:bg-card-dark rounded-xl border border-border-light dark:border-border-dark p-6 text-center">
-                    <div class="w-14 h-14 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-book text-primary text-xl"></i>
-                    </div>
-                    <h3 class="text-lg font-bold mb-2 text-gray-900 dark:text-white">Perpustakaan</h3>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm">Koleksi 10.000+ buku dan e-book</p>
-                </div>
-                
-                <div class="feature-card bg-card-light dark:bg-card-dark rounded-xl border border-border-light dark:border-border-dark p-6 text-center">
-                    <div class="w-14 h-14 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-dumbbell text-primary text-xl"></i>
-                    </div>
-                    <h3 class="text-lg font-bold mb-2 text-gray-900 dark:text-white">Lapangan Olahraga</h3>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm">Lapangan basket, voli, dan futsal</p>
-                </div>
-                
-                <div class="feature-card bg-card-light dark:bg-card-dark rounded-xl border border-border-light dark:border-border-dark p-6 text-center">
-                    <div class="w-14 h-14 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-mosque text-primary text-xl"></i>
-                    </div>
-                    <h3 class="text-lg font-bold mb-2 text-gray-900 dark:text-white">Masjid</h3>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm">Tempat ibadah yang nyaman dan luas</p>
-                </div>
+        <!-- TO (Otomotif) -->
+        <div class="feature-card bg-card-light dark:bg-card-dark rounded-xl border border-border-light dark:border-border-dark p-6">
+            <div class="w-14 h-14 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center mb-4">
+                <i class="fas fa-car text-primary text-xl"></i>
             </div>
+            <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Pembukaan Jurusan TO</h3>
+            <p class="text-gray-600 dark:text-gray-300 text-sm">Dibuka pada 14 Oktober 2003</p>
         </div>
 
-        <!-- PRESTASI -->
-        <div class="mb-16 animate-fade-in" style="animation-delay: 1.0s">
-            <h2 class="text-3xl font-bold mb-8 text-gray-900 dark:text-white text-center">
-                Prestasi Sekolah
-            </h2>
-            <div class="bg-card-light dark:bg-card-dark rounded-2xl border border-border-light dark:border-border-dark p-8">
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="flex items-start space-x-4">
-                        <div class="achievement-badge w-12 h-12 bg-accent/10 dark:bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0">
-                            <i class="fas fa-trophy text-accent"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-bold mb-1 text-gray-900 dark:text-white">Juara 1 LKS Tingkat Provinsi</h3>
-                            <p class="text-gray-600 dark:text-gray-300 text-sm">Bidang IT Network System Administration 2022</p>
-                        </div>
-                    </div>
-                    
-                    <div class="flex items-start space-x-4">
-                        <div class="achievement-badge w-12 h-12 bg-accent/10 dark:bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0">
-                            <i class="fas fa-medal text-accent"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-bold mb-1 text-gray-900 dark:text-white">Juara 2 Olimpiade Sains</h3>
-                            <p class="text-gray-600 dark:text-gray-300 text-sm">Bidang Komputer Tingkat Jawa Barat 2021</p>
-                        </div>
-                    </div>
-                    
-                    <div class="flex items-start space-x-4">
-                        <div class="achievement-badge w-12 h-12 bg-accent/10 dark:bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0">
-                            <i class="fas fa-award text-accent"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-bold mb-1 text-gray-900 dark:text-white">Sekolah Adiwiyata Nasional</h3>
-                            <p class="text-gray-600 dark:text-gray-300 text-sm">Penghargaan lingkungan hidup 2020</p>
-                        </div>
-                    </div>
-                    
-                    <div class="flex items-start space-x-4">
-                        <div class="achievement-badge w-12 h-12 bg-accent/10 dark:bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0">
-                            <i class="fas fa-star text-accent"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-bold mb-1 text-gray-900 dark:text-white">Sekolah Sehat</h3>
-                            <p class="text-gray-600 dark:text-gray-300 text-sm">Kategori Sekolah Menengah Kejuruan 2019</p>
-                        </div>
-                    </div>
-                </div>
+        <!-- TJKT -->
+        <div class="feature-card bg-card-light dark:bg-card-dark rounded-xl border border-border-light dark:border-border-dark p-6">
+            <div class="w-14 h-14 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center mb-4">
+                <i class="fas fa-network-wired text-primary text-xl"></i>
             </div>
+            <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Pembukaan Jurusan TJKT</h3>
+            <p class="text-gray-600 dark:text-gray-300 text-sm">Dibuka pada 31 Desember 2003</p>
         </div>
 
-        <!-- KONTAK -->
-        <div class="bg-gradient-to-r from-primary to-secondary rounded-2xl p-8 md:p-12 text-white animate-fade-in" style="animation-delay: 1.1s">
-            <div class="max-w-4xl mx-auto">
-                <h2 class="text-3xl font-bold mb-6 text-center">Hubungi Kami</h2>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div>
-                        <h3 class="text-xl font-semibold mb-4">Informasi Kontak</h3>
-                        <div class="space-y-3">
-                            <div class="flex items-center space-x-3">
-                                <i class="fas fa-map-marker-alt w-5"></i>
-                                <p>Jl. Pendidikan No. 12, Kawali, Kabupaten Ciamis, Jawa Barat 46253</p>
-                            </div>
-                            <div class="flex items-center space-x-3">
-                                <i class="fas fa-phone w-5"></i>
-                                <p>(0265) 123456</p>
-                            </div>
-                            <div class="flex items-center space-x-3">
-                                <i class="fas fa-envelope w-5"></i>
-                                <p>info@smkn1kawali.sch.id</p>
-                            </div>
-                            <div class="flex items-center space-x-3">
-                                <i class="fas fa-globe w-5"></i>
-                                <p>www.smkn1kawali.sch.id</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-semibold mb-4">Jam Operasional</h3>
-                        <div class="space-y-2">
-                            <div class="flex justify-between">
-                                <span>Senin - Kamis</span>
-                                <span>07:00 - 16:00</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span>Jumat</span>
-                                <span>07:00 - 11:30</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span>Sabtu</span>
-                                <span>07:00 - 13:00</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span>Minggu</span>
-                                <span>Tutup</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="mt-8 flex justify-center space-x-4">
-                    <a href="#" class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="#" class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="#" class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                    <a href="#" class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                </div>
+        <!-- PPLG -->
+        <div class="feature-card bg-card-light dark:bg-card-dark rounded-xl border border-border-light dark:border-border-dark p-6">
+            <div class="w-14 h-14 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center mb-4">
+                <i class="fas fa-laptop-code text-primary text-xl"></i>
             </div>
+            <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Pembukaan Jurusan PPLG</h3>
+            <p class="text-gray-600 dark:text-gray-300 text-sm">Dibuka 13 Oktober 2009</p>
         </div>
+
+        <!-- MPLB -->
+        <div class="feature-card bg-card-light dark:bg-card-dark rounded-xl border border-border-light dark:border-border-dark p-6">
+            <div class="w-14 h-14 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center mb-4">
+                <i class="fas fa-briefcase text-primary text-xl"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Pembukaan Jurusan MPLB</h3>
+            <p class="text-gray-600 dark:text-gray-300 text-sm">Dibuka pada 15 Oktober 2013</p>
+        </div>
+
+        <!-- AKL -->
+        <div class="feature-card bg-card-light dark:bg-card-dark rounded-xl border border-border-light dark:border-border-dark p-6">
+            <div class="w-14 h-14 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center mb-4">
+                <i class="fas fa-calculator text-primary text-xl"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Pembukaan Jurusan AKL</h3>
+            <p class="text-gray-600 dark:text-gray-300 text-sm">Dibuka pada 13 Oktober 2015</p>
+        </div>
+
+        <!-- DPIB -->
+        <div class="feature-card bg-card-light dark:bg-card-dark rounded-xl border border-border-light dark:border-border-dark p-6">
+            <div class="w-14 h-14 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center mb-4">
+                <i class="fas fa-drafting-compass text-primary text-xl"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Pembukaan Jurusan DPIB</h3>
+            <p class="text-gray-600 dark:text-gray-300 text-sm">Dibuka pada 13 Oktober 2015</p>
+        </div>
+
+        <!-- SP -->
+        <div class="feature-card bg-card-light dark:bg-card-dark rounded-xl border border-border-light dark:border-border-dark p-6">
+            <div class="w-14 h-14 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center mb-4">
+                <i class="fas fa-bullhorn text-primary text-xl"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Pembukaan Jurusan SP</h3>
+            <p class="text-gray-600 dark:text-gray-300 text-sm">Dibuka pada 17 Oktober 2017</p>
+        </div>
+
+    </div>
+</div>
+
+
 
     </main>
 

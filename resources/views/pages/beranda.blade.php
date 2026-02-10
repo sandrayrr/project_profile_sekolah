@@ -43,8 +43,8 @@
                 </div>
             </div>
             
-            <!-- Slide 4 -->
-            {{-- <div class="slide absolute inset-0 w-full h-full transition-opacity duration-1000 opacity-0">
+             
+             <div class="slide absolute inset-0 w-full h-full transition-opacity duration-1000 opacity-0">
                 <img alt="Student Activities" class="absolute inset-0 w-full h-full object-cover opacity-30 dark:opacity-20"
                     src="https://picsum.photos/seed/smkn1kawali-activities/1920/1080.jpg" />
                 <div class="relative z-10 flex flex-col items-center justify-center h-full w-full px-6">
@@ -58,7 +58,7 @@
                         </div>
                     </div>
                 </div>
-            </div> --}}
+            </div> 
         </div>
         
         <!-- Navigation Controls -->

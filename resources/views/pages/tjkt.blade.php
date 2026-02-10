@@ -33,6 +33,9 @@
                         'fade-in': 'fadeIn 0.6s ease-out',
                         'float': 'float 3s ease-in-out infinite',
                         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'zoom-in': 'zoomIn 0.3s ease-out',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'bounce-in': 'bounceIn 0.6s ease-out',
                     },
                     keyframes: {
                         fadeIn: {
@@ -43,6 +46,20 @@
                             '0%': { transform: 'translateY(0px)' },
                             '50%': { transform: 'translateY(-10px)' },
                             '100%': { transform: 'translateY(0px)' },
+                        },
+                        zoomIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.8)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        bounceIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.3)' },
+                            '50%': { opacity: '1', transform: 'scale(1.05)' },
+                            '70%': { transform: 'scale(0.9)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' },
                         }
                     }
                 },
@@ -126,6 +143,23 @@
             border-radius: 50%;
             background-color: #3b82f6;
         }
+        
+        /* Badge animation */
+        .badge-pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+            }
+        }
     </style>
 </head>
 
@@ -134,40 +168,26 @@
    @include('layouts.navbar')
 
     <!-- HEADER JURUSAN -->
-    <header class="bg-gradient-to-br from-primary to-secondary dark:from-gray-700 dark:to-gray-900 py-12">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row items-center gap-8">
-                <div class="md:w-2/3">
-                    <div class="mb-4">
-                        <span class="text-gray-100 font-semibold text-base">SMKN 1 Kawali</span>
-                    </div>
-                    <h1 class="text-3xl md:text-4xl font-bold text-white mb-4">
-                        Jurusan Teknik Jaringan Komputer dan Telekomunikasi (TJKT)
-                    </h1>
-                    <p class="text-gray-100 text-lg mb-6">
-                        Jurusan yang mempersiapkan ahli dalam instalasi, konfigurasi, dan pemeliharaan
-                        jaringan komputer serta sistem telekomunikasi modern.
-                    </p>
-                    <div class="flex flex-wrap gap-4">
-                        <div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-lg px-4 py-2 text-white">
-                            <span class="material-icons mr-2 text-sm">people</span>
-                            <span class="text-sm">120+ Siswa</span>
-                        </div>
-                        <div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-lg px-4 py-2 text-white">
-                            <span class="material-icons mr-2 text-sm">person</span>
-                            <span class="text-sm">8 Guru Profesional</span>
-                        </div>
-                        <div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-lg px-4 py-2 text-white">
-                            <span class="material-icons mr-2 text-sm">history</span>
-                            <span class="text-sm">Berdiri sejak 2014</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="md:w-1/3 flex justify-center">
-                    <img src="tkj6.jpg" alt="Siswa TJKT"
-                        class="w-full max-w-sm h-48 object-cover rounded-xl shadow-lg">
-                </div>
+    <header class="bg-gradient-to-b from-blue-50 to-blue-100 dark:from-gray-900 dark:to-gray-800 py-16 md:py-24">
+        <div class="container mx-auto px-4 text-center">
+            <!-- Button -->
+            <div class="mb-6">
+                <button class="px-6 py-2 bg-white dark:bg-gray-800 text-primary font-semibold rounded-full shadow-md hover:shadow-lg transition-shadow duration-300 border border-blue-200 dark:border-gray-700">
+                    <i class="fas fa-network-wired mr-2"></i>
+                    Jurusan TJKT
+                </button>
             </div>
+            
+            <!-- Title -->
+            <h1 class="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+                Jurusan <span class="text-primary">TJKT</span>
+            </h1>
+            
+            <!-- Description -->
+            <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8">
+                Informasi Jurusan Teknik Jaringan Komputer dan Telekomunikasi SMK Negeri 1 Kawali.
+            </p>
+            
         </div>
     </header>
 
@@ -183,18 +203,8 @@
                 </button>
                 <button
                     class="tab-btn px-6 py-3 font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition"
-                    data-tab="fasilitas">
-                    Fasilitas
-                </button>
-                <button
-                    class="tab-btn px-6 py-3 font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition"
                     data-tab="struktur">
                     Struktur Organisasi
-                </button>
-                <button
-                    class="tab-btn px-6 py-3 font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition"
-                    data-tab="kompetensi">
-                    Kompetensi
                 </button>
                 <button
                     class="tab-btn px-6 py-3 font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition"
@@ -807,60 +817,7 @@
                             </div>
                         </div>
 
-                        <div>
-                            <h4 class="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Kegiatan
-                                Ekstrakurikuler</h4>
-                            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 card-hover">
-                                    <div class="flex items-center mb-2">
-                                        <span class="material-icons text-primary mr-2">router</span>
-                                        <h5 class="font-medium text-gray-900 dark:text-white">Network Club</h5>
-                                    </div>
-                                    <p class="text-sm text-gray-600 dark:text-gray-400">Kompetisi networking,
-                                        workshop teknologi, dan sertifikasi preparation</p>
-                                </div>
-                                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 card-hover">
-                                    <div class="flex items-center mb-2">
-                                        <span class="material-icons text-primary mr-2">security</span>
-                                        <h5 class="font-medium text-gray-900 dark:text-white">Cyber Security Club</h5>
-                                    </div>
-                                    <p class="text-sm text-gray-600 dark:text-gray-400">Ethical hacking,
-                                        CTF competition, dan security awareness</p>
-                                </div>
-                                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 card-hover">
-                                    <div class="flex items-center mb-2">
-                                        <span class="material-icons text-primary mr-2">cloud</span>
-                                        <h5 class="font-medium text-gray-900 dark:text-white">Cloud Computing Club</h5>
-                                    </div>
-                                    <p class="text-sm text-gray-600 dark:text-gray-400">AWS/Azure study group,
-                                        cloud certification preparation</p>
-                                </div>
-                                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 card-hover">
-                                    <div class="flex items-center mb-2">
-                                        <span class="material-icons text-primary mr-2">wifi</span>
-                                        <h5 class="font-medium text-gray-900 dark:text-white">Wireless Club</h5>
-                                    </div>
-                                    <p class="text-sm text-gray-600 dark:text-gray-400">WiFi community projects,
-                                        mesh networking, dan hotspot setup</p>
-                                </div>
-                                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 card-hover">
-                                    <div class="flex items-center mb-2">
-                                        <span class="material-icons text-primary mr-2">code</span>
-                                        <h5 class="font-medium text-gray-900 dark:text-white">Programming Club</h5>
-                                    </div>
-                                    <p class="text-sm text-gray-600 dark:text-gray-400">Network automation,
-                                        scripting, dan DevOps basics</p>
-                                </div>
-                                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 card-hover">
-                                    <div class="flex items-center mb-2">
-                                        <span class="material-icons text-primary mr-2">business</span>
-                                        <h5 class="font-medium text-gray-900 dark:text-white">IT Entrepreneurship</h5>
-                                    </div>
-                                    <p class="text-sm text-gray-600 dark:text-gray-400">Startup teknologi,
-                                        IT service business, dan konsultasi</p>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>

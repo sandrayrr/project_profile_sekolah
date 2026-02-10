@@ -136,42 +136,28 @@
     <!-- NAVBAR (Placeholder untuk include) -->
     @include('layouts.navbar')
 
-    <!-- HEADER JURUSAN -->
-    <header class="bg-gradient-to-br from-primary to-secondary dark:from-gray-700 dark:to-gray-900 py-12">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row items-center gap-8">
-                <div class="md:w-2/3">
-                    <div class="mb-4">
-                        <span class="text-purple-100 font-semibold text-base bg-purple-800 bg-opacity-30 px-3 py-1 rounded-full">SMKN 1 Kawali</span>
-                    </div>
-                    <h1 class="text-3xl md:text-4xl font-bold text-white mb-4">
-                        Jurusan Seni Pertunjukan (SP)
-                    </h1>
-                    <p class="text-purple-100 text-lg mb-6">
-                        Jurusan yang mencetak seniman profesional, musisi, penari, dan manajer panggung 
-                        kreatif yang siap berkarya di industri hiburan nasional maupun internasional.
-                    </p>
-                    <div class="flex flex-wrap gap-4">
-                        <div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-lg px-4 py-2 text-white">
-                            <span class="material-icons mr-2 text-sm">stars</span>
-                            <span class="text-sm">80+ Siswa Berbakat</span>
-                        </div>
-                        <div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-lg px-4 py-2 text-white">
-                            <span class="material-icons mr-2 text-sm">palette</span>
-                            <span class="text-sm">5 Guru Praktisi Seni</span>
-                        </div>
-                        <div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-lg px-4 py-2 text-white">
-                            <span class="material-icons mr-2 text-sm">theater_comedy</span>
-                            <span class="text-sm">Panggung & Studio Modern</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="md:w-1/3 flex justify-center">
-                    <!-- Gambar placeholder teater/seni -->
-                    <img src="sp7.jpg"
-                        class="w-full max-w-sm h-48 object-cover rounded-xl shadow-lg border-4 border-white border-opacity-20">
-                </div>
+   <!-- HEADER JURUSAN -->
+    <header class="bg-gradient-to-b from-purple-50 to-purple-100 dark:from-gray-900 dark:to-gray-800 py-16 md:py-24">
+        <div class="container mx-auto px-4 text-center">
+            <!-- Button -->
+             <div class="mb-6">
+                <button class="px-6 py-2 bg-white dark:bg-gray-800 text-primary font-semibold rounded-full shadow-md hover:shadow-lg transition-shadow duration-300 border border-purple-200 dark:border-gray-700">
+                    <i class="fas fa-theater-masks mr-2"></i>
+                    Jurusan Seni Pertunjukan
+                </button>
             </div>
+
+            
+            <!-- Title -->
+            <h1 class="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+                Jurusan <span class="text-primary">SK</span>
+            </h1>
+            
+            <!-- Description -->
+            <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8">
+                Informasi Jurusan Seni Pertunjukan SMK Negeri 1 Kawali.
+            </p>
+            
         </div>
     </header>
 
@@ -187,18 +173,8 @@
                 </button>
                 <button
                     class="tab-btn px-6 py-3 font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition"
-                    data-tab="fasilitas">
-                    Fasilitas
-                </button>
-                <button
-                    class="tab-btn px-6 py-3 font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition"
                     data-tab="struktur">
                     Struktur Organisasi
-                </button>
-                <button
-                    class="tab-btn px-6 py-3 font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition"
-                    data-tab="kompetensi">
-                    Kompetensi
                 </button>
                 <button
                     class="tab-btn px-6 py-3 font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition"
@@ -273,127 +249,6 @@
     </div>
 </div>
 
-                <!-- FASILITAS -->
-                <div id="fasilitas" class="tab-pane hidden">
-                    <div class="bg-card-light dark:bg-card-dark rounded-2xl shadow-lg p-8">
-                        <h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Fasilitas Jurusan</h3>
-
-                        <div class="mb-8">
-                            <h4 class="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Studio & Panggung</h4>
-                            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 card-hover">
-                                    <div
-                                        class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mb-4">
-                                        <span class="material-icons text-primary">curtains</span>
-                                    </div>
-                                    <h5 class="font-semibold text-gray-900 dark:text-white mb-2">Panggung Teater</h5>
-                                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">Panggung lengkap untuk pertunjukan besar</p>
-                                    <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
-                                        <li>• Lighting System Profesional</li>
-                                        <li>• Sound System Digital</li>
-                                        <li>• Panggung Terbuka & Tertutup</li>
-                                        <li>• Backdrop & Props</li>
-                                    </ul>
-                                </div>
-                                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 card-hover">
-                                    <div
-                                        class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mb-4">
-                                        <span class="material-icons text-primary">music_note</span>
-                                    </div>
-                                    <h5 class="font-semibold text-gray-900 dark:text-white mb-2">Studio Musik</h5>
-                                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">Ruang latihan rekaman dan live</p>
-                                    <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
-                                        <li>• Alat Musik Lengkap (Gamelan, Modern)</li>
-                                        <li>• Sound Proofing</li>
-                                        <li>• Studio Recording Mini</li>
-                                        <li>• Vokal Booth</li>
-                                    </ul>
-                                </div>
-                                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 card-hover">
-                                    <div
-                                        class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mb-4">
-                                        <span class="material-icons text-primary">accessibility_new</span>
-                                    </div>
-                                    <h5 class="font-semibold text-gray-900 dark:text-white mb-2">Ruang Tari</h5>
-                                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">Area berlatih gerak & ekspresi</p>
-                                    <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
-                                        <li>• Lantai Kayu (Sprung Floor)</li>
-                                        <li>• Cermin Tembok Panjang</li>
-                                        <li>• Sound System Tari</li>
-                                        <li>• Kostum & Aksesoris</li>
-                                    </ul>
-                                </div>
-                                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 card-hover">
-                                    <div
-                                        class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mb-4">
-                                        <span class="material-icons text-primary">mask</span>
-                                    </div>
-                                    <h5 class="font-semibold text-gray-900 dark:text-white mb-2">Ruang Akting</h5>
-                                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">Latihan peran & karakterisasi</p>
-                                    <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
-                                        <li>• Set Panggung Mini</li>
-                                        <li>• Properti Teater</li>
-                                        <li>• Area Audisi</li>
-                                        <li>• Ruang Ganti Artistik</li>
-                                    </ul>
-                                </div>
-                                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 card-hover">
-                                    <div
-                                        class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mb-4">
-                                        <span class="material-icons text-primary">checkroom</span>
-                                    </div>
-                                    <h5 class="font-semibold text-gray-900 dark:text-white mb-2">Rongga Busana</h5>
-                                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">Penyimpanan & perawatan kostum</p>
-                                    <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
-                                        <li>• Lemari Kostum Steril</li>
-                                        <li>• Meja Setrika Uap</li>
-                                        <li>• Sewa Kostum External</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div>
-                            <h4 class="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Sertifikasi & Kompetisi</h4>
-                            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
-                                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-                                    <div class="text-center">
-                                        <div
-                                            class="w-16 h-16 bg-white dark:bg-gray-700 rounded-lg flex items-center justify-center mx-auto mb-2">
-                                            <span class="material-icons text-primary">stars</span>
-                                        </div>
-                                        <p class="text-sm font-medium text-gray-900 dark:text-white">FLS2N</p>
-                                        <p class="text-xs text-gray-600 dark:text-gray-400">Tingkat Provinsi</p>
-                                    </div>
-                                    <div class="text-center">
-                                        <div
-                                            class="w-16 h-16 bg-white dark:bg-gray-700 rounded-lg flex items-center justify-center mx-auto mb-2">
-                                            <span class="material-icons text-primary">workspace_premium</span>
-                                        </div>
-                                        <p class="text-sm font-medium text-gray-900 dark:text-white">LSK</p>
-                                        <p class="text-xs text-gray-600 dark:text-gray-400">Manajer Artis</p>
-                                    </div>
-                                    <div class="text-center">
-                                        <div
-                                            class="w-16 h-16 bg-white dark:bg-gray-700 rounded-lg flex items-center justify-center mx-auto mb-2">
-                                            <span class="material-icons text-primary">verified</span>
-                                        </div>
-                                        <p class="text-sm font-medium text-gray-900 dark:text-white">TOEFL</p>
-                                        <p class="text-xs text-gray-600 dark:text-gray-400">Seni Pertunjukan</p>
-                                    </div>
-                                    <div class="text-center">
-                                        <div
-                                            class="w-16 h-16 bg-white dark:bg-gray-700 rounded-lg flex items-center justify-center mx-auto mb-2">
-                                            <span class="material-icons text-primary">campaign</span>
-                                        </div>
-                                        <p class="text-sm font-medium text-gray-900 dark:text-white">Event Organizer</p>
-                                        <p class="text-xs text-gray-600 dark:text-gray-400">Sertifikat Pelatihan</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <!-- STRUKTUR ORGANISASI -->
                 <div id="struktur" class="tab-pane hidden">
@@ -481,119 +336,6 @@
         </div>
     </div>
 </div>
-                <!-- KOMPETENSI -->
-                <div id="kompetensi" class="tab-pane hidden">
-                    <div class="bg-card-light dark:bg-card-dark rounded-2xl shadow-lg p-8">
-                        <h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Kompetensi Jurusan</h3>
-
-                        <div class="grid md:grid-cols-2 gap-8 mb-8">
-                            <div>
-                                <h4 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Kompetensi Seni</h4>
-                                <div class="space-y-3">
-                                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl card-hover">
-                                        <div class="flex items-start">
-                                            <span class="material-icons text-primary mr-3 mt-1">record_voice_over</span>
-                                            <div>
-                                                <h5 class="font-medium text-gray-900 dark:text-white">Seni Peran (Akting)</h5>
-                                                <p class="text-sm text-gray-600 dark:text-gray-400">Improvisasi, karakterisasi, vokal</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl card-hover">
-                                        <div class="flex items-start">
-                                            <span class="material-icons text-primary mr-3 mt-1">music_note</span>
-                                            <div>
-                                                <h5 class="font-medium text-gray-900 dark:text-white">Seni Musik</h5>
-                                                <p class="text-sm text-gray-600 dark:text-gray-400">Vokal, instrumen, harmoni</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl card-hover">
-                                        <div class="flex items-start">
-                                            <span class="material-icons text-primary mr-3 mt-1">directions_run</span>
-                                            <div>
-                                                <h5 class="font-medium text-gray-900 dark:text-white">Seni Tari</h5>
-                                                <p class="text-sm text-gray-600 dark:text-gray-400">Tari tradisional & modern</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <h4 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Kompetensi Teknis</h4>
-                                <div class="space-y-3">
-                                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl card-hover">
-                                        <div class="flex items-start">
-                                            <span class="material-icons text-primary mr-3 mt-1">engineering</span>
-                                            <div>
-                                                <h5 class="font-medium text-gray-900 dark:text-white">Manajemen Panggung</h5>
-                                                <p class="text-sm text-gray-600 dark:text-gray-400">Stage manager, sound enginering</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl card-hover">
-                                        <div class="flex items-start">
-                                            <span class="material-icons text-primary mr-3 mt-1">light_mode</span>
-                                            <div>
-                                                <h5 class="font-medium text-gray-900 dark:text-white">Teknik Pencahayaan</h5>
-                                                <p class="text-sm text-gray-600 dark:text-gray-400">Lighting design & operation</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl card-hover">
-                                        <div class="flex items-start">
-                                            <span class="material-icons text-primary mr-3 mt-1">brush</span>
-                                            <div>
-                                                <h5 class="font-medium text-gray-900 dark:text-white">Tata Rias & Busana</h5>
-                                                <p class="text-sm text-gray-600 dark:text-gray-400">Makeup panggung & desain kostum</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 bg-purple-50 dark:bg-purple-900 dark:bg-opacity-20 rounded-xl">
-                            <h4 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Peluang Karir</h4>
-                            <p class="text-gray-700 dark:text-gray-300 mb-6">Lulusan SP memiliki jalur karir yang luas di industri kreatif:</p>
-                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                <div class="bg-white dark:bg-gray-800 p-4 rounded-xl text-center card-hover">
-                                    <div
-                                        class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mx-auto mb-2">
-                                        <span class="material-icons text-primary">theater_comedy</span>
-                                    </div>
-                                    <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Aktor / Aktris</p>
-                                    <p class="text-xs text-gray-600 dark:text-gray-400">TV / Film / Teater</p>
-                                </div>
-                                <div class="bg-white dark:bg-gray-800 p-4 rounded-xl text-center card-hover">
-                                    <div
-                                        class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mx-auto mb-2">
-                                        <span class="material-icons text-primary">music_note</span>
-                                    </div>
-                                    <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Musisi</p>
-                                    <p class="text-xs text-gray-600 dark:text-gray-400">Solo / Band</p>
-                                </div>
-                                <div class="bg-white dark:bg-gray-800 p-4 rounded-xl text-center card-hover">
-                                    <div
-                                        class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mx-auto mb-2">
-                                        <span class="material-icons text-primary">person_search</span>
-                                    </div>
-                                    <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Artis Manager</p>
-                                    <p class="text-xs text-gray-600 dark:text-gray-400">Talent Agency</p>
-                                </div>
-                                <div class="bg-white dark:bg-gray-800 p-4 rounded-xl text-center card-hover">
-                                    <div
-                                        class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mx-auto mb-2">
-                                        <span class="material-icons text-primary">event</span>
-                                    </div>
-                                    <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Event Creator</p>
-                                    <p class="text-xs text-gray-600 dark:text-gray-400">Wedding / EO</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- KURIKULUM -->
                 <div id="kurikulum" class="tab-pane hidden">
                     <div class="bg-card-light dark:bg-card-dark rounded-2xl shadow-lg p-8">
@@ -678,33 +420,6 @@
                                             <p class="text-sm text-gray-700 dark:text-gray-300">• Menyajikan karya kreativitas karawitan berbasis perkembangan teknologi</p>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div>
-                            <h4 class="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Ekstrakurikuler</h4>
-                            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 card-hover">
-                                    <div class="flex items-center mb-2">
-                                        <span class="material-icons text-primary mr-2">theater_comedy</span>
-                                        <h5 class="font-medium text-gray-900 dark:text-white">Teater Sekolah</h5>
-                                    </div>
-                                    <p class="text-sm text-gray-600 dark:text-gray-400">Kelompok teater rutin tiap bulan</p>
-                                </div>
-                                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 card-hover">
-                                    <div class="flex items-center mb-2">
-                                        <span class="material-icons text-primary mr-2">queue_music</span>
-                                        <h5 class="font-medium text-gray-900 dark:text-white">Paduan Suara</h5>
-                                    </div>
-                                    <p class="text-sm text-gray-600 dark:text-gray-400">Latihan vokal harmoni grup</p>
-                                </div>
-                                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 card-hover">
-                                    <div class="flex items-center mb-2">
-                                        <span class="material-icons text-primary mr-2">groups</span>
-                                        <h5 class="font-medium text-gray-900 dark:text-white">Sanggar Tari</h5>
-                                    </div>
-                                    <p class="text-sm text-gray-600 dark:text-gray-400">Pengembangan tari kreasi baru</p>
                                 </div>
                             </div>
                         </div>
@@ -805,32 +520,36 @@
                             <p class="text-sm text-gray-600 dark:text-gray-400">Alumni 2019</p>
                         </div>
                     </div>
-                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-3">Aktor & Model</p>
-                    <p class="text-gray-600 dark:text-gray-400 text-sm italic">"Jurusan ini mengajarkan saya disiplin dan keberanian tampil di atas panggung."</p>
+                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-3">Alumni 2019/p>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm italic">"Selama belajar di jurusan SP, saya mendapatkan pemahaman tentang dunia pemasaran dan pelayanan secara langsung. Kegiatan praktik yang dilakukan membantu saya mengembangkan kemampuan komunikasi, kepercayaan diri, serta cara berpikir kreatif dalam menghadapi situasi kerja nyata.
+"</p>
                 </div>
                 <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 card-hover">
                     <div class="flex items-center mb-4">
                         <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Alumni"
                             class="w-12 h-12 rounded-full mr-4 object-cover">
                         <div>
-                            <h4 class="font-semibold text-gray-900 dark:text-white">Lestari Ayu</h4>
+                            <h4 class="font-semibold text-gray-900 dark:text-white">Ayu Lestari </h4>
                             <p class="text-sm text-gray-600 dark:text-gray-400">Alumni 2020</p>
                         </div>
                     </div>
-                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-3">Penari Profesional</p>
-                    <p class="text-gray-600 dark:text-gray-400 text-sm italic">"Fasilitas studio tari yang lengkap sangat mendukung saya mengasah skill."</p>
+                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-3">Alumni 2020/p>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm italic">
+Jurusan SP memberi saya ruang untuk belajar berinteraksi dengan banyak orang dan memahami pentingnya pelayanan yang baik. Melalui pembelajaran tersebut, saya terbiasa untuk bersikap profesional, bertanggung jawab, dan adaptif terhadap lingkungan kerja.
+"</p>
                 </div>
                 <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 card-hover">
                     <div class="flex items-center mb-4">
                         <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Alumni"
                             class="w-12 h-12 rounded-full mr-4 object-cover">
                         <div>
-                            <h4 class="font-semibold text-gray-900 dark:text-white">Dimas Anggara</h4>
+                            <h4 class="font-semibold text-gray-900 dark:text-white">Lina Marsela</h4>
                             <p class="text-sm text-gray-600 dark:text-gray-400">Alumni 2021</p>
                         </div>
                     </div>
-                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-3">Music Producer</p>
-                    <p class="text-gray-600 dark:text-gray-400 text-sm italic">"Pelajaran manajemen panggung sangat berguna saat saya menjadi Producer."</p>
+                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-3">Alumni 2021<</p>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm italic">"Pengalaman belajar di jurusan SP membentuk saya menjadi pribadi yang lebih percaya diri dan mandiri. Proses yang dijalani tidak hanya memberikan ilmu, tetapi juga melatih sikap, etika kerja, dan kemampuan bekerja dalam tim.
+"</p>
                 </div>
             </div>
         </div>

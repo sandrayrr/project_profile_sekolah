@@ -36,6 +36,8 @@
                         'fade-in': 'fadeIn 0.6s ease-out',
                         'float': 'float 3s ease-in-out infinite',
                         'zoom-in': 'zoomIn 0.3s ease-out',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'bounce-in': 'bounceIn 0.6s ease-out',
                     },
                     keyframes: {
                         fadeIn: {
@@ -50,6 +52,16 @@
                         zoomIn: {
                             '0%': { opacity: '0', transform: 'scale(0.8)' },
                             '100%': { opacity: '1', transform: 'scale(1)' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        bounceIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.3)' },
+                            '50%': { opacity: '1', transform: 'scale(1.05)' },
+                            '70%': { transform: 'scale(0.9)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' },
                         }
                     }
                 },
@@ -61,10 +73,12 @@
         .akreditasi-card {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(229, 231, 235, 0.5);
         }
         .akreditasi-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: rgba(59, 130, 246, 0.3);
         }
         
         /* Modal styles */
@@ -124,6 +138,44 @@
         .dark ::-webkit-scrollbar-thumb {
             background: #6b7280;
         }
+        
+        /* Badge animation */
+        .badge-pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+            }
+        }
+        
+        /* Gradient text */
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Card gradient border */
+        .card-gradient-border {
+            position: relative;
+            background: linear-gradient(white, white) padding-box,
+                        linear-gradient(135deg, rgba(59, 130, 246, 0.5), rgba(147, 51, 234, 0.5)) border-box;
+            border: 1px solid transparent;
+        }
+        
+        .dark .card-gradient-border {
+            background: linear-gradient(#1f2937, #1f2937) padding-box,
+                        linear-gradient(135deg, rgba(59, 130, 246, 0.5), rgba(147, 51, 234, 0.5)) border-box;
+        }
     </style>
 </head>
 
@@ -131,36 +183,46 @@
 
     @include('layouts.navbar')
 
-    <!-- HEADER -->
-    <div class="relative bg-gradient-to-br from-primary to-primary-dark dark:from-blue-800 dark:to-blue-900 py-20 header-pattern">
-        <!-- Optional: Add a subtle pattern overlay -->
-        <div class="absolute inset-0 bg-black opacity-10"></div>
-        <div class="relative container mx-auto px-4">
-            <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-3 animate-fade-in">
-                Akreditasi
+    <!-- HEADER AKREDITASI -->
+    <div class="relative bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 border-b border-blue-100 dark:border-gray-700 pb-20 pt-20 overflow-hidden">
+        <!-- Background Decor (Blue blobs) -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
+            <div class="absolute -top-24 -right-24 w-96 h-96 bg-blue-100/50 dark:bg-blue-900/20 rounded-full blur-3xl"></div>
+            <div class="absolute top-1/2 -left-24 w-72 h-72 bg-cyan-100/50 dark:bg-cyan-900/20 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 right-1/4 w-64 h-64 bg-purple-100/30 dark:bg-purple-900/20 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="relative container mx-auto px-4 z-10 text-center">
+            <div
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-gray-800 text-primary text-xs font-bold mb-6 border border-blue-200 dark:border-blue-800 badge-pulse">
+                <i class="fa-solid fa-award"></i> Kualitas Pendidikan
+            </div>
+            <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 dark:text-white mb-6 tracking-tight">
+                Akreditasi <span class="gradient-text">Sekolah</span>
             </h1>
-            <p class="text-gray-100 text-lg md:text-xl max-w-2xl animate-fade-in" style="animation-delay: 0.2s">
+            <p class="text-slate-600 dark:text-slate-300 text-lg max-w-2xl mx-auto mb-10">
                 Informasi lengkap mengenai akreditasi dan penilaian kualitas pendidikan di SMK Negeri 1 Kawali.
             </p>
+
         </div>
     </div>
 
     <!-- CONTENT -->
-    <main class="container mx-auto px-4 py-12 lg:py-16 min-h-screen">
+    <main class="container mx-auto px-4 py-12 -mt-10 relative z-20 min-h-screen">
 
         <!-- AKREDITASI CARDS -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
 
             <!-- PENGERTIAN AKREDITASI -->
             <div
-                class="akreditasi-card bg-card-light dark:bg-card-dark 
+                class="akreditasi-card card-gradient-border bg-card-light dark:bg-card-dark 
                        rounded-2xl overflow-hidden animate-fade-in group lg:col-span-2">
 
                 <!-- HEADER -->
-                <div class="bg-primary/10 dark:bg-primary/20 p-6 border-b border-border-light dark:border-border-dark">
+                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-gray-700 p-6 border-b border-blue-100 dark:border-gray-600">
                     <div class="flex items-center">
-                        <div class="w-12 h-12 bg-primary/20 dark:bg-primary/30 rounded-full flex items-center justify-center mr-4">
-                            <i class="material-icons text-primary text-2xl">info</i>
+                        <div class="w-12 h-12 bg-gradient-to-br from-primary to-primary-dark dark:from-blue-600 dark:to-blue-800 rounded-full flex items-center justify-center mr-4 shadow-lg">
+                            <i class="material-icons text-white text-2xl">info</i>
                         </div>
                         <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
                             Pengertian Akreditasi
@@ -172,16 +234,16 @@
                 <div class="p-6">
                     <div class="prose dark:prose-invert max-w-none text-gray-600 dark:text-gray-300">
                         <p>
-                            Akreditasi adalah kegiatan penilaian kelayakan program dalam satuan pendidikan berdasarkan
-                            kriteria yang telah ditetapkan. Akreditasi sekolah adalah proses penilaian secara komprehensif
-                            terhadap kelayakan satuan atau program pendidikan, yang hasilnya diwujudkan dalam bentuk
-                            pengakuan dan peringkat kelayakan yang dikeluarkan oleh suatu lembaga yang mandiri dan
-                            profesional.
-                        </p>
+                            Akreditasi adalah suatu bentuk pengakuan formal yang diberikan oleh Badan Akreditasi terhadap kompetensi, mutu, dan
+                            kelayakan suatu lembaga atau organisasi setelah melalui proses penilaian dan evaluasi yang sistematis berdasarkan standar
+                            dan kriteria yang telah ditetapkan. Akreditasi bertujuan untuk menjamin kualitas penyelenggaraan layanan atau pendidikan, 
+                            meningkatkan kepercayaan masyarakat, serta menjadi acuan dalam pengembangan dan peningkatan mutu lembaga secara berkelanjutan.
                         <p class="mt-4">
-                            Bagi SMK Negeri 1 Kawali, akreditasi merupakan bentuk akuntabilitas publik yang dilakukan secara
-                            objektif, adil, transparan, dan komprehensif dengan menggunakan instrumen dan kriteria yang
-                            mengacu pada Standar Nasional Pendidikan.
+                            SMKN 1 Kawali telah terakreditasi oleh Badan Akreditasi Nasional Sekolah/Madrasah (BAN S/M) dengan peringkat Akreditasi A. 
+                            BAN S/M merupakan lembaga evaluasi mandiri yang bertugas menilai dan menetapkan kelayakan program serta satuan pendidikan pada 
+                            jenjang pendidikan dasar dan menengah jalur formal, berdasarkan Standar Nasional Pendidikan. 
+                            Akreditasi ini menunjukkan bahwa SMKN 1 Kawali telah memenuhi standar mutu pendidikan yang tinggi dan layak sebagai institusi 
+                            pendidikan berkualitas.
                         </p>
                     </div>
                 </div>
@@ -189,7 +251,7 @@
 
             <!-- SERTIFIKAT AKREDITASI -->
             <div
-                class="akreditasi-card bg-card-light dark:bg-card-dark 
+                class="akreditasi-card card-gradient-border bg-card-light dark:bg-card-dark 
                        rounded-2xl overflow-hidden animate-fade-in group">
 
                 <!-- FOTO -->
@@ -214,7 +276,7 @@
                         <span>Berlaku hingga 2025</span>
                     </div>
                     <button onclick="openCertificateModal()"
-                        class="inline-flex items-center gap-2 bg-primary/10 hover:bg-primary hover:text-white text-primary dark:text-primary-300 dark:hover:text-white text-sm font-semibold py-2 px-4 rounded-full transition-colors mt-auto">
+                        class="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary text-white text-sm font-semibold py-2 px-5 rounded-full transition-all transform hover:scale-105 shadow-md hover:shadow-lg mt-auto">
                         Lihat Sertifikat <i class="fa-solid fa-arrow-right"></i>
                     </button>
                 </div>
@@ -222,14 +284,14 @@
 
             <!-- TUJUAN AKREDITASI -->
             <div
-                class="akreditasi-card bg-card-light dark:bg-card-dark 
+                class="akreditasi-card card-gradient-border bg-card-light dark:bg-card-dark 
                        rounded-2xl overflow-hidden animate-fade-in group">
 
                 <!-- HEADER -->
-                <div class="bg-primary/10 dark:bg-primary/20 p-6 border-b border-border-light dark:border-border-dark">
+                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-gray-700 p-6 border-b border-blue-100 dark:border-gray-600">
                     <div class="flex items-center">
-                        <div class="w-12 h-12 bg-primary/20 dark:bg-primary/30 rounded-full flex items-center justify-center mr-4">
-                            <i class="material-icons text-primary text-2xl">flag</i>
+                        <div class="w-12 h-12 bg-gradient-to-br from-primary to-primary-dark dark:from-blue-600 dark:to-blue-800 rounded-full flex items-center justify-center mr-4 shadow-lg">
+                            <i class="material-icons text-white text-2xl">flag</i>
                         </div>
                         <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
                             Tujuan Akreditasi
@@ -241,29 +303,25 @@
                 <div class="p-6">
                     <div class="prose dark:prose-invert max-w-none text-gray-600 dark:text-gray-300">
                         <p>
-                            Tujuan utama akreditasi sekolah adalah untuk memperoleh gambaran kinerja sekolah yang dapat
-                            digunakan sebagai alat pembinaan, pengembangan, dan peningkatan mutu.
+                            Tujuan akreditasi adalah untuk menilai dan menjamin mutu penyelenggaraan pendidikan agar sesuai dengan Standar Nasional Pendidikan. 
+                            Akreditasi bertujuan memberikan pengakuan resmi terhadap kelayakan dan kualitas satuan pendidikan, meningkatkan kepercayaan masyarakat, 
+                            serta menjadi acuan bagi sekolah dalam melakukan evaluasi dan perbaikan mutu secara berkelanjutan. Selain itu, akreditasi juga berfungsi 
+                            sebagai dasar pertimbangan bagi peserta didik, orang tua, dan pemangku kepentingan dalam menentukan pilihan pendidikan.
                         </p>
-                        <ul class="list-disc pl-5 mt-4">
-                            <li>Memberikan informasi tentang kelayakan sekolah/madrasah.</li>
-                            <li>Memberikan pengakuan peringkat kelayakan.</li>
-                            <li>Memetakan mutu pendidikan berdasarkan Standar Nasional Pendidikan.</li>
-                            <li>Memberikan pertanggungjawaban kepada pemangku kepentingan (stakeholder).</li>
-                        </ul>
                     </div>
                 </div>
             </div>
 
             <!-- MANFAAT AKREDITASI -->
             <div
-                class="akreditasi-card bg-card-light dark:bg-card-dark 
+                class="akreditasi-card card-gradient-border bg-card-light dark:bg-card-dark 
                        rounded-2xl overflow-hidden animate-fade-in group lg:col-span-2">
 
                 <!-- HEADER -->
-                <div class="bg-primary/10 dark:bg-primary/20 p-6 border-b border-border-light dark:border-border-dark">
+                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-gray-700 p-6 border-b border-blue-100 dark:border-gray-600">
                     <div class="flex items-center">
-                        <div class="w-12 h-12 bg-primary/20 dark:bg-primary/30 rounded-full flex items-center justify-center mr-4">
-                            <i class="material-icons text-primary text-2xl">stars</i>
+                        <div class="w-12 h-12 bg-gradient-to-br from-primary to-primary-dark dark:from-blue-600 dark:to-blue-800 rounded-full flex items-center justify-center mr-4 shadow-lg">
+                            <i class="material-icons text-white text-2xl">stars</i>
                         </div>
                         <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
                             Manfaat Akreditasi
@@ -275,12 +333,12 @@
                 <div class="p-6">
                     <div class="prose dark:prose-invert max-w-none text-gray-600 dark:text-gray-300">
                         <p>
-                            Hasil akreditasi sekolah bermanfaat sebagai dasar bagi sekolah untuk melakukan peningkatan mutu
-                            pendidikan, serta pengembangan rencana anggaran pendapatan dan belanja sekolah.
-                        </p>
-                        <p class="mt-4">
-                            Manfaat lainnya meliputi umpan balik dalam usaha pemberdayaan dan pengembangan kinerja warga
-                            sekolah dalam rangka menerapkan visi, misi, tujuan, sasaran, strategi, dan program sekolah.
+                            Manfaat akreditasi adalah memberikan jaminan mutu terhadap penyelenggaraan pendidikan sehingga sekolah diakui kelayakan 
+                            dan kualitasnya secara resmi. Akreditasi juga meningkatkan kepercayaan masyarakat, orang tua, dan peserta didik terhadap 
+                            sekolah sebagai lembaga pendidikan yang memenuhi standar. Selain itu, akreditasi bermanfaat sebagai bahan evaluasi bagi 
+                            sekolah untuk terus memperbaiki dan mengembangkan kualitas pembelajaran, sarana prasarana, serta manajemen sekolah. 
+                            Bagi peserta didik dan lulusan, akreditasi memberikan nilai tambah karena ijazah lebih diakui dan memiliki daya saing 
+                            yang lebih baik untuk melanjutkan pendidikan maupun memasuki dunia kerja.
                         </p>
                     </div>
                 </div>
@@ -300,7 +358,7 @@
                 <i class="fas fa-times text-3xl"></i>
             </button>
             
-            <div class="relative max-w-4xl w-full bg-white dark:bg-gray-800 rounded-2xl shadow-2xl overflow-hidden animate-zoom-in">
+            <div class="relative max-w-4xl w-full bg-white dark:bg-gray-800 rounded-2xl shadow-2xl overflow-hidden animate-bounce-in">
                 <!-- Modal Header -->
                 <div class="bg-gradient-to-r from-primary to-primary-dark p-6">
                     <div class="flex items-center">
@@ -354,7 +412,7 @@
                     </div>
                     
                     <div class="mt-6 flex justify-end">
-                        <button onclick="closeCertificateModal()" class="bg-primary hover:bg-primary-dark text-white font-medium py-2 px-6 rounded-lg transition-colors">
+                        <button onclick="closeCertificateModal()" class="bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary text-white font-medium py-2 px-6 rounded-lg transition-all transform hover:scale-105 shadow-md hover:shadow-lg">
                             Tutup
                         </button>
                     </div>
@@ -366,7 +424,7 @@
     <!-- DARK MODE BUTTON -->
     <button
         id="darkToggle"
-        class="fixed bottom-6 right-6 bg-primary hover:bg-primary-dark text-white p-3 rounded-full shadow-lg z-40 transition-all duration-300 hover:scale-110">
+        class="fixed bottom-6 right-6 bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary text-white p-3 rounded-full shadow-lg z-40 transition-all duration-300 hover:scale-110">
         <i class="fa-solid fa-moon dark:hidden"></i>
         <i class="fa-solid fa-sun hidden dark:block"></i>
     </button>

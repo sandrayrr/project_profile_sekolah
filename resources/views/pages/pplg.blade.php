@@ -33,6 +33,9 @@
                         'fade-in': 'fadeIn 0.6s ease-out',
                         'float': 'float 3s ease-in-out infinite',
                         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'zoom-in': 'zoomIn 0.3s ease-out',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'bounce-in': 'bounceIn 0.6s ease-out',
                     },
                     keyframes: {
                         fadeIn: {
@@ -43,6 +46,20 @@
                             '0%': { transform: 'translateY(0px)' },
                             '50%': { transform: 'translateY(-10px)' },
                             '100%': { transform: 'translateY(0px)' },
+                        },
+                        zoomIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.8)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        bounceIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.3)' },
+                            '50%': { opacity: '1', transform: 'scale(1.05)' },
+                            '70%': { transform: 'scale(0.9)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' },
                         }
                     }
                 },
@@ -126,6 +143,23 @@
             border-radius: 50%;
             background-color: #8b5cf6;
         }
+        
+        /* Badge animation */
+        .badge-pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(139, 92, 246, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(139, 92, 246, 0);
+            }
+        }
     </style>
 </head>
 
@@ -134,49 +168,32 @@
    @include('layouts.navbar')
 
     <!-- HEADER JURUSAN -->
-    <header class="bg-gradient-to-br from-primary to-secondary dark:from-gray-700 dark:to-gray-900 py-12">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row items-center gap-8">
-                <div class="md:w-2/3">
-                    <div class="mb-4">
-                        <span class="text-gray-100 font-semibold text-base">SMKN 1 Kawali</span>
-                    </div>
-                    <h1 class="text-3xl md:text-4xl font-bold text-white mb-4">
-                        Jurusan Pengembangan Perangkat Lunak dan Gim (PPLG)
-                    </h1>
-                    <p class="text-gray-100 text-lg mb-6">
-                        Jurusan yang fokus pada kreativitas dan logika untuk membangun aplikasi web, mobile, hingga game
-                        interaktif yang inovatif.
-                    </p>
-                    <div class="flex flex-wrap gap-4">
-                        <div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-lg px-4 py-2 text-white">
-                            <span class="material-icons mr-2 text-sm">people</span>
-                            <span class="text-sm">150+ Siswa</span>
-                        </div>
-                        <div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-lg px-4 py-2 text-white">
-                            <span class="material-icons mr-2 text-sm">person</span>
-                            <span class="text-sm">10 Guru Profesional</span>
-                        </div>
-                        <div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-lg px-4 py-2 text-white">
-                            <span class="material-icons mr-2 text-sm">history</span>
-                            <span class="text-sm">Berdiri sejak 2018</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="md:w-1/3 flex justify-center">
-                    <img src="pplg1.jpg" alt="Siswa PPLG"
-                        class="w-full max-w-sm h-48 object-cover rounded-xl shadow-lg">
-                </div>
+    <header class="bg-gradient-to-b from-purple-50 to-purple-100 dark:from-gray-900 dark:to-gray-800 py-16 md:py-24">
+        <div class="container mx-auto px-4 text-center">
+            <!-- Button -->
+            <div class="mb-6">
+                <button class="px-6 py-2 bg-white dark:bg-gray-800 text-primary font-semibold rounded-full shadow-md hover:shadow-lg transition-shadow duration-300 border border-purple-200 dark:border-gray-700">
+                    <i class="fas fa-code mr-2"></i>
+                    Jurusan PPLG
+                </button>
             </div>
+            
+            <!-- Title -->
+            <h1 class="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+                Jurusan <span class="text-primary">PPLG</span>
+            </h1>
+            
+            <!-- Description -->
+            <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8">
+                Informasi Jurusan Pengembangan Perangkat Lunak dan Gim SMK Negeri 1 Kawali.
+            </p>
+            
         </div>
     </header>
 
     <!-- INFORMASI JURUSAN -->
     <main class="py-12">
         <div class="container mx-auto px-4">
-            <!-- QUICK INFO -->
-          
-
             <!-- TABS -->
             <div class="flex flex-wrap justify-center mb-8 border-b border-gray-200 dark:border-gray-700">
                 <button
@@ -184,21 +201,13 @@
                     data-tab="identitas">
                     Identitas
                 </button>
-                <button
-                    class="tab-btn px-6 py-3 font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition"
-                    data-tab="fasilitas">
-                    Fasilitas
-                </button>
+                
                 <button
                     class="tab-btn px-6 py-3 font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition"
                     data-tab="struktur">
                     Struktur Organisasi
                 </button>
-                <button
-                    class="tab-btn px-6 py-3 font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition"
-                    data-tab="kompetensi">
-                    Kompetensi
-                </button>
+                
                 <button
                     class="tab-btn px-6 py-3 font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition"
                     data-tab="kurikulum">
@@ -208,7 +217,6 @@
 
             <!-- TAB CONTENT -->
             <div class="tab-content">
-                <!-- IDENTITAS -->
                 <!-- IDENTITAS -->
                 <div id="identitas" class="tab-pane">
     <div class="bg-card-light dark:bg-card-dark rounded-2xl shadow-lg p-8">
@@ -242,7 +250,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div class="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:-translate-y-1">
                         <div class="flex flex-col items-center text-center">
-                            <div class="w-14 h-14 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900 dark:to-blue-800 rounded-full flex items-center justify-center mb-3">
+                            <div class="w-14 h-14 bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900 dark:to-purple-800 rounded-full flex items-center justify-center mb-3">
                                 <span class="material-icons text-primary text-xl">account_balance</span>
                             </div>
                             <h5 class="font-medium text-gray-900 dark:text-white mb-1">Nama Lengkap</h5>
@@ -251,7 +259,7 @@
                     </div>
                     <div class="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:-translate-y-1">
                         <div class="flex flex-col items-center text-center">
-                            <div class="w-14 h-14 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900 dark:to-blue-800 rounded-full flex items-center justify-center mb-3">
+                            <div class="w-14 h-14 bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900 dark:to-purple-800 rounded-full flex items-center justify-center mb-3">
                                 <span class="material-icons text-primary text-xl">school</span>
                             </div>
                             <h5 class="font-medium text-gray-900 dark:text-white mb-1">Kepala Jurusan</h5>
@@ -260,7 +268,7 @@
                     </div>
                     <div class="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:-translate-y-1">
                         <div class="flex flex-col items-center text-center">
-                            <div class="w-14 h-14 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900 dark:to-blue-800 rounded-full flex items-center justify-center mb-3">
+                            <div class="w-14 h-14 bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900 dark:to-purple-800 rounded-full flex items-center justify-center mb-3">
                                 <span class="material-icons text-primary text-xl">business</span>
                             </div>
                             <h5 class="font-medium text-gray-900 dark:text-white mb-1">Mitra Industri</h5>
@@ -273,148 +281,7 @@
     </div>
 </div>
  
-                <!-- FASILITAS -->
-                <div id="fasilitas" class="tab-pane hidden">
-                    <div class="bg-card-light dark:bg-card-dark rounded-2xl shadow-lg p-8">
-                        <h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Fasilitas Jurusan</h3>
-
-                        <div class="mb-8">
-                            <h4 class="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Laboratorium</h4>
-                            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 card-hover">
-                                    <div
-                                        class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mb-4">
-                                        <span class="material-icons text-primary">computer</span>
-                                    </div>
-                                    <h5 class="font-semibold text-gray-900 dark:text-white mb-2">Lab Pemrograman</h5>
-                                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">40 unit PC high-spec untuk
-                                        coding dan development</p>
-                                    <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
-                                        <li>• Intel Core i5 Gen 11</li>
-                                        <li>• RAM 16GB DDR4</li>
-                                        <li>• SSD 512GB</li>
-                                        <li>• Monitor 24" Full HD</li>
-                                    </ul>
-                                </div>
-                                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 card-hover">
-                                    <div
-                                        class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mb-4">
-                                        <span class="material-icons text-primary">sports_esports</span>
-                                    </div>
-                                    <h5 class="font-semibold text-gray-900 dark:text-white mb-2">Lab Game Dev</h5>
-                                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">PC dengan GPU khusus untuk
-                                        pengembangan dan testing game</p>
-                                    <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
-                                        <li>• Intel Core i7 Gen 11</li>
-                                        <li>• RAM 32GB DDR4</li>
-                                        <li>• RTX 3060 Ti</li>
-                                        <li>• SSD 1TB NVMe</li>
-                                    </ul>
-                                </div>
-                                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 card-hover">
-                                    <div
-                                        class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mb-4">
-                                        <span class="material-icons text-primary">dns</span>
-                                    </div>
-                                    <h5 class="font-semibold text-gray-900 dark:text-white mb-2">Server Room</h5>
-                                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">Praktikum backend,
-                                        database, dan deployment</p>
-                                    <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
-                                        <li>• 3 Unit Server Dell PowerEdge</li>
-                                        <li>• Network Storage 20TB</li>
-                                        <li>• Switch Managed 24 Port</li>
-                                        <li>• UPS 10KVA</li>
-                                    </ul>
-                                </div>
-                                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 card-hover">
-                                    <div
-                                        class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mb-4">
-                                        <span class="material-icons text-primary">brush</span>
-                                    </div>
-                                    <h5 class="font-semibold text-gray-900 dark:text-white mb-2">Lab Desain</h5>
-                                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">PC dengan tablet grafis
-                                        untuk desain UI/UX dan aset game</p>
-                                    <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
-                                        <li>• iMac 24" M1</li>
-                                        <li>• Wacom Intuos Pro</li>
-                                        <li>• Adobe Creative Cloud</li>
-                                        <li>• Monitor Calibrated</li>
-                                    </ul>
-                                </div>
-                                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 card-hover">
-                                    <div
-                                        class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mb-4">
-                                        <span class="material-icons text-primary">videogame_asset</span>
-                                    </div>
-                                    <h5 class="font-semibold text-gray-900 dark:text-white mb-2">Gaming Corner</h5>
-                                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">Area untuk riset game dan
-                                        testing dengan konsol modern</p>
-                                    <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
-                                        <li>• PlayStation 5</li>
-                                        <li>• Xbox Series X</li>
-                                        <li>• Nintendo Switch</li>
-                                        <li>• VR Headset</li>
-                                    </ul>
-                                </div>
-                                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 card-hover">
-                                    <div
-                                        class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mb-4">
-                                        <span class="material-icons text-primary">wifi</span>
-                                    </div>
-                                    <h5 class="font-semibold text-gray-900 dark:text-white mb-2">Internet Fiber</h5>
-                                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">Koneksi internet dedicated
-                                        berkecepatan tinggi</p>
-                                    <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
-                                        <li>• 500 Mbps Dedicated</li>
-                                        <li>• WiFi 6 Coverage</li>
-                                        <li>• Network Monitoring</li>
-                                        <li>• Content Filter</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div>
-                            <h4 class="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Software & Lisensi</h4>
-                            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
-                                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-                                    <div class="text-center">
-                                        <div
-                                            class="w-16 h-16 bg-white dark:bg-gray-700 rounded-lg flex items-center justify-center mx-auto mb-2">
-                                            <span class="material-icons text-primary">code</span>
-                                        </div>
-                                        <p class="text-sm font-medium text-gray-900 dark:text-white">Visual Studio</p>
-                                        <p class="text-xs text-gray-600 dark:text-gray-400">Professional</p>
-                                    </div>
-                                    <div class="text-center">
-                                        <div
-                                            class="w-16 h-16 bg-white dark:bg-gray-700 rounded-lg flex items-center justify-center mx-auto mb-2">
-                                            <span class="material-icons text-primary">sports_esports</span>
-                                        </div>
-                                        <p class="text-sm font-medium text-gray-900 dark:text-white">Unity Pro</p>
-                                        <p class="text-xs text-gray-600 dark:text-gray-400">Education License</p>
-                                    </div>
-                                    <div class="text-center">
-                                        <div
-                                            class="w-16 h-16 bg-white dark:bg-gray-700 rounded-lg flex items-center justify-center mx-auto mb-2">
-                                            <span class="material-icons text-primary">brush</span>
-                                        </div>
-                                        <p class="text-sm font-medium text-gray-900 dark:text-white">Adobe CC</p>
-                                        <p class="text-xs text-gray-600 dark:text-gray-400">All Apps</p>
-                                    </div>
-                                    <div class="text-center">
-                                        <div
-                                            class="w-16 h-16 bg-white dark:bg-gray-700 rounded-lg flex items-center justify-center mx-auto mb-2">
-                                            <span class="material-icons text-primary">storage</span>
-                                        </div>
-                                        <p class="text-sm font-medium text-gray-900 dark:text-white">AutoDesk</p>
-                                        <p class="text-xs text-gray-600 dark:text-gray-400">Education Suite</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
 
                 <!-- STRUKTUR ORGANISASI -->
                <div id="struktur" class="tab-pane hidden">
@@ -521,178 +388,7 @@
         </div>
     </div>
 </div>
-                <!-- KOMPETENSI -->
-                <div id="kompetensi" class="tab-pane hidden">
-                    <div class="bg-card-light dark:bg-card-dark rounded-2xl shadow-lg p-8">
-                        <h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Kompetensi Jurusan</h3>
-
-                        <div class="grid md:grid-cols-2 gap-8 mb-8">
-                            <div>
-                                <h4 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Kompetensi Inti
-                                </h4>
-                                <div class="space-y-3">
-                                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl card-hover">
-                                        <div class="flex items-start">
-                                            <span class="material-icons text-primary mr-3 mt-1">code</span>
-                                            <div>
-                                                <h5 class="font-medium text-gray-900 dark:text-white">Pemrograman Dasar
-                                                    & Algoritma</h5>
-                                                <p class="text-sm text-gray-600 dark:text-gray-400">Pseudocode,
-                                                    Flowchart, Struktur Data</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl card-hover">
-                                        <div class="flex items-start">
-                                            <span class="material-icons text-primary mr-3 mt-1">web</span>
-                                            <div>
-                                                <h5 class="font-medium text-gray-900 dark:text-white">Pemrograman Web
-                                                </h5>
-                                                <p class="text-sm text-gray-600 dark:text-gray-400">HTML, CSS,
-                                                    JavaScript, React, Node.js</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl card-hover">
-                                        <div class="flex items-start">
-                                            <span class="material-icons text-primary mr-3 mt-1">smartphone</span>
-                                            <div>
-                                                <h5 class="font-medium text-gray-900 dark:text-white">Pemrograman Mobile
-                                                </h5>
-                                                <p class="text-sm text-gray-600 dark:text-gray-400">Kotlin/Java, Swift,
-                                                    React Native</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl card-hover">
-                                        <div class="flex items-start">
-                                            <span class="material-icons text-primary mr-3 mt-1">sports_esports</span>
-                                            <div>
-                                                <h5 class="font-medium text-gray-900 dark:text-white">Pengembangan Game
-                                                </h5>
-                                                <p class="text-sm text-gray-600 dark:text-gray-400">Unity, Unreal
-                                                    Engine, C#, C++</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl card-hover">
-                                        <div class="flex items-start">
-                                            <span class="material-icons text-primary mr-3 mt-1">storage</span>
-                                            <div>
-                                                <h5 class="font-medium text-gray-900 dark:text-white">Manajemen Database
-                                                </h5>
-                                                <p class="text-sm text-gray-600 dark:text-gray-400">SQL, NoSQL, MongoDB,
-                                                    PostgreSQL</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <h4 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Kompetensi
-                                    Pendukung</h4>
-                                <div class="space-y-3">
-                                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl card-hover">
-                                        <div class="flex items-start">
-                                            <span class="material-icons text-primary mr-3 mt-1">brush</span>
-                                            <div>
-                                                <h5 class="font-medium text-gray-900 dark:text-white">Prinsip Desain
-                                                    UI/UX</h5>
-                                                <p class="text-sm text-gray-600 dark:text-gray-400">Figma, Adobe XD,
-                                                    Prototyping</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl card-hover">
-                                        <div class="flex items-start">
-                                            <span class="material-icons text-primary mr-3 mt-1">sync</span>
-                                            <div>
-                                                <h5 class="font-medium text-gray-900 dark:text-white">Version Control
-                                                </h5>
-                                                <p class="text-sm text-gray-600 dark:text-gray-400">Git & GitHub, GitLab
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl card-hover">
-                                        <div class="flex items-start">
-                                            <span class="material-icons text-primary mr-3 mt-1">assignment</span>
-                                            <div>
-                                                <h5 class="font-medium text-gray-900 dark:text-white">Manajemen Proyek
-                                                </h5>
-                                                <p class="text-sm text-gray-600 dark:text-gray-400">Agile, Scrum, Jira
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl card-hover">
-                                        <div class="flex items-start">
-                                            <span class="material-icons text-primary mr-3 mt-1">3d_rotation</span>
-                                            <div>
-                                                <h5 class="font-medium text-gray-900 dark:text-white">Pembuatan Aset
-                                                    Digital</h5>
-                                                <p class="text-sm text-gray-600 dark:text-gray-400">2D/3D Modeling,
-                                                    Texturing, Animation</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl card-hover">
-                                        <div class="flex items-start">
-                                            <span class="material-icons text-primary mr-3 mt-1">trending_up</span>
-                                            <div>
-                                                <h5 class="font-medium text-gray-900 dark:text-white">Digital Marketing
-                                                </h5>
-                                                <p class="text-sm text-gray-600 dark:text-gray-400">SEO, SEM, Social
-                                                    Media Marketing</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 bg-purple-50 dark:bg-purple-900 dark:bg-opacity-20 rounded-xl">
-                            <h4 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Peluang Karir</h4>
-                            <p class="text-gray-700 dark:text-gray-300 mb-6">Lulusan jurusan PPLG sangat diminati di era
-                                digital dan memiliki peluang karir yang luas:</p>
-                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                <div class="bg-white dark:bg-gray-800 p-4 rounded-xl text-center card-hover">
-                                    <div
-                                        class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mx-auto mb-2">
-                                        <span class="material-icons text-primary">web</span>
-                                    </div>
-                                    <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Web Developer</p>
-                                    <p class="text-xs text-gray-600 dark:text-gray-400">Rp 5-15 Juta/bulan</p>
-                                </div>
-                                <div class="bg-white dark:bg-gray-800 p-4 rounded-xl text-center card-hover">
-                                    <div
-                                        class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mx-auto mb-2">
-                                        <span class="material-icons text-primary">smartphone</span>
-                                    </div>
-                                    <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Mobile Developer</p>
-                                    <p class="text-xs text-gray-600 dark:text-gray-400">Rp 7-20 Juta/bulan</p>
-                                </div>
-                                <div class="bg-white dark:bg-gray-800 p-4 rounded-xl text-center card-hover">
-                                    <div
-                                        class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mx-auto mb-2">
-                                        <span class="material-icons text-primary">sports_esports</span>
-                                    </div>
-                                    <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Game Developer</p>
-                                    <p class="text-xs text-gray-600 dark:text-gray-400">Rp 8-25 Juta/bulan</p>
-                                </div>
-                                <div class="bg-white dark:bg-gray-800 p-4 rounded-xl text-center card-hover">
-                                    <div
-                                        class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mx-auto mb-2">
-                                        <span class="material-icons text-primary">brush</span>
-                                    </div>
-                                    <p class="text-sm font-medium text-gray-700 dark:text-gray-300">UI/UX Designer</p>
-                                    <p class="text-xs text-gray-600 dark:text-gray-400">Rp 6-18 Juta/bulan</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+               
                 <!-- KURIKULUM -->
                 <div id="kurikulum" class="tab-pane hidden">
                     <div class="bg-card-light dark:bg-card-dark rounded-2xl shadow-lg p-8">
@@ -789,60 +485,7 @@
                             </div>
                         </div>
 
-                        <div>
-                            <h4 class="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Kegiatan
-                                Ekstrakurikuler</h4>
-                            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 card-hover">
-                                    <div class="flex items-center mb-2">
-                                        <span class="material-icons text-primary mr-2">code</span>
-                                        <h5 class="font-medium text-gray-900 dark:text-white">Coding Club</h5>
-                                    </div>
-                                    <p class="text-sm text-gray-600 dark:text-gray-400">Kompetisi programming,
-                                        hackathon, dan workshop teknologi terkini</p>
-                                </div>
-                                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 card-hover">
-                                    <div class="flex items-center mb-2">
-                                        <span class="material-icons text-primary mr-2">sports_esports</span>
-                                        <h5 class="font-medium text-gray-900 dark:text-white">Game Dev Club</h5>
-                                    </div>
-                                    <p class="text-sm text-gray-600 dark:text-gray-400">Pengembangan game indie, game
-                                        jam, dan riset teknologi game</p>
-                                </div>
-                                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 card-hover">
-                                    <div class="flex items-center mb-2">
-                                        <span class="material-icons text-primary mr-2">brush</span>
-                                        <h5 class="font-medium text-gray-900 dark:text-white">Design Club</h5>
-                                    </div>
-                                    <p class="text-sm text-gray-600 dark:text-gray-400">Desain UI/UX, digital art, dan
-                                        animasi</p>
-                                </div>
-                                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 card-hover">
-                                    <div class="flex items-center mb-2">
-                                        <span class="material-icons text-primary mr-2">public</span>
-                                        <h5 class="font-medium text-gray-900 dark:text-white">Robotics Club</h5>
-                                    </div>
-                                    <p class="text-sm text-gray-600 dark:text-gray-400">Pemrograman robot, IoT, dan
-                                        automasi</p>
-                                </div>
-                                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 card-hover">
-                                    <div class="flex items-center mb-2">
-                                        <span class="material-icons text-primary mr-2">business</span>
-                                        <h5 class="font-medium text-gray-900 dark:text-white">Entrepreneurship Club</h5>
-                                    </div>
-                                    <p class="text-sm text-gray-600 dark:text-gray-400">Startup, product development,
-                                        dan digital marketing</p>
-                                </div>
-                                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 card-hover">
-                                    <div class="flex items-center mb-2">
-                                        <span class="material-icons text-primary mr-2">photo_camera</span>
-                                        <h5 class="font-medium text-gray-900 dark:text-white">Multimedia Club</h5>
-                                    </div>
-                                    <p class="text-sm text-gray-600 dark:text-gray-400">Videografi, fotografi, dan
-                                        editing video</p>
-                                </div>
-                            </div>
-                        </div>
+                       
                     </div>
                 </div>
             </div>
@@ -969,14 +612,12 @@
                         <img src="https://picsum.photos/seed/alumni-pplg3/100/100.jpg" alt="Alumni"
                             class="w-12 h-12 rounded-full mr-4">
                         <div>
-                            <h4 class="font-semibold text-gray-900 dark:text-white">Dimas Aryo</h4>
-                            <p class="text-sm text-gray-600 dark:text-gray-400">Alumni 2022</p>
+                            <h4 class="font-semibold text-gray-900 dark:text-white">Aditya Ramadan</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400"></p>
                         </div>
                     </div>
-                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-3">UI/UX Designer at Gojek</p>
-                    <p class="text-gray-600 dark:text-gray-400 text-sm italic">"Kurikulum PPLG tidak hanya mengajarkan
-                        coding, tapi juga desain. Ini membuat saya menjadi designer yang paham teknis."</p>
-                </div>
+                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-3">Alumni 2022</p>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm italic">Menjadi bagian dari jurusan RPL di SMKN 1 Kawali memberi saya kesempatan untuk mempelajari teknologi dan pemrograman secara langsung. Proses belajar yang dijalani membantu saya mengembangkan kemampuan logika, pemecahan masalah, serta kesiapan menghadapi perkembangan dunia digital.
             </div>
         </div>
     </section>

@@ -34,6 +34,8 @@
                         'fade-in': 'fadeIn 0.6s ease-out',
                         'float': 'float 3s ease-in-out infinite',
                         'zoom-in': 'zoomIn 0.3s ease-out',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'bounce-in': 'bounceIn 0.6s ease-out',
                     },
                     keyframes: {
                         fadeIn: {
@@ -48,6 +50,16 @@
                         zoomIn: {
                             '0%': { opacity: '0', transform: 'scale(0.8)' },
                             '100%': { opacity: '1', transform: 'scale(1)' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        bounceIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.3)' },
+                            '50%': { opacity: '1', transform: 'scale(1.05)' },
+                            '70%': { transform: 'scale(0.9)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' },
                         }
                     }
                 },
@@ -59,10 +71,12 @@
         .ekstrakurikuler-card {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(229, 231, 235, 0.5);
         }
         .ekstrakurikuler-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: rgba(59, 130, 246, 0.3);
         }
         .ekstrakurikuler-image-container {
             overflow: hidden;
@@ -170,60 +184,109 @@
         .dark .modal-scrollbar::-webkit-scrollbar-thumb:hover {
             background: rgba(255, 255, 255, 0.5);
         }
+        
+        /* Badge animation */
+        .badge-pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+            }
+        }
+        
+        /* Gradient text */
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Card gradient border */
+        .card-gradient-border {
+            position: relative;
+            background: linear-gradient(white, white) padding-box,
+                        linear-gradient(135deg, rgba(59, 130, 246, 0.5), rgba(147, 51, 234, 0.5)) border-box;
+            border: 1px solid transparent;
+        }
+        
+        .dark .card-gradient-border {
+            background: linear-gradient(#1f2937, #1f2937) padding-box,
+                        linear-gradient(135deg, rgba(59, 130, 246, 0.5), rgba(147, 51, 234, 0.5)) border-box;
+        }
     </style>
 </head>
 
-<body class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-100 font-body transition-colors duration-300">
+<body class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-100 font-body transition-colors duration-300 min-h-screen flex flex-col">
 
     @include('layouts.navbar')
 
-    <!-- HEADER -->
-    <div class="relative bg-gradient-to-br from-primary to-primary-dark dark:from-blue-800 dark:to-blue-900 py-20 header-pattern">
-        <!-- Optional: Add a subtle pattern overlay -->
-        <div class="absolute inset-0 bg-black opacity-10"></div>
-        <div class="relative container mx-auto px-4">
-            <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-3 animate-fade-in">
-                Ekstrakulikuler
+    <!-- HEADER EKSTRAKULIKULER -->
+    <div class="relative bg-gradient-to-br from-blue-50 via-white to-indigo-100 dark:from-gray-900 dark:via-gray-800 dark:to-indigo-900 border-b border-blue-100 dark:border-gray-700 pb-20 pt-20 overflow-hidden">
+        <!-- Background Decor (Balanced Blobs) -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
+            <!-- Top Left -->
+            <div class="absolute -top-32 -left-32 w-80 h-80 bg-blue-200/30 dark:bg-blue-800/20 rounded-full blur-3xl"></div>
+            <!-- Top Right -->
+            <div class="absolute -top-20 -right-20 w-72 h-72 bg-indigo-200/30 dark:bg-indigo-800/20 rounded-full blur-3xl"></div>
+            <!-- Bottom Left -->
+            <div class="absolute -bottom-20 -left-20 w-64 h-64 bg-purple-200/25 dark:bg-purple-800/15 rounded-full blur-3xl"></div>
+            <!-- Bottom Right -->
+            <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-cyan-200/25 dark:bg-cyan-800/15 rounded-full blur-3xl"></div>
+            <!-- Center subtle glow -->
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-blue-100/20 to-purple-100/20 dark:from-blue-900/10 dark:to-purple-900/10 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="relative container mx-auto px-4 z-10 text-center">
+            <div
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-gray-800 text-primary text-xs font-bold mb-6 border border-blue-200 dark:border-blue-800 badge-pulse shadow-md">
+                <i class="fa-solid fa-trophy"></i> Pengembangan Talenta
+            </div>
+            <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 dark:text-white mb-6 tracking-tight">
+                Ekstrakurikuler <span class="gradient-text">Unggulan</span>
             </h1>
-            <p class="text-gray-100 text-lg md:text-xl max-w-2xl animate-fade-in" style="animation-delay: 0.2s">
-                Informasi lengkap mengenai kegiatan ekstrakulikuler yang tersedia di SMK Negeri 1 Kawali.
+            <p class="text-slate-600 dark:text-slate-300 text-lg max-w-2xl mx-auto mb-10">
+                Temukan berbagai kegiatan ekstrakurikuler yang dapat mengembangkan bakat dan minat siswa di SMK Negeri 1 Kawali.
             </p>
+
+            <!-- Search Bar -->
+            <div class="max-w-xl mx-auto relative group">
+                <form action="{{ route('ekstrakulikuler') }}" method="GET" class="relative">
+                    <div class="relative flex-grow">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i class="fa-solid fa-search text-slate-400"></i>
+                        </div>
+                        <input
+                            type="text"
+                            name="cari"
+                            value="{{ request('cari') }}"
+                            placeholder="Cari ekstrakurikuler..."
+                            class="w-full pl-12 pr-4 py-4 rounded-xl border border-blue-200 dark:border-gray-600 bg-white dark:bg-gray-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none shadow-lg transition group-hover:shadow-xl">
+                    </div>
+                    <button type="submit"
+                        class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-primary hover:bg-primary-dark text-white px-6 py-2 rounded-lg transition-all transform hover:scale-105">
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </form>
+            </div>
+            
         </div>
-    </div>
-
-    <!-- SEARCH -->
-    <div class="max-w-4xl mx-auto mt-10 px-4">
-      <form action="{{ route('ekstrakulikuler') }}" method="GET"
-    class="flex shadow-lg rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700">
-
-    <div class="relative flex-grow">
-        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <i class="fa-solid fa-search text-gray-400"></i>
-        </div>
-
-        <input
-            type="text"
-            name="cari"
-            value="{{ request('cari') }}"
-            placeholder="Cari Ekstrakulikuler..."
-            class="w-full pl-10 pr-3 py-4 bg-slate-50 dark:bg-slate-800 border-none focus:ring-2 focus:ring-primary focus:outline-none">
-    </div>
-
-    <button type="submit"
-        class="bg-primary hover:bg-primary-dark text-white px-8 py-4 font-medium flex items-center">
-        <span>Cari</span>
-        <i class="fas fa-arrow-right ml-2"></i>
-    </button>
-</form>
-
     </div>
 
     <!-- CONTENT -->
-    <main class="container mx-auto px-4 py-12 lg:py-16 min-h-screen">
+    <main class="flex-grow container mx-auto px-4 py-12 lg:py-16 -mt-8 relative z-20">
 
         <!-- NOTIFIKASI HASIL PENCARIAN -->
         @if(request('cari'))
-        <div class="mb-6 bg-primary-light dark:bg-blue-900/20 border-l-4 border-primary p-4 rounded animate-fade-in">
+        <div class="mb-6 bg-primary-light dark:bg-blue-900/20 border-l-4 border-primary p-4 rounded-lg animate-fade-in">
             <p class="text-sm">
                 Menampilkan hasil pencarian untuk: <strong>{{ request('cari') }}</strong>
             </p>
@@ -246,7 +309,7 @@
 
             @forelse ($ekstrakulikulers as $index => $item)
             <div
-                class="ekstrakurikuler-card bg-card-light dark:bg-card-dark 
+                class="ekstrakurikuler-card card-gradient-border bg-card-light dark:bg-card-dark 
                        rounded-2xl overflow-hidden animate-fade-in group"
                 data-index="{{ $index }}">
 
@@ -303,11 +366,8 @@
 
                     <div class="mt-4">
                         <button onclick="openDetailModal({{ $index }})"
-                               class="text-primary hover:text-primary-dark 
-                                      dark:text-primary-300 dark:hover:text-primary-200 
-                                      font-medium text-sm flex items-center transition-colors">
-                            Lihat Detail
-                            <i class="fas fa-arrow-right ml-2"></i>
+                               class="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary text-white text-sm font-semibold py-2 px-5 rounded-full transition-all transform hover:scale-105 shadow-md hover:shadow-lg">
+                            Lihat Detail <i class="fas fa-arrow-right"></i>
                         </button>
                     </div>
 
@@ -317,7 +377,7 @@
             @empty
                 <div class="col-span-full text-center py-10">
                     <p class="text-gray-500 dark:text-gray-400">
-                        Data ekstrakulikuler belum tersedia.
+                        Data ekstrakurikuler belum tersedia.
                     </p>
                 </div>
             @endforelse
@@ -335,20 +395,20 @@
         <!-- EMPTY STATE -->
         <div class="flex flex-col items-center justify-center text-center py-20">
             <div class="w-24 h-24 bg-primary-light dark:bg-blue-900/20 rounded-full flex items-center justify-center mb-6 animate-float">
-                <i class="fas fa-search text-5xl text-primary"></i>
+                <i class="fas fa-trophy text-5xl text-primary"></i>
             </div>
             <h3 class="text-2xl font-bold text-gray-700 dark:text-gray-300 mb-2">
                 @if(request('cari'))
                 Tidak ada hasil untuk pencarian "<strong>{{ request('cari') }}</strong>"
                 @else
-                Tidak ada data ekstrakulikuler
+                Tidak ada data ekstrakurikuler
                 @endif
             </h3>
             <p class="text-gray-500 dark:text-gray-400 max-w-md">
                 @if(request('cari'))
                 Coba kata kunci pencarian lainnya
                 @else
-                Data ekstrakulikuler akan segera ditambahkan
+                Data ekstrakurikuler akan segera ditambahkan
                 @endif
             </p>
         </div>
@@ -393,7 +453,7 @@
             </button>
             
             <!-- Modal Content dengan Scroll -->
-            <div class="bg-white dark:bg-gray-800 rounded-xl max-w-3xl w-full max-h-[90vh] flex flex-col animate-zoom-in">
+            <div class="bg-white dark:bg-gray-800 rounded-xl max-w-3xl w-full max-h-[90vh] flex flex-col animate-bounce-in">
                 <!-- Foto Header (Fixed) -->
                 <div class="relative h-64 md:h-80 flex-shrink-0">
                     <img id="detailModalImage" src="" alt="" class="w-full h-full object-cover rounded-t-xl">
@@ -439,7 +499,7 @@
     <!-- DARK MODE BUTTON -->
     <button
         id="darkToggle"
-        class="fixed bottom-6 right-6 bg-primary hover:bg-primary-dark text-white p-3 rounded-full shadow-lg z-40 transition-all duration-300 hover:scale-110">
+        class="fixed bottom-6 right-6 bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary text-white p-3 rounded-full shadow-lg z-40 transition-all duration-300 hover:scale-110">
         <i class="fa-solid fa-moon dark:hidden"></i>
         <i class="fa-solid fa-sun hidden dark:block"></i>
     </button>

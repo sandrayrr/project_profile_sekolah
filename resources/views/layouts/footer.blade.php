@@ -80,22 +80,9 @@
             </div>
         </div>
         
-        <!-- Newsletter Section -->
-        <div class="border-t border-gray-300 dark:border-gray-800 pt-8 pb-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <div>
-                    <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Newsletter</h3>
-                    <p class="text-gray-600 dark:text-gray-400">Dapatkan informasi terbaru tentang kegiatan dan prestasi sekolah kami</p>
-                </div>
-                <form class="flex flex-col sm:flex-row gap-3" onsubmit="alert('Terima kasih telah berlangganan!'); return false;">
-                    <input type="email" placeholder="Email Anda" required class="flex-1 px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary">
-                    <button type="submit" class="px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors">
-                        Subscribe
-                    </button>
-                </form>
-            </div>
-        </div>
-        
+    
+       
+
         <!-- Copyright Section -->
         <div class="border-t border-gray-300 dark:border-gray-800 pt-8">
             <div class="flex flex-col md:flex-row justify-between items-center gap-4">

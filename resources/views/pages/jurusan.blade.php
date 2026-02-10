@@ -1,21 +1,19 @@
 <!DOCTYPE html>
-<html class="light" lang="en">
+<html class="light" lang="id">
 
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Jurusan - SMK Negeri 1 Kawali</title>
     <!-- Fonts -->
-     <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
         rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <!-- Theme Configuration -->
     <script id="tailwind-config">
         tailwind.config = {
@@ -38,15 +36,11 @@
                     fontFamily: {
                         "display": ["Inter", "sans-serif"],
                     },
-                    borderRadius: {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
                     animation: {
                         'fade-in': 'fadeIn 0.6s ease-out',
                         'float': 'float 3s ease-in-out infinite',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'bounce-in': 'bounceIn 0.6s ease-out',
                     },
                     keyframes: {
                         fadeIn: {
@@ -56,94 +50,119 @@
                         float: {
                             '0%, 100%': { transform: 'translateY(0px)' },
                             '50%': { transform: 'translateY(-10px)' }
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        bounceIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.3)' },
+                            '50%': { opacity: '1', transform: 'scale(1.05)' },
+                            '70%': { transform: 'scale(0.9)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' },
                         }
                     }
                 },
             },
         };
     </script>
+    <!-- Custom CSS -->
     <style>
+        /* Efek hover untuk kartu jurusan */
         .card-hover-effect {
             transition: all 0.3s ease;
         }
+
         .card-hover-effect:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
+
+        /* Styling untuk ikon di tengah kartu */
         .activity-icon {
-            width: 60px;
-            height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
-            margin: 0 auto 1rem;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
             color: white;
             font-size: 1.5rem;
         }
+
+        /* Posisi konten (judul & deskripsi) di bagian bawah gambar */
         .card-content {
-            position: relative;
-            z-index: 10;
-        }
-        .card-overlay {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            height: 70%;
-            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            z-index: 10;
+            padding: 1.5rem;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
         }
-        .card-hover-effect:hover .card-overlay {
-            opacity: 1;
+
+        /* Animasi badge "pulse" */
+        .badge-pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+            }
+        }
+
+        /* Efek teks dengan gradien */
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
     </style>
 </head>
+@include('layouts.navbar')
 
-<body class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-100 font-body transition-colors duration-300">
-    @include('layouts.navbar')
+<body
+    class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-100 font-body transition-colors duration-300">
 
     <!-- HERO SECTION -->
-    <section class="relative bg-gradient-to-br from-primary to-secondary dark:from-gray-700 dark:to-gray-900 py-20 overflow-hidden">
-        <div class="absolute inset-0 bg-black opacity-10"></div>
-        <div class="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full -mr-32 -mt-32"></div>
-        <div class="absolute bottom-0 left-0 w-96 h-96 bg-white opacity-5 rounded-full -ml-48 -mb-48"></div>
-        
+    <section
+        class="relative bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 border-b border-blue-100 dark:border-gray-700 pb-20 pt-20 overflow-hidden">
+        <!-- Background Decor -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
+            <div class="absolute -top-24 -right-24 w-96 h-96 bg-blue-100/50 dark:bg-blue-900/20 rounded-full blur-3xl">
+            </div>
+            <div class="absolute top-1/2 -left-24 w-72 h-72 bg-cyan-100/50 dark:bg-cyan-900/20 rounded-full blur-3xl">
+            </div>
+            <div
+                class="absolute bottom-0 right-1/4 w-64 h-64 bg-purple-100/30 dark:bg-purple-900/20 rounded-full blur-3xl">
+            </div>
+        </div>
+
         <div class="container mx-auto px-4 relative z-10">
-            <div class="flex flex-col lg:flex-row items-center gap-12">
-                <!-- LEFT -->
-                <div class="lg:w-1/2">
-                    <span class="text-gray-100 font-semibold text-base mb-3 block">
-                        Kompetensi Keahlian
-                    </span>
-
-                    <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6 text-white">
-                        Jurusan Unggulan
-                    </h1>
-
-                    <p class="text-gray-100 text-lg leading-relaxed mb-8 max-w-xl">
-                        Program keahlian yang membekali siswa dengan keterampilan praktis dan teori sesuai kebutuhan industri.
-                    </p>
-
-                    <div class="flex flex-wrap gap-4">
-                        <a href="#jurusan-grid" class="bg-white text-primary px-8 py-3 rounded-xl font-medium hover:bg-gray-100 transition shadow-lg">
-                            Lihat Semua Jurusan
-                        </a>
-                        <a href="#" class="border border-white text-white px-8 py-3 rounded-xl font-medium hover:bg-white hover:text-primary transition">
-                            Unduh Brosur
-                        </a>
-                    </div>
+            <div class="text-center">
+                <div
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-gray-800 text-primary text-xs font-bold mb-6 border border-blue-200 dark:border-blue-800 badge-pulse">
+                    <i class="fa-solid fa-graduation-cap"></i> Kompetensi Keahlian
                 </div>
-
-                <!-- RIGHT -->
-                <div class="lg:w-1/2 flex justify-center">
-                    <img
-                        src="jur.jpg"
-                        alt="Jurusan SMKN 1 Kawali"
-                        class="w-full max-w-xl h-[420px] object-cover rounded-2xl shadow-2xl">
-                </div>
+                <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 dark:text-white mb-6 tracking-tight">
+                    Jurusan <span class="gradient-text">Unggulan</span>
+                </h1>
+                <p class="text-slate-600 dark:text-slate-300 text-lg max-w-2xl mx-auto mb-10">
+                    Program keahlian yang membekali siswa dengan keterampilan praktis dan teori sesuai kebutuhan
+                    industri.
+                </p>
             </div>
         </div>
     </section>
@@ -157,373 +176,214 @@
                     Pilih jurusan yang sesuai dengan minat dan bakat Anda untuk masa depan yang cerah
                 </p>
             </div>
-            
-            <div class="grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- Grid untuk 6 kartu pertama -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- PPLG Card -->
                 <div class="card-hover-effect bg-card-light dark:bg-card-dark rounded-2xl shadow-lg overflow-hidden">
                     <div class="relative">
-                        <div class="aspect-video bg-gradient-to-br from-blue-500 to-purple-600 p-8 flex items-center justify-center">
-                            <div class="activity-icon">
-                                <i class="material-icons">code</i>
+                        <div class="aspect-video relative overflow-hidden">
+                            <img src="pplg7.jpg" alt="PPLG" class="absolute inset-0 w-full h-full object-cover">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-br from-blue-500/70 to-purple-600/70 p-8 flex items-center justify-center">
+                                <div class="activity-icon">
+                                    <i class="material-icons">code</i>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="text-xl font-bold text-white mb-2">PPLG</h3>
+                                <p class="text-white/90">Pengembangan Perangkat Lunak dan Gim</p>
                             </div>
                         </div>
-                        <div class="card-content">
-                            <h3 class="text-xl font-bold text-white mb-2">PPLG</h3>
-                            <p class="text-white/90">Pengembangan Perangkat Lunak dan Gim</p>
-                        </div>
-                        <div class="card-overlay"></div>
                     </div>
                     <div class="p-6">
                         <p class="text-gray-700 dark:text-gray-300">
                             Jurusan yang fokus pada pengembangan perangkat lunak dan game dengan teknologi terkini.
                         </p>
-                        <div class="mt-4 flex justify-between items-center">
-                            <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
-                                <i class="material-icons text-sm mr-1">group</i>
-                                <span>10-12 Kelas</span>
-                            </div>
-                            <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
-                                <i class="material-icons text-sm mr-1">person</i>
-                                <span>5 Guru</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
                 <!-- TJKT Card -->
                 <div class="card-hover-effect bg-card-light dark:bg-card-dark rounded-2xl shadow-lg overflow-hidden">
                     <div class="relative">
-                        <div class="aspect-video bg-gradient-to-br from-cyan-500 to-blue-600 p-8 flex items-center justify-center">
-                            <div class="activity-icon">
-                                <i class="material-icons">settings_ethernet</i>
+                        <div class="aspect-video relative overflow-hidden">
+                            <img src="tkj4.jpg" alt="TJKT" class="absolute inset-0 w-full h-full object-cover">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-br from-cyan-500/70 to-blue-600/70 p-8 flex items-center justify-center">
+                                <div class="activity-icon">
+                                    <i class="material-icons">settings_ethernet</i>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="text-xl font-bold text-white mb-2">TJKT</h3>
+                                <p class="text-white/90">Teknik Jaringan Komputer dan Telekomunikasi</p>
                             </div>
                         </div>
-                        <div class="card-content">
-                            <h3 class="text-xl font-bold text-white mb-2">TJKT</h3>
-                            <p class="text-white/90">Teknik Jaringan Komputer dan Telekomunikasi</p>
-                        </div>
-                        <div class="card-overlay"></div>
                     </div>
                     <div class="p-6">
                         <p class="text-gray-700 dark:text-gray-300">
                             Jurusan yang mempelajari infrastruktur jaringan dan sistem telekomunikasi modern.
                         </p>
-                        <div class="mt-4 flex justify-between items-center">
-                            <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
-                                <i class="material-icons text-sm mr-1">group</i>
-                                <span>10-12 Kelas</span>
-                            </div>
-                            <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
-                                <i class="material-icons text-sm mr-1">person</i>
-                                <span>6 Guru</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
                 <!-- AKL Card -->
                 <div class="card-hover-effect bg-card-light dark:bg-card-dark rounded-2xl shadow-lg overflow-hidden">
                     <div class="relative">
-                        <div class="aspect-video bg-gradient-to-br from-emerald-500 to-teal-600 p-8 flex items-center justify-center">
-                            <div class="activity-icon">
-                                <i class="material-icons">account_balance</i>
+                        <div class="aspect-video relative overflow-hidden">
+                            <img src="ak1.jpg" alt="AKL" class="absolute inset-0 w-full h-full object-cover">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-br from-emerald-500/70 to-teal-600/70 p-8 flex items-center justify-center">
+                                <div class="activity-icon">
+                                    <i class="material-icons">account_balance</i>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="text-xl font-bold text-white mb-2">AKL</h3>
+                                <p class="text-white/90">Akuntansi Keuangan dan Lembaga</p>
                             </div>
                         </div>
-                        <div class="card-content">
-                            <h3 class="text-xl font-bold text-white mb-2">AKL</h3>
-                            <p class="text-white/90">Akuntansi Keuangan dan Lembaga</p>
-                        </div>
-                        <div class="card-overlay"></div>
                     </div>
                     <div class="p-6">
                         <p class="text-gray-700 dark:text-gray-300">
                             Jurusan yang membekali siswa dengan keterampilan akuntansi dan keuangan lembaga.
                         </p>
-                        <div class="mt-4 flex justify-between items-center">
-                            <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
-                                <i class="material-icons text-sm mr-1">group</i>
-                                <span>10-12 Kelas</span>
-                            </div>
-                            <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
-                                <i class="material-icons text-sm mr-1">person</i>
-                                <span>4 Guru</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
                 <!-- TKR Card -->
                 <div class="card-hover-effect bg-card-light dark:bg-card-dark rounded-2xl shadow-lg overflow-hidden">
                     <div class="relative">
-                        <div class="aspect-video bg-gradient-to-br from-orange-500 to-red-600 p-8 flex items-center justify-center">
-                            <div class="activity-icon">
-                                <i class="material-icons">build</i>
+                        <div class="aspect-video relative overflow-hidden">
+                            <img src="tkr1.jpg" alt="TKR" class="absolute inset-0 w-full h-full object-cover">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-br from-orange-500/70 to-red-600/70 p-8 flex items-center justify-center">
+                                <div class="activity-icon">
+                                    <i class="material-icons">build</i>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="text-xl font-bold text-white mb-2">TKR</h3>
+                                <p class="text-white/90">Teknik Kendaraan Ringan</p>
                             </div>
                         </div>
-                        <div class="card-content">
-                            <h3 class="text-xl font-bold text-white mb-2">TKR</h3>
-                            <p class="text-white/90">Teknik Kendaraan Ringan</p>
-                        </div>
-                        <div class="card-overlay"></div>
                     </div>
                     <div class="p-6">
                         <p class="text-gray-700 dark:text-gray-300">
                             Jurusan yang fokus pada perbaikan dan perawatan kendaraan ringan.
                         </p>
-                        <div class="mt-4 flex justify-between items-center">
-                            <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
-                                <i class="material-icons text-sm mr-1">group</i>
-                                <span>10-12 Kelas</span>
-                            </div>
-                            <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
-                                <i class="material-icons text-sm mr-1">person</i>
-                                <span>8 Guru</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
                 <!-- DPIB Card -->
                 <div class="card-hover-effect bg-card-light dark:bg-card-dark rounded-2xl shadow-lg overflow-hidden">
                     <div class="relative">
-                        <div class="aspect-video bg-gradient-to-br from-purple-500 to-indigo-600 p-8 flex items-center justify-center">
-                            <div class="activity-icon">
-                                <i class="material-icons">architecture</i>
+                        <div class="aspect-video relative overflow-hidden">
+                            <img src="dpib2.jpg" alt="DPIB" class="absolute inset-0 w-full h-full object-cover">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-br from-purple-500/70 to-indigo-600/70 p-8 flex items-center justify-center">
+                                <div class="activity-icon">
+                                    <i class="material-icons">architecture</i>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="text-xl font-bold text-white mb-2">DPIB</h3>
+                                <p class="text-white/90">Desain Permodelan dan Informasi Bangunan</p>
                             </div>
                         </div>
-                        <div class="card-content">
-                            <h3 class="text-xl font-bold text-white mb-2">DPIB</h3>
-                            <p class="text-white/90">Desain Permodelan dan Informasi Bangunan</p>
-                        </div>
-                        <div class="card-overlay"></div>
                     </div>
                     <div class="p-6">
                         <p class="text-gray-700 dark:text-gray-300">
                             Jurusan yang fokus pada desain bangunan dan pemodelan informasi konstruksi.
                         </p>
-                        <div class="mt-4 flex justify-between items-center">
-                            <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
-                                <i class="material-icons text-sm mr-1">group</i>
-                                <span>10-12 Kelas</span>
-                            </div>
-                            <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
-                                <i class="material-icons text-sm mr-1">person</i>
-                                <span>3 Guru</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
-                <!-- SK Card -->
+                <!-- SP Card -->
                 <div class="card-hover-effect bg-card-light dark:bg-card-dark rounded-2xl shadow-lg overflow-hidden">
                     <div class="relative">
-                        <div class="aspect-video bg-gradient-to-br from-red-500 to-pink-600 p-8 flex items-center justify-center">
-                            <div class="activity-icon">
-                                <i class="material-icons">restaurant</i>
+                        <div class="aspect-video relative overflow-hidden">
+                            <img src="sp1.jpg" alt="SP" class="absolute inset-0 w-full h-full object-cover">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-br from-purple-500/70 to-pink-600/70 p-8 flex items-center justify-center">
+                                <div class="activity-icon">
+                                    <i class="material-icons">theater_comedy</i>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="text-xl font-bold text-white mb-2">SP</h3>
+                                <p class="text-white/90">Seni Pertunjukan</p>
                             </div>
                         </div>
-                        <div class="card-content">
-                            <h3 class="text-xl font-bold text-white mb-2">SK</h3>
-                            <p class="text-white/90">Seni Pertunjukan</p>
-                        </div>
-                        <div class="card-overlay"></div>
                     </div>
                     <div class="p-6">
                         <p class="text-gray-700 dark:text-gray-300">
-                            Jurusan yang fokus pada seni memasak dan pengelolaan makanan.
+                            Jurusan yang fokus pada pengembangan bakat seni pertunjukan seperti teater, musik, dan tari.
                         </p>
-                        <div class="mt-4 flex justify-between items-center">
-                            <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
-                                <i class="material-icons text-sm mr-1">group</i>
-                                <span>10-12 Kelas</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kontainer Flexbox untuk memusatkan kartu terakhir (MPLB) -->
+            <div class="flex justify-center mt-8">
+                <!-- MPLB Card -->
+                <div
+                    class="card-hover-effect bg-card-light dark:bg-card-dark rounded-2xl shadow-lg overflow-hidden w-full max-w-lg">
+                    <div class="relative">
+                        <div class="aspect-video relative overflow-hidden">
+                            <!-- Ganti dengan gambar yang sesuai -->
+                            <img src="mp5.jpg" alt="MPLB" class="absolute inset-0 w-full h-full object-cover">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-br from-purple-500/70 to-pink-600/70 p-8 flex items-center justify-center">
+                                <div class="activity-icon">
+                                    <i class="material-icons">business</i>
+                                </div>
                             </div>
-                            <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
-                                <i class="material-icons text-sm mr-1">person</i>
-                                <span>4 Guru</span>
+                            <div class="card-content">
+                                <h3 class="text-xl font-bold text-white mb-2">MPLB</h3>
+                                <p class="text-white/90">Manajemen Perkantoran dan Layanan Bisnis</p>
                             </div>
                         </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-700 dark:text-gray-300">
+                            Jurusan yang fokus pada keterampilan administrasi perkantoran dan manajemen layanan bisnis.
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- STATISTICS SECTION -->
-    <section class="py-16 bg-gray-50 dark:bg-gray-900">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Statistik Jurusan</h2>
-                <p class="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-                    Angka siswa dan guru di setiap jurusan untuk tahun ajaran ini
-                </p>
-            </div>
-            
-            <div class="grid grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-                <!-- PPLG Stats -->
-                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 text-center">
-                    <div class="flex justify-center mb-4">
-                        <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mb-4">
-                            <i class="material-icons text-blue-600">code</i>
-                        </div>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">PPLG</h3>
-                    <div class="grid grid grid-cols-2 gap-4">
-                        <div>
-                            <div class="text-3xl font-bold text-blue-600">120+</div>
-                            <p class="text-sm text-gray-600 dark:text-gray-400">Siswa</p>
-                        </div>
-                        <div>
-                            <div class="text-3xl font-bold text-blue-600">5</div>
-                            <p class="text-sm text-gray-600 dark:text-gray-400">Guru</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- TJKT Stats -->
-                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 text-center">
-                    <div class="flex justify-center mb-4">
-                        <div class="w-16 h-16 bg-cyan-100 dark:bg-cyan-900 rounded-full flex items-center justify-center mb-4">
-                            <i class="material-icons text-cyan-600">settings_ethernet</i>
-                        </div>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">TJKT</h3>
-                    <div class="grid grid grid-cols-2 gap-4">
-                        <div>
-                            <div class="text-3xl font-bold text-cyan-600">135+</div>
-                            <p class="text-sm text-gray-600 dark:text-gray-400">Siswa</p>
-                        </div>
-                        <div>
-                            <div class="text-3xl font-bold text-cyan-600">6</div>
-                            <p class="text-sm text-gray-600 dark:text-gray-400">Guru</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- AKL Stats -->
-                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 text-center">
-                    <div class="flex justify-center mb-4">
-                        <div class="w-16 h-16 bg-emerald-100 dark:bg-emerald-900 rounded-full flex items-center justify-center mb-4">
-                            <i class="material-icons text-emerald-600">account_balance</i>
-                        </div>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">AKL</h3>
-                    <div class="grid grid grid-cols-2 gap-4">
-                        <div>
-                            <div class="text-3xl font-bold text-emerald-600">95</div>
-                            <p class="text-sm text-gray-600 dark:text-gray-400">Siswa</p>
-                        </div>
-                        <div>
-                            <div class="text-3xl font-bold text-emerald-600">4</div>
-                            <p class="text-sm text-gray-600 dark:text-gray-400">Guru</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- TKR Stats -->
-                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 text-center">
-                    <div class="flex justify-center mb-4">
-                        <div class="w-16 h-16 bg-orange-100 dark:bg-orange-900 rounded-full flex items-center justify-center mb-4">
-                            <i class="material-icons text-orange-600">build</i>
-                        </div>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">TKR</h3>
-                    <div class="grid grid grid-cols-2 gap-4">
-                        <div>
-                            <div class="text-3xl font-bold text-orange-600">110+</div>
-                            <p class="text-sm text-gray-600 dark:text-gray-400">Siswa</p>
-                        </div>
-                        <div>
-                            <div class="text-3xl font-bold text-orange-600">8</div>
-                            <p class="text-sm text-gray-600 dark:text-gray-400">Guru</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- DPIB Stats -->
-                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 text-center">
-                    <div class="flex justify-center mb-4">
-                        <div class="w-16 h-16 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center mb-4">
-                            <i class="material-icons text-purple-600">architecture</i>
-                        </div>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">DPIB</h3>
-                    <div class="grid grid grid-cols-2 gap-4">
-                        <div>
-                            <div class="text-3xl font-bold text-purple-600">80+</div>
-                            <p class="text-sm text-gray-600 dark:text-gray-400">Siswa</p>
-                        </div>
-                        <div>
-                            <div class="text-3xl font-bold text-purple-600">3</div>
-                            <p class="text-sm text-gray-600 dark:text-gray-400">Guru</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- SK Stats -->
-                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 text-center">
-                    <div class="flex justify-center mb-4">
-                        <div class="w-16 h-16 bg-pink-100 dark:bg-pink-900 rounded-full flex items-center justify-center mb-4">
-                            <i class="material-icons text-pink-600">restaurant</i>
-                        </div>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">SK</h3>
-                    <div class="grid grid grid-cols-2 gap-4">
-                        <div>
-                            <div class="text-3xl font-bold text-pink-600">90+</div>
-                            <p class="text-sm text-gray-600 dark:text-gray-400">Siswa</p>
-                        </div>
-                        <div>
-                            <div class="text-3xl font-bold text-pink-600">4</div>
-                            <p class="text-sm text-gray-600 dark:text-gray-400">Guru</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CALL TO ACTION -->
-    <section class="py-16 bg-gradient-to-r from-primary to-secondary dark:from-gray-700 dark:to-gray-900">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Pilih Jurusan Favoritmu</h2>
-            <p class="text-xl text-white/90 max-w-2xl mx-auto mb-8">
-                Setiap jurusan memiliki keunggulan dan keunggulan masing-masing. Temukan yang paling sesuai dengan minat dan bakat Anda.
-            </p>
-            <div class="flex flex-wrap justify-center gap-4">
-                <a href="#" class="bg-white text-primary px-8 py-3 rounded-lg font-medium hover:bg-gray-100 transition-all shadow-lg">
-                    Lihat Semua Jurusan
-                </a>
-                <a href="#" class="border border-white text-white px-8 py-3 rounded-lg font-medium hover:bg-white hover:text-primary transition-all">
-                    Unduh Brosur
-                </a>
-            </div>
-        </section>
-
     @include('layouts.footer')
-
+    <!-- JavaScript untuk animasi scroll pada kartu jurusan -->
     <script>
-        // JavaScript untuk interaktivitas tambahan
-        document.addEventListener('DOMContentLoaded', function() {
-            // Animasi untuk kartu jurusan saat scroll
+        document.addEventListener('DOMContentLoaded', function () {
+            // Opsi untuk Intersection Observer
             const observerOptions = {
-                root: null,
+                root: null, // Menggunakan viewport sebagai root
                 rootMargin: '0px',
-                threshold: 0.1,
-                triggerOnce: true
+                threshold: 0.1 // Memicu animasi saat 10% elemen terlihat
             };
-            
+
+            // Membuat observer baru
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
+                    // Jika elemen masuk ke dalam viewport
                     if (entry.isIntersecting) {
+                        // Tambahkan class animasi
                         entry.target.classList.add('animate-fade-in');
+                        // Opsional: Hentikan pengamatan setelah animasi dijalankan sekali
+                        observer.unobserve(entry.target);
                     }
                 });
             }, observerOptions);
-            
+
+            // Amati semua elemen dengan class 'card-hover-effect'
             document.querySelectorAll('.card-hover-effect').forEach(card => {
                 observer.observe(card);
             });
         });
     </script>
 </body>
+
 </html>

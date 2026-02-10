@@ -17,7 +17,7 @@
                     SMK Negeri 1 Kawali
                 </span>
             </div>
-            <div class="flex flex-col md:flex-row items-center gap-6 md:gap-8 text-sm">
+            <div class="hidden md:flex flex-col md:flex-row items-center gap-6 md:gap-8 text-sm">
                 <div class="flex items-center gap-6">
                     <div class="flex items-center gap-2 group cursor-pointer">
                         <div
@@ -187,81 +187,92 @@
             </div>
         </div>
 
-        <!-- Mobile menu dengan Animasi -->
+        <!-- Mobile menu dengan Animasi - Hanya Kolaps -->
         <div id="mobile-menu"
-            class="md:hidden bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 transition-all duration-300 ease-in-out overflow-hidden"
-            style="max-height: 0px;">
-            <div class="px-4 py-2 space-y-1">
-                <a class="block py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md px-2 transition-all duration-200"
-                    href="{{ route('beranda') }}">Beranda</a>
-
-                <!-- Mobile Profil Dropdown -->
-                <div class="mobile-dropdown">
-                    <button id="profil-dropdown-btn"
-                        class="mobile-dropdown-btn flex items-center justify-between w-full py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md px-2 focus:outline-none transition-all duration-200">
-                        <span>Profil</span>
-                        <i class="fa-solid fa-chevron-down text-xs transition-all duration-300"></i>
-                    </button>
-                    <div id="profil-dropdown"
-                        class="hidden pl-4 pb-2 space-y-1 overflow-hidden transition-all duration-300"
-                        style="max-height: 0px;">
-                        <a class="block py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md px-2 transition-all duration-200"
-                            href="{{ route('staffkependidikan') }}">Staf Kependidikan</a>
-                        <a class="block py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md px-2 transition-all duration-200"
-                            href="{{ route('organisasi') }}">Organisasi</a>
-                        <a class="block py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md px-2 transition-all duration-200"
-                            href="{{ route('tenagapengajar') }}">Tenaga Pengajar</a>
+            class="md:hidden bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 transition-all duration-300 ease-in-out overflow-hidden fixed top-0 left-0 right-0 z-40"
+            style="max-height: 0px; transform: translateY(-100%);">
+            <div class="container mx-auto px-4 py-4">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-3">
+                        <img src="{{ asset('beranda/logo smkn.png') }}" alt="Logo SMK" class="w-10 h-10 object-contain">
+                        <span class="text-lg font-semibold text-gray-800 dark:text-white">SMK Negeri 1 Kawali</span>
                     </div>
-                </div>
-
-                <a class="block py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md px-2 transition-all duration-200"
-                    href="{{ route('profil') }}">Profil Sekolah</a>
-
-                <!-- Mobile Jurusan Dropdown -->
-                <div class="mobile-dropdown">
-                    <button id="jurusan-dropdown-btn"
-                        class="mobile-dropdown-btn flex items-center justify-between w-full py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md px-2 focus:outline-none transition-all duration-200">
-                        <span>Jurusan</span>
-                        <i class="fa-solid fa-chevron-down text-xs transition-all duration-300"></i>
+                    <button id="close-mobile-menu" class="p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fa-solid fa-times text-xl"></i>
                     </button>
-                    <div id="jurusan-dropdown"
-                        class="hidden pl-4 pb-2 space-y-1 overflow-hidden transition-all duration-300"
-                        style="max-height: 0px;">
-                        <a class="block py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md px-2 transition-all duration-200"
-                            href="{{ route('dpib') }}">Desain Permodelan Infrastruktur dan Bangunan</a>
-                        <a class="block py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md px-2 transition-all duration-200"
-                            href="{{ route('tjkt') }}">Teknik Jaringan Komputer dan Telekomunikasi</a>
-                        <a class="block py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md px-2 transition-all duration-200"
-                            href="{{ route('pplg') }}">Pengembangan Perangkat Lunak Dan Game</a>
-                        <a class="block py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md px-2 transition-all duration-200"
-                            href="{{ route('akl') }}">Akuntansi Keuangan Lembaga</a>
-                        <a class="block py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md px-2 transition-all duration-200"
-                            href="{{ route('mp') }}">Manajemen Perkantoran</a>
-                        <a class="block py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md px-2 transition-all duration-200"
-                            href="{{ route('sk') }}">Seni Pertunjukan</a>
-                        <a class="block py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md px-2 transition-all duration-200"
-                            href="{{ route('tkr') }}">Teknik Otomotif</a>
-                    </div>
                 </div>
+                
+                <div class="space-y-1">
+                    <a class="block py-2 px-3 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md transition-all duration-200"
+                        href="{{ route('beranda') }}">Beranda</a>
 
-                <a class="block py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md px-2 transition-all duration-200"
-                    href="{{ route('artikel.index') }}">Artikel</a>
-                <a class="block py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md px-2 transition-all duration-200"
-                    href="{{ route('galeri') }}">Galeri</a>
-                <a class="block py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md px-2 transition-all duration-200"
-                    href="{{ route('prestasi') }}">Prestasi</a>
-                <a class="block py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md px-2 transition-all duration-200"
-                    href="{{ route('link') }}">Link</a>
-                <a class="block py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md px-2 transition-all duration-200"
-                    href="{{ route('fasilitas') }}">Fasilitas</a>
-                <a class="block py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md px-2 transition-all duration-200"
-                    href="{{ route('akreditasi') }}">Akreditasi</a>
-                <a class="block py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md px-2 transition-all duration-200"
-                    href="{{ route('ekstrakulikuler') }}">Ekstrakulikuler</a>
-                <a class="block py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md px-2 transition-all duration-200"
-                    href="{{ route('agenda') }}">Agenda</a>
-                <a class="block py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md px-2 transition-all duration-200"
-                    href="{{ route('marketplace') }}">Marketplace</a>
+                    <!-- Mobile Profil Dropdown -->
+                    <div class="mobile-dropdown">
+                        <button id="profil-dropdown-btn"
+                            class="mobile-dropdown-btn flex items-center justify-between w-full py-2 px-3 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md focus:outline-none transition-all duration-200">
+                            <span>Profil Sekolah</span>
+                            <i class="fa-solid fa-chevron-down text-xs transition-all duration-300"></i>
+                        </button>
+                        <div id="profil-dropdown"
+                            class="hidden pl-4 pb-2 space-y-1 overflow-hidden transition-all duration-300"
+                            style="max-height: 0px;">
+                            <a class="block py-2 px-3 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md transition-all duration-200"
+                                href="{{ route('profil') }}">Profil Sekolah</a>
+                            <a class="block py-2 px-3 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md transition-all duration-200"
+                                href="{{ route('staffkependidikan') }}">Staf Kependidikan</a>
+                            <a class="block py-2 px-3 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md transition-all duration-200"
+                                href="{{ route('organisasi') }}">Organisasi</a>
+                            <a class="block py-2 px-3 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md transition-all duration-200"
+                                href="{{ route('tenagapengajar') }}">Tenaga Pengajar</a>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Jurusan Dropdown -->
+                    <div class="mobile-dropdown">
+                        <button id="jurusan-dropdown-btn"
+                            class="mobile-dropdown-btn flex items-center justify-between w-full py-2 px-3 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md focus:outline-none transition-all duration-200">
+                            <span>Jurusan</span>
+                            <i class="fa-solid fa-chevron-down text-xs transition-all duration-300"></i>
+                        </button>
+                        <div id="jurusan-dropdown"
+                            class="hidden pl-4 pb-2 space-y-1 overflow-hidden transition-all duration-300"
+                            style="max-height: 0px;">
+                            <a class="block py-2 px-3 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md transition-all duration-200"
+                                href="{{ route('dpib') }}">Desain Permodelan Infrastruktur dan Bangunan</a>
+                            <a class="block py-2 px-3 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md transition-all duration-200"
+                                href="{{ route('tjkt') }}">Teknik Jaringan Komputer dan Telekomunikasi</a>
+                            <a class="block py-2 px-3 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md transition-all duration-200"
+                                href="{{ route('pplg') }}">Pengembangan Perangkat Lunak Dan Gim</a>
+                            <a class="block py-2 px-3 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md transition-all duration-200"
+                                href="{{ route('akl') }}">Akuntansi Keuangan Lembaga</a>
+                            <a class="block py-2 px-3 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md transition-all duration-200"
+                                href="{{ route('mp') }}">Manajemen Perkantoran</a>
+                            <a class="block py-2 px-3 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md transition-all duration-200"
+                                href="{{ route('sk') }}">Seni Pertunjukan</a>
+                            <a class="block py-2 px-3 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md transition-all duration-200"
+                                href="{{ route('tkr') }}">Teknik Otomotif</a>
+                        </div>
+                    </div>
+
+                    <a class="block py-2 px-3 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md transition-all duration-200"
+                        href="{{ route('artikel.index') }}">Artikel</a>
+                    <a class="block py-2 px-3 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md transition-all duration-200"
+                        href="{{ route('galeri') }}">Galeri</a>
+                    <a class="block py-2 px-3 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md transition-all duration-200"
+                        href="{{ route('prestasi') }}">Prestasi</a>
+                    <a class="block py-2 px-3 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md transition-all duration-200"
+                        href="{{ route('link') }}">Link</a>
+                    <a class="block py-2 px-3 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md transition-all duration-200"
+                        href="{{ route('fasilitas') }}">Fasilitas</a>
+                    <a class="block py-2 px-3 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md transition-all duration-200"
+                        href="{{ route('akreditasi') }}">Akreditasi</a>
+                    <a class="block py-2 px-3 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md transition-all duration-200"
+                        href="{{ route('ekstrakulikuler') }}">Ekstrakulikuler</a>
+                    <a class="block py-2 px-3 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md transition-all duration-200"
+                        href="{{ route('agenda') }}">Agenda</a>
+                    <a class="block py-2 px-3 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md transition-all duration-200"
+                        href="{{ route('marketplace') }}">Marketplace</a>
+                </div>
             </div>
         </div>
     </nav>
@@ -272,22 +283,37 @@
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
             const menuIcon = document.getElementById('menu-icon');
+            const closeMobileMenu = document.getElementById('close-mobile-menu');
 
+            // Fungsi untuk membuka menu mobile
+            function openMobileMenu() {
+                mobileMenu.style.maxHeight = '100vh';
+                mobileMenu.style.transform = 'translateY(0)';
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-times');
+                menuIcon.style.transform = 'rotate(180deg)';
+            }
+
+            // Fungsi untuk menutup menu mobile
+            function closeMobileMenuFunc() {
+                mobileMenu.style.maxHeight = '0px';
+                mobileMenu.style.transform = 'translateY(-100%)';
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+                menuIcon.style.transform = 'rotate(0deg)';
+            }
+
+            // Event listener untuk tombol menu mobile
             mobileMenuButton.addEventListener('click', function () {
-                // Toggle animasi max-height
                 if (mobileMenu.style.maxHeight && mobileMenu.style.maxHeight !== '0px') {
-                    mobileMenu.style.maxHeight = '0px';
-                    menuIcon.classList.remove('fa-times');
-                    menuIcon.classList.add('fa-bars');
-                    menuIcon.style.transform = 'rotate(0deg)';
+                    closeMobileMenuFunc();
                 } else {
-                    // Set max-height to a value large enough to contain the menu
-                    mobileMenu.style.maxHeight = mobileMenu.scrollHeight + "px";
-                    menuIcon.classList.remove('fa-bars');
-                    menuIcon.classList.add('fa-times');
-                    menuIcon.style.transform = 'rotate(180deg)';
+                    openMobileMenu();
                 }
             });
+
+            // Event listener untuk tombol close di dalam menu mobile
+            closeMobileMenu.addEventListener('click', closeMobileMenuFunc);
 
             // Mobile dropdown toggles
             const dropdownButtons = document.querySelectorAll('.mobile-dropdown-btn');

@@ -37,6 +37,8 @@
                         'fade-in': 'fadeIn 0.6s ease-out',
                         'float': 'float 3s ease-in-out infinite',
                         'zoom-in': 'zoomIn 0.3s ease-out',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'bounce-in': 'bounceIn 0.6s ease-out',
                     },
                     keyframes: {
                         fadeIn: {
@@ -50,6 +52,16 @@
                         },
                         zoomIn: {
                             '0%': { opacity: '0', transform: 'scale(0.8)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        bounceIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.3)' },
+                            '50%': { opacity: '1', transform: 'scale(1.05)' },
+                            '70%': { transform: 'scale(0.9)' },
                             '100%': { opacity: '1', transform: 'scale(1)' },
                         }
                     }
@@ -128,6 +140,31 @@
         .dark ::-webkit-scrollbar-thumb {
             background: #6b7280;
         }
+        
+        /* Badge animation */
+        .badge-pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+            }
+        }
+        
+        /* Gradient text */
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
     </style>
 </head>
 
@@ -136,19 +173,26 @@
 
     @include('layouts.navbar')
 
-    <!-- HEADER -->
-    <div
-        class="relative bg-gradient-to-br from-primary to-primary-dark dark:from-blue-800 dark:to-blue-900 py-20 header-pattern">
-        <div class="absolute inset-0 bg-black opacity-10"></div>
-        <div class="relative container mx-auto px-4">
-            <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-3 animate-fade-in">
-                Prestasi
+    <!-- HEADER PRESTASI -->
+    <div class="relative bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 border-b border-blue-100 dark:border-gray-700 pb-20 pt-20 overflow-hidden">
+        <!-- Background Decor (Blue blobs) -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
+            <div class="absolute -top-24 -right-24 w-96 h-96 bg-blue-100/50 dark:bg-blue-900/20 rounded-full blur-3xl"></div>
+            <div class="absolute top-1/2 -left-24 w-72 h-72 bg-cyan-100/50 dark:bg-cyan-900/20 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 right-1/4 w-64 h-64 bg-purple-100/30 dark:bg-purple-900/20 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="relative container mx-auto px-4 z-10 text-center">
+            <div
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-gray-800 text-primary text-xs font-bold mb-6 border border-blue-200 dark:border-blue-800 badge-pulse">
+                <i class="fa-solid fa-trophy"></i> Prestasi Siswa
+            </div>
+            <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 dark:text-white mb-6 tracking-tight">
+                Prestasi <span class="gradient-text">Sekolah</span>
             </h1>
-            <p class="text-gray-100 text-lg md:text-xl max-w-2xl animate-fade-in" style="animation-delay: 0.2s">
+            <p class="text-slate-600 dark:text-slate-300 text-lg max-w-2xl mx-auto mb-10">
                 Dokumentasi prestasi dan kejuaraan yang diraih oleh siswa SMK Negeri 1 Kawali.
             </p>
-        </div>
-    </div>
 
     <!-- SEARCH -->
     <div class="max-w-4xl mx-auto mt-10 px-4">
@@ -162,12 +206,7 @@
                     class="w-full pl-10 pr-3 py-4 bg-slate-50 dark:bg-slate-800 border-none focus:ring-2 focus:ring-primary focus:outline-none"
                     placeholder="Cari Prestasi atau Nama Siswa..." type="text" id="searchInput">
             </div>
-            <button type="submit"
-                class="bg-primary hover:bg-primary-dark text-white px-8 py-4 font-medium transition-colors duration-300 flex items-center">
-                <span>Cari</span>
-                <i class="fas fa-arrow-right ml-2"></i>
-            </button>
-        </form>
+        </div>
     </div>
 
     <!-- CONTENT -->
@@ -417,7 +456,7 @@
             const modal = document.getElementById('imageModal');
             const modalImage = document.getElementById('modalImage');
             const modalTitle = document.getElementById('modalTitle');
-            const modalDate = document.getElementById('modalDate');
+            const modalDate = document.getElementById('modalDate");
 
             if (prestasiData[index]) {
                 modalImage.src = prestasiData[index].image;
@@ -554,8 +593,8 @@
 
         // Search functionality
         document.addEventListener('DOMContentLoaded', function () {
-            const searchInput = document.getElementById('searchInput');
-
+            const searchInput = document.querySelector('input[name="cari"]');
+            
             // Auto-submit form on Enter key
             searchInput.addEventListener('keypress', function (e) {
                 if (e.key === 'Enter') {
