@@ -875,39 +875,15 @@
     </header>
 
     <!-- SYMMETRICAL STATS -->
-    <section class="symmetrical-stats">
-        <div class="sky-stat-card">
-            <div class="stat-icon-sym icon-sym-1">
-                <i class="bi bi-people-fill"></i>
-            </div>
-            <div class="stat-number-sym">{{ $users->count() }}</div>
-            <div class="stat-label-sym">Total Users</div>
+    {{-- <section class="symmetrical-stats">
+    <div class="sky-stat-card">
+        <div class="stat-icon-sym icon-sym-2">
+            <i class="bi bi-shield-fill-check"></i>
         </div>
-        
-        <div class="sky-stat-card">
-            <div class="stat-icon-sym icon-sym-2">
-                <i class="bi bi-shield-fill-check"></i>
-            </div>
-            <div class="stat-number-sym">{{ $users->where('role', 'admin')->count() }}</div>
-            <div class="stat-label-sym">Administrators</div>
-        </div>
-        
-        <div class="sky-stat-card">
-            <div class="stat-icon-sym icon-sym-3">
-                <i class="bi bi-mortarboard-fill"></i>
-            </div>
-            <div class="stat-number-sym">{{ $users->where('role', 'guru')->count() }}</div>
-            <div class="stat-label-sym">Teachers</div>
-        </div>
-        
-        <div class="sky-stat-card">
-            <div class="stat-icon-sym icon-sym-4">
-                <i class="bi bi-book-fill"></i>
-            </div>
-            <div class="stat-number-sym">{{ $users->where('role', 'siswa')->count() }}</div>
-            <div class="stat-label-sym">Students</div>
-        </div>
-    </section>
+        <div class="stat-number-sym">{{ $users->where('role', 'admin')->count() }}</div>
+        <div class="stat-label-sym">Administrators</div>
+    </div>
+</section> --}}
 
     <!-- SYMMETRICAL FILTER -->
     <section class="symmetrical-filter">
@@ -945,48 +921,42 @@
             <h3 class="user-name-sym">{{ $user->name }}</h3>
             <p class="user-email-sym">{{ $user->email }}</p>
             
-            <div class="user-details-sym">
-                <div class="detail-sym-row">
-                    <span class="detail-sym-label">Role</span>
-                    <span class="detail-sym-value">
-                        <span class="role-badge-sym badge-sym-{{ $user->role }}">
-                            @if($user->role === 'admin')
-                                <i class="bi bi-shield-fill"></i> Admin
-                            @elseif($user->role === 'guru')
-                                <i class="bi bi-mortarboard-fill"></i> Guru
-                            @else
-                                <i class="bi bi-book-fill"></i> Siswa
-                            @endif
-                        </span>
-                    </span>
-                </div>
-                <div class="detail-sym-row">
-                    <span class="detail-sym-label">Bergabung</span>
-                    <span class="detail-sym-value">{{ $user->created_at ? $user->created_at->format('d M Y') : '-' }}</span>
-                </div>
-                <div class="detail-sym-row">
-    <span class="detail-sym-label">Status</span>
-
-    <span class="detail-sym-value">
-        <span class="status-pill {{ $user->isOnline() ? 'online' : 'offline' }}">
-            <span class="status-dot"></span>
-
-            @if ($user->isOnline())
-                Online
-            @else
-                {{ $user->lastSeen() }}
-            @endif
+           <div class="user-details-sym">
+    <div class="detail-sym-row">
+        <span class="detail-sym-label">Role</span>
+        <span class="detail-sym-value">
+            <span class="role-badge-sym badge-sym-{{ $user->role }}">
+                @if($user->role === 'super_admin')
+                    <i class="bi bi-star-fill"></i> Super Admin
+                @elseif($user->role === 'admin')
+                    <i class="bi bi-shield-fill"></i> Admin
+                @endif
+            </span>
         </span>
-    </span>
+    </div>
+    <div class="detail-sym-row">
+        <span class="detail-sym-label">Bergabung</span>
+        <span class="detail-sym-value">{{ $user->created_at ? $user->created_at->format('d M Y') : '-' }}</span>
+    </div>
+    <div class="detail-sym-row">
+        <span class="detail-sym-label">Status</span>
+        <span class="detail-sym-value">
+            <span class="status-pill {{ $user->isOnline() ? 'online' : 'offline' }}">
+                <span class="status-dot"></span>
+                @if ($user->isOnline())
+                    Online
+                @else
+                    {{ $user->lastSeen() }}
+                @endif
+            </span>
+        </span>
+    </div>
 </div>
-
-
-            </div>
             
             <div class="user-actions-sym">
-                <a href="{{ route('admin.users.show', $user->id) }}" class="action-sym-btn btn-view-sym" title="Lihat Detail">
+                {{-- <a href="{{ route('admin.users.show', $user->id) }}" class="action-sym-btn btn-view-sym" title="Lihat Detail">
                     <i class="bi bi-eye-fill"></i>
-                </a>
+                </a> --}}
                 <a href="{{ route('admin.users.edit', $user->id) }}" class="action-sym-btn btn-edit-sym" title="Edit">
                     <i class="bi bi-pencil-fill"></i>
                 </a>

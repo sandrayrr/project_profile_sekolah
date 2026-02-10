@@ -356,7 +356,7 @@
 
     <!-- USER -->
     <div class="sidebar-user">
-        <img src="{{ asset('storage/dashboard/muslimahmin.png') }}">
+        <img src="{{ asset('storage/dashboard/Admin PP.png') }}">
         <div class="user-info">
             <div class="user-name">{{ Auth::user()->name }}</div>
             <div class="user-role">{{ ucfirst(Auth::user()->role) }}</div>

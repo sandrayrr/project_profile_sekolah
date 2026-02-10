@@ -1059,7 +1059,7 @@
             </div>
 
             {{-- Distribusi Jursan --}}
-            <div class="col-lg-4 mb-3 fade-in" style="animation-delay: 0.6s;">
+            {{-- <div class="col-lg-4 mb-3 fade-in" style="animation-delay: 0.6s;">
                 <div class="chart-container">
                     <div class="chart-header">
                         <h3 class="chart-title">Distribusi Jurusan</h3>
@@ -1151,7 +1151,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
 
         <!-- Grafik Bar -->
@@ -1189,12 +1189,6 @@
             </div>
         </div> --}}
 
-        <!-- Floating Action Button -->
-        <div class="fab-container">
-            <button class="fab pulse-animation">
-                <i class="bi bi-plus"></i>
-            </button>
-        </div>
     </div>
 
     <script>

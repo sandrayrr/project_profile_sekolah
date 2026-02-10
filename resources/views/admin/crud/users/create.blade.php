@@ -266,7 +266,7 @@ body {
                 <div class="mb-4">
                     <label for="role" class="form-label">Hak Akses (Role)</label>
                     <select id="role" name="role" class="form-select">
-                        <option value="user" {{ old('role') == 'user' ? 'selected' : '' }}>User</option>
+                        {{-- <option value="user" {{ old('role') == 'user' ? 'selected' : '' }}>User</option> --}}
                         <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin</option>
                     </select>
                 </div>
