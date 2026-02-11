@@ -15,10 +15,10 @@ class Prestasi extends Model
         'deskripsi',
         'kelas',
         'jurusan',
-        'subkelas',        // Format: "X TO 1", "XI PPLG 2", dll
-        'juara',        // "1", "2", "3", "Harapan 1", "Harapan 2", "Partisipasi"
-        'tingkat',      // "Sekolah", "Kecamatan", "Kabupaten", "Provinsi", "Nasional", "Internasional"
-        'penyelenggara', // Nama penyelenggara lomba
+        'subkelas',        
+        'juara',        
+        'tingkat',      
+        'penyelenggara', 
         'tanggal',
         'foto'
     ];

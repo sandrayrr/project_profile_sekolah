@@ -359,11 +359,11 @@
     </div>
 
     <!-- DARK MODE BUTTON -->
-    <button id="darkToggle"
+    {{-- <button id="darkToggle"
         class="fixed bottom-6 right-6 bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary text-white p-3 rounded-full shadow-lg z-40 transition-all duration-300 hover:scale-110">
         <i class="fa-solid fa-moon dark:hidden"></i>
         <i class="fa-solid fa-sun hidden dark:block"></i>
-    </button>
+    </button> --}}
 
     <script>
         // Agenda data for modal

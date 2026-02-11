@@ -461,12 +461,12 @@
     @include('layouts.footer')
 
     <!-- DARK MODE BUTTON -->
-    <button
-        id="darkToggle"
-        class="dark-mode-btn fixed bottom-6 right-6 bg-primary text-white p-3 rounded-full shadow-lg z-50 hover:bg-blue-600 transition-all">
-        <i class="fa-solid fa-moon dark:hidden"></i>
-        <i class="fa-solid fa-sun hidden dark:block"></i>
-    </button>
+        {{-- <button
+            id="darkToggle"
+            class="dark-mode-btn fixed bottom-6 right-6 bg-primary text-white p-3 rounded-full shadow-lg z-50 hover:bg-blue-600 transition-all">
+            <i class="fa-solid fa-moon dark:hidden"></i>
+            <i class="fa-solid fa-sun hidden dark:block"></i>
+        </button> --}}
 
     <!-- BACK TO TOP BUTTON -->
     <button
