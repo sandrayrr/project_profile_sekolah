@@ -671,7 +671,7 @@
                             <p class="text-sm text-gray-600 dark:text-gray-400">Bank BNI/p>
                         </div>
                     </div>
-                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-3">Alumni 2020/p>
+                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-3">Alumni 2020</p>
                     <p class="text-gray-600 dark:text-gray-400 text-sm italic">"Selama menempuh pendidikan di jurusan AKL, saya dilatih untuk berpikir sistematis dan teliti dalam mengelola data keuangan. Pembelajaran yang dijalani membantu saya memahami akuntansi secara bertahap serta membentuk sikap disiplin dan tanggung jawab.
 </p>
                 </div>

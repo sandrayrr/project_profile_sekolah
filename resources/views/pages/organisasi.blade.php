@@ -193,17 +193,7 @@
       </p>
 
       <!-- Search Bar -->
-      <div class="max-w-xl mx-auto relative group">
-        <form action="#" method="GET" class="relative">
-          <input
-            name="cari"
-            value=""
-            type="text" 
-            placeholder="Cari organisasi atau anggota..."
-            class="w-full pl-12 pr-4 py-4 rounded-xl border border-blue-200 dark:border-gray-600 bg-white dark:bg-gray-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none shadow-lg transition group-hover:shadow-xl">
-          <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400"></i>
-        </form>
-      </div>
+      
     </div>
   </div>
 

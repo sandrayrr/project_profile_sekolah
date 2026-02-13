@@ -34,7 +34,7 @@ class FasilitasController extends Controller
         // Perbaiki: Tambahkan validasi untuk field 'status'
         $request->validate([
             'judul'  => 'required|string|max:255',
-            'foto'   => 'required|image|mimes:jpg,jpeg,png|max:2048',
+            'foto'   => 'required|image|mimes:jpg,jpeg,png|max:10000',
             'status' => 'required|string|max:255', // Field status ditambahkan
         ]);
 
@@ -69,7 +69,7 @@ class FasilitasController extends Controller
         // Perbaiki: Tambahkan validasi untuk field 'status'
         $request->validate([
             'judul'  => 'required|string|max:255',
-            'foto'   => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'foto'   => 'nullable|image|mimes:jpg,jpeg,png|max:10000',
             'status' => 'required|string|max:255', // Field status ditambahkan
         ]);
 

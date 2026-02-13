@@ -949,7 +949,7 @@
         </div>
 
         <!-- Grafik Real-time -->
-        <div class="row mb-4">
+      {{--    <div class="row mb-4">
             <div class="col-lg-8 mb-3 fade-in" style="animation-delay: 0.5s;">
                 <div class="chart-container">
                     <div class="chart-header">
@@ -1152,7 +1152,7 @@
                     </div>
                 </div>
             </div> --}}
-        </div>
+        </div>--}}
 
         <!-- Grafik Bar -->
         {{-- <div class="row mb-4">

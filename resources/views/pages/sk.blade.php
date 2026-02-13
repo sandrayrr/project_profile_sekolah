@@ -520,7 +520,7 @@
                             <p class="text-sm text-gray-600 dark:text-gray-400">Alumni 2019</p>
                         </div>
                     </div>
-                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-3">Alumni 2019/p>
+                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-3">Alumni 2019</p>
                     <p class="text-gray-600 dark:text-gray-400 text-sm italic">"Selama belajar di jurusan SP, saya mendapatkan pemahaman tentang dunia pemasaran dan pelayanan secara langsung. Kegiatan praktik yang dilakukan membantu saya mengembangkan kemampuan komunikasi, kepercayaan diri, serta cara berpikir kreatif dalam menghadapi situasi kerja nyata.
 "</p>
                 </div>
@@ -533,7 +533,7 @@
                             <p class="text-sm text-gray-600 dark:text-gray-400">Alumni 2020</p>
                         </div>
                     </div>
-                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-3">Alumni 2020/p>
+                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-3">Alumni 2020</p>
                     <p class="text-gray-600 dark:text-gray-400 text-sm italic">
 Jurusan SP memberi saya ruang untuk belajar berinteraksi dengan banyak orang dan memahami pentingnya pelayanan yang baik. Melalui pembelajaran tersebut, saya terbiasa untuk bersikap profesional, bertanggung jawab, dan adaptif terhadap lingkungan kerja.
 "</p>
@@ -547,7 +547,7 @@ Jurusan SP memberi saya ruang untuk belajar berinteraksi dengan banyak orang dan
                             <p class="text-sm text-gray-600 dark:text-gray-400">Alumni 2021</p>
                         </div>
                     </div>
-                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-3">Alumni 2021<</p>
+                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-3">Alumni 2021</p>
                     <p class="text-gray-600 dark:text-gray-400 text-sm italic">"Pengalaman belajar di jurusan SP membentuk saya menjadi pribadi yang lebih percaya diri dan mandiri. Proses yang dijalani tidak hanya memberikan ilmu, tetapi juga melatih sikap, etika kerja, dan kemampuan bekerja dalam tim.
 "</p>
                 </div>

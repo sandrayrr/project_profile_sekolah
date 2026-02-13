@@ -82,142 +82,33 @@
         <!-- GRID CARD -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
 
-            <!-- CARD 1: LMS -->
-            <div class="link-card bg-white rounded-2xl shadow-lg overflow-hidden opacity-0 animate-fade-in-up group">
-                <!-- Card Header (Gradient Blue) -->
-                <div class="h-32 bg-gradient-to-br from-blue-500 to-blue-600 relative flex items-center justify-center">
-                    <div
-                        class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10">
-                    </div>
-                    <i
-                        class="fas fa-graduation-cap text-white text-5xl drop-shadow-lg transform group-hover:scale-110 transition-transform duration-300"></i>
-                </div>
-                <div class="p-6">
-                    <div class="flex justify-between items-start mb-2">
-                        <h3 class="text-lg font-bold text-slate-900 group-hover:text-primary transition-colors">LMS
-                            Sekolah</h3>
-                        <span
-                            class="bg-blue-100 text-blue-600 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wide">Akademik</span>
-                    </div>
-                    <p class="text-sm text-slate-500 mb-4 line-clamp-2">
-                        Platform utama pembelajaran daring, materi, dan tugas siswa.
-                    </p>
-                    <a href="https://lms.smkn1kawali.sch.id/" target="_blank"
-                        class="block w-full text-center bg-slate-50 hover:bg-primary hover:text-white text-slate-600 text-sm font-semibold py-2.5 rounded-lg transition-colors duration-200 border border-slate-200">
-                        Buka LMS <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-xs"></i>
-                    </a>
-                </div>
-            </div>
+           <!-- CARD 1: LMS -->
+<div class="link-card bg-white rounded-2xl shadow-lg overflow-hidden opacity-0 animate-fade-in-up group">
+    <!-- Card Header (Foto) -->
+    <div class="h-32 relative overflow-hidden">
+        <img
+            src="lms.png"
+            alt="Tampilan LMS Sekolah"
+            class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-300">
+    </div>
+    <div class="p-6">
+        <div class="flex justify-between items-start mb-2">
+            <h3 class="text-lg font-bold text-slate-900 group-hover:text-primary transition-colors">LMS
+                Sekolah</h3>
+            <span
+                class="bg-blue-100 text-blue-600 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wide">Akademik</span>
+        </div>
+        <p class="text-sm text-slate-500 mb-4 line-clamp-2">
+            Platform utama pembelajaran daring, materi, dan tugas siswa.
+        </p>
+        <a href="https://lms.smkn1kawali.sch.id/" target="_blank"
+            class="block w-full text-center bg-slate-50 hover:bg-primary hover:text-white text-slate-600 text-sm font-semibold py-2.5 rounded-lg transition-colors duration-200 border border-slate-200">
+            Buka LMS <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-xs"></i>
+        </a>
+    </div>
+</div>
 
-            <!-- CARD 2: E-RAPOR -->
-            <div
-                class="link-card bg-white rounded-2xl shadow-lg overflow-hidden opacity-0 animate-fade-in-up delay-100 group">
-                <div class="h-32 bg-gradient-to-br from-blue-600 to-cyan-500 relative flex items-center justify-center">
-                    <div
-                        class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10">
-                    </div>
-                    <i
-                        class="fas fa-file-contract text-white text-5xl drop-shadow-lg transform group-hover:scale-110 transition-transform duration-300"></i>
-                </div>
-                <div class="p-6">
-                    <div class="flex justify-between items-start mb-2">
-                        <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors">E-Rapor
-                        </h3>
-                        <span
-                            class="bg-cyan-100 text-cyan-600 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wide">Siswa</span>
-                    </div>
-                    <p class="text-sm text-slate-500 mb-4 line-clamp-2">
-                        Akses hasil belajar dan rapor digital semester siswa.
-                    </p>
-                    <a href="https://erapor.smkn1kawali.sch.id" target="_blank"
-                        class="block w-full text-center bg-slate-50 hover:bg-cyan-600 hover:text-white text-slate-600 text-sm font-semibold py-2.5 rounded-lg transition-colors duration-200 border border-slate-200">
-                        Buka Rapor <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-xs"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- CARD 3: PERPUSTAKAAN -->
-            <div
-                class="link-card bg-white rounded-2xl shadow-lg overflow-hidden opacity-0 animate-fade-in-up delay-200 group">
-                <div
-                    class="h-32 bg-gradient-to-br from-indigo-500 to-purple-500 relative flex items-center justify-center">
-                    <div
-                        class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10">
-                    </div>
-                    <i
-                        class="fas fa-book-open text-white text-5xl drop-shadow-lg transform group-hover:scale-110 transition-transform duration-300"></i>
-                </div>
-                <div class="p-6">
-                    <div class="flex justify-between items-start mb-2">
-                        <h3 class="text-lg font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">
-                            Perpustakaan</h3>
-                        <span
-                            class="bg-indigo-100 text-indigo-600 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wide">Literasi</span>
-                    </div>
-                    <p class="text-sm text-slate-500 mb-4 line-clamp-2">
-                        Katalog buku, e-book, dan layanan peminjaman digital.
-                    </p>
-                    <a href="https://digilib.smkn1kawali.sch.id" target="_blank"
-                        class="block w-full text-center bg-slate-50 hover:bg-indigo-600 hover:text-white text-slate-600 text-sm font-semibold py-2.5 rounded-lg transition-colors duration-200 border border-slate-200">
-                        Cari Buku <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-xs"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- CARD 4: E-LEARNING -->
-            <div
-                class="link-card bg-white rounded-2xl shadow-lg overflow-hidden opacity-0 animate-fade-in-up delay-300 group">
-                <div class="h-32 bg-gradient-to-br from-sky-400 to-blue-500 relative flex items-center justify-center">
-                    <div
-                        class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10">
-                    </div>
-                    <i
-                        class="fas fa-laptop-code text-white text-5xl drop-shadow-lg transform group-hover:scale-110 transition-transform duration-300"></i>
-                </div>
-                <div class="p-6">
-                    <div class="flex justify-between items-start mb-2">
-                        <h3 class="text-lg font-bold text-slate-900 group-hover:text-sky-600 transition-colors">
-                            E-Learning</h3>
-                        <span
-                            class="bg-sky-100 text-sky-600 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wide">Kelas</span>
-                    </div>
-                    <p class="text-sm text-slate-500 mb-4 line-clamp-2">
-                        Ruang belajar tambahan dan ujian online.
-                    </p>
-                    <a href="#" target="_blank"
-                        class="block w-full text-center bg-slate-50 hover:bg-sky-600 hover:text-white text-slate-600 text-sm font-semibold py-2.5 rounded-lg transition-colors duration-200 border border-slate-200">
-                        Masuk Kelas <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-xs"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- CARD 5: E-PAYMENT -->
-            <div
-                class="link-card bg-white rounded-2xl shadow-lg overflow-hidden opacity-0 animate-fade-in-up delay-100 group">
-                <div
-                    class="h-32 bg-gradient-to-br from-teal-400 to-emerald-500 relative flex items-center justify-center">
-                    <div
-                        class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10">
-                    </div>
-                    <i
-                        class="fas fa-wallet text-white text-5xl drop-shadow-lg transform group-hover:scale-110 transition-transform duration-300"></i>
-                </div>
-                <div class="p-6">
-                    <div class="flex justify-between items-start mb-2">
-                        <h3 class="text-lg font-bold text-slate-900 group-hover:text-teal-600 transition-colors">
-                            E-Payment</h3>
-                        <span
-                            class="bg-teal-100 text-teal-700 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wide">Keuangan</span>
-                    </div>
-                    <p class="text-sm text-slate-500 mb-4 line-clamp-2">
-                        Pembayaran SPP, Uang Gedung, dan lain-lain.
-                    </p>
-                    <a href="#" target="_blank"
-                        class="block w-full text-center bg-slate-50 hover:bg-teal-600 hover:text-white text-slate-600 text-sm font-semibold py-2.5 rounded-lg transition-colors duration-200 border border-slate-200">
-                        Bayar SPP <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-xs"></i>
-                    </a>
-                </div>
-            </div>
+  
 
         </div>
     </main>
