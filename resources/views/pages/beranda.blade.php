@@ -318,84 +318,73 @@
             </a>
         </div>
         
-        <!-- Teacher Carousel -->
-       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Teacher Section -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
     <!-- Teacher Card 1 -->
-    <div class="bg-white dark:bg-surface-dark rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 card-hover cursor-pointer" onclick="showDetailModal('guru', {
-        name: 'Teti Novianti,S.Pd.',
-        subject: 'Bahasa Inggris',
-        image: '{{ asset('beranda/Guru 1.jpeg') }}',
-        education: 'S.Pd., Universitas Pendidikan Indonesia',
-        experience: '10 tahun mengajar Bahasa Inggris',
-        achievement: 'Guru Berprestasi Tingkat Kabupaten 2022'
-    })">
+    <div class="bg-white dark:bg-surface-dark rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 card-hover">
         <div class="h-64 bg-gray-200 dark:bg-gray-700 overflow-hidden">
-            <img alt="Teacher" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300 img-hover"
+            <img alt="Teacher"
+                class="w-full h-full object-cover"
                 src="{{ asset('beranda/Guru 1.jpeg') }}" />
         </div>
         <div class="p-6 text-center">
-            <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Teti Novianti,S.Pd.</h4>
+            <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-1">
+                Teti Novianti,S.Pd.
+            </h4>
             <p class="text-primary text-sm">Bahasa Inggris</p>
         </div>
     </div>
-    
+
     <!-- Teacher Card 2 -->
-    <div class="bg-white dark:bg-surface-dark rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 card-hover cursor-pointer" onclick="showDetailModal('guru', {
-        name: 'Abu Bakar,S.T.',
-        subject: 'DDPK',
-        image: '{{ asset('beranda/Guru 2.jpeg') }}',
-        education: 'S.T., Institut Teknologi Bandung',
-        experience: '8 tahun mengajar DDPK',
-        achievement: 'Pengembang Kurikulum DDPK Tingkat Provinsi'
-    })">
+    <div class="bg-white dark:bg-surface-dark rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 card-hover">
         <div class="h-64 bg-gray-200 dark:bg-gray-700 overflow-hidden">
-            <img alt="Teacher" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300 img-hover"
+            <img alt="Teacher"
+                class="w-full h-full object-cover"
                 src="{{ asset('beranda/Guru 2.jpeg') }}" />
         </div>
         <div class="p-6 text-center">
-            <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Abu Bakar,S.T.</h4>
+            <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-1">
+                Abu Bakar,S.T.
+            </h4>
             <p class="text-primary text-sm">DDPK</p>
         </div>
     </div>
-    
+
     <!-- Teacher Card 3 -->
-    <div class="bg-white dark:bg-surface-dark rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 card-hover cursor-pointer" onclick="showDetailModal('guru', {
-        name: 'Irma Sri Suryantini,S.Pd.',
-        subject: 'Projek Ilmu Pengetahuan Alam & Sosial',
-        image: '{{ asset('beranda/Guru 3.jpeg') }}',
-        education: 'S.Pd., Universitas Siliwangi',
-        experience: '12 tahun mengajar IPA dan IPS',
-        achievement: 'Pembimbing Olimpiade Sains Tingkat Nasional'
-    })">
+    <div class="bg-white dark:bg-surface-dark rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 card-hover">
         <div class="h-64 bg-gray-200 dark:bg-gray-700 overflow-hidden">
-            <img alt="Teacher" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300 img-hover"
+            <img alt="Teacher"
+                class="w-full h-full object-cover"
                 src="{{ asset('beranda/Guru 3.jpeg') }}" />
         </div>
         <div class="p-6 text-center">
-            <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Irma Sri Suryantini,S.Pd.</h4>
-            <p class="text-primary text-sm">Projek Ilmu Pengetahuan Alam & Sosial</p>
+            <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-1">
+                Irma Sri Suryantini,S.Pd.
+            </h4>
+            <p class="text-primary text-sm">
+                Projek Ilmu Pengetahuan Alam & Sosial
+            </p>
         </div>
     </div>
-    
+
     <!-- Teacher Card 4 -->
-    <div class="bg-white dark:bg-surface-dark rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 card-hover cursor-pointer" onclick="showDetailModal('guru', {
-        name: 'Farid Ma'ruf,M.Pd.',
-        subject: 'Bahasa Indonesia',
-        image: '{{ asset('beranda/Guru 4.jpeg') }}',
-        education: 'M.Pd., Universitas Indonesia',
-        experience: '15 tahun mengajar Bahasa Indonesia',
-        achievement: 'Penulis Buku Pelajaran Bahasa Indonesia'
-    })">
+    <div class="bg-white dark:bg-surface-dark rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 card-hover">
         <div class="h-64 bg-gray-200 dark:bg-gray-700 overflow-hidden">
-            <img alt="Teacher" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300 img-hover"
+            <img alt="Teacher"
+                class="w-full h-full object-cover"
                 src="{{ asset('beranda/Guru 4.jpeg') }}" />
         </div>
         <div class="p-6 text-center">
-            <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Farid Ma'ruf,M.Pd.</h4>
+            <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-1">
+                Farid Ma'ruf,M.Pd.
+            </h4>
             <p class="text-primary text-sm">Bahasa Indonesia</p>
         </div>
     </div>
-    
+
+</div>
+
     <!-- Teacher Card 5 (jika diperlukan) -->
     {{-- <div class="bg-white dark:bg-surface-dark rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
         <div class="h-64 bg-gray-200 dark:bg-gray-700 overflow-hidden">
@@ -424,13 +413,7 @@
             </div>
            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
     <!-- Teacher Card 1 -->
-    <div class="bg-white dark:bg-surface-dark rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 card-hover cursor-pointer" onclick="showDetailModal('staff', {
-        name: 'Elin Herlina,S.Sos.',
-        position: 'Tata Usaha',
-        image: '{{ asset('beranda/Staff TU 1.jpeg') }}',
-        responsibility: 'Administrasi siswa dan kepegawaian',
-        experience: '7 tahun sebagai staf tata usaha'
-    })">
+      <div class="bg-white dark:bg-surface-dark rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 card-hover">
         <div class="h-64 bg-gray-200 dark:bg-gray-700 overflow-hidden">
             <img alt="Teacher" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300 img-hover"
                 src="{{ asset('beranda/Staff TU 1.jpeg') }}" />
@@ -442,13 +425,7 @@
     </div>
     
     <!-- Teacher Card 2 -->
-    <div class="bg-white dark:bg-surface-dark rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 card-hover cursor-pointer" onclick="showDetailModal('staff', {
-        name: 'Sayidina Ali Ade Mahendra,A.Md.',
-        position: 'Tool Man',
-        image: '{{ asset('beranda/Staff TU 3.jpeg') }}',
-        responsibility: 'Pengelolaan peralatan praktikum',
-        experience: '5 tahun sebagai tool man'
-    })">
+    <div class="bg-white dark:bg-surface-dark rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 card-hover">
         <div class="h-64 bg-gray-200 dark:bg-gray-700 overflow-hidden">
             <img alt="Teacher" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300 img-hover"
                 src="{{ asset('beranda/Staff TU 3.jpeg') }}" />
@@ -460,13 +437,7 @@
     </div>
     
     <!-- Teacher Card 3 -->
-    <div class="bg-white dark:bg-surface-dark rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 card-hover cursor-pointer" onclick="showDetailModal('staff', {
-        name: 'Ani Karlina,S.I.Pust.',
-        position: 'Pustakawan',
-        image: '{{ asset('beranda/Staff TU 2.jpeg') }}',
-        responsibility: 'Pengelolaan perpustakaan',
-        experience: '6 tahun sebagai pustakawan'
-    })">
+   <div class="bg-white dark:bg-surface-dark rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 card-hover">
         <div class="h-64 bg-gray-200 dark:bg-gray-700 overflow-hidden">
             <img alt="Teacher" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300 img-hover"
                 src="{{ asset('beranda/Staff TU 2.jpeg') }}" />
@@ -478,13 +449,7 @@
     </div>
     
     <!-- Teacher Card 4 -->
-    <div class="bg-white dark:bg-surface-dark rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 card-hover cursor-pointer" onclick="showDetailModal('staff', {
-        name: 'Maman Hilman',
-        position: 'Tata Usaha',
-        image: '{{ asset('beranda/Staff TU 4.jpeg') }}',
-        responsibility: 'Administrasi keuangan',
-        experience: '10 tahun sebagai staf tata usaha'
-    })">
+    <div class="bg-white dark:bg-surface-dark rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 card-hover">
         <div class="h-64 bg-gray-200 dark:bg-gray-700 overflow-hidden">
             <img alt="Teacher" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300 img-hover"
                 src="{{ asset('beranda/Staff TU 4.jpeg') }}" />
@@ -636,96 +601,330 @@
             </div>
         </div>
     </section>
-    <section class="bg-white dark:bg-surface-dark py-16 mb-20 reveal">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2 section-title">Testimoni</h2>
-                <p class="text-gray-600 dark:text-gray-400">Tesimoni Alumni mengenai sekolah kami</p>
-            </div>
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-8 relative card-hover cursor-pointer" onclick="showDetailModal('testimoni', {
-                    name: 'Rizky Ramadhan',
-                    angkatan: 'Angkatan 2020',
-                    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDNXM1vhZWtIJy-oekTaE-HwZ8q1YNIVqwingTLJRuyJ_jm8VT2EC9TenGCsNytjZLYvR1nc--EaA0HsbLmauU2-BKPze9rnLIvpBRNiIfla4yyvWhAd9gwGi-uRnXDsigDBsmP8-eGmil3lYAaroGw-bgxMryJJeueQ4EAZKHY8uoT_lJWXDtsswddlQea1R-Lz1QFG_bSRY0V-5wYuJQGD0zExLhsBQfsAPkFaJSWyeRwd1X51l6swaK6ZODgRDtubY9p9Ynt0LG',
-                    testimoni: 'Sekolah ini memberikan fondasi yang sangat kuat bagi karir saya di dunia teknologi. Guru-gurunya sangat kompeten dan fasilitasnya lengkap.',
-                    pekerjaan: 'Software Engineer di PT Teknologi Maju',
+   <section class="bg-white dark:bg-surface-dark py-16 mb-20 reveal">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2 section-title">Testimoni Alumni</h2>
+            <p class="text-gray-600 dark:text-gray-400">Kisah sukses dan pengalaman alumni mengenai sekolah kami</p>
+        </div>
+
+        <!-- SLIDER CONTAINER -->
+        <div class="flex overflow-x-auto snap-x snap-mandatory gap-8 pb-8 scroll-smooth no-scrollbar">
+            
+            <!-- CARD 1: Tarisha (Asli) -->
+            <div class="flex-shrink-0 w-full md:w-[calc(50%-1rem)] snap-start bg-gray-50 dark:bg-gray-800 rounded-xl p-8 relative card-hover cursor-pointer"
+                onclick="showDetailModal('testimoni', {
+                    name: 'Tarisha Oktaviani Hermansyah',
+                    angkatan: 'Angkatan 2023',
+                    image: 'ak9.jpeg',
+                    testimoni: 'Selama menjalani pendidikan di SMKN 1 Kawali, saya menemukan banyak ruang untuk belajar dan bertumbuh di lingkungan yang positif. Sekolah memberi saya kesempatan untuk mencoba berbagai hal baru serta dukungan saat saya mengikuti berbagai organisasi dan perlombaan FIKSI, sehingga saya dapat mengenal potensi diri, belajar berproses, dan membangun kepercayaan diri. Melalui proses tersebut, saya juga dibekali ilmu yang praktis untuk diaplikasikan di dunia kerja, dilatih dalam pembentukan karakter, kedisiplinan, dan kepemimpinan, serta bertumbuh dalam bidang komunikasi (pageant) yang menjadi bagian penting dari perjalanan saya hingga saat ini.',
+                    pekerjaan: 'Putri Hijab Influencer 2025',
                     pesan: 'Teruslah belajar dan jangan pernah berhenti berkarya. Ilmu yang didapat di SMKN 1 Kawali adalah bekal terbaik untuk masa depan.'
                 })">
-                    <span
-                        class="material-icons text-6xl text-gray-200 dark:text-gray-700 absolute top-4 right-4">format_quote</span>
-                    <div class="relative z-10">
-                        <p class="text-gray-700 dark:text-gray-300 italic mb-8 min-h-[80px]">"Sekolah ini memberikan
-                            fondasi yang sangat kuat bagi karir saya di dunia teknologi. Guru-gurunya sangat kompeten
-                            dan fasilitasnya lengkap."</p>
-                        <div class="border-t border-gray-200 dark:border-gray-700 pt-4 flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-full bg-gray-300 overflow-hidden">
-                                <img alt="Alumni" class="w-full h-full object-cover img-hover"
-                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNXM1vhZWtIJy-oekTaE-HwZ8q1YNIVqwingTLJRuyJ_jm8VT2EC9TenGCsNytjZLYvR1nc--EaA0HsbLmauU2-BKPze9rnLIvpBRNiIfla4yyvWhAd9gwGi-uRnXDsigDBsmP8-eGmil3lYAaroGw-bgxMryJJeueQ4EAZKHY8uoT_lJWXDtsswddlQea1R-Lz1QFG_bSRY0V-5wYuJQGD0zExLhsBQfsAPkFaJSWyeRwd1X51l6swaK6ZODgRDtubY9p9Ynt0LG" />
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 dark:text-white">Rizky Ramadhan</h4>
-                                <span class="text-xs text-gray-500 dark:text-gray-400">Angkatan 2020</span>
-                            </div>
+                <span class="material-icons text-6xl text-gray-200 dark:text-gray-700 absolute top-4 right-4">format_quote</span>
+                <div class="relative z-10">
+                    <p class="text-gray-700 dark:text-gray-300 italic mb-8">"Selama menjalani pendidikan di SMKN 1 Kawali, saya menemukan banyak ruang untuk belajar dan bertumbuh di lingkungan yang positif. Sekolah memberi saya kesempatan untuk mencoba berbagai hal baru serta dukungan saat saya mengikuti berbagai organisasi dan perlombaan FIKSI, sehingga saya dapat mengenal potensi diri, belajar berproses, dan membangun kepercayaan diri. Melalui proses tersebut, saya juga dibekali ilmu yang praktis untuk diaplikasikan di dunia kerja, dilatih dalam pembentukan karakter, kedisiplinan, dan kepemimpinan, serta bertumbuh dalam bidang komunikasi (pageant) yang menjadi bagian penting dari perjalanan saya hingga saat ini."</p>
+                    <div class="border-t border-gray-200 dark:border-gray-700 pt-4 flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-gray-300 overflow-hidden">
+                            <img alt="Alumni" class="w-full h-full object-cover img-hover" src="ak9.jpeg" />
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 dark:text-white">Tarisha Oktaviani Hermansyah</h4>
+                            <span class="text-xs text-gray-500 dark:text-gray-400">Alumni Tahun 2023</span>
                         </div>
                     </div>
                 </div>
-                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-8 relative card-hover cursor-pointer" onclick="showDetailModal('testimoni', {
-                    name: 'Siti Nurhaliza',
-                    angkatan: 'Angkatan 2019',
-                    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuD9yqJplvnPF02a_kibFYRO994h_gv34c0zOuKb1HWwDnqyyDUsWGRUs06plkzHb8S4HlRRFzR_B3AWbvsqgWQuqS3G2zGQf43bmV8_r7nHUqiga6s600L5qAf9kYUUIbj2PR-bQL6jdCffeec8w5i8YwDXrVVf4ZeOuzVpWUSuFjIiynB9QUMOehrED7i0wUhEMCvqM8I3uH4p8F5yaRs4KQxIC0JQcsjUyUJVcvHqsEs-YT4Zy5zQP0ELONy6pNCiAasWNxOhtgIl',
-                    testimoni: 'Pengalaman belajar yang menyenangkan dan disiplin yang diterapkan membentuk karakter saya menjadi lebih baik.',
-                    pekerjaan: 'Network Administrator di PT Infrastruktur Digital',
-                    pesan: 'Manfaatkan sebaik-baiknya fasilitas yang ada di sekolah. Ikuti kegiatan ekstrakurikuler dan kompetisi untuk menambah pengalaman.'
+            </div>
+
+            <!-- CARD 2: Amri (Asli) -->
+            <div class="flex-shrink-0 w-full md:w-[calc(50%-1rem)] snap-start bg-gray-50 dark:bg-gray-800 rounded-xl p-8 relative card-hover cursor-pointer"
+                onclick="showDetailModal('testimoni', {
+                    name: 'Amri Fadhillah Febriana',
+                    angkatan: 'Angkatan 2025',
+                    image: 'amri.jpeg',
+                    testimoni: 'Selama menjalani pendidikan di SMK Negeri 1 Kawali, saya tak hanya diberikan pengetahuan secara teori saja, namun saya diberikan ilmu praktis untuk mengaplikasikannya di dunia kerja. Tak hanya itu, SMK Negeri 1 Kawali juga memberikan kesempatan dan ruang bagi saya untuk berorganisasi, sehingga saya dapat membentuk karakter, kedisiplinan, dan kepemimpinan yang tentunya akan sangat bermanfaat ketika lulus nanti.',
+                    pekerjaan: 'Mahasiswa Universitas Terbuka',
+                    pesan: 'Manfaatkan sebaik-baiknya fasilitas yang ada.'
                 })">
-                    <span
-                        class="material-icons text-6xl text-gray-200 dark:text-gray-700 absolute top-4 right-4">format_quote</span>
-                    <div class="relative z-10">
-                        <p class="text-gray-700 dark:text-gray-300 italic mb-8 min-h-[80px]">"Pengalaman belajar yang
-                            menyenangkan dan disiplin yang diterapkan membentuk karakter saya menjadi lebih baik."</p>
-                        <div class="border-t border-gray-200 dark:border-gray-700 pt-4 flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-full bg-gray-300 overflow-hidden">
-                                <img alt="Alumni" class="w-full h-full object-cover img-hover"
-                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9yqJplvnPF02a_kibFYRO994h_gv34c0zOuKb1HWwDnqyyDUsWGRUs06plkzHb8S4HlRRFzR_B3AWbvsqgWQuqS3G2zGQf43bmV8_r7nHUqiga6s600L5qAf9kYUUIbj2PR-bQL6jdCffeec8w5i8YwDXrVVf4ZeOuzVpWUSuFjIiynB9QUMOehrED7i0wUhEMCvqM8I3uH4p8F5yaRs4KQxIC0JQcsjUyUJVcvHqsEs-YT4Zy5zQP0ELONy6pNCiAasWNxOhtgIl" />
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 dark:text-white">Siti Nurhaliza</h4>
-                                <span class="text-xs text-gray-500 dark:text-gray-400">Angkatan 2019</span>
-                            </div>
+                <span class="material-icons text-6xl text-gray-200 dark:text-gray-700 absolute top-4 right-4">format_quote</span>
+                <div class="relative z-10">
+                    <p class="text-gray-700 dark:text-gray-300 italic mb-8">"Selama menjalani pendidikan di SMK Negeri 1 Kawali, saya tak hanya diberikan pengetahuan secara teori saja, namun saya diberikan ilmu praktis untuk mengaplikasikannya di dunia kerja. Tak hanya itu, SMK Negeri 1 Kawali juga memberikan kesempatan dan ruang bagi saya untuk berorganisasi, sehingga saya dapat membentuk karakter, kedisiplinan, dan kepemimpinan yang tentunya akan sangat bermanfaat ketika lulus nanti."</p>
+                    <div class="border-t border-gray-200 dark:border-gray-700 pt-4 flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-gray-300 overflow-hidden">
+                            <img alt="Alumni" class="w-full h-full object-cover img-hover" src="amri.jpeg" />
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 dark:text-white">Amri Fadhillah Febriana</h4>
+                            <span class="text-xs text-gray-500 dark:text-gray-400">Alumni Tahun 2025</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD 3: Dummy 1 (Dengan Pop Up) -->
+            <div class="flex-shrink-0 w-full md:w-[calc(50%-1rem)] snap-start bg-gray-50 dark:bg-gray-800 rounded-xl p-8 relative card-hover cursor-pointer"
+                onclick="showDetailModal('testimoni', {
+                    name: 'Diki Agistya',
+                    angkatan: 'Alumni Tahun 2024',
+                    image: 'diki.jpg',
+                    testimoni: 'Belajar di SMK ini adalah keputusan terbaik saya. Di sini, saya tidak hanya dijejali teori di kelas, tapi langsung diajarkan skill yang relevan sama dunia kerja.Suasananya kekeluargaan banget, tapi tetap profesional. Guru-gurunya sabar dan up-to-date sama perkembangan industri. Mereka nggak cuma ngajar mata pelajaran, tapi juga soft skills yang krusial. Yang paling penting, mental saya ditempa jadi lebih disiplin, mandiri, dan siap menghadapi tantangan nyata setelah lulus nanti , WALAU PUN ujung nya saya bekerja tidak sesuai jurusan saya , TAPI semua hal yang telah di ajarkan terutama hal beetanggung jawab itu sangat terpakai di pekerjaan.',
+                    pekerjaan: 'AKANESHIN co.ltd',
+                    pesan: 'Jangan takut mencoba hal baru.'
+                })">
+                <span class="material-icons text-6xl text-gray-200 dark:text-gray-700 absolute top-4 right-4">format_quote</span>
+                <div class="relative z-10">
+                    <p class="text-gray-700 dark:text-gray-300 italic mb-8">"Belajar di SMK ini adalah keputusan terbaik saya. Di sini, saya tidak hanya dijejali teori di kelas, tapi langsung diajarkan skill yang relevan sama dunia kerja.Suasananya kekeluargaan banget, tapi tetap profesional. Guru-gurunya sabar dan up-to-date sama perkembangan industri. Mereka nggak cuma ngajar mata pelajaran, tapi juga soft skills yang krusial. Yang paling penting, mental saya ditempa jadi lebih disiplin, mandiri, dan siap menghadapi tantangan nyata setelah lulus nanti , WALAU PUN ujung nya saya bekerja tidak sesuai jurusan saya , TAPI semua hal yang telah di ajarkan terutama hal beetanggung jawab itu sangat terpakai di pekerjaan."</p>
+                    <div class="border-t border-gray-200 dark:border-gray-700 pt-4 flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-gray-300 overflow-hidden">
+                            <img alt="Alumni" class="w-full h-full object-cover img-hover" src="diki.jpg" />
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 dark:text-white">Diki Agistya</h4>
+                            <span class="text-xs text-gray-500 dark:text-gray-400">Alumni Tahun 2024</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD 4: Dummy 2 (Dengan Pop Up) -->
+            <div class="flex-shrink-0 w-full md:w-[calc(50%-1rem)] snap-start bg-gray-50 dark:bg-gray-800 rounded-xl p-8 relative card-hover cursor-pointer"
+                onclick="showDetailModal('testimoni', {
+                    name: 'Lelita Puspita Sari',
+                    angkatan: 'Alumni Tahun 2025',
+                    image: 'lelita.jpeg,
+                    testimoni: 'sebagai alumni SMKN 1 Kawali, saya merasa bangga pernah menjadi bagian dari sekolah ini. selama menempuh pendidikan, saya tidak hanya dibekali pengetahuan akademik, tetapi juga keterampilan praktis, kedisiplinan, dan etos kerja yang sangat berguna di dunia kerja.  Lingkungan belajar yang kondusif, guru yang kompeten, serta pembelajaran berbasis praktik membantu saya menjadi pribadi yang lebih mandiri, bertanggung jawab, dan profesional. Bekal yang saya peroleh dari SMKN 1 Kawali menjadi pondasi penting dalam perjalanan karis saya hingga saat ini.',
+                    pekerjaan: 'PT. Yamaha Music Manufacturing Asia',
+                    pesan: 'Kembangkan kreativitasmu.'
+                })">
+                <span class="material-icons text-6xl text-gray-200 dark:text-gray-700 absolute top-4 right-4">format_quote</span>
+                <div class="relative z-10">
+                    <p class="text-gray-700 dark:text-gray-300 italic mb-8">"sebagai alumni SMKN 1 Kawali, saya merasa bangga pernah menjadi bagian dari sekolah ini. selama menempuh pendidikan, saya tidak hanya dibekali pengetahuan akademik, tetapi juga keterampilan praktis, kedisiplinan, dan etos kerja yang sangat berguna di dunia kerja.  Lingkungan belajar yang kondusif, guru yang kompeten, serta pembelajaran berbasis praktik membantu saya menjadi pribadi yang lebih mandiri, bertanggung jawab, dan profesional. Bekal yang saya peroleh dari SMKN 1 Kawali menjadi pondasi penting dalam perjalanan karis saya hingga saat ini."</p>
+                    <div class="border-t border-gray-200 dark:border-gray-700 pt-4 flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-gray-300 overflow-hidden">
+                            <img alt="Alumni" class="w-full h-full object-cover img-hover" src="lelita.jpeg" />
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 dark:text-white">Lelita Puspita Sari</h4>
+                            <span class="text-xs text-gray-500 dark:text-gray-400">Alumni Tahun 2025</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD 5: Dummy 3 (Dengan Pop Up) -->
+            <div class="flex-shrink-0 w-full md:w-[calc(50%-1rem)] snap-start bg-gray-50 dark:bg-gray-800 rounded-xl p-8 relative card-hover cursor-pointer"
+                onclick="showDetailModal('testimoni', {
+                    name: 'Indar Sri Royani',
+                    angkatan: 'Alumni Tahun 2025',
+                    image: 'indar.jpeg',
+                    testimoni: 'Saya bangga menjadi alumni SMKN 1 Kawali karena sekolah ini memberikan banyak pengalaman dan pembelajaran berharga. Selama bersekolah, saya berkesempatan mengikuti lomba hingga tingkat nasional, yang menjadi pengalaman luar biasa dan mengantarkan saya mendapatkan beasiswa saat melanjutkan ke perguruan tinggi. Semua itu menjadi bekal penting untuk masa depan saya.',
+                    pekerjaan: 'Mahasiswa Universitas Islam Darussalam',
+                    pesan: 'Manfaatkan fasilitas sekolah sebaik mungkin.'
+                })">
+                <span class="material-icons text-6xl text-gray-200 dark:text-gray-700 absolute top-4 right-4">format_quote</span>
+                <div class="relative z-10">
+                    <p class="text-gray-700 dark:text-gray-300 italic mb-8">"Saya bangga menjadi alumni SMKN 1 Kawali karena sekolah ini memberikan banyak pengalaman dan pembelajaran berharga. Selama bersekolah, saya berkesempatan mengikuti lomba hingga tingkat nasional, yang menjadi pengalaman luar biasa dan mengantarkan saya mendapatkan beasiswa saat melanjutkan ke perguruan tinggi. Semua itu menjadi bekal penting untuk masa depan saya."</p>
+                    <div class="border-t border-gray-200 dark:border-gray-700 pt-4 flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-gray-300 overflow-hidden">
+                            <img alt="Alumni" class="w-full h-full object-cover img-hover" src="indar.jpeg" />
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 dark:text-white">Indar Sri Royani</h4>
+                            <span class="text-xs text-gray-500 dark:text-gray-400">Alumni Tahun 2025</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<style>
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none; 
+        scrollbar-width: none; 
+    }
+</style>
+
+    <!-- Mitra & Sponsor Section dengan Manual Drag Slider -->
+<section class="bg-gray-50 dark:bg-gray-900 py-16 mb-20 reveal">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2 section-title">Mitra & Sponsor</h2>
+            <p class="text-gray-600 dark:text-gray-400">Berbagai industri dan institusi yang bekerjasama dengan kami</p>
+        </div>
+
+        <!-- Container untuk Slider -->
+        <div id="sliderContainer" class="relative cursor-grab active:cursor-grabbing select-none">
+            <!-- Viewport Slider (area yang terlihat) -->
+            <div class="overflow-hidden">
+                <!-- Track Slider (area yang bergerak) -->
+                <div id="sliderTrack" class="flex transition-transform duration-300 ease-out">
+                    <!-- Sponsor 1 -->
+                    <div class="flex-shrink-0 w-1/2 md:w-1/4 px-3">
+                        <div class="flex items-center justify-center h-24 bg-white dark:bg-surface-dark rounded-xl shadow-sm hover:shadow-md transition-all duration-300 p-4 grayscale hover:grayscale-0 opacity-70 hover:opacity-100 border border-gray-100 dark:border-gray-700">
+                            <img src="ino1.png" class="h-12 object-contain" alt="Partner 1">
+                        </div>
+                    </div>
+                    <!-- Sponsor 2 -->
+                    <div class="flex-shrink-0 w-1/2 md:w-1/4 px-3">
+                        <div class="flex items-center justify-center h-24 bg-white dark:bg-surface-dark rounded-xl shadow-sm hover:shadow-md transition-all duration-300 p-4 grayscale hover:grayscale-0 opacity-70 hover:opacity-100 border border-gray-100 dark:border-gray-700">
+                            <img src="TKJ Skyline.png" class="h-12 object-contain" alt="Partner 2">
+                        </div>
+                    </div>
+                    <!-- Sponsor 3 -->
+                    <div class="flex-shrink-0 w-1/2 md:w-1/4 px-3">
+                        <div class="flex items-center justify-center h-24 bg-white dark:bg-surface-dark rounded-xl shadow-sm hover:shadow-md transition-all duration-300 p-4 grayscale hover:grayscale-0 opacity-70 hover:opacity-100 border border-gray-100 dark:border-gray-700">
+                            <img src="TKR Daihatsu.png" class="h-12 object-contain" alt="Partner 3">
+                        </div>
+                    </div>
+                    <!-- Sponsor 4 -->
+                    <div class="flex-shrink-0 w-1/2 md:w-1/4 px-3">
+                        <div class="flex items-center justify-center h-24 bg-white dark:bg-surface-dark rounded-xl shadow-sm hover:shadow-md transition-all duration-300 p-4 grayscale hover:grayscale-0 opacity-70 hover:opacity-100 border border-gray-100 dark:border-gray-700">
+                            <img src="AKL BTN.png" class="h-12 object-contain" alt="Partner 4">
+                        </div>
+                    </div>
+                    <!-- Dummy Sponsor 5 -->
+                    <div class="flex-shrink-0 w-1/2 md:w-1/4 px-3">
+                        <div class="flex items-center justify-center h-24 bg-white dark:bg-surface-dark rounded-xl shadow-sm hover:shadow-md transition-all duration-300 p-4 grayscale hover:grayscale-0 opacity-70 hover:opacity-100 border border-gray-100 dark:border-gray-700">
+                            <img src="SP Sanggar Seni.jpeg" alt="Partner 5">
+                        </div>
+                    </div>
+                    <!-- Dummy Sponsor 6 -->
+                    <div class="flex-shrink-0 w-1/2 md:w-1/4 px-3">
+                        <div class="flex items-center justify-center h-24 bg-white dark:bg-surface-dark rounded-xl shadow-sm hover:shadow-md transition-all duration-300 p-4 grayscale hover:grayscale-0 opacity-70 hover:opacity-100 border border-gray-100 dark:border-gray-700">
+                            <img src="MP POS.png" class="h-12 object-contain" alt="Partner 6">
+                        </div>
+                    </div>
+                    <!-- Dummy Sponsor 7 -->
+                    <div class="flex-shrink-0 w-1/2 md:w-1/4 px-3">
+                        <div class="flex items-center justify-center h-24 bg-white dark:bg-surface-dark rounded-xl shadow-sm hover:shadow-md transition-all duration-300 p-4 grayscale hover:grayscale-0 opacity-70 hover:opacity-100 border border-gray-100 dark:border-gray-700">
+                            <img src="DPIB Technoskill.png" class="h-12 object-contain" alt="Partner 7">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- SECTION SPONSOR (DITAMBAHKAN) -->
-    <section class="bg-gray-50 dark:bg-gray-900 py-16 mb-20 reveal">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2 section-title">Mitra & Sponsor</h2>
-                <p class="text-gray-600 dark:text-gray-400">Berbagai industri dan institusi yang bekerjasama dengan kami</p>
-            </div>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
-                <!-- Sponsor 1 -->
-                <div class="flex items-center justify-center h-24 bg-white dark:bg-surface-dark rounded-xl shadow-sm hover:shadow-md transition-all duration-300 p-4 grayscale hover:grayscale-0 opacity-70 hover:opacity-100 border border-gray-100 dark:border-gray-700">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Android_O_Preview_Logo.png" class="h-12 object-contain" alt="Partner 1">
-                </div>
-                <!-- Sponsor 2 -->
-                <div class="flex items-center justify-center h-24 bg-white dark:bg-surface-dark rounded-xl shadow-sm hover:shadow-md transition-all duration-300 p-4 grayscale hover:grayscale-0 opacity-70 hover:opacity-100 border border-gray-100 dark:border-gray-700">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/WordPress_blue_logo.png" class="h-12 object-contain" alt="Partner 2">
-                </div>
-                <!-- Sponsor 3 -->
-                <div class="flex items-center justify-center h-24 bg-white dark:bg-surface-dark rounded-xl shadow-sm hover:shadow-md transition-all duration-300 p-4 grayscale hover:grayscale-0 opacity-70 hover:opacity-100 border border-gray-100 dark:border-gray-700">
-                     <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" class="h-12 object-contain" alt="Partner 3">
-                </div>
-                <!-- Sponsor 4 -->
-                <div class="flex items-center justify-center h-24 bg-white dark:bg-surface-dark rounded-xl shadow-sm hover:shadow-md transition-all duration-300 p-4 grayscale hover:grayscale-0 opacity-70 hover:opacity-100 border border-gray-100 dark:border-gray-700">
-                     <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/GoFundMe_logo.svg" class="h-12 object-contain" alt="Partner 4">
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- JavaScript untuk Manual Drag Slider -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const track = document.getElementById('sliderTrack');
+        const container = document.getElementById('sliderContainer');
+        
+        const totalCards = track.children.length;
+        
+        // Responsif: tentukan jumlah kartu yang terlihat
+        let cardsPerSlide = 4;
+        if (window.innerWidth < 768) {
+            cardsPerSlide = 2;
+        }
 
+        let currentIndex = 0;
+        let isDragging = false;
+        let startPos = 0;
+        let currentTranslate = 0;
+        let prevTranslate = 0;
+        let animationID;
+
+        // Fungsi untuk memposisikan slider ke index tertentu
+        function setPositionByIndex() {
+            currentTranslate = currentIndex * (-100 / cardsPerSlide);
+            prevTranslate = currentTranslate;
+            setSliderPosition();
+        }
+
+        // Fungsi untuk mengatur transform CSS
+        function setSliderPosition() {
+            track.style.transform = `translateX(${currentTranslate}%)`;
+        }
+        
+        // Fungsi untuk animasi
+        function animation() {
+            if (isDragging) {
+                requestAnimationFrame(animation);
+            }
+            setSliderPosition();
+        }
+
+        // --- Event Handlers untuk Mouse dan Touch ---
+
+        function dragStart(e) {
+            isDragging = true;
+            // Mendapatkan posisi awal (baik mouse atau touch)
+            startPos = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+            animationID = requestAnimationFrame(animation);
+            // Nonaktifkan transisi untuk drag yang lebih halus
+            track.style.transition = 'none';
+        }
+
+        function dragMove(e) {
+            if (!isDragging) return;
+            e.preventDefault(); // Mencegah scroll pada layar sentuh
+            // Mendapatkan posisi saat ini
+            const currentPosition = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+            // Menghitung pergerakan
+            const moveBy = currentPosition - startPos;
+            currentTranslate = prevTranslate + (moveBy / container.offsetWidth) * 100 * cardsPerSlide;
+        }
+
+        function dragEnd() {
+            if (!isDragging) return;
+            isDragging = false;
+            cancelAnimationFrame(animationID);
+            
+            // Aktifkan kembali transisi untuk efek "snap"
+            track.style.transition = 'transform 0.3s ease-out';
+
+            // Logika untuk "snap" ke kartu terdekat
+            const movedBy = currentTranslate - prevTranslate;
+            if (movedBy < -50 && currentIndex < totalCards - cardsPerSlide) {
+                currentIndex += 1;
+            } else if (movedBy > 50 && currentIndex > 0) {
+                currentIndex -= 1;
+            }
+            
+            setPositionByIndex();
+        }
+
+        // --- Menambahkan Event Listeners ---
+        
+        // Mouse Events
+        container.addEventListener('mousedown', dragStart);
+        container.addEventListener('mousemove', dragMove);
+        container.addEventListener('mouseup', dragEnd);
+        container.addEventListener('mouseleave', dragEnd); // Jika mouse keluar area container
+
+        // Touch Events
+        container.addEventListener('touchstart', dragStart);
+        container.addEventListener('touchmove', dragMove);
+        container.addEventListener('touchend', dragEnd);
+        
+        // Mencegah konteks menu saat klik kanan
+        container.addEventListener('contextmenu', (e) => e.preventDefault());
+
+        // (Opsional) Update saat resize
+        window.addEventListener('resize', () => {
+            let newCardsPerSlide = 4;
+            if (window.innerWidth < 768) {
+                newCardsPerSlide = 2;
+            }
+            if (newCardsPerSlide !== cardsPerSlide) {
+                cardsPerSlide = newCardsPerSlide;
+                if (currentIndex > totalCards - cardsPerSlide) {
+                    currentIndex = totalCards - cardsPerSlide;
+                }
+                setPositionByIndex();
+            }
+        });
+    });
+</script>
     <!-- Modal untuk Detail -->
     <div id="detailModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
         <div class="bg-white dark:bg-surface-dark rounded-lg shadow-xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">

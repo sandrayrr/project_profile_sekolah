@@ -27,7 +27,7 @@ class ArtikelController extends Controller
         $rules = [
             'judul'     => 'required|string|max:255',
             'kategori'  => 'required|string|max:100',
-            'tanggal'   => 'required|date',
+            // 'tanggal'   => 'required|date', // <--- DIHAPUS Karena otomatis
             'deskripsi' => 'required|string',
             'foto'      => 'nullable|image|mimes:jpg,png,jpeg|max:2048'
         ];
@@ -49,7 +49,7 @@ class ArtikelController extends Controller
         $customAttributes = [
             'judul'     => 'Judul Artikel',
             'kategori'  => 'Kategori',
-            'tanggal'   => 'Tanggal',
+            // 'tanggal'   => 'Tanggal', // <--- DIHAPUS
             'deskripsi' => 'Deskripsi',
             'foto'      => 'Foto Artikel',
         ];
@@ -65,7 +65,7 @@ class ArtikelController extends Controller
         Artikel::create([
             'judul'     => $request->judul,
             'kategori'  => $request->kategori,
-            'tanggal'   => $request->tanggal,
+            'tanggal'   => now(), // <--- DIUBAH: Otomatis hari ini
             'deskripsi' => $request->deskripsi,
             'foto'      => $foto
         ]);
@@ -82,16 +82,16 @@ class ArtikelController extends Controller
 
     public function update(Request $request, Artikel $artikel)
     {
-        // Aturan validasi (sama seperti store)
+        // Aturan validasi
         $rules = [
             'judul'     => 'required|string|max:255',
             'kategori'  => 'required|string|max:100',
-            'tanggal'   => 'required|date',
+            // 'tanggal'   => 'required|date', // <--- DIHAPUS (Opsional, agar edit tetap jalan walau input tanggal dihapus)
             'deskripsi' => 'required|string',
             'foto'      => 'nullable|image|mimes:jpg,jpeg,png|max:2048'
         ];
 
-        // Pesan error kustom (sama seperti store)
+        // Pesan error kustom
         $customMessages = [
             'required' => ':attribute harus diisi.',
             'string'   => ':attribute harus berupa teks.',
@@ -104,11 +104,11 @@ class ArtikelController extends Controller
             'mimes'    => ':attribute harus berformat: :values.',
         ];
 
-        // Nama atribut (sama seperti store)
+        // Nama atribut
         $customAttributes = [
             'judul'     => 'Judul Artikel',
             'kategori'  => 'Kategori',
-            'tanggal'   => 'Tanggal',
+            // 'tanggal'   => 'Tanggal', // <--- DIHAPUS
             'deskripsi' => 'Deskripsi',
             'foto'      => 'Foto Artikel',
         ];
@@ -120,7 +120,7 @@ class ArtikelController extends Controller
         $data = [
             'judul'     => $request->judul,
             'kategori'  => $request->kategori,
-            'tanggal'   => $request->tanggal,
+            // 'tanggal'   => $request->tanggal, // <--- DIHAPUS: Tanggal asli akan dipertahankan
             'deskripsi' => $request->deskripsi,
         ];
 
@@ -147,6 +147,6 @@ class ArtikelController extends Controller
         }
 
         $artikel->delete();
-        return back()->with('success', 'Artikel berhasil dihapus'); // Pesan sukses juga saya perbaiki agar konsisten
+        return back()->with('success', 'Artikel berhasil dihapus');
     }
 }

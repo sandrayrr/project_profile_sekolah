@@ -41,8 +41,6 @@
                         'zoom-in': 'zoomIn 0.3s ease-out',
                         'slide-in-left': 'slideInLeft 0.6s ease-out',
                         'slide-in-right': 'slideInRight 0.6s ease-out',
-                        'slide-up': 'slideUp 0.5s ease-out',
-                        'bounce-in': 'bounceIn 0.6s ease-out',
                     },
                     keyframes: {
                         fadeIn: {
@@ -65,16 +63,6 @@
                         slideInRight: {
                             '0%': { opacity: '0', transform: 'translateX(30px)' },
                             '100%': { opacity: '1', transform: 'translateX(0)' },
-                        },
-                        slideUp: {
-                            '0%': { opacity: '0', transform: 'translateY(30px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        },
-                        bounceIn: {
-                            '0%': { opacity: '0', transform: 'scale(0.3)' },
-                            '50%': { opacity: '1', transform: 'scale(1.05)' },
-                            '70%': { transform: 'scale(0.9)' },
-                            '100%': { opacity: '1', transform: 'scale(1)' },
                         }
                     }
                 },
@@ -144,31 +132,6 @@
             background-color: #2563eb;
             box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
         }
-        
-        /* Badge animation */
-        .badge-pulse {
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
-            }
-            70% {
-                box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
-            }
-        }
-        
-        /* Gradient text */
-        .gradient-text {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
     </style>
 </head>
 
@@ -176,120 +139,67 @@
 
     @include('layouts.navbar')
 
-    <!-- HEADER PROFIL SEKOLAH -->
-    <div class="relative bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 border-b border-blue-100 dark:border-gray-700 pb-20 pt-20 overflow-hidden">
-        <!-- Background Decor (Blue blobs) -->
-        <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
-            <div class="absolute -top-24 -right-24 w-96 h-96 bg-blue-100/50 dark:bg-blue-900/20 rounded-full blur-3xl"></div>
-            <div class="absolute top-1/2 -left-24 w-72 h-72 bg-cyan-100/50 dark:bg-cyan-900/20 rounded-full blur-3xl"></div>
-            <div class="absolute bottom-0 right-1/4 w-64 h-64 bg-purple-100/30 dark:bg-purple-900/20 rounded-full blur-3xl"></div>
-        </div>
-
-        <div class="relative container mx-auto px-4 z-10 text-center">
-            <div
-                class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-gray-800 text-primary text-xs font-bold mb-6 border border-blue-200 dark:border-blue-800 badge-pulse">
-                <i class="fa-solid fa-school"></i> Tentang Kami
-            </div>
-            <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 dark:text-white mb-6 tracking-tight">
-                Profil <span class="gradient-text">Sekolah</span>
-            </h1>
-            <p class="text-slate-600 dark:text-slate-300 text-lg max-w-2xl mx-auto mb-10">
-                Mengenal lebih dekat SMK Negeri 1 Kawali sebagai pusat pendidikan kejuruan unggulan.
-            </p>
-
-            <!-- Search Bar -->
-            <div class="max-w-xl mx-auto relative group">
-                <form action="#" method="GET" class="relative">
-                    <input
-                        name="cari"
-                        value=""
-                        type="text" 
-                        placeholder="Cari informasi profil sekolah..."
-                        class="w-full pl-12 pr-4 py-4 rounded-xl border border-blue-200 dark:border-gray-600 bg-white dark:bg-gray-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none shadow-lg transition group-hover:shadow-xl">
-                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400"></i>
-                </form>
-            </div>
-        </div>
+   <div class="relative bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 border-b border-blue-100 dark:border-gray-700 pb-20 pt-20 overflow-hidden">
+    <!-- Background Decor (Blue blobs) -->
+    <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
+        <div class="absolute -top-24 -right-24 w-96 h-96 bg-blue-100/50 dark:bg-blue-900/20 rounded-full blur-3xl"></div>
+        <div class="absolute top-1/2 -left-24 w-72 h-72 bg-cyan-100/50 dark:bg-cyan-900/20 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 right-1/4 w-64 h-64 bg-purple-100/30 dark:bg-purple-900/20 rounded-full blur-3xl"></div>
     </div>
+
+    <div class="relative container mx-auto px-4 z-10 text-center">
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-gray-800 text-primary text-xs font-bold mb-6 border border-blue-200 dark:border-blue-800 badge-pulse">
+            <i class="fa-solid fa-graduation-cap"></i> Profil Sekolah
+        </div>
+
+        <!-- Heading -->
+        <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 dark:text-white mb-6 tracking-tight">
+            <span class="gradient-text">Profil</span> Sekolah
+        </h1>
+
+        <!-- Paragraph -->
+        <p class="text-slate-600 dark:text-slate-300 text-lg max-w-2xl mx-auto">
+            Mengenal lebih dekat SMK Negeri 1 Kawali sebagai pusat pendidikan kejuruan unggulan.
+        </p>
+    </div>
+</div>
 
     <!-- CONTENT -->
     <main class="container mx-auto px-4 py-12 lg:py-16 min-h-screen">
 
-        <!-- HERO IMAGE & STATISTICS -->
-        <div class="grid lg:grid-cols-3 gap-8 mb-16">
-            <div class="lg:col-span-2">
-                <div class="hero-image-container w-full h-[600px] rounded-2xl overflow-hidden shadow-lg bg-gray-200 dark:bg-gray-700 animate-fade-in" style="animation-delay: 0.3s">
-                    <img src="sekolah.jpeg">
-                </div>
-            </div>
-            
-            <!-- STATISTICS -->
-            <div class="space-y-4 animate-fade-in" style="animation-delay: 0.4s">
-                <div class="bg-card-light dark:bg-card-dark rounded-xl p-6 border border-border-light dark:border-border-dark feature-card">
-                    <div class="flex items-center justify-between">
-                        <div>
-                            <p class="text-gray-500 dark:text-gray-400 text-sm">Total Siswa</p>
-                            <p class="text-3xl font-bold text-gray-900 dark:text-white">1.250+</p>
-                        </div>
-                        <div class="w-12 h-12 bg-primary/10 dark:bg-primary/20 rounded-full flex items-center justify-center">
-                            <i class="fas fa-graduation-cap text-primary"></i>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="bg-card-light dark:bg-card-dark rounded-xl p-6 border border-border-light dark:border-border-dark feature-card">
-                    <div class="flex items-center justify-between">
-                        <div>
-                            <p class="text-gray-500 dark:text-gray-400 text-sm">Guru & Staff</p>
-                            <p class="text-3xl font-bold text-gray-900 dark:text-white">85+</p>
-                        </div>
-                        <div class="w-12 h-12 bg-primary/10 dark:bg-primary/20 rounded-full flex items-center justify-center">
-                            <i class="fas fa-chalkboard-teacher text-primary"></i>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="bg-card-light dark:bg-card-dark rounded-xl p-6 border border-border-light dark:border-border-dark feature-card">
-                    <div class="flex items-center justify-between">
-                        <div>
-                            <p class="text-gray-500 dark:text-gray-400 text-sm">Program Keahlian</p>
-                            <p class="text-3xl font-bold text-gray-900 dark:text-white">7</p>
-                        </div>
-                        <div class="w-12 h-12 bg-primary/10 dark:bg-primary/20 rounded-full flex items-center justify-center">
-                            <i class="fas fa-code text-primary"></i>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="bg-card-light dark:bg-card-dark rounded-xl p-6 border border-border-light dark:border-border-dark feature-card">
-                    <div class="flex items-center justify-between">
-                        <div>
-                            <p class="text-gray-500 dark:text-gray-400 text-sm">Tahun Berdiri</p>
-                            <p class="text-3xl font-bold text-gray-900 dark:text-white">2004</p>
-                        </div>
-                        <div class="w-12 h-12 bg-primary/10 dark:bg-primary/20 rounded-full flex items-center justify-center">
-                            <i class="fas fa-calendar-alt text-primary"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
+       <!-- HERO IMAGE & PROFIL SIDE BY SIDE -->
+<div class="grid lg:grid-cols-3 gap-8 mb-16">
+    
+    <!-- FOTO (Diperkecil ke 1/3 layar) -->
+    <div class="lg:col-span-1 animate-fade-in" style="animation-delay: 0.3s">
+        <div class="hero-image-container w-full h-full min-h-[350px] rounded-2xl overflow-hidden shadow-lg bg-gray-200 dark:bg-gray-700">
+            <img
+                src="sekolah.jpeg"
+                alt="Gedung Sekolah"
+                class="w-full h-full object-cover">
         </div>
-
-        <!-- SEJARAH SINGKAT -->
-        <div class="bg-card-light dark:bg-card-dark rounded-2xl border border-border-light dark:border-border-dark p-8 md:p-12 mb-16 animate-fade-in" style="animation-delay: 0.5s">
-            <div class="max-w-4xl mx-auto">
-                <h2 class="text-3xl font-bold mb-6 text-gray-900 dark:text-white flex items-center">
-                    <div class="w-10 h-10 bg-primary/10 dark:bg-primary/20 rounded-full flex items-center justify-center mr-3">
-                        <i class="fas fa-history text-primary"></i>
-                    </div>
-                    Profil
-                </h2>
-                <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
-                    SMKN 1 Kawali adalah salah satu Sekolah Menengah Kejuruan Negeri yang berlokasi di wilayah Ciamis Utara dan berdiri sejak tahun 2004. Pada awal berdirinya, sekolah ini hanya memiliki satu Kompetensi Keahlian, yaitu Teknik Mesin Otomotif (TMO). Seiring berjalannya waktu, SMKN 1 Kawali terus berkembang hingga kini memiliki tujuh Kompetensi Keahlian, yaitu Teknik Otomotif (Teknik Otomotif), Teknik Jaringan Komputer dan Telekomunikasi (TJKT), Pengembangan Perangkat Lunak dan GIM (PPLG), Desain Pemodelan dan Informasi Bangunan (DPIB), Manajemen Perkantoran dan Layanan Bisnis(MP), Akuntansi Keuangan dan Lembaga (AKL), serta Seni Pertunjukan (SP).
-Jumlah peserta didik yang pada awalnya hanya 18 siswa kini telah meningkat pesat menjadi lebih dari 1.600 lebih siswa dan siswi SMKN 1 Kawali, yang berasal dari wilayah Ciamis Utara dan daerah lainnya.
-                </p>
-            </div>
+    </div>
+    
+    <!-- PROFIL (Dipindahkan ke samping foto) -->
+    <div class="lg:col-span-2 animate-fade-in" style="animation-delay: 0.5s">
+        <div class="bg-card-light dark:bg-card-dark rounded-2xl border border-border-light dark:border-border-dark p-8 md:p-10 h-full">
+            <h2 class="text-3xl font-bold mb-6 text-gray-900 dark:text-white flex items-center">
+                <div class="w-10 h-10 bg-primary/10 dark:bg-primary/20 rounded-full flex items-center justify-center mr-3">
+                    <i class="fas fa-history text-primary"></i>
+                </div>
+                Profil
+            </h2>
+            <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+                SMKN 1 Kawali adalah salah satu Sekolah Menengah Kejuruan Negeri yang berlokasi di wilayah Ciamis Utara dan berdiri sejak tahun 2004. Pada awal berdirinya, sekolah ini hanya memiliki satu Kompetensi Keahlian, yaitu Teknik Mesin Otomotif (TMO). Seiring berjalannya waktu, SMKN 1 Kawali terus berkembang hingga kini memiliki tujuh Kompetensi Keahlian, yaitu Teknik Otomotif (Teknik Otomotif), Teknik Jaringan Komputer dan Telekomunikasi (TJKT), Pengembangan Perangkat Lunak dan GIM (PPLG), Desain Pemodelan dan Informasi Bangunan (DPIB), Manajemen Perkantoran dan Layanan Bisnis(MP), Akuntansi Keuangan dan Lembaga (AKL), serta Seni Pertunjukan (SP).
+            </p>
+            <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                Jumlah peserta didik yang pada awalnya hanya 18 siswa kini telah meningkat pesat menjadi lebih dari 1.600 lebih siswa dan siswi SMKN 1 Kawali, yang berasal dari wilayah Ciamis Utara dan daerah lainnya.
+            </p>
         </div>
+    </div>
+    
+</div>
 
         <!-- VISI & MISI -->
         <div class="grid md:grid-cols-2 gap-8 mb-16">
@@ -323,23 +233,13 @@ Jumlah peserta didik yang pada awalnya hanya 18 siswa kini telah meningkat pesat
         </div>
 
         <!-- PROGRAM KEAHLIAN -->
+        <!-- PROGRAM KEAHLIAN -->
 <div class="mb-16 animate-fade-in" style="animation-delay: 0.8s">
     <h2 class="text-3xl font-bold mb-8 text-gray-900 dark:text-white text-center">
-        Sejarah Singkat Program Keahlian
+        Sejarah Program Keahlian
     </h2>
-
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-
-        <!-- SMKN 1 Kawali -->
-        <div class="feature-card bg-card-light dark:bg-card-dark rounded-xl border border-border-light dark:border-border-dark p-6">
-            <div class="w-14 h-14 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center mb-4">
-                <i class="fas fa-school text-primary text-xl"></i>
-            </div>
-            <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Pembukaan SMKN 1 Kawali</h3>
-            <p class="text-gray-600 dark:text-gray-300 text-sm">Dibuka pada 2 Oktober Tahun 2004</p>
-        </div>
-
-        <!-- TO (Otomotif) -->
+        <!-- Kartu 1: TO -->
         <div class="feature-card bg-card-light dark:bg-card-dark rounded-xl border border-border-light dark:border-border-dark p-6">
             <div class="w-14 h-14 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center mb-4">
                 <i class="fas fa-car text-primary text-xl"></i>
@@ -347,8 +247,8 @@ Jumlah peserta didik yang pada awalnya hanya 18 siswa kini telah meningkat pesat
             <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Pembukaan Jurusan TO</h3>
             <p class="text-gray-600 dark:text-gray-300 text-sm">Dibuka pada 14 Oktober 2003</p>
         </div>
-
-        <!-- TJKT -->
+        
+        <!-- Kartu 2: TJKT -->
         <div class="feature-card bg-card-light dark:bg-card-dark rounded-xl border border-border-light dark:border-border-dark p-6">
             <div class="w-14 h-14 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center mb-4">
                 <i class="fas fa-network-wired text-primary text-xl"></i>
@@ -356,17 +256,26 @@ Jumlah peserta didik yang pada awalnya hanya 18 siswa kini telah meningkat pesat
             <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Pembukaan Jurusan TJKT</h3>
             <p class="text-gray-600 dark:text-gray-300 text-sm">Dibuka pada 31 Desember 2003</p>
         </div>
-
-        <!-- PPLG -->
+        
+        <!-- Kartu 3: Pembukaan SMK -->
+        <div class="feature-card bg-card-light dark:bg-card-dark rounded-xl border border-border-light dark:border-border-dark p-6">
+            <div class="w-14 h-14 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center mb-4">
+                <i class="fas fa-school text-primary text-xl"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Pembukaan SMK</h3>
+            <p class="text-gray-600 dark:text-gray-300 text-sm">Dibuka pada 2 Oktober 2004</p>
+        </div>
+        
+        <!-- Kartu 4: PPLG -->
         <div class="feature-card bg-card-light dark:bg-card-dark rounded-xl border border-border-light dark:border-border-dark p-6">
             <div class="w-14 h-14 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center mb-4">
                 <i class="fas fa-laptop-code text-primary text-xl"></i>
             </div>
             <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Pembukaan Jurusan PPLG</h3>
-            <p class="text-gray-600 dark:text-gray-300 text-sm">Dibuka 13 Oktober 2009</p>
+            <p class="text-gray-600 dark:text-gray-300 text-sm">Dibuka pada 13 Oktober 2009</p>
         </div>
-
-        <!-- MPLB -->
+        
+        <!-- Kartu 5: MPLB -->
         <div class="feature-card bg-card-light dark:bg-card-dark rounded-xl border border-border-light dark:border-border-dark p-6">
             <div class="w-14 h-14 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center mb-4">
                 <i class="fas fa-briefcase text-primary text-xl"></i>
@@ -374,8 +283,8 @@ Jumlah peserta didik yang pada awalnya hanya 18 siswa kini telah meningkat pesat
             <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Pembukaan Jurusan MPLB</h3>
             <p class="text-gray-600 dark:text-gray-300 text-sm">Dibuka pada 15 Oktober 2013</p>
         </div>
-
-        <!-- AKL -->
+        
+        <!-- Kartu 6: AKL -->
         <div class="feature-card bg-card-light dark:bg-card-dark rounded-xl border border-border-light dark:border-border-dark p-6">
             <div class="w-14 h-14 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center mb-4">
                 <i class="fas fa-calculator text-primary text-xl"></i>
@@ -383,8 +292,8 @@ Jumlah peserta didik yang pada awalnya hanya 18 siswa kini telah meningkat pesat
             <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Pembukaan Jurusan AKL</h3>
             <p class="text-gray-600 dark:text-gray-300 text-sm">Dibuka pada 13 Oktober 2015</p>
         </div>
-
-        <!-- DPIB -->
+        
+        <!-- Kartu 7: DPIB -->
         <div class="feature-card bg-card-light dark:bg-card-dark rounded-xl border border-border-light dark:border-border-dark p-6">
             <div class="w-14 h-14 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center mb-4">
                 <i class="fas fa-drafting-compass text-primary text-xl"></i>
@@ -392,21 +301,23 @@ Jumlah peserta didik yang pada awalnya hanya 18 siswa kini telah meningkat pesat
             <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Pembukaan Jurusan DPIB</h3>
             <p class="text-gray-600 dark:text-gray-300 text-sm">Dibuka pada 13 Oktober 2015</p>
         </div>
-
-        <!-- SP -->
+        
+        <!-- Kartu 8: SP -->
         <div class="feature-card bg-card-light dark:bg-card-dark rounded-xl border border-border-light dark:border-border-dark p-6">
             <div class="w-14 h-14 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center mb-4">
-                <i class="fas fa-bullhorn text-primary text-xl"></i>
+                <i class="fas fa-bolt text-primary text-xl"></i>
             </div>
             <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Pembukaan Jurusan SP</h3>
             <p class="text-gray-600 dark:text-gray-300 text-sm">Dibuka pada 17 Oktober 2017</p>
         </div>
-
     </div>
 </div>
 
+        
 
+        
 
+        
     </main>
 
     @include('layouts.footer')

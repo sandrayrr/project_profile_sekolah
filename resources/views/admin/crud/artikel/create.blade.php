@@ -304,19 +304,8 @@ body {
                     @enderror
                 </div>
 
-                {{-- TANGGAL --}}
-                <div class="mb-3">
-                    <label for="tanggal" class="form-label">Tanggal Publikasi</label>
-                    <input type="date"
-                           id="tanggal"
-                           name="tanggal"
-                           class="form-control @error('tanggal') is-invalid @enderror"
-                           value="{{ old('tanggal', date('Y-m-d')) }}"
-                           required>
-                    @error('tanggal')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
+                {{-- BAGIAN TANGGAL SUDAH DIHAPUS DISINI --}}
+                {{-- Tanggal akan otomatis diisi oleh Controller (Hari Ini) --}}
 
                 {{-- DESKRIPSI --}}
                 <div class="mb-3">

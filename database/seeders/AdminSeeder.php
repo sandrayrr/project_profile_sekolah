@@ -18,7 +18,7 @@ class AdminSeeder extends Seeder
         \App\Models\User::create([
             'name'      => 'Super Admin',
             'email'     => 'superadmin@sekolah.sch.id',
-            'password'  => bcrypt('kone123'), 
+            'password'  => bcrypt(value: 'kone123'), 
             'role'      => 'super_admin', 
         ]);
     }

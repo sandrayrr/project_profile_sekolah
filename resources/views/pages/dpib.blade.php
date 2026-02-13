@@ -589,7 +589,7 @@
                             <p class="text-sm text-gray-600 dark:text-gray-400">PT. Yamaha Indonesia Manufacturing</p>
                         </div>
                     </div>
-                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-3">Angkatan 2022/p>
+                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-3">Angkatan 2022</p>
                     <p class="text-gray-600 dark:text-gray-400 text-sm italic">"Selama menempuh pendidikan di jurusan DPIB SMKN 1 Kawali, saya banyak belajar tentang dasar perencanaan dan gambar bangunan melalui pembelajaran teori dan praktik. Proses belajar yang dijalani melatih saya untuk lebih teliti, sabar, dan bertanggung jawab, serta membantu saya memahami dunia konstruksi secara lebih nyata sebagai bekal ke jenjang selanjutnya."</p>
                 </div>
             </div>

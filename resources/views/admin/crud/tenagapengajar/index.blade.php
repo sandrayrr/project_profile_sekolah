@@ -572,8 +572,7 @@
                     <option value="">Semua Status</option>
                     <option value="pns">PNS</option>
                     <option value="honorer">Honorer</option>
-                    <option value="gty/pty">GTY/PTY</option>
-                    <option value="lainnya">Status Lainnya</option>
+                    <option value="gty/pty">P3K</option>
                 </select>
             </div>
         </div>
