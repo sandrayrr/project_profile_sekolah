@@ -42,23 +42,6 @@
                     </div>
                 </div>
             </div>
-            
-             
-             <div class="slide absolute inset-0 w-full h-full transition-opacity duration-1000 opacity-0">
-                <img alt="Student Activities" class="absolute inset-0 w-full h-full object-cover opacity-30 dark:opacity-20"
-                    src="https://picsum.photos/seed/smkn1kawali-activities/1920/1080.jpg" />
-                <div class="relative z-10 flex flex-col items-center justify-center h-full w-full px-6">
-                    <div class="text-center max-w-4xl">
-                        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">Ekstrakurikuler untuk Pengembangan Diri</h2>
-                        <p class="text-lg text-gray-700 dark:text-gray-400">Berbagai kegiatan ekstrakurikuler yang menarik untuk mengembangkan bakat dan minat siswa di luar jam pelajaran.</p>
-                        <div class="flex justify-center space-x-4 mt-8">
-                            <button class="bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 text-gray-800 dark:text-white px-6 py-2 rounded-full shadow-lg transition flex items-center gap-2">
-                                Lihat Kegiatan <span class="material-icons text-sm">arrow_forward</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div> 
         </div>
         
         <!-- Navigation Controls -->

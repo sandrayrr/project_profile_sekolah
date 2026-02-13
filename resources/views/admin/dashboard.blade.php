@@ -784,6 +784,85 @@
                 height: 50px;
                 font-size: 1.2rem;
             }
+                    /* ... CSS yang sudah ada ... */
+
+        /* ==================== TAMBAHAN CSS KALENDER ==================== */
+        .calendar-header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .calendar-month-year {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            min-width: 150px;
+            text-align: center;
+        }
+
+        .calendar-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .calendar-table th {
+            font-weight: 600;
+            color: var(--text-muted);
+            padding: 0.75rem 0.5rem;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .calendar-table td {
+            padding: 0.5rem;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .calendar-day {
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            font-weight: 600;
+            color: var(--dark-color);
+            transition: all 0.2s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .calendar-day:hover {
+            background-color: var(--light-blue);
+            transform: scale(1.1);
+        }
+
+        .calendar-day.today {
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .calendar-day.today::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 4px;
+            background: var(--primary-blue);
+            border-radius: 50%;
+        }
+        
+        .calendar-day.other-month {
+            color: var(--text-muted);
+            opacity: 0.5;
+        }
+        /* ==================== AKHIR CSS KALENDER ==================== */
         }
     </style>
 
@@ -947,247 +1026,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- Grafik Real-time -->
-        <div class="row mb-4">
-            <div class="col-lg-8 mb-3 fade-in" style="animation-delay: 0.5s;">
-                <div class="chart-container">
-                    <div class="chart-header">
-                        <h3 class="chart-title">Statistik Real-time</h3>
-                        <div class="chart-actions">
-                            <button class="chart-action-btn" onclick="updateLineChart()">
-                                <i class="bi bi-arrow-clockwise"></i>
-                            </button>
-                            <button class="chart-action-btn" onclick="downloadLineChart()">
-                                <i class="bi bi-download"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="chart-canvas-container">
-                        <canvas id="realtimeChart"></canvas>
-                        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-                        <script>
-                            const ctxLine = document.getElementById('realtimeChart').getContext('2d');
-
-                            const labels = @json($months); // bulan
-                            const siswaData = @json($siswaHistory);
-                            const guruData = @json($guruHistory);
-                            const prestasiData = @json($prestasiHistory);
-
-                            const realtimeChart = new Chart(ctxLine, {
-                                type: 'line',
-                                data: {
-                                    labels: labels,
-                                    datasets: [
-                                        {
-                                            label: 'Siswa',
-                                            data: siswaData,
-                                            // DIUBAH: Warna baru untuk Siswa
-                                            borderColor: 'rgba(16, 185, 129, 0.8)', // Hijau
-                                            backgroundColor: 'rgba(16, 185, 129, 0.2)', // Hijau dengan transparansi
-                                            tension: 0.4,
-                                            fill: true
-                                        },
-                                        {
-                                            label: 'Guru',
-                                            data: guruData,
-                                            borderColor: 'rgba(255, 193, 7, 0.8)',
-                                            backgroundColor: 'rgba(255, 193, 7, 0.2)',
-                                            tension: 0.4,
-                                            fill: true
-                                        },
-                                        {
-                                            label: 'Prestasi',
-                                            data: prestasiData,
-                                            // DIUBAH: Warna baru untuk Prestasi
-                                            borderColor: 'rgba(139, 92, 246, 0.8)', // Ungu
-                                            backgroundColor: 'rgba(139, 92, 246, 0.2)', // Ungu dengan transparansi
-                                            tension: 0.4,
-                                            fill: true
-                                        }
-                                    ]
-                                },
-                                options: {
-                                    responsive: true,
-                                    maintainAspectRatio: false,
-                                    plugins: {
-                                        legend: {
-                                            display: true
-                                        }
-                                    },
-                                    scales: {
-                                        y: {
-                                            beginAtZero: true,
-                                            grid: { color: 'rgba(0,0,0,0.05)' }
-                                        },
-                                        x: {
-                                            grid: { display: false }
-                                        }
-                                    }
-                                }
-                            });
-
-                            function updateLineChart() {
-                                // Bisa dibuat untuk refresh data via AJAX jika mau
-                                realtimeChart.update();
-                            }
-
-                            function downloadLineChart() {
-                                const link = document.createElement('a');
-                                link.href = realtimeChart.toBase64Image();
-                                link.download = 'statistik-realtime.png';
-                                link.click();
-                            }
-                        </script>
-                    </div>
-                    <div class="chart-legend">
-                        <div class="chart-legend-item">
-                            <div class="chart-legend-color" style="background-color: rgba(16, 185, 129, 0.8);"></div>
-                            <span>Siswa</span>
-                        </div>
-                        <div class="chart-legend-item">
-                            <div class="chart-legend-color" style="background-color: rgba(255, 193, 7, 0.8);"></div>
-                            <span>Guru</span>
-                        </div>
-                        <div class="chart-legend-item">
-                            <div class="chart-legend-color" style="background-color: rgba(139, 92, 246, 0.8);"></div>
-                            <span>Prestasi</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {{-- Distribusi Jursan --}}
-            {{-- <div class="col-lg-4 mb-3 fade-in" style="animation-delay: 0.6s;">
-                <div class="chart-container">
-                    <div class="chart-header">
-                        <h3 class="chart-title">Distribusi Jurusan</h3>
-                        <div class="chart-actions">
-                            <button class="chart-action-btn" onclick="updateDoughnutChart()">
-                                <i class="bi bi-arrow-clockwise"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="chart-canvas-container">
-                        <canvas id="jurusanChart"></canvas>
-                        <script>
-                            const ctxDoughnut = document.getElementById('jurusanChart').getContext('2d');
-
-                            const jurusanChart = new Chart(ctxDoughnut, {
-                                type: 'doughnut',
-                                data: {
-                                    <!-- DIUBAH: Sesuaikan label jurusan -->
-                                    labels: ['TJKT', 'TFLM', 'PPLG', 'DPIB', 'MPLB', 'AKL', 'SP'],
-                                    datasets: [{
-                                    < !--DIUBAH: Sesuaikan data jurusan-- >
-                                    data: [
-                                        {{ $beranda->jurusan_tjkt ?? 0 }},
-                                        {{ $beranda->jurusan_tflm ?? 0 }},
-                                        {{ $beranda->jurusan_pplg ?? 0 }},
-                                        {{ $beranda->jurusan_dpib ?? 0 }},
-                                        {{ $beranda->jurusan_mplb ?? 0 }},
-                                        {{ $beranda->jurusan_akl ?? 0 }},
-                                        {{ $beranda->jurusan_sp ?? 0 }}
-                                    ],
-                                    < !--DIUBAH: Sesuaikan warna-- >
-                                    backgroundColor: [
-                                        'rgba(54, 162, 235, 0.8)',  // Biru Muda (TJKT)
-                                        'rgba(30, 64, 175, 0.8)',   // Biru Tua (TO)
-                                        'rgba(255, 206, 86, 0.8)',  // Kuning (PPLG)
-                                        'rgba(107, 114, 128, 0.8)', // Abu (DPIB)
-                                        'rgba(239, 68, 68, 0.8)',   // Merah (MPLB)
-                                        'rgba(251, 146, 60, 0.8)',  // Oranye (AKL)
-                                        'rgba(17, 24, 39, 0.8)'     // Hitam (SP)
-                                    ],
-                                        borderWidth: 1
-                                }]
-                            },
-                                options: {
-                                responsive: true,
-                                maintainAspectRatio: false,
-                                plugins: {
-                                    legend: {
-                                        position: 'bottom'
-                                    }
-                                }
-                            }
-                        });
-
-                            function updateDoughnutChart() {
-                                jurusanChart.update();
-                            }
-                        </script>
-                    </div>
-                    <!-- DIUBAH: Sesuaikan legenda -->
-                    <div class="chart-legend">
-                        <div class="chart-legend-item">
-                            <div class="chart-legend-color" style="background-color: rgba(54, 162, 235, 0.8);"></div>
-                            <span>TJKT</span>
-                        </div>
-                        <div class="chart-legend-item">
-                            <div class="chart-legend-color" style="background-color: rgba(30, 64, 175, 0.8);"></div>
-                            <span>TO</span>
-                        </div>
-                        <div class="chart-legend-item">
-                            <div class="chart-legend-color" style="background-color: rgba(255, 206, 86, 0.8);"></div>
-                            <span>PPLG</span>
-                        </div>
-                        <div class="chart-legend-item">
-                            <div class="chart-legend-color" style="background-color: rgba(107, 114, 128, 0.8);"></div>
-                            <span>DPIB</span>
-                        </div>
-                        <div class="chart-legend-item">
-                            <div class="chart-legend-color" style="background-color: rgba(239, 68, 68, 0.8);"></div>
-                            <span>MPLB</span>
-                        </div>
-                        <div class="chart-legend-item">
-                            <div class="chart-legend-color" style="background-color: rgba(251, 146, 60, 0.8);"></div>
-                            <span>AKL</span>
-                        </div>
-                        <div class="chart-legend-item">
-                            <div class="chart-legend-color" style="background-color: rgba(17, 24, 39, 0.8);"></div>
-                            <span>SP</span>
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
-        </div>
-
-        <!-- Grafik Bar -->
-        {{-- <div class="row mb-4">
-            <div class="col-lg-6 mb-3 fade-in" style="animation-delay: 0.7s;">
-                <div class="chart-container">
-                    <div class="chart-header">
-                        <h3 class="chart-title">Pendaftaran Siswa Baru</h3>
-                        <div class="chart-actions">
-                            <button class="chart-action-btn" onclick="updateBarChart()">
-                                <i class="bi bi-arrow-clockwise"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="chart-canvas-container">
-                        <canvas id="pendaftaranChart"></canvas>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-6 mb-3 fade-in" style="animation-delay: 0.8s;">
-                <div class="chart-container">
-                    <div class="chart-header">
-                        <h3 class="chart-title">Aktivitas Bulanan</h3>
-                        <div class="chart-actions">
-                            <button class="chart-action-btn" onclick="updateActivityChart()">
-                                <i class="bi bi-arrow-clockwise"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="chart-canvas-container">
-                        <canvas id="activityChart"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
 
     </div>
 
