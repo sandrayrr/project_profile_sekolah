@@ -150,7 +150,7 @@
             
             <!-- Title -->
             <h1 class="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
-                Jurusan <span class="text-primary">SK</span>
+                Jurusan <span class="text-primary">SP</span>
             </h1>
             
             <!-- Description -->

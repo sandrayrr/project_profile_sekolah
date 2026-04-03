@@ -144,32 +144,6 @@
             box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
         }
 
-        /* --- Bagian Statistik --- */
-        .stats-section {
-            padding: 60px 20px;
-        }
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            text-align: center;
-        }
-        .stat-item i {
-            font-size: 3rem;
-            color: var(--accent-color);
-            margin-bottom: 15px;
-        }
-        .stat-number {
-            display: block;
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-        .stat-item p {
-            font-size: 1.1rem;
-            color: #ccc;
-        }
-
         /* --- Bagian Tim --- */
         .team-section {
             padding: 80px 20px;
@@ -402,8 +376,6 @@
             .hero-content p { font-size: 1.1rem; }
             .hero-section nav a { position: static; display: inline-block; margin: 10px; }
             .content-wrapper { margin-top: -50px; }
-            .stats-section { padding: 40px 15px; }
-            .stat-number { font-size: 2.5rem; }
             .section-title { font-size: 2.2rem; }
             .team-section { padding: 60px 15px; }
             .modal-content { width: 95%; padding: 20px; }
@@ -436,33 +408,6 @@
 
     <main>
         <div class="content-wrapper">
-            <section class="stats-section" data-aos="fade-up">
-                <div class="container glass-card">
-                    <div class="stats-grid">
-                        <div class="stat-item">
-                            <i class="fas fa-rocket"></i>
-                            <span class="stat-number" data-target="150">0</span>
-                            <p>Proyek Sukses</p>
-                        </div>
-                        <div class="stat-item">
-                            <i class="fas fa-user-tie"></i>
-                            <span class="stat-number" data-target="98">0</span>
-                            <p>Klien Puas</p>
-                        </div>
-                        <div class="stat-item">
-                            <i class="fas fa-code"></i>
-                            <span class="stat-number" data-target="50000">0</span>
-                            <p>Baris Kode</p>
-                        </div>
-                        <div class="stat-item">
-                            <i class="fas fa-trophy"></i>
-                            <span class="stat-number" data-target="15">0</span>
-                            <p>Penghargaan</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
             <section id="tim" class="team-section">
                 <div class="container">
                     <h2 class="section-title" data-aos="fade-up">Struktur Tim Kami</h2>
@@ -480,9 +425,9 @@
                             </div>
                             <div class="team-members">
                                 <div class="team-member">
-                                    <img src="https://i.pravatar.cc/150?img=47" alt="Foto Siti Nurhaliza" class="member-avatar">
+                                    <img src="nayla.jpeg" alt="Foto Siti Nurhaliza" class="member-avatar">
                                     <div class="member-info">
-                                        <h4 class="member-name">Siti Nurhaliza</h4>
+                                        <h4 class="member-name">Nayla Febria Koswara</h4>
                                         <p class="member-role">Lead UI/UX Designer</p>
                                         <p class="member-desc">Memimpin arah desain dan pengalaman pengguna.</p>
                                         <div class="member-social">
@@ -495,7 +440,7 @@
                                 <div class="team-member">
                                     <img src="https://i.pravatar.cc/150?img=20" alt="Foto Maya Putri" class="member-avatar">
                                     <div class="member-info">
-                                        <h4 class="member-name">Maya Putri</h4>
+                                        <h4 class="member-name">Arsya Mutiah</h4>
                                         <p class="member-role">UI/UX Designer</p>
                                         <p class="member-desc">Membuat visual dan prototipe yang interaktif.</p>
                                         <div class="member-social">
@@ -518,9 +463,9 @@
                             </div>
                             <div class="team-members">
                                 <div class="team-member">
-                                    <img src="https://i.pravatar.cc/150?img=32" alt="Foto Budi Santoso" class="member-avatar">
+                                    <img src="sandra.jpeg" alt="Foto Budi Santoso" class="member-avatar">
                                     <div class="member-info">
-                                        <h4 class="member-name">Budi Santoso</h4>
+                                        <h4 class="member-name">Sandra Esa Gemilang</h4>
                                         <p class="member-role">Frontend Developer</p>
                                         <p class="member-desc">Membangun antarmuka pengguna yang responsif dan cepat.</p>
                                         <div class="member-social">
@@ -543,9 +488,9 @@
                             </div>
                             <div class="team-members">
                                 <div class="team-member">
-                                    <img src="https://i.pravatar.cc/150?img=26" alt="Foto Dewi Lestari" class="member-avatar">
+                                    <img src="firman.jpeg" alt="Foto Dewi Lestari" class="member-avatar">
                                     <div class="member-info">
-                                        <h4 class="member-name">Dewi Lestari</h4>
+                                        <h4 class="member-name">M Firman Ardiansyah</h4>
                                         <p class="member-role">Lead Backend Developer</p>
                                         <p class="member-desc">Merancang arsitektur sistem dan database yang skalabel.</p>
                                         <div class="member-social">
@@ -556,9 +501,9 @@
                                     </div>
                                 </div>
                                 <div class="team-member">
-                                    <img src="https://i.pravatar.cc/150?img=53" alt="Foto Andi Pratama" class="member-avatar">
+                                    <img src="akmal.jpeg" alt="Foto Andi Pratama" class="member-avatar">
                                     <div class="member-info">
-                                        <h4 class="member-name">Andi Pratama</h4>
+                                        <h4 class="member-name">M khoirul Akmal</h4>
                                         <p class="member-role">Backend Developer</p>
                                         <p class="member-desc">Mengembangkan API dan mengelola logika bisnis.</p>
                                         <div class="member-social">
@@ -581,9 +526,9 @@
                             </div>
                             <div class="team-members">
                                 <div class="team-member">
-                                    <img src="https://i.pravatar.cc/150?img=44" alt="Foto Rizki Ahmad" class="member-avatar">
+                                    <img src="kevin.jpeg" alt="Foto Rizki Ahmad" class="member-avatar">
                                     <div class="member-info">
-                                        <h4 class="member-name">Rizki Ahmad</h4>
+                                        <h4 class="member-name">Kevin</h4>
                                         <p class="member-role">QA Engineer</p>
                                         <p class="member-desc">Memastikan kualitas dan stabilitas produk sebelum rilis.</p>
                                         <div class="member-social">
@@ -622,12 +567,12 @@
 
             // --- DATA ANGGOTA TIM (Diperbarui) ---
             const teamMembers = [
-                { id: 0, name: "Siti Nurhaliza", role: "Lead UI/UX Designer", image: "https://i.pravatar.cc/150?img=47", tasks: ["Memimpin strategi desain dan riset pengguna.", "Membuat arsitektur informasi dan alur pengguna.", "Mengawasi konsistensi desain visual di seluruh produk.", "Mentor anggota tim desain lainnya."] },
-                { id: 1, name: "Maya Putri", role: "UI/UX Designer", image: "https://i.pravatar.cc/150?img=20", tasks: ["Membuat wireframe dan high-fidelity mockups.", "Mendesain elemen visual seperti ikon dan ilustrasi.", "Membangun prototipe interaktif untuk pengujian.", "Berkolaborasi dengan developer untuk implementasi desain."] },
-                { id: 2, name: "Budi Santoso", role: "Frontend Developer", image: "https://i.pravatar.cc/150?img=32", tasks: ["Menerjemahkan desain UI menjadi kode yang fungsional.", "Membangun komponen web yang dapat digunakan kembali.", "Memastikan aplikasi web responsif di berbagai perangkat.", "Mengoptimalkan kecepatan loading dan performa halaman."] },
-                { id: 3, name: "Dewi Lestari", role: "Lead Backend Developer", image: "https://i.pravatar.cc/150?img=26", tasks: ["Merancang arsitektur sistem dan database.", "Memimpin tim backend dalam pengembangan API.", "Menjamin keamanan, skalabilitas, dan performa server.", "Mengambil keputusan teknis terkait teknologi backend."] },
-                { id: 4, name: "Andi Pratama", role: "Backend Developer", image: "https://i.pravatar.cc/150?img=53", tasks: ["Membangun dan mengelola RESTful API/GraphQL.", "Mengimplementasikan logika bisnis di sisi server.", "Mengelola database dan optimasi query.", "Integrasi dengan layanan pihak ketiga."] },
-                { id: 5, name: "Rizki Ahmad", role: "QA Engineer", image: "https://i.pravatar.cc/150?img=44", tasks: ["Merencanakan dan menulis skrip pengujian (manual & otomatis).", "Melakukan pengujian fungsional, regresi, dan performa.", "Melaporkan bug dan melacak perbaikannya.", "Bekerja sama dengan tim pengembang untuk memastikan kualitas."] }
+                { id: 0, name: "Nayla Febria Koswara", role: "Lead UI/UX Designer", image: "nayla.jpeg", tasks: ["Memimpin strategi desain dan riset pengguna.", "Membuat arsitektur informasi dan alur pengguna.", "Mengawasi konsistensi desain visual di seluruh produk.", "Mentor anggota tim desain lainnya."] },
+                { id: 1, name: "Arsya Mutiah", role: "UI/UX Designer", image: "https://i.pravatar.cc/150?img=20", tasks: ["Membuat wireframe dan high-fidelity mockups.", "Mendesain elemen visual seperti ikon dan ilustrasi.", "Membangun prototipe interaktif untuk pengujian.", "Berkolaborasi dengan developer untuk implementasi desain."] },
+                { id: 2, name: "Sandra Esa Gemilang", role: "Frontend Developer", image: "sandra.jpeg", tasks: ["Menerjemahkan desain UI menjadi kode yang fungsional.", "Membangun komponen web yang dapat digunakan kembali.", "Memastikan aplikasi web responsif di berbagai perangkat.", "Mengoptimalkan kecepatan loading dan performa halaman."] },
+                { id: 3, name: "M Firman Ardiansyah", role: "Lead Backend Developer", image: "firman.jpeg", tasks: ["Merancang arsitektur sistem dan database.", "Memimpin tim backend dalam pengembangan API.", "Menjamin keamanan, skalabilitas, dan performa server.", "Mengambil keputusan teknis terkait teknologi backend."] },
+                { id: 4, name: "M khoirul Akmal", role: "Backend Developer", image: "akmal.jpeg", tasks: ["Membangun dan mengelola RESTful API/GraphQL.", "Mengimplementasikan logika bisnis di sisi server.", "Mengelola database dan optimasi query.", "Integrasi dengan layanan pihak ketiga."] },
+                { id: 5, name: "Kevin", role: "QA Engineer", image: "kevin.jpeg", tasks: ["Merencanakan dan menulis skrip pengujian (manual & otomatis).", "Melakukan pengujian fungsional, regresi, dan performa.", "Melaporkan bug dan melacak perbaikannya.", "Bekerja sama dengan tim pengembang untuk memastikan kualitas."] }
             ];
 
             // --- LOGIKA MODAL ---
@@ -661,35 +606,6 @@
             profileButtons.forEach(btn => btn.addEventListener('click', () => openModal(parseInt(btn.getAttribute('data-id')))));
             closeBtn.addEventListener('click', closeModal);
             window.addEventListener('click', (event) => { if (event.target === modal) closeModal(); });
-
-
-            // --- LOGIKA COUNTER ANIMASI ---
-            const counters = document.querySelectorAll('.stat-number');
-            const speed = 200;
-
-            const runCounter = (counter) => {
-                const target = +counter.getAttribute('data-target');
-                const count = +counter.innerText;
-                const increment = target / speed;
-                if (count < target) {
-                    counter.innerText = Math.ceil(count + increment);
-                    setTimeout(() => runCounter(counter), 10);
-                } else {
-                    counter.innerText = target.toLocaleString(); // Format angka dengan koma
-                }
-            };
-            
-            const observerOptions = { threshold: 0.7 };
-            const counterObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        runCounter(entry.target);
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-
-            counters.forEach(counter => counterObserver.observe(counter));
 
 
             // --- INISIALISASI AOS ---
